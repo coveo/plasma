@@ -1,5 +1,5 @@
 import {factory, StylesApiProps, Tooltip, useProps, useStyles, type Factory, type TooltipProps} from '@mantine/core';
-import {type ReactNode} from 'react';
+import {type MouseEvent, type ReactNode} from 'react';
 import {InfoToken} from '../InfoToken/InfoToken.js';
 import classes from './InputLabelInfo.module.css';
 
@@ -37,7 +37,12 @@ export const InputLabelInfo = factory<InputLabelInfoFactory>((_props, ref) => {
     });
     return (
         <Tooltip label={children} {...others}>
-            <InfoToken.Information component="span" {...getStyles('labelInfo', {className, style})} ref={ref} />
+            <InfoToken.Information
+                component="span"
+                {...getStyles('labelInfo', {className, style})}
+                ref={ref}
+                onClick={(e: MouseEvent) => e.preventDefault()}
+            />
         </Tooltip>
     );
 });
