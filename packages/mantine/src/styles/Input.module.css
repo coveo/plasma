@@ -14,7 +14,8 @@
 
     &[data-disabled] {
         > .section {
-            > svg {
+            > svg,
+            > [data-combined-clear-section] > svg {
                 color: var(--input-disabled-color);
             }
         }
@@ -22,7 +23,8 @@
 
     &[data-error] {
         > .section {
-            > svg {
+            > svg,
+            > [data-combined-clear-section] > svg {
                 color: var(--mantine-color-error);
             }
         }
@@ -33,10 +35,15 @@
     @mixin dark {
         --input-bg: var(--mantine-color-default);
     }
+
+    &[data-expanded]:not([data-readonly]) ~ .section [data-plasma-combobox-chevron] {
+        transform: rotate(180deg);
+    }
 }
 
 .section {
-    > svg {
+    > svg,
+    > [data-combined-clear-section] > svg {
         color: var(--mantine-color-dimmed);
     }
 }
