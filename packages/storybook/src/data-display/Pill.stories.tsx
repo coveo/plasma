@@ -17,8 +17,14 @@ const meta: Meta<typeof Pill> = {
             control: 'boolean',
             description: 'Controls visibility of the remove button',
         },
+        size: {
+            control: 'select',
+            options: ['sm', 'md'],
+            description: 'Pill size',
+        },
     },
     args: {
+        size: 'sm',
         withRemoveButton: false,
         children: 'Item',
     },
@@ -27,5 +33,9 @@ export default meta;
 type Story = StoryObj<typeof Pill>;
 
 export const Demo: Story = {
-    render: ({withRemoveButton, children}) => <Pill withRemoveButton={withRemoveButton}>{children}</Pill>,
+    render: ({size, withRemoveButton, children}) => (
+        <Pill size={size} withRemoveButton={withRemoveButton}>
+            {children}
+        </Pill>
+    ),
 };

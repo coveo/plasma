@@ -1,4 +1,17 @@
 .root {
+    padding: 0 var(--mantine-spacing-xs);
     color: var(--mantine-color-text);
     background-color: var(--mantine-color-gray-light);
+
+    &[data-with-remove] {
+        padding: 0 var(--mantine-spacing-xxs) 0 var(--mantine-spacing-xs);
+
+        &[data-size='md'] {
+            padding: 0 2px 0 var(--mantine-spacing-xs);
+        }
+    }
+}
+
+.remove {
+    padding: 0;
 }
