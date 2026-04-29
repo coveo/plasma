@@ -187,7 +187,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         ActionIcon: ActionIcon.extend({
             defaultProps: {
-                size: 'lg',
+                size: 'md',
             },
             classNames: ActionIconClasses,
         }),

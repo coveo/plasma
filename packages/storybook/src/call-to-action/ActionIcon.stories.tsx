@@ -1,9 +1,14 @@
-import {showNotification} from '@coveord/plasma-mantine';
-import {ActionIcon} from '@coveord/plasma-mantine/components/ActionIcon';
-import {IconBell} from '@coveord/plasma-react-icons';
+import {ActionIcon, type ActionIconProps} from '@coveord/plasma-mantine/components/ActionIcon';
+import {IconX} from '@coveord/plasma-react-icons';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
-const meta: Meta<typeof ActionIcon> = {
+type ActionIconVariants = keyof typeof ActionIcon;
+
+type ActionIconStoryArgs = ActionIconProps & {
+    variant: ActionIconVariants;
+};
+
+const meta: Meta<ActionIconStoryArgs> = {
     title: '@components/call-to-action/ActionIcon',
     id: 'ActionIcon',
     component: ActionIcon,
@@ -22,14 +27,14 @@ const meta: Meta<typeof ActionIcon> = {
                 'DestructiveSecondary',
                 'DestructiveTertiary',
                 'DestructiveQuaternary',
-            ],
+            ] as ActionIconVariants[],
             description: 'ActionIcon variant',
         },
         size: {
             control: 'select',
-            options: ['sm', 'md'],
+            options: ['sm', 'md', 'lg'],
             description: 'Size of the ActionIcon',
-            table: {defaultValue: {summary: 'md'}, type: {summary: 'sm | md'}},
+            table: {defaultValue: {summary: 'md'}, type: {summary: 'sm | md | lg'}},
         },
     },
     args: {
@@ -38,16 +43,14 @@ const meta: Meta<typeof ActionIcon> = {
     },
 };
 export default meta;
-type Story = StoryObj<typeof ActionIcon>;
+type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
-    render: (props: {size: 'sm' | 'md'; variant: string}) => {
-        const ActionIconComponent = ActionIcon[props.variant as keyof typeof ActionIcon] as React.ComponentType<any>;
-        const Icon = () => <IconBell size={16} />;
-        const onClick = () => showNotification({message: 'ActionIcon clicked', autoClose: false});
+    render: (props) => {
+        const ActionIconComponent = ActionIcon[props.variant];
         return (
-            <ActionIconComponent onClick={onClick} size={props.size}>
-                <Icon />
+            <ActionIconComponent size={props.size}>
+                <IconX />
             </ActionIconComponent>
         );
     },
