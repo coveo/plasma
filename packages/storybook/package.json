@@ -27,7 +27,7 @@
         "dayjs": "1.11.20",
         "react": "19.2.5",
         "react-dom": "19.2.5",
-        "react-hook-form": "7.72.1"
+        "react-hook-form": "7.73.1"
     },
     "devDependencies": {
         "@storybook/addon-docs": "10.3.5",
@@ -35,11 +35,11 @@
         "@types/react": "19.2.14",
         "@types/react-dom": "19.2.3",
         "@vitejs/plugin-react": "6.0.1",
-        "chromatic": "16.3.0",
+        "chromatic": "16.5.0",
         "globals": "17.5.0",
         "postcss-preset-mantine": "1.18.0",
         "storybook": "10.3.5",
         "typescript": "5.9.3",
-        "vite": "8.0.8"
+        "vite": "8.0.9"
     }
 }
