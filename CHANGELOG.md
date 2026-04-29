@@ -1,3 +1,10 @@
+## 59.2.0 (2026-04-29)
+
+* chore(deps): lock file maintenance (#4416) f6e38db, closes #4416
+* feat(mantine): override combobox chevron (#4411) 3124d12, closes #4411
+
+
+
 ## <small>59.1.2 (2026-04-27)</small>
 
 * chore: add chromatic and deployment (#4404) 72bf870, closes #4404
