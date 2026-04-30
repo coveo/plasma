@@ -1,8 +1,8 @@
 import './styles/reset.css';
 
-import '@mantine/core/styles.css';
-import '@mantine/dates/styles.css';
-import '@mantine/notifications/styles.css';
+import '@mantine/core/styles.layer.css';
+import '@mantine/dates/styles.layer.css';
+import '@mantine/notifications/styles.layer.css';
 
 import type {Preview} from '@storybook/react-vite';
 import {useColorScheme} from './decorators/useColorScheme.js';

@@ -23,6 +23,7 @@ import {
     CloseButton,
     ColorSwatch,
     Combobox,
+    ComboboxChevron,
     ComboboxSearch,
     createTheme,
     deepMerge,
@@ -70,6 +71,7 @@ import {Accordion} from '../components/Accordion/Accordion.js';
 import {CheckboxIcon} from '../components/CheckboxIcon/CheckboxIcon.js';
 import {CircleLoader} from '../components/CircleLoader/CircleLoader.js';
 import {InfoToken} from '../components/InfoToken/InfoToken.js';
+import {PlasmaComboboxChevron} from '../components/Combobox/PlasmaComboboxChevron.js';
 import AccordionClasses from '../styles/Accordion.module.css';
 import ActionIconClasses from '../styles/ActionIcon.module.css';
 import AlertClasses from '../styles/Alert.module.css';
@@ -81,6 +83,7 @@ import CardClasses from '../styles/Card.module.css';
 import CheckboxClasses from '../styles/Checkbox.module.css';
 import CheckboxIndicatorClasses from '../styles/CheckboxIndicator.module.css';
 import ChipClasses from '../styles/Chip.module.css';
+import CloseButtonClasses from '../styles/CloseButton.module.css';
 import ComboboxClasses from '../styles/Combobox.module.css';
 import DatePickerClasses from '../styles/DatePicker.module.css';
 import DateTimePickerClasses from '../styles/DateTimePicker.module.css';
@@ -184,7 +187,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         ActionIcon: ActionIcon.extend({
             defaultProps: {
-                size: 'lg',
+                size: 'md',
             },
             classNames: ActionIconClasses,
         }),
@@ -271,6 +274,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             defaultProps: {
                 icon: <CrossSize16Px height={16} aria-label="close" />,
             },
+            classNames: CloseButtonClasses,
         }),
         ColorSwatch: ColorSwatch.extend({
             defaultProps: {
@@ -282,6 +286,11 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             classNames: ComboboxClasses,
             defaultProps: {
                 middlewares: {inline: true},
+            },
+        }),
+        ComboboxChevron: ComboboxChevron.extend({
+            defaultProps: {
+                component: PlasmaComboboxChevron,
             },
         }),
         ComboboxSearch: ComboboxSearch.extend({

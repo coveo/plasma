@@ -1,13 +1,11 @@
 import {
-    Box,
     Factory,
-    Group,
     RadioCardProps as MantineRadioCardProps,
     RadioCardStylesNames as MantineRadioCardStylesNames,
     Radio,
     RadioCardCssVariables,
+    Stack,
     StylesApiProps,
-    Title,
     Tooltip,
     factory,
     useProps,
@@ -15,6 +13,7 @@ import {
 } from '@mantine/core';
 import {ReactNode} from 'react';
 import classes from '../../styles/RadioCard.module.css';
+import {Input} from '../Input/Input';
 
 export type RadioCardStylesNames = MantineRadioCardStylesNames | 'container' | 'indicator' | 'title' | 'description';
 export type RadioCardFactory = Factory<{
@@ -48,6 +47,7 @@ const defaultProps = {} satisfies Partial<RadioCardProps>;
 
 export const RadioCard = factory<RadioCardFactory>((_props, ref) => {
     const {
+        children,
         classNames,
         styles,
         style,
@@ -80,13 +80,16 @@ export const RadioCard = factory<RadioCardFactory>((_props, ref) => {
                 {...others}
                 aria-readonly={readOnly}
             >
-                <Group {...getStyles('container', {classNames, styles})}>
-                    <Radio.Indicator size="xs" disabled={disabled} {...getStyles('indicator', {classNames, styles})} />
-                    <Title order={4} {...getStyles('title', {classNames, styles})}>
-                        {label}
-                    </Title>
-                </Group>
-                {description && <Box {...getStyles('description', {classNames, styles})}>{description}</Box>}
+                <Radio.Indicator disabled={disabled} {...getStyles('indicator', {classNames, styles})} />
+                <Stack {...getStyles('container', {classNames, styles})}>
+                    <Input.Label {...getStyles('title', {classNames, styles})}>{label}</Input.Label>
+                    {description && (
+                        <Input.Description {...getStyles('description', {classNames, styles})}>
+                            {description}
+                        </Input.Description>
+                    )}
+                    {children}
+                </Stack>
             </Radio.Card>
         </Tooltip>
     );
