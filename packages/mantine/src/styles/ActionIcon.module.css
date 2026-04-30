@@ -1,5 +1,28 @@
 .root {
+    --ai-size-sm: 16px;
+    --ai-size-md: 24px;
     --ai-size-lg: 36px;
+    --ai-icon-size: 20px;
+
+    svg {
+        width: var(--ai-icon-size);
+        height: var(--ai-icon-size);
+    }
+
+    &[data-size='sm'] {
+        --ai-radius: var(--mantine-radius-sm);
+        --ai-icon-size: 12px;
+    }
+
+    &[data-size='md'] {
+        --ai-radius: var(--mantine-radius-sm);
+        --ai-icon-size: 16px;
+    }
+
+    &[data-size='lg'] {
+        --ai-radius: var(--mantine-radius-md);
+        --ai-icon-size: 20px;
+    }
 
     &[data-variant='subtle'] {
         &:where(:disabled:not([data-loading]), [data-disabled]:not([data-loading])) {
