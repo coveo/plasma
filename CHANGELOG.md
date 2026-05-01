@@ -1,3 +1,12 @@
+## 59.3.0 (2026-05-01)
+
+* feat(mantine,RadioCard): update the RadioCard visually (#4414) ea761ee, closes #4414
+* feat(ActionIcon): update styles to match figma (#4421) cff9f32, closes #4421
+* feat(pill): +sm, +md size in pill storybook (#4419) 58dd585, closes #4419
+* fix(inputlabelinfo): make pointer-event auto (#4420) b31e90d, closes #4420
+
+
+
 ## 59.2.0 (2026-04-29)
 
 * chore(deps): lock file maintenance (#4416) f6e38db, closes #4416
