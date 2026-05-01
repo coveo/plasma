@@ -1,3 +1,9 @@
+## 59.4.0 (2026-05-01)
+
+* feat(CopyToClipboard): deprecate 'withLabel' prop and update story (#4422) 2065f86, closes #4422
+
+
+
 ## 59.3.0 (2026-05-01)
 
 * feat(mantine,RadioCard): update the RadioCard visually (#4414) ea761ee, closes #4414
