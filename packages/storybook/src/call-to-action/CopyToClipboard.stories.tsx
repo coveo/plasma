@@ -14,20 +14,21 @@ const meta: Meta<typeof CopyToClipboard> = {
             description: 'The value to be copied to clipboard',
             table: {type: {summary: 'string'}},
         },
-        withLabel: {
-            control: 'boolean',
-            description: 'Whether to show the "Copy to clipboard" label',
-            table: {defaultValue: {summary: 'false'}, type: {summary: 'boolean'}},
+        size: {
+            control: 'select',
+            options: ['md', 'lg'],
         },
     },
     args: {
+        size: 'md',
         value: 'Copy me!',
-        withLabel: false,
+        tooltipLabelCopy: 'Copy to clipboard',
+        tooltipLabelCopied: 'Copied',
     },
 };
 export default meta;
-type Story = StoryObj<typeof CopyToClipboard>;
+type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
-    render: ({value, withLabel}) => <CopyToClipboard value={value} withLabel={withLabel} />,
+    render: (args) => <CopyToClipboard {...args} />,
 };
