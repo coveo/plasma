@@ -9,6 +9,7 @@ export interface CopyToClipboardProps extends ActionIconProps {
      */
     value: string;
     /**
+     * @deprecated Place the CopyToClipboard component inside the `rightSection` of input components instead.
      * Whether to display the string to be copied alongside the button.
      *
      * @default false
