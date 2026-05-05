@@ -1,3 +1,11 @@
+## <small>59.4.1 (2026-05-05)</small>
+
+* feat(mantine, facet): add removable option (#4424) cc20b90, closes #4424
+* chore(deps): lock file maintenance (#4423) 0a55df4, closes #4423
+* chore(deps): update all non-major dependencies (#4415) d3b9da2, closes #4415
+
+
+
 ## 59.4.0 (2026-05-01)
 
 * feat(CopyToClipboard): deprecate 'withLabel' prop and update story (#4422) 2065f86, closes #4422
