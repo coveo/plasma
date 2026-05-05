@@ -1,7 +1,8 @@
-import {IconSearch, IconX} from '@coveord/plasma-react-icons';
+import {IconSearch} from '@coveord/plasma-react-icons';
 import {
     Box,
     BoxProps,
+    CloseButton,
     Combobox,
     Divider,
     factory,
@@ -18,7 +19,6 @@ import {useUncontrolled} from '@mantine/hooks';
 import {clsx} from 'clsx';
 import {FunctionComponent, ReactElement, ReactNode, useEffect} from 'react';
 import {groupOptions} from '../../utils/groupOptions.js';
-import {ActionIcon} from '../ActionIcon/ActionIcon.js';
 import {EllipsisText} from '../EllipsisText/EllipsisText.js';
 import {DefaultFacetItem} from './DefaultFacetItem.js';
 import classes from './Facet.module.css';
@@ -284,15 +284,11 @@ export const Facet: FunctionComponent<FacetProps> = factory<FacetFactory>((_prop
                                 </Title>
                             ) : null}
                             {removable ? (
-                                <ActionIcon.Quaternary
-                                    size="xs"
-                                    color="gray"
+                                <CloseButton
                                     onClick={() => onRemove?.()}
                                     className={classes.facetRemoveButton}
                                     aria-label="remove facet"
-                                >
-                                    <IconX height={16} />
-                                </ActionIcon.Quaternary>
+                                />
                             ) : null}
                         </Group>
 
@@ -309,15 +305,12 @@ export const Facet: FunctionComponent<FacetProps> = factory<FacetFactory>((_prop
                             className={clsx(classes.facetSearch, {[classes.hiddenSearch]: hideSearch})}
                             rightSection={
                                 search ? (
-                                    <ActionIcon.Quaternary
+                                    <CloseButton
                                         aria-label="clear search"
-                                        color="gray"
                                         onClick={() => {
                                             handleSearch('');
                                         }}
-                                    >
-                                        <IconX height={16} />
-                                    </ActionIcon.Quaternary>
+                                    />
                                 ) : (
                                     <IconSearch height={16} />
                                 )
