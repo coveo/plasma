@@ -63,6 +63,13 @@ export const Demo: Story = {
                 defaultValue: {summary: 'data.length <= 7'},
             },
         },
+        removable: {
+            control: 'boolean',
+            description: 'Determines if the facet is removable',
+            table: {
+                defaultValue: {summary: 'false'},
+            },
+        },
     },
     render: (props) => <Facet {...withTitleInfoProps(props)} />,
 };

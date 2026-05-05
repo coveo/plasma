@@ -56,8 +56,20 @@
     flex: 1;
 }
 
+.facetTitleRow {
+    width: 100%;
+    min-width: 0;
+}
+
 .facetTitle {
+    flex: 1;
+    min-width: 0;
     margin-bottom: 0;
+}
+
+.facetRemoveButton {
+    flex-shrink: 0;
+    margin-left: auto;
 }
 
 .facetSearch {

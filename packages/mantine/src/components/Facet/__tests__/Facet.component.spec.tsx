@@ -237,5 +237,25 @@ describe('Facet', () => {
             await user.click(screen.getByRole('button', {name: /clear search/i}));
             expect(onSearch).toHaveBeenCalledWith('');
         });
+
+        it('does not render the remove button by default', () => {
+            render(<Facet data={[]} title="My little title" />);
+            expect(screen.queryByRole('button', {name: /remove facet/i})).not.toBeInTheDocument();
+        });
+
+        it('renders the remove button when the removable prop is true', () => {
+            render(<Facet data={[]} title="My little title" removable />);
+            expect(screen.getByRole('button', {name: /remove facet/i})).toBeVisible();
+        });
+
+        it('calls onRemove when clicking the remove button', async () => {
+            const user = userEvent.setup();
+            const onRemove = vi.fn();
+            render(<Facet data={[]} title="My little title" onRemove={onRemove} removable />);
+
+            await user.click(screen.getByRole('button', {name: /remove facet/i}));
+
+            expect(onRemove).toHaveBeenCalledTimes(1);
+        });
     });
 });
