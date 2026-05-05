@@ -19,7 +19,6 @@ import {useUncontrolled} from '@mantine/hooks';
 import {clsx} from 'clsx';
 import {FunctionComponent, ReactElement, ReactNode, useEffect} from 'react';
 import {groupOptions} from '../../utils/groupOptions.js';
-import {EllipsisText} from '../EllipsisText/EllipsisText.js';
 import {DefaultFacetItem} from './DefaultFacetItem.js';
 import classes from './Facet.module.css';
 import {FacetScrollArea} from './FacetScrollArea.js';
@@ -280,7 +279,7 @@ export const Facet: FunctionComponent<FacetProps> = factory<FacetFactory>((_prop
                         <Group wrap="nowrap" justify="space-between" className={classes.facetTitleRow}>
                             {title ? (
                                 <Title order={5} className={classes.facetTitle}>
-                                    <EllipsisText>{title}</EllipsisText>
+                                    {title}
                                 </Title>
                             ) : null}
                             {removable ? (

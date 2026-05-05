@@ -1,4 +1,5 @@
 import {Facet} from '@coveord/plasma-mantine/components/Facet';
+import {Box} from '@mantine/core';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import type {ComponentProps} from 'react';
 import {Args} from '../../Args.js';
@@ -71,5 +72,9 @@ export const Demo: Story = {
             },
         },
     },
-    render: (props) => <Facet {...withTitleInfoProps(props)} />,
+    render: (props) => (
+        <Box w={280}>
+            <Facet {...withTitleInfoProps(props)} />
+        </Box>
+    ),
 };
