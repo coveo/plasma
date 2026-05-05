@@ -53,7 +53,14 @@ jobs:
               with:
                   fetch-depth: 0
             - uses: ./.github/actions/setup
+            - name: Compute base URL
+              id: base-url
+              uses: ./.github/actions/compute-base-url
+              with:
+                  branch: ${{ github.head_ref || github.ref_name }}
             - uses: ./.github/actions/build
+              env:
+                  PLASMA_BASE_URL: ${{ steps.base-url.outputs.base-url }}
             - uses: ./.github/actions/deploy
               id: deploy-demo
               with:
