@@ -10,7 +10,7 @@
     },
     "dependencies": {
         "@coveord/plasma-mantine": "workspace:*",
-        "@figma/code-connect": "1.4.3",
+        "@figma/code-connect": "1.4.4",
         "react": "19.2.5"
     },
     "devDependencies": {

@@ -46,7 +46,7 @@
         "not dead"
     ],
     "devDependencies": {
-        "@commitlint/cli": "20.5.0",
+        "@commitlint/cli": "20.5.2",
         "@commitlint/config-conventional": "20.5.0",
         "@coveo/semantic-monorepo-tools": "2.7.1",
         "@types/node": "24.12.2",
@@ -69,16 +69,16 @@
         "globals": "17.5.0",
         "husky": "9.1.7",
         "lint-staged": "16.4.0",
-        "postcss": "8.5.10",
+        "postcss": "8.5.12",
         "prettier": "3.8.3",
         "sort-package-json": "3.6.1",
-        "stylelint": "17.8.0",
+        "stylelint": "17.9.1",
         "stylelint-config-standard-scss": "17.0.0",
         "turbo": "2.9.6",
         "typescript": "5.9.3",
-        "typescript-eslint": "8.58.2"
+        "typescript-eslint": "8.59.1"
     },
-    "packageManager": "pnpm@10.33.0+sha512.10568bb4a6afb58c9eb3630da90cc9516417abebd3fabbe6739f0ae795728da1491e9db5a544c76ad8eb7570f5c4bb3d6c637b2cb41bfdcdb47fa823c8649319",
+    "packageManager": "pnpm@10.33.2+sha512.a90faf6feeab71ad6c6e57f94e0fe1a12f5dcc22cd754db40ae9593eb6a3e0b6b12e3540218bb37ae083404b1f2ce6db2a4121e979829b4aff94b99f49da1cf8",
     "pnpm": {
         "peerDependencyRules": {
             "ignoreMissing": [
