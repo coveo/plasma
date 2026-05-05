@@ -284,7 +284,7 @@ export const Facet: FunctionComponent<FacetProps> = factory<FacetFactory>((_prop
                             ) : null}
                             {removable ? (
                                 <CloseButton
-                                    onClick={() => onRemove?.()}
+                                    onClick={onRemove}
                                     className={classes.facetRemoveButton}
                                     aria-label="remove facet"
                                 />
