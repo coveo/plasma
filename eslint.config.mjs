@@ -267,7 +267,13 @@ export default tsEslint.config(
         },
     },
     {
-        files: ['.github/**', '**/scripts/**', '**/bin/**'],
+        files: [
+            '.github/**',
+            '**/scripts/**',
+            '**/bin/**',
+            'packages/llms/src/cli.ts',
+            'packages/mcp-server/src/build.ts',
+        ],
         languageOptions: {
             globals: {
                 ...globals.node,
