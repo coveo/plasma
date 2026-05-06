@@ -1,3 +1,9 @@
+## <small>59.4.2 (2026-05-06)</small>
+
+* fix(Mantine, facet): export types (#4428) ada40f0, closes #4428
+
+
+
 ## <small>59.4.1 (2026-05-05)</small>
 
 * feat(mantine, facet): add removable option (#4424) cc20b90, closes #4424
