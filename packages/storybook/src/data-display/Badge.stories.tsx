@@ -1,4 +1,4 @@
-import {Badge, type BadgeOverloadFactory, type SemanticBadge} from '@coveord/plasma-mantine/components/Badge';
+import {Badge, type BadgeOverloadFactory, type SemanticBadge} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import type {ComponentProps} from 'react';
 

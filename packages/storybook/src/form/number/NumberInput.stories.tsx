@@ -1,14 +1,14 @@
-import {NumberInput} from '@coveord/plasma-mantine/components/NumberInput';
+import {NumberInput} from '@coveord/plasma-mantine';
 import {IconCoins} from '@coveord/plasma-react-icons';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import type {ComponentProps} from 'react';
-import {withLabelInfoProps} from '../LabelInfoArgs.js';
 import {
     BaseInputArgs,
-    InputWrapperArgs,
     type BaseInputStoryArgs,
+    InputWrapperArgs,
     type InputWrapperStoryArgs,
 } from '../InputWrapperArgs.js';
+import {withLabelInfoProps} from '../LabelInfoArgs.js';
 
 type NumberInputStoryArgs = Omit<ComponentProps<typeof NumberInput>, 'leftSection'> &
     BaseInputStoryArgs &

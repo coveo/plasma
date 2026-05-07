@@ -1,10 +1,9 @@
-import {enhanceWithCollectionProps, TextInput, useForm} from '@coveord/plasma-mantine';
-import {Collection} from '@coveord/plasma-mantine/components/Collection';
+import {Collection, enhanceWithCollectionProps, TextInput, useForm} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import {
     BaseInputArgs,
-    InputWrapperArgs,
     type BaseInputStoryArgs,
+    InputWrapperArgs,
     type InputWrapperStoryArgs,
 } from '../InputWrapperArgs.js';
 import {withLabelInfoProps} from '../LabelInfoArgs.js';

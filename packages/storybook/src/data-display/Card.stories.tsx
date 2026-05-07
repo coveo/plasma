@@ -1,4 +1,4 @@
-import {Card} from '@coveord/plasma-mantine/components/Card';
+import {Card} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import {useArgs} from 'storybook/preview-api';
 

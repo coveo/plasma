@@ -1,4 +1,4 @@
-import {StatusToken} from '@coveord/plasma-mantine/components/StatusToken';
+import {StatusToken} from '@coveord/plasma-mantine';
 import {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof StatusToken> = {

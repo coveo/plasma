@@ -1,4 +1,4 @@
-import {AppShell} from '@coveord/plasma-mantine/components/AppShell';
+import {AppShell} from '@coveord/plasma-mantine';
 import {Center, MantineColor} from '@mantine/core';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import {ComponentProps, ReactNode} from 'react';
@@ -15,6 +15,7 @@ type AppShellArgs = {
 const meta: Meta<AppShellArgs> = {
     title: '@components/layout/AppShell',
     id: 'AppShell',
+    component: AppShell,
     parameters: {
         layout: 'fullscreen',
     },

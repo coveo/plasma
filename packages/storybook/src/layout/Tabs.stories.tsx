@@ -1,4 +1,4 @@
-import {Tabs} from '@coveord/plasma-mantine/components/Tabs';
+import {Tabs} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import {ReactNode} from 'react';
 

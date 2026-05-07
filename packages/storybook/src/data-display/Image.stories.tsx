@@ -1,4 +1,4 @@
-import {Image} from '@coveord/plasma-mantine/components/Image';
+import {Image} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof Image> = {

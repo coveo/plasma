@@ -1,14 +1,13 @@
-import {Group} from '@coveord/plasma-mantine/components/Group';
-import {Switch} from '@coveord/plasma-mantine/components/Switch';
+import {Group, Switch} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import type {ComponentProps} from 'react';
 import {useArgs} from 'storybook/preview-api';
 import {
     BaseInputArgs,
-    InlineInputArgs,
-    InputWrapperArgs,
     type BaseInputStoryArgs,
+    InlineInputArgs,
     type InlineInputStoryArgs,
+    InputWrapperArgs,
     type InputWrapperStoryArgs,
 } from '../InputWrapperArgs.js';
 import {withLabelInfoProps} from '../LabelInfoArgs.js';

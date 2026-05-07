@@ -1,4 +1,4 @@
-import {Kbd} from '@coveord/plasma-mantine/components/Kbd';
+import {Kbd} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof Kbd> = {
