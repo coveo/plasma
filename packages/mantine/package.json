@@ -119,7 +119,7 @@
         "eslint-plugin-testing-library": "7.16.2",
         "eslint-plugin-vitest-globals": "1.6.1",
         "jsdom": "29.1.0",
-        "postcss": "8.5.12",
+        "postcss": "8.5.14",
         "postcss-preset-mantine": "^1.11.0",
         "postcss-simple-vars": "^7.0.1",
         "publint": "0.3.18",
