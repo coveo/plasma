@@ -1,3 +1,10 @@
+## <small>59.4.3 (2026-05-11)</small>
+
+* fix(website): update vite and postcss versions to fix old website (#4433) e767a35, closes #4433
+* feat(react-icons, mock): update mock to also mock in node_modules (#4431) 5311d39, closes #4431
+
+
+
 ## <small>59.4.2 (2026-05-06)</small>
 
 * fix(Mantine, facet): export types (#4428) ada40f0, closes #4428

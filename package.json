@@ -1,6 +1,6 @@
 {
     "name": "root",
-    "version": "59.4.2",
+    "version": "59.4.3",
     "private": true,
     "scripts": {
         "build": "turbo run build",
