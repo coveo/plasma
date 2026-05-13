@@ -1,9 +1,10 @@
-const isCI = !!process.env.JENKINS_HOME || process.env.CI === 'true';
-const branchName = process.env.BRANCH_NAME || process.env.GITHUB_HEAD_REF || process.env.GITHUB_REF_NAME;
+const baseUrl = process.env.PLASMA_BASE_URL;
 
 let basePath = '/';
-if (isCI) {
-    basePath = branchName === 'master' ? '/old/' : `/feature/${branchName.replaceAll('/', '-')}/old/`;
+if (baseUrl) {
+    const {pathname} = new URL(baseUrl);
+    const prefix = pathname.endsWith('/') ? pathname.slice(0, -1) : pathname;
+    basePath = `${prefix}/old/`;
 }
 
 export default basePath;
