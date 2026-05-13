@@ -1,5 +1,11 @@
 packages:
   - 'packages/*'
+allowBuilds:
+  '@swc/core': false
+  aws-sdk: false
+  core-js-pure: false
+  esbuild: false
+  unrs-resolver: false
 minimumReleaseAge: 10080 # 7 days in minutes
 minimumReleaseAgeExclude:
   - '@mantine/*'
@@ -13,3 +19,12 @@ minimumReleaseAgeExclude:
   - vite@8.0.11
   # Comes with vite v8.0.11
   - postcss@8.5.14
+peerDependencyRules:
+  ignoreMissing:
+    - react-native
+overrides:
+  '@babel/traverse': ^7.23.2
+  nwsapi: 2.2.23
+strictPeerDependencies: false
+saveExact: true
+autoInstallPeers: false
