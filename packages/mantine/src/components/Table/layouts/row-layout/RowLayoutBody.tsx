@@ -13,9 +13,7 @@ import {useRowLayout} from './RowLayoutContext.js';
 export type RowLayoutBodyStylesNames = 'row' | 'cell' | 'collapsibleRow' | 'collapsibleWrapper';
 
 export interface RowLayoutBodyProps<T>
-    extends BoxProps,
-        TableLayoutProps<T>,
-        CompoundStylesApiProps<RowLayoutBodyFactory> {}
+    extends BoxProps, TableLayoutProps<T>, CompoundStylesApiProps<RowLayoutBodyFactory> {}
 
 export type RowLayoutBodyFactory = Factory<{
     props: RowLayoutBodyProps<unknown>;
@@ -31,6 +29,7 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
     const {
         getRowExpandedContent,
         onRowDoubleClick,
+        getRowCanEdit,
         loading,
         classNames,
         className,
@@ -39,22 +38,32 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
         getRowAttributes,
         ...others
     } = useProps('RowLayoutBody', defaultProps as RowLayoutBodyProps<T>, props);
-    const {table, store} = useTableContext<T>();
-    const toggleCollapsible = (el: HTMLTableRowElement) => {
-        const cell = el.children[el.children.length - 1] as HTMLTableCellElement;
-        cell.querySelector('button').click();
-    };
+    const {table, store, lastSelectedRowIndex} = useTableContext<T>();
+
+    const hasMultiSelection =
+        store.multiRowSelectionEnabled &&
+        table
+            .getRowModel()
+            .rows.some((row) => row.getIsSelected() && (getRowCanEdit?.(row.original, row.index, row) ?? true));
 
     const rows = table.getRowModel()?.rows.map((row) => {
         const rowChildren = getRowExpandedContent?.(row.original, row.index, row) ?? null;
         const isSelected = !!row.getIsSelected();
-        const shouldKeepSelection = store.rowSelectionForced && isSelected;
-        const onClick = (event: MouseEvent<HTMLTableRowElement>) => {
-            if (rowChildren) {
-                toggleCollapsible(event.currentTarget);
-            }
-            if (store.rowSelectionEnabled && !store.multiRowSelectionEnabled && !shouldKeepSelection) {
-                row.toggleSelected();
+        const canEdit = getRowCanEdit?.(row.original, row.index, row) ?? true;
+
+        const onClick = (_event: MouseEvent<HTMLTableRowElement>) => {
+            if (store.rowSelectionEnabled) {
+                if (store.multiRowSelectionEnabled) {
+                    // In multi-selection mode, clicking a row clears multi-selection
+                    // and selects only this row (single-select behavior)
+                    store.clearRowSelection();
+                    row.toggleSelected(true);
+
+                    // Update the anchor index for Shift+click range selection
+                    lastSelectedRowIndex.current = canEdit ? row.index : null;
+                } else if (!isSelected) {
+                    row.toggleSelected(true);
+                }
             }
         };
 
@@ -68,6 +77,8 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
                     data-selectable={store.rowSelectionEnabled}
                     data-selected={isSelected}
                     data-multi-selection={store.multiRowSelectionEnabled}
+                    data-has-multi-selection={hasMultiSelection}
+                    data-can-edit={canEdit}
                     aria-selected={isSelected}
                     data-testid={row.id}
                     {...ctx.getStyles('row', {classNames, className, styles, style})}
@@ -100,6 +111,7 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
                                     ...ctx.getStyles('cell', {classNames, styles}).style,
                                 }}
                                 data-collapsible-cell={cell.column.id === TableCollapsibleColumn.id}
+                                data-select-cell={cell.column.id === TableSelectableColumn.id}
                                 onClick={onCollapsibleCellClick}
                             >
                                 <TableLoading visible={loading}>

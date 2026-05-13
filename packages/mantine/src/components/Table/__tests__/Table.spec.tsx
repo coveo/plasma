@@ -345,4 +345,55 @@ describe('Table', () => {
             expect(screen.queryByRole('button', {name: /1 selected/i})).not.toBeInTheDocument();
         });
     });
+
+    it('clears single row selection when pressing Escape', async () => {
+        const user = userEvent.setup();
+        const Fixture = () => {
+            const store = useTable<RowData>();
+            return (
+                <Table
+                    store={store}
+                    getRowId={({id}) => id}
+                    data={[
+                        {id: '🆔-1', firstName: 'first', lastName: 'last'},
+                        {id: '🆔-2', firstName: 'patate', lastName: 'king'},
+                    ]}
+                    columns={columns}
+                />
+            );
+        };
+        render(<Fixture />);
+
+        await user.click(screen.getByRole('row', {name: /patate king/i}));
+        expect(screen.getByRole('row', {name: /patate king/i, selected: true})).toBeInTheDocument();
+
+        await user.keyboard('{Escape}');
+        expect(screen.queryAllByRole('row', {selected: true})).toEqual([]);
+    });
+
+    it('clears multi row selection when pressing Escape', async () => {
+        const user = userEvent.setup();
+        const Fixture = () => {
+            const store = useTable<RowData>({enableMultiRowSelection: true});
+            return (
+                <Table
+                    store={store}
+                    getRowId={({id}) => id}
+                    data={[
+                        {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
+                        {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
+                    ]}
+                    columns={columns}
+                />
+            );
+        };
+        render(<Fixture />);
+
+        await user.click(within(screen.getByRole('row', {name: /John Smith/i})).getByRole('checkbox'));
+        await user.click(within(screen.getByRole('row', {name: /Jane Doe/i})).getByRole('checkbox'));
+        expect(screen.getAllByRole('row', {selected: true})).toHaveLength(2);
+
+        await user.keyboard('{Escape}');
+        expect(screen.queryAllByRole('row', {selected: true})).toEqual([]);
+    });
 });
