@@ -41,14 +41,14 @@ export type HeaderDocAnchorFactory = Factory<{
     compound: true;
 }>;
 
-const defaultProps: Partial<HeaderDocAnchorProps> = {
+const defaultProps = {
     position: 'right',
     children: <InfoToken.Question />,
-};
+} satisfies Partial<HeaderDocAnchorProps>;
 
 export const HeaderDocAnchor = factory<HeaderDocAnchorFactory>((_props, ref) => {
     const props = useProps('PlasmaHeaderActions', defaultProps, _props);
-    const {className, classNames, styles, style, children, label, position, vars, ...others} = props;
+    const {className, classNames, styles, style, children, label, position, vars, inline = true, ...others} = props;
 
     const ctx = useHeaderContext();
 
@@ -61,7 +61,7 @@ export const HeaderDocAnchor = factory<HeaderDocAnchorFactory>((_props, ref) => 
         >
             <Anchor
                 ref={ref}
-                inline
+                inline={inline}
                 target="_blank"
                 {...ctx.getStyles('docAnchor', {classNames, styles, props, style, className})}
                 {...others}

@@ -23,7 +23,8 @@ const slice = Function.prototype.call.bind(Array.prototype.slice) as <T>(
  * @param href The url to extract the parts from.
  * @returns The separate parts, all are an empty string if not present.
  */
-const extractParts = (href: string) => slice(/^([^?#]*)(\?[^#]*|)(#[^?]*|)(\?.*|)$/.exec(href ?? ''), 1, 5) as UrlParts;
+const extractParts = (href: string) =>
+    slice(/^([^?#]*)(\?[^#]*|)(#[^?]*|)(\?.*|)$/.exec(href ?? '') ?? ['', '', '', '', ''], 1, 5) as UrlParts;
 
 /**
  * The index of the search parameter to use, e.g. hashSearch for hash routes (hash starts with '#/').
@@ -107,7 +108,7 @@ export const useUrlSyncedState = <T>(options: UseUrlSyncedStateOptions<T>) => {
     });
     // Capture the initial state as a map (first render only!), to compare values and see if they should be set to the params.
     const initialStateSerialized = useMemo(() => {
-        const stateMap = new Map<string, string>();
+        const stateMap = new Map<string, string | null | undefined>();
         let initialize: URLSearchParams | null = null;
         let needsApply = false;
         for (const [key, value, alwaysEmit] of options.serializer(getInitialState(options))) {
@@ -120,7 +121,7 @@ export const useUrlSyncedState = <T>(options: UseUrlSyncedStateOptions<T>) => {
                 }
             }
         }
-        if (needsApply) {
+        if (needsApply && initialize) {
             applySearchParams(initialize);
         }
         return stateMap;

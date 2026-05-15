@@ -1,5 +1,6 @@
-import {DatePickerProps, DatesRangeValue, DateStringValue, DateTimePicker} from '@mantine/dates';
+import {DatesRangeValue, DateStringValue, DateTimePicker} from '@mantine/dates';
 import dayjs from 'dayjs';
+import {ComponentProps} from 'react';
 
 export interface EditableDateTimeRangePickerProps {
     value: DatesRangeValue<DateStringValue | null>;
@@ -15,11 +16,11 @@ export interface EditableDateTimeRangePickerProps {
     /**
      * Props for the start input
      */
-    startProps?: Omit<Partial<DatePickerProps>, 'value' | 'onChange' | 'onFocus'>;
+    startProps?: Omit<Partial<ComponentProps<typeof DateTimePicker>>, 'value' | 'onChange' | 'onFocus'>;
     /**
      * Props for the end input
      */
-    endProps?: Omit<Partial<DatePickerProps>, 'value' | 'onChange' | 'onFocus'>;
+    endProps?: Omit<Partial<ComponentProps<typeof DateTimePicker>>, 'value' | 'onChange' | 'onFocus'>;
 }
 
 export const EditableDateTimeRangePicker = ({
@@ -30,11 +31,15 @@ export const EditableDateTimeRangePicker = ({
     startProps = {},
     endProps = {},
 }: EditableDateTimeRangePickerProps) => {
-    const onStartDateChange = (startDate: string) => {
+    const onStartDateChange = (startDate: string | null) => {
+        if (startDate === null) {
+            onChange?.([null, value?.[1] ?? null]);
+            return;
+        }
         if (value?.[1] && dayjs(startDate) > dayjs(value[1])) {
             onChange?.([startDate, null]);
         } else {
-            onChange?.([startDate, value?.[1]]);
+            onChange?.([startDate, value?.[1] ?? null]);
         }
     };
 
@@ -56,9 +61,9 @@ export const EditableDateTimeRangePicker = ({
             <DateTimePicker
                 clearable={false}
                 label="End"
-                value={value?.[1]}
-                minDate={value?.[0]}
-                onChange={(endDate) => onChange?.([value?.[0], endDate])}
+                value={value?.[1] ?? undefined}
+                minDate={value?.[0] ?? undefined}
+                onChange={(endDate) => onChange?.([value?.[0] ?? null, endDate])}
                 valueFormat={dateFormat}
                 w={150}
                 styles={{...endProps.styles}}

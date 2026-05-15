@@ -10,7 +10,7 @@ import {
     useProps,
     useStyles,
 } from '@mantine/core';
-import {DatesRangeValue, DateStringValue} from '@mantine/dates';
+import {DatesRangeValue} from '@mantine/dates';
 import {useUncontrolled} from '@mantine/hooks';
 import dayjs from 'dayjs';
 import {useUrlSyncedState, UseUrlSyncedStateOptions} from '../../hooks/use-url-synced-state';
@@ -91,10 +91,10 @@ export type DateRangePickerFactory = Factory<{
     stylesNames: DateRangePickerStylesNames;
 }>;
 
-const defaultProps: Partial<DateRangePickerProps> = {
+const defaultProps = {
     placeholder: 'Select date range',
     formatter: (time) => dayjs(time).format('MMM D, YYYY'),
-};
+} satisfies Partial<DateRangePickerProps>;
 
 export const DateRangePicker = factory<DateRangePickerFactory>((props: DateRangePickerProps, ref) => {
     const {
@@ -121,7 +121,7 @@ export const DateRangePicker = factory<DateRangePickerFactory>((props: DateRange
         vars,
         unstyled,
         ...others
-    } = useProps('PlasmaDateRangePicker', defaultProps as Partial<DateRangePickerProps>, props);
+    } = useProps('PlasmaDateRangePicker', defaultProps, props);
 
     const getStyles = useStyles<DateRangePickerFactory>({
         name: 'DateRangePicker',
@@ -168,8 +168,8 @@ export const DateRangePicker = factory<DateRangePickerFactory>((props: DateRange
     };
 
     const _value = value ?? dateRange;
-    const formattedRange = `${formatter(_value[0])} - ${formatter(_value[1])}`;
-    const dateRangeInitialized = _value.every((date: DateStringValue) => typeof date === 'string' && date !== '');
+    const dateRangeInitialized = _value.every((date): date is string => typeof date === 'string' && date !== '');
+    const formattedRange = dateRangeInitialized ? `${formatter(_value[0])} - ${formatter(_value[1])}` : placeholder;
 
     return (
         <Popover opened={_opened} onChange={setOpened}>
@@ -183,7 +183,7 @@ export const DateRangePicker = factory<DateRangePickerFactory>((props: DateRange
                     {...getStyles('input', {className, style, ...stylesApiProps})}
                     {...others}
                 >
-                    {dateRangeInitialized ? formattedRange : placeholder}
+                    {formattedRange}
                 </InputBase>
             </Popover.Target>
             <Popover.Dropdown p={0}>

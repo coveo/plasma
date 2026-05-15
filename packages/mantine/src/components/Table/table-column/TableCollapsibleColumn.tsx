@@ -57,21 +57,31 @@ type TableCollapsibleColumnFactory = Factory<{
     compound: true;
 }>;
 
-const defaultProps: Partial<CollapsibleIconProps> = {
+const defaultProps = {
     iconExpanded: <IconChevronUp aria-label="Collapse" size={16} />,
     iconCollapsed: <IconChevronDown aria-label="Expand" size={16} />,
-};
+} satisfies Partial<CollapsibleIconProps>;
 
 const CollapsibleIcon = factory<TableCollapsibleColumnFactory>((props, ref) => {
     const {getStyles} = useTableContext();
-    const {info, onToggle, iconExpanded, iconCollapsed, classNames, className, style, styles, ...others} = useProps(
-        'PlasmaTableCollapsibleColumn',
-        defaultProps,
-        props,
-    );
+    const {
+        info,
+        onToggle,
+        iconExpanded,
+        iconCollapsed,
+        classNames,
+        className,
+        style,
+        styles,
+        onClick: onActionClick,
+        color,
+        radius,
+        ...others
+    } = useProps('PlasmaTableCollapsibleColumn', defaultProps, props);
     const handler = info.row.getToggleExpandedHandler();
     const onClick = (e: ReactMouseEvent<HTMLButtonElement>) => {
         e.stopPropagation();
+        onActionClick?.(e);
         onToggle?.(e);
         handler();
     };
@@ -79,8 +89,8 @@ const CollapsibleIcon = factory<TableCollapsibleColumnFactory>((props, ref) => {
         <ActionIcon.Quaternary
             ref={ref}
             onClick={onClick}
-            color="gray"
-            radius="sm"
+            color={color ?? 'gray'}
+            radius={radius ?? 'sm'}
             {...getStyles('collapsibleIcon', {className, classNames, styles, style})}
             {...others}
         >

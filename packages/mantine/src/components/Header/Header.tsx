@@ -85,11 +85,11 @@ export type HeaderFactory = Factory<{
     };
 }>;
 
-const defaultProps: Partial<HeaderProps> = {
+const defaultProps = {
     variant: 'primary',
     justify: 'space-between',
     wrap: 'nowrap',
-};
+} satisfies Partial<HeaderProps>;
 
 const getSpacing = (variant: HeaderVariant) => (variant === 'secondary' ? 'xxs' : 'xs');
 

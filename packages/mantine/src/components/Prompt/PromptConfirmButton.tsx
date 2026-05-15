@@ -30,7 +30,7 @@ const COMPONENT_BY_VARIANT: Record<
     critical: Button.DestructivePrimary,
 };
 
-const defaultProps: Partial<PromptConfirmButtonProps> = {};
+const defaultProps = {} satisfies Partial<PromptConfirmButtonProps>;
 
 export const PromptConfirmButton = factory<PromptConfirmButtonFactory>((_props, ref) => {
     const {variant, getStyles} = usePromptContext();

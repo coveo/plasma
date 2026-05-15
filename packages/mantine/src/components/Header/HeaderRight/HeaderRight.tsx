@@ -18,9 +18,9 @@ export type HeaderRightFactory = Factory<{
     compound: true;
 }>;
 
-const defaultProps: Partial<HeaderRightProps> = {
+const defaultProps = {
     gap: 'xs',
-};
+} satisfies Partial<HeaderRightProps>;
 
 export const HeaderRight = factory<HeaderRightFactory>((_props, ref) => {
     const props = useProps('HeaderRight', defaultProps, _props);

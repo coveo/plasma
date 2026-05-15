@@ -11,7 +11,7 @@ export const TablePagination: FunctionComponent<TablePaginationProps> = ({onPage
     const updatePage = (newPage: number) => {
         onPageChange?.(newPage - 1);
         store.setPagination((prev) => ({...prev, pageIndex: newPage - 1}));
-        containerRef.current.scrollIntoView({behavior: 'smooth'});
+        containerRef.current?.scrollIntoView({behavior: 'smooth'});
     };
 
     const total = table.getPageCount();

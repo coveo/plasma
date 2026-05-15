@@ -13,9 +13,7 @@ import {useRowLayout} from './RowLayoutContext.js';
 export type RowLayoutBodyStylesNames = 'row' | 'cell' | 'collapsibleRow' | 'collapsibleWrapper';
 
 export interface RowLayoutBodyProps<T>
-    extends BoxProps,
-        TableLayoutProps<T>,
-        CompoundStylesApiProps<RowLayoutBodyFactory> {}
+    extends BoxProps, TableLayoutProps<T>, CompoundStylesApiProps<RowLayoutBodyFactory> {}
 
 export type RowLayoutBodyFactory = Factory<{
     props: RowLayoutBodyProps<unknown>;
@@ -24,7 +22,7 @@ export type RowLayoutBodyFactory = Factory<{
     compound: true;
 }>;
 
-const defaultProps: Partial<RowLayoutBodyProps<unknown>> = {};
+const defaultProps = {} satisfies Partial<RowLayoutBodyProps<unknown>>;
 
 export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: ForwardedRef<HTMLTableRowElement>}) => {
     const ctx = useRowLayout();
@@ -38,11 +36,11 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
         style,
         getRowAttributes,
         ...others
-    } = useProps('RowLayoutBody', defaultProps as RowLayoutBodyProps<T>, props);
+    } = useProps('RowLayoutBody', defaultProps, props);
     const {table, store} = useTableContext<T>();
     const toggleCollapsible = (el: HTMLTableRowElement) => {
         const cell = el.children[el.children.length - 1] as HTMLTableCellElement;
-        cell.querySelector('button').click();
+        cell.querySelector('button')?.click();
     };
 
     const rows = table.getRowModel()?.rows.map((row) => {

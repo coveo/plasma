@@ -33,9 +33,9 @@ export type TableDateRangePickerFactory = Factory<{
     compound: true;
 }>;
 
-const defaultProps: Partial<TableDateRangePickerProps> = {
+const defaultProps = {
     presets: {},
-};
+} satisfies Partial<TableDateRangePickerProps>;
 
 export const TableDateRangePicker = factory<TableDateRangePickerFactory>((props, ref) => {
     const {store, getStyles} = useTableContext();

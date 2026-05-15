@@ -19,20 +19,21 @@ const onExit = (childProcess) =>
     });
 
 const build = async ({watch = false}) => {
-    // compile with swc and tsc
+    // compile with swc and tsgo
     try {
-        const tscArgs = ['--emitDeclarationOnly'];
+        const tsgoArgs = ['--emitDeclarationOnly'];
         if (existsSync('./tsconfig.build.json')) {
-            tscArgs.push('--project', './tsconfig.build.json');
+            tsgoArgs.push('--project', './tsconfig.build.json');
         }
-        const tscESMArgs = [...tscArgs, '--declarationDir', './dist/esm'];
-        const tscCJSArgs = [...tscArgs, '--declarationDir', './dist/cjs'];
         const swcArgs = ['./src', '--copy-files', '--config-file', path.resolve(__dirname, '..', 'build.swcrc')];
 
         if (watch) {
-            tscArgs.push('--watch');
+            tsgoArgs.push('--watch');
             swcArgs.push('--watch');
         }
+
+        const tsgoESMArgs = [...tsgoArgs, '--declarationDir', './dist/esm'];
+        const tsgoCJSArgs = [...tsgoArgs, '--declarationDir', './dist/cjs'];
 
         const swcCJSArgs = [
             ...swcArgs,
@@ -55,8 +56,8 @@ const build = async ({watch = false}) => {
             '--strip-leading-paths',
         ];
 
-        const dtsESM = spawn('tsc', tscESMArgs, {stdio: 'inherit', shell: true});
-        const dtsCJS = spawn('tsc', tscCJSArgs, {stdio: 'inherit', shell: true});
+        const dtsESM = spawn('tsgo', tsgoESMArgs, {stdio: 'inherit', shell: true});
+        const dtsCJS = spawn('tsgo', tsgoCJSArgs, {stdio: 'inherit', shell: true});
         const commonJs = spawn('swc', swcCJSArgs, {stdio: 'inherit', shell: true});
         const esm = spawn('swc', swcES6Args, {stdio: 'inherit', shell: true});
         await Promise.all([onExit(dtsESM), onExit(dtsCJS), onExit(commonJs), onExit(esm)]);

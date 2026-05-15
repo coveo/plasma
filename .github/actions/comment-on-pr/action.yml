@@ -7,16 +7,24 @@ inputs:
     avoidRepostsWith:
         description: Use this to avoid reposting the message if it is already on the PR
         required: false
+    updateExisting:
+        description: Update an existing matching comment instead of leaving it untouched
+        required: false
 runs:
     using: composite
     steps:
         - uses: actions/github-script@v9
+          env:
+              MESSAGE: ${{ inputs.message }}
+              AVOID_REPOSTS_WITH: ${{ inputs.avoidRepostsWith }}
+              UPDATE_EXISTING: ${{ inputs.updateExisting }}
           with:
               script: |
                   const addComment = require('./.github/actions/comment-on-pr/index.js');
                   await addComment({
                       github,
                       context,
-                      message: '${{ inputs.message }}',
-                      avoidRepostsWith: '${{ inputs.avoidRepostsWith }}',
+                      message: process.env.MESSAGE,
+                      avoidRepostsWith: process.env.AVOID_REPOSTS_WITH,
+                      updateExisting: process.env.UPDATE_EXISTING === 'true',
                   });
