@@ -1,0 +1,14 @@
+import { faker } from '@faker-js/faker';
+import { Group, Stack, Text } from '@mantine/core';
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import { Spacings } from './Spacings.stories';
+
+<Meta title="@foundation/Spacings" />
+
+# Spacings
+
+The Plasma theme defines the following spacing values. Each spacing maps to a CSS variable `var(--mantine-spacing-{size})`.
+
+{faker.lorem.paragraphs(2)}
+
+<Story of={Spacings} />

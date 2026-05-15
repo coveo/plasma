@@ -1,0 +1,13 @@
+import { faker } from '@faker-js/faker';
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import { FontSizes } from './FontSizes.stories';
+
+<Meta title="@foundation/Font Sizes" />
+
+# Font Sizes
+
+The Plasma theme defines the following font size values. Each font size maps to a CSS variable `var(--mantine-font-size-{size})`.
+
+{faker.lorem.paragraphs(2)}
+
+<Story of={FontSizes} />

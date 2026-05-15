@@ -38,6 +38,11 @@ const preview: Preview = {
         controls: {
             disableSaveFromUI: true,
         },
+        options: {
+            storySort: {
+                order: ['@foundation', '@components', '*'],
+            },
+        },
     },
     decorators: [useColorScheme, withTheme],
 };
