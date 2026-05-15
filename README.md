@@ -23,7 +23,7 @@ npm install @coveord/plasma-mantine
 Make sure you have
 
 - [Node.js](https://nodejs.org/)'s LTS version
-- [PNPM](https://pnpm.io/installation) >= 5
+- [PNPM](https://pnpm.io/installation)
 
 ### Where are @coveord/plasma-style and @coveord/plasma-react?
 

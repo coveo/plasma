@@ -18,6 +18,6 @@ function App() {
 }
 ```
 
----
+## Components
 
 {{COMPONENT_DOCS}}

@@ -2,8 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import matter from 'gray-matter';
-import {generateLlmsFullTxt} from './llms-full-txt.js';
-import {generateLlmsTxt} from './llms-txt.js';
+import {generateLlmsFullTxt} from './llms-full-txt.ts';
+import {generateLlmsTxt} from './llms-txt.ts';
 
 const currentDir = path.dirname(fileURLToPath(import.meta.url));
 const docsDir = path.resolve(currentDir, '../src/components');
