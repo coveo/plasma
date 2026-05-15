@@ -11,7 +11,7 @@
 }
 
 .label {
-    font-weight: var(--coveo-fw-bold);
+    font-weight: var(--coveo-fw-normal);
 }
 
 .children {
