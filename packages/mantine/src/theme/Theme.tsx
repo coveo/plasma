@@ -70,8 +70,8 @@ import {
 import {Accordion} from '../components/Accordion/Accordion.js';
 import {CheckboxIcon} from '../components/CheckboxIcon/CheckboxIcon.js';
 import {CircleLoader} from '../components/CircleLoader/CircleLoader.js';
-import {InfoToken} from '../components/InfoToken/InfoToken.js';
 import {PlasmaComboboxChevron} from '../components/Combobox/PlasmaComboboxChevron.js';
+import {InfoToken} from '../components/InfoToken/InfoToken.js';
 import AccordionClasses from '../styles/Accordion.module.css';
 import ActionIconClasses from '../styles/ActionIcon.module.css';
 import AlertClasses from '../styles/Alert.module.css';
@@ -382,11 +382,11 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             classNames: ModalClasses,
             vars: () => {
                 const sizes = {
-                    '--modal-size-xs': '432px',
-                    '--modal-size-sm': '664px',
-                    '--modal-size-md': '896px',
-                    '--modal-size-lg': '1120px',
-                    '--modal-size-xl': '88%',
+                    '--modal-size-xs': '320px',
+                    '--modal-size-sm': '380px',
+                    '--modal-size-md': '440px',
+                    '--modal-size-lg': '630px',
+                    '--modal-size-xl': '720px',
                 } as any;
                 return {
                     root: {
