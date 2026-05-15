@@ -14,6 +14,11 @@ outputs:
 runs:
     using: composite
     steps:
+        - name: Compute base URL
+          id: base-url
+          uses: ./.github/actions/compute-base-url
+          with:
+              branch: ${{ github.head_ref || github.ref_name }}
         - name: Configure AWS Credentials
           uses: aws-actions/configure-aws-credentials@ec61189d14ec14c8efccab744f656cffd0e33f37 # v6.1.0
           with:
@@ -23,6 +28,6 @@ runs:
           id: s3-push
           shell: bash
           env:
-              BRANCH: ${{ github.head_ref || github.ref_name }}
               BUCKET: ${{ inputs.AWS_BUCKET }}
-          run: bash ./.github/actions/deploy/deploy.sh "$BRANCH" "$BUCKET"
+              PLASMA_BASE_URL: ${{ steps.base-url.outputs.base-url }}
+          run: bash ./.github/actions/deploy/deploy.sh "$BUCKET"

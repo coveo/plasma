@@ -1,11 +1,13 @@
-import {CrossSize16Px, FilterSize16Px} from '@coveord/plasma-react-icons';
+import {IconSearch} from '@coveord/plasma-react-icons';
 import {
     Box,
     BoxProps,
+    CloseButton,
     Combobox,
     Divider,
     factory,
     Factory,
+    Group,
     StylesApiProps,
     Text,
     TextInput,
@@ -17,7 +19,6 @@ import {useUncontrolled} from '@mantine/hooks';
 import {clsx} from 'clsx';
 import {FunctionComponent, ReactElement, ReactNode, useEffect} from 'react';
 import {groupOptions} from '../../utils/groupOptions.js';
-import {ActionIcon} from '../ActionIcon/ActionIcon.js';
 import {DefaultFacetItem} from './DefaultFacetItem.js';
 import classes from './Facet.module.css';
 import {FacetScrollArea} from './FacetScrollArea.js';
@@ -31,7 +32,9 @@ export type FacetStylesNames =
     | 'searchInput'
     | 'hiddenSearch'
     | 'facetBody'
+    | 'facetTitleRow'
     | 'facetTitle'
+    | 'facetRemoveButton'
     | 'facetSearch'
     | 'facetControl'
     | 'separator'
@@ -50,11 +53,21 @@ export interface FacetProps extends BoxProps, StylesApiProps<FacetFactory> {
      */
     onChange?: (values: string[]) => void;
     /**
+     * Function called when the remove icon is clicked.
+     */
+    onRemove?: () => void;
+    /**
      * Initial items selection
      *
      * @default []
      */
     initialSelection?: string[];
+    /**
+     * Determines if the facet is removable
+     *
+     * @default false
+     */
+    removable?: boolean;
     /**
      * Determined items selection
      *
@@ -158,6 +171,7 @@ const defaultProps = {
     limit: Infinity,
     itemComponent: DefaultFacetItem,
     listComponent: FacetScrollArea,
+    removable: false,
 } satisfies Partial<FacetProps>;
 
 export const Facet: FunctionComponent<FacetProps> = factory<FacetFactory>((_props, ref) => {
@@ -166,7 +180,9 @@ export const Facet: FunctionComponent<FacetProps> = factory<FacetFactory>((_prop
         className,
         data,
         onChange,
+        onRemove,
         initialSelection = [],
+        removable,
         selection,
         itemComponent: ItemComponent,
         listComponent: ListComponent,
@@ -260,7 +276,20 @@ export const Facet: FunctionComponent<FacetProps> = factory<FacetFactory>((_prop
             <Combobox store={combobox} onOptionSubmit={handleValueSelect}>
                 <Combobox.EventsTarget>
                     <Box className={classes.facetHeader}>
-                        {title ? <Title order={5}>{title}</Title> : null}
+                        <Group wrap="nowrap" justify="space-between" className={classes.facetTitleRow}>
+                            {title ? (
+                                <Title order={5} className={classes.facetTitle}>
+                                    {title}
+                                </Title>
+                            ) : null}
+                            {removable ? (
+                                <CloseButton
+                                    onClick={onRemove}
+                                    className={classes.facetRemoveButton}
+                                    aria-label="remove facet"
+                                />
+                            ) : null}
+                        </Group>
 
                         <TextInput
                             unstyled={unstyled}
@@ -275,17 +304,14 @@ export const Facet: FunctionComponent<FacetProps> = factory<FacetFactory>((_prop
                             className={clsx(classes.facetSearch, {[classes.hiddenSearch]: hideSearch})}
                             rightSection={
                                 search ? (
-                                    <ActionIcon.Quaternary
+                                    <CloseButton
                                         aria-label="clear search"
-                                        color="gray"
                                         onClick={() => {
                                             handleSearch('');
                                         }}
-                                    >
-                                        <CrossSize16Px height={16} />
-                                    </ActionIcon.Quaternary>
+                                    />
                                 ) : (
-                                    <FilterSize16Px height={16} />
+                                    <IconSearch height={16} />
                                 )
                             }
                         />

@@ -1,3 +1,24 @@
+## <small>59.4.3 (2026-05-11)</small>
+
+* fix(website): update vite and postcss versions to fix old website (#4433) e767a35, closes #4433
+* feat(react-icons, mock): update mock to also mock in node_modules (#4431) 5311d39, closes #4431
+
+
+
+## <small>59.4.2 (2026-05-06)</small>
+
+* fix(Mantine, facet): export types (#4428) ada40f0, closes #4428
+
+
+
+## <small>59.4.1 (2026-05-05)</small>
+
+* feat(mantine, facet): add removable option (#4424) cc20b90, closes #4424
+* chore(deps): lock file maintenance (#4423) 0a55df4, closes #4423
+* chore(deps): update all non-major dependencies (#4415) d3b9da2, closes #4415
+
+
+
 ## 59.4.0 (2026-05-01)
 
 * feat(CopyToClipboard): deprecate 'withLabel' prop and update story (#4422) 2065f86, closes #4422

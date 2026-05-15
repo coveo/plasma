@@ -180,6 +180,7 @@ export * from './components/EllipsisText/EllipsisText.js';
 
 // Facet
 export * from './components/Facet/Facet.js';
+export * from './components/Facet/FacetTypes.js';
 
 // Fieldset
 export * from './components/Fieldset/Fieldset.js';

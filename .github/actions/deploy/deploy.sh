@@ -2,22 +2,13 @@
 
 set -e
 
-BRANCH="$1"
-BUCKET="$2"
+BUCKET="$1"
 DESTINATION=react-vapor
-ORIGIN="https://plasma.coveo.com"
-STORYBOOK_PATHNAME="/"
-DEMO_PATHNAME="/feature/"
+URL_PATH="${PLASMA_BASE_URL#https://plasma.coveo.com}" # strips the origin, leaving "" for master or "/feature/my-branch" for PRs
 
-if [ "$BRANCH" = "master" ]
-then
-    echo "Deploying Storybook"
-    aws s3 cp ./packages/storybook/storybook-static s3://${BUCKET}/${DESTINATION}${STORYBOOK_PATHNAME} --recursive
-    echo "Storybook successfully deployed to ${ORIGIN}${STORYBOOK_PATHNAME}"
-else
-    CLEAN_BRANCH_NAME=${BRANCH//\//-} # replaces all / by -
-    echo "demo-output-path=${ORIGIN}${DEMO_PATHNAME}${CLEAN_BRANCH_NAME}" >> $GITHUB_OUTPUT
-    echo "Uploading storybook files of ${BRANCH} to ${BUCKET}/${DESTINATION}${DEMO_PATHNAME}${CLEAN_BRANCH_NAME}${STORYBOOK_PATHNAME}."
-    aws s3 cp ./packages/storybook/storybook-static s3://${BUCKET}/${DESTINATION}${DEMO_PATHNAME}${CLEAN_BRANCH_NAME}${STORYBOOK_PATHNAME} --recursive
-    echo "Branch ${BRANCH} successfully deployed to ${ORIGIN}${DEMO_PATHNAME}${CLEAN_BRANCH_NAME}${STORYBOOK_PATHNAME}"
-fi
+echo "demo-output-path=${PLASMA_BASE_URL}" >> $GITHUB_OUTPUT
+
+echo "Deploying Storybook to ${PLASMA_BASE_URL}/"
+aws s3 cp ./packages/storybook/storybook-static s3://${BUCKET}/${DESTINATION}${URL_PATH}/ --recursive
+
+echo "Successfully deployed to ${PLASMA_BASE_URL}"
