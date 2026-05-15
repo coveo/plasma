@@ -5,6 +5,14 @@ description: Write or update LLM-optimised component documentation specs for the
 
 Write or update per-component Markdown specs consumed by AI tools. Sources live in `packages/llms/src/components/ComponentName.md`. See [references/format.md](references/format.md) for the exact format and annotated examples.
 
+These specs are not props-only API references. They should help humans and AI tools understand:
+- what problem the component solves
+- when to use it
+- when not to use it
+- how to choose it over nearby alternatives
+- what Plasma-specific API surface exists
+- what an AI agent should infer from it
+
 ## Workflow
 
 ### 1. Gather sources
@@ -16,6 +24,13 @@ Read in parallel:
 | Component implementation    | `packages/mantine/src/components/<Name>/<Name>.tsx` |
 | Storybook stories           | `packages/storybook/src/**/<Name>.stories.tsx`      |
 | Existing spec (if updating) | `packages/llms/src/components/<Name>.md`            |
+
+Also read nearby component specs when the component could be confused with another option. Common comparisons include:
+- button-like actions vs links or overflow actions
+- short visible choices vs long searchable choices
+- exact numeric entry vs approximate range adjustment
+- tooltip vs inline helper text or more persistent messaging
+- short text vs long text vs syntax-sensitive editing
 
 Use `grep`/`glob` to locate files when the exact path is unknown.
 
@@ -31,6 +46,20 @@ From stories, extract:
 
 - **Usage examples** — the most common real-world snippet(s); see [references/format.md](references/format.md) for the Usage section rules.
 
+From the component source, stories, existing spec, and nearby components, extract:
+
+- **Problem solved** — what user or interface need this component addresses
+- **Usage boundaries** — where it is appropriate and where it is the wrong choice
+- **Decision guidance** — what nearby alternatives it could be confused with and how to distinguish them
+- **Variants and states** — meaningful variants and visible states worth documenting
+- **Interaction notes** — keyboard, focus, persistence, validation, dismissal, async, or conditional behaviour the component consumer should understand
+- **Accessibility expectations** — baseline requirements or expectations relevant to consumers of the component
+- **Content guidance** — labels, helper text, validation copy, status text, or option wording when relevant
+- **Common anti-patterns** — likely misuse based on the component role and nearby alternatives
+- **AI takeaway** — what an AI agent should understand when choosing or generating this component
+
+If the source material does not support a strong rule, prefer an explicit open question over false certainty.
+
 ### 3. Write the spec
 
 Follow the format in [references/format.md](references/format.md) exactly. Key rules:
@@ -38,6 +67,10 @@ Follow the format in [references/format.md](references/format.md) exactly. Key r
 - YAML frontmatter `description` must be one sentence (used in `llms.txt` index).
 - Omit the Props table entirely if no Plasma-specific props exist — use the `_No additional props_` shorthand instead.
 - End every file with `[Full Plasma documentation]({{BASE_URL}})`. Use the literal placeholder `{{BASE_URL}}` — it is substituted at build time.
+- Do not stop at API extraction. The spec should combine design guidance and technical reference.
+- Do not infer usage guidance from props alone. Compare with nearby components when ambiguity is likely.
+- Do not copy external design-system language as if it were Plasma policy.
+- When a section is not relevant for a component, omit it rather than filling it with generic text.
 
 ### 4. Regenerate dist outputs
 
