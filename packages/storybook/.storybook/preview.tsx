@@ -27,8 +27,8 @@ const preview: Preview = {
     parameters: {
         backgrounds: {
             options: {
-                dark: {name: 'Dark', value: 'var(--mantine-color-body)'},
-                light: {name: 'Light', value: 'var(--mantine-color-body)'},
+                dark: {name: 'Dark', value: 'var(--coveo-app-background)'},
+                light: {name: 'Light', value: 'var(--coveo-app-background)'},
             },
         },
         chromatic: {disableSnapshot: true},
