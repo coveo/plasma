@@ -109,7 +109,7 @@ Rules:
 ```markdown
 ## Sub-components
 
-Plasma provides pre-configured sub-components as convenience wrappers. Prefer these over setting props manually.
+Plasma provides pre-configured sub-components as convenience wrappers. You SHOULD use these over setting props manually.
 
 - `ComponentName.Variant`
 - `ComponentName.OtherVariant`
@@ -125,16 +125,9 @@ List every static property assigned to the component export.
 
 ```markdown
 ---
+name: Alert
 description: Informational callout for contextual messages, warnings, errors, or success states.
 ---
-
-# Alert
-
-## Installation
-
-​`tsx
-import { Alert } from '@coveord/plasma-mantine';
-​`
 
 ## Props
 
@@ -142,7 +135,7 @@ _No additional props beyond the Mantine base component._
 
 ## Sub-components
 
-Plasma provides pre-configured sub-components as convenience wrappers. Prefer these over setting props manually.
+Plasma provides pre-configured sub-components as convenience wrappers. You SHOULD use these over setting props manually.
 
 - `Alert.Information`
 - `Alert.Advice`
@@ -152,9 +145,5 @@ Plasma provides pre-configured sub-components as convenience wrappers. Prefer th
 
 ---
 
-[Full Plasma documentation](https://plasma.coveo.com)
+[Full Plasma documentation]({{BASE_URL}})
 ```
-
-### Full (custom props + sub-components)
-
-See `packages/llms/src/components/Button.md` for a complete real-world example.

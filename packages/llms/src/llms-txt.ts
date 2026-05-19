@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {ComponentDoc} from './cli.js';
+import type {ComponentDoc} from './build.ts';
 
 const currentDir = path.dirname(fileURLToPath(import.meta.url));
 const template = fs.readFileSync(path.resolve(currentDir, '../src/llms-txt.md'), 'utf-8');

@@ -37,13 +37,12 @@ Follow the format in [references/format.md](references/format.md) exactly. Key r
 
 - YAML frontmatter `description` must be one sentence (used in `llms.txt` index).
 - Omit the Props table entirely if no Plasma-specific props exist — use the `_No additional props_` shorthand instead.
-- End every file with `[Full Plasma documentation](https://plasma.coveo.com)`.
+- End every file with `[Full Plasma documentation]({{BASE_URL}})`. Use the literal placeholder `{{BASE_URL}}` — it is substituted at build time.
 
 ### 4. Regenerate dist outputs
 
 ```bash
-cd packages/llms
-pnpm exec tsx src/cli.ts
+pnpm turbo run build --filter=@coveord/plasma-llms
 ```
 
 This rebuilds `dist/llms/`, `dist/llms.txt`, `dist/llms-full.txt`, and `dist/plasma-skill.md` from all specs.

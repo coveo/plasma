@@ -27,7 +27,7 @@ function App() {
 
 ## Key Conventions
 
-- **Always import from `@coveord/plasma-mantine`**, not directly from `@mantine/core`. Plasma components wrap Mantine with Coveo-specific styling and behaviour.
+- **Always import from `@coveord/plasma-mantine`**, not directly from `@mantine/*` packages. Plasma components wrap Mantine with Coveo-specific styling and behaviour.
 - **Prefer Plasma sub-components** over passing raw props. For example, use `Button.Primary` instead of `<Button variant="filled">`.
 - **Theme is already applied** via `Plasmantine`. Do not create a separate `MantineProvider` unless you have a specific reason.
 
@@ -43,6 +43,12 @@ Fetch the component index to see what Plasma documents:
 {{BASE_URL}}/llms.txt
 ```
 
+Fetch specific component docs (props, sub-components, usage examples):
+
+```
+{{BASE_URL}}/llms/ComponentName.md
+```
+
 Fetch full docs for all Plasma-wrapped components (props, sub-components, usage examples):
 
 ```
@@ -51,10 +57,10 @@ Fetch full docs for all Plasma-wrapped components (props, sub-components, usage 
 
 **Step 2 — Mantine fallback (for re-exported components and inherited props):**
 
-If a component isn't listed in the Plasma index, fetch Mantine's full documentation:
+If a component isn't listed in the Plasma index, fetch Mantine's documentation:
 
 ```
-https://mantine.dev/llms-full.txt
+https://mantine.dev/llms.txt
 ```
 
 ## Import invariant

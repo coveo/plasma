@@ -271,7 +271,7 @@ export default tsEslint.config(
             '.github/**',
             '**/scripts/**',
             '**/bin/**',
-            'packages/llms/src/cli.ts',
+            'packages/llms/src/build.ts',
             'packages/mcp-server/src/build.ts',
         ],
         languageOptions: {

@@ -9,6 +9,8 @@ pnpm add @coveord/plasma-mantine @mantine/core @mantine/hooks react react-dom
 ```
 
 ```tsx
+import '@mantine/core/styles.css';
+import '@mantine/notifications/styles.css';
 import {Plasmantine} from '@coveord/plasma-mantine/plasmantine';
 
 function App() {
@@ -16,6 +18,6 @@ function App() {
 }
 ```
 
----
+## Components
 
 {{COMPONENT_DOCS}}
