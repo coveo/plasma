@@ -6,6 +6,89 @@
 
 Plasma is Coveo's design system used in Coveo Cloud Administration Console. It provides a Mantine-themed component library, design tokens, React icons, and documentation. All components and their documentation are available in [the demo page](https://plasma.coveo.com/).
 
+## AI Coding Agents
+
+Plasma documents its ~27 wrapped components in [`@coveord/plasma-llms`](packages/llms/README.md). The other ~90 components are pure Mantine re-exports. For full coverage, configure **both** the Plasma and Mantine MCP servers:
+
+- **Plasma MCP** — authoritative for Plasma-specific props, sub-components, and usage
+- **Mantine MCP** — fallback for re-exported components and inherited props
+
+> **Import invariant:** always import from `@coveord/plasma-mantine`, even when Mantine docs were the reference source.
+
+### GitHub Copilot CLI
+
+Load the Plasma skill in the terminal:
+
+```
+/skill https://plasma.coveo.com/plasma-skill.md
+```
+
+### GitHub Copilot in VS Code (agent mode)
+
+Create `.vscode/mcp.json` in your project:
+
+```json
+{
+    "servers": {
+        "plasma": {
+            "type": "stdio",
+            "command": "npx",
+            "args": ["-y", "@coveord/plasma-mcp-server"]
+        },
+        "mantine": {
+            "type": "stdio",
+            "command": "npx",
+            "args": ["-y", "@mantine/mcp-server"]
+        }
+    }
+}
+```
+
+### Kiro
+
+**Option 1 — MCP servers** (recommended for component API lookups):
+
+Create `.kiro/settings/mcp.json` in your project:
+
+```json
+{
+    "mcpServers": {
+        "plasma": {
+            "command": "npx",
+            "args": ["-y", "@coveord/plasma-mcp-server"]
+        },
+        "mantine": {
+            "command": "npx",
+            "args": ["-y", "@mantine/mcp-server"]
+        }
+    }
+}
+```
+
+**Option 2 — Steering file** (injects Plasma conventions into every agent session):
+
+Create `.kiro/steering/plasma.md` and paste the contents of [`https://plasma.coveo.com/plasma-skill.md`](https://plasma.coveo.com/plasma-skill.md) into it with this frontmatter:
+
+```markdown
+---
+inclusion: always
+---
+```
+
+### Codex CLI
+
+Add to `~/.codex/config.toml` (global) or `.codex/config.toml` (project):
+
+```toml
+[mcp_servers.plasma]
+command = "npx"
+args = ["-y", "@coveord/plasma-mcp-server"]
+
+[mcp_servers.mantine]
+command = "npx"
+args = ["-y", "@mantine/mcp-server"]
+```
+
 ## React Compatibility
 
 Plasma requires **React 19** or later.
