@@ -25,21 +25,21 @@
         "@mantine/modals": "8.3.18",
         "@mantine/notifications": "8.3.18",
         "dayjs": "1.11.20",
-        "react": "19.2.5",
-        "react-dom": "19.2.5",
-        "react-hook-form": "7.74.0"
+        "react": "19.2.6",
+        "react-dom": "19.2.6",
+        "react-hook-form": "7.75.0"
     },
     "devDependencies": {
-        "@storybook/addon-docs": "10.3.5",
-        "@storybook/react-vite": "10.3.5",
+        "@storybook/addon-docs": "10.3.6",
+        "@storybook/react-vite": "10.3.6",
         "@types/react": "19.2.14",
         "@types/react-dom": "19.2.3",
         "@vitejs/plugin-react": "6.0.1",
-        "chromatic": "16.6.1",
-        "globals": "17.5.0",
+        "chromatic": "16.10.0",
+        "globals": "17.6.0",
         "postcss-preset-mantine": "1.18.0",
-        "storybook": "10.3.5",
+        "storybook": "10.3.6",
         "typescript": "5.9.3",
-        "vite": "8.0.11"
+        "vite": "8.0.12"
     }
 }
