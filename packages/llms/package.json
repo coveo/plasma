@@ -33,9 +33,9 @@
         "gray-matter": "4.0.3"
     },
     "devDependencies": {
-        "@types/node": "24.12.2",
+        "@types/node": "24.12.4",
         "rimraf": "6.1.3",
-        "tsx": "4.19.4",
+        "tsx": "4.21.0",
         "typescript": "5.9.3"
     }
 }
