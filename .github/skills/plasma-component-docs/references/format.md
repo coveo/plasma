@@ -132,7 +132,7 @@ Rules:
 
 The sections before `Props` capture design-system guidance, not just API reference.
 
-### `What problem does it solve?`
+### What problem does it solve?
 
 MUST explain the user or interface problem the component addresses. Focus on intent, not visual shape alone.
 
