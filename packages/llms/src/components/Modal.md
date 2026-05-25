@@ -7,10 +7,8 @@ description: Overlay dialog that focuses user attention and can render a descrip
 
 > Extends: `MantineModalProps`. Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
 
-| Prop          | Type                         | Required | Default | Description                                                                                                                              |
-| ------------- | ---------------------------- | :------: | ------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| `description` | `HeaderProps['description']` |          | —       | Description of the modal, displayed below the title, MAY be provided.                                                                    |
-| `help`        | `HeaderDocAnchorProps`       |          | —       | Help link for the modal, displayed in the header, MAY be provided. It SHOULD provide a link to external documentation or help resources. |
+**`description`** `HeaderProps['description']` · optional · default: `undefined` — Description of the modal, displayed below the title, MAY be provided.
+**`help`** `HeaderDocAnchorProps` · optional · default: `undefined` — Help link for the modal, displayed in the header, MAY be provided. It SHOULD provide a link to external documentation or help resources.
 
 ## Sub-components
 
@@ -29,7 +27,7 @@ Plasma provides pre-configured sub-components as convenience wrappers. You SHOUL
 ## Usage
 
 ```tsx
-import {Button, Modal} from '@coveord/plasma-mantine';
+import {Button, Modal, Text} from '@coveord/plasma-mantine';
 import {useState} from 'react';
 
 function Example() {
@@ -44,10 +42,10 @@ function Example() {
                 title="Archive project"
                 description="Review the impact before confirming this change."
             >
-                <p>
+                <Text>
                     Archiving this project removes it from active dashboards and prevents new content from being added.
-                </p>
-                <p>You can restore it later from project settings if needed.</p>
+                </Text>
+                <Text>You can restore it later from project settings if needed.</Text>
                 <Modal.Footer>
                     <Button.Tertiary onClick={() => setOpened(false)}>Cancel</Button.Tertiary>
                     <Button.Primary onClick={() => setOpened(false)}>Archive project</Button.Primary>

@@ -89,18 +89,18 @@ _No additional props beyond the Mantine base component._
 
 > Extends: `MantineBaseProps`, `OtherInterface`. Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
 
-| Prop           | Type      | Required | Default | Description   |
-| -------------- | --------- | :------: | ------- | ------------- |
-| `propName`     | `string`  |    ✓     | —       | What it does. |
-| `optionalProp` | `boolean` |          | `false` | What it does. |
+**`propName`** `string` · required · default: `undefined` — What it does.
+**`optionalProp`** `boolean` · optional · default: `false` — What it does.
 ```
 
 Rules:
 
-- Required = ✓, optional = blank cell
-- Default = `—` when there is none
-- Only list props defined in the Plasma wrapper; inherited Mantine props go in the `> Extends:` note
-- Copy JSDoc from the TypeScript source verbatim when available
+- Use `·` (U+00B7) as separator between metadata fields.
+- Use `—` (em dash with spaces) to separate metadata from the description.
+- Use `required` or `optional` explicitly for every prop.
+- `default:` is always shown; use `undefined` when there is no default (required props always get `undefined`).
+- Only list props defined in the Plasma wrapper; inherited Mantine props go in the `> Extends:` note.
+- Copy JSDoc from the TypeScript source verbatim when available.
 
 ---
 

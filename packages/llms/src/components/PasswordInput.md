@@ -5,11 +5,7 @@ description: Password input with support for a read-only visual state.
 
 ## Props
 
-> Extends: `PasswordInputProps`. Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
-
-| Prop       | Type      | Required | Default | Description                                                                                                                                                |
-| ---------- | --------- | :------: | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `readOnly` | `boolean` |          | `false` | When `true` and `disabled` is not set to `true`, the component renders with Plasma read-only styles and remains visually distinct from the disabled state. |
+_No additional props beyond the Mantine base component._
 
 ## Usage
 
@@ -17,9 +13,11 @@ description: Password input with support for a read-only visual state.
 import {PasswordInput} from '@coveord/plasma-mantine';
 
 function Example() {
-    return <PasswordInput label="Database password" value="s3cr3t-value" readOnly />;
+    return <PasswordInput label="Database password" />;
 }
 ```
+
+When `readOnly` is set (and `disabled` is not), Plasma applies a distinct read-only visual style — use this instead of `disabled` when the value is informational and not interactive.
 
 ---
 

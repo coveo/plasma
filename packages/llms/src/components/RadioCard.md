@@ -7,12 +7,10 @@ description: Selectable card control that presents a radio option with a label a
 
 > Extends: `RadioCardProps`, `StylesApiProps`. Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
 
-| Prop              | Type        | Required | Default | Description                                                                                                    |
-| ----------------- | ----------- | :------: | ------- | -------------------------------------------------------------------------------------------------------------- |
-| `label`           | `ReactNode` |    ✓     | —       | Content rendered as the primary label next to the radio indicator.                                             |
-| `description`     | `ReactNode` |          | —       | Content rendered below the label as supporting text.                                                           |
-| `readOnly`        | `boolean`   |          | —       | When `true`, the card appears read-only and prevents users from changing its value through direct interaction. |
-| `disabledTooltip` | `string`    |          | —       | When the card is disabled, this message can be shown in a tooltip to explain why selection is unavailable.     |
+**`label`** `ReactNode` · required · default: `undefined` — Content rendered as the primary label next to the radio indicator.
+**`description`** `ReactNode` · optional · default: `undefined` — Content rendered below the label as supporting text.
+**`readOnly`** `boolean` · optional · default: `undefined` — When `true`, the card appears read-only and prevents users from changing its value through direct interaction.
+**`disabledTooltip`** `string` · optional · default: `undefined` — When the card is disabled, this message can be shown in a tooltip to explain why selection is unavailable.
 
 ## Usage
 

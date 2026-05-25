@@ -5,11 +5,7 @@ description: Select input for choosing a single option with support for a read-o
 
 ## Props
 
-> Extends: `SelectProps`. Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
-
-| Prop       | Type      | Required | Default | Description                                                                                                                                                |
-| ---------- | --------- | :------: | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `readOnly` | `boolean` |          | `false` | When `true` and `disabled` is not set to `true`, the component renders with Plasma read-only styles and remains visually distinct from the disabled state. |
+_No additional props beyond the Mantine base component._
 
 ## Usage
 
@@ -31,11 +27,12 @@ function Example() {
             value={value}
             onChange={setValue}
             placeholder="Pick a fruit"
-            readOnly
         />
     );
 }
 ```
+
+When `readOnly` is set (and `disabled` is not), Plasma applies a distinct read-only visual style — use this instead of `disabled` when the value is informational and not interactive.
 
 ---
 

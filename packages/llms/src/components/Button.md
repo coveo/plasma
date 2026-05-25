@@ -7,13 +7,11 @@ description: Action button that triggers tasks and provides async loading and di
 
 > Extends: `ButtonProps`, `ButtonWithDisabledTooltipProps`. Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
 
-| Prop                   | Type                              | Required | Default      | Description                                                                                                         |
-| ---------------------- | --------------------------------- | :------: | ------------ | ------------------------------------------------------------------------------------------------------------------- | --- | ------------------------------------------------------------------- |
-| `onClick`              | `ClickHandler<HTMLButtonElement>` |          | `—`          | Handler executed on click. Async handlers MAY be used; the button shows a loading state while the promise resolves. |
-| `disabledTooltip`      | `string`                          |          | `—`          | The tooltip message displayed when the button is disabled.                                                          |
-| `disabled`             | `boolean`                         |          | `—`          | Indicates whether the button underneath the tooltip is disabled.                                                    |
-| `disabledTooltipProps` | `Omit<TooltipProps, 'disabled'    | 'label'  | 'children'>` |                                                                                                                     | `—` | Additional tooltip props MAY be set on the disabled button tooltip. |
-| `fullWidth`            | `boolean`                         |          | `—`          | When provided, sets the button width to 100% of the parent element.                                                 |
+**`onClick`** `ClickHandler<HTMLButtonElement>` · optional · default: `undefined` — Handler executed on click. Async handlers MAY be used; the button shows a loading state while the promise resolves.
+**`disabledTooltip`** `string` · optional · default: `undefined` — The tooltip message displayed when the button is disabled.
+**`disabled`** `boolean` · optional · default: `undefined` — Indicates whether the button underneath the tooltip is disabled.
+**`disabledTooltipProps`** `Omit<TooltipProps, 'disabled' | 'label' | 'children'>` · optional · default: `undefined` — Additional tooltip props MAY be set on the disabled button tooltip.
+**`fullWidth`** `boolean` · optional · default: `undefined` — When provided, sets the button width to 100% of the parent element.
 
 ## Sub-components
 
@@ -60,7 +58,7 @@ function DisabledExample() {
 }
 ```
 
-- Use `Button.Primary` and `Button.Secondary` for semantic variants instead of passing `variant` manually.
+- Use sub-components (`Button.Primary`, `Button.Secondary`, etc.) for semantic variants instead of passing `variant` manually.
 - Async `onClick` handlers automatically show a loading state until the promise settles.
 - Pair `disabled` with `disabledTooltip` to explain why an action is unavailable.
 

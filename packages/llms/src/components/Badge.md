@@ -5,16 +5,10 @@ description: Status label that can display short text, counts, or metadata tags.
 
 ## Props
 
-> The sub-components (`Badge.Primary`, `Badge.Success`, etc.) use `SemanticBadgeProps` instead of the full `BadgeProps`. Only Plasma-specific props are listed below.
+> Extends: `BadgeProps` (sub-components use `SemanticBadgeProps`, a restricted subset). Only Plasma-specific props are listed below; inherited props MUST be referenced in Mantine documentation.
 
-| Prop           | Type                 | Required | Default   | Description                                                                     |
-| -------------- | -------------------- | :------: | --------- | ------------------------------------------------------------------------------- |
-| `size`         | `'small' \| 'large'` |          | `'small'` | Controls the badge height and text size.                                        |
-| `on`           | `'light' \| 'dark'`  |          | —         | Forces the light or dark colour variant. Defaults to the current colour scheme. |
-| `leftSection`  | `ReactNode`          |          | —         | Content rendered before the badge label.                                        |
-| `rightSection` | `ReactNode`          |          | —         | Content rendered after the badge label.                                         |
-| `fullWidth`    | `boolean`            |          | —         | Makes the badge span the full width of its container.                           |
-| `circle`       | `boolean`            |          | —         | Renders the badge as a circle (for single-character or count labels).           |
+**`size`** `'small' | 'large'` · optional · default: `'small'` — Controls the badge height and text size.
+**`on`** `'light' | 'dark'` · optional · default: current colour scheme — Forces the light or dark colour variant.
 
 ## Sub-components
 

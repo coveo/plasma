@@ -7,10 +7,8 @@ description: Status indicator with semantic color coding.
 
 > Extends: `BoxProps`, `StylesApiProps<StatusTokenFactory>`. Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
 
-| Prop      | Type                                                                                          | Required | Default  | Description                                                                       |
-| --------- | --------------------------------------------------------------------------------------------- | :------: | -------- | --------------------------------------------------------------------------------- |
-| `size`    | `'sm' \| 'lg'`                                                                                |          | `'lg'`   | The size of the token MAY be set to control the rendered icon dimensions.         |
-| `variant` | `'info' \| 'success' \| 'caution' \| 'error' \| 'disabled' \| 'waiting' \| 'edited' \| 'new'` |          | `'info'` | The variant of the token MUST match the status semantics you need to communicate. |
+**`size`** `'sm' | 'lg'` · optional · default: `'lg'` — The size of the token MAY be set to control the rendered icon dimensions.
+**`variant`** `'info' | 'success' | 'caution' | 'error' | 'disabled' | 'waiting' | 'edited' | 'new'` · optional · default: `'info'` — The variant of the token MUST match the status semantics you need to communicate.
 
 ## Usage
 

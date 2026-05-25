@@ -7,10 +7,8 @@ description: Confirmation modal with semantic variants and optional footer actio
 
 > Extends: `Omit<ModalRootProps, 'classNames' | 'styles' | 'vars' | 'attributes' | 'variant'>`, `Omit<StylesApiProps<PromptFactory>, 'variant'>`. Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
 
-| Prop       | Type        | Required | Default | Description                                                                              |
-| ---------- | ----------- | :------: | ------- | ---------------------------------------------------------------------------------------- |
-| `children` | `ReactNode` |    ✓     | —       | Prompt body content MUST be provided. It MAY include `Prompt.Footer` for action buttons. |
-| `title`    | `ReactNode` |    ✓     | —       | Prompt title content MUST be provided and is rendered in the header.                     |
+**`children`** `ReactNode` · required · default: `undefined` — Prompt body content MUST be provided. It MAY include `Prompt.Footer` for action buttons.
+**`title`** `ReactNode` · required · default: `undefined` — Prompt title content MUST be provided and is rendered in the header.
 
 ## Sub-components
 
