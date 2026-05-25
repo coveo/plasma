@@ -3,6 +3,8 @@ name: Checkbox
 description: Boolean selection control for choosing zero, one, or many visible options, including stand-alone opt-in choices.
 ---
 
+# Usage guidance
+
 ## What problem does it solve?
 
 The `Checkbox` lets users select zero, one, or many options from a visible set.
@@ -12,6 +14,7 @@ It is useful when users need to compare options directly and the list remains sh
 ## When to use it
 
 Use `Checkbox` when:
+
 - users can choose any number of options, from none to many
 - options SHOULD remain visible for comparison
 - a stand-alone optional commitment or confirmation is needed
@@ -21,6 +24,7 @@ Use `Checkbox` when:
 ## When not to use it
 
 Do not use `Checkbox` when:
+
 - only one option can be selected
 - the user is choosing between immediate view modes or display states
 - the list is so long that scanning individual options becomes inefficient
@@ -33,19 +37,10 @@ Do not use `Checkbox` when:
 - If the list grows too long, a searchable multi-select pattern is often a better fit than simply adding more checkboxes
 - As a starting product guideline, forms SHOULD avoid showing more than about 8 checkboxes together unless there is a strong reason to keep the full list visible
 
-## Props
-
-_No additional props beyond the Mantine base component._
-
-## Sub-components
-
-Plasma re-exports Mantine's grouped checkbox API.
-
-- `Checkbox.Group`
-
 ## States
 
 Important states include:
+
 - unchecked
 - checked
 - indeterminate
@@ -77,6 +72,28 @@ Important states include:
 - Showing long checkbox lists that are hard to scan
 - Using an indeterminate state without a real parent-child relationship
 
+## What an AI agent should understand
+
+- `Checkbox` is for zero, one, or many selections from a visible set
+- A stand-alone checkbox can represent an optional commitment or confirmation, but not an immediate switch-like control
+- If only one option is allowed or the list is too long to scan comfortably, another pattern is likely a better choice
+
+## Open questions for our system
+
+- Is `8` the right starting threshold for when a checkbox list in a form should be reconsidered in favour of a more compact or searchable pattern?
+
+# API reference
+
+## Props
+
+_No additional props beyond the Mantine base component._
+
+## Sub-components
+
+Plasma re-exports Mantine's grouped checkbox API.
+
+- `Checkbox.Group`
+
 ## Usage
 
 ```tsx
@@ -97,16 +114,6 @@ import {Checkbox, Group} from '@coveord/plasma-mantine';
 // Indeterminate state when a parent option is only partially selected
 <Checkbox label="Select all" indeterminate />;
 ```
-
-## What an AI agent should understand
-
-- `Checkbox` is for zero, one, or many selections from a visible set
-- A stand-alone checkbox can represent an optional commitment or confirmation, but not an immediate switch-like control
-- If only one option is allowed or the list is too long to scan comfortably, another pattern is likely a better choice
-
-## Open questions for our system
-
-- Is `8` the right starting threshold for when a checkbox list in a form should be reconsidered in favour of a more compact or searchable pattern?
 
 ---
 
