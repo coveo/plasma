@@ -7,17 +7,14 @@ description: Expandable nested sub-form within a parent form context.
 
 > Extends: `CollapseProps`, `StylesApiProps`. Only Plasma-specific props are listed below; inherited props MUST be referenced in Mantine documentation.
 
-| Prop          | Type        | Required | Default | Description                                   |
-| ------------- | ----------- | :------: | ------- | --------------------------------------------- |
-| `title`       | `string`    |          | —       | MAY define the title of the child form.       |
-| `description` | `ReactNode` |          | —       | MAY define the description of the child form. |
+**`title`** `string` · optional · default: `undefined` — MAY define the title of the child form.
+**`description`** `ReactNode` · optional · default: `undefined` — MAY define the description of the child form.
 
 ## Usage
 
 ```tsx
-import {Checkbox, Stack, TextInput} from '@coveord/plasma-mantine';
+import {Checkbox, ChildForm, Stack, TextInput} from '@coveord/plasma-mantine';
 import {useState} from 'react';
-import {ChildForm} from '@coveord/plasma-mantine';
 
 function Example() {
     const [hasSecondaryContact, setHasSecondaryContact] = useState(false);

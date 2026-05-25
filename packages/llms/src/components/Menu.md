@@ -15,10 +15,8 @@ Plasma overrides `Menu.Item` transparently to add disabled tooltip support. All 
 
 ### Menu.Item additional props
 
-| Prop                   | Type           | Required | Default | Description                                                                                                                  |
-| ---------------------- | -------------- | :------: | ------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `disabledTooltip`      | `string`       |          | —       | Tooltip text MAY be provided to explain why a disabled item cannot be activated.                                             |
-| `disabledTooltipProps` | `TooltipProps` |          | —       | Additional tooltip configuration MAY be provided for the disabled-state tooltip and SHOULD complement Plasma-managed fields. |
+**`disabledTooltip`** `string` · optional · default: `undefined` — Tooltip text MAY be provided to explain why a disabled item cannot be activated.
+**`disabledTooltipProps`** `TooltipProps` · optional · default: `undefined` — Additional tooltip configuration MAY be provided for the disabled-state tooltip and SHOULD complement Plasma-managed fields.
 
 ## Usage
 
