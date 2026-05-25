@@ -1,6 +1,6 @@
 import {describe, it, expect} from 'vitest';
 import {listComponents} from '../listComponents.js';
-import {makeComponent, makeData} from './fixtures.js';
+import {makeData} from './fixtures.js';
 
 describe('listComponents', () => {
     it('renders the full component list', () => {
@@ -16,7 +16,7 @@ describe('listComponents', () => {
     });
 
     it('falls back to "Plasma component" when description is empty', () => {
-        const noDesc = makeComponent('Badge', '', '# Badge content');
+        const noDesc = {name: 'Badge', description: '', content: '# Badge content'};
         expect(listComponents(makeData([noDesc]))).toMatchInlineSnapshot(`
           "# Plasma Components
 

@@ -1,6 +1,6 @@
 import {describe, it, expect} from 'vitest';
 import {searchDocs} from '../searchDocs.js';
-import {makeComponent, makeData} from './fixtures.js';
+import {makeData} from './fixtures.js';
 
 describe('searchDocs', () => {
     it('returns a no-results message when nothing matches', () => {
@@ -52,9 +52,11 @@ describe('searchDocs', () => {
     });
 
     it('returns at most 5 results', () => {
-        const manyComponents = Array.from({length: 10}, (_, i) =>
-            makeComponent(`Comp${i}`, 'common description text', `# Comp${i}\n\ncommon description text`),
-        );
+        const manyComponents = Array.from({length: 10}, (_, i) => ({
+            name: `Comp${i}`,
+            description: 'common description text',
+            content: `# Comp${i}\n\ncommon description text`,
+        }));
         const result = searchDocs(makeData(manyComponents), 'common');
         const matches = result.match(/^## Comp\d/gm);
         expect(matches).not.toBeNull();

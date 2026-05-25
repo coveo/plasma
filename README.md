@@ -8,7 +8,7 @@ Plasma is Coveo's design system used in Coveo Cloud Administration Console. It p
 
 ## AI Coding Agents
 
-Plasma documents its ~27 wrapped components in [`@coveord/plasma-llms`](packages/llms/README.md). The other ~90 components are pure Mantine re-exports. For full coverage, configure **both** the Plasma and Mantine MCP servers:
+Plasma documents its wrapped components in [`@coveord/plasma-llms`](packages/llms/README.md). The other components are pure Mantine re-exports. For full coverage, configure **both** the Plasma and Mantine MCP servers:
 
 - **Plasma MCP** — authoritative for Plasma-specific props, sub-components, and usage
 - **Mantine MCP** — fallback for re-exported components and inherited props

@@ -2,7 +2,7 @@
 
 MCP (Model Context Protocol) server for the [Plasma design system](https://plasma.coveo.com). Gives AI agents dynamic access to component documentation — no need to load everything upfront.
 
-For full coverage, pair this with [`@mantine/mcp-server`](https://www.npmjs.com/package/@mantine/mcp-server): the Plasma server is authoritative for Plasma-wrapped components; the Mantine server covers the ~90 re-exported components and inherited props. Agents should query Plasma first and fall back to Mantine when a component isn't found.
+For full coverage, pair this with [`@mantine/mcp-server`](https://www.npmjs.com/package/@mantine/mcp-server): the Plasma server is authoritative for Plasma-wrapped components; the Mantine server covers the re-exported components and inherited props. Agents should query Plasma first and fall back to Mantine when a component isn't found.
 
 > **Import invariant:** always import from `@coveord/plasma-mantine`, even when Mantine docs were the reference. `@coveord/plasma-mantine` re-exports all Mantine components with Coveo's theme applied.
 

@@ -6,24 +6,12 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
+import type {ComponentData, LlmsData} from '../src/tools/types.ts';
 
 const currentDir = path.dirname(fileURLToPath(import.meta.url));
 const llmsDistDir = path.resolve(currentDir, '../../llms/dist');
 const distDir = path.resolve(currentDir, '../dist');
 const dataFile = path.join(distDir, 'data.json');
-
-interface ComponentData {
-    name: string;
-    description: string;
-    content: string;
-}
-
-interface LlmsData {
-    index: string;
-    full: string;
-    skill: string;
-    components: ComponentData[];
-}
 
 const main = () => {
     if (!fs.existsSync(llmsDistDir)) {

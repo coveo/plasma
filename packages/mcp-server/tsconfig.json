@@ -7,6 +7,7 @@
         "outDir": "dist",
         "rootDir": "src",
         "noUnusedLocals": false,
+        "resolveJsonModule": true,
         "types": ["node"]
     },
     "include": ["src/**/*"],

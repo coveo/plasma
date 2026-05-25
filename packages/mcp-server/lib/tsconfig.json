@@ -1,7 +1,7 @@
 {
     "extends": "../tsconfig.json",
     "compilerOptions": {
-        "rootDir": ".",
+        "rootDir": "..",
         "outDir": "../dist/lib",
         "noUnusedLocals": true,
         "noEmit": true,

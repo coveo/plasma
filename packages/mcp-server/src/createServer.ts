@@ -2,6 +2,7 @@ import {McpServer} from 'tmcp';
 import {ValibotJsonSchemaAdapter} from '@tmcp/adapter-valibot';
 import {tool} from 'tmcp/utils';
 import * as v from 'valibot';
+import pkg from '../package.json' with {type: 'json'};
 import {buildComponentMap} from './tools/buildComponentMap.js';
 import {listComponents} from './tools/listComponents.js';
 import {getComponentDoc} from './tools/getComponentDoc.js';
@@ -27,7 +28,7 @@ export const createServer = (data: LlmsData): McpServer => {
     const server = new McpServer(
         {
             name: 'plasma-mcp-server',
-            version: '1.0.0',
+            version: pkg.version,
         },
         {
             adapter,
