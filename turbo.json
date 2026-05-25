@@ -9,7 +9,7 @@
             "dependsOn": ["^build"],
             "outputs": ["dist/**", "storybook-static/**"],
             "outputLogs": "new-only",
-            "env": ["CI", "BRANCH_NAME", "GITHUB_HEAD_REF", "GITHUB_REF_NAME"]
+            "env": ["CI", "PLASMA_BASE_URL"]
         },
         "test": {
             "dependsOn": ["^build"],

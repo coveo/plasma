@@ -1,3 +1,39 @@
+## <small>59.4.3 (2026-05-11)</small>
+
+* fix(website): update vite and postcss versions to fix old website (#4433) e767a35, closes #4433
+* feat(react-icons, mock): update mock to also mock in node_modules (#4431) 5311d39, closes #4431
+
+
+
+## <small>59.4.2 (2026-05-06)</small>
+
+* fix(Mantine, facet): export types (#4428) ada40f0, closes #4428
+
+
+
+## <small>59.4.1 (2026-05-05)</small>
+
+* feat(mantine, facet): add removable option (#4424) cc20b90, closes #4424
+* chore(deps): lock file maintenance (#4423) 0a55df4, closes #4423
+* chore(deps): update all non-major dependencies (#4415) d3b9da2, closes #4415
+
+
+
+## 59.4.0 (2026-05-01)
+
+* feat(CopyToClipboard): deprecate 'withLabel' prop and update story (#4422) 2065f86, closes #4422
+
+
+
+## 59.3.0 (2026-05-01)
+
+* feat(mantine,RadioCard): update the RadioCard visually (#4414) ea761ee, closes #4414
+* feat(ActionIcon): update styles to match figma (#4421) cff9f32, closes #4421
+* feat(pill): +sm, +md size in pill storybook (#4419) 58dd585, closes #4419
+* fix(inputlabelinfo): make pointer-event auto (#4420) b31e90d, closes #4420
+
+
+
 ## 59.2.0 (2026-04-29)
 
 * chore(deps): lock file maintenance (#4416) f6e38db, closes #4416

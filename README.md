@@ -4,7 +4,7 @@
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg?style=flat-square&logo=appveyor)](https://conventionalcommits.org)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/coveo/plasma/badge)](https://scorecard.dev/viewer/?uri=github.com/coveo/plasma)
 
-Plasma is Coveo's design system used in Coveo Cloud Administration Console. All components and their documentation are available in [the demo page](https://plasma.coveo.com/). The `@coveord/plasma-style` package contains the generic style classes used across the components and `@coveord/plasma-react` is a react implementation of multiple visual and behavioural components.
+Plasma is Coveo's design system used in Coveo Cloud Administration Console. It provides a Mantine-themed component library, design tokens, React icons, and documentation. All components and their documentation are available in [the demo page](https://plasma.coveo.com/).
 
 ## React Compatibility
 
@@ -23,8 +23,7 @@ npm install @coveord/plasma-mantine
 Make sure you have
 
 - [Node.js](https://nodejs.org/)'s LTS version
-- [NPM](https://www.npmjs.com/package/npm)'s LTS version
-- [PNPM](https://pnpm.io/installation) >= 5
+- [PNPM](https://pnpm.io/installation)
 
 ### Where are @coveord/plasma-style and @coveord/plasma-react?
 
@@ -65,8 +64,8 @@ Alternatively, you can run it directly from `packages/{packageName}`, which also
     3. Then you can use `fdescribe` and `fit` to focus on individual suites and tests respectively
 3. To debug your tests:
     1. Run `pnpm test:debug`, wait for it to start up then hit any key to pause.
-    2. In a Chromium browser (Chrome / Brave), go to chrome://inspect and you should see the process under `node_modules/jest/bin/jest`. Click inspect.
-    3. From here, you can add a `debugger` in a test, save the file, focus on the suite using `p` and then the spec file name
+    2. In a Chromium browser (Chrome / Brave), go to `chrome://inspect` and connect to the Node process.
+    3. From here, you can add a `debugger` statement in a test, save the file, focus on the suite using `p` and then the spec file name.
     4. When the file is saved and rerun, the debugger should open in the dev tools!
     5. You will need to close the dev tools for the process to disconnect
 

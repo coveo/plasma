@@ -1,20 +1,30 @@
 import type {Plugin, TransformResult} from 'vite';
 
+export interface PlasmaIconsMockPluginOptions {
+    /**
+     * Should the plugin transform import in dependencies (node_modules) as well.
+     * This is useful if you want to mock icons in a dependency that imports @coveord/plasma-react-icons.
+     *
+     * @default true
+     */
+    includeDependencies?: boolean;
+}
+
 /**
  * Vitest plugin to mock @coveord/plasma-react-icons with the mock version.
  * The mock uses a Proxy that dynamically generates icon components based on the property name.
  * This plugin transforms named imports into property access on the default import.
  */
-const plasmaIconsMockPlugin = () =>
+const plasmaIconsMockPlugin = ({includeDependencies = true}: PlasmaIconsMockPluginOptions = {}) =>
     ({
         name: 'coveord/plasma-react-icons/mock',
         enforce: 'pre',
         transform: (code: string, id: string): TransformResult => {
-            // Only transform relevant files (e.g., .ts, .tsx, .js, .jsx) that import from @coveord/plasma-react-icons and aren't in node_modules
+            // Only transform relevant files (e.g., .ts, .tsx, .js, .jsx) that import from @coveord/plasma-react-icons
             if (
                 !code.includes('@coveord/plasma-react-icons') ||
-                id.includes('/node_modules/') ||
-                !/\.(ts|tsx|js|jsx)$/.test(id)
+                (!includeDependencies && id.includes('/node_modules/')) ||
+                !/\.[cm]?[jt]sx?$/.test(id)
             ) {
                 return null;
             }

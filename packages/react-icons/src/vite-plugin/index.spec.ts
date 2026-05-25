@@ -12,11 +12,26 @@ describe('plasmaIconsMockPlugin', () => {
             expect(result).toBeNull();
         });
 
-        it('returns null for files in node_modules', () => {
+        it('returns null for files in node_modules when includeDependencies is disabled', () => {
+            const code = `import { ArrowUpSize16Px } from '@coveord/plasma-react-icons';`;
+            const result = plasmaIconsMockPlugin({includeDependencies: false}).transform?.(
+                code,
+                '/node_modules/some-package/index.js',
+            );
+
+            expect(result).toBeNull();
+        });
+
+        it('transforms files in node_modules when includeDependencies is enabled (default behaviour)', () => {
             const code = `import { ArrowUpSize16Px } from '@coveord/plasma-react-icons';`;
             const result = plugin.transform?.(code, '/node_modules/some-package/index.js');
 
-            expect(result).toBeNull();
+            expect(result).not.toBeNull();
+            expect(result?.code).toMatchInlineSnapshot(`
+              "import __plasmaIconsMock from '@coveord/plasma-react-icons/mock';
+              const ArrowUpSize16Px = __plasmaIconsMock.ArrowUpSize16Px;
+              "
+            `);
         });
 
         it('returns null for non-JavaScript/TypeScript files', () => {
