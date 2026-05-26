@@ -1,0 +1,12 @@
+{
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+        "rootDir": "..",
+        "outDir": "../dist/lib",
+        "noUnusedLocals": true,
+        "noEmit": true,
+        "allowImportingTsExtensions": true
+    },
+    "include": ["./**/*"],
+    "exclude": ["../dist", "../node_modules"]
+}

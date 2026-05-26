@@ -13,6 +13,7 @@ Plasma is Coveo's design system used in Coveo Cloud Administration Console. This
 - **`@coveord/plasma-storybook`**: Storybook for component documentation
 - **`@coveord/plasma-figma`**: CodeConnect instances to document components in Figma
 - **`@coveord/plasma-llms`**: LLM-friendly component specs (`llms.txt`, `llms-full.txt`, per-component markdown)
+- **`@coveord/plasma-mcp-server`**: MCP server exposing Plasma docs to AI coding agents
 
 ### Architecture
 
