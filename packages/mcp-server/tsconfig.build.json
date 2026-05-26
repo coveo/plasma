@@ -1,0 +1,7 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "noUnusedLocals": true
+    },
+    "exclude": ["dist", "node_modules", "src/**/__tests__", "src/**/*.spec.ts"]
+}
