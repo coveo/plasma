@@ -1,17 +1,5 @@
-.page {
-    margin: 0 auto;
-    max-width: 1200px;
-    padding: 12px 0 32px;
-}
-
 .section {
     margin-bottom: 32px;
-}
-
-.sectionTitle {
-    margin: 0 0 16px;
-    font-size: 16px;
-    letter-spacing: 0.02em;
 }
 
 .grid {

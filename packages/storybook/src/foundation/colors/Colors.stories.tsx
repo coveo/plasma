@@ -2,6 +2,7 @@ import {getContrastColor, Group, Stack, Text, Tooltip, UnstyledButton, useMantin
 import {useClipboard} from '@mantine/hooks';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import {useState} from 'react';
+import {FoundationWrapper} from '../FoundationWrapper.js';
 import {PlasmaColors} from '../../../../mantine/src/theme/PlasmaColors.js';
 import classes from './Colors.module.css';
 
@@ -41,6 +42,7 @@ const defaultShadeIndex = 5;
 const meta: Meta = {
     title: '@foundation/Colors',
     id: 'colors',
+    tags: ['!dev'],
     parameters: {
         layout: 'padded',
         controls: {
@@ -124,10 +126,12 @@ const ColorsGroup = ({group}: {group: ColorName}) => {
 
 export const Overview: Story = {
     render: () => (
-        <div className={classes.page}>
+        <FoundationWrapper
+            title="Colors"
+            description="The Plasma theme defines semantic and palette color tokens used across components and states."
+        >
             {colorSections.map(({title, colors}) => (
                 <section key={title} className={classes.section}>
-                    <Text className={classes.sectionTitle}>{title}</Text>
                     <div className={classes.grid}>
                         {colors.map((colorName) => (
                             <ColorsGroup key={colorName} group={colorName} />
@@ -135,6 +139,6 @@ export const Overview: Story = {
                     </div>
                 </section>
             ))}
-        </div>
+        </FoundationWrapper>
     ),
 };

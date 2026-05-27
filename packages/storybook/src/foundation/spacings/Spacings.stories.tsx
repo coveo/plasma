@@ -1,9 +1,12 @@
-import {Group, Stack, Text} from '@mantine/core';
+import {createColumnHelper, Table, useTable, type ColumnDef} from '@coveord/plasma-mantine';
+import {Box, Text} from '@mantine/core';
 import type {Meta, StoryObj} from '@storybook/react-vite';
+import {FoundationWrapper} from '../FoundationWrapper.js';
 
 const meta: Meta = {
     title: '@foundation/Spacings',
     id: 'spacings',
+    tags: ['!dev'],
     parameters: {
         layout: 'padded',
         controls: {
@@ -15,44 +18,88 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-const SpacingRow = ({name, value}: {name: string; value: string}) => (
-    <Group gap="md" align="center" justify="space-between" style={{marginBottom: 12}}>
-        <Text fw={600} w={40} ff="monospace" size="sm">
-            {name}
-        </Text>
-        <Text size="sm" c="dimmed" ff="monospace">
-            {value}
-        </Text>
-        <Text size="xs" c="dimmed" ff="monospace">
-            {`var(--mantine-spacing-${name})`}
-        </Text>
-        <div
-            style={{
-                width: value,
-                height: 24,
-                backgroundColor: 'var(--mantine-color-blue-6)',
-                borderRadius: 4,
-                flexShrink: 0,
-            }}
-        />
-    </Group>
-);
+type SpacingRowData = {
+    name: string;
+    value: string;
+    variable: string;
+};
 
-const spacings = [
-    {name: 'xxs', value: '4px'},
-    {name: 'xs', value: '8px'},
-    {name: 'sm', value: '16px'},
-    {name: 'md', value: '24px'},
-    {name: 'lg', value: '32px'},
-    {name: 'xl', value: '40px'},
+const spacings: SpacingRowData[] = [
+    {name: 'xxs', value: '4px', variable: 'var(--mantine-spacing-xxs)'},
+    {name: 'xs', value: '8px', variable: 'var(--mantine-spacing-xs)'},
+    {name: 'sm', value: '16px', variable: 'var(--mantine-spacing-sm)'},
+    {name: 'md', value: '24px', variable: 'var(--mantine-spacing-md)'},
+    {name: 'lg', value: '32px', variable: 'var(--mantine-spacing-lg)'},
+    {name: 'xl', value: '40px', variable: 'var(--mantine-spacing-xl)'},
+];
+
+const columnHelper = createColumnHelper<SpacingRowData>();
+const columns = [
+    columnHelper.accessor('name', {
+        header: 'name',
+        cell: ({getValue}) => (
+            <Text fw={600} ff="monospace" size="sm">
+                {getValue()}
+            </Text>
+        ),
+        enableSorting: false,
+    }),
+    columnHelper.accessor('value', {
+        header: 'value',
+        cell: ({getValue}) => (
+            <Text size="sm" c="dimmed" ff="monospace">
+                {getValue()}
+            </Text>
+        ),
+        enableSorting: false,
+    }),
+    columnHelper.accessor('variable', {
+        header: 'variable',
+        cell: ({getValue}) => (
+            <Text size="xs" c="dimmed" ff="monospace">
+                {getValue()}
+            </Text>
+        ),
+        enableSorting: false,
+    }),
+    columnHelper.display({
+        id: 'preview',
+        header: '',
+        cell: ({row}) => (
+            <Box
+                style={{
+                    width: row.original.value,
+                    height: 24,
+                    backgroundColor: 'var(--mantine-color-blue-6)',
+                    borderRadius: 4,
+                    minWidth: 8,
+                }}
+            />
+        ),
+    }),
 ];
 
 export const Spacings: Story = {
-    render: () => (
-        <Stack gap="xs">
-            {spacings.map(({name, value}) => (
-                <SpacingRow key={name} name={name} value={value} />
-            ))}
-        </Stack>
-    ),
+    render: () => {
+        const table = useTable<SpacingRowData>({
+            initialState: {
+                totalEntries: spacings.length,
+            },
+            enableRowSelection: false,
+        });
+
+        return (
+            <FoundationWrapper
+                title="Spacings"
+                description="The Plasma theme defines the following spacing values. Each spacing maps to a CSS variable var(--mantine-spacing-{size})."
+            >
+                <Table<SpacingRowData>
+                    store={table}
+                    columns={columns as Array<ColumnDef<SpacingRowData, unknown>>}
+                    data={spacings}
+                    getRowId={({name}) => name}
+                />
+            </FoundationWrapper>
+        );
+    },
 };
