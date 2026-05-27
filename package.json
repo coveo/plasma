@@ -48,7 +48,7 @@
     "devDependencies": {
         "@commitlint/cli": "20.5.2",
         "@commitlint/config-conventional": "20.5.0",
-        "@coveo/semantic-monorepo-tools": "2.7.1",
+        "@coveo/semantic-monorepo-tools": "github:coveo/semantic-monorepo-tools#main",
         "@types/node": "24.12.2",
         "@vitest/eslint-plugin": "1.6.16",
         "aws-sdk": "2.1693.0",
