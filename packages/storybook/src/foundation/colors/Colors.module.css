@@ -97,10 +97,6 @@
 }
 
 @media (width <= 48em) {
-    .page {
-        padding-top: 4px;
-    }
-
     .card {
         padding: 10px;
     }
