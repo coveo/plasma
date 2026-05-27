@@ -1,9 +1,9 @@
+import type {PlasmaColors} from '@coveord/plasma-mantine';
 import {getContrastColor, Group, Stack, Text, Tooltip, UnstyledButton, useMantineTheme} from '@mantine/core';
 import {useClipboard} from '@mantine/hooks';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import {useState} from 'react';
 import {FoundationWrapper} from '../FoundationWrapper.js';
-import {PlasmaColors} from '../../../../mantine/src/theme/PlasmaColors.js';
 import classes from './Colors.module.css';
 
 type ColorName = keyof typeof PlasmaColors;
@@ -27,14 +27,6 @@ const colorSections = [
             'dark',
         ],
     },
-    // {
-    //     title: 'Accent',
-    //     colors: ['critical', 'new', 'warning'],
-    // },
-    // {
-    //     title: 'Secondary',
-    //     colors: ['lime', 'success', 'purple'],
-    // },
 ] as const satisfies ReadonlyArray<{title: string; colors: readonly ColorName[]}>;
 
 const defaultShadeIndex = 5;
@@ -58,7 +50,7 @@ const getDefaultShade = (colors: readonly string[]) => Math.min(defaultShadeInde
 
 const ColorsGroup = ({group}: {group: ColorName}) => {
     const theme = useMantineTheme();
-    const colors = theme.colors[group] ?? PlasmaColors[group];
+    const colors = theme.colors[group];
     const initialIndex = getDefaultShade(colors);
     const [active, setActive] = useState({color: colors[initialIndex], index: initialIndex});
     const clipboard = useClipboard({timeout: 1000});
