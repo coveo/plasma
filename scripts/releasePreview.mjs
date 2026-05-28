@@ -6,6 +6,7 @@ const ROOT = process.cwd();
 const PREVIEW_MARKER = '<!-- changesets-release-preview -->';
 const RELEASE_TYPES = ['patch', 'minor', 'major'];
 const MISSING_CHANGESET_MESSAGE = 'Some packages have been changed but no changesets were found';
+// oxlint-disable-next-line no-control-regex
 const ANSI_ESCAPE_PATTERN = /\u001B\[[0-?]*[ -/]*[@-~]/g;
 
 const getStatusBaseRef = () => {

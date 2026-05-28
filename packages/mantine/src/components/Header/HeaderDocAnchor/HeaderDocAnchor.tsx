@@ -48,7 +48,18 @@ const defaultProps = {
 
 export const HeaderDocAnchor = factory<HeaderDocAnchorFactory>((_props, ref) => {
     const props = useProps('PlasmaHeaderActions', defaultProps, _props);
-    const {className, classNames, styles, style, children, label, position, vars, inline = true, ...others} = props;
+    const {
+        className,
+        classNames,
+        styles,
+        style,
+        children,
+        label,
+        position,
+        vars: _vars,
+        inline = true,
+        ...others
+    } = props;
 
     const ctx = useHeaderContext();
 

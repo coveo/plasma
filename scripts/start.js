@@ -9,4 +9,4 @@ process.on('unhandledRejection', (err) => {
     throw err;
 });
 
-build({watch: true});
+void build({watch: true});

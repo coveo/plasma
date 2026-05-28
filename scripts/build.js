@@ -11,7 +11,11 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 const onExit = (childProcess) =>
     new Promise((resolve, reject) => {
         childProcess.once('exit', (code) => {
-            code === 0 ? resolve() : reject(new Error('Exit with error code: ' + code));
+            if (code === 0) {
+                resolve();
+            } else {
+                reject(new Error('Exit with error code: ' + code));
+            }
         });
         childProcess.once('error', (error) => {
             reject(error);
@@ -76,7 +80,7 @@ const build = async ({watch = false}) => {
 };
 
 if (require.main === module) {
-    build({watch: false});
+    void build({watch: false});
 }
 
 module.exports = {build};

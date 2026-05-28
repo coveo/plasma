@@ -52,7 +52,7 @@ export const EditableDateTimeRangePicker = ({
                 onChange={onStartDateChange}
                 valueFormat={dateFormat}
                 w={150}
-                styles={{...startProps.styles}}
+                styles={startProps.styles}
                 timePickerProps={{
                     format: timePickerFormat,
                     popoverProps: {withinPortal: false},
@@ -66,7 +66,7 @@ export const EditableDateTimeRangePicker = ({
                 onChange={(endDate) => onChange?.([value?.[0] ?? null, endDate])}
                 valueFormat={dateFormat}
                 w={150}
-                styles={{...endProps.styles}}
+                styles={endProps.styles}
                 timePickerProps={{
                     format: timePickerFormat,
                     popoverProps: {withinPortal: false},

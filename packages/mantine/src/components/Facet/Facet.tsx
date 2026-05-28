@@ -196,10 +196,10 @@ export const Facet: FunctionComponent<FacetProps> = factory<FacetFactory>((_prop
         placeholder,
         title,
         height,
-        radius,
+        radius: _radius,
         __staticSelector,
-        classNames,
-        styles,
+        classNames: _classNames,
+        styles: _styles,
         limit,
         unstyled,
         ...others

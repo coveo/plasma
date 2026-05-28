@@ -77,7 +77,7 @@ const listIconVariants = async (grouped) => {
 
 const handleSvgFiles = (files) => {
     const grouped = groupBy(files, findIconName);
-    Promise.all([convertIcons(grouped), listIconVariants(grouped)]);
+    return Promise.all([convertIcons(grouped), listIconVariants(grouped)]);
 };
 
 rmSync(outDirPath, {recursive: true, force: true});
@@ -85,4 +85,4 @@ rmSync('./dist', {recursive: true, force: true});
 fs.ensureDirSync(outDirPath);
 
 const svgs = globSync(`${iconsSourceDirPath}/**/*.svg`).map((svgPath) => svgPath.split(path.sep).join(path.posix.sep));
-handleSvgFiles(svgs);
+void handleSvgFiles(svgs);

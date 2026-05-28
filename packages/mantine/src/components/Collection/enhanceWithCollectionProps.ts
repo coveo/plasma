@@ -19,11 +19,15 @@ export const enhanceWithCollectionProps = <
         return {
             onReorderItem: (reorderPayload: Record<'from' | 'to', number>) => {
                 payload.form.reorderListItem(field, reorderPayload);
-                validateInputOnChange && payload.form.validate();
+                if (validateInputOnChange) {
+                    payload.form.validate();
+                }
             },
             onRemoveItem: (index: number) => {
                 payload.form.removeListItem(field, index);
-                validateInputOnChange && payload.form.validate();
+                if (validateInputOnChange) {
+                    payload.form.validate();
+                }
             },
             onInsertItem: (valueToInsert: unknown, index: number) => {
                 payload.form.insertListItem(
@@ -31,7 +35,9 @@ export const enhanceWithCollectionProps = <
                     valueToInsert as FormArrayElement<FormValues, (typeof payload)['field']>,
                     index,
                 );
-                validateInputOnChange && payload.form.validate();
+                if (validateInputOnChange) {
+                    payload.form.validate();
+                }
             },
         };
     }

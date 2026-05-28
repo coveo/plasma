@@ -81,7 +81,7 @@ const CollapsibleIcon = factory<TableCollapsibleColumnFactory>((props, ref) => {
     const handler = info.row.getToggleExpandedHandler();
     const onClick = (e: ReactMouseEvent<HTMLButtonElement>) => {
         e.stopPropagation();
-        onActionClick?.(e);
+        void onActionClick?.(e);
         onToggle?.(e);
         handler();
     };
