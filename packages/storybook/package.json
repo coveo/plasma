@@ -6,7 +6,7 @@
     "scripts": {
         "build": "storybook build",
         "chromatic": "chromatic --build-script-name build",
-        "lint": "../../node_modules/.bin/oxlint",
+        "lint": "oxlint",
         "start": "storybook dev -p 6007"
     },
     "dependencies": {
