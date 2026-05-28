@@ -1,3 +1,9 @@
+## <small>59.5.1 (2026-05-28)</small>
+
+* ci(cd): patch semantic-monorepo-tools to add --access public on publish (#4455) 2db2045, closes #4455
+
+
+
 ## 59.5.0 (2026-05-28)
 
 * ci(cd): patch semantic-monorepo-tools to add --no-git-checks (#4453) eae0b85, closes #4453
