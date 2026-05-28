@@ -29,3 +29,5 @@ overrides:
 strictPeerDependencies: false
 saveExact: true
 autoInstallPeers: false
+patchedDependencies:
+  '@coveo/semantic-monorepo-tools@2.7.1': patches/@coveo__semantic-monorepo-tools@2.7.1.patch

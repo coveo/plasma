@@ -1,0 +1,24 @@
+diff --git a/dist/pnpm/doPnpmBumpVersion.js b/dist/pnpm/doPnpmBumpVersion.js
+index 2470346f66209b9b41ccafdab3e4c8a1d9201270..83ce095b3e5380f86d354c1e53f8ecbb33a1b325 100644
+--- a/dist/pnpm/doPnpmBumpVersion.js
++++ b/dist/pnpm/doPnpmBumpVersion.js
+@@ -7,5 +7,5 @@ import { runOnChanged } from "./utils/runOnChanged.js";
+  * @param excludePackages filter out the specified packages/directory from the output
+  */
+ export default async function (newVersion, since, forcePackages = [], excludePackages = []) {
+-    await runOnChanged(`pnpm version ${newVersion} --no-git-tag-version`, since, forcePackages, excludePackages);
++    await runOnChanged(`pnpm version ${newVersion} --no-git-tag-version --no-git-checks`, since, forcePackages, excludePackages);
+ }
+diff --git a/src/pnpm/doPnpmBumpVersion.ts b/src/pnpm/doPnpmBumpVersion.ts
+index 7865dbff9de6bf2f2a5219e320249ff053a6233e..e6e5f7d9c30351c47d175e1f4c7b2f3cb8ed53e0 100644
+--- a/src/pnpm/doPnpmBumpVersion.ts
++++ b/src/pnpm/doPnpmBumpVersion.ts
+@@ -14,7 +14,7 @@ export default async function (
+   excludePackages: string[] = [],
+ ) {
+   await runOnChanged(
+-    `pnpm version ${newVersion} --no-git-tag-version`,
++    `pnpm version ${newVersion} --no-git-tag-version --no-git-checks`,
+     since,
+     forcePackages,
+     excludePackages,
