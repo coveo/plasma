@@ -1,3 +1,18 @@
+## 59.5.0 (2026-05-28)
+
+* ci(cd): patch semantic-monorepo-tools to add --no-git-checks (#4453) eae0b85, closes #4453
+* chore(deps): update coveo/semantic-monorepo-tools (#4450) 1477337, closes #4450
+* chore(deps): update pnpm to v11 (#4429) 60c89a3, closes #4429
+* feat: implement plasma mcp server (#4441) 205230a, closes #4441
+* feat(llms): add @coveord/plasma-llms package (#4434) c81a439, closes #4434
+* feat(llms): add initial component specs (#4442) 6fbe68b, closes #4442
+* Ds 153 navlink weight (#4444) 086bfb0, closes #4444
+* fix(mantine, facet): alignement of remove button when title wraps (#4443) 5699893, closes #4443
+* fix(styles): correct background color for radio card and storybook preview (#4440) 841cc42, closes #4440
+* refactor(ci): standardize deploy base URL via shared compute-base-url action (#4426) 33f8ae6, closes #4426
+
+
+
 ## <small>59.4.3 (2026-05-11)</small>
 
 * fix(website): update vite and postcss versions to fix old website (#4433) e767a35, closes #4433
