@@ -3,12 +3,20 @@
     "version": "59.4.1",
     "description": "Design tokens of the Plasma Design System",
     "homepage": "https://github.com/coveo/plasma/packages/tokens#readme",
+    "license": "Apache-2.0",
     "repository": {
         "type": "git",
         "url": "https://github.com/coveo/plasma.git",
         "directory": "packages/tokens"
     },
-    "license": "Apache-2.0",
+    "files": [
+        "dist",
+        "icons",
+        "scss",
+        "css"
+    ],
+    "main": "./dist/cjs/index.js",
+    "module": "./dist/esm/index.js",
     "exports": {
         ".": {
             "require": "./dist/cjs/index.js",
@@ -19,21 +27,13 @@
         "./css/*": "./css/*",
         "./icons/*": "./icons/*"
     },
-    "main": "./dist/cjs/index.js",
-    "module": "./dist/esm/index.js",
-    "files": [
-        "dist",
-        "icons",
-        "scss",
-        "css"
-    ],
     "scripts": {
         "build": "rimraf dist && node ../../scripts/build",
-        "lintfix": "../../node_modules/.bin/prettier --write \"**/*.{scss,ts,tsx,js,jsx,json,md,yml,html}\" && oxlint --fix",
+        "lintfix": "oxfmt --write && oxlint --fix",
         "prepublishOnly": "publint",
         "tokens:build": "ts-node ./bin/build.ts --project ./tsconfig.bin.json && pnpm tokens:lint",
         "tokens:fetch": "ts-node -r dotenv-safe/config --project ./tsconfig.bin.json ./bin/fetch.ts",
-        "tokens:lint": "prettier --write \"{src,scss,data}/*.{css,scss,ts,tsx,json}\""
+        "tokens:lint": "oxfmt --write \"{src,scss,data}/*.{css,scss,ts,tsx,json}\""
     },
     "dependencies": {
         "@swc/helpers": "0.5.21"
@@ -54,7 +54,6 @@
         "fs-extra": "11.3.4",
         "lint-staged": "16.4.0",
         "lodash": "4.18.1",
-        "prettier": "3.8.3",
         "publint": "0.3.18",
         "rimraf": "6.1.3",
         "svgo": "4.0.1",

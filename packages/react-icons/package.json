@@ -3,22 +3,28 @@
     "version": "59.4.3",
     "description": "Plasma iconography exposed as react components",
     "keywords": [
-        "plasma",
         "icons",
+        "plasma",
         "react"
     ],
     "homepage": "https://github.com/coveo/plasma/packages/react-icons#readme",
     "bugs": {
         "url": "https://github.com/coveo/plasma/issues"
     },
+    "license": "ISC",
+    "author": "",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/coveo/plasma.git",
         "directory": "packages/react-icons"
     },
-    "license": "ISC",
-    "author": "",
+    "files": [
+        "dist/*",
+        "mock/index.js"
+    ],
     "sideEffects": false,
+    "main": "./dist/cjs/index.js",
+    "module": "./dist/esm/index.js",
     "exports": {
         ".": {
             "require": "./dist/cjs/index.js",
@@ -36,17 +42,11 @@
             "import": "./dist/esm/vite-plugin/index.js"
         }
     },
-    "main": "./dist/cjs/index.js",
-    "module": "./dist/esm/index.js",
-    "files": [
-        "dist/*",
-        "mock/index.js"
-    ],
     "scripts": {
         "build": "pnpm generate && node ../../scripts/build",
         "clean": "rimraf dist",
         "generate": "node ./bin/index.js",
-        "lintfix": "../../node_modules/.bin/prettier --write \"**/*.{scss,ts,tsx,js,jsx,json,md,yml,html}\" && oxlint --fix",
+        "lintfix": "oxfmt --write && oxlint --fix",
         "prepublishOnly": "publint",
         "test": "pnpm generate && vitest run",
         "test:watch": "vitest"
