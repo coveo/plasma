@@ -46,21 +46,17 @@
         "oxlint": "1.66.0",
         "oxlint-tsgolint": "0.23.0",
         "postcss": "8.5.14",
-        "sort-package-json": "3.6.1",
         "stylelint": "17.9.1",
         "stylelint-config-standard-scss": "17.0.0",
         "turbo": "2.9.6"
     },
     "lint-staged": {
-        "**/package.json": [
-            "sort-package-json"
-        ],
         "**/*.{js,jsx,ts,tsx,mjs,json,md,yml,html}": [
-            "oxfmt --write"
+            "oxfmt --write --no-error-on-unmatched-pattern"
         ],
         "**/*.{scss,css}": [
             "stylelint --fix",
-            "oxfmt --write"
+            "oxfmt --write --no-error-on-unmatched-pattern"
         ]
     },
     "commitlint": {
