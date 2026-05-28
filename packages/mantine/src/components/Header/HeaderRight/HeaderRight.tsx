@@ -24,7 +24,7 @@ const defaultProps = {
 
 export const HeaderRight = factory<HeaderRightFactory>((_props, ref) => {
     const props = useProps('HeaderRight', defaultProps, _props);
-    const {gap, className, classNames, styles, style, children, vars, ...others} = props;
+    const {gap, className, classNames, styles, style, children, vars: _vars, ...others} = props;
     const ctx = useHeaderContext();
 
     return (

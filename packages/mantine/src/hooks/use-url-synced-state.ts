@@ -32,7 +32,7 @@ const extractParts = (href: string) =>
  * @param parts: The url parts, as returned by `extractParts`.
  * @returns The index of the search parameter to use (1 or 3).
  */
-const searchIndex = (parts: UrlParts): 1 | 3 => (/^#\//.test(parts[2]) ? 3 : 1);
+const searchIndex = (parts: UrlParts): 1 | 3 => (parts[2].startsWith('#/') ? 3 : 1);
 
 /**
  * Read the **current** search params from `window.location`, with support for detecting React's HashRouter.

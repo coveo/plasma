@@ -49,8 +49,19 @@ const defaultProps = {} satisfies Partial<TablePredicateProps>;
 
 export const TablePredicate: FunctionComponent<TablePredicateProps> = factory<TablePredicateFactory>((props, ref) => {
     const {store, getStyles} = useTableContext();
-    const {id, data, label, classNames, className, styles, style, renderOption, comboboxProps, vars, ...others} =
-        useProps('PlasmaTablePredicate', defaultProps, props);
+    const {
+        id,
+        data,
+        label,
+        classNames,
+        className,
+        styles,
+        style,
+        renderOption,
+        comboboxProps,
+        vars: _vars,
+        ...others
+    } = useProps('PlasmaTablePredicate', defaultProps, props);
 
     const handleChange = (newValue: string | null) => {
         store.setPredicates((prev) => ({...prev, [id]: newValue ?? ''}));

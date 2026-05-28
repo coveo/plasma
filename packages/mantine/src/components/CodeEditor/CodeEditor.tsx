@@ -33,7 +33,7 @@ interface CodeEditorProps
      *
      * @default 'plaintext'
      */
-    language?: 'plaintext' | 'json' | 'markdown' | 'python' | 'xml' | (string & unknown);
+    language?: 'plaintext' | 'json' | 'markdown' | 'python' | 'xml' | (string & unknown); // oxlint-disable-line no-redundant-type-constituents
     /** Default value for uncontrolled input */
     defaultValue?: string;
     /** Value for controlled input */
@@ -167,7 +167,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
 
     useEffect(() => {
         if (monacoLoader === 'local') {
-            loadLocalMonaco();
+            void loadLocalMonaco();
         } else {
             setLoaded(true);
         }
