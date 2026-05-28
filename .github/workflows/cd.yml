@@ -36,9 +36,7 @@ jobs:
             - name: Setup
               uses: ./.github/actions/setup
             - name: Lint
-              uses: ./.github/actions/lint
-              with:
-                  WORKFLOW: 'cd'
+              run: pnpm oxlint
             - name: Compute base URL
               id: base-url
               uses: ./.github/actions/compute-base-url

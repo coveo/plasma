@@ -9,6 +9,7 @@
         "clean": "pnpm --recursive --parallel clean",
         "commit-cli": "cz",
         "preinstall": "npx only-allow pnpm",
+        "lint": "oxlint",
         "lintfix": "pnpm --recursive --parallel lintfix",
         "pnpm:devPreinstall": "pnpm turbo:login",
         "precommit": "lint-staged",

@@ -54,9 +54,12 @@ jobs:
               with:
                   fetch-depth: 0
             - uses: ./.github/actions/setup
-            - uses: ./.github/actions/lint
-              with:
-                  WORKFLOW: 'ci'
+            - uses: ./.github/actions/build
+            - name: Lint
+              run: pnpm lint
+              env:
+                  # Without this, oxlint fails with a cryptic error (Error: Invalid tsconfig)
+                  OXLINT_TSGOLINT_DANGEROUSLY_SUPPRESS_PROGRAM_DIAGNOSTICS: true
     test:
         name: Test
         runs-on: ubuntu-latest
