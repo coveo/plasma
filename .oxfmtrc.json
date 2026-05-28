@@ -9,7 +9,6 @@
         "**/node_modules",
         "**/dist",
         "CHANGELOG.md",
-        "packages/components-props-analyzer/src/components",
         "packages/react-icons/src/generated"
     ]
 }
