@@ -1,3 +1,9 @@
+## <small>59.5.2 (2026-05-28)</small>
+
+* ci(cd): patch semantic-monorepo-tools to publish using npm (#4456) 850f943, closes #4456
+
+
+
 ## <small>59.5.1 (2026-05-28)</small>
 
 * ci(cd): patch semantic-monorepo-tools to add --access public on publish (#4455) 2db2045, closes #4455
