@@ -9,7 +9,7 @@ overrides:
   nwsapi: 2.2.23
 
 patchedDependencies:
-  '@coveo/semantic-monorepo-tools@2.7.1': 6f04a4fce1efac7e2a5e7bc51e8e2f75cea0efa0e8cc97872be1b79d4fb2c498
+  '@coveo/semantic-monorepo-tools@2.7.1': 9ad8cdc7e13dfef2abe41d32e7fd891b27addc39fefed41ba5c4c2bd9646d2d4
 
 importers:
 
@@ -23,7 +23,7 @@ importers:
         version: 20.5.0
       '@coveo/semantic-monorepo-tools':
         specifier: 2.7.1
-        version: 2.7.1(patch_hash=6f04a4fce1efac7e2a5e7bc51e8e2f75cea0efa0e8cc97872be1b79d4fb2c498)
+        version: 2.7.1(patch_hash=9ad8cdc7e13dfef2abe41d32e7fd891b27addc39fefed41ba5c4c2bd9646d2d4)
       '@types/node':
         specifier: 24.12.2
         version: 24.12.2
@@ -7065,7 +7065,7 @@ snapshots:
     optionalDependencies:
       conventional-commits-parser: 6.4.0
 
-  '@coveo/semantic-monorepo-tools@2.7.1(patch_hash=6f04a4fce1efac7e2a5e7bc51e8e2f75cea0efa0e8cc97872be1b79d4fb2c498)':
+  '@coveo/semantic-monorepo-tools@2.7.1(patch_hash=9ad8cdc7e13dfef2abe41d32e7fd891b27addc39fefed41ba5c4c2bd9646d2d4)':
     dependencies:
       conventional-changelog-writer: 7.0.1
       conventional-commits-parser: 5.0.0
