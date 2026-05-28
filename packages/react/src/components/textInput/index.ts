@@ -1,2 +1,2 @@
-export * from './TextInput';
-export * from './useTextInput';
+export * from './TextInput.js';
+export * from './useTextInput.js';

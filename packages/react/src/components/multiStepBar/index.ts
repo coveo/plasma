@@ -1,1 +1,1 @@
-export * from './MultiStepBar';
+export * from './MultiStepBar.js';

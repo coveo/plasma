@@ -1,1 +1,1 @@
-export * from './ItemBox';
+export * from './ItemBox.js';

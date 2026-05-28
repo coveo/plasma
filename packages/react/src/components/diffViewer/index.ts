@@ -1,1 +1,1 @@
-export * from './DiffViewer';
+export * from './DiffViewer.js';

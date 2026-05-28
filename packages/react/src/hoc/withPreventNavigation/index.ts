@@ -1,2 +1,2 @@
-export * from './modalWithPreventNavigation';
-export * from './PreventNavigationPrompt';
+export * from './modalWithPreventNavigation.js';
+export * from './PreventNavigationPrompt.js';

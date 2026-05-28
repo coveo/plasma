@@ -1,1 +1,1 @@
-export * from './PartialStringMatch';
+export * from './PartialStringMatch.js';

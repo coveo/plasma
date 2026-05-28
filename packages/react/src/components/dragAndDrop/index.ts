@@ -1,3 +1,3 @@
-export * from './DnDContainer';
-export * from './DnDUtils';
-export * from './Sortable';
+export * from './DnDContainer.js';
+export * from './DnDUtils.js';
+export * from './Sortable.js';

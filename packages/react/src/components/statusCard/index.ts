@@ -1,1 +1,1 @@
-export * from './StatusCard';
+export * from './StatusCard.js';

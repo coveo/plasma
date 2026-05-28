@@ -1,1 +1,1 @@
-export * from './BorderedLine';
+export * from './BorderedLine.js';

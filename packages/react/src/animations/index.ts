@@ -1,1 +1,1 @@
-export * from './SlideY';
+export * from './SlideY.js';

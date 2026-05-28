@@ -1,1 +1,1 @@
-export * from './IconCard';
+export * from './IconCard.js';

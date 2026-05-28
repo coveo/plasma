@@ -1,3 +1,3 @@
-export * from './BrowserPreview';
-export * from './BrowserPreviewEmpty';
-export * from './BrowserPreviewError';
+export * from './BrowserPreview.js';
+export * from './BrowserPreviewEmpty.js';
+export * from './BrowserPreviewError.js';

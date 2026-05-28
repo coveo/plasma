@@ -1,1 +1,1 @@
-export * from './withServerSideProcessing';
+export * from './withServerSideProcessing.js';

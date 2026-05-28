@@ -1,1 +1,1 @@
-export * from './StickyFooter';
+export * from './StickyFooter.js';

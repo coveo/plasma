@@ -1,3 +1,3 @@
-export * from './MenuActions';
-export * from './MenuConnected';
-export * from './MenuReducers';
+export * from './MenuActions.js';
+export * from './MenuConnected.js';
+export * from './MenuReducers.js';

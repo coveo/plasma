@@ -1,1 +1,1 @@
-export * from './Loadable';
+export * from './Loadable.js';

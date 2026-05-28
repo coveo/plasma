@@ -1,1 +1,1 @@
-export * from './BannerContainer';
+export * from './BannerContainer.js';

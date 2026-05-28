@@ -1,3 +1,3 @@
-export * from './AutocompleteActions';
-export * from './AutocompleteConnected';
-export * from './AutocompleteReducers';
+export * from './AutocompleteActions.js';
+export * from './AutocompleteConnected.js';
+export * from './AutocompleteReducers.js';

@@ -1,1 +1,1 @@
-export * from './SplitLayout';
+export * from './SplitLayout.js';

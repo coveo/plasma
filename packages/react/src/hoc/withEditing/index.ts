@@ -1,1 +1,1 @@
-export * from './withEditing';
+export * from './withEditing.js';

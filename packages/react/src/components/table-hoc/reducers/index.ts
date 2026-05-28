@@ -1,3 +1,3 @@
-export * from './TableRowReducers';
-export * from './TableWithPaginationReducers';
-export * from './TableWithSortReducers';
+export * from './TableRowReducers.js';
+export * from './TableWithPaginationReducers.js';
+export * from './TableWithSortReducers.js';

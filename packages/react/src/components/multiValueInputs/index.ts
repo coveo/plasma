@@ -1,2 +1,2 @@
-export * from './MultiValuesInput';
-export * from './MultiValuesInputSelectors';
+export * from './MultiValuesInput.js';
+export * from './MultiValuesInputSelectors.js';

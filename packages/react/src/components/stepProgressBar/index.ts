@@ -1,1 +1,1 @@
-export * from './StepProgressBar';
+export * from './StepProgressBar.js';

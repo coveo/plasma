@@ -1,1 +1,1 @@
-export * from './ModalPrompt';
+export * from './ModalPrompt.js';
