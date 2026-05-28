@@ -60,6 +60,8 @@ jobs:
               env:
                   # Without this, oxlint fails with a cryptic error (Error: Invalid tsconfig)
                   OXLINT_TSGOLINT_DANGEROUSLY_SUPPRESS_PROGRAM_DIAGNOSTICS: true
+            - name: Check format
+              run: pnpm fmt:check
     test:
         name: Test
         runs-on: ubuntu-latest

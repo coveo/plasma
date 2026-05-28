@@ -3,21 +3,23 @@
     "version": "59.4.3",
     "description": "A Plasma flavoured Mantine theme",
     "keywords": [
-        "plasma",
-        "mantine",
         "components",
-        "coveo"
+        "coveo",
+        "mantine",
+        "plasma"
     ],
     "bugs": {
         "url": "https://github.com/coveo/plasma/issues"
     },
+    "license": "Apache-2.0",
+    "author": "Coveo",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/coveo/plasma.git",
         "directory": "packages/mantine"
     },
-    "license": "Apache-2.0",
-    "author": "Coveo",
+    "main": "./dist/cjs/index.js",
+    "module": "./dist/esm/index.js",
     "exports": {
         ".": {
             "require": "./dist/cjs/index.js",
@@ -64,13 +66,11 @@
             "import": "./dist/esm/context.js"
         }
     },
-    "main": "./dist/cjs/index.js",
-    "module": "./dist/esm/index.js",
     "scripts": {
         "build": "node ../../scripts/build",
         "clean": "rimraf dist",
         "generate:components:exports": "node --experimental-strip-types scripts/GenerateMantineComponentExports.mts",
-        "lintfix": "../../node_modules/.bin/prettier --write \"**/*.{scss,ts,tsx,js,jsx,json,md,yml,html}\" && oxlint --fix",
+        "lintfix": "oxfmt --write && oxlint --fix",
         "prepublishOnly": "publint",
         "start": "node ../../scripts/start",
         "test": "cross-env TZ=UTC vitest run",

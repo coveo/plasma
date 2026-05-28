@@ -5,7 +5,7 @@
     "type": "module",
     "scripts": {
         "figma:publish": "figma connect publish",
-        "lintfix": "../../node_modules/.bin/prettier --write \"**/*.{scss,ts,tsx,js,jsx,json,md,yml,html}\" && oxlint --fix",
+        "lintfix": "oxfmt --write && oxlint --fix",
         "type-check": "tsgo --noEmit"
     },
     "dependencies": {
