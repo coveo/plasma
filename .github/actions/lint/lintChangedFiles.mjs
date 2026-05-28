@@ -4,7 +4,7 @@ import {ESLint} from 'eslint';
 const changedFiles = process.argv.slice(2);
 const changedFilesWithoutDuplicates = [...new Set(changedFiles)];
 
-const ALLOWED_EXTENSIONS = ['js', 'ts', 'jsx', 'tsx'];
+const ALLOWED_EXTENSIONS = ['js', '.mjs', 'ts', '.mts', 'jsx', 'tsx'];
 
 (async function main() {
     const eslint = new ESLint();
@@ -19,19 +19,21 @@ const ALLOWED_EXTENSIONS = ['js', 'ts', 'jsx', 'tsx'];
 
     console.log('\x1b[32mFiltered list of files that will be linted', filteredArray);
 
-    const results = await eslint.lintFiles(filteredArray);
+    if (filteredArray.length > 0) {
+        const results = await eslint.lintFiles(filteredArray);
 
-    const formatter = await eslint.loadFormatter('stylish');
-    const resultText = formatter.format(results);
+        const formatter = await eslint.loadFormatter('stylish');
+        const resultText = formatter.format(results);
 
-    console.log('\x1b[32mLint results:', resultText || '\x1b[32mNo error or warning were found');
+        console.log('\x1b[32mLint results:', resultText || '\x1b[32mNo error or warning were found');
 
-    // Force exit 1 if error are found to make GitHub runner fail the step
-    results.some((result) => {
-        if (result.errorCount > 0) {
-            process.exit(1);
-        }
-    });
+        // Force exit 1 if error are found to make GitHub runner fail the step
+        results.some((result) => {
+            if (result.errorCount > 0) {
+                process.exit(1);
+            }
+        });
+    }
 })().catch((error) => {
     process.exitCode = 1;
     console.error(error);

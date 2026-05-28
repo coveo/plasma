@@ -6,6 +6,7 @@ allowBuilds:
   core-js-pure: false
   esbuild: false
   unrs-resolver: false
+  '@coveo/semantic-monorepo-tools': true
 minimumReleaseAge: 10080 # 7 days in minutes
 minimumReleaseAgeExclude:
   - '@mantine/*'
