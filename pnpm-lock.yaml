@@ -8,6 +8,9 @@ overrides:
   '@babel/traverse': ^7.23.2
   nwsapi: 2.2.23
 
+patchedDependencies:
+  '@coveo/semantic-monorepo-tools@2.7.1': 6f04a4fce1efac7e2a5e7bc51e8e2f75cea0efa0e8cc97872be1b79d4fb2c498
+
 importers:
 
   .:
@@ -19,8 +22,8 @@ importers:
         specifier: 20.5.0
         version: 20.5.0
       '@coveo/semantic-monorepo-tools':
-        specifier: github:coveo/semantic-monorepo-tools#main
-        version: https://codeload.github.com/coveo/semantic-monorepo-tools/tar.gz/8905e268e4da91a687c1bd5de8aa0c07cb352646
+        specifier: 2.7.1
+        version: 2.7.1(patch_hash=6f04a4fce1efac7e2a5e7bc51e8e2f75cea0efa0e8cc97872be1b79d4fb2c498)
       '@types/node':
         specifier: 24.12.2
         version: 24.12.2
@@ -957,9 +960,8 @@ packages:
       conventional-commits-parser:
         optional: true
 
-  '@coveo/semantic-monorepo-tools@https://codeload.github.com/coveo/semantic-monorepo-tools/tar.gz/8905e268e4da91a687c1bd5de8aa0c07cb352646':
-    resolution: {gitHosted: true, integrity: sha512-5NRjUbwOKBM3M68nUbLr7nKdeVhln96BA+uxJ3vjSyQquJhkGMSZkS5EKKeXRYBPbdUsLlWlx2mYdz3LRSraWw==, tarball: https://codeload.github.com/coveo/semantic-monorepo-tools/tar.gz/8905e268e4da91a687c1bd5de8aa0c07cb352646}
-    version: 2.7.1
+  '@coveo/semantic-monorepo-tools@2.7.1':
+    resolution: {integrity: sha512-yPUdpPgoZWxX/lyhQWaskwGXS4ZFLsOK4QVUyD+1BtOk/827vqw93Q7UD4aumuYMVKTDnGjjHOEmHl07nzUvYw==}
 
   '@cspotcode/source-map-support@0.8.1':
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
@@ -7063,7 +7065,7 @@ snapshots:
     optionalDependencies:
       conventional-commits-parser: 6.4.0
 
-  '@coveo/semantic-monorepo-tools@https://codeload.github.com/coveo/semantic-monorepo-tools/tar.gz/8905e268e4da91a687c1bd5de8aa0c07cb352646':
+  '@coveo/semantic-monorepo-tools@2.7.1(patch_hash=6f04a4fce1efac7e2a5e7bc51e8e2f75cea0efa0e8cc97872be1b79d4fb2c498)':
     dependencies:
       conventional-changelog-writer: 7.0.1
       conventional-commits-parser: 5.0.0
