@@ -24,6 +24,7 @@
         "dist"
     ],
     "type": "module",
+    "sideEffects": [],
     "scripts": {
         "build": "pnpm clean && node src/build.ts",
         "clean": "rimraf dist",

@@ -18,61 +18,54 @@
         "url": "git+https://github.com/coveo/plasma.git",
         "directory": "packages/mantine"
     },
-    "main": "./dist/cjs/index.js",
-    "module": "./dist/esm/index.js",
+    "sideEffects": [
+        "./dist/theme/Plasmantine.js"
+    ],
     "exports": {
         ".": {
-            "require": "./dist/cjs/index.js",
-            "import": "./dist/esm/index.js"
+            "import": "./dist/index.js"
         },
         "./plasmantine": {
-            "types": "./dist/esm/theme.d.ts",
-            "require": "./dist/cjs/theme.js",
-            "import": "./dist/esm/theme.js"
+            "types": "./dist/theme.d.ts",
+            "import": "./dist/theme.js"
         },
         "./core": {
-            "types": "./dist/esm/core.d.ts",
-            "require": "./dist/cjs/core.js",
-            "import": "./dist/esm/core.js"
+            "types": "./dist/core.d.ts",
+            "import": "./dist/core.js"
         },
         "./hooks": {
-            "types": "./dist/esm/hooks.d.ts",
-            "require": "./dist/cjs/hooks.js",
-            "import": "./dist/esm/hooks.js"
+            "types": "./dist/hooks.d.ts",
+            "import": "./dist/hooks.js"
         },
         "./form": {
-            "types": "./dist/esm/form.d.ts",
-            "require": "./dist/cjs/form.js",
-            "import": "./dist/esm/form.js"
+            "types": "./dist/form.d.ts",
+            "import": "./dist/form.js"
         },
         "./notifications": {
-            "types": "./dist/esm/notifications.d.ts",
-            "require": "./dist/cjs/notifications.js",
-            "import": "./dist/esm/notifications.js"
+            "types": "./dist/notifications.d.ts",
+            "import": "./dist/notifications.js"
         },
         "./components/*": {
-            "types": "./dist/esm/components/*/*.d.ts",
-            "require": "./dist/cjs/components/*/*.js",
-            "import": "./dist/esm/components/*/*.js"
+            "types": "./dist/components/*/*.d.ts",
+            "import": "./dist/components/*/*.js"
         },
         "./factory": {
-            "types": "./dist/esm/factory.d.ts",
-            "require": "./dist/cjs/factory.js",
-            "import": "./dist/esm/factory.js"
+            "types": "./dist/factory.d.ts",
+            "import": "./dist/factory.js"
         },
         "./context": {
-            "types": "./dist/esm/context.d.ts",
-            "require": "./dist/cjs/context.js",
-            "import": "./dist/esm/context.js"
-        }
+            "types": "./dist/context.d.ts",
+            "import": "./dist/context.js"
+        },
+        "./package.json": "./package.json"
     },
     "scripts": {
-        "build": "node ../../scripts/build",
+        "build": "node ../../scripts/build.js",
         "clean": "rimraf dist",
         "generate:components:exports": "node --experimental-strip-types scripts/GenerateMantineComponentExports.mts",
         "lintfix": "oxfmt --write && oxlint --fix",
         "prepublishOnly": "publint",
-        "start": "node ../../scripts/start",
+        "start": "node ../../scripts/start.js",
         "test": "cross-env TZ=UTC vitest run",
         "test:watch": "cross-env TZ=UTC vitest"
     },

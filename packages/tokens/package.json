@@ -15,20 +15,20 @@
         "scss",
         "css"
     ],
-    "main": "./dist/cjs/index.js",
-    "module": "./dist/esm/index.js",
+    "sideEffects": [],
     "exports": {
         ".": {
-            "require": "./dist/cjs/index.js",
-            "import": "./dist/esm/index.js"
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js"
         },
         "./scss": "./scss/index.scss",
         "./scss/*": "./scss/*",
         "./css/*": "./css/*",
-        "./icons/*": "./icons/*"
+        "./icons/*": "./icons/*",
+        "./package.json": "./package.json"
     },
     "scripts": {
-        "build": "rimraf dist && node ../../scripts/build",
+        "build": "rimraf dist && node ../../scripts/build.js",
         "lintfix": "oxfmt --write && oxlint --fix",
         "prepublishOnly": "publint",
         "tokens:build": "ts-node ./bin/build.ts --project ./tsconfig.bin.json && pnpm tokens:lint",

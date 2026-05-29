@@ -2,6 +2,7 @@
     "name": "root",
     "version": "59.4.3",
     "private": true,
+    "type": "module",
     "scripts": {
         "build": "turbo run build",
         "changeset": "changeset",
@@ -24,7 +25,7 @@
         "setup": "pnpm install",
         "start": "turbo run build --filter=!storybook && pnpm --recursive --parallel start",
         "test": "turbo run test --concurrency=1",
-        "turbo:login": "node scripts/turboLogin.mjs"
+        "turbo:login": "node scripts/turboLogin.js"
     },
     "devDependencies": {
         "@changesets/changelog-github": "0.5.1",
