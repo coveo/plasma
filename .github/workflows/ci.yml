@@ -31,7 +31,7 @@ jobs:
               run: |
                   {
                     echo "message<<EOF"
-                    pnpm exec node scripts/releasePreview.mjs | tee -a "$GITHUB_STEP_SUMMARY"
+                    pnpm exec node scripts/releasePreview.js | tee -a "$GITHUB_STEP_SUMMARY"
                     echo "EOF"
                   } >> "$GITHUB_OUTPUT"
             - name: Comment release preview on the PR

@@ -1,4 +1,4 @@
-module.exports = async ({github, context, message, avoidRepostsWith, updateExisting = false}) => {
+export default async ({github, context, message, avoidRepostsWith, updateExisting = false}) => {
     let comment;
     const normalizedMessage = message.replace(/\\n/g, '\n');
 
