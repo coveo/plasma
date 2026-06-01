@@ -24,7 +24,7 @@ type HeadingRowData = {
     fontWeight: string;
 };
 
-const headings: Array<HeadingRowData> = [
+const headings: HeadingRowData[] = [
     {
         name: 'h1',
         fontSize: '--mantine-h1-font-size',
@@ -127,7 +127,7 @@ type TextSizeRowData = {
     fontWeight: string;
 };
 
-const textSizes: Array<TextSizeRowData> = [
+const textSizes: TextSizeRowData[] = [
     {
         name: 'xxs',
         fontSize: '--mantine-font-size-xxs',
