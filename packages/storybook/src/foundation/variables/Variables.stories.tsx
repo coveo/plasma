@@ -33,7 +33,7 @@ const removeScale = (input: string): string => {
 };
 
 const getTransformedScaledValue = (value: unknown) => {
-    if (typeof value !== 'string' || !value.includes('var(--mantine-scale)')) {
+    if (typeof value !== 'string' || !value.includes('--mantine-scale')) {
         return value as string;
     }
     return removeScale(value);

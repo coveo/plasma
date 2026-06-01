@@ -25,18 +25,18 @@ type SpacingRowData = {
 };
 
 const spacings: SpacingRowData[] = [
-    {name: 'xxs', value: '4px', variable: 'var(--mantine-spacing-xxs)'},
-    {name: 'xs', value: '8px', variable: 'var(--mantine-spacing-xs)'},
-    {name: 'sm', value: '16px', variable: 'var(--mantine-spacing-sm)'},
-    {name: 'md', value: '24px', variable: 'var(--mantine-spacing-md)'},
-    {name: 'lg', value: '32px', variable: 'var(--mantine-spacing-lg)'},
-    {name: 'xl', value: '40px', variable: 'var(--mantine-spacing-xl)'},
+    {name: 'xxs', value: '4px', variable: '--mantine-spacing-xxs'},
+    {name: 'xs', value: '8px', variable: '--mantine-spacing-xs'},
+    {name: 'sm', value: '16px', variable: '--mantine-spacing-sm'},
+    {name: 'md', value: '24px', variable: '--mantine-spacing-md'},
+    {name: 'lg', value: '32px', variable: '--mantine-spacing-lg'},
+    {name: 'xl', value: '40px', variable: '--mantine-spacing-xl'},
 ];
 
 const columnHelper = createColumnHelper<SpacingRowData>();
 const columns = [
     columnHelper.accessor('name', {
-        header: 'name',
+        header: 'Name',
         cell: ({getValue}) => (
             <Text fw={600} ff="monospace" size="sm">
                 {getValue()}
@@ -44,17 +44,8 @@ const columns = [
         ),
         enableSorting: false,
     }),
-    columnHelper.accessor('value', {
-        header: 'value',
-        cell: ({getValue}) => (
-            <Text size="sm" c="dimmed" ff="monospace">
-                {getValue()}
-            </Text>
-        ),
-        enableSorting: false,
-    }),
     columnHelper.accessor('variable', {
-        header: 'variable',
+        header: 'Variable',
         cell: ({getValue}) => (
             <Text size="xs" c="dimmed" ff="monospace">
                 {getValue()}
@@ -68,11 +59,11 @@ const columns = [
         cell: ({row}) => (
             <Box
                 style={{
-                    width: row.original.value,
-                    height: 24,
+                    width: `var(${row.original.variable})`,
+                    height: `var(${row.original.variable})`,
+                    width: `var(${row.original.variable})`,
                     backgroundColor: 'var(--mantine-color-blue-6)',
-                    borderRadius: 4,
-                    minWidth: 8,
+                    minWidth: 4,
                 }}
             />
         ),
@@ -91,7 +82,7 @@ export const Spacings: Story = {
         return (
             <FoundationWrapper
                 title="Spacings"
-                description="The Plasma theme defines the following spacing values. Each spacing maps to a CSS variable var(--mantine-spacing-{size})."
+                description="The Plasma theme defines the following spacing values. Each spacing maps to a CSS variable --mantine-spacing-{size}."
             >
                 <Table<SpacingRowData>
                     store={table}

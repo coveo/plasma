@@ -29,34 +29,34 @@ const shadows: ShadowRowData[] = [
     {
         name: 'xs',
         value: '0px 1px 2px 0px rgba(0, 0, 0, 0.10), 0px 1px 3px 0px rgba(0, 0, 0, 0.05), 0px -0.5px 1px 0px rgba(0, 0, 0, 0.02)',
-        variable: 'var(--mantine-shadow-xs)',
+        variable: '--mantine-shadow-xs',
     },
     {
         name: 'sm',
         value: '0px 7px 7px -5px rgba(0, 0, 0, 0.04), 0px 10px 15px -5px rgba(0, 0, 0, 0.10), 0px 1px 3px 0px rgba(0, 0, 0, 0.05)',
-        variable: 'var(--mantine-shadow-sm)',
+        variable: '--mantine-shadow-sm',
     },
     {
         name: 'md',
         value: '0px 10px 10px -5px rgba(0, 0, 0, 0.04), 0px 20px 25px -5px rgba(0, 0, 0, 0.10), 0px 1px 3px 0px rgba(0, 0, 0, 0.05)',
-        variable: 'var(--mantine-shadow-md)',
+        variable: '--mantine-shadow-md',
     },
     {
         name: 'lg',
         value: '0px 12px 12px -7px rgba(0, 0, 0, 0.04), 0px 28px 23px -7px rgba(0, 0, 0, 0.10), 0px 1px 3px 0px rgba(0, 0, 0, 0.05)',
-        variable: 'var(--mantine-shadow-lg)',
+        variable: '--mantine-shadow-lg',
     },
     {
         name: 'xl',
         value: '0px 17px 17px -7px rgba(0, 0, 0, 0.04), 0px 36px 28px -7px rgba(0, 0, 0, 0.10), 0px 1px 3px 0px rgba(0, 0, 0, 0.05)',
-        variable: 'var(--mantine-shadow-xl)',
+        variable: '--mantine-shadow-xl',
     },
 ];
 
 const columnHelper = createColumnHelper<ShadowRowData>();
 const columns = [
     columnHelper.accessor('name', {
-        header: 'name',
+        header: 'Name',
         cell: ({getValue}) => (
             <Text fw={600} ff="monospace" size="sm">
                 {getValue()}
@@ -64,17 +64,8 @@ const columns = [
         ),
         enableSorting: false,
     }),
-    columnHelper.accessor('value', {
-        header: 'value',
-        cell: ({getValue}) => (
-            <Text size="xs" c="dimmed" ff="monospace" style={{maxWidth: 420}}>
-                {getValue()}
-            </Text>
-        ),
-        enableSorting: false,
-    }),
     columnHelper.accessor('variable', {
-        header: 'variable',
+        header: 'Variable',
         cell: ({getValue}) => (
             <Text size="xs" c="dimmed" ff="monospace">
                 {getValue()}
@@ -112,7 +103,7 @@ export const Shadows: Story = {
         return (
             <FoundationWrapper
                 title="Shadows"
-                description="The Plasma theme defines the following shadow values. Each shadow maps to a CSS variable var(--mantine-shadow-{size})."
+                description="The Plasma theme defines the following shadow values. Each shadow maps to a CSS variable --mantine-shadow-{size}."
             >
                 <Table<ShadowRowData>
                     store={table}

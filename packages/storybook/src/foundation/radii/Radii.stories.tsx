@@ -25,19 +25,19 @@ type RadiusRowData = {
 };
 
 const radiiValues: RadiusRowData[] = [
-    {name: 'none', value: '0px', variable: 'var(--mantine-radius-none)'},
-    {name: 'xs', value: '2px', variable: 'var(--mantine-radius-xs)'},
-    {name: 'sm', value: '4px', variable: 'var(--mantine-radius-sm)'},
-    {name: 'md', value: '8px', variable: 'var(--mantine-radius-md)'},
-    {name: 'lg', value: '16px', variable: 'var(--mantine-radius-lg)'},
-    {name: 'xl', value: '24px', variable: 'var(--mantine-radius-xl)'},
-    {name: 'xxl', value: '32px', variable: 'var(--mantine-radius-xxl)'},
+    {name: 'none', value: '0px', variable: '--mantine-radius-none'},
+    {name: 'xs', value: '2px', variable: '--mantine-radius-xs'},
+    {name: 'sm', value: '4px', variable: '--mantine-radius-sm'},
+    {name: 'md', value: '8px', variable: '--mantine-radius-md'},
+    {name: 'lg', value: '16px', variable: '--mantine-radius-lg'},
+    {name: 'xl', value: '24px', variable: '--mantine-radius-xl'},
+    {name: 'xxl', value: '32px', variable: '--mantine-radius-xxl'},
 ];
 
 const columnHelper = createColumnHelper<RadiusRowData>();
 const columns = [
     columnHelper.accessor('name', {
-        header: 'name',
+        header: 'Name',
         cell: ({getValue}) => (
             <Text fw={600} ff="monospace" size="sm">
                 {getValue()}
@@ -45,17 +45,8 @@ const columns = [
         ),
         enableSorting: false,
     }),
-    columnHelper.accessor('value', {
-        header: 'value',
-        cell: ({getValue}) => (
-            <Text size="sm" c="dimmed" ff="monospace">
-                {getValue()}
-            </Text>
-        ),
-        enableSorting: false,
-    }),
     columnHelper.accessor('variable', {
-        header: 'variable',
+        header: 'Variable',
         cell: ({getValue}) => (
             <Text size="xs" c="dimmed" ff="monospace">
                 {getValue()}
@@ -91,7 +82,7 @@ export const Radii: Story = {
         return (
             <FoundationWrapper
                 title="Radii"
-                description="The Plasma theme defines the following border radius values. Each radius maps to a CSS variable var(--mantine-radius-{size})."
+                description="The Plasma theme defines the following border radius values. Each radius maps to a CSS variable --mantine-radius-{size}."
             >
                 <Table<RadiusRowData>
                     store={table}

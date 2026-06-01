@@ -105,7 +105,7 @@ const ColorsGroup = ({group}: {group: ColorName}) => {
                                     <span className={classes.activeValue}>{active.color}</span>
                                 </div>
                             </Group>
-                            <Text>{`var(--mantine-color-${group}-${active.index})`}</Text>
+                            <Text>{`--mantine-color-${group}-${active.index}`}</Text>
                         </Stack>
                     </UnstyledButton>
 
