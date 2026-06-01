@@ -1,3 +1,9 @@
+## <small>59.5.4 (2026-06-01)</small>
+
+* ci(cd): revert patch semantic-monorepo-tools to publish using npm (#4461) 8722765, closes #4461
+
+
+
 ## <small>59.5.2 (2026-05-28)</small>
 
 * ci(cd): patch semantic-monorepo-tools to publish using npm (#4456) 850f943, closes #4456
