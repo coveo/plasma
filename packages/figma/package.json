@@ -3,6 +3,7 @@
     "version": "59.4.3",
     "private": true,
     "type": "module",
+    "sideEffects": [],
     "scripts": {
         "figma:publish": "figma connect publish",
         "lintfix": "oxfmt --write && oxlint --fix",

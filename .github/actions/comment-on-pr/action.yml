@@ -20,7 +20,7 @@ runs:
               UPDATE_EXISTING: ${{ inputs.updateExisting }}
           with:
               script: |
-                  const addComment = require('./.github/actions/comment-on-pr/index.js');
+                  const {default: addComment} = await import(`${process.env.GITHUB_WORKSPACE}/.github/actions/comment-on-pr/index.js`);
                   await addComment({
                       github,
                       context,

@@ -1,5 +1,5 @@
 import {render, screen} from '@test-utils';
-import {EditableDateTimeRangePicker} from '../EditableDateTimeRangePicker';
+import {EditableDateTimeRangePicker} from '../EditableDateTimeRangePicker.js';
 
 describe('EditableDateTimeRangePicker', () => {
     it('renders start and end date in correct format', () => {
