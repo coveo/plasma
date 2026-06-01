@@ -1,11 +1,11 @@
-import {fileURLToPath} from 'node:url';
-import {dirname} from 'node:path';
 import type {StorybookConfig} from '@storybook/react-vite';
+import {dirname} from 'node:path';
+import {fileURLToPath} from 'node:url';
 
 const getAbsolutePath = (value: string): any => dirname(fileURLToPath(import.meta.resolve(`${value}/package.json`)));
 
 const config: StorybookConfig = {
-    stories: ['../src/**/*.stories.@(ts|tsx)'],
+    stories: ['../src/**/*.mdx', '../src/**/*.stories.@(ts|tsx)'],
     framework: {
         name: getAbsolutePath('@storybook/react-vite'),
         options: {},
