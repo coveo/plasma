@@ -2,28 +2,32 @@ import {
     Alert,
     Anchor,
     BlankSlate,
+    Box,
     Button,
     Code,
     type ColumnDef,
     createColumnHelper,
+    Divider,
     FilterFn,
     getFilteredRowModel,
     getPaginationRowModel,
     Header,
-    Stack,
     Table,
     Text,
     Title,
     useTable,
     useTableContext,
 } from '@coveord/plasma-mantine';
-import * as PlasmaReactIcons from '@coveord/plasma-react-icons';
-import {icons as tablerIcons, iconsList as tablerIconsListModule} from '@coveord/plasma-react-icons';
+import * as PlasmaIconList from '@coveord/plasma-react-icons';
+import {
+    icons as tablerIcons,
+    iconsList as tablerIconsListModule,
+    type PlasmaIcon,
+    plasmaIconsList,
+} from '@coveord/plasma-react-icons';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import {useMemo} from 'react';
 import {FoundationWrapper} from '../FoundationWrapper.js';
-
-const {plasmaIconsList, ...Icons} = PlasmaReactIcons;
 
 const tablerIconsList: string[] = Array.isArray(tablerIconsListModule)
     ? tablerIconsListModule
@@ -38,7 +42,7 @@ const useIcon = (variants: string[]) => {
     const table = useTableContext();
     const currentVariant = table.store.state.predicates.variant;
     const size = currentVariant?.replace('px', '') || '24';
-    const variant = variants.find((v: string) => v.toLowerCase().indexOf(size + 'px') > 0) ?? variants[0];
+    const variant = variants.find((v: string) => v.toLowerCase().includes(`${size}px`)) ?? variants[0];
     return {size, variant};
 };
 
@@ -49,9 +53,7 @@ const PlasmaCodeCell = ({variants}: {variants: string[]}) => {
 
 const PlasmaIconCell = ({variants}: {variants: string[]}) => {
     const {size, variant} = useIcon(variants);
-    const Comp = Icons[variant as keyof typeof Icons] as React.ForwardRefExoticComponent<
-        Omit<React.SVGProps<SVGSVGElement>, 'ref'> & React.RefAttributes<SVGSVGElement>
-    >;
+    const Comp = variant in PlasmaIconList ? ((PlasmaIconList as any)[variant] as PlasmaIcon) : Box;
     return Comp ? <Comp height={size} /> : null;
 };
 
@@ -149,7 +151,7 @@ const tablerColumns = [
     }),
     tablerColumnHelper.accessor('componentName', {
         id: 'import',
-        header: 'JSX',
+        header: 'Code',
         cell: ({getValue}) => <Code>{`<${getValue()} size={24} />`}</Code>,
         enableSorting: false,
     }),
@@ -218,30 +220,27 @@ export const Overview: Story = {
             title="Iconography"
             description="Icons are used to visually represent actions, functionalities, and features."
         >
-            <Stack>
-                <Header variant="secondary">Tabler</Header>
-                <Alert.Advice title="Prefer Tabler Icons">
-                    <Text>
-                        We use the <Code>@tabler/icons-react</Code> library for our icons. Import them from{' '}
-                        <Code>@coveord/plasma-react-icons</Code>. Consult the full list on{' '}
-                        <Anchor target="_blank" href="https://tabler.io/icons" rel="noreferrer noopener">
-                            tabler.io/icons
-                        </Anchor>
-                        .
-                    </Text>
-                </Alert.Advice>
-            </Stack>
-
+            <Header variant="secondary">Tabler</Header>
+            <Alert.Advice title="Prefer Tabler Icons">
+                <Text>
+                    We use the <Code>@tabler/icons-react</Code> library for our icons. Import them from{' '}
+                    <Code>@coveord/plasma-react-icons</Code>. Consult the full list on{' '}
+                    <Anchor target="_blank" href="https://tabler.io/icons" rel="noreferrer noopener">
+                        tabler.io/icons
+                    </Anchor>
+                    .
+                </Text>
+            </Alert.Advice>
             <TablerIconsTable />
 
-            <Stack>
-                <Header variant="secondary">Custom</Header>
-                <Alert.Warning title="Deprecated">
-                    The icons in this list are deprecated in favor of Tabler Icons. Only use in-house icons if no Tabler
-                    icon fits your needs.
-                </Alert.Warning>
-                <PlasmaIconsTable />
-            </Stack>
+            <Divider />
+
+            <Header variant="secondary">Custom</Header>
+            <Alert.Warning title="Deprecated">
+                The icons in this list are deprecated in favor of Tabler Icons. Only use in-house icons if no Tabler
+                icon fits your needs.
+            </Alert.Warning>
+            <PlasmaIconsTable />
         </FoundationWrapper>
     ),
 };
