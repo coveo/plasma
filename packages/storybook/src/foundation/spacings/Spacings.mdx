@@ -1,6 +1,6 @@
 import { Meta, Story } from '@storybook/addon-docs/blocks';
-import { Spacings } from './Spacings.stories';
+import * as SpacingStories from './Spacings.stories';
 
-<Meta title="@foundation/Spacings" />
+<Meta of={SpacingStories} />
 
-<Story of={Spacings} />
+<Story of={SpacingStories.Spacings} />
