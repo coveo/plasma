@@ -1,3 +1,10 @@
+## 59.6.0 (2026-06-02)
+
+* feat(storybook): add iconography page (#4459) beabef2, closes #4459
+* Ds 382 foundation storybook (#4449) 10264f0, closes #4449
+
+
+
 ## <small>59.5.4 (2026-06-01)</small>
 
 * ci(cd): revert patch semantic-monorepo-tools to publish using npm (#4461) 8722765, closes #4461
