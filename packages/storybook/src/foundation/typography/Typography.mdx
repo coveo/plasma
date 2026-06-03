@@ -1,6 +1,6 @@
 import { Meta, Story } from '@storybook/addon-docs/blocks';
-import { Typography } from './Typography.stories';
+import * as TypographyStories from './Typography.stories';
 
-<Meta title="@foundation/Typography" />
+<Meta of={TypographyStories} />
 
-<Story of={Typography} />
+<Story of={TypographyStories.Typography} />

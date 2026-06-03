@@ -1,6 +1,6 @@
 import { Meta, Story } from '@storybook/addon-docs/blocks';
-import { Overview } from './Variables.stories';
+import * as VariableStories from './Variables.stories';
 
-<Meta title="@foundation/Variables" />
+<Meta of={VariableStories} />
 
-<Story of={Overview} />
+<Story of={VariableStories.Overview} />

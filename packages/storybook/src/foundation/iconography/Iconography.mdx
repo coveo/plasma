@@ -1,6 +1,6 @@
 import {Meta, Story} from '@storybook/addon-docs/blocks';
-import {Overview} from './Iconography.stories';
+import * as IconographyStories from './Iconography.stories';
 
-<Meta title="@foundation/Iconography" />
+<Meta of={IconographyStories} />
 
-<Story of={Overview} />
+<Story of={IconographyStories.Overview} />

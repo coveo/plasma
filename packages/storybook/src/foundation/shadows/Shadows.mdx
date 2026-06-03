@@ -1,6 +1,6 @@
 import { Meta, Story } from '@storybook/addon-docs/blocks';
-import { Shadows } from './Shadows.stories';
+import * as ShadowStories from './Shadows.stories';
 
-<Meta title="@foundation/Shadows" />
+<Meta of={ShadowStories} />
 
-<Story of={Shadows} />
+<Story of={ShadowStories.Shadows} />

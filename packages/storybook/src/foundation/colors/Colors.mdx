@@ -1,6 +1,6 @@
 import { Meta, Story } from '@storybook/addon-docs/blocks';
-import { Overview } from './Colors.stories';
+import * as ColorStories from './Colors.stories';
 
-<Meta title="@foundation/Colors" />
+<Meta of={ColorStories} />
 
-<Story of={Overview} />
+<Story of={ColorStories.Overview} />
