@@ -1,3 +1,9 @@
+## <small>59.6.1 (2026-06-03)</small>
+
+* fix(storybook): mdx demos need full import (#4464) 50121f3, closes #4464
+
+
+
 ## 59.6.0 (2026-06-02)
 
 * feat(storybook): add iconography page (#4459) beabef2, closes #4459
