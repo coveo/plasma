@@ -7,6 +7,7 @@ import '@mantine/notifications/styles.layer.css';
 import {Plasmantine} from '@coveord/plasma-mantine';
 import {DocsContainer, type DocsContainerProps} from '@storybook/addon-docs/blocks';
 import type {Preview} from '@storybook/react-vite';
+import {themes as storybookThemes} from 'storybook/theming';
 import {type PropsWithChildren} from 'react';
 import {useColorScheme} from './decorators/useColorScheme.js';
 import {themes, withTheme} from './decorators/withTheme.js';
@@ -16,6 +17,8 @@ const ThemedDocsContainer = ({children, ...props}: PropsWithChildren<DocsContain
         <Plasmantine>{children}</Plasmantine>
     </DocsContainer>
 );
+
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
 const preview: Preview = {
     globalTypes: {
@@ -31,7 +34,7 @@ const preview: Preview = {
     },
     initialGlobals: {
         primaryColor: 'teal',
-        backgrounds: {value: 'light'},
+        backgrounds: {value: prefersDark ? 'dark' : 'light'},
     },
     parameters: {
         backgrounds: {
@@ -44,6 +47,7 @@ const preview: Preview = {
         docs: {
             codePanel: true,
             container: ThemedDocsContainer,
+            theme: storybookThemes.normal,
         },
         controls: {
             disableSaveFromUI: true,
