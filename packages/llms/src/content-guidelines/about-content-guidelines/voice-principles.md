@@ -1,5 +1,0 @@
-# Voice Principles
-
-## Voice
-
-## Tone
