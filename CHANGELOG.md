@@ -1,3 +1,49 @@
+## <small>59.6.1 (2026-06-03)</small>
+
+* fix(storybook): mdx demos need full import (#4464) 50121f3, closes #4464
+
+
+
+## 59.6.0 (2026-06-02)
+
+* feat(storybook): add iconography page (#4459) beabef2, closes #4459
+* Ds 382 foundation storybook (#4449) 10264f0, closes #4449
+
+
+
+## <small>59.5.4 (2026-06-01)</small>
+
+* ci(cd): revert patch semantic-monorepo-tools to publish using npm (#4461) 8722765, closes #4461
+
+
+
+## <small>59.5.2 (2026-05-28)</small>
+
+* ci(cd): patch semantic-monorepo-tools to publish using npm (#4456) 850f943, closes #4456
+
+
+
+## <small>59.5.1 (2026-05-28)</small>
+
+* ci(cd): patch semantic-monorepo-tools to add --access public on publish (#4455) 2db2045, closes #4455
+
+
+
+## 59.5.0 (2026-05-28)
+
+* ci(cd): patch semantic-monorepo-tools to add --no-git-checks (#4453) eae0b85, closes #4453
+* chore(deps): update coveo/semantic-monorepo-tools (#4450) 1477337, closes #4450
+* chore(deps): update pnpm to v11 (#4429) 60c89a3, closes #4429
+* feat: implement plasma mcp server (#4441) 205230a, closes #4441
+* feat(llms): add @coveord/plasma-llms package (#4434) c81a439, closes #4434
+* feat(llms): add initial component specs (#4442) 6fbe68b, closes #4442
+* Ds 153 navlink weight (#4444) 086bfb0, closes #4444
+* fix(mantine, facet): alignement of remove button when title wraps (#4443) 5699893, closes #4443
+* fix(styles): correct background color for radio card and storybook preview (#4440) 841cc42, closes #4440
+* refactor(ci): standardize deploy base URL via shared compute-base-url action (#4426) 33f8ae6, closes #4426
+
+
+
 ## <small>59.4.3 (2026-05-11)</small>
 
 * fix(website): update vite and postcss versions to fix old website (#4433) e767a35, closes #4433

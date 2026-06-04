@@ -9,16 +9,6 @@ allowBuilds:
 minimumReleaseAge: 10080 # 7 days in minutes
 minimumReleaseAgeExclude:
     - '@mantine/*'
-    # Renovate security update: lodash@4.17.23 || 4.18.1
-    - lodash@4.17.23 || 4.18.1
-    # Renovate security update: storybook@10.2.10
-    - storybook@10.2.10
-    # Renovate security update: svgo@4.0.1
-    - svgo@4.0.1
-    # Plasma website (old) broken on 8.0.10
-    - vite@8.0.11
-    # Comes with vite v8.0.11
-    - postcss@8.5.14
 peerDependencyRules:
     ignoreMissing:
         - react-native
