@@ -58,15 +58,17 @@ jobs:
                   git push --follow-tags
             - name: Configure git for prerelease commits
               if: github.ref_name == 'next'
-              run: |
-                  git config user.name "github-actions[bot]"
-                  git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+              uses: ./.github/actions/configure-git-ssh
+              with:
+                  deploy-key: ${{ secrets.DEPLOY_KEY }}
             - name: Bootstrap prerelease mode for next
               if: github.ref_name == 'next' && !hashFiles('.changeset/pre.json')
               run: pnpm release:pre:enter:next
             - name: Version prereleases on next
               if: github.ref_name == 'next'
               run: pnpm changeset:version
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             - name: Commit prerelease version updates
               if: github.ref_name == 'next'
               shell: bash
@@ -78,12 +80,12 @@ jobs:
 
                   git add .changeset package.json packages
                   git commit -m "chore(release): version packages [skip ci]"
-                  git push origin HEAD:next
+                  git push deploy HEAD:next
             - name: Publish prereleases
               if: github.ref_name == 'next'
               run: |
                   pnpm release:pre:publish:next
-                  git push --follow-tags
+                  git push deploy --follow-tags
             - name: Deploy
               uses: ./.github/actions/deploy
               # Demo for next branch is deployed by the CI workflow

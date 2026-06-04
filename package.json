@@ -20,7 +20,7 @@
         "reconstruct": "pnpm dlx rimraf packages/*/node_modules packages/*/.turbo node_modules && npm run setup && echo done",
         "release:pre:enter:next": "changeset pre enter next",
         "release:pre:exit": "changeset pre exit",
-        "release:pre:publish:next": "changeset publish --tag next",
+        "release:pre:publish:next": "changeset publish",
         "release:publish": "changeset publish",
         "setup": "pnpm install",
         "start": "turbo run build --filter=!storybook && pnpm --recursive --parallel start",
