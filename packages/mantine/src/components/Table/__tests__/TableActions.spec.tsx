@@ -48,6 +48,38 @@ describe('Table.Actions', () => {
         expect(screen.getByRole('button', {name: 'Eat vegetable'})).toBeVisible();
     });
 
+    it('keeps actions visible when clicking again on an already selected row', async () => {
+        const user = userEvent.setup();
+        const Fixture = () => {
+            const store = useTable<RowData>();
+            return (
+                <Table<RowData>
+                    store={store}
+                    data={[{name: 'fruit'}, {name: 'vegetable'}]}
+                    getRowId={(row) => row.name}
+                    columns={columns}
+                    getRowActions={(selected: RowData[]) => [
+                        {
+                            group: '$$primary',
+                            component: <Table.ActionItem>Eat {selected[0].name}</Table.ActionItem>,
+                        },
+                    ]}
+                >
+                    <Table.Header />
+                </Table>
+            );
+        };
+        render(<Fixture />);
+
+        // select the fruit row
+        await user.click(screen.getByRole('cell', {name: 'fruit'}));
+        expect(screen.getByRole('button', {name: 'Eat fruit'})).toBeVisible();
+
+        // click again on the same row — actions should remain visible
+        await user.click(screen.getByRole('cell', {name: 'fruit'}));
+        expect(screen.getByRole('button', {name: 'Eat fruit'})).toBeVisible();
+    });
+
     it('displays the secondary actions when the row is selected and the user clicks on more', async () => {
         const user = userEvent.setup();
         const Fixture = () => {
@@ -221,6 +253,42 @@ describe('Table.Actions', () => {
             await user.click(within(screen.getByRole('row', {name: /fruit/})).getByRole('checkbox'));
             await user.click(within(screen.getByRole('row', {name: /vegetable/})).getByRole('checkbox'));
             expect(screen.getByRole('button', {name: 'Eat fruit, vegetable'})).toBeVisible();
+        });
+
+        it('clears multi-selection and shows single row actions when clicking on a row', async () => {
+            const user = userEvent.setup();
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: true});
+                return (
+                    <Table<RowData>
+                        store={store}
+                        getRowId={(row) => row.name}
+                        data={[{name: 'fruit'}, {name: 'vegetable'}, {name: 'bread'}]}
+                        columns={columns}
+                        getRowActions={(data: RowData[]) => [
+                            {
+                                group: '$$primary',
+                                component: (
+                                    <Table.ActionItem>Eat {data.map((d) => d.name).join(', ')}</Table.ActionItem>
+                                ),
+                            },
+                        ]}
+                    >
+                        <Table.Header />
+                    </Table>
+                );
+            };
+            render(<Fixture />);
+
+            // multi-select two rows via checkboxes
+            await user.click(within(screen.getByRole('row', {name: /fruit/})).getByRole('checkbox'));
+            await user.click(within(screen.getByRole('row', {name: /vegetable/})).getByRole('checkbox'));
+            expect(screen.getByRole('button', {name: 'Eat fruit, vegetable'})).toBeVisible();
+
+            // click on a row (not the checkbox) — should clear multi and show single row action
+            await user.click(screen.getByRole('cell', {name: 'bread'}));
+            expect(screen.queryByRole('button', {name: 'Eat fruit, vegetable'})).not.toBeInTheDocument();
+            expect(screen.getByRole('button', {name: 'Eat bread'})).toBeVisible();
         });
     });
 });
