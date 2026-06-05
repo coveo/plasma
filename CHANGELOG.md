@@ -1,3 +1,9 @@
+## 59.7.0 (2026-06-05)
+
+* feat(InfoToken): color changes on info token (#4462) c5a3d29, closes #4462
+
+
+
 ## <small>59.6.1 (2026-06-03)</small>
 
 * fix(storybook): mdx demos need full import (#4464) 50121f3, closes #4464
