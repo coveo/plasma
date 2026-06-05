@@ -4,21 +4,39 @@ import '@mantine/core/styles.layer.css';
 import '@mantine/dates/styles.layer.css';
 import '@mantine/notifications/styles.layer.css';
 
-import {Plasmantine} from '@coveord/plasma-mantine';
 import {DocsContainer, type DocsContainerProps} from '@storybook/addon-docs/blocks';
 import type {Preview} from '@storybook/react-vite';
+import {type PropsWithChildren, useEffect, useState} from 'react';
+import {GLOBALS_UPDATED} from 'storybook/internal/core-events';
 import {themes as storybookThemes} from 'storybook/theming';
-import {type PropsWithChildren} from 'react';
 import {useColorScheme} from './decorators/useColorScheme.js';
 import {themes, withTheme} from './decorators/withTheme.js';
 
-const ThemedDocsContainer = ({children, ...props}: PropsWithChildren<DocsContainerProps>) => (
-    <DocsContainer {...props}>
-        <Plasmantine>{children}</Plasmantine>
-    </DocsContainer>
-);
-
 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+const ThemedDocsContainer = ({children, context, ...props}: PropsWithChildren<DocsContainerProps>) => {
+    const [isDark, setIsDark] = useState(() => {
+        const stories = context.componentStories();
+        if (stories.length > 0) {
+            return context.getStoryContext(stories[0]).globals?.backgrounds?.value === 'dark';
+        }
+        return prefersDark;
+    });
+
+    useEffect(() => {
+        const onGlobalsUpdated = ({globals}: {globals: Record<string, unknown>}) => {
+            setIsDark((globals.backgrounds as {value?: string})?.value === 'dark');
+        };
+        context.channel.on(GLOBALS_UPDATED, onGlobalsUpdated);
+        return () => context.channel.off(GLOBALS_UPDATED, onGlobalsUpdated);
+    }, [context.channel]);
+
+    return (
+        <DocsContainer {...props} context={context} theme={isDark ? storybookThemes.dark : storybookThemes.light}>
+            {children}
+        </DocsContainer>
+    );
+};
 
 const preview: Preview = {
     globalTypes: {
@@ -47,7 +65,6 @@ const preview: Preview = {
         docs: {
             codePanel: true,
             container: ThemedDocsContainer,
-            theme: storybookThemes.normal,
         },
         controls: {
             disableSaveFromUI: true,
