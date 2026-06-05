@@ -188,6 +188,33 @@ describe('Table HOC', () => {
 
                 expect(store.getActions()).toContainEqual(filterThrough('🎠', '💧'));
             });
+
+            it('should coerce a numeric "q" param to a string before dispatching the filter action', () => {
+                jest.spyOn(UrlUtils, 'getSearchParams').mockReturnValue({q: 123});
+                table = shallowWithStore(<TableWithUrlState id="🎠" />, store)
+                    .dive()
+                    .dive();
+
+                expect(store.getActions()).toContainEqual(filterThrough('🎠', '123'));
+            });
+
+            it('should dispatch an empty filter value when the "q" param is null', () => {
+                jest.spyOn(UrlUtils, 'getSearchParams').mockReturnValue({q: null});
+                table = shallowWithStore(<TableWithUrlState id="🎠" />, store)
+                    .dive()
+                    .dive();
+
+                expect(store.getActions()).toContainEqual(filterThrough('🎠', ''));
+            });
+
+            it('should dispatch an empty filter value when the "q" param is undefined', () => {
+                jest.spyOn(UrlUtils, 'getSearchParams').mockReturnValue({q: undefined});
+                table = shallowWithStore(<TableWithUrlState id="🎠" />, store)
+                    .dive()
+                    .dive();
+
+                expect(store.getActions()).toContainEqual(filterThrough('🎠', ''));
+            });
         });
 
         describe('when the table has a date picker', () => {

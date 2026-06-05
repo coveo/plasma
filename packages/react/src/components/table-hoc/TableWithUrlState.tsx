@@ -139,7 +139,7 @@ const updateTableStateFromUrl =
         }
 
         if (urlParams.hasOwnProperty(Params.filter)) {
-            dispatch(filterThrough(tableId, urlParams[Params.filter]));
+            dispatch(filterThrough(tableId, urlParams[Params.filter] == null ? '' : String(urlParams[Params.filter])));
         }
 
         if (urlParams.hasOwnProperty(Params.sortKey) && urlParams.hasOwnProperty(Params.sortOrder)) {
