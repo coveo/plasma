@@ -8,7 +8,7 @@ The goal is to tailor the UX writing to the *least-experienced* members of the a
 
 ### Louise, the Business Operations Owner
 
-![Corporate headshot of woman in blazer](../content-images/louise-user-persona.png)
+![Corporate headshot of woman in blazer](../images/louise-user-persona.png)
 *"I need to know whether this is worthwhile without becoming a platform expert."*
 
 | Role & Responsibilities | Skills | Struggles | Needs & Wants |
@@ -17,7 +17,7 @@ The goal is to tailor the UX writing to the *least-experienced* members of the a
 
 ### Nadia, the Technical Platform Admin
 
-![Corporate headshot of woman with glasses](../content-images/nadia-user-persona.png)
+![Corporate headshot of woman with glasses](../images/nadia-user-persona.png)
 *"Just tell me what broke, where, and what to do next."*
 
 | Role & Responsibilities | Skills | Struggles | Needs & Wants |
