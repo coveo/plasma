@@ -23,7 +23,7 @@ describe('Input', () => {
         );
 
         expect(screen.getByText('Field label')).toBeVisible();
-        const infoToken = screen.getByRole('img', {name: 'information'});
+        const infoToken = screen.getByRole('img', {name: 'question'});
         expect(infoToken).toBeVisible();
 
         await user.hover(infoToken);

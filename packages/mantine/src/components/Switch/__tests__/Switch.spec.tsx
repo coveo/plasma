@@ -18,7 +18,7 @@ describe('Switch', () => {
             />,
         );
 
-        const infoToken = screen.getByRole('img', {name: 'information'});
+        const infoToken = screen.getByRole('img', {name: 'question'});
 
         await user.hover(infoToken);
 
