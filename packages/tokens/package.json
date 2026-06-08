@@ -51,7 +51,7 @@
         "dotenv-safe": "9.1.0",
         "figma-js": "1.16.0",
         "fs-extra": "11.3.4",
-        "lint-staged": "16.4.0",
+        "lint-staged": "17.0.7",
         "lodash": "4.18.1",
         "prettier": "3.8.3",
         "publint": "0.3.18",
