@@ -1,3 +1,12 @@
+## 53.3.4 (2026-06-09)
+
+
+### Bug Fixes
+
+* **table-url-state:** fix number filter parsing (#4467) 0658a0f, closes #4467
+
+
+
 ## 53.3.3 (2026-02-02)
 
 
