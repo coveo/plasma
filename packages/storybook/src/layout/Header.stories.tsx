@@ -12,6 +12,9 @@ const meta: Meta<HeaderProps & HeaderStoryProps> = {
     title: '@components/layout/Header',
     id: 'Header',
     component: Header,
+    parameters: {
+        layout: 'fullscreen',
+    },
     args: {
         title: 'Title',
         description: 'This is a description',

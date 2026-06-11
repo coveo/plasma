@@ -130,7 +130,7 @@ export const Header = factory<HeaderFactory>((_props, ref) => {
         (child) => child.type !== HeaderBreadcrumbs && child.type !== HeaderRight && child.type !== HeaderDocAnchor,
     );
     return (
-        <HeaderProvider value={{getStyles}}>
+        <HeaderProvider value={{getStyles, variant}}>
             <Group ref={ref} variant={variant} {...getStyles('root')} {...others}>
                 <Stack gap={getSpacing(variant)}>
                     {breadcrumbs}

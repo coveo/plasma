@@ -70,14 +70,15 @@ const colorResolver = (type: InfoTokenType): string => {
     switch (type) {
         case 'error':
             return 'var(--mantine-color-error)';
+        case 'information':
+            return 'var(--mantine-color-blue-text)';
         case 'advice':
-        case 'question':
-            return 'var(--coveo-color-text-primary)';
+            return 'var(--mantine-color-violet-text)';
         case 'warning':
             return 'var(--mantine-color-yellow-text)';
         case 'success':
             return 'var(--mantine-color-green-text)';
-        case 'information':
+        case 'question':
         default:
             return 'var(--mantine-color-gray-text)';
     }
@@ -87,14 +88,15 @@ const bgColorResolver = (type: InfoTokenType): string => {
     switch (type) {
         case 'error':
             return 'var(--mantine-color-red-light)';
+        case 'information':
+            return 'var(--mantine-color-blue-light)';
         case 'advice':
-        case 'question':
-            return 'var(--mantine-primary-color-light)';
+            return 'var(--mantine-color-violet-light)';
         case 'warning':
             return 'var(--mantine-color-yellow-light)';
         case 'success':
             return 'var(--mantine-color-green-light)';
-        case 'information':
+        case 'question':
         default:
             return 'var(--mantine-color-gray-light)';
     }

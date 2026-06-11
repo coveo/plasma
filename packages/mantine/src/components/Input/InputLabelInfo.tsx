@@ -37,7 +37,7 @@ export const InputLabelInfo = factory<InputLabelInfoFactory>((_props, ref) => {
     });
     return (
         <Tooltip label={children} {...others}>
-            <InfoToken.Information
+            <InfoToken.Question
                 component="span"
                 {...getStyles('labelInfo', {className, style})}
                 ref={ref}
