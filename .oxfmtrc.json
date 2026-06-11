@@ -1,0 +1,14 @@
+{
+    "$schema": "./node_modules/oxfmt/configuration_schema.json",
+    "printWidth": 120,
+    "tabWidth": 4,
+    "singleQuote": true,
+    "bracketSpacing": false,
+    "ignorePatterns": [
+        "pnpm-lock.yaml",
+        "**/node_modules",
+        "**/dist",
+        "CHANGELOG.md",
+        "packages/react-icons/src/generated"
+    ]
+}

@@ -7,7 +7,7 @@ on:
             - master
 
 permissions:
-  contents: read
+    contents: read
 
 jobs:
     code-connect-publish:

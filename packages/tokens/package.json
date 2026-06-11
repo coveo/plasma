@@ -1,39 +1,39 @@
 {
     "name": "@coveord/plasma-tokens",
-    "version": "59.4.1",
+    "version": "60.0.0-next.0",
     "description": "Design tokens of the Plasma Design System",
     "homepage": "https://github.com/coveo/plasma/packages/tokens#readme",
+    "license": "Apache-2.0",
     "repository": {
         "type": "git",
         "url": "https://github.com/coveo/plasma.git",
         "directory": "packages/tokens"
     },
-    "license": "Apache-2.0",
-    "exports": {
-        ".": {
-            "require": "./dist/cjs/index.js",
-            "import": "./dist/esm/index.js"
-        },
-        "./scss": "./scss/index.scss",
-        "./scss/*": "./scss/*",
-        "./css/*": "./css/*",
-        "./icons/*": "./icons/*"
-    },
-    "main": "./dist/cjs/index.js",
-    "module": "./dist/esm/index.js",
     "files": [
         "dist",
         "icons",
         "scss",
         "css"
     ],
+    "sideEffects": [],
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js"
+        },
+        "./scss": "./scss/index.scss",
+        "./scss/*": "./scss/*",
+        "./css/*": "./css/*",
+        "./icons/*": "./icons/*",
+        "./package.json": "./package.json"
+    },
     "scripts": {
-        "build": "rimraf dist && node ../../scripts/build",
-        "lintfix": "../../node_modules/.bin/prettier --write \"**/*.{scss,ts,tsx,js,jsx,json,md,yml,html}\" && ../../node_modules/.bin/eslint \"**/*.{ts,tsx}\" --fix",
+        "build": "rimraf dist && node ../../scripts/build.js",
+        "lintfix": "oxfmt --write && oxlint --fix",
         "prepublishOnly": "publint",
-        "tokens:build": "ts-node ./bin/build.ts --project ./bin/tsconfig.json && pnpm tokens:lint",
-        "tokens:fetch": "ts-node -r dotenv-safe/config --project ./bin/tsconfig.json ./bin/fetch.ts",
-        "tokens:lint": "prettier --write \"{src,scss,data}/*.{css,scss,ts,tsx,json}\""
+        "tokens:build": "ts-node ./bin/build.ts --project ./tsconfig.bin.json && pnpm tokens:lint",
+        "tokens:fetch": "ts-node -r dotenv-safe/config --project ./tsconfig.bin.json ./bin/fetch.ts",
+        "tokens:lint": "oxfmt --write \"{src,scss,data}/*.{css,scss,ts,tsx,json}\""
     },
     "dependencies": {
         "@swc/helpers": "0.5.21"
@@ -45,6 +45,7 @@
         "@types/fs-extra": "11.0.4",
         "@types/lodash": "4.17.24",
         "@types/node": "24.12.2",
+        "@typescript/native-preview": "7.0.0-dev.20260420.1",
         "chroma-js": "3.2.0",
         "commander": "14.0.3",
         "dotenv": "17.4.2",
@@ -53,12 +54,10 @@
         "fs-extra": "11.3.4",
         "lint-staged": "16.4.0",
         "lodash": "4.18.1",
-        "prettier": "3.8.3",
         "publint": "0.3.18",
         "rimraf": "6.1.3",
         "svgo": "4.0.1",
         "ts-node": "10.9.2",
-        "tslib": "2.8.1",
-        "typescript": "5.9.3"
+        "tslib": "2.8.1"
     }
 }

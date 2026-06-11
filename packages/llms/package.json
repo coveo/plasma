@@ -1,33 +1,34 @@
 {
     "name": "@coveord/plasma-llms",
-    "version": "59.5.0",
+    "version": "60.0.0-next.0",
     "description": "LLM-friendly documentation for the Plasma design system",
     "keywords": [
-        "plasma",
-        "mantine",
-        "llms",
         "ai",
+        "coveo",
         "documentation",
-        "coveo"
+        "llms",
+        "mantine",
+        "plasma"
     ],
     "bugs": {
         "url": "https://github.com/coveo/plasma/issues"
     },
+    "license": "Apache-2.0",
+    "author": "Coveo",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/coveo/plasma.git",
         "directory": "packages/llms"
     },
-    "license": "Apache-2.0",
-    "author": "Coveo",
-    "type": "module",
     "files": [
         "dist"
     ],
+    "type": "module",
+    "sideEffects": [],
     "scripts": {
         "build": "pnpm clean && node src/build.ts",
         "clean": "rimraf dist",
-        "lintfix": "../../node_modules/.bin/prettier --write \"**/*.{ts,tsx,js,jsx,json,md,yml,html}\" && ../../node_modules/.bin/eslint \"**/*.{ts,tsx}\" --fix"
+        "lintfix": "oxfmt --write && oxlint --fix"
     },
     "devDependencies": {
         "@types/node": "24.12.2",

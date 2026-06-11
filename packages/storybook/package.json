@@ -1,18 +1,14 @@
 {
     "name": "storybook",
-    "version": "59.7.0",
+    "version": "60.0.0-next.0",
     "private": true,
     "type": "module",
+    "sideEffects": [],
     "scripts": {
         "build": "storybook build",
         "chromatic": "chromatic --build-script-name build",
-        "lint": "../../node_modules/.bin/eslint \"**/*.{ts,tsx}\"",
+        "lint": "oxlint",
         "start": "storybook dev -p 6007"
-    },
-    "eslintConfig": {
-        "extends": [
-            "plugin:storybook/recommended"
-        ]
     },
     "dependencies": {
         "@coveord/plasma-mantine": "workspace:*",
@@ -34,12 +30,12 @@
         "@storybook/react-vite": "10.3.5",
         "@types/react": "19.2.14",
         "@types/react-dom": "19.2.3",
+        "@typescript/native-preview": "7.0.0-dev.20260420.1",
         "@vitejs/plugin-react": "6.0.1",
         "chromatic": "16.6.1",
         "globals": "17.5.0",
         "postcss-preset-mantine": "1.18.0",
         "storybook": "10.3.5",
-        "typescript": "5.9.3",
         "vite": "8.0.11"
     }
 }

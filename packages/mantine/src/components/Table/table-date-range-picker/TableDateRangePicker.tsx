@@ -33,9 +33,9 @@ export type TableDateRangePickerFactory = Factory<{
     compound: true;
 }>;
 
-const defaultProps: Partial<TableDateRangePickerProps> = {
+const defaultProps = {
     presets: {},
-};
+} satisfies Partial<TableDateRangePickerProps>;
 
 export const TableDateRangePicker = factory<TableDateRangePickerFactory>((props, ref) => {
     const {store, getStyles} = useTableContext();
@@ -49,7 +49,7 @@ export const TableDateRangePicker = factory<TableDateRangePickerFactory>((props,
         className,
         styles,
         style,
-        vars,
+        vars: _vars,
         ...others
     } = useProps('PlasmaTableDateRangePicker', defaultProps, props);
 

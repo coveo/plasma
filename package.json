@@ -2,36 +2,67 @@
     "name": "root",
     "version": "59.7.0",
     "private": true,
+    "type": "module",
     "scripts": {
         "build": "turbo run build",
+        "changeset": "changeset",
+        "changeset:version": "changeset version",
         "clean": "pnpm --recursive --parallel clean",
         "commit-cli": "cz",
+        "fmt": "oxfmt",
+        "fmt:check": "oxfmt --check",
         "preinstall": "npx only-allow pnpm",
+        "lint": "oxlint",
         "lintfix": "pnpm --recursive --parallel lintfix",
         "pnpm:devPreinstall": "pnpm turbo:login",
         "precommit": "lint-staged",
         "prepare": "husky",
         "reconstruct": "pnpm dlx rimraf packages/*/node_modules packages/*/.turbo node_modules && npm run setup && echo done",
+        "release:pre:enter:next": "changeset pre enter next",
+        "release:pre:exit": "changeset pre exit",
+        "release:pre:publish:next": "changeset publish",
+        "release:publish": "changeset publish",
         "setup": "pnpm install",
-        "start": "turbo run build --filter=!@coveord/plasma-website --filter=!storybook && pnpm --recursive --parallel start",
+        "start": "turbo run build --filter=!storybook && pnpm --recursive --parallel start",
         "test": "turbo run test --concurrency=1",
-        "turbo:login": "node scripts/turboLogin.mjs"
+        "turbo:login": "node scripts/turboLogin.js"
+    },
+    "devDependencies": {
+        "@changesets/changelog-github": "0.5.1",
+        "@changesets/cli": "2.29.6",
+        "@commitlint/cli": "20.5.2",
+        "@commitlint/config-conventional": "20.5.0",
+        "@types/node": "24.12.2",
+        "@typescript/native-preview": "7.0.0-dev.20260420.1",
+        "aws-sdk": "2.1693.0",
+        "commitizen": "4.3.1",
+        "conventional-changelog-angular": "8.3.1",
+        "cz-conventional-changelog": "3.3.0",
+        "eslint": "9.39.4",
+        "eslint-plugin-storybook": "10.3.5",
+        "eslint-plugin-testing-library": "7.16.2",
+        "husky": "9.1.7",
+        "lint-staged": "16.4.0",
+        "oxfmt": "0.51.0",
+        "oxlint": "1.66.0",
+        "oxlint-tsgolint": "0.23.0",
+        "postcss": "8.5.14",
+        "stylelint": "17.9.1",
+        "stylelint-config-standard-scss": "17.0.0",
+        "turbo": "2.9.6"
+    },
+    "lint-staged": {
+        "**/*.{js,jsx,ts,tsx,mjs,json,md,yml,html}": [
+            "oxfmt --write --no-error-on-unmatched-pattern"
+        ],
+        "**/*.{scss,css}": [
+            "stylelint --fix",
+            "oxfmt --write --no-error-on-unmatched-pattern"
+        ]
     },
     "commitlint": {
         "extends": [
             "@commitlint/config-conventional"
-        ]
-    },
-    "lint-staged": {
-        "**/package.json": [
-            "sort-package-json"
-        ],
-        "**/*.{js,jsx,ts,tsx,mjs,json,md,yml,html}": [
-            "prettier --write"
-        ],
-        "**/*.{scss,css}": [
-            "stylelint --fix",
-            "prettier --write"
         ]
     },
     "config": {
@@ -45,38 +76,5 @@
         "IE 11",
         "not dead"
     ],
-    "devDependencies": {
-        "@commitlint/cli": "20.5.2",
-        "@commitlint/config-conventional": "20.5.0",
-        "@coveo/semantic-monorepo-tools": "2.7.1",
-        "@types/node": "24.12.2",
-        "@vitest/eslint-plugin": "1.6.16",
-        "aws-sdk": "2.1693.0",
-        "commitizen": "4.3.1",
-        "conventional-changelog-angular": "8.3.1",
-        "cz-conventional-changelog": "3.3.0",
-        "eslint": "9.39.4",
-        "eslint-config-prettier": "10.1.8",
-        "eslint-plugin-import-x": "4.16.2",
-        "eslint-plugin-jsdoc": "63.0.1",
-        "eslint-plugin-prefer-arrow": "1.2.3",
-        "eslint-plugin-react": "7.37.5",
-        "eslint-plugin-react-hooks": "5.2.0",
-        "eslint-plugin-react-refresh": "0.5.2",
-        "eslint-plugin-storybook": "10.3.5",
-        "eslint-plugin-testing-library": "7.16.2",
-        "eslint-plugin-unused-imports": "4.4.1",
-        "globals": "17.5.0",
-        "husky": "9.1.7",
-        "lint-staged": "16.4.0",
-        "postcss": "8.5.14",
-        "prettier": "3.8.3",
-        "sort-package-json": "3.6.1",
-        "stylelint": "17.9.1",
-        "stylelint-config-standard-scss": "17.0.0",
-        "turbo": "2.9.6",
-        "typescript": "5.9.3",
-        "typescript-eslint": "8.59.1"
-    },
     "packageManager": "pnpm@11.1.1+sha512.d1fdf5f73c617b64fa1a56a81c3c8dfe0e966e33a6010aa256b517ae77be21d93e05affc0de1a83b0e4f29d569f68b446ae8f068cd7247c0bb3df0fb4d7bdf9a"
 }

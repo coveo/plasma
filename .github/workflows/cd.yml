@@ -35,10 +35,6 @@ jobs:
                   fetch-depth: 0
             - name: Setup
               uses: ./.github/actions/setup
-            - name: Lint
-              uses: ./.github/actions/lint
-              with:
-                  WORKFLOW: 'cd'
             - name: Compute base URL
               id: base-url
               uses: ./.github/actions/compute-base-url
@@ -48,13 +44,48 @@ jobs:
               uses: ./.github/actions/build
               env:
                   PLASMA_BASE_URL: ${{ steps.base-url.outputs.base-url }}
+            - name: Lint
+              run: pnpm lint
+              env:
+                  # Without this, oxlint fails with a cryptic error (Error: Invalid tsconfig)
+                  OXLINT_TSGOLINT_DANGEROUSLY_SUPPRESS_PROGRAM_DIAGNOSTICS: true
             - name: Test
               uses: ./.github/actions/test
-            - name: Publish
-              uses: ./.github/actions/publish
+            - name: Publish stable releases
+              if: github.ref_name == 'master'
+              run: |
+                  pnpm release:publish
+                  git push --follow-tags
+            - name: Configure git for prerelease commits
+              if: github.ref_name == 'next'
+              uses: ./.github/actions/configure-git-ssh
+              with:
+                  deploy-key: ${{ secrets.DEPLOY_KEY }}
+            - name: Bootstrap prerelease mode for next
+              if: github.ref_name == 'next' && !hashFiles('.changeset/pre.json')
+              run: pnpm release:pre:enter:next
+            - name: Version prereleases on next
+              if: github.ref_name == 'next'
+              run: pnpm changeset:version
               env:
-                  DEBUG: '*'
-                  DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            - name: Commit prerelease version updates
+              if: github.ref_name == 'next'
+              shell: bash
+              run: |
+                  if git diff --quiet -- .changeset package.json packages; then
+                    echo "No prerelease version changes to commit"
+                    exit 0
+                  fi
+
+                  git add .changeset package.json packages
+                  git commit -m "chore(release): version packages [skip ci]"
+                  git push deploy HEAD:next
+            - name: Publish prereleases
+              if: github.ref_name == 'next'
+              run: |
+                  pnpm release:pre:publish:next
+                  git push deploy --follow-tags
             - name: Deploy
               uses: ./.github/actions/deploy
               # Demo for next branch is deployed by the CI workflow

@@ -1,11 +1,10 @@
-const fs = require('fs-extra');
-const {globSync} = require('glob');
-const svgr = require('@svgr/core');
-const groupBy = require('lodash.groupby');
-const upperFirst = require('lodash.upperfirst');
-const {rmSync} = require('fs-extra');
-const path = require('path');
-const template = require('./template');
+import fs from 'fs-extra';
+import {globSync} from 'glob';
+import {transform} from '@svgr/core';
+import groupBy from 'lodash.groupby';
+import upperFirst from 'lodash.upperfirst';
+import path from 'node:path';
+import template from './template.js';
 
 const iconsSourceDirPath = 'node_modules/@coveord/plasma-tokens/icons';
 const outDirPath = './src/generated';
@@ -31,7 +30,7 @@ const convertVariant = async (file) => {
         const variantName = findVariantName(file);
         const componentName = getComponentName(file);
         const fileContent = await fs.readFile(file);
-        const tsCode = await svgr.transform(
+        const tsCode = await transform(
             fileContent.toString('utf8'),
             {
                 plugins: ['@svgr/plugin-jsx'],
@@ -77,12 +76,12 @@ const listIconVariants = async (grouped) => {
 
 const handleSvgFiles = (files) => {
     const grouped = groupBy(files, findIconName);
-    Promise.all([convertIcons(grouped), listIconVariants(grouped)]);
+    return Promise.all([convertIcons(grouped), listIconVariants(grouped)]);
 };
 
-rmSync(outDirPath, {recursive: true, force: true});
-rmSync('./dist', {recursive: true, force: true});
+fs.rmSync(outDirPath, {recursive: true, force: true});
+fs.rmSync('./dist', {recursive: true, force: true});
 fs.ensureDirSync(outDirPath);
 
 const svgs = globSync(`${iconsSourceDirPath}/**/*.svg`).map((svgPath) => svgPath.split(path.sep).join(path.posix.sep));
-handleSvgFiles(svgs);
+void handleSvgFiles(svgs);

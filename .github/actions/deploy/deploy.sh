@@ -16,7 +16,4 @@ aws s3 cp ./packages/storybook/storybook-static s3://${BUCKET}/${DESTINATION}${U
 aws s3 cp ./packages/storybook/storybook-static s3://${BUCKET}/${DESTINATION}${URL_PATH}/ --recursive --exclude "*" --include "*.txt" --content-type "text/plain; charset=utf-8"
 aws s3 cp ./packages/storybook/storybook-static s3://${BUCKET}/${DESTINATION}${URL_PATH}/ --recursive --exclude "*" --include "*.md" --content-type "text/markdown; charset=utf-8"
 
-echo "Deploying old Plasma website to ${PLASMA_BASE_URL}/old/"
-aws s3 cp ./packages/website/dist s3://${BUCKET}/${DESTINATION}${URL_PATH}/old/ --recursive
-
 echo "Successfully deployed to ${PLASMA_BASE_URL}"

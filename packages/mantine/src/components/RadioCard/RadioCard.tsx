@@ -13,7 +13,7 @@ import {
 } from '@mantine/core';
 import {ReactNode} from 'react';
 import classes from '../../styles/RadioCard.module.css';
-import {Input} from '../Input/Input';
+import {Input} from '../Input/Input.js';
 
 export type RadioCardStylesNames = MantineRadioCardStylesNames | 'container' | 'indicator' | 'title' | 'description';
 export type RadioCardFactory = Factory<{
@@ -43,7 +43,7 @@ export type RadioCardProps = MantineRadioCardProps &
         disabledTooltip?: string;
     };
 
-const defaultProps: Partial<RadioCardProps> = {};
+const defaultProps = {} satisfies Partial<RadioCardProps>;
 
 export const RadioCard = factory<RadioCardFactory>((_props, ref) => {
     const {
@@ -57,6 +57,7 @@ export const RadioCard = factory<RadioCardFactory>((_props, ref) => {
         label,
         description,
         disabledTooltip,
+        readOnly,
         ...others
     } = useProps('RadioCard', defaultProps, _props);
     const getStyles = useStyles<RadioCardFactory>({
@@ -75,9 +76,9 @@ export const RadioCard = factory<RadioCardFactory>((_props, ref) => {
             <Radio.Card
                 ref={ref}
                 disabled={disabled}
-                readOnly={_props.readOnly}
                 {...getStyles('card', {className, style, classNames, styles})}
                 {...others}
+                aria-readonly={readOnly}
             >
                 <Radio.Indicator disabled={disabled} {...getStyles('indicator', {classNames, styles})} />
                 <Stack {...getStyles('container', {classNames, styles})}>

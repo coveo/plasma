@@ -187,7 +187,7 @@ export type CollectionFactory = Factory<{
     stylesNames: CollectionStylesNames;
 }>;
 
-const defaultProps: Partial<CollectionProps<unknown>> = {
+const defaultProps = {
     draggable: false,
     addLabel: 'Add item',
     addDisabledTooltip: 'There is already an empty item',
@@ -196,7 +196,7 @@ const defaultProps: Partial<CollectionProps<unknown>> = {
     gap: 'md',
     required: false,
     getItemId: ({id}: any) => id,
-};
+} satisfies Partial<CollectionProps<unknown>>;
 
 export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<HTMLDivElement>}) => {
     const {
@@ -234,7 +234,7 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
         styles,
         unstyled,
         ...others
-    } = useProps('Collection', defaultProps as CollectionProps<T>, props);
+    } = useProps('Collection', defaultProps, props);
 
     // Runtime validation: ensure columns and children are mutually exclusive
     if (columns && children) {
@@ -248,7 +248,7 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
     const getStyles = useStyles<CollectionFactory>({
         name: 'Collection',
         classes,
-        props,
+        props: props as CollectionProps<unknown>,
         className,
         style,
         classNames,
