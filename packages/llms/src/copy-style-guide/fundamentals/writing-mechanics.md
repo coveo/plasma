@@ -142,9 +142,9 @@ For guidance, look at the following lists.
 
 **Guidelines:**
 
-- Don't use colons in titles.
-- Don't use colons in labels.
-The UI layout provides the visual relationship between the label and its field.
+- Don't use colons in titles
+- Don't use colons in labels
+The UI layout provides the visual relationship between the label and its field
 
 | Do | Don't |
 | -- | ----- |
@@ -154,11 +154,11 @@ The UI layout provides the visual relationship between the label and its field.
 
 **Guidelines:**
 
-- Use exclamation marks (!) sparingly.
-- Limit it to one per context (a single page, modal, or notification).
-- Only use them for positive moments where enthusiasm is appropriate.
-- Never use them for neutral states, errors, warnings, or any context where the user could be frustrated or confused.
-- Don't use them for instructional or CTA copy.
+- Use exclamation marks (!) sparingly
+- Limit it to one per context (a single page, modal, or notification)
+- Only use them for positive moments where enthusiasm is appropriate
+- Never use them for neutral states, errors, warnings, or any context where the user could be frustrated or confused
+- Don't use them for instructional or CTA copy
 
 | Do | Don't |
 | -- | ----- |
@@ -186,8 +186,8 @@ This is a common mistake because French punctuation standards require a space be
 
 **Guidelines:**
 
-- Use an ellipsis (...) only to indicate that a process is in progress or that content is truncated.
-- Never use ellipses to trail off in instructions or labels.
+- Use an ellipsis (...) only to indicate that a process is in progress or that content is truncated
+- Never use ellipses to trail off in instructions or labels
 
 | Do | Don't |
 | -- | ----- |
@@ -277,4 +277,53 @@ Shorter is better!
 
 ## Syntax & structure
 
-<!-- TODO: Add rules. -->
+In almost all UX contexts, frontloading is the best way to provide clarity.
+Frontloading means stating the most important information and key message first, at beginning of the text.
+After that, more context, details, or reasoning can be given.
+This technique is often used within sentences, paragraphs, pages, and even entire books.
+
+| Do | Don't |
+| -- | ----- |
+| No results found. Try adjusting your filters. | Your current filter selection didn't return any results. Try adjusting them. |
+| Access denied. Contact your administrator to request permission. | You're trying to access a page that requires additional permissions. Contact your administrator. |
+
+### Instructions
+
+When writing guidance or instructions, state the result before the required action.
+Frontloading in this situation helps the user understand why they're doing something *before* they do it.
+
+| Do | Don't |
+| -- | ----- |
+| To add a source, select **Add source**. | Select **Add source** to add a source. |
+
+> ![TIP](../images/tip.svg)
+> Always prioritize clarity and readability!
+> If breaking this rule makes the message easier to understand, then do it.
+
+### Labels
+
+**Guidelines:**
+
+- Write labels as statements, not questions
+- Keep labels short, between 1-3 words
+
+| Do | Don't |
+| -- | ----- |
+| Delete | Delete? |
+
+### Plain language
+
+Write in plain language so the copy is easy to understand for all users, including non-native English speakers.
+Avoid idiomatic phrases, sayings, and metaphorical language.
+The only exception is well-known industry terms or verbs that users likely know (for example, "crawl," "index," "query").
+
+**Guidelines:**
+
+- Use common, everyday words over formal or technical alternatives
+- If a shorter word works, use it
+- Don't use idioms or expressions
+
+| Do | Don't |
+| -- | ----- |
+| This may take a few minutes. | This won't happen at the speed of light. |
+| This is quick to set up. | This is a piece of cake to set up. |
