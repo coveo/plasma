@@ -105,11 +105,18 @@ Skip the period at the end of labels, headings, button text, and standalone UI s
 Use a period when the text is a full sentence in body copy, descriptions, tooltips, or help text.
 If a short message, like a toast notification, isn't a full sentence, no period is needed.
 If it is a full sentence, add one.
-What classifies as a full sentence is 
+A full sentence is an independent clause, meaning the sentence is still grammatically correct on its own.
+A fragment sentence is good and common to use in UX writing, yet it's not grammatically correct on its own.
 
-**Do:** Changes saved
+**Full sentence:**
 
 **Do:** Your changes have been saved.
+
+**Don't:** Your changes have been saved
+
+**Fragment sentence:**
+
+**Do:** Changes saved
 
 **Don't:** Changes saved.
 
