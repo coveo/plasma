@@ -65,6 +65,8 @@ Never capitalize:
 
 ### UI elements
 
+<!-- I need to come back to this. There are many discrepancies on the admin console of how we use casing for product/feature names.
+
 Use sentence case for all UI elements.
 The table below covers the most common cases.
 
@@ -83,6 +85,7 @@ The table below covers the most common cases.
 
 > **Note:** In the codebase, always hardcode text in sentence case.
 > Title case and all caps are applied through flags, not in the source strings.
+-->
 
 ### Referring to UI elements in copy
 
