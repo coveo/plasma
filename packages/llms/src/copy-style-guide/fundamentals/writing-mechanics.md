@@ -48,8 +48,6 @@ Do this even when it contradicts the Coveo UX Copy Style Guide.
 Sentence case means only the first word and proper nouns are capitalized.
 It's the default for all UI text: headings, labels, buttons, descriptions, tooltips, and placeholder text.
 
-**Example:**
-
 | Do | Don't |
 | -- | ----- |
 | Save changes | Save Changes |
@@ -106,8 +104,6 @@ The table below covers the most common cases.
 - Don't use quotation marks
 - Use **bold** formatting for the element name
 
-**Example:**
-
 | Do | Don't |
 | -- | ----- |
 | Select **Save** | Select "save" |
@@ -120,8 +116,7 @@ A full sentence is an independent clause, meaning it's grammatically correct on 
 A fragment sentence isn't grammatically correct on its own, but it's great for concise UI text.
 
 As a practice, add periods after full sentences, but not after fragment sentences.
-
-Use the lists for guidance.
+For guidance, look at the following lists.
 
 **Add a period after:**
 
@@ -138,8 +133,6 @@ Use the lists for guidance.
 - Button text
 - Standalone UI strings
 
-**Example:**
-
 | Type | Do | Don't |
 | ---- | -- | ----- |
 | Full sentence | Your changes have been saved. | Your changes have been saved |
@@ -153,8 +146,6 @@ Use the lists for guidance.
 - Don't use colons in labels.
 The UI layout provides the visual relationship between the label and its field.
 
-**Example:**
-
 | Do | Don't |
 | -- | ----- |
 | Email `[input field]` | Email: `[input field]` |
@@ -163,20 +154,20 @@ The UI layout provides the visual relationship between the label and its field.
 
 **Guidelines:**
 
-- Use exclamation marks (!) sparingly, only for genuinely positive moments where enthusiasm is appropriate.
-- Never use them for neutral states, errors, warnings, or any context where the user might be frustrated or confused.
-- No more than one exclamation point per context (a single page, modal, or notification).
-
-**Example:**
+- Use exclamation marks (!) sparingly.
+- Limit it to one per context (a single page, modal, or notification).
+- Only use them for positive moments where enthusiasm is appropriate.
+- Never use them for neutral states, errors, warnings, or any context where the user could be frustrated or confused.
+- Don't use them for instructional or CTA copy.
 
 | Do | Don't |
 | -- | ----- |
-| Success! Your edits have been saved. | An error occurred! |
+| Success! Your query pipeline has been created. | An error occurred! |
 
 ### Apostrophes
 
 Contractions make UX copy more natural, but some are too casual and can make the sentence harder to read.
-If the words you're conjoining include "will," "would," "have," or "had," write them out instead of contracting them.
+If the contraction would end in "will," "would," "have," or "had," write them out instead of contracting them.
 
 | Use | Avoid |
 | --- | ----- |
@@ -190,16 +181,14 @@ If the words you're conjoining include "will," "would," "have," or "had," write 
 | --- | ----- |
 | you will | you'll |
 | it will | it'll |
-| you would / you had | you'd |
-| it would / it had | it'd |
 | would have | would've |
 | could have | could've |
 | should have | should've |
+| you would / you had | you'd |
+| it would / it had | it'd |
 
 Avoid using the possessive form for objects and UI elements.
 Use "of" phrasing instead.
-
-**Example:**
 
 | Do | Don't |
 | -- | ----- |
@@ -209,8 +198,6 @@ Use "of" phrasing instead.
 
 Never add a space before a punctuation mark.
 This is a common mistake because French punctuation standards require a space before exclamation and question marks.
-
-**Example:**
 
 | Do | Don't |
 | -- | ----- |
@@ -222,8 +209,6 @@ This is a common mistake because French punctuation standards require a space be
 
 - Use an ellipsis (...) only to indicate that a process is in progress or that content is truncated.
 - Never use ellipses to trail off in instructions or labels.
-
-**Example:**
 
 | Do | Don't |
 | -- | ----- |
