@@ -39,9 +39,9 @@ description: One-sentence description used in llms.txt index.  <- REQUIRED
 
 ## Usage
 
-`tsx
+~~~tsx
 [most common use case -- copy-pasteable snippet, including imports]
-`
+~~~
 
 ---
 
