@@ -15,6 +15,7 @@
         "scss",
         "css"
     ],
+    "type": "module",
     "sideEffects": [],
     "exports": {
         ".": {
@@ -36,11 +37,9 @@
         "tokens:lint": "oxfmt --write \"{src,scss,data}/*.{css,scss,ts,tsx,json}\""
     },
     "dependencies": {
-        "@swc/helpers": "0.5.21"
+        "tslib": "2.8.1"
     },
     "devDependencies": {
-        "@swc/cli": "0.8.1",
-        "@swc/core": "1.15.32",
         "@types/chroma-js": "3.1.2",
         "@types/fs-extra": "11.0.4",
         "@types/lodash": "4.17.24",
@@ -57,7 +56,6 @@
         "publint": "0.3.18",
         "rimraf": "6.1.3",
         "svgo": "4.0.1",
-        "ts-node": "10.9.2",
-        "tslib": "2.8.1"
+        "ts-node": "10.9.2"
     }
 }

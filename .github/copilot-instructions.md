@@ -18,7 +18,6 @@ Plasma is Coveo's design system used in Coveo Cloud Administration Console. This
 
 - **Monorepo**: Managed with pnpm workspaces and Turbo for build orchestration
 - **UI Framework**: React 19 with Mantine UI library
-- **Build Tool**: SWC for fast TypeScript compilation
 - **Testing**: Vitest with React Testing Library
 - **Package Manager**: pnpm
 
