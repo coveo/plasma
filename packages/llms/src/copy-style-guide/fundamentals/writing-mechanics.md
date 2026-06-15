@@ -166,27 +166,6 @@ The UI layout provides the visual relationship between the label and its field.
 
 ### Apostrophes
 
-Contractions make UX copy more natural, but some are too casual and can make the sentence harder to read.
-If the contraction would end in "will," "would," "have," or "had," write them out instead of contracting them.
-
-| Use | Avoid |
-| --- | ----- |
-| don't | do not |
-| can't | cannot |
-| won't | will not |
-| you're | you are |
-| it's | it is / it has |
-
-| Use | Avoid |
-| --- | ----- |
-| you will | you'll |
-| it will | it'll |
-| would have | would've |
-| could have | could've |
-| should have | should've |
-| you would / you had | you'd |
-| it would / it had | it'd |
-
 Avoid using the possessive form for objects and UI elements.
 Use "of" phrasing instead.
 
@@ -216,7 +195,85 @@ This is a common mistake because French punctuation standards require a space be
 
 ## Grammar
 
-<!-- TODO: Add rules. Recommended subsections: Voice (active vs. passive), Tense, Person (you/we), Contractions, Sentence length -->
+### Voice
+
+Use active voice as much as possible. Active voice is clearer, more direct, and easier to scan.
+
+Use passive voice only when the action shouldn't be attributed to a person or an object. This is common in confirmations, where attributing the action to the user can feel awkward or inaccurate.
+
+| Do | Don't |
+| -- | ----- |
+| Your query pipeline has been saved. | You saved your query pipeline. |
+| The source could not be found. | We couldn't find the source. |
+
+### Tense
+
+Use present tense for instructions, labels, and questions. Use past tense for confirmations.
+
+| Context | Tense | Example |
+| ------- | ----- | ------- |
+| Instructions | Present | Select a file to upload. |
+| Questions | Present | Are you sure you want to delete this? |
+| Confirmations | Past | Your changes have been saved. |
+
+### Person
+
+Address the user directly as "you." Never use "we" or refer to Coveo as a person performing actions.
+When the subject can be omitted entirely, omit it.
+
+**Guidelines:**
+
+- Use "you" and "your" to refer to the user
+- Never use "we," "our," or "us"
+- Avoid "Coveo" as a subject performing an action. Let the system or the product be the subject instead, or restructure the sentence to remove the subject
+
+| Do | Don't |
+| -- | ----- |
+| Your session has expired. | We ended your session. |
+| No results found. | Coveo couldn't find any results. |
+| You don't have permission to access this. | We can't let you access this. |
+
+### Contractions
+
+Contractions make UX copy more natural, but some are too casual and can make a sentence harder to read.
+If the contraction would end in "will," "would," "have," or "had," write them out instead.
+
+| Use | Avoid |
+| --- | ----- |
+| don't | do not |
+| can't | cannot |
+| won't | will not |
+| you're | you are |
+| it's | it is / it has |
+
+| Use | Avoid |
+| --- | ----- |
+| you will | you'll |
+| it will | it'll |
+| would have | would've |
+| could have | could've |
+| should have | should've |
+| you would / you had | you'd |
+| it would / it had | it'd |
+
+### Sentence length
+
+As a rule of thumb, great UX copy stays under 20 words per sentence.
+The right sentence length depends on the context, so some UI elements have tighter limits.
+
+Use the table to see the absolute **maximum** number of words per UI context, not as a target word count.
+Shorter is better!
+
+| UI element | Word limit |
+| ---------- | ---------- |
+| Any sentence | 20 words |
+| Button labels | 3 words |
+| Tooltips | 20 words |
+| Error messages | 25 words |
+| Empty states | 25 words |
+| Field validation | 10 words |
+| Modals | 25 words |
+| Toast notifications | 15 words |
 
 ## Syntax & structure
 
