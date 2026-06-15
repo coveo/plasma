@@ -112,6 +112,18 @@ const formatReleaseGroups = (releases) =>
         return ['', `### ${type[0].toUpperCase()}${type.slice(1)}`, '', formatReleaseTable(typeReleases)];
     });
 
+const getPrivatePackageNames = async () => {
+    const {stdout} = await execFile('pnpm', ['list', '--recursive', '--depth', '-1', '--json'], {
+        cwd: ROOT,
+        encoding: 'utf8',
+    });
+    return new Set(
+        JSON.parse(stdout)
+            .filter((pkg) => pkg.private)
+            .map((pkg) => pkg.name),
+    );
+};
+
 const buildPreview = async () => {
     const {baseRef, missingChangeset, releases} = await runChangesetStatus();
 
@@ -119,12 +131,15 @@ const buildPreview = async () => {
         return getMissingChangesetPreview(baseRef);
     }
 
+    const privatePackages = await getPrivatePackageNames();
+    const publicReleases = releases.filter((r) => !privatePackages.has(r.name));
+
     return [
         PREVIEW_MARKER,
         '## Release Preview',
         '',
-        getSummary(releases, baseRef),
-        ...formatReleaseGroups(releases),
+        getSummary(publicReleases, baseRef),
+        ...formatReleaseGroups(publicReleases),
     ].join('\n');
 };
 
