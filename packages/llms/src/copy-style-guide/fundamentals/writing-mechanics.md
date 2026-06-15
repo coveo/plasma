@@ -2,8 +2,10 @@
 
 ## Vocabulary
 
-Only use shortened forms when they're *more* common than the full term.
-Don't include customer jargon that isn't an official Coveo-used term.
+**Guidelines:**
+
+- Only use shortened forms when they're *more* common than the full term
+- Don't include customer jargon that isn't an official Coveo-used term
 
 ### Coveo-specific terms
 
@@ -11,57 +13,66 @@ Each time you reference an official Coveo product, feature, or function, follow 
 
 ### Acronyms & initialisms
 
-> **Note:** Acronyms and initialisms are essentially the same concept, other than the way they're read aloud.
-> Acronyms are read as one word (for example, "SaaS" or "NASA"), while initialisms are read letter by letter (for example, "VPN" or "API").
+Acronyms and initialisms are essentially the same concept, other than the way they're read aloud.
+Acronyms are read as one word (for example, "SaaS" or "NASA"), while initialisms are read letter by letter (for example, "VPN" or "API").
 
-When using Coveo acronyms and initialisms:
+**Guidelines:**
 
-| Rule | Do | Don't |
-| ---- | -- | ----- |
-| All capitals | RGA | rga |
-| No periods, hyphens, or spaces | RGA | R.G.A. |
-| No italics or quotes | RGA | *RGA* |
+- Use all capitals
+- Don't use periods, hyphens, or spaces
+- Don't use italics or quotation marks
+
+| Do | Don't |
+| -- | ----- |
+| RGA | rga |
+| RGA | R.G.A. |
+| RGA | *RGA* |
 
 ### Third-party terms
 
 When using names, words, or acronyms not specific to Coveo, always use the official or original spelling, capitalization, and formatting.
+Do this even when it contradicts the Coveo UX Copy Style Guide.
 
-| Type | Examples |
-| ---- | -------- |
+**Examples:**
+
+| Vocabulary | Formatting |
+| ---------- | ---------- |
 | Universal acronyms and abbreviations | a.m., etc., mL, Aug |
 | Industry-wide terminology | SaaS, WiFi, A/B test |
 | Third-party products, objects, and fields | sObject, PnP |
 
 ## Capitalization
 
-Use sentence case everywhere unless a specific rule below says otherwise.
-When in doubt, don't capitalize.
-
 ### Sentence case
 
 Sentence case means only the first word and proper nouns are capitalized.
 It's the default for all UI text: headings, labels, buttons, descriptions, tooltips, and placeholder text.
 
-**Do:** Save changes
+**Example:**
 
-**Don't:** Save Changes
+| Do | Don't |
+| -- | ----- |
+| Save changes | Save Changes |
+
+### Title case
+
+Title case means every major word is capitalized: nouns, verbs, adjectives, and adverbs.
+Articles (a, an, the), coordinating conjunctions (and, but, or), and short prepositions (in, on, of) are lowercase unless they're the first word.
 
 ### When to capitalize
 
-Always capitalize:
+**Always capitalize:**
 
 - The first word of a sentence, label, or heading
-- Proper nouns: people, places, company names
-- Official Coveo product and feature names.
-See the list of [product vocabulary](../fundamentals/product-vocabulary.md)
-- Third-party product names that use capitalization, even non-standard ones (for example, SharePoint, sObject, GitHub)
-- Initialisms and acronyms (for example, HTML, API, SaaS)
+- Proper nouns (people, places, or company names)
+- Official [Coveo product and feature names](../fundamentals/product-vocabulary.md)
+- Third-party product or company names that use capitalization, even non-standard ones (for example, SharePoint, sObject, GitHub)
 
-Never capitalize:
+**Never capitalize:**
 
-- Common nouns used as general terms (for example, "source", "pipeline", "user")
+- Common nouns used as general terms (for example, "source," "pipeline," "user")
 - Feature or UI element names that aren't trademarked or sold separately
-- Words for emphasis—use bold or italics instead
+- Words for emphasis (use **bold** or italic text instead)
 
 ### UI elements
 
@@ -89,103 +100,134 @@ The table below covers the most common cases.
 
 ### Referring to UI elements in copy
 
-When you refer to a UI element by name, match its capitalization exactly as it appears in the UI.
-Don't add quotation marks.
-Use **bold** formatting for the element name instead.
+**Guidelines:**
 
-**Do:** Select **Save**.
+- Match the capitalization of any UI element exactly as it appears in the UI
+- Don't use quotation marks
+- Use **bold** formatting for the element name
 
-**Don't:** Select "save".
+**Example:**
+
+| Do | Don't |
+| -- | ----- |
+| Select **Save** | Select "save" |
 
 ## Punctuation
 
 ### Periods
 
-Skip the period at the end of labels, headings, button text, and standalone UI strings.
-Use a period when the text is a full sentence in body copy, descriptions, tooltips, or help text.
-If a short message, like a toast notification, isn't a full sentence, no period is needed.
-If it is a full sentence, add one.
-A full sentence is an independent clause, meaning the sentence is still grammatically correct on its own.
-A fragment sentence is good and common to use in UX writing, yet it's not grammatically correct on its own.
+A full sentence is an independent clause, meaning it's grammatically correct on its own.
+A fragment sentence isn't grammatically correct on its own, but it's great for concise UI text.
 
-**Full sentence:**
+As a practice, add periods after full sentences, but not after fragment sentences.
 
-**Do:** Your changes have been saved.
+Use the lists for guidance.
 
-**Don't:** Your changes have been saved
+**Add a period after:**
 
-**Fragment sentence:**
+- Body copy
+- Descriptions
+- Tooltips
+- Help text
+- Toast notifications, only if the message is a full sentence
 
-**Do:** Changes saved
+**No period after:**
 
-**Don't:** Changes saved.
+- Labels
+- Headings
+- Button text
+- Standalone UI strings
+
+**Example:**
+
+| Type | Do | Don't |
+| ---- | -- | ----- |
+| Full sentence | Your changes have been saved. | Your changes have been saved |
+| Fragment sentence | Changes saved | Changes saved. |
 
 ### Colons
 
-Don't include colons in any titles.
-Don't add a colon after a label.
+**Guidelines:**
+
+- Don't use colons in titles.
+- Don't use colons in labels.
 The UI layout provides the visual relationship between the label and its field.
 
-**Do:** Email `[input field]`
+**Example:**
 
-**Don't:** Email: `[input field]`
+| Do | Don't |
+| -- | ----- |
+| Email `[input field]` | Email: `[input field]` |
 
 ### Exclamation marks
 
-Use exclamation marks sparingly, only for genuinely positive moments where enthusiasm is appropriate.
-Never use them for neutral states, errors, warnings, or any context in which the user might be frustrated or confused.
-Don't use more than one per context (a single page, modal, or notification).
+**Guidelines:**
 
-**Do:** Success! Your edits have been saved.
+- Use exclamation marks (!) sparingly, only for genuinely positive moments where enthusiasm is appropriate.
+- Never use them for neutral states, errors, warnings, or any context where the user might be frustrated or confused.
+- No more than one exclamation point per context (a single page, modal, or notification).
 
-**Don't:** An error occurred!
+**Example:**
+
+| Do | Don't |
+| -- | ----- |
+| Success! Your edits have been saved. | An error occurred! |
 
 ### Apostrophes
 
-Contractions make copy sound more natural.
-Use the following common contractions:
+Contractions make UX copy more natural, but some are too casual and can make the sentence harder to read.
+If the words you're conjoining include "will," "would," "have," or "had," write them out instead of contracting them.
 
-- don't
-- can't
-- won't
-- you're
-- it's
+| Use | Avoid |
+| --- | ----- |
+| don't | do not |
+| can't | cannot |
+| won't | will not |
+| you're | you are |
+| it's | it is / it has |
 
-If the words you're conjoining include "will," "would," or "had," then don't use a contraction.
-Instead, type out "it will" or "it would," for example.
-This includes:
-
-- you'll
-- it'll
-- you'd
-- it'd
+| Use | Avoid |
+| --- | ----- |
+| you will | you'll |
+| it will | it'll |
+| you would / you had | you'd |
+| it would / it had | it'd |
+| would have | would've |
+| could have | could've |
+| should have | should've |
 
 Avoid using the possessive form for objects and UI elements.
 Use "of" phrasing instead.
 
-**Do:** On the left side of the screen
+**Example:**
 
-**Don't:** On the screen's left side
+| Do | Don't |
+| -- | ----- |
+| On the left side of the screen | On the screen's left side |
 
 ### Spacing
 
 Never add a space before a punctuation mark.
-
-**Do:** Are you sure?
-
-**Don't:** Are you sure ?
-
 This is a common mistake because French punctuation standards require a space before exclamation and question marks.
-Make sure to pay special attention to this!
+
+**Example:**
+
+| Do | Don't |
+| -- | ----- |
+| Are you sure? | Are you sure ? |
 
 ### Ellipses
 
-Use an ellipsis (...) only to indicate that a process is in progress or that content is truncated.
-Never use ellipses to trail off in instructions or labels.
+**Guidelines:**
 
-**Do:** Loading...
+- Use an ellipsis (...) only to indicate that a process is in progress or that content is truncated.
+- Never use ellipses to trail off in instructions or labels.
 
-**Don't:** You can configure this later...
+**Example:**
+
+| Do | Don't |
+| -- | ----- |
+| Loading... | You can configure this later... |
 
 ## Grammar
 
