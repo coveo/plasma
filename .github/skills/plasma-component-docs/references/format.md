@@ -14,12 +14,12 @@ Component specs MUST use RFC 2119 keywords (always uppercased) to express requir
 
 **Critical rule:** only use these keywords when the subject is **the developer using the component**. Never use them to describe what the component or library does internally.
 
-- ✓ "MAY be provided to explain why the item is disabled." (user's choice)
-- ✓ "Async handlers MAY be provided; the button shows a loading state while the promise resolves." (user's choice + plain fact)
-- ✗ "The button MUST show a loading state…" → write: "shows a loading state…"
-- ✗ "The card MUST render this content as its label." → write: "Rendered as the primary label."
+- [ok] "MAY be provided to explain why the item is disabled." (user's choice)
+- [ok] "Async handlers MAY be provided; the button shows a loading state while the promise resolves." (user's choice + plain fact)
+- [error] "The button MUST show a loading state..." -> write: "shows a loading state..."
+- [error] "The card MUST render this content as its label." -> write: "Rendered as the primary label."
 
-Avoid vague imperatives like "always", "never", "prefer", or "avoid" in user-facing rules — replace them with the appropriate RFC 2119 keyword.
+Avoid vague imperatives like "always", "never", "prefer", or "avoid" in user-facing rules -- replace them with the appropriate RFC 2119 keyword.
 
 ---
 
@@ -27,21 +27,21 @@ Every file in `packages/llms/src/components/` follows this structure:
 
 ```markdown
 ---
-name: ComponentName                ← REQUIRED
-description: One-sentence description used in llms.txt index.  ← REQUIRED
+name: ComponentName                <- REQUIRED
+description: One-sentence description used in llms.txt index.  <- REQUIRED
 ---
 
 ## Props
 
 [One of the two forms below]
 
-## Sub-components ← omit if none
+## Sub-components <- omit if none
 
 ## Usage
 
-​`tsx
-[most common use case — copy-pasteable snippet, including imports]
-​`
+`tsx
+[most common use case -- copy-pasteable snippet, including imports]
+`
 
 ---
 
@@ -52,29 +52,29 @@ description: One-sentence description used in llms.txt index.  ← REQUIRED
 
 ## Usage section
 
-MUST appear after all other sections (Props, Sub-components) and before the footer link. MUST show the most common real-world usage as a self-contained `tsx` snippet. SHOULD use Plasma sub-components where they exist. MAY include 2–3 examples for components with multiple important patterns (e.g. async click, disabled state). MUST NOT be exhaustive — the Props table covers the full API.
+MUST appear after all other sections (Props, Sub-components) and before the footer link. MUST show the most common real-world usage as a self-contained `tsx` snippet. SHOULD use Plasma sub-components where they exist. MAY include 2-3 examples for components with multiple important patterns (e.g. async click, disabled state). MUST NOT be exhaustive -- the Props table covers the full API.
 
 ````markdown
 ## Usage
 
-​```tsx
+```tsx
 import {Button} from '@coveord/plasma-mantine';
 
 <Button.Primary onClick={() => console.log('saved')}>Save</Button.Primary>
 
-// Async click — button shows a loading spinner automatically
+// Async click -- button shows a loading spinner automatically
 <Button.Primary onClick={async () => { await save(); }}>Save</Button.Primary>
 
 // Disabled with explanation
 <Button.Primary disabled disabledTooltip="Complete the form first">Submit</Button.Primary>
-​```
+```
 ````
 
 ---
 
-## Props section — two forms
+## Props section -- two forms
 
-**Form A — No Plasma-specific props:**
+**Form A -- No Plasma-specific props:**
 
 ```markdown
 ## Props
@@ -82,21 +82,21 @@ import {Button} from '@coveord/plasma-mantine';
 _No additional props beyond the Mantine base component._
 ```
 
-**Form B — With Plasma-specific props:**
+**Form B -- With Plasma-specific props:**
 
 ```markdown
 ## Props
 
 > Extends: `MantineBaseProps`, `OtherInterface`. Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
 
-**`propName`** `string` · required · default: `undefined` — What it does.
-**`optionalProp`** `boolean` · optional · default: `false` — What it does.
+**`propName`** `string` | required | default: `undefined` -- What it does.
+**`optionalProp`** `boolean` | optional | default: `false` -- What it does.
 ```
 
 Rules:
 
-- Use `·` (U+00B7) as separator between metadata fields.
-- Use `—` (em dash with spaces) to separate metadata from the description.
+- Use `|` (pipe) as separator between metadata fields.
+- Use `--` (double dash) to separate metadata from the description.
 - Use `required` or `optional` explicitly for every prop.
 - `default:` is always shown; use `undefined` when there is no default (required props always get `undefined`).
 - Only list props defined in the Plasma wrapper; inherited Mantine props go in the `> Extends:` note.

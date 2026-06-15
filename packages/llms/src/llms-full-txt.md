@@ -1,4 +1,4 @@
-# Plasma Design System — Full LLM Documentation
+# Plasma Design System -- Full LLM Documentation
 
 Plasma is Coveo's design system built on top of Mantine. It provides a curated set of React components, a custom Mantine theme, design tokens, and icons for use in Coveo Cloud products.
 

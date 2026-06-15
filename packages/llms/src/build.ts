@@ -31,6 +31,32 @@ const write = (filePath: string, content: string) => {
     console.log(`  ✓  ${path.relative(distDir, filePath)} (${kb} KB)`);
 };
 
+const assertAsciiOnly = () => {
+    const NON_ASCII = /[^\x00-\x7F]/;
+    const files = fs.readdirSync(distDir, {recursive: true, encoding: 'utf-8'});
+    const violations: string[] = [];
+    for (const file of files) {
+        const filePath = path.join(distDir, file);
+        if (!fs.statSync(filePath).isFile()) {
+            continue;
+        }
+        const content = fs.readFileSync(filePath, 'utf-8');
+        const match = NON_ASCII.exec(content);
+        if (match) {
+            const line = content.slice(0, match.index).split('\n').length;
+            violations.push(
+                `  ${file}:${line} found U+${match[0].codePointAt(0)!.toString(16).padStart(4, '0').toUpperCase()}`,
+            );
+        }
+    }
+    if (violations.length > 0) {
+        console.error('\n\u274c Non-ASCII characters detected in dist output:\n');
+        violations.forEach((v) => console.error(v));
+        console.error('\nAll dist files must contain only ASCII characters.\n');
+        process.exit(1);
+    }
+};
+
 const main = () => {
     console.log('\n🚀 Generating Plasma LLM documentation…\n');
     console.log(`   Base URL: ${BASE_URL}\n`);
@@ -71,7 +97,9 @@ const main = () => {
     const skillTemplate = fs.readFileSync(path.resolve(currentDir, '../src/skill.md'), 'utf-8');
     write(path.join(distDir, 'plasma-skill.md'), skillTemplate.replaceAll('{{BASE_URL}}', BASE_URL));
 
-    console.log(`\n✅ Done! Generated docs for ${docs.length} components.\n`);
+    assertAsciiOnly();
+
+    console.log(`\n\u2705 Done! Generated docs for ${docs.length} components.\n`);
 };
 
 main();

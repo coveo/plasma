@@ -252,11 +252,12 @@ pnpm add -Dw <package-name>
 
 ## LLM Component Documentation
 
-Component specs for AI consumption live in `packages/llms/src/components/` — one markdown file per component with frontmatter, props tables, and usage examples.
+Component specs for AI consumption live in `packages/llms/src/components/` -- one markdown file per component with frontmatter, props tables, and usage examples.
 
 - When looking up how a Plasma component works, read the relevant spec file in `packages/llms/src/components/`.
 - When creating or updating a component spec, use the `plasma-component-docs` skill.
 - Always import from `@coveord/plasma-mantine`, even when consulting Mantine docs as reference.
+- All spec files MUST use only ASCII characters. The build enforces this constraint.
 
 ## Additional Resources
 

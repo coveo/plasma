@@ -7,8 +7,8 @@ description: Inline token for displaying semantic metadata with a predefined ico
 
 > Extends: `BoxProps`, `StylesApiProps`. Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
 
-**`variant`** `InfoTokenVariant` · optional · default: `'outline'` — The variant of the token MAY be set to control its visual treatment.
-**`size`** `InfoTokenSizes` · optional · default: `'xs'` — The size of the info token MAY be set to control its rendered size.
+**`variant`** `InfoTokenVariant` | optional | default: `'outline'` -- The variant of the token MAY be set to control its visual treatment.
+**`size`** `InfoTokenSizes` | optional | default: `'xs'` -- The size of the info token MAY be set to control its rendered size.
 
 ## Sub-components
 

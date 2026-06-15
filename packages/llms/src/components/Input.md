@@ -24,7 +24,7 @@ Plasma provides pre-configured sub-components as convenience wrappers. You SHOUL
 
 > Extends: `Omit<TooltipProps, 'label' | 'classNames' | 'attributes' | 'styles' | 'vars'>`, `StylesApiProps<InputLabelInfoFactory>`. Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
 
-**`children`** `ReactNode` · required · default: `undefined` — The tooltip content to display.
+**`children`** `ReactNode` | required | default: `undefined` -- The tooltip content to display.
 
 ## Usage
 

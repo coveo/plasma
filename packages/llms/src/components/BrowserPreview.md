@@ -7,8 +7,8 @@ description: Renders a simulated browser chrome frame around preview content.
 
 > Extends: `StackProps`. Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
 
-**`headerTooltip`** `string` · optional · default: `undefined` — Text displayed in a tooltip in the header.
-**`title`** `string` · optional · default: `undefined` — Custom title displayed at the center of the header.
+**`headerTooltip`** `string` | optional | default: `undefined` -- Text displayed in a tooltip in the header.
+**`title`** `string` | optional | default: `undefined` -- Custom title displayed at the center of the header.
 
 ## Usage
 
@@ -40,7 +40,7 @@ export function Example() {
                         <Stack key={product.name} gap={0}>
                             <Text>{product.name}</Text>
                             <Text size="xs" c="dimmed">
-                                {product.department} • {product.price}
+                                {product.department} * {product.price}
                             </Text>
                         </Stack>
                     ))}

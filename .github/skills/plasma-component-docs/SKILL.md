@@ -23,21 +23,22 @@ Use `grep`/`glob` to locate files when the exact path is unknown.
 
 From the component source, identify:
 
-- **Plasma-specific props** — props defined in the Plasma wrapper (not inherited from Mantine). Include prop name, type, required flag, default, and JSDoc description.
-- **Sub-components** — static properties assigned to the component (e.g. `Button.Primary`, `Table.Header`).
-- **Extends** — if the component extends a Mantine base, note it in the Props section header (see format).
+- **Plasma-specific props** -- props defined in the Plasma wrapper (not inherited from Mantine). Include prop name, type, required flag, default, and JSDoc description.
+- **Sub-components** -- static properties assigned to the component (e.g. `Button.Primary`, `Table.Header`).
+- **Extends** -- if the component extends a Mantine base, note it in the Props section header (see format).
 
 From stories, extract:
 
-- **Usage examples** — the most common real-world snippet(s); see [references/format.md](references/format.md) for the Usage section rules.
+- **Usage examples** -- the most common real-world snippet(s); see [references/format.md](references/format.md) for the Usage section rules.
 
 ### 3. Write the spec
 
 Follow the format in [references/format.md](references/format.md) exactly. Key rules:
 
 - YAML frontmatter `description` must be one sentence (used in `llms.txt` index).
-- Omit the Props table entirely if no Plasma-specific props exist — use the `_No additional props_` shorthand instead.
-- End every file with `[Full Plasma documentation]({{BASE_URL}})`. Use the literal placeholder `{{BASE_URL}}` — it is substituted at build time.
+- Omit the Props table entirely if no Plasma-specific props exist -- use the `_No additional props_` shorthand instead.
+- End every file with `[Full Plasma documentation]({{BASE_URL}})`. Use the literal placeholder `{{BASE_URL}}` -- it is substituted at build time.
+- **ASCII only** -- all source `.md` files MUST contain only ASCII characters (U+0000-U+007F). The build will fail if non-ASCII characters are detected in dist output. Use `|` (pipe) as metadata separator and `--` as em-dash replacement.
 
 ### 4. Regenerate dist outputs
 

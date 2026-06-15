@@ -7,8 +7,8 @@ description: Overlay dialog that focuses user attention and can render a descrip
 
 > Extends: `MantineModalProps`. Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
 
-**`description`** `HeaderProps['description']` · optional · default: `undefined` — Description of the modal, displayed below the title, MAY be provided.
-**`help`** `HeaderDocAnchorProps` · optional · default: `undefined` — Help link for the modal, displayed in the header, MAY be provided. It SHOULD provide a link to external documentation or help resources.
+**`description`** `HeaderProps['description']` | optional | default: `undefined` -- Description of the modal, displayed below the title, MAY be provided.
+**`help`** `HeaderDocAnchorProps` | optional | default: `undefined` -- Help link for the modal, displayed in the header, MAY be provided. It SHOULD provide a link to external documentation or help resources.
 
 ## Sub-components
 

@@ -7,8 +7,8 @@ description: Expandable nested sub-form within a parent form context.
 
 > Extends: `CollapseProps`, `StylesApiProps`. Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
 
-**`title`** `string` · optional · default: `undefined` — MAY define the title of the child form.
-**`description`** `ReactNode` · optional · default: `undefined` — MAY define the description of the child form.
+**`title`** `string` | optional | default: `undefined` -- MAY define the title of the child form.
+**`description`** `ReactNode` | optional | default: `undefined` -- MAY define the description of the child form.
 
 ## Usage
 

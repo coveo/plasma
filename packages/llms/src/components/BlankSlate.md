@@ -5,7 +5,7 @@ description: Empty state container for views with no content to display.
 
 ## Props
 
-**`withBorder`** `boolean` · optional · default: `true` — Renders a border when this prop is `true` and omits it when this prop is `false`.
+**`withBorder`** `boolean` | optional | default: `true` -- Renders a border when this prop is `true` and omits it when this prop is `false`.
 
 ## Usage
 

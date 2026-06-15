@@ -11,12 +11,12 @@ _No additional props beyond the Mantine base component._
 
 Plasma overrides `Menu.Item` transparently to add disabled tooltip support. All other sub-components are standard Mantine.
 
-- `Menu.Item` — extends Mantine's `Menu.Item` with `disabledTooltip` and `disabledTooltipProps`
+- `Menu.Item` -- extends Mantine's `Menu.Item` with `disabledTooltip` and `disabledTooltipProps`
 
 ### Menu.Item additional props
 
-**`disabledTooltip`** `string` · optional · default: `undefined` — Tooltip text MAY be provided to explain why a disabled item cannot be activated.
-**`disabledTooltipProps`** `TooltipProps` · optional · default: `undefined` — Additional tooltip configuration MAY be provided for the disabled-state tooltip and SHOULD complement Plasma-managed fields.
+**`disabledTooltip`** `string` | optional | default: `undefined` -- Tooltip text MAY be provided to explain why a disabled item cannot be activated.
+**`disabledTooltipProps`** `TooltipProps` | optional | default: `undefined` -- Additional tooltip configuration MAY be provided for the disabled-state tooltip and SHOULD complement Plasma-managed fields.
 
 ## Usage
 

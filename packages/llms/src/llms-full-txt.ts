@@ -6,9 +6,9 @@ import type {ComponentDoc} from './build.ts';
 const currentDir = path.dirname(fileURLToPath(import.meta.url));
 const template = fs.readFileSync(path.resolve(currentDir, '../src/llms-full-txt.md'), 'utf-8');
 
-const BOUNDARY = `\n\n${'─'.repeat(80)}\n\n`;
+const BOUNDARY = `\n\n${'-'.repeat(80)}\n\n`;
 
-/** Generates llms-full.txt — a single file concatenating all component documentation. */
+/** Generates llms-full.txt -- a single file concatenating all component documentation. */
 export const generateLlmsFullTxt = (docs: ComponentDoc[]): string => {
     const componentDocs = docs
         .map((doc) => {

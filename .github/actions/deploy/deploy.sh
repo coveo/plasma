@@ -12,9 +12,7 @@ echo "Copying LLM files into Storybook output"
 cp -r ./packages/llms/dist/. ./packages/storybook/storybook-static/
 
 echo "Deploying Storybook to ${PLASMA_BASE_URL}/"
-aws s3 cp ./packages/storybook/storybook-static s3://${BUCKET}/${DESTINATION}${URL_PATH}/ --recursive --exclude "*.txt" --exclude "*.md"
-aws s3 cp ./packages/storybook/storybook-static s3://${BUCKET}/${DESTINATION}${URL_PATH}/ --recursive --exclude "*" --include "*.txt" --content-type "text/plain; charset=utf-8"
-aws s3 cp ./packages/storybook/storybook-static s3://${BUCKET}/${DESTINATION}${URL_PATH}/ --recursive --exclude "*" --include "*.md" --content-type "text/markdown; charset=utf-8"
+aws s3 cp ./packages/storybook/storybook-static s3://${BUCKET}/${DESTINATION}${URL_PATH}/ --recursive
 
 echo "Deploying old Plasma website to ${PLASMA_BASE_URL}/old/"
 aws s3 cp ./packages/website/dist s3://${BUCKET}/${DESTINATION}${URL_PATH}/old/ --recursive

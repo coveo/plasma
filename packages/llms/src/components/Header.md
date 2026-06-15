@@ -7,11 +7,11 @@ description: Page-level header with a title and optional breadcrumbs, actions, a
 
 > Extends: `GroupProps`, `StylesApiProps`. Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
 
-**`description`** `ReactNode` · optional · default: `undefined` — Optional description text displayed inside the header underneath the title.
-**`borderBottom`** `boolean` · optional · default: `undefined` — Adds a bottom border to the header when set.
-**`variant`** `'primary' | 'secondary'` · optional · default: `'primary'` — You SHOULD use the `primary` variant for page headers and the `secondary` variant elsewhere.
-**`children`** `ReactNode` · required · default: `undefined` — The title of the header MUST be provided.
-**`titleComponent`** `ElementType` · optional · default: `Title` — The component used to render the title MAY be customized.
+**`description`** `ReactNode` | optional | default: `undefined` -- Optional description text displayed inside the header underneath the title.
+**`borderBottom`** `boolean` | optional | default: `undefined` -- Adds a bottom border to the header when set.
+**`variant`** `'primary' | 'secondary'` | optional | default: `'primary'` -- You SHOULD use the `primary` variant for page headers and the `secondary` variant elsewhere.
+**`children`** `ReactNode` | required | default: `undefined` -- The title of the header MUST be provided.
+**`titleComponent`** `ElementType` | optional | default: `Title` -- The component used to render the title MAY be customized.
 
 ## Sub-components
 

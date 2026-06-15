@@ -17,7 +17,7 @@ function Example() {
 }
 ```
 
-When `readOnly` is set (and `disabled` is not), Plasma applies a distinct read-only visual style — use this instead of `disabled` when the value is informational and not interactive.
+When `readOnly` is set (and `disabled` is not), Plasma applies a distinct read-only visual style -- use this instead of `disabled` when the value is informational and not interactive.
 
 ---
 

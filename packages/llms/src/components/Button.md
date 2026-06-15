@@ -7,11 +7,11 @@ description: Action button that triggers tasks and provides async loading and di
 
 > Extends: `ButtonProps`, `ButtonWithDisabledTooltipProps`. Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
 
-**`onClick`** `ClickHandler<HTMLButtonElement>` · optional · default: `undefined` — Handler executed on click. Async handlers MAY be used; the button shows a loading state while the promise resolves.
-**`disabledTooltip`** `string` · optional · default: `undefined` — The tooltip message displayed when the button is disabled.
-**`disabled`** `boolean` · optional · default: `undefined` — Indicates whether the button underneath the tooltip is disabled.
-**`disabledTooltipProps`** `Omit<TooltipProps, 'disabled' | 'label' | 'children'>` · optional · default: `undefined` — Additional tooltip props MAY be set on the disabled button tooltip.
-**`fullWidth`** `boolean` · optional · default: `undefined` — When provided, sets the button width to 100% of the parent element.
+**`onClick`** `ClickHandler<HTMLButtonElement>` | optional | default: `undefined` -- Handler executed on click. Async handlers MAY be used; the button shows a loading state while the promise resolves.
+**`disabledTooltip`** `string` | optional | default: `undefined` -- The tooltip message displayed when the button is disabled.
+**`disabled`** `boolean` | optional | default: `undefined` -- Indicates whether the button underneath the tooltip is disabled.
+**`disabledTooltipProps`** `Omit<TooltipProps, 'disabled' | 'label' | 'children'>` | optional | default: `undefined` -- Additional tooltip props MAY be set on the disabled button tooltip.
+**`fullWidth`** `boolean` | optional | default: `undefined` -- When provided, sets the button width to 100% of the parent element.
 
 ## Sub-components
 
