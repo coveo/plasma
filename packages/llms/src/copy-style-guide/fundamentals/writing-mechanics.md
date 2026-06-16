@@ -92,7 +92,8 @@ The table below covers the most common cases.
 | Collapsible panel labels | All caps | "FILTERS" |
 | Page titles referring to a named Coveo feature | Title case | "Content Browser", "Insight Panel" |
 
-> **Note:** In the codebase, always hardcode text in sentence case.
+> [!NOTE]
+> In the codebase, always hardcode text in sentence case.
 > Title case and all caps are applied through flags, not in the source strings.
 -->
 
@@ -197,9 +198,11 @@ This is a common mistake because French punctuation standards require a space be
 
 ### Voice
 
-Use active voice as much as possible. Active voice is clearer, more direct, and easier to scan.
+Use active voice as much as possible.
+Active voice is clearer, more direct, and easier to scan.
 
-Use passive voice only when the action shouldn't be attributed to a person or an object. This is common in confirmations, where attributing the action to the user can feel awkward or inaccurate.
+Use passive voice only when the action shouldn't be attributed to a person or an object.
+This is common in confirmations, where attributing the action to the user can feel awkward or inaccurate.
 
 | Do | Don't |
 | -- | ----- |
@@ -225,7 +228,8 @@ When the subject can be omitted entirely, omit it.
 
 - Use "you" and "your" to refer to the user
 - Never use "we," "our," or "us"
-- Avoid "Coveo" as a subject performing an action. Let the system or the product be the subject instead, or restructure the sentence to remove the subject
+- Avoid "Coveo" as a subject performing an action.
+Let the system or the product be the subject instead, or restructure the sentence to remove the subject
 
 | Do | Don't |
 | -- | ----- |
@@ -296,7 +300,7 @@ Frontloading in this situation helps the user understand why they're doing somet
 | -- | ----- |
 | To add a source, select **Add source**. | Select **Add source** to add a source. |
 
-> ![TIP](../images/tip.svg)
+> [!NOTE]
 > Always prioritize clarity and readability!
 > If breaking this rule makes the message easier to understand, then do it.
 

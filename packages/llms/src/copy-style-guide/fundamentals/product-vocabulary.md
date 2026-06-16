@@ -4,7 +4,8 @@
 
 To ease the learning process for Coveo end users, it's crucial for the UI to use one consistent term for each product, feature, or concept.
 
-> **Note:** Vocabulary isn't standardized across all Coveo sources and documentation yet.
+> [!NOTE]
+> Vocabulary isn't standardized across all Coveo sources and documentation yet.
 > Always refer to this page when writing for the UI.
 
 ## Vocabulary
@@ -76,5 +77,7 @@ Swap them for their proper counterpart instead.
 If a term you're looking for isn't in the vocabulary or banned terminology list:
 
 - See if the term is currently used in the Administration Console by searching in the [Admin UI repo](https://github.com/coveo-platform/admin-ui/tree/master/packages/v2/src/strings) or the [Frontitude library](https://app.frontitude.com/library/).
-- [Send a request](https://coveord.atlassian.net/jira/core/projects/UC/) to the UI Copy Jira for it to be added to this page.
-<!-- The copy Jira space is not ready and needs to be automated for ticket requests. This is just a placeholder until I receive Jira editing permissions. -->
+<!-- 
+- [Send a request](https://coveord.atlassian.net/jira/core/projects/UC/) to the UI Copy space for it to be added to this page.
+
+The copy Jira space is not ready and needs to be automated for ticket requests. This is just a placeholder until I receive Jira editing permissions. -->

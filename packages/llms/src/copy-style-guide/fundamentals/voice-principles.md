@@ -28,7 +28,8 @@ Coveo's voice can be described with three main qualities which should be present
 
 ### Clear
 
-When something is complex, clear copy breaks it down. UX copy should sound like a knowledgeable colleague explaining something, not a technical or academic manual.
+When something is complex, clear copy breaks it down.
+UX copy should sound like a knowledgeable colleague explaining something, not a technical or academic manual.
 
 This looks like:
 
@@ -37,7 +38,7 @@ This looks like:
 - Saying exactly what to do or where to go
 - Making it easy to understand on the first read
 
-**Examples**:
+**Examples:**
 
 | Scenario | Do | Don't |
 | -------- | -- | ----- |
@@ -59,11 +60,12 @@ This looks like:
 - Prioritizing problem-solving
 - Not embellishing with technical language
 
-> **Note:** Conversational doesn't automatically mean "human."
+> [!NOTE]
+> Conversational doesn't automatically mean "human."
 > AI-generated copy can be human-like without considering the user's needs and emotional state.
 > The intent is what matters.
 
-**Examples**:
+**Examples:**
 
 | Scenario | Do | Don't |
 | -------- | -- | ----- |
@@ -73,7 +75,8 @@ This looks like:
 
 ### Helpful
 
-Helpful copy means focusing on what the user needs to do and why it matters to them. It should answer a question before the user has to ask it, and guide the user forward without being overbearing.
+Helpful copy means focusing on what the user needs to do and why it matters to them.
+It should answer a question before the user has to ask it, and guide the user forward without being overbearing.
 
 This looks like:
 
@@ -82,7 +85,7 @@ This looks like:
 - Giving next steps when something goes wrong
 - Working in harmony with visual design elements
 
-**Examples**:
+**Examples:**
 
 | Scenario | Do | Don't |
 | -------- | -- | ----- |
@@ -92,16 +95,18 @@ This looks like:
 
 <!-- ## Choosing the right tone
 
-Tone in UX design can be visualized with four "dimensions." Where the copy lands on each scale depends on the current context—the user's goals, mood, and needs.
+Tone in UX design can be visualized with four "dimensions."
+Where the copy lands on each scale depends on the current context—the user's goals, mood, and needs.
 
 ![A chart showing scales of the Four Dimensions of Tone of Voice](../images/dimensions-of-tone.png)
 
-Some of these qualities remain consistent throughout Coveo's UX, while others can vary slightly. For example, Coveo's copy is neutral (middle) on the formal and casual scale and the serious and funny scale, regardless of the scenario.
+Some of these qualities remain consistent throughout Coveo's UX, while others can vary slightly.
+For example, Coveo's copy is neutral (middle) on the formal and casual scale and the serious and funny scale, regardless of the scenario.
 
-- **Formal to Casual**: Neutral
-- **Serious to Funny**: Serious-neutral
-- **Respectful to Irreverent**: Neutral
-- **Matter-of-fact to Enthusiastic**: Often matter-of-fact, verges on enthusiastic in certain scenarios
+- **Formal to Casual:** Neutral
+- **Serious to Funny:** Serious-neutral
+- **Respectful to Irreverent:** Neutral
+- **Matter-of-fact to Enthusiastic:** Often matter-of-fact, verges on enthusiastic in certain scenarios
 
 **Examples of Coveo's *tone* shifting across UI scenarios:**
 
