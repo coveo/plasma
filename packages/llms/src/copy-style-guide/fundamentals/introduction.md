@@ -58,8 +58,28 @@ This is most often:
 
 ## Copy Glossary
 
-> ![TIP](../images/tip.svg)
+> [!TIP]
 > **For concepts in *UX design*, refer to the [design glossary](design-documentation/glossary.md)**
+
+test
+
+> [!NOTE]
+> This is a test.
+
+test
+
+> [!IMPORTANT]
+> This is a test.
+
+test
+
+> [!CAUTION]
+> This is a test.
+
+test
+
+> [!WARNING]
+> This is a test.
 
 - **UX copy**: The text within an interface that guides users throughout their whole experience. Also called *UX writing*.
 
