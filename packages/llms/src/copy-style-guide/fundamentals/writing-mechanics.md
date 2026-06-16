@@ -331,3 +331,84 @@ The only exception is well-known industry terms or verbs that users likely know 
 | -- | ----- |
 | This may take a few minutes. | This won't happen at the speed of light. |
 | This is quick to set up. | This is a piece of cake to set up. |
+
+#### Avoiding jargon
+
+Use this table to see what unnecessary words you can replace with everyday ones instead.
+
+| Jargon | Replace with |
+| ------- | ---- |
+| able to | can |
+| to be able to | to |
+| additional | more<br>other<br>different |
+| administer | manage |
+| allows you to | you can use [x] to [y]<br>with [x], you can [y] |
+| alternative | other |
+| append | add |
+| assist | help |
+| begin | start |
+| be of interest to them | interest them |
+| complete | finish |
+| conversely | but<br>however |
+| credentials | username and password |
+| currently | now |
+| deactivate (a feature) | disable |
+| display | show |
+| due to the fact that | because<br>since |
+| e.g. | for example<br>like<br>such as |
+| enable | allow<br>let |
+| enable (a feature) | activate<br>turn on |
+| ensure | make sure<br>(or just state the action) |
+| fashion (as in: a secured fashion) | way (as in: a secured way) |
+| following | after<br>next |
+| furthermore | then<br>so |
+| future-proof | (depending on context)<br>lasting<br>reliable<br>adaptable |
+| gives you the ability | you can use [x] to [y]<br>with [x], you can [y] |
+| how many (noun) | the number |
+| how much (noun) | the amount |
+| how (noun: as in *intensity*) | the extent |
+| how (noun: as in *reasoning*) | the reason |
+| how (noun: as in *status*) | the status of<br>the state of |
+| how (noun: as in *the method*) | the way |
+| illustrate | show |
+| in cases where | when |
+| initial | first |
+| in order to | to |
+| in order to [verb], you must [verb] | To [verb], [verb] |
+| input (verb) | enter |
+| is able to provide | provides |
+| leverage | use |
+| make a modification | edit |
+| manner | way |
+| methods | ways |
+| modify | edit |
+| moreover | then<br>so |
+| nor | or |
+| obtain | get |
+| on the subject of | about |
+| pertaining | related |
+| preceding | before |
+| prior to | before |
+| provided [x], [y] will... | if |
+| purchase | buy |
+| rather | instead |
+| regarding | on<br>about<br>for |
+| related to | about |
+| remedy | fix |
+| required to | need to |
+| resolve | fix |
+| retain | keep |
+| should [x] + [verb] / should you [verb] | if |
+| simultaneously | at the same time |
+| submit (in certain contexts) | send |
+| sub-second | under one second |
+| subsequent | future<br>later<br>upcoming |
+| thereafter | after<br>after that |
+| therefore | so |
+| to ensure | to<br>to make sure |
+| to surface | to display<br>to promote |
+| unable to | can't |
+| utilize | use |
+| wish to | want to |
+| with the use of | with |
+| would like | want |
