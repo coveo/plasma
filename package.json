@@ -7,7 +7,7 @@
         "build": "turbo run build",
         "changeset": "changeset",
         "changeset:version": "changeset version",
-        "clean": "pnpm --recursive --parallel clean",
+        "clean": "pnpm --recursive --parallel run clean",
         "commit-cli": "cz",
         "fmt": "oxfmt",
         "fmt:check": "oxfmt --check",
