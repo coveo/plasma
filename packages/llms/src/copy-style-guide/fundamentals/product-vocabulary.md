@@ -5,14 +5,16 @@
 To ease the learning process for Coveo end users, it's crucial for the UI to use one consistent term for each product, feature, or concept.
 
 > [!NOTE]
-> Vocabulary isn't standardized across all Coveo sources and documentation yet.
-> Always refer to this page when writing for the UI.
+> Vocabulary isn't standardized across all Coveo sources or documentation.
+> Always refer to this list when writing for the UI.
 
 ## Vocabulary
 
 Use this list to see the acceptable spelling, capitalization, and punctuation for Coveo product terminology in the UI.
 
-All terms are alphabetized, and those beginning with "Coveo" are alphabetized by the **second word**.
+The vocabulary is listed in alphabetical order.
+However, terms starting with the words *Coveo*, *for*, or *on* are alphabetized by the **next distinguishing word** (company, feature, or product name).
+For example, *Coveo for Salesforce* is listed under **S** for *Salesforce*.
 
 ### A, B, C
 
@@ -21,10 +23,7 @@ All terms are alphabetized, and those beginning with "Coveo" are alphabetized by
 
 ### D, E, F
 
-- Coveo for Microsoft Dynamics 365
-- Coveo for Salesforce
-- Coveo for Shopify
-- Coveo for Sitecore
+- Coveo on Elasticsearch
 
 ### G, H, I
 
@@ -32,10 +31,10 @@ All terms are alphabetized, and those beginning with "Coveo" are alphabetized by
 
 - Coveo JavaScript Search Framework
 - Coveo Machine Learning
+- Coveo for Microsoft Dynamics 365
 
 ### N, O, P
 
-- Coveo on Elasticsearch
 - Coveo On-Premises Crawling Module
 - Coveo Platform
 - Coveo Professional Services
@@ -43,6 +42,9 @@ All terms are alphabetized, and those beginning with "Coveo" are alphabetized by
 ### Q, R, S
 
 - Coveo QuickView
+- Coveo for Salesforce
+- Coveo for Shopify
+- Coveo for Sitecore
 - Coveo Support
 
 ### T, U, V
@@ -72,12 +74,13 @@ Swap them for their proper counterpart instead.
 | Pop up, Popup, Pop-up | Modal |
 | UID, User ID | Client ID |
 
+<!-- 
 ## Missing terms
 
 If a term you're looking for isn't in the vocabulary or banned terminology list:
 
 - See if the term is currently used in the Administration Console by searching in the [Admin UI repo](https://github.com/coveo-platform/admin-ui/tree/master/packages/v2/src/strings) or the [Frontitude library](https://app.frontitude.com/library/).
-<!-- 
 - [Send a request](https://coveord.atlassian.net/jira/core/projects/UC/) to the UI Copy space for it to be added to this page.
 
-The copy Jira space is not ready and needs to be automated for ticket requests. This is just a placeholder until I receive Jira editing permissions. -->
+The listed copy Jira space is not ready and needs to be automated for ticket requests. This is just a placeholder until I receive Jira editing permissions.
+-->
