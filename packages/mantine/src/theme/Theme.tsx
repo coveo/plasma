@@ -284,9 +284,6 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         Combobox: Combobox.extend({
             classNames: ComboboxClasses,
-            defaultProps: {
-                middlewares: {inline: true},
-            },
         }),
         ComboboxChevron: ComboboxChevron.extend({
             defaultProps: {
@@ -443,7 +440,6 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         Popover: Popover.extend({
             classNames: PopoverClasses,
             defaultProps: {
-                middlewares: {inline: true},
                 position: 'bottom-start',
             },
         }),
