@@ -1,10 +1,9 @@
 # Target Audience
 
 The first step to writing great UX copy is understanding the users who read it.
-At Coveo, that means writing for end users who could be technical or non-technical.
-The goal is to tailor the UX writing to the *least experienced* members of the audience.
+At Coveo, that means writing for end users who could be technical or non-technical—the goal is to tailor the UX writing to the *least experienced* members of the audience.
 
-Copy should **make the next step obvious**, **use plain language**, and **help all users act without having to learn the product first**.
+Copy should make the next step obvious, use plain language, and help all users act without having to learn the product first.
 
 ## User personas
 

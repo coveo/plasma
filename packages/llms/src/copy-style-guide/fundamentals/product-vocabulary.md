@@ -79,7 +79,7 @@ Swap them for their proper counterpart instead.
 
 If a term you're looking for isn't in the vocabulary or banned terminology list:
 
-- See if the term is currently used in the Administration Console by searching in the [Admin UI repo](https://github.com/coveo-platform/admin-ui/tree/master/packages/v2/src/strings) or the [Frontitude library](https://app.frontitude.com/library/).
+- Search in the [Admin UI repo](https://github.com/coveo-platform/admin-ui/tree/master/packages/v2/src/strings) or the [Frontitude library](https://app.frontitude.com/library/) to see if the term is being used in the Administration Console.
 - [Send a request](https://coveord.atlassian.net/jira/core/projects/UC/) to the UI Copy space for it to be added to this page.
 
 The listed copy Jira space is not ready and needs to be automated for ticket requests. This is just a placeholder until I receive Jira editing permissions.

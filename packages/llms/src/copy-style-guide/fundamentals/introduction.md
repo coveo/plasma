@@ -4,7 +4,7 @@
 It's an integral part of a design system—deeply intertwined with the UX design choices.
 Copy can make or break a user experience.
 
-For relevant terms and their meanings, see the [copy glossary](#copy-glossary).
+For relevant terminology and definitions, see the [Copy glossary](#copy-glossary).
 
 ## In this style guide
 
@@ -56,10 +56,10 @@ This is most often:
 - Developers
 - AI agents
 
-## Copy Glossary
+## Copy glossary
 
 > [!IMPORTANT]
-> **For concepts in *UX design*, refer to the [design glossary](design-documentation/glossary.md)**
+> For concepts in *UX design*, refer to the [design glossary](design-documentation/glossary.md).
 
 - **UX copy**: The text within an interface that guides users throughout their whole experience. Also called *UX writing*.
 

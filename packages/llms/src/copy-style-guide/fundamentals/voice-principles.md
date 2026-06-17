@@ -93,26 +93,24 @@ This looks like:
 | **A user's action is blocked by missing permissions** | You don't have permission to do this. Contact your administrator to request access. | Access denied. |
 | **A user enables a feature for the first time** | Query suggestions are on. They will start appearing as users type in your search box. | Feature enabled. |
 
-<!-- ## Choosing the right tone
+## Choosing the right tone
 
-Tone in UX design can be visualized with four "dimensions."
-Where the copy lands on each scale depends on the current context—the user's goals, mood, and needs.
+UX copy should adapt to the user's current goals, mood, and needs in their journey.
+These four scales can help visualize what goes into tone.
 
-![A chart showing scales of the Four Dimensions of Tone of Voice](../images/dimensions-of-tone.png)
+![Four Dimensions of Tone of Voice: formal and casual, serious and funny, respectful and irreverent, matter-of-fact and enthusiastic](../images/dimensions-of-tone.png)
 
-Some of these qualities remain consistent throughout Coveo's UX, while others can vary slightly.
-For example, Coveo's copy is neutral (middle) on the formal and casual scale and the serious and funny scale, regardless of the scenario.
+Your copy should never land at either extreme.
+As a practice, aim for the middle point on all scales and shift only slightly based on context:
 
-- **Formal to Casual:** Neutral
-- **Serious to Funny:** Serious-neutral
-- **Respectful to Irreverent:** Neutral
-- **Matter-of-fact to Enthusiastic:** Often matter-of-fact, verges on enthusiastic in certain scenarios
+- **Errors and frustrating scenarios:** lean serious and matter-of-fact
+- **Instructional and neutral scenarios:** stay in the middle
+- **Achievements and positive scenarios:** lean enthusiastic and casual
 
-**Examples of Coveo's *tone* shifting across UI scenarios:**
+| Tone | Example |
+| ---- | ------- |
+| Serious | You're about to delete "pipeline-123". This action can't be undone. |
+| Matter-of-fact | No query pipelines found. Try changing or clearing your filters. |
+| Enthusiastic | Success! Your query pipeline "pipeline123" has been saved. |
 
-| Serious | Enthusiastic | Matter-of-fact |
-| ------- | ------------ | -------------- |
-| You're about to delete "pipeline-123". This action can't be undone. | Success! Your query pipeline "pipeline123" has been saved. | No query pipelines found. Try changing or clearing your filters. |
--->
-
-See the rules for [writing mechanics](writing-mechanics.md).
+Also, see the [writing mechanic guidelines](writing-mechanics.md).
