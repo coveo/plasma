@@ -39,6 +39,25 @@ describe('Table', () => {
             expect(screen.getByTestId('empty-state')).toBeVisible();
         });
 
+        it('hides column headers when filtered, not loading, and showing no data', () => {
+            const Fixture = () => {
+                const store = useTable<RowData>({initialState: {globalFilter: 'something'}});
+                return (
+                    <Table store={store} data={[]} columns={columns}>
+                        <Table.Header data-testid="table-header">header</Table.Header>
+                        <Table.NoData>
+                            <EmptyState isFiltered={store.isFiltered} />
+                        </Table.NoData>
+                    </Table>
+                );
+            };
+            render(<Fixture />);
+
+            expect(screen.queryByRole('columnheader', {name: /firstName/i})).not.toBeInTheDocument();
+            expect(screen.queryByRole('columnheader', {name: /lastName/i})).not.toBeInTheDocument();
+            expect(screen.getByTestId('filtered-empty-state')).toBeVisible();
+        });
+
         it('does not hide the footer and header if the table is filtered', () => {
             const Fixture = () => {
                 const store = useTable<RowData>({initialState: {globalFilter: 'something'}});
