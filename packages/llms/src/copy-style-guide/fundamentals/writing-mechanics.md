@@ -5,7 +5,7 @@
 **Guidelines:**
 
 - Only use shortened forms when they're *more* common than the full term
-- Don't include customer jargon that isn't an official Coveo-used term
+- Don't include customer jargon that isn't an official Coveo term
 
 ### Coveo-specific terms
 
@@ -262,7 +262,7 @@ Shorter is better!
 ## Syntax & structure
 
 In almost all UX contexts, frontloading is the best way to provide clarity.
-Frontloading means stating the most important information and key message first, at beginning of the text.
+Frontloading means stating the most important information and key message first, at the beginning of the text.
 After that, more context, details, or reasoning can be given.
 This technique is used to structure sentences, paragraphs, pages, and even entire books.
 

@@ -100,7 +100,7 @@ The following "dimensions" are like the four pillars of tone and can help in und
 ![Four Dimensions of Tone of Voice: formal to casual, serious to funny, respectful to irreverent, matter-of-fact to enthusiastic](../images/dimensions-of-tone.png)
 
 Considering Coveo's product and [voice](#what-is-coveos-voice), the tone should never fall on any extreme end.
-When you're writing copy, aim for the midway-point on all four scales, and based on the context, shift the tone marginally to accommodate.
+When you're writing copy, aim for the midpoint on all four scales, and based on the context, shift the tone marginally to accommodate.
 
 **Examples:**
 
@@ -108,7 +108,7 @@ When you're writing copy, aim for the midway-point on all four scales, and based
 | ------------ | ----------- | ------------- | ---- |
 | • Errors and failures<br>• Complex features<br>• Empty states | Frustrated, impatient, confused | **Slightly left** (matter-of-fact and respectful) | No query pipelines found. Try changing or clearing your filters. |
 | • Notifications and warnings<br>• Descriptions<br>• Confirmation for actions | Neutral | **Neutral** | You're about to delete "pipeline-123". This action can't be undone. |
-| • Completed setups<br>• Upgrades | Pleased, encouraged | **Slightly right** (enthusiastic and casual) | Success! Your query pipeline "pipeline123" has been saved. |
+| • Completed setups<br>• Upgrades | Pleased, encouraged | **Slightly right** (enthusiastic and casual) | Success! Your query pipeline "pipeline-123" has been saved. |
 
 > [!IMPORTANT]
 > See the guidelines for [writing mechanics](writing-mechanics.md).

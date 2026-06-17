@@ -14,6 +14,7 @@ For relevant terminology and definitions, see the [Copy glossary](#copy-glossary
     - **[Product vocabulary](product-vocabulary.md)**: Approved product names and banned terminology.
     - **[Writing mechanics](writing-mechanics.md)**: Grammar, structure, punctuation, spelling, and length guidelines.
 
+<!-- This portion is commented out until these pages are ready to be published.
 - **Guidelines**: Standard writing conventions for UI elements, organized by component.
     - **Call-to-action text**:
         - [buttons](../guidelines/call-to-action-text/buttons.md)
@@ -44,7 +45,7 @@ For relevant terminology and definitions, see the [Copy glossary](#copy-glossary
         - [page descriptions](../guidelines/layout-page-text/page-descriptions.md)
         - [tabs](../guidelines/layout-page-text/tabs.md)
         - [collapsible panels](../guidelines/layout-page-text/collapsible-panels-accordions.md)
-
+-->
 ## Who is this for?
 
 This style guide is intended for anyone who contributes to the writing, editing, or reviewing of UX copy.
@@ -57,9 +58,10 @@ This is most often:
 - AI agents
 
 ## Copy glossary
-
+<!-- This portion is commented out until this page is ready to be published.
 > [!IMPORTANT]
 > For concepts in *UX design*, refer to the [design glossary](design-documentation/glossary.md).
+-->
 
 - **UX copy**: The text within an interface that guides users throughout their whole experience. Also called *UX writing*.
 

@@ -1,7 +1,5 @@
 # Product Names & Vocabulary
 
-<!-- This page is a work in progress and needs to be revisited! I'll add to the glossary and banned terms list, review them with experts, and make edits to improve accuracy or flow. -->
-
 To ease the learning process for Coveo end users, it's crucial for the UI to use one consistent term for each product, feature, or concept.
 
 > [!NOTE]
@@ -73,14 +71,12 @@ Swap them for their proper counterpart instead.
 | NPM | Node Package Manager |
 | Pop up, Popup, Pop-up | Modal |
 | UID, User ID | Client ID |
+<!-- The UI Copy Jira space and request workflow are not usable yet; this section is a placeholder until they're ready.
 
-<!-- 
 ## Missing terms
 
 If a term you're looking for isn't in the vocabulary or banned terminology list:
 
 - Search in the [Admin UI repo](https://github.com/coveo-platform/admin-ui/tree/master/packages/v2/src/strings) or the [Frontitude library](https://app.frontitude.com/library/) to see if the term is being used in the Administration Console.
 - [Send a request](https://coveord.atlassian.net/jira/core/projects/UC/) to the UI Copy space for it to be added to this page.
-
-The listed copy Jira space is not ready and needs to be automated for ticket requests. This is just a placeholder until I receive Jira editing permissions.
 -->
