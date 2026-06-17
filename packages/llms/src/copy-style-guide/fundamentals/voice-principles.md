@@ -1,7 +1,5 @@
 # Voice Principles
 
-<!-- This page is a work in progress and needs to be refined more -->
-
 Good UX copy starts with knowing the difference between voice and tone, and then knowing how to apply each one.
 
 ## Understanding *voice* and *tone*
@@ -18,13 +16,13 @@ Your voice doesn't change, but you adapt your tone to fit the situation.
 **Examples of applying voice:**
 
 | Scenario | Coveo voice | Non-Coveo voice |
-| ---------------- | ----------- | --------------- |
+| -------- | ----------- | --------------- |
 | **A user is deleting a query pipeline association** | You're about to delete "association-123". This action can't be undone. | Say goodbye to "association-123"? It'll be gone for good! |
 | **A user checks their watchtower for errors** | Nothing to report. If something comes up, it'll appear here. | *Crickets...* No news is good news. If something breaks, we'll post it right here. |
 
 ## What is Coveo's voice?
 
-Coveo's voice can be described with three main qualities which should be present in every piece of copy.
+Coveo's voice can be described with three main qualities present in every piece of copy: **clear, human,** and **helpful.**
 
 ### Clear
 
@@ -95,22 +93,22 @@ This looks like:
 
 ## Choosing the right tone
 
-UX copy should adapt to the user's current goals, mood, and needs in their journey.
-These four scales can help visualize what goes into tone.
+The tone of UX copy should adapt to the user's current mood, goals, and needs in their journey.
 
-![Four Dimensions of Tone of Voice: formal and casual, serious and funny, respectful and irreverent, matter-of-fact and enthusiastic](../images/dimensions-of-tone.png)
+The following "dimensions" are like the four pillars of tone and can help in understanding.
 
-Your copy should never land at either extreme.
-As a practice, aim for the middle point on all scales and shift only slightly based on context:
+![Four Dimensions of Tone of Voice: formal to casual, serious to funny, respectful to irreverent, matter-of-fact to enthusiastic](../images/dimensions-of-tone.png)
 
-- **Errors and frustrating scenarios:** lean serious and matter-of-fact
-- **Instructional and neutral scenarios:** stay in the middle
-- **Achievements and positive scenarios:** lean enthusiastic and casual
+Considering Coveo's product and [voice](#what-is-coveos-voice), the tone should never fall on any extreme end.
+When you're writing copy, aim for the midway-point on all four scales, and based on the context, shift the tone marginally to accommodate.
 
-| Tone | Example |
-| ---- | ------- |
-| Serious | You're about to delete "pipeline-123". This action can't be undone. |
-| Matter-of-fact | No query pipelines found. Try changing or clearing your filters. |
-| Enthusiastic | Success! Your query pipeline "pipeline123" has been saved. |
+**Examples:**
 
-Also, see the [writing mechanic guidelines](writing-mechanics.md).
+| UX scenarios | User's mood | Tone of voice | Text |
+| ------------ | ----------- | ------------- | ---- |
+| • Errors and failures<br>• Complex features<br>• Empty states | Frustrated, impatient, confused | **Slightly left** (matter-of-fact and respectful) | No query pipelines found. Try changing or clearing your filters. |
+| • Notifications and warnings<br>• Descriptions<br>• Confirmation for actions | Neutral | **Neutral** | You're about to delete "pipeline-123". This action can't be undone. |
+| • Completed setups<br>• Upgrades | Pleased, encouraged | **Slightly right** (enthusiastic and casual) | Success! Your query pipeline "pipeline123" has been saved. |
+
+> [!IMPORTANT]
+> See the guidelines for [writing mechanics](writing-mechanics.md).

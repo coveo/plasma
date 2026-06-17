@@ -72,31 +72,6 @@ Articles (a, an, the), coordinating conjunctions (and, but, or), and short prepo
 - Feature or UI element names that aren't trademarked or sold separately
 - Words for emphasis (use **bold** or italic text instead)
 
-### UI elements
-
-<!-- I need to come back to this. There are many discrepancies on the admin console of how we use casing for product/feature names.
-
-Use sentence case for all UI elements.
-The table below covers the most common cases.
-
-| UI element | Casing | Example |
-| ---------- | ------ | ------- |
-| Page, window, modal, and panel headings (h1–h6) | Sentence case | "Security identities" |
-| Menu and breadcrumb items | Sentence case | "Content browser" |
-| Table column headers and links | Sentence case | "Last modified" |
-| Drop-down menu labels and items | Sentence case | "Edit source" |
-| Button labels | Sentence case | "Save changes" |
-| Tab and subtab labels | Sentence case | "Advanced settings" |
-| Text input, checkbox, toggle, and radio button labels | Sentence case | "Enable strict validation" |
-| Description, help, tooltip, and placeholder text | Sentence case | "Enter a name for your source." |
-| Collapsible panel labels | All caps | "FILTERS" |
-| Page titles referring to a named Coveo feature | Title case | "Content Browser", "Insight Panel" |
-
-> [!NOTE]
-> In the codebase, always hardcode text in sentence case.
-> Title case and all caps are applied through flags, not in the source strings.
--->
-
 ### Referring to UI elements in copy
 
 **Guidelines:**
@@ -202,7 +177,7 @@ Use active voice as much as possible.
 Active voice is clearer, more direct, and easier to scan.
 
 Use passive voice only when the action shouldn't be attributed to a person or an object.
-This is common in confirmations, where attributing the action to the user can feel awkward or inaccurate.
+This is common in confirmations because attributing the action to the user often feels awkward and inaccurate.
 
 | Do | Don't |
 | -- | ----- |
@@ -221,8 +196,8 @@ Use present tense for instructions, labels, and questions. Use past tense for co
 
 ### Person
 
-Address the user directly as "you." Never use "we" or refer to Coveo as a person performing actions.
-When the subject can be omitted entirely, omit it.
+Address the user directly as "you."
+Never use "we" or refer to Coveo as a person performing actions—when the subject can be omitted entirely, omit it.
 
 **Guidelines:**
 
@@ -239,8 +214,8 @@ Let the system or the product be the subject instead, or restructure the sentenc
 
 ### Contractions
 
-Contractions make UX copy more natural, but some are too casual and can make a sentence harder to read.
-If the contraction would end in "will," "would," "have," or "had," write them out instead.
+Contractions make UX copy more natural, but some can make a sentence overly casual and hard to read.
+If the second word in the contraction is "would," "have," or "had," write the words out instead.
 
 | Use | Avoid |
 | --- | ----- |
@@ -248,22 +223,27 @@ If the contraction would end in "will," "would," "have," or "had," write them ou
 | can't | cannot |
 | won't | will not |
 | you're | you are |
+| you'll | you will |
 | it's | it is / it has |
+| wouldn't | would not |
+| couldn't | could not |
+| shouldn't | should not |
 
 | Use | Avoid |
 | --- | ----- |
-| you will | you'll |
 | it will | it'll |
 | would have | would've |
 | could have | could've |
 | should have | should've |
-| you would / you had | you'd |
-| it would / it had | it'd |
+| you would | you'd |
+| you had | you'd |
+| it would | it'd |
+| it had | it'd |
 
 ### Sentence length
 
-As a rule of thumb, great UX copy stays under 20 words per sentence.
-The right sentence length depends on the context, so some UI elements have tighter limits.
+As a rule of thumb, keep your sentences under 20 words when writing for the UX.
+The best length for each sentence depends on the context, so some UI elements have tighter limits.
 
 Use the table to see the absolute **maximum** number of words per UI context, not as a target word count.
 Shorter is better!
@@ -284,7 +264,7 @@ Shorter is better!
 In almost all UX contexts, frontloading is the best way to provide clarity.
 Frontloading means stating the most important information and key message first, at beginning of the text.
 After that, more context, details, or reasoning can be given.
-This technique is often used within sentences, paragraphs, pages, and even entire books.
+This technique is used to structure sentences, paragraphs, pages, and even entire books.
 
 | Do | Don't |
 | -- | ----- |
@@ -304,17 +284,6 @@ Frontloading in this situation helps the user understand why they're doing somet
 > Always prioritize clarity and readability!
 > If breaking this rule makes the message easier to understand, then do it.
 
-### Labels
-
-**Guidelines:**
-
-- Write labels as statements, not questions
-- Keep labels short, between 1-3 words
-
-| Do | Don't |
-| -- | ----- |
-| Delete | Delete? |
-
 ### Plain language
 
 Write in plain language so the copy is easy to understand for all users, including non-native English speakers.
@@ -332,12 +301,12 @@ The only exception is well-known industry terms or verbs that users likely know 
 | This may take a few minutes. | This won't happen at the speed of light. |
 | This is quick to set up. | This is a piece of cake to set up. |
 
-#### Avoiding jargon
+#### Reducing jargon
 
 Use this table to see what unnecessary words you can replace with everyday ones instead.
 
 | Jargon | Replace with |
-| ------- | ---- |
+| ------ | ------------ |
 | able to | can |
 | to be able to | to |
 | additional | more<br>other<br>different |
@@ -359,7 +328,7 @@ Use this table to see what unnecessary words you can replace with everyday ones 
 | enable | allow<br>let |
 | enable (a feature) | activate<br>turn on |
 | ensure | make sure<br>(or just state the action) |
-| fashion (as in: a secured fashion) | way (as in: a secured way) |
+| fashion (as in *a secured fashion*) | way (as in *a secured way*) |
 | following | after<br>next |
 | furthermore | then<br>so |
 | future-proof | (depending on context)<br>lasting<br>reliable<br>adaptable |
