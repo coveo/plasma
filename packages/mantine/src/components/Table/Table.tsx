@@ -298,7 +298,7 @@ export const TableComponentsOrder = {
 };
 
 /**
- * Generic column to use when your table needs an accordion (collapsible rows, but only one open at the time)
+ * Generic column to use when your table needs an accordion (collapsible rows, but only one open at a time).
  */
 Table.AccordionColumn = TableAccordionColumn;
 /**
@@ -314,7 +314,7 @@ Table.ActionItem = TableActionItem;
  */
 Table.CollapsibleColumn = TableCollapsibleColumn;
 /**
- * A date range picker integrated with the table store, resets pagination on change.
+ * A date range picker integrated with the table store that resets pagination on change.
  */
 Table.DateRangePicker = TableDateRangePicker;
 /**
@@ -355,7 +355,7 @@ Table.Pagination = TablePagination;
  */
 Table.PerPage = TablePerPage;
 /**
- * A dropdown that filters table data by a predefined set of values, resets pagination on change.
+ * A dropdown that filters table data by a predefined set of values and resets pagination on change.
  */
 Table.Predicate = TablePredicate;
 
