@@ -38,8 +38,8 @@ Do not use `ActionIcon` when:
 
 ## Variants
 
-- Use `ActionIcon.Primary` for the most important compact action in a local context.
-- Use `ActionIcon.Secondary`, `Tertiary`, or `Quaternary` as emphasis decreases.
+- Use `Primary` for the most important compact action in a local context.
+- Use `Secondary`, `Tertiary`, or `Quaternary` as emphasis decreases.
 - Use destructive variants when the action is destructive; match the emphasis to the action's importance.
 - Use `ActionIcon.Group` when related icon actions need to be visually grouped.
 

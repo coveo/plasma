@@ -25,7 +25,6 @@ Use `AppShell` when:
 Do not use `AppShell` when:
 
 - only a local panel, card, or form section needs layout
-- the page already lives inside an application shell
 - a modal or embedded preview needs its own smaller structure
 - the layout does not need persistent shell regions
 

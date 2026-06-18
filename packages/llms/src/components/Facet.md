@@ -3,6 +3,70 @@ name: Facet
 description: Facet renders a searchable list of selectable filter options with optional counts and grouping.
 ---
 
+# Usage guidance
+
+## What problem does it solve?
+
+The `Facet` lets users narrow a result set by selecting one or more filter values from a visible, searchable list.
+
+It is useful in search, analytics, catalog, and table experiences where users refine data by known dimensions.
+
+## When to use it
+
+Use `Facet` when:
+
+- users filter a result set by selectable values
+- options may include counts or groups
+- users can select multiple values within a filter category
+- search is useful for longer option lists
+
+## When not to use it
+
+Do not use `Facet` when:
+
+- users are choosing a value to submit in a form rather than filtering results
+- only one option can be selected and it is a form field; use `Select` or radio controls
+- the option list is very short and does not need a filter panel pattern
+- the filter is a date, range, or predicate better represented by a specialized table filter
+
+## Decision-making guidance
+
+- Use `Facet` for result filtering dimensions.
+- Use `Checkbox` for ordinary form multi-selection.
+- Use `Select` for compact single-selection fields.
+- Hide search for short lists and show it for longer lists where scanning is inefficient.
+
+## States
+
+Important states include:
+
+- no selected values
+- one or more selected values
+- searchable list
+- no matching search results
+- empty facet
+- removable facet
+
+## Content guidance
+
+- Facet titles SHOULD name the filter dimension, such as "Sources" or "Language."
+- Option labels SHOULD match the terms users recognize in the result set.
+- Count formatting SHOULD remain consistent within a filter panel.
+
+## Common anti-patterns
+
+- Using facets as general form fields.
+- Showing search for very short option lists.
+- Hiding selected filters in a way that makes the result set hard to explain.
+
+## What an AI agent should understand
+
+- `Facet` is for filtering result sets, not collecting form input.
+- Use it when selectable filter values need visibility, counts, grouping, or search.
+- Use form selection components for form decisions.
+
+# API reference
+
 ## Props
 
 > Extends: `BoxProps`, `StylesApiProps<FacetFactory>`. Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
