@@ -1,6 +1,6 @@
 {
     "name": "root",
-    "version": "59.5.2",
+    "version": "59.7.0",
     "private": true,
     "scripts": {
         "build": "turbo run build",
@@ -58,7 +58,7 @@
         "eslint": "9.39.4",
         "eslint-config-prettier": "10.1.8",
         "eslint-plugin-import-x": "4.16.2",
-        "eslint-plugin-jsdoc": "62.9.0",
+        "eslint-plugin-jsdoc": "63.0.1",
         "eslint-plugin-prefer-arrow": "1.2.3",
         "eslint-plugin-react": "7.37.5",
         "eslint-plugin-react-hooks": "5.2.0",

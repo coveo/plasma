@@ -10,16 +10,15 @@ index 2470346f66209b9b41ccafdab3e4c8a1d9201270..83ce095b3e5380f86d354c1e53f8ecbb
 +    await runOnChanged(`pnpm version ${newVersion} --no-git-tag-version --no-git-checks`, since, forcePackages, excludePackages);
  }
 diff --git a/dist/pnpm/doPnpmPublishVersions.js b/dist/pnpm/doPnpmPublishVersions.js
-index 107a330e8969397754d20be00bd34bc432240be0..3ec157e1d808115432a6571ea9e7bd69ef0d1bd8 100644
+index 107a330e8969397754d20be00bd34bc432240be0..b9e70b7fd1c30ab4967e1ec9bde552c7a6bde581 100644
 --- a/dist/pnpm/doPnpmPublishVersions.js
 +++ b/dist/pnpm/doPnpmPublishVersions.js
-@@ -13,6 +13,7 @@ import pnpmLogger from "./utils/pnpmLogger.js";
+@@ -13,6 +13,6 @@ import pnpmLogger from "./utils/pnpmLogger.js";
   */
  export default async function (since, tag, branch, forcePackages = [], excludePackages = []) {
      const filters = since ? `...[${since}]` : undefined;
 -    const pnpmArgs = ["--recursive"].concat(getOptionalFlagArgument("--filter", filters), ...getIncludeFilters(forcePackages), ...getExclusionFilters(excludePackages), "publish", getOptionalFlagArgument("--tag", tag), getOptionalFlagArgument("--publish-branch", branch));
-+    const pnpmArgs = ["--recursive"].concat(getOptionalFlagArgument("--filter", filters), ...getIncludeFilters(forcePackages), ...getExclusionFilters(excludePackages), "exec", "npm", // https://github.com/pnpm/pnpm/issues/11098
-+    "publish", getOptionalFlagArgument("--tag", tag), "--access", "public", "--provenance");
++    const pnpmArgs = ["--recursive"].concat(getOptionalFlagArgument("--filter", filters), ...getIncludeFilters(forcePackages), ...getExclusionFilters(excludePackages), "publish", getOptionalFlagArgument("--tag", tag), getOptionalFlagArgument("--publish-branch", branch), "--access", "public", "--provenance");
      await spawn("pnpm", pnpmArgs, pnpmLogger);
  }
 diff --git a/src/pnpm/doPnpmBumpVersion.ts b/src/pnpm/doPnpmBumpVersion.ts
@@ -36,18 +35,13 @@ index 7865dbff9de6bf2f2a5219e320249ff053a6233e..e6e5f7d9c30351c47d175e1f4c7b2f3c
      forcePackages,
      excludePackages,
 diff --git a/src/pnpm/doPnpmPublishVersions.ts b/src/pnpm/doPnpmPublishVersions.ts
-index c9e671aa8dbf588a9e7e5cbe1ef3c9024cbfa0dc..854753e23d8e1a39712b5bd2c3f2e7912e5a9bf2 100644
+index c9e671aa8dbf588a9e7e5cbe1ef3c9024cbfa0dc..7aa3b131f139418b43e6bd4f95b82f8c197b9a6e 100644
 --- a/src/pnpm/doPnpmPublishVersions.ts
 +++ b/src/pnpm/doPnpmPublishVersions.ts
-@@ -25,9 +25,12 @@ export default async function (
-     getOptionalFlagArgument("--filter", filters),
-     ...getIncludeFilters(forcePackages),
-     ...getExclusionFilters(excludePackages),
-+    "exec",
-+    "npm", // https://github.com/pnpm/pnpm/issues/11098
+@@ -28,6 +28,8 @@ export default async function (
      "publish",
      getOptionalFlagArgument("--tag", tag),
--    getOptionalFlagArgument("--publish-branch", branch),
+     getOptionalFlagArgument("--publish-branch", branch),
 +    "--access", "public",
 +    "--provenance"
    );

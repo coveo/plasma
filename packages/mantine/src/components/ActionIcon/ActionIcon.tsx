@@ -68,15 +68,15 @@ const ActionIconPrimary = ActionIcon.withProps({
 });
 const ActionIconSecondary = ActionIcon.withProps({
     variant: 'light',
-    color: 'var(--coveo-color-text-primary)',
+    vars: () => ({root: {'--ai-color': 'var(--mantine-primary-color-filled)'}}),
 });
 const ActionIconTertiary = ActionIcon.withProps({
     variant: 'default',
-    color: 'var(--coveo-color-text-primary)',
+    vars: () => ({root: {'--ai-color': 'var(--mantine-primary-color-filled)'}}),
 });
 const ActionIconQuaternary = ActionIcon.withProps({
     variant: 'subtle',
-    color: 'var(--coveo-color-text-primary)',
+    vars: () => ({root: {'--ai-color': 'var(--mantine-primary-color-filled)'}}),
 });
 
 const ActionIconDestructive = ActionIcon.withProps({variant: 'filled', color: 'var(--mantine-color-error)'});

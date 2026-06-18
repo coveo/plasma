@@ -452,6 +452,7 @@ export * from './components/VisuallyHidden/VisuallyHidden.js';
 export {noop};
 
 // Theme
+export {type PlasmaColors} from './theme/PlasmaColors.js';
 export * from './theme/plasmaCSSVariablesResolver.js';
 export * from './theme/Plasmantine.js';
 

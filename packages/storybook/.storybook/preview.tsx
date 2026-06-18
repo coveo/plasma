@@ -5,8 +5,10 @@ import '@mantine/dates/styles.layer.css';
 import '@mantine/notifications/styles.layer.css';
 
 import type {Preview} from '@storybook/react-vite';
+import {backgroundOptions, prefersDark} from './backgroundOptions.js';
 import {useColorScheme} from './decorators/useColorScheme.js';
 import {themes, withTheme} from './decorators/withTheme.js';
+import {ThemedDocsContainer} from './ThemedDocsContainer.js';
 
 const preview: Preview = {
     globalTypes: {
@@ -22,21 +24,24 @@ const preview: Preview = {
     },
     initialGlobals: {
         primaryColor: 'teal',
-        backgrounds: {value: 'light'},
+        backgrounds: {value: prefersDark ? 'dark' : 'light'},
     },
     parameters: {
         backgrounds: {
-            options: {
-                dark: {name: 'Dark', value: 'var(--coveo-app-background)'},
-                light: {name: 'Light', value: 'var(--coveo-app-background)'},
-            },
+            options: backgroundOptions,
         },
         chromatic: {disableSnapshot: true},
         docs: {
             codePanel: true,
+            container: ThemedDocsContainer,
         },
         controls: {
             disableSaveFromUI: true,
+        },
+        options: {
+            storySort: {
+                order: ['@foundation', '@components', '*'],
+            },
         },
     },
     decorators: [useColorScheme, withTheme],

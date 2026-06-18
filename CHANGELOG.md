@@ -1,3 +1,28 @@
+## 59.7.0 (2026-06-05)
+
+* feat(InfoToken): color changes on info token (#4462) c5a3d29, closes #4462
+
+
+
+## <small>59.6.1 (2026-06-03)</small>
+
+* fix(storybook): mdx demos need full import (#4464) 50121f3, closes #4464
+
+
+
+## 59.6.0 (2026-06-02)
+
+* feat(storybook): add iconography page (#4459) beabef2, closes #4459
+* Ds 382 foundation storybook (#4449) 10264f0, closes #4449
+
+
+
+## <small>59.5.4 (2026-06-01)</small>
+
+* ci(cd): revert patch semantic-monorepo-tools to publish using npm (#4461) 8722765, closes #4461
+
+
+
 ## <small>59.5.2 (2026-05-28)</small>
 
 * ci(cd): patch semantic-monorepo-tools to publish using npm (#4456) 850f943, closes #4456

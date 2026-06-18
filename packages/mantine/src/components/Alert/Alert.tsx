@@ -30,13 +30,12 @@ export const Alert = polymorphicFactory<AlertOverloadFactory>((props, ref) => <M
 Alert.displayName = 'Alert';
 
 const AlertInformation = Alert.withProps({
-    color: 'gray',
     icon: <InfoToken.Information size="md" />,
     vars: () => ({
         root: {
-            '--alert-color': 'var(--mantine-color-text)',
-            '--alert-bg': 'var(--mantine-color-gray-light)',
-            '--alert-bd': '2px solid var(--mantine-color-gray-light)',
+            '--alert-color': 'var(--mantine-color-blue-filled)',
+            '--alert-bg': 'var(--mantine-color-blue-light)',
+            '--alert-bd': '2px solid var(--mantine-color-blue-light)',
             '--alert-radius': 'var(--mantine-radius-sm)',
         },
     }),
@@ -47,9 +46,9 @@ const AlertAdvice = Alert.withProps({
     icon: <InfoToken.Advice size="md" />,
     vars: () => ({
         root: {
-            '--alert-color': 'var(--mantine-primary-color-filled)',
-            '--alert-bg': 'var(--mantine-primary-color-light)',
-            '--alert-bd': '2px solid var(--mantine-primary-color-light)',
+            '--alert-color': 'var(--mantine-color-violet-filled)',
+            '--alert-bg': 'var(--mantine-color-violet-light)',
+            '--alert-bd': '2px solid var(--mantine-color-violet-light)',
             '--alert-radius': 'var(--mantine-radius-sm)',
         },
     }),
@@ -70,7 +69,6 @@ const AlertSuccess = Alert.withProps({
 (AlertSuccess as ComponentType).displayName = 'Alert.Success';
 
 const AlertWarning = Alert.withProps({
-    color: 'warning',
     icon: <InfoToken.Warning size="md" />,
     vars: () => ({
         root: {
