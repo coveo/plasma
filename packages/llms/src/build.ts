@@ -25,8 +25,10 @@ const ensureDir = (dir: string) => {
     fs.mkdirSync(dir, {recursive: true});
 };
 
+const UTF8_BOM = '\uFEFF';
+
 const write = (filePath: string, content: string) => {
-    fs.writeFileSync(filePath, content, 'utf-8');
+    fs.writeFileSync(filePath, UTF8_BOM + content, 'utf-8');
     const kb = (content.length / 1024).toFixed(1);
     console.log(`  ✓  ${path.relative(distDir, filePath)} (${kb} KB)`);
 };
