@@ -393,6 +393,7 @@ export * from './components/Switch/Switch.js';
 export {flexRender as renderTableCell} from '@tanstack/react-table';
 export {TableActionsColumn} from './components/Table/table-column/TableActionsColumn.js';
 export {type TablePredicateProps} from './components/Table/table-predicate/TablePredicate.js';
+export {type TableToolbarProps} from './components/Table/table-toolbar/TableToolbar.js';
 export {Table, TableComponentsOrder, type PlasmaTableFactory} from './components/Table/Table.js';
 export {
     type TableAction,

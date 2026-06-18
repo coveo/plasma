@@ -34,7 +34,7 @@ dayjs.extend(LocalizedFormat);
 type StoryArgs = TableProps<Person> & {
     withFilter: boolean;
     withPredicateFilter: boolean;
-    withHeader: boolean;
+    controlPlacement: 'header' | 'toolbar';
     withPagination: boolean;
     withSorting: boolean;
     withDateRangePicker: boolean;
@@ -159,7 +159,7 @@ export const Demo: Story = {
         loading: false,
         withFilter: false,
         withPredicateFilter: false,
-        withHeader: true,
+        controlPlacement: 'header',
         withPagination: false,
         withSorting: false,
         withDateRangePicker: false,
@@ -178,12 +178,16 @@ export const Demo: Story = {
             options: ['collapse', 'accordion'],
             defaultValue: 'collapse',
         },
+        controlPlacement: {
+            control: 'radio',
+            options: ['header', 'toolbar'],
+        },
     },
     render: ({
         loading,
         withFilter,
         withPredicateFilter,
-        withHeader,
+        controlPlacement,
         withPagination,
         withSorting,
         withDateRangePicker,
@@ -309,7 +313,33 @@ export const Demo: Story = {
                         : undefined
                 }
             >
-                {withHeader && (
+                {controlPlacement === 'toolbar' && (
+                    <Table.Toolbar renderRoot={(props) => <Group w="100%" mb="xl" {...props} />}>
+                        {withPredicateFilter && (
+                            <Table.Predicate
+                                id="age"
+                                label="Age group"
+                                data={[
+                                    {value: 'ANY', label: 'Any'},
+                                    {value: 'below20', label: 'Below 20'},
+                                    {value: 'between20to60', label: '20 to 60'},
+                                    {value: 'above60', label: 'Above 60'},
+                                ]}
+                            />
+                        )}
+                        {withDateRangePicker && (
+                            <Table.DateRangePicker
+                                startProps={{}}
+                                endProps={{}}
+                                rangeCalendarProps={{maxDate: dayjs().endOf('day').toDate()}}
+                                presets={datePickerPresets}
+                            />
+                        )}
+                        <Box flex={1} />
+                        {withFilter && <Table.Filter />}
+                    </Table.Toolbar>
+                )}
+                {controlPlacement === 'header' && (
                     <Table.Header>
                         {withFilter && <Table.Filter />}
                         {withDateRangePicker && (

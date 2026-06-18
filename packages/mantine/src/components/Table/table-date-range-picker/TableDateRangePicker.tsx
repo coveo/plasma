@@ -1,9 +1,10 @@
-import {BoxProps, CompoundStylesApiProps, Factory, factory, Grid, useProps} from '@mantine/core';
+import {Box, BoxProps, CompoundStylesApiProps, Factory, factory, Grid, useProps} from '@mantine/core';
 import {type DatesRangeValue, type DateStringValue} from '@mantine/dates';
 import {DateRangePicker, type DateRangePickerProps} from '../../DateRangePicker/DateRangePicker.js';
 import {DateRangePickerPreset} from '../../DateRangePicker/DateRangePickerPresetSelect.js';
 import {TableComponentsOrder} from '../Table.js';
 import {useTableContext} from '../TableContext.js';
+import {useIsInToolbar} from '../table-toolbar/TableToolbarContext.js';
 
 export type TableDateRangePickerStylesNames = 'dateRangeRoot';
 
@@ -59,6 +60,28 @@ export const TableDateRangePicker = factory<TableDateRangePickerFactory>((props,
     };
 
     const stylesApiProps = {classNames, styles};
+    const isInToolbar = useIsInToolbar();
+
+    const content = (
+        <DateRangePicker
+            value={store.state.dateRange}
+            onChange={onChange}
+            presets={presets}
+            rangeCalendarProps={rangeCalendarProps}
+            startProps={startProps}
+            endProps={endProps}
+            placeholder={placeholder}
+            miw={220}
+        />
+    );
+
+    if (isInToolbar) {
+        return (
+            <Box ref={ref} {...getStyles('dateRangeRoot', {className, style, ...stylesApiProps})} {...others}>
+                {content}
+            </Box>
+        );
+    }
 
     return (
         <Grid.Col
@@ -68,16 +91,7 @@ export const TableDateRangePicker = factory<TableDateRangePickerFactory>((props,
             {...getStyles('dateRangeRoot', {className, style, ...stylesApiProps})}
             {...others}
         >
-            <DateRangePicker
-                value={store.state.dateRange}
-                onChange={onChange}
-                presets={presets}
-                rangeCalendarProps={rangeCalendarProps}
-                startProps={startProps}
-                endProps={endProps}
-                placeholder={placeholder}
-                miw={220}
-            />
+            {content}
         </Grid.Col>
     );
 });
