@@ -92,6 +92,23 @@ describe('Table', () => {
             expect(screen.getByRole('table')).not.toHaveAttribute('data-loading');
         });
 
+        it('keeps column headers visible when loading with no rows', () => {
+            const Fixture = () => {
+                const store = useTable<RowData>({initialState: {globalFilter: 'something'}});
+                return (
+                    <Table store={store} loading data={[]} columns={columns}>
+                        <Table.NoData>
+                            <EmptyState isFiltered={store.isFiltered} />
+                        </Table.NoData>
+                    </Table>
+                );
+            };
+            render(<Fixture />);
+
+            expect(screen.getByRole('columnheader', {name: /firstName/i})).toBeVisible();
+            expect(screen.getByRole('columnheader', {name: /lastName/i})).toBeVisible();
+        });
+
         it('shows a loading animation over the no data children (filtered)', () => {
             const Fixture = () => {
                 const store = useTable<RowData>({initialState: {globalFilter: 'something'}});
