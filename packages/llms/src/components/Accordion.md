@@ -59,12 +59,11 @@ Important states include:
 
 ## Interaction notes
 
-- Each `Accordion.Item` MUST have a stable `value`.
-- `defaultValue` MAY be provided to open a section by default.
-- Use a string `defaultValue` when only one item can be open.
-- Use an array `defaultValue` with `multiple` when multiple items can be open.
-- Icons in `Accordion.Control` SHOULD support recognition but MUST NOT be the only way to understand the section.
-- `Accordion.ControlDisabled` removes the chevron and pointer interaction for a non-interactive control.
+- Each section needs a unique, consistent identifier so the accordion can track which panels are open or closed.
+- One or more sections can be open by default when the page loads — use this when a section is most likely relevant to the user's task.
+- If only one section can be open at a time, the default can only be one section. If multiple can be open, the default can be several.
+- Icons next to section labels can help users recognize content faster, but the label text must always be clear enough on its own.
+- A section heading can be made non-interactive — it appears in the accordion structure but cannot be expanded or collapsed.
 
 ## Accessibility expectations
 
@@ -94,10 +93,6 @@ Important states include:
 - It is a poor choice when the content is required, critical, or needs direct comparison.
 - Use `Accordion.Item`, `Accordion.Control`, and `Accordion.Panel` together to compose each section.
 - `Accordion.ControlDisabled` is Plasma-specific and should be used for non-interactive controls inside an accordion structure.
-
-## Open questions for our system
-
-- When should Plasma prefer `contained`, `separated`, or `filled` as the default product guidance for dense settings and configuration pages?
 
 # API reference
 
