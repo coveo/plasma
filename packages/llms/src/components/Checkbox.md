@@ -49,9 +49,9 @@ Important states include:
 
 ## Interaction notes
 
-- `Checkbox.Group` SHOULD be used to keep related checkbox values grouped consistently
-- The indeterminate state SHOULD only be used when it reflects a meaningful partial-selection relationship
-- Grouped checkboxes MAY be laid out inline or stacked depending on scanability and available space
+- When presenting multiple related checkboxes, group them together so they behave and read as a set.
+- The indeterminate state (a dash instead of a checkmark) should only appear when it genuinely reflects a partial selection — for example, when some but not all items in a group are checked.
+- Grouped checkboxes can be arranged in a single row or stacked vertically — choose based on how many there are and how much space is available.
 
 ## Accessibility expectations
 
