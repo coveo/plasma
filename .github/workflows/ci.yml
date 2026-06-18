@@ -67,10 +67,17 @@ jobs:
                   AWS_ROLE: ${{ secrets.AWS_ROLE }}
                   AWS_REGION: ${{ secrets.AWS_REGION }}
                   AWS_BUCKET: ${{ secrets.AWS_BUCKET }}
+            - name: Compute Chromatic URL
+              id: chromatic-url
+              shell: bash
+              run: |
+                  BRANCH="${{ github.head_ref || github.ref_name }}"
+                  CLEAN_BRANCH=$(echo "$BRANCH" | tr '/' '-' | tr '[:upper:]' '[:lower:]')
+                  echo "url=https://${CLEAN_BRANCH}--69e1126f9e24a5e560359ac2.chromatic.com/" >> $GITHUB_OUTPUT
             - name: Add demo link as a comment on the PR
               uses: ./.github/actions/comment-on-pr
               with:
-                  message: 'Live demos of your latest successful build available here:\n- [:books: Storybook](${{ steps.deploy-demo.outputs.demo-output-path }}/)\n- [:globe_with_meridians: Plasma website (deprecated)](${{ steps.deploy-demo.outputs.demo-output-path }}/old/).'
+                  message: 'Live demos of your latest successful build available here:\n- [:art: Storybook (Chromatic)](${{ steps.chromatic-url.outputs.url }})\n- [:books: Storybook](${{ steps.deploy-demo.outputs.demo-output-path }}/)\n- [:globe_with_meridians: Plasma website (deprecated)](${{ steps.deploy-demo.outputs.demo-output-path }}/old/).'
                   avoidRepostsWith: Live demos of your latest successful build available here
             - name: Deploy Storybook to Chromatic
               env:
