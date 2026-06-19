@@ -16,7 +16,7 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-const DoTable = ({rows}: {rows: [string, string][]}) => (
+const DoTable = ({rows}: {rows: Array<[string, string]>}) => (
     <Table withTableBorder withColumnBorders layout="auto">
         <Table.Thead>
             <Table.Tr>
