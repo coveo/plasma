@@ -278,14 +278,14 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
                                                 </th>
                                             </tr>
                                         ) : null}
-                                    {hasRows || loading ? (
-                                        <Layout.Header
-                                            getRowExpandedContent={getRowExpandedContent}
-                                            getRowAttributes={getRowAttributes}
-                                            loading={loading}
-                                            {...layoutProps}
-                                        />
-                                    ) : null}
+                                        {hasRows || loading ? (
+                                            <Layout.Header
+                                                getRowExpandedContent={getRowExpandedContent}
+                                                getRowAttributes={getRowAttributes}
+                                                loading={loading}
+                                                {...layoutProps}
+                                            />
+                                        ) : null}
                                     </thead>
                                     <tbody {...getStyles('body')}>
                                         {hasRows ? (

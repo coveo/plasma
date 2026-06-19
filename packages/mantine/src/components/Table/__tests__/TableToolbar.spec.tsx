@@ -50,7 +50,7 @@ describe('Table.Toolbar', () => {
         // When rendering a Grid.Col outside a Grid Mantine throws an error
         expect(() => render(<Fixture />)).not.toThrow();
 
-        expect(screen.getByRole('textbox', {name: 'Rank'})).toBeVisible();
+        expect(screen.getByRole('combobox', {name: 'Rank'})).toBeVisible();
     });
 
     it('renders Table.DateRangePicker without Grid.Col', () => {
@@ -91,7 +91,7 @@ describe('Table.Toolbar', () => {
         };
         render(<Fixture />);
 
-        expect(screen.getByRole('button', {name: '2', current: 'page'})).toBeVisible();
+        expect(screen.getByRole('button', {name: '2'})).toBeVisible();
 
         await user.type(screen.getByRole('textbox'), 'veg');
         act(() => {
@@ -131,8 +131,8 @@ describe('Table.Toolbar', () => {
         };
         render(<Fixture />);
 
-        expect(screen.getByRole('button', {name: '2', current: 'page'})).toBeVisible();
-        await user.click(screen.getByRole('textbox', {name: 'Rank'}));
+        expect(screen.getByRole('button', {name: '2'})).toBeVisible();
+        await user.click(screen.getByRole('combobox', {name: 'Rank'}));
         await user.click(screen.getByRole('option', {name: 'First'}));
         expect(screen.getByRole('button', {name: '1', current: 'page'})).toBeVisible();
     });

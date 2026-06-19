@@ -18,7 +18,7 @@ export type TableToolbarFactory = Factory<{
 
 const defaultProps: Partial<TableToolbarProps> = {};
 
-export const TableToolbar = factory<TableToolbarFactory>((props, ref) => {
+export const TableToolbar = factory<TableToolbarFactory>(({ref, ...props}) => {
     const {getStyles} = useTableContext();
     const {children, classNames, className, styles, style, vars, ...others} = useProps(
         'PlasmaTableToolbar',

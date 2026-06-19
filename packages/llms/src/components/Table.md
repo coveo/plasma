@@ -17,7 +17,7 @@ description: Table for displaying tabular data with optional filtering, paginati
 **`layouts`** `TableLayout[]` · optional · default: `[Table.Layouts.Rows]` — Available layouts. This prop MAY be used to expose layout switching.
 **`layoutProps`** `{onRowDoubleClick?: (selectedRow: TData, index: number, row: Row<TData>) => void} & Record<string, unknown>` · optional · default: `{}` — Props passed down to the active layout Header and Body components.
 **`loading`** `boolean` · optional · default: `false` — Whether the table is loading or not. This prop MAY be used to show loading states.
-**`children`** `ReactNode` · optional · default: `undefined` — Children to display in the table. They MUST be wrapped in either `Table.Header`, `Table.Toolbar`, or `Table.Footer`.
+**`children`** `ReactNode` · optional · default: `undefined` — Children can include sub-components like `Table.Toolbar`, `Table.Header`, `Table.Footer`, `Table.NoData`, and `Table.LastUpdated`. Filter controls (`Table.Filter`, `Table.Predicate`, `Table.DateRangePicker`) MUST be placed inside `Table.Header` or `Table.Toolbar`.
 **`additionalRootNodes`** `HTMLElement[]` · optional · default: `[]` — Nodes that are considered inside the table. Rows normally get unselected when clicking outside the table, but the component can have difficulty guessing what is inside or outside, for example when using modals. You MAY use this prop to force the table to consider some nodes to be inside the table.
 **`options`** `Omit<Partial<TableOptions<TData>>, 'initialState' | 'data' | 'columns' | 'manualPagination' | 'enableMultiRowSelection' | 'getRowId' | 'getRowCanExpand' | 'enableRowSelection' | 'onRowSelectionChange'>` · optional · default: `{}` — Additional options MAY be passed to the table with this prop.
 
@@ -44,7 +44,7 @@ Plasma provides pre-configured sub-components as convenience wrappers. You SHOUL
 
 ### Table.Toolbar
 
-Use `Table.Toolbar` to render `Table.Filter`, `Table.Predicate`, and `Table.DateRangePicker` outside of the `Table.Header` grid layout. The toolbar renders above the table layout. Components inside `Table.Toolbar` render as plain flex items. You MAY use `renderRoot` to customize the toolbar's root element (e.g., `renderRoot={(props) => <Group {...props} />}`).
+Use `Table.Toolbar` to render `Table.Filter`, `Table.Predicate`, and `Table.DateRangePicker` outside of the `Table.Header` grid layout. The toolbar renders above the table layout. Components inside `Table.Toolbar` are not wrapped in `Grid.Col` (unlike when placed in `Table.Header`). You MAY use `renderRoot` to provide a flex container (e.g., `renderRoot={(props) => <Group {...props} />}`) and/or customize styles via standard Box props.
 
 ```tsx
 <Table store={store} columns={columns} data={data}>
