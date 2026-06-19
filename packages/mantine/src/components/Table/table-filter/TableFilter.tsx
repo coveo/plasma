@@ -1,11 +1,12 @@
 import {IconSearch, IconX} from '@coveord/plasma-react-icons';
-import {BoxProps, CompoundStylesApiProps, Factory, factory, Grid, TextInput, useProps} from '@mantine/core';
+import {Box, BoxProps, CompoundStylesApiProps, Factory, factory, Grid, TextInput, useProps} from '@mantine/core';
 import {useDebouncedValue, useDidUpdate} from '@mantine/hooks';
 import {ChangeEventHandler, MouseEventHandler, useEffect, useState} from 'react';
 
 import {ActionIcon} from '../../ActionIcon/ActionIcon.js';
 import {TableComponentsOrder} from '../Table.js';
 import {useTableContext} from '../TableContext.js';
+import {useIsInToolbar} from '../table-toolbar/TableToolbarContext.js';
 
 export type TableFilterStylesNames = 'filterRoot' | 'filterWrapper' | 'filterEmpty';
 
@@ -60,6 +61,34 @@ export const TableFilter = factory<TableFilterFactory>((props, ref) => {
     }, [store.state.globalFilter]);
 
     const stylesApiProps = {classNames, styles};
+    const isInToolbar = useIsInToolbar();
+
+    const content = (
+        <TextInput
+            {...getStyles('filterWrapper', stylesApiProps)}
+            placeholder={placeholder}
+            autoComplete="off"
+            rightSection={
+                filter ? (
+                    <ActionIcon.Quaternary onClick={handleClear}>
+                        <IconX aria-label="clear" size={16} />
+                    </ActionIcon.Quaternary>
+                ) : (
+                    <IconSearch size={16} {...getStyles('filterEmpty', stylesApiProps)} />
+                )
+            }
+            value={filter}
+            onChange={handleChange}
+        />
+    );
+
+    if (isInToolbar) {
+        return (
+            <Box ref={ref} {...getStyles('filterRoot', {className, style, ...stylesApiProps})} {...others}>
+                {content}
+            </Box>
+        );
+    }
 
     return (
         <Grid.Col
@@ -69,22 +98,7 @@ export const TableFilter = factory<TableFilterFactory>((props, ref) => {
             {...getStyles('filterRoot', {className, style, ...stylesApiProps})}
             {...others}
         >
-            <TextInput
-                {...getStyles('filterWrapper', stylesApiProps)}
-                placeholder={placeholder}
-                autoComplete="off"
-                rightSection={
-                    filter ? (
-                        <ActionIcon.Quaternary onClick={handleClear}>
-                            <IconX aria-label="clear" size={16} />
-                        </ActionIcon.Quaternary>
-                    ) : (
-                        <IconSearch size={16} {...getStyles('filterEmpty', stylesApiProps)} />
-                    )
-                }
-                value={filter}
-                onChange={handleChange}
-            />
+            {content}
         </Grid.Col>
     );
 });
