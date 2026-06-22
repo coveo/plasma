@@ -26,7 +26,6 @@ Do not use `CodeEditor` when:
 
 - users enter ordinary short text; use `TextInput`
 - users enter long prose; use `Textarea`
-- the value is read-only and only needs display; use formatted text or a code block
 - syntax support would add complexity without helping the task
 
 ## Decision-making guidance

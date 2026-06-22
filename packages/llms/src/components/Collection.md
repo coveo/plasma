@@ -31,10 +31,8 @@ Do not use `Collection` when:
 
 ## Decision-making guidance
 
-- Use the column-based pattern for most editable lists.
 - Use `Table` for read-only or data-heavy tabular display.
 - Use `ChildForm` for one optional nested section, not a repeatable list.
-- Use `getItemId` when items have stable IDs, especially with form state.
 
 ## States
 

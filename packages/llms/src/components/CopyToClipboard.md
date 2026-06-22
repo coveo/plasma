@@ -26,14 +26,13 @@ Do not use `CopyToClipboard` when:
 
 - the user needs to edit the value before using it
 - the value is short and copying is not a meaningful task
-- copying is the primary action of the page and needs a visible button label
 - the copied value is sensitive and should not be exposed without confirmation
 
 ## Decision-making guidance
 
-- Prefer placing `CopyToClipboard` in an input `rightSection` for read-only field values.
-- Use a regular `Button` when copy is a primary or explanatory action.
-- Use clear nearby labels so users know exactly what value will be copied.
+- When showing a read-only value like an API key or URL in a text field, place the copy icon inside the field on the right side — this is the most common and expected placement.
+- If copying is the main action on the screen (for example, "Copy invite link"), use a full button with a text label instead of the small icon — the icon alone doesn't communicate enough weight.
+- Always make sure it's obvious what the user is copying. The field label, nearby text, or context should tell them exactly what value they'll get in their clipboard.
 
 ## Accessibility expectations
 
