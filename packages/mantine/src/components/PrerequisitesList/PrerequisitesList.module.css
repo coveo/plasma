@@ -1,0 +1,11 @@
+.item {
+    font-weight: var(--coveo-fw-bold);
+
+    &[data-state='next'] {
+        color: var(--mantine-color-placeholder);
+    }
+}
+
+.itemIcon {
+    margin-inline-end: var(--mantine-spacing-xs);
+}

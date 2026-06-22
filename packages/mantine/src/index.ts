@@ -327,6 +327,9 @@ export * from './components/Popover/Popover.js';
 // Portal
 export * from './components/Portal/Portal.js';
 
+// PrerequisitesList
+export * from './components/PrerequisitesList/PrerequisitesList.js';
+
 // Progress
 export * from './components/Progress/Progress.js';
 
