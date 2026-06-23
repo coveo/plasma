@@ -31,9 +31,9 @@ Do not use `LastUpdated` when:
 
 ## Decision-making guidance
 
-- Use `LastUpdated` for data freshness.
-- Use ordinary text or table columns for domain timestamps such as "Created at" or "Modified by."
-- Customize `label` and `formatter` when the default wording or format does not match the context.
+- Use this component specifically to show when data was last refreshed or synced — for example, in a live dashboard or a view that updates in the background.
+- For timestamps that describe a business event — like when a record was created or who last edited it — use regular text or a table column instead. Those are content timestamps, not freshness indicators.
+- The default label and date format work for most cases. Only change them if they don't fit the specific context.
 
 ## Content guidance
 
