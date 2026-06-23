@@ -33,6 +33,7 @@ Do not use `Header` when:
 - Use the `secondary` variant for lower-level sections when the component is still appropriate.
 - Use `Header.Right` for actions that apply to the page or section as a whole.
 - Use `Header.DocAnchor` when there is relevant external documentation.
+- Omit `Header.DocAnchor` anchors by default. Add one only when there is a clear reason users would need to link directly to this section.
 
 ## Content guidance
 
