@@ -3,8 +3,15 @@
     --chip-bg: var(--mantine-primary-color-light);
     --chip-hover: var(--mantine-primary-color-filled-hover);
     --chip-radius: var(--mantine-radius-lg);
-    --chip-padding: var(--mantine-spacing-sm);
-    --chip-spacing: var(--mantine-spacing-sm);
+    --chip-size-xs: 24px;
+    --chip-icon-size-xs: 16px;
+    --chip-spacing-xs: var(--mantine-spacing-xs);
+    --chip-padding-xs: 12px;
+    --chip-checked-padding-xs: var(--mantine-spacing-xs) 12px;
+    --chip-icon-size-sm: var(--mantine-spacing-sm);
+    --chip-spacing-sm: var(--mantine-spacing-xs);
+    --chip-padding-sm: var(--mantine-spacing-sm);
+    --chip-checked-padding-sm: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
 
     > .label {
         &:not([data-checked]) {
@@ -15,8 +22,8 @@
             @mixin hover {
                 &[data-disabled] {
                     border: none;
-                    color: var(--coveo-color-text-disabled);
-                    background-color: var(--coveo-color-bg-disabled);
+                    color: var(--mantine-color-disabled-color);
+                    background-color: var(--mantine-color-disabled);
                 }
 
                 background-color: var(--mantine-color-gray-light);
@@ -34,8 +41,8 @@
 
         &[data-disabled] {
             border: none;
-            color: var(--coveo-color-text-disabled);
-            background-color: var(--coveo-color-bg-disabled);
+            color: var(--mantine-color-disabled-color);
+            background-color: var(--mantine-color-disabled);
         }
     }
 }
