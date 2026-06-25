@@ -16,7 +16,6 @@ It is useful when options are known, mutually exclusive, and do not all need to 
 Use `Select` when:
 
 - the user can choose exactly one option
-- the available options are known ahead of time
 - the option list is too long or too secondary for radio-style visible choices
 - a read-only selected value needs to be shown in a form layout
 

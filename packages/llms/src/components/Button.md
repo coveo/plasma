@@ -24,7 +24,6 @@ Use `Button` when:
 
 Do not use `Button` when:
 
-- the user is navigating to another location; use a link-style pattern instead
 - the action is compact and familiar enough to be icon-only; use `ActionIcon`
 - the control represents an immediate persistent setting; use a selection or boolean control
 - too many buttons would make the decision hierarchy unclear

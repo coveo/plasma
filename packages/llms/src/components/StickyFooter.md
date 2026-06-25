@@ -7,50 +7,49 @@ description: Action footer that remains fixed to the bottom of the viewport.
 
 ## What problem does it solve?
 
-The `StickyFooter` keeps important page-level actions visible while users work through long content or forms.
+The `StickyFooter` keeps save and cancel actions visible when a user is actively editing a page or going through a creation flow — so they don't have to scroll to find them.
 
 ## When to use it
 
 Use `StickyFooter` when:
 
-- actions apply to the whole page or long form
-- users may scroll away from the natural end of the content
-- save, cancel, preview, or submit actions need persistent access
-- the footer should remain visually separated from the content
+- a user has entered an edit mode and needs to confirm or discard their changes
+- a user is going through a creation flow and needs to submit or cancel
+- the page content is long enough that actions at the bottom would scroll out of view
 
 ## When not to use it
 
 Do not use `StickyFooter` when:
 
-- actions apply only to a small local section
-- the content is short enough that actions remain naturally visible
-- the footer is inside a modal; use `Modal.Footer`
-- persistent actions would cover important content or create duplicate controls
+- the page is not in an edit or creation state
+- actions apply only to a small local section of the page
+- the content is short enough that actions remain naturally visible without scrolling
+- the footer is inside a modal; use `Modal.Footer` instead
 
 ## Decision-making guidance
 
-- Use `StickyFooter` for page-level persistent actions.
-- Use `Modal.Footer` for modal actions.
-- Use inline buttons when actions belong to a local component or section.
-- Keep primary and secondary actions ordered consistently.
+- Use `StickyFooter` for edit mode and creation flows where the user needs persistent access to Save and Cancel.
+- Use `Modal.Footer` for actions inside a modal.
+- Use inline buttons when the action belongs to a specific section or component, not the whole page.
+- Keep primary and secondary actions ordered consistently across the product.
 
 ## Content guidance
 
-- Footer actions SHOULD be concise and decision-oriented.
-- The primary action SHOULD represent the main page outcome.
+- The primary action should represent the main commitment — typically Save or Create.
+- Always pair a primary action with a Cancel option so users can exit without consequences.
 - Avoid adding unrelated utility actions to the sticky footer.
 
 ## Common anti-patterns
 
-- Using a sticky footer for every page regardless of content length.
+- Showing a sticky footer on pages where the user is not in an edit or creation state.
 - Putting local row or card actions in a page-level footer.
 - Using the deprecated modal variant instead of `Modal.Footer`.
 
 ## What an AI agent should understand
 
-- `StickyFooter` is for persistent page-level action groups.
+- `StickyFooter` is for edit mode and creation flows, not general page-level actions.
+- It should appear when the user has entered a state where they need to commit or discard changes.
 - Do not use it inside modals; use `Modal.Footer`.
-- It should help users complete a long workflow without hunting for actions.
 
 # API reference
 
