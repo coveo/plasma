@@ -374,6 +374,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         List: List.extend({
             classNames: ListClasses,
+            defaultProps: {
+                size: 'sm',
+            },
         }),
         Modal: Modal.extend({
             classNames: ModalClasses,
