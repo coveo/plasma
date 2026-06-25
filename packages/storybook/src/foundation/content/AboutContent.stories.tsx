@@ -1,5 +1,5 @@
 import {Header} from '@coveord/plasma-mantine';
-import {List, Stack, Text} from '@mantine/core';
+import {Anchor, List, Stack, Text} from '@mantine/core';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import {FoundationWrapper} from '../FoundationWrapper.js';
 
@@ -20,37 +20,51 @@ export const Overview: Story = {
     render: () => (
         <FoundationWrapper
             title="About Content"
-            description='"Content" is the information in the UX, like text, that works alongside the visual design. It helps shape how users understand and navigate the product.'
+            description='"Content" is the information in the UX working alongside the visual design. It includes any text, images or videos in the Administration Console interface that help shape how users navigate the product.'
         >
             <Stack gap="xl">
                 <Stack gap="sm">
-                    <Header variant="secondary">In this style guide</Header>
-                    <List spacing="xs">
-                        <List.Item>
-                            <Text component="span" fw={700}>
-                                Target audience
+                    <Header variant="secondary">In this section</Header>
+                    <Stack gap="md">
+                        <Stack gap={4}>
+                            <Anchor href="/?path=/docs/content-target-audience--docs" fw={700}>
+                                Audience
+                            </Anchor>
+                            <Text>
+                                An analysis of the primary audience for Coveo's Administration Console, including two
+                                end-user personas. Use this section to understand who you're writing for before you start.
                             </Text>
-                            {': An analysis of the primary audience, including two end-user personas.'}
-                        </List.Item>
-                        <List.Item>
-                            <Text component="span" fw={700}>
+                        </Stack>
+                        <Stack gap={4}>
+                            <Anchor href="/?path=/docs/content-voice--docs" fw={700}>
                                 Voice
+                            </Anchor>
+                            <Text>
+                                The tone and personality behind all UX content. Covers the distinction between voice and
+                                tone, defines Coveo's three core voice qualities, and provides guidance on adapting tone 
+                                to different UX contexts.
                             </Text>
-                            {': The tone and personality behind all UX content.'}
-                        </List.Item>
-                        <List.Item>
-                            <Text component="span" fw={700}>
+                        </Stack>
+                        <Stack gap={4}>
+                            <Anchor href="/?path=/docs/content-product-vocabulary--docs" fw={700}>
                                 Product vocabulary
+                            </Anchor>
+                            <Text>
+                                Terminology standards for Coveo products, features, and concepts. Includes an
+                                alphabetical reference list of official product names and a banned terminology list with
+                                approved replacements.
                             </Text>
-                            {': Terminology standards for Coveo products, features, and concepts.'}
-                        </List.Item>
-                        <List.Item>
-                            <Text component="span" fw={700}>
+                        </Stack>
+                        <Stack gap={4}>
+                            <Anchor href="/?path=/docs/content-writing-mechanics--docs" fw={700}>
                                 Writing mechanics
+                            </Anchor>
+                            <Text>
+                                Technical guidelines for UX copy. Covers rules for capitalization, punctuation, verb tense, 
+                                contractions, syntax, and length with examples.
                             </Text>
-                            {': Grammar, structure, punctuation, spelling, and length guidelines.'}
-                        </List.Item>
-                    </List>
+                        </Stack>
+                    </Stack>
                 </Stack>
 
                 <Stack gap="sm">
@@ -59,7 +73,7 @@ export const Overview: Story = {
                         This style guide is intended for anyone who contributes to the writing, editing, or reviewing of
                         UX content.
                     </Text>
-                    <Text>This is most often:</Text>
+                    <Text>This is often:</Text>
                     <List spacing="xs">
                         <List.Item>Designers</List.Item>
                         <List.Item>Developers</List.Item>
@@ -72,32 +86,16 @@ export const Overview: Story = {
                     <List spacing="md">
                         <List.Item>
                             <Text component="span" fw={700}>
-                                UX copy
-                            </Text>
-                            {': Also called '}
-                            <Text component="span" fs="italic">
-                                UX writing
-                            </Text>
-                            {'. The language within an interface that guides users throughout their whole experience.'}
-                        </List.Item>
-                        <List.Item>
-                            <Text component="span" fw={700}>
-                                UI copy
-                            </Text>
-                            {': The text attached to UI components, such as labels, buttons, and status messages.'}
-                        </List.Item>
-                        <List.Item>
-                            <Text component="span" fw={700}>
                                 Content guidelines
                             </Text>
                             {': Rules established for content to keep the UX clear, consistent, and on brand.'}
                         </List.Item>
                         <List.Item>
                             <Text component="span" fw={700}>
-                                Content strategy
+                                Long-form copy
                             </Text>
                             {
-                                ": The planning, creation, and governance of content to meet user needs and business goals. It can define what content exists, why it exists, and how it's maintained over time."
+                                ": Extended text that provides context, detail, or instruction in several paragraphs. Long-form doesn't appear in the Administration Console, but is typical for product documentation and Level Up+ content."
                             }
                         </List.Item>
                         <List.Item>
@@ -105,7 +103,7 @@ export const Overview: Story = {
                                 Microcopy
                             </Text>
                             {
-                                ': Concise, functional text that comes before or after user interactions. Many types of UI text are examples of microcopy, including button labels, links, error messages, tooltips, and placeholder text.'
+                                ': The broader category of short, functional text that guides users at decision points, including UI copy and supporting text like tooltips, placeholder text, error messages, and helper text.'
                             }
                         </List.Item>
                         <List.Item>
@@ -118,11 +116,19 @@ export const Overview: Story = {
                         </List.Item>
                         <List.Item>
                             <Text component="span" fw={700}>
-                                Long-form copy
+                                UI copy
                             </Text>
-                            {
-                                ": Extended text that provides context, detail, or instruction in several paragraphs. Long-form doesn't appear in the Administration Console, but is typical for Product Documentation and Level Up+ content."
-                            }
+                            {': The text rendered as part of a UI component itself, such as button labels, menu items, field labels, and status messages.'}
+                        </List.Item>
+                        <List.Item>
+                            <Text component="span" fw={700}>
+                                UX copy
+                            </Text>
+                            {': Also called '}
+                            <Text component="span" fs="italic">
+                                UX writing
+                            </Text>
+                            {'. The language within an interface that guides users throughout their whole experience.'}
                         </List.Item>
                     </List>
                 </Stack>
