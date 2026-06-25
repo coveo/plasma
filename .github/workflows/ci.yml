@@ -79,7 +79,6 @@ jobs:
         runs-on: ubuntu-latest
         permissions:
             pull-requests: write
-            id-token: write
             contents: read
         steps:
             - name: Harden Runner
@@ -91,33 +90,24 @@ jobs:
               with:
                   fetch-depth: 0
             - uses: ./.github/actions/setup
-            - name: Compute base URL
-              id: base-url
-              uses: ./.github/actions/compute-base-url
-              with:
-                  branch: ${{ github.head_ref || github.ref_name }}
-            - uses: ./.github/actions/build
-              env:
-                  PLASMA_BASE_URL: ${{ steps.base-url.outputs.base-url }}
-            - uses: ./.github/actions/deploy
-              id: deploy-demo
-              with:
-                  AWS_ROLE: ${{ secrets.AWS_ROLE }}
-                  AWS_REGION: ${{ secrets.AWS_REGION }}
-                  AWS_BUCKET: ${{ secrets.AWS_BUCKET }}
             - name: Compute Chromatic URL
               id: chromatic-url
               shell: bash
               run: |
                   BRANCH="${{ github.head_ref || github.ref_name }}"
                   CLEAN_BRANCH=$(echo "$BRANCH" | tr '/' '-' | tr '[:upper:]' '[:lower:]')
-                  echo "url=https://${CLEAN_BRANCH}--69e1126f9e24a5e560359ac2.chromatic.com/" >> $GITHUB_OUTPUT
-            - name: Add demo link as a comment on the PR
-              uses: ./.github/actions/comment-on-pr
-              with:
-                  message: 'Live demo of your latest successful build available here:\n- [:books: Storybook](${{ steps.deploy-demo.outputs.demo-output-path }}/).'
-                  avoidRepostsWith: Live demo of your latest successful build available here
+                  echo "url=https://${CLEAN_BRANCH}--69e1126f9e24a5e560359ac2.chromatic.com" >> "$GITHUB_OUTPUT"
+            - uses: ./.github/actions/build
+              env:
+                  PLASMA_BASE_URL: ${{ steps.chromatic-url.outputs.url }}
+            - name: Copy LLM files into Storybook output
+              run: cp -r ./packages/llms/dist/. ./packages/storybook/storybook-static/
             - name: Deploy Storybook to Chromatic
               env:
                   CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
               run: pnpm --filter storybook run chromatic --storybookBuildDir storybook-static --ci
+            - name: Add demo link as a comment on the PR
+              uses: ./.github/actions/comment-on-pr
+              with:
+                  message: 'Live demo of your latest successful build available here:\n- [:books: Storybook](${{ steps.chromatic-url.outputs.url }}/).'
+                  avoidRepostsWith: Live demo of your latest successful build available here

@@ -11,7 +11,6 @@ env:
 
 permissions:
     pull-requests: write
-    id-token: write
     actions: read
     contents: write
     security-events: write
@@ -35,15 +34,8 @@ jobs:
                   fetch-depth: 0
             - name: Setup
               uses: ./.github/actions/setup
-            - name: Compute base URL
-              id: base-url
-              uses: ./.github/actions/compute-base-url
-              with:
-                  branch: ${{ github.ref_name }}
             - name: Build
               uses: ./.github/actions/build
-              env:
-                  PLASMA_BASE_URL: ${{ steps.base-url.outputs.base-url }}
             - name: Lint
               run: pnpm lint
               env:
@@ -86,14 +78,8 @@ jobs:
               run: |
                   pnpm release:pre:publish:next
                   git push deploy --follow-tags
-            - name: Deploy
-              uses: ./.github/actions/deploy
-              # Demo for next branch is deployed by the CI workflow
-              if: github.ref != 'refs/heads/next'
-              with:
-                  AWS_ROLE: ${{ secrets.AWS_ROLE }}
-                  AWS_REGION: ${{ secrets.AWS_REGION }}
-                  AWS_BUCKET: ${{ secrets.AWS_BUCKET }}
+            - name: Copy LLM files into Storybook output
+              run: cp -r ./packages/llms/dist/. ./packages/storybook/storybook-static/
             - name: Deploy Storybook to Chromatic
               env:
                   CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
