@@ -59,7 +59,7 @@ export const Overview: Story = {
                         .
                     </Text>
 
-                    <Title order={4}>A, B, C</Title>
+                    <Title order={4}>A</Title>
                     <List spacing="xs">
                         <List.Item>Action Bar</List.Item>
                         <List.Item>Activity Browser</List.Item>
@@ -73,8 +73,16 @@ export const Overview: Story = {
                         <List.Item>Coveo Atomic library</List.Item>
                         <List.Item>Aura</List.Item>
                         <List.Item>Automatic Relevance Tuning (ART)</List.Item>
+                    </List>
+
+                    <Title order={4}>B</Title>
+                    <List spacing="xs">
                         <List.Item>Box Business</List.Item>
                         <List.Item>Brightcove</List.Item>
+                    </List>
+
+                    <Title order={4}>C</Title>
+                    <List spacing="xs">
                         <List.Item>Case Classification (CC)</List.Item>
                         <List.Item>Catalog Semantic Encoder (CSE)</List.Item>
                         <List.Item>Client ID</List.Item>
@@ -90,29 +98,45 @@ export const Overview: Story = {
                         <List.Item>Coveo Customer Success</List.Item>
                     </List>
 
-                    <Title order={4}>D, E, F</Title>
+                    <Title order={4}>D</Title>
                     <List spacing="xs">
                         <List.Item>Databricks</List.Item>
                         <List.Item>Dropbox</List.Item>
                         <List.Item>Dynamic Navigation Experience (DNE)</List.Item>
+                    </List>
+
+                    <Title order={4}>E</Title>
+                    <List spacing="xs">
                         <List.Item>Coveo on Elasticsearch</List.Item>
                         <List.Item>Elasticsearch</List.Item>
                         <List.Item>Email Security Provider</List.Item>
                         <List.Item>Event Protocol (EP)</List.Item>
                         <List.Item>Coveo Explorer</List.Item>
+                    </List>
+
+                    <Title order={4}>F</Title>
+                    <List spacing="xs">
                         <List.Item>Figma</List.Item>
                     </List>
 
-                    <Title order={4}>G, H, I</Title>
+                    <Title order={4}>G</Title>
                     <List spacing="xs">
                         <List.Item>Genesys</List.Item>
                         <List.Item>GitHub</List.Item>
                         <List.Item>Gmail</List.Item>
                         <List.Item>Google Drive</List.Item>
                         <List.Item>GraphQL</List.Item>
+                    </List>
+
+                    <Title order={4}>H</Title>
+                    <List spacing="xs">
                         <List.Item>Coveo Headless library</List.Item>
                         <List.Item>Hosted Insight Panel</List.Item>
                         <List.Item>Hosted Search Page</List.Item>
+                    </List>
+
+                    <Title order={4}>I</Title>
+                    <List spacing="xs">
                         <List.Item>In-Product Experience (IPX)</List.Item>
                         <List.Item>Insight Panel</List.Item>
                         <List.Item>Intelligent Term Detection (ITD)</List.Item>
@@ -120,34 +144,50 @@ export const Overview: Story = {
                         <List.Item>Interface Editor</List.Item>
                     </List>
 
-                    <Title order={4}>J, K, L</Title>
+                    <Title order={4}>J</Title>
                     <List spacing="xs">
                         <List.Item>JavaScript</List.Item>
                         <List.Item>Coveo JavaScript Search Framework</List.Item>
                         <List.Item>Jira Software Cloud</List.Item>
                         <List.Item>Jira Software Data Center</List.Item>
+                    </List>
+
+                    <Title order={4}>K</Title>
+                    <List spacing="xs">
                         <List.Item>Khoros</List.Item>
                         <List.Item>Knowledge Hub</List.Item>
+                    </List>
+
+                    <Title order={4}>L</Title>
+                    <List spacing="xs">
                         <List.Item>Lightning Web Components (LWC)</List.Item>
                         <List.Item>Listing Page Optimizer (LPO)</List.Item>
                         <List.Item>Log Browser</List.Item>
                     </List>
 
-                    <Title order={4}>M, N, O</Title>
+                    <Title order={4}>M</Title>
                     <List spacing="xs">
                         <List.Item>Coveo Machine Learning</List.Item>
                         <List.Item>Mailchimp</List.Item>
                         <List.Item>Coveo Merchandising Hub (CMH)</List.Item>
                         <List.Item>Microsoft Dynamics 365</List.Item>
                         <List.Item>Coveo for Microsoft Dynamics 365</List.Item>
+                    </List>
+
+                    <Title order={4}>N</Title>
+                    <List spacing="xs">
                         <List.Item>Node Package Manager</List.Item>
+                    </List>
+
+                    <Title order={4}>O</Title>
+                    <List spacing="xs">
                         <List.Item>Coveo On-Premises Crawling Module</List.Item>
                         <List.Item>OneDrive for Business</List.Item>
                         <List.Item>OpenText Content Server</List.Item>
                         <List.Item>Optimizely</List.Item>
                     </List>
 
-                    <Title order={4}>P, Q, R</Title>
+                    <Title order={4}>P</Title>
                     <List spacing="xs">
                         <List.Item>Pendo</List.Item>
                         <List.Item>Coveo Personalization-as-you-go</List.Item>
@@ -158,16 +198,24 @@ export const Overview: Story = {
                         <List.Item>Product Recommendation model</List.Item>
                         <List.Item>Product Recommendations (PR)</List.Item>
                         <List.Item>Coveo Professional Services</List.Item>
+                    </List>
+
+                    <Title order={4}>Q</Title>
+                    <List spacing="xs">
                         <List.Item>Coveo Quantic library</List.Item>
                         <List.Item>Coveo QuickView</List.Item>
                         <List.Item>Query Suggestion model</List.Item>
                         <List.Item>Query Suggestions (QS)</List.Item>
+                    </List>
+
+                    <Title order={4}>R</Title>
+                    <List spacing="xs">
                         <List.Item>Relevance Generative Answering (RGA)</List.Item>
                         <List.Item>Coveo Relay library</List.Item>
                         <List.Item>REST API</List.Item>
                     </List>
 
-                    <Title order={4}>S, T, U</Title>
+                    <Title order={4}>S</Title>
                     <List spacing="xs">
                         <List.Item>Salesforce</List.Item>
                         <List.Item>Salesforce B2B Commerce</List.Item>
@@ -189,6 +237,10 @@ export const Overview: Story = {
                         <List.Item>Splunk</List.Item>
                         <List.Item>Coveo Support</List.Item>
                         <List.Item>Symantec</List.Item>
+                    </List>
+
+                    <Title order={4}>T</Title>
+                    <List spacing="xs">
                         <List.Item>Tealium</List.Item>
                     </List>
 
