@@ -58,30 +58,41 @@ export const Overview: Story = {
                     <Header variant="secondary">In this page</Header>
                     <List spacing="xs">
                         <List.Item>
-                            <Text fw={700}>Vocabulary</Text> — Coveo-specific terms, acronyms & initialisms, third-party
-                            terms
+                            <Anchor href="#vocabulary" fw={700}>
+                                Vocabulary
+                            </Anchor>
+                            : Coveo-specific terms, acronyms & initialisms, third-party terms
                         </List.Item>
                         <List.Item>
-                            <Text fw={700}>Capitalization</Text> — Sentence case, title case, when to capitalize,
-                            referring to UI elements
+                            <Anchor href="#capitalization" fw={700}>
+                                Capitalization
+                            </Anchor>
+                            : Sentence case, when to capitalize, referring to UI elements
                         </List.Item>
                         <List.Item>
-                            <Text fw={700}>Punctuation</Text> — Periods, colons, exclamation marks, apostrophes,
-                            spacing, ellipses
+                            <Anchor href="#punctuation" fw={700}>
+                                Punctuation
+                            </Anchor>
+                            : Periods, colons, exclamation marks, apostrophes, spacing, ellipses
                         </List.Item>
                         <List.Item>
-                            <Text fw={700}>Grammar</Text> — Voice, tense, person, contractions, sentence length
+                            <Anchor href="#grammar" fw={700}>
+                                Grammar
+                            </Anchor>
+                            : Voice, tense, person, contractions, sentence length
                         </List.Item>
                         <List.Item>
-                            <Text fw={700}>Syntax & structure</Text> — Frontloading, instructions, plain language,
-                            reducing jargon
+                            <Anchor href="#syntax-structure" fw={700}>
+                                Syntax & structure
+                            </Anchor>
+                            : Frontloading, instructions, plain language, reducing jargon
                         </List.Item>
                     </List>
                 </Stack>
 
                 {/* VOCABULARY */}
                 <Stack gap="sm">
-                    <Header variant="secondary">Vocabulary</Header>
+                    <Header variant="secondary" id="vocabulary">Vocabulary</Header>
                     <Text>Guidelines:</Text>
                     <List spacing="xs">
                         <List.Item>{"Only use shortened forms when they're more common than the full term"}</List.Item>
@@ -203,7 +214,7 @@ export const Overview: Story = {
 
                 {/* CAPITALIZATION */}
                 <Stack gap="sm">
-                    <Header variant="secondary">Capitalization</Header>
+                    <Header variant="secondary" id="capitalization">Capitalization</Header>
 
                     <Title order={4}>Sentence case</Title>
                     <Text>
@@ -211,14 +222,8 @@ export const Overview: Story = {
                             "Sentence case means only the first word and proper nouns are capitalized. It's the default for all UI text: headings, labels, buttons, descriptions, tooltips, and placeholder text."
                         }
                     </Text>
-                    <DoTable rows={[['Save changes', 'Save Changes']]} />
-
-                    <Title order={4}>Title case</Title>
-                    <Text>
-                        Title case means every major word is capitalized: nouns, verbs, adjectives, and adverbs.
-                        Articles (a, an, the), coordinating conjunctions (and, but, or), and short prepositions (in, on,
-                        of) are lowercase unless they're the first word.
-                    </Text>
+                    <Text>Examples of copy:</Text>
+                    <DoTable rows={[['"Save changes"', '"Save Changes"']]} />
 
                     <Title order={4}>When to capitalize</Title>
                     <Text fw={700}>Always capitalize:</Text>
@@ -266,6 +271,7 @@ export const Overview: Story = {
                             formatting for the element name
                         </List.Item>
                     </List>
+                    <Text>Examples of copy:</Text>
                     <Table withTableBorder withColumnBorders layout="auto">
                         <Table.Thead>
                             <Table.Tr>
@@ -307,7 +313,7 @@ export const Overview: Story = {
 
                 {/* PUNCTUATION */}
                 <Stack gap="sm">
-                    <Header variant="secondary">Punctuation</Header>
+                    <Header variant="secondary" id="punctuation">Punctuation</Header>
 
                     <Title order={4}>Periods</Title>
                     <Text>
@@ -381,14 +387,15 @@ export const Overview: Story = {
                     <Title order={4}>Colons</Title>
                     <Text>Guidelines:</Text>
                     <List spacing="xs">
-                        <List.Item>{"Don't use colons in titles"}</List.Item>
+                        <List.Item>{"Don't use colons at the end of titles as an opener to a page, panel, or section"}</List.Item>
                         <List.Item>
                             {
                                 "Don't use colons in labels. The UI layout provides the visual relationship between the label and its field."
                             }
                         </List.Item>
                     </List>
-                    <DoTable rows={[['Email [input field]', 'Email: [input field]']]} />
+                    <Text>Examples of copy:</Text>
+                    <DoTable rows={[['"Email [input field]"', '"Email: [input field]"']]} />
 
                     <Title order={4}>Exclamation marks</Title>
                     <Text>Guidelines:</Text>
@@ -402,18 +409,21 @@ export const Overview: Story = {
                         </List.Item>
                         <List.Item>{"Don't use them for instructional or CTA copy"}</List.Item>
                     </List>
-                    <DoTable rows={[['Success! Your query pipeline has been created.', 'An error occurred!']]} />
+                    <Text>Examples of copy:</Text>
+                    <DoTable rows={[['"Success! Your query pipeline has been created."', '"An error occurred!"']]} />
 
                     <Title order={4}>Apostrophes</Title>
                     <Text>Avoid using the possessive form for objects and UI elements. Use "of" phrasing instead.</Text>
-                    <DoTable rows={[['On the left side of the screen', "On the screen's left side"]]} />
+                    <Text>Examples of copy:</Text>
+                    <DoTable rows={[['"On the left side of the screen"', `"On the screen's left side"`]]} />
 
                     <Title order={4}>Spacing</Title>
                     <Text>
                         Never add a space before a punctuation mark. This is a common mistake because French punctuation
                         standards require a space before exclamation and question marks.
                     </Text>
-                    <DoTable rows={[['Are you sure?', 'Are you sure ?']]} />
+                    <Text>Examples of copy:</Text>
+                    <DoTable rows={[['"Are you sure?"', '"Are you sure ?"']]} />
 
                     <Title order={4}>Ellipses</Title>
                     <Text>Guidelines:</Text>
@@ -424,12 +434,13 @@ export const Overview: Story = {
                         </List.Item>
                         <List.Item>Never use ellipses to trail off in instructions or labels</List.Item>
                     </List>
-                    <DoTable rows={[['Loading...', 'You can configure this later...']]} />
+                    <Text>Examples of copy:</Text>
+                    <DoTable rows={[['"Loading..."', '"You can configure this later..."']]} />
                 </Stack>
 
                 {/* GRAMMAR */}
                 <Stack gap="sm">
-                    <Header variant="secondary">Grammar</Header>
+                    <Header variant="secondary" id="grammar">Grammar</Header>
 
                     <Title order={4}>Voice</Title>
                     <Text>
@@ -440,10 +451,11 @@ export const Overview: Story = {
                         common in confirmations because attributing the action to the user often feels awkward and
                         inaccurate.
                     </Text>
+                    <Text>Examples of copy:</Text>
                     <DoTable
                         rows={[
-                            ['Your query pipeline has been saved.', 'You saved your query pipeline.'],
-                            ['The source could not be found.', "We couldn't find the source."],
+                            ['"Your query pipeline has been saved."', '"You saved your query pipeline."'],
+                            ['"The source could not be found."', `"We couldn't find the source."`],
                         ]}
                     />
 
@@ -508,11 +520,12 @@ export const Overview: Story = {
                         <List.Item>Never use "we," "our," or "us"</List.Item>
                         <List.Item>Avoid "Coveo" as a subject performing an action.</List.Item>
                     </List>
+                    <Text>Examples of copy:</Text>
                     <DoTable
                         rows={[
-                            ['Your session has expired.', 'We ended your session.'],
-                            ['No results found.', "Coveo couldn't find any results."],
-                            ["You don't have permission to access this.", "We can't let you access this."],
+                            ['"Your session has expired."', '"We ended your session."'],
+                            ['"No results found."', `"Coveo couldn't find any results."`],
+                            [`"You don't have permission to access this."`, `"We can't let you access this."`],
                         ]}
                     />
 
@@ -620,22 +633,23 @@ export const Overview: Story = {
 
                 {/* SYNTAX & STRUCTURE */}
                 <Stack gap="sm">
-                    <Header variant="secondary">Syntax & structure</Header>
+                    <Header variant="secondary" id="syntax-structure">Syntax & structure</Header>
                     <Text>
                         In almost all UX contexts, frontloading is the best way to provide clarity. Frontloading means
                         stating the most important information and key message first, at the beginning of the text.
                         After that, more context, details, or reasoning can be given. This technique is used to
                         structure sentences, paragraphs, pages, and even entire books.
                     </Text>
+                    <Text>Examples of copy:</Text>
                     <DoTable
                         rows={[
                             [
-                                'No results found. Try adjusting your filters.',
-                                "Your current filter selection didn't return any results. Try adjusting them.",
+                                '"No results found. Try adjusting your filters."',
+                                `"Your current filter selection didn't return any results. Try adjusting them."`,
                             ],
                             [
-                                'Access denied. Contact your administrator to request permission.',
-                                "You're trying to access a page that requires additional permissions. Contact your administrator.",
+                                '"Access denied. Contact your administrator to request permission."',
+                                `"You're trying to access a page that requires additional permissions. Contact your administrator."`,
                             ],
                         ]}
                     />
@@ -649,6 +663,7 @@ export const Overview: Story = {
                         </Text>{' '}
                         they do it.
                     </Text>
+                    <Text>Examples of copy:</Text>
                     <Table withTableBorder withColumnBorders layout="auto">
                         <Table.Thead>
                             <Table.Tr>
@@ -711,10 +726,11 @@ export const Overview: Story = {
                         <List.Item>If a shorter word works, use it</List.Item>
                         <List.Item>{"Don't use idioms or expressions"}</List.Item>
                     </List>
+                    <Text>Examples of copy:</Text>
                     <DoTable
                         rows={[
-                            ['This may take a few minutes.', "This won't happen at the speed of light."],
-                            ['This is quick to set up.', 'This is a piece of cake to set up.'],
+                            ['"This may take a few minutes."', `"This won't happen at the speed of light."`],
+                            ['"This is quick to set up."', '"This is a piece of cake to set up."'],
                         ]}
                     />
 
