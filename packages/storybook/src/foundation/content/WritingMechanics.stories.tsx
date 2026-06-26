@@ -51,9 +51,34 @@ export const Overview: Story = {
     render: () => (
         <FoundationWrapper
             title="Writing Mechanics"
-            description="Grammar, structure, punctuation, spelling, and length guidelines for UX copy."
+            description="The technical rules behind UX copy. Consult this page when you need to verify grammar, capitalization, punctuation, or syntax. It covers the mechanics that keep text consistent and readable across the entire product."
         >
             <Stack gap="xl">
+                <Stack gap="sm">
+                    <Header variant="secondary">In this page</Header>
+                    <List spacing="xs">
+                        <List.Item>
+                            <Text fw={700}>Vocabulary</Text> — Coveo-specific terms, acronyms & initialisms, third-party
+                            terms
+                        </List.Item>
+                        <List.Item>
+                            <Text fw={700}>Capitalization</Text> — Sentence case, title case, when to capitalize,
+                            referring to UI elements
+                        </List.Item>
+                        <List.Item>
+                            <Text fw={700}>Punctuation</Text> — Periods, colons, exclamation marks, apostrophes,
+                            spacing, ellipses
+                        </List.Item>
+                        <List.Item>
+                            <Text fw={700}>Grammar</Text> — Voice, tense, person, contractions, sentence length
+                        </List.Item>
+                        <List.Item>
+                            <Text fw={700}>Syntax & structure</Text> — Frontloading, instructions, plain language,
+                            reducing jargon
+                        </List.Item>
+                    </List>
+                </Stack>
+
                 {/* VOCABULARY */}
                 <Stack gap="sm">
                     <Header variant="secondary">Vocabulary</Header>
