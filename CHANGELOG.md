@@ -1,3 +1,16 @@
+## <small>59.7.1 (2026-06-26)</small>
+
+* chore(deps): update dependency eslint-plugin-jsdoc to v63 (#4448) 04afb67, closes #4448
+* chore(deps): update non-major github actions to df4cb1c (#4465) 77a482d, closes #4465
+* fix(ci): add Chromatic demo link to PR comment (#4472) 35c43fa, closes #4472
+* fix(llms): encode files as utf8 with a BOM (#4479) d689263, closes #4479
+* fix(mantine): add missing jsdoc on table components (#4480) 7151c48, closes #4480
+* fix(mantine): only apply inline middlewares in test environment (#4476) 5ea9133, closes #4476
+* fix(storybook): adapt docs page to user color preferences (#4466) eaf3810, closes #4466
+* fix(table): hide column headers when NoData is shown (#4478) 8d34c1b, closes #4478
+
+
+
 ## 59.7.0 (2026-06-05)
 
 * feat(InfoToken): color changes on info token (#4462) c5a3d29, closes #4462

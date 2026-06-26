@@ -50,7 +50,7 @@ jobs:
               with:
                   egress-policy: audit
 
-            - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+            - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
               with:
                   fetch-depth: 0
             - uses: ./.github/actions/setup
@@ -71,7 +71,7 @@ jobs:
               with:
                   egress-policy: audit
 
-            - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+            - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
             - uses: ./.github/actions/setup
             - uses: ./.github/actions/test
     demo:
@@ -87,7 +87,7 @@ jobs:
               with:
                   egress-policy: audit
 
-            - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+            - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
               with:
                   fetch-depth: 0
             - uses: ./.github/actions/setup
@@ -105,6 +105,13 @@ jobs:
                   AWS_ROLE: ${{ secrets.AWS_ROLE }}
                   AWS_REGION: ${{ secrets.AWS_REGION }}
                   AWS_BUCKET: ${{ secrets.AWS_BUCKET }}
+            - name: Compute Chromatic URL
+              id: chromatic-url
+              shell: bash
+              run: |
+                  BRANCH="${{ github.head_ref || github.ref_name }}"
+                  CLEAN_BRANCH=$(echo "$BRANCH" | tr '/' '-' | tr '[:upper:]' '[:lower:]')
+                  echo "url=https://${CLEAN_BRANCH}--69e1126f9e24a5e560359ac2.chromatic.com/" >> $GITHUB_OUTPUT
             - name: Add demo link as a comment on the PR
               uses: ./.github/actions/comment-on-pr
               with:
