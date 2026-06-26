@@ -1,6 +1,6 @@
 import {Chip} from '@coveord/plasma-mantine/components/Chip';
 import type {Meta, StoryObj} from '@storybook/react-vite';
-import {useArgs} from 'storybook/internal/preview-api';
+import {useArgs} from 'storybook/preview-api';
 
 const meta: Meta<typeof Chip> = {
     title: '@components/form/array/Chip',
