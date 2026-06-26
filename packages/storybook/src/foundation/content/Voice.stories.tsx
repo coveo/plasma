@@ -117,7 +117,7 @@ export const Overview: Story = {
                         <List.Item>Saying exactly what to do or where to go</List.Item>
                         <List.Item>Making it easy to understand on the first read</List.Item>
                     </List>
-                    <Text>Examples:</Text>
+                    <Text>Examples of copy:</Text>
                     <Table withTableBorder withColumnBorders layout="auto">
                         <Table.Thead>
                             <Table.Tr>
@@ -146,10 +146,10 @@ export const Overview: Story = {
                                     <Text size="sm">A user hovers over an unfamiliar setting</Text>
                                 </Table.Td>
                                 <Table.Td>
-                                    <Text size="sm">Controls how often your source checks for new content.</Text>
+                                    <Text size="sm">"Controls how often your source checks for new content."</Text>
                                 </Table.Td>
                                 <Table.Td>
-                                    <Text size="sm">Defines the crawling interval for content ingestion.</Text>
+                                    <Text size="sm">"Defines the crawling interval for content ingestion."</Text>
                                 </Table.Td>
                             </Table.Tr>
                             <Table.Tr>
@@ -157,10 +157,10 @@ export const Overview: Story = {
                                     <Text size="sm">A user is about to delete in bulk</Text>
                                 </Table.Td>
                                 <Table.Td>
-                                    <Text size="sm">This will remove all selected items. You can't undo this.</Text>
+                                    <Text size="sm">"This will remove all selected items. You can't undo this."</Text>
                                 </Table.Td>
                                 <Table.Td>
-                                    <Text size="sm">Are you sure you want to proceed with this action?</Text>
+                                    <Text size="sm">"Are you sure you want to proceed with this action?"</Text>
                                 </Table.Td>
                             </Table.Tr>
                             <Table.Tr>
@@ -168,10 +168,10 @@ export const Overview: Story = {
                                     <Text size="sm">A user hovers over a disabled button</Text>
                                 </Table.Td>
                                 <Table.Td>
-                                    <Text size="sm">Save your changes before sharing.</Text>
+                                    <Text size="sm">"Save your changes before sharing."</Text>
                                 </Table.Td>
                                 <Table.Td>
-                                    <Text size="sm">This action is unavailable in the current state.</Text>
+                                    <Text size="sm">"This action is unavailable in the current state."</Text>
                                 </Table.Td>
                             </Table.Tr>
                         </Table.Tbody>
@@ -196,7 +196,7 @@ export const Overview: Story = {
                             'Conversational doesn\u2019t automatically mean \u201chuman.\u201d AI-generated copy can be human-like without considering the user\u2019s needs and emotional state. The intent is what matters.'
                         }
                     </Alert.Advice>
-                    <Text>Examples:</Text>
+                    <Text>Examples of copy:</Text>
                     <Table withTableBorder withColumnBorders layout="auto">
                         <Table.Thead>
                             <Table.Tr>
@@ -226,11 +226,11 @@ export const Overview: Story = {
                                 </Table.Td>
                                 <Table.Td>
                                     <Text size="sm">
-                                        Something went wrong. Check your source settings and try again.
+                                        "Something went wrong. Check your source settings and try again."
                                     </Text>
                                 </Table.Td>
                                 <Table.Td>
-                                    <Text size="sm">An error was encountered during the source rebuild operation.</Text>
+                                    <Text size="sm">"An error was encountered during the source rebuild operation."</Text>
                                 </Table.Td>
                             </Table.Tr>
                             <Table.Tr>
@@ -238,10 +238,10 @@ export const Overview: Story = {
                                     <Text size="sm">A user leaves a required field empty</Text>
                                 </Table.Td>
                                 <Table.Td>
-                                    <Text size="sm">Add a name to continue.</Text>
+                                    <Text size="sm">"Add a name to continue."</Text>
                                 </Table.Td>
                                 <Table.Td>
-                                    <Text size="sm">This field is required.</Text>
+                                    <Text size="sm">"This field is required."</Text>
                                 </Table.Td>
                             </Table.Tr>
                             <Table.Tr>
@@ -249,12 +249,12 @@ export const Overview: Story = {
                                     <Text size="sm">{"A user's search returns no results"}</Text>
                                 </Table.Td>
                                 <Table.Td>
-                                    <Text size="sm">No results. Try different keywords or clear your filters.</Text>
+                                    <Text size="sm">"No results. Try different keywords or clear your filters."</Text>
                                 </Table.Td>
                                 <Table.Td>
                                     <Text size="sm">
-                                        The query returned no matching results. Modify your search parameters and
-                                        resubmit.
+                                        "The query returned no matching results. Modify your search parameters and
+                                        resubmit."
                                     </Text>
                                 </Table.Td>
                             </Table.Tr>
@@ -274,7 +274,7 @@ export const Overview: Story = {
                         <List.Item>Giving next steps when something goes wrong</List.Item>
                         <List.Item>Working in harmony with visual design elements</List.Item>
                     </List>
-                    <Text>Examples:</Text>
+                    <Text>Examples of copy:</Text>
                     <Table withTableBorder withColumnBorders layout="auto">
                         <Table.Thead>
                             <Table.Tr>
@@ -303,10 +303,10 @@ export const Overview: Story = {
                                     <Text size="sm">A source finishes rebuilding</Text>
                                 </Table.Td>
                                 <Table.Td>
-                                    <Text size="sm">Your source is ready. Content is now searchable.</Text>
+                                    <Text size="sm">"Your source is ready. Content is now searchable."</Text>
                                 </Table.Td>
                                 <Table.Td>
-                                    <Text size="sm">Operation completed successfully.</Text>
+                                    <Text size="sm">"Operation completed successfully."</Text>
                                 </Table.Td>
                             </Table.Tr>
                             <Table.Tr>
@@ -315,12 +315,12 @@ export const Overview: Story = {
                                 </Table.Td>
                                 <Table.Td>
                                     <Text size="sm">
-                                        You don't have permission to do this. Contact your administrator to request
-                                        access.
+                                        "You don't have permission to do this. Contact your administrator to request
+                                        access."
                                     </Text>
                                 </Table.Td>
                                 <Table.Td>
-                                    <Text size="sm">Access denied.</Text>
+                                    <Text size="sm">"Access denied."</Text>
                                 </Table.Td>
                             </Table.Tr>
                             <Table.Tr>
@@ -329,12 +329,12 @@ export const Overview: Story = {
                                 </Table.Td>
                                 <Table.Td>
                                     <Text size="sm">
-                                        Query suggestions are on. They will start appearing as users type in your search
-                                        box.
+                                        "Query suggestions are on. They will start appearing as users type in your search
+                                        box."
                                     </Text>
                                 </Table.Td>
                                 <Table.Td>
-                                    <Text size="sm">Feature enabled.</Text>
+                                    <Text size="sm">"Feature enabled."</Text>
                                 </Table.Td>
                             </Table.Tr>
                         </Table.Tbody>
