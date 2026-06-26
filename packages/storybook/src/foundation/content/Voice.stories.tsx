@@ -193,7 +193,7 @@ export const Overview: Story = {
                     </List>
                     <Alert.Advice title="Note">
                         {
-                            'Conversational doesn\u2019t automatically mean \u201chuman.\u201d AI-generated copy can be human-like without considering the user\u2019s needs and emotional state. The intent is what matters.'
+                            '\u201cNatural\u201d doesn\u2019t automatically mean \u201chuman.\u201d Remember to check that your text is helpful and necessary\u2014AI-generated copy can sound human-like without considering the user\u2019s needs and emotional state.'
                         }
                     </Alert.Advice>
                     <Text>Examples of copy:</Text>
