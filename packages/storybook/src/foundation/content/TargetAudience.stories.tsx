@@ -134,7 +134,7 @@ export const Overview: Story = {
                                     </Table.Td>
                                     <Table.Td>
                                         <List size="sm" spacing={4}>
-                                            <List.Item>Technical language and dense screens are intimidating</List.Item>
+                                            <List.Item>Technical language and screens with dense copy are intimidating</List.Item>
                                             <List.Item>
                                                 Hard to see whether the platform is healthy or delivering value
                                             </List.Item>
