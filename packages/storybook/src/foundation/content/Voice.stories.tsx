@@ -20,6 +20,11 @@ export const Overview: Story = {
     render: () => (
         <FoundationWrapper title="Voice" description="The tone and personality behind all UX content.">
             <Stack gap="xl">
+                <Alert.Advice title="Note">
+                    {'This page covers voice and tone. For grammar, punctuation, capitalization, and other technical writing rules, see '}
+                    <Anchor href="/?path=/docs/content-writing-mechanics--docs">Writing Mechanics</Anchor>
+                    {'.'}
+                </Alert.Advice>
                 <Stack gap="sm">
                     <Header variant="secondary">Understanding voice and tone</Header>
                     <Text>
@@ -431,10 +436,6 @@ export const Overview: Story = {
                             </Table.Tr>
                         </Table.Tbody>
                     </Table>
-                    <Alert.Warning title="Important">
-                        {'See the guidelines for '}
-                        <Anchor href="/?path=/docs/content-writing-mechanics--docs">writing mechanics</Anchor>.
-                    </Alert.Warning>
                 </Stack>
             </Stack>
         </FoundationWrapper>
