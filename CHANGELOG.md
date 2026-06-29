@@ -1,3 +1,9 @@
+## <small>59.7.2 (2026-06-29)</small>
+
+* fix(mantine): add missing .js extensions in relative imports (#4485) 80e8ebf, closes #4485
+
+
+
 ## <small>59.7.1 (2026-06-26)</small>
 
 * chore(deps): update dependency eslint-plugin-jsdoc to v63 (#4448) 04afb67, closes #4448
