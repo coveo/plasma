@@ -40,7 +40,12 @@ const preview: Preview = {
         },
         options: {
             storySort: {
-                order: ['@foundation', '@components', '*'],
+                order: [
+                        '@foundation',
+                        ['Content', ['About', 'Audience', 'Voice', 'Writing Mechanics', 'Product Vocabulary']],
+                        '@components',
+                        '*',
+                    ],
             },
         },
     },

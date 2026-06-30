@@ -31,7 +31,7 @@ export const Overview: Story = {
                 <Stack gap="sm">
                     <Header variant="secondary">Vocabulary</Header>
                     <Text>
-                        Use this list to see the acceptable spelling, capitalization, and punctuation for Coveo product
+                        Use this list to see the acceptable spelling, capitalization, and punctuation for product
                         terminology in the UI.
                     </Text>
                     <Text>
@@ -91,7 +91,6 @@ export const Overview: Story = {
                         <List.Item>Confluence Data Center</List.Item>
                         <List.Item>Confluence Server</List.Item>
                         <List.Item>Content Browser</List.Item>
-                        <List.Item>Content Recommendation model</List.Item>
                         <List.Item>Content Recommendations (CR)</List.Item>
                         <List.Item>Contentful</List.Item>
                         <List.Item>Coveo Crawling Module</List.Item>
@@ -170,7 +169,6 @@ export const Overview: Story = {
                         <List.Item>Coveo Machine Learning</List.Item>
                         <List.Item>Mailchimp</List.Item>
                         <List.Item>Coveo Merchandising Hub (CMH)</List.Item>
-                        <List.Item>Microsoft Dynamics 365</List.Item>
                     </List>
 
                     <Title order={4}>N</Title>
@@ -194,7 +192,6 @@ export const Overview: Story = {
                         <List.Item>PowerPoint</List.Item>
                         <List.Item>PowerShell</List.Item>
                         <List.Item>Predictive Query Suggestions (PQS)</List.Item>
-                        <List.Item>Product Recommendation model</List.Item>
                         <List.Item>Product Recommendations (PR)</List.Item>
                         <List.Item>Coveo Professional Services</List.Item>
                     </List>
@@ -203,7 +200,6 @@ export const Overview: Story = {
                     <List spacing="xs">
                         <List.Item>Coveo Quantic library</List.Item>
                         <List.Item>Coveo QuickView</List.Item>
-                        <List.Item>Query Suggestion model</List.Item>
                         <List.Item>Query Suggestions (QS)</List.Item>
                     </List>
 
@@ -223,7 +219,6 @@ export const Overview: Story = {
                         <List.Item>SAP Commerce</List.Item>
                         <List.Item>Semantic Encoder (SE)</List.Item>
                         <List.Item>ServiceNow</List.Item>
-                        <List.Item>Session-Based Product Recommendation model</List.Item>
                         <List.Item>Session-Based Product Recommendations (SBPR)</List.Item>
                         <List.Item>SharePoint</List.Item>
                         <List.Item>SharePoint Online</List.Item>
@@ -231,7 +226,6 @@ export const Overview: Story = {
                         <List.Item>Shopify</List.Item>
                         <List.Item>Sitecore</List.Item>
                         <List.Item>Coveo for Sitecore</List.Item>
-                        <List.Item>Smart Snippet model</List.Item>
                         <List.Item>Smart Snippets</List.Item>
                         <List.Item>Splunk</List.Item>
                         <List.Item>Coveo Support</List.Item>
