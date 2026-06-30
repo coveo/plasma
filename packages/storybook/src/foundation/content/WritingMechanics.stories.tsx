@@ -47,6 +47,37 @@ const DoTable = ({rows}: {rows: Array<[string, string]>}) => (
     </Table>
 );
 
+const UseAvoidTable = ({rows}: {rows: Array<[string, string]>}) => (
+    <Table withTableBorder withColumnBorders layout="auto">
+        <Table.Thead>
+            <Table.Tr>
+                <Table.Th
+                    style={{backgroundColor: 'light-dark(var(--mantine-color-green-1), var(--mantine-color-green-8))'}}
+                >
+                    Use
+                </Table.Th>
+                <Table.Th
+                    style={{backgroundColor: 'light-dark(var(--mantine-color-red-2), var(--mantine-color-red-8))'}}
+                >
+                    Avoid
+                </Table.Th>
+            </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>
+            {rows.map(([use, avoid]) => (
+                <Table.Tr key={`${use}-${avoid}`}>
+                    <Table.Td>
+                        <Text size="sm">{use}</Text>
+                    </Table.Td>
+                    <Table.Td>
+                        <Text size="sm">{avoid}</Text>
+                    </Table.Td>
+                </Table.Tr>
+            ))}
+        </Table.Tbody>
+    </Table>
+);
+
 export const Overview: Story = {
     render: () => (
         <FoundationWrapper
@@ -55,7 +86,7 @@ export const Overview: Story = {
         >
             <Stack gap="xl">
                 <Stack gap="sm">
-                    <Header variant="secondary">In this page</Header>
+                    <Header variant="secondary">On this page</Header>
                     <List spacing="xs">
                         <List.Item>
                             <Anchor href="#vocabulary" fw={700}>
@@ -67,7 +98,7 @@ export const Overview: Story = {
                             <Anchor href="#capitalization" fw={700}>
                                 Capitalization
                             </Anchor>
-                            : Sentence case, when to capitalize, referring to UI elements
+                            : Sentence case, title case, when to capitalize, referring to UI elements
                         </List.Item>
                         <List.Item>
                             <Anchor href="#punctuation" fw={700}>
@@ -222,8 +253,17 @@ export const Overview: Story = {
                             "Sentence case means only the first word and proper nouns are capitalized. It's the default for all UI text: headings, labels, buttons, descriptions, tooltips, and placeholder text."
                         }
                     </Text>
-                    <Text>Examples of copy:</Text>
+                    <Text>Example of copy:</Text>
                     <DoTable rows={[['"Save changes"', '"Save Changes"']]} />
+
+                    <Title order={4}>Title case</Title>
+                    <Text>
+                        {
+                            'Title case means the first letter of each major word is capitalized. Use title case for navigation menu items only.'
+                        }
+                    </Text>
+                    <Text>Example of copy:</Text>
+                    <DoTable rows={[['"Query Pipelines"', '"Query pipelines"']]} />
 
                     <Title order={4}>When to capitalize</Title>
                     <Text fw={700}>Always capitalize:</Text>
@@ -231,6 +271,7 @@ export const Overview: Story = {
                         <List.Item>The first word of a sentence, label, or heading</List.Item>
                         <List.Item>Proper nouns (people, places, or company names)</List.Item>
                         <List.Item>Official Coveo product and feature names</List.Item>
+                        <List.Item>All words in navigation text and table of contents (not breadcrumbs)</List.Item>
                         <List.Item>
                             {
                                 'Third-party product or company names that use capitalization, even non-standard ones (for example, SharePoint, sObject, GitHub)'
@@ -271,7 +312,7 @@ export const Overview: Story = {
                             formatting for the element name
                         </List.Item>
                     </List>
-                    <Text>Examples of copy:</Text>
+                    <Text>Example of copy:</Text>
                     <Table withTableBorder withColumnBorders layout="auto">
                         <Table.Thead>
                             <Table.Tr>
@@ -394,7 +435,7 @@ export const Overview: Story = {
                             }
                         </List.Item>
                     </List>
-                    <Text>Examples of copy:</Text>
+                    <Text>Example of copy:</Text>
                     <DoTable rows={[['"Email [input field]"', '"Email: [input field]"']]} />
 
                     <Title order={4}>Exclamation marks</Title>
@@ -409,12 +450,12 @@ export const Overview: Story = {
                         </List.Item>
                         <List.Item>{"Don't use them for instructional or CTA copy"}</List.Item>
                     </List>
-                    <Text>Examples of copy:</Text>
+                    <Text>Example of copy:</Text>
                     <DoTable rows={[['"Success! Your query pipeline has been created."', '"An error occurred!"']]} />
 
                     <Title order={4}>Apostrophes</Title>
                     <Text>Avoid using the possessive form for objects and UI elements. Use "of" phrasing instead.</Text>
-                    <Text>Examples of copy:</Text>
+                    <Text>Example of copy:</Text>
                     <DoTable rows={[['"On the left side of the screen"', `"On the screen's left side"`]]} />
 
                     <Title order={4}>Spacing</Title>
@@ -422,7 +463,7 @@ export const Overview: Story = {
                         Never add a space before a punctuation mark. This is a common mistake because French punctuation
                         standards require a space before exclamation and question marks.
                     </Text>
-                    <Text>Examples of copy:</Text>
+                    <Text>Example of copy:</Text>
                     <DoTable rows={[['"Are you sure?"', '"Are you sure ?"']]} />
 
                     <Title order={4}>Ellipses</Title>
@@ -434,7 +475,7 @@ export const Overview: Story = {
                         </List.Item>
                         <List.Item>Never use ellipses to trail off in instructions or labels</List.Item>
                     </List>
-                    <Text>Examples of copy:</Text>
+                    <Text>Example of copy:</Text>
                     <DoTable rows={[['"Loading..."', '"You can configure this later..."']]} />
                 </Stack>
 
@@ -535,61 +576,44 @@ export const Overview: Story = {
                         read. If the second word in the contraction is "would," "have," or "had," write the words out
                         instead.
                     </Text>
-                    <Table withTableBorder withColumnBorders layout="auto">
-                        <Table.Thead>
-                            <Table.Tr>
-                                <Table.Th>Use</Table.Th>
-                                <Table.Th>Avoid</Table.Th>
-                            </Table.Tr>
-                        </Table.Thead>
-                        <Table.Tbody>
-                            {[
-                                ["aren't", 'are not'],
-                                ["can't", 'cannot'],
-                                ["couldn't", 'could not'],
-                                ["didn't", 'did not'],
-                                ["doesn't", 'does not'],
-                                ["don't", 'do not'],
-                                ["hasn't", 'has not'],
-                                ["haven't", 'have not'],
-                                ["how's", 'how is'],
-                                ["isn't", 'is not'],
-                                ["it's", 'it is / it has'],
-                                ["shouldn't", 'should not'],
-                                ["that's", 'that is'],
-                                ["there's", 'there is'],
-                                ["they're", 'they are'],
-                                ["what's", 'what is'],
-                                ["where's", 'where is'],
-                                ["won't", 'will not'],
-                                ["wouldn't", 'would not'],
-                                ["you're", 'you are'],
-                                ["you've", 'you have'],
-                                ['it will', "it'll"],
-                                ['would have', "would've"],
-                                ['could have', "could've"],
-                                ['should have', "should've"],
-                                ['you would', "you'd"],
-                                ['you had', "you'd"],
-                                ['it would', "it'd"],
-                                ['it had', "it'd"],
-                                ['there would', "there'd"],
-                                ['there will', "there'll"],
-                                ['they will', "they'll"],
-                                ['they have', "they've"],
-                                ['who is', "who's"],
-                            ].map(([use, avoid]) => (
-                                <Table.Tr key={`${use}-${avoid}`}>
-                                    <Table.Td>
-                                        <Text size="sm">{use}</Text>
-                                    </Table.Td>
-                                    <Table.Td>
-                                        <Text size="sm">{avoid}</Text>
-                                    </Table.Td>
-                                </Table.Tr>
-                            ))}
-                        </Table.Tbody>
-                    </Table>
+                    <UseAvoidTable
+                        rows={[
+                            ["aren't", 'are not'],
+                            ["can't", 'cannot'],
+                            ["couldn't", 'could not'],
+                            ["didn't", 'did not'],
+                            ["doesn't", 'does not'],
+                            ["don't", 'do not'],
+                            ["hasn't", 'has not'],
+                            ["haven't", 'have not'],
+                            ["how's", 'how is'],
+                            ["isn't", 'is not'],
+                            ["it's", 'it is / it has'],
+                            ["shouldn't", 'should not'],
+                            ["that's", 'that is'],
+                            ["there's", 'there is'],
+                            ["they're", 'they are'],
+                            ["what's", 'what is'],
+                            ["where's", 'where is'],
+                            ["won't", 'will not'],
+                            ["wouldn't", 'would not'],
+                            ["you're", 'you are'],
+                            ["you've", 'you have'],
+                            ['it will', "it'll"],
+                            ['would have', "would've"],
+                            ['could have', "could've"],
+                            ['should have', "should've"],
+                            ['you would', "you'd"],
+                            ['you had', "you'd"],
+                            ['it would', "it'd"],
+                            ['it had', "it'd"],
+                            ['there would', "there'd"],
+                            ['there will', "there'll"],
+                            ['they will', "they'll"],
+                            ['they have', "they've"],
+                            ['who is', "who's"],
+                        ]}
+                    />
 
                     <Title order={4}>Sentence length</Title>
                     <Text>

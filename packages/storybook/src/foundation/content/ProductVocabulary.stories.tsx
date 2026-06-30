@@ -171,7 +171,6 @@ export const Overview: Story = {
                         <List.Item>Mailchimp</List.Item>
                         <List.Item>Coveo Merchandising Hub (CMH)</List.Item>
                         <List.Item>Microsoft Dynamics 365</List.Item>
-                        <List.Item>Coveo for Microsoft Dynamics 365</List.Item>
                     </List>
 
                     <Title order={4}>N</Title>

@@ -101,9 +101,13 @@ export const Overview: Story = {
                     <Text>
                         {"Coveo's voice can be described with three main qualities present in every piece of copy: "}
                         <Text component="span" fw={700}>
-                            clear, human,
+                            clear
                         </Text>
-                        {' and '}
+                        {', '}
+                        <Text component="span" fw={700}>
+                            human
+                        </Text>
+                        {', and '}
                         <Text component="span" fw={700}>
                             helpful.
                         </Text>

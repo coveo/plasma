@@ -20,7 +20,7 @@ export const Overview: Story = {
     render: () => (
         <FoundationWrapper
             title="About Content"
-            description='"Content" is the information in the UX working alongside the visual design. It includes any text, images or videos in the Administration Console interface that help shape how users navigate the product.'
+            description='"Content" is the information in the UX working alongside the visual design. It includes any text, images or videos in the Coveo Administration Console interface that help shape how users navigate the product.'
         >
             <Stack gap="xl">
                 <Stack gap="sm">
@@ -46,6 +46,15 @@ export const Overview: Story = {
                             </Text>
                         </Stack>
                         <Stack gap={4}>
+                            <Anchor href="/?path=/docs/content-writing-mechanics--docs" fw={700}>
+                                Writing mechanics
+                            </Anchor>
+                            <Text>
+                                Technical guidelines for UX copy. Covers rules for capitalization, punctuation, verb tense, 
+                                contractions, syntax, and length with examples.
+                            </Text>
+                        </Stack>
+                        <Stack gap={4}>
                             <Anchor href="/?path=/docs/content-product-vocabulary--docs" fw={700}>
                                 Product vocabulary
                             </Anchor>
@@ -53,15 +62,6 @@ export const Overview: Story = {
                                 Terminology standards for Coveo products, features, and concepts. Includes an
                                 alphabetical reference list of official product names and a banned terminology list with
                                 approved replacements.
-                            </Text>
-                        </Stack>
-                        <Stack gap={4}>
-                            <Anchor href="/?path=/docs/content-writing-mechanics--docs" fw={700}>
-                                Writing mechanics
-                            </Anchor>
-                            <Text>
-                                Technical guidelines for UX copy. Covers rules for capitalization, punctuation, verb tense, 
-                                contractions, syntax, and length with examples.
                             </Text>
                         </Stack>
                     </Stack>

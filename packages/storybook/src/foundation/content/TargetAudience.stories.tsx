@@ -53,9 +53,9 @@ export const Overview: Story = {
                                     <Table.Td>
                                         <List size="sm" spacing={4}>
                                             <List.Item>
-                                                Owns implementation setup and ongoing console maintenance
+                                                Owns implementation setup and ongoing Coveo Administration Console maintenance
                                             </List.Item>
-                                            <List.Item>Configures, validates, and troubleshoots the platform</List.Item>
+                                            <List.Item>Configures, validates, and troubleshoots the Coveo Platform</List.Item>
                                             <List.Item>
                                                 Works across indexing, permissions, and operational fixes
                                             </List.Item>
@@ -98,7 +98,7 @@ export const Overview: Story = {
                             w={400}
                         />
                         <Text fs="italic">
-                            "I need to know whether this is worthwhile without becoming a platform expert."
+                            "I need to know whether this is worthwhile without becoming a Coveo Platform expert."
                         </Text>
                         <Table withTableBorder withColumnBorders layout="auto">
                             <Table.Thead>
