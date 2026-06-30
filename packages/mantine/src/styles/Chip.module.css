@@ -4,10 +4,10 @@
     --chip-hover: var(--mantine-primary-color-filled-hover);
     --chip-radius: var(--mantine-radius-lg);
     --chip-size-xs: 24px;
-    --chip-icon-size-xs: 16px;
+    --chip-icon-size-xs: 12px;
     --chip-spacing-xs: var(--mantine-spacing-xs);
     --chip-padding-xs: 12px;
-    --chip-checked-padding-xs: var(--mantine-spacing-xs) 12px;
+    --chip-checked-padding-xs: 6px 12px;
     --chip-icon-size-sm: var(--mantine-spacing-sm);
     --chip-spacing-sm: var(--mantine-spacing-xs);
     --chip-padding-sm: var(--mantine-spacing-sm);
