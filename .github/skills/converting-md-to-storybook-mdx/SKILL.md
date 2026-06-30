@@ -130,8 +130,8 @@ If the user specifies a component to start with, begin there. If it is unclear w
 ## Reference Files
 
 - [MDX patterns and troubleshooting](references/mdx-patterns.md) — JSX escaping rules and troubleshooting
-- [Plasma writing rules](../writing-component-content-guidance/references/plasma-writing-rules.md) — capitalization, punctuation, grammar, voice, and jargon rules that apply to all Plasma copy
-- [Expected format](../writing-component-content-guidance/references/expected-format.md) — section structure and formatting standards for component documentation
+- [Plasma writing rules](../storybook-component-docs/references/plasma-writing-rules.md) — capitalization, punctuation, grammar, voice, and jargon rules that apply to all Plasma copy
+- [Expected format](../storybook-component-docs/references/expected-format.md) — section structure and formatting standards for component documentation
 
 ## Validation Checklist
 
