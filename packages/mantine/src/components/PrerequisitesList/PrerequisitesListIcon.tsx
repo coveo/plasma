@@ -9,7 +9,7 @@ import {
     useProps,
 } from '@mantine/core';
 import {forwardRef} from 'react';
-import {usePrerequisitesListContext} from './PrerequisitesListContext';
+import {usePrerequisitesListContext} from './PrerequisitesListContext.js';
 
 export type PrerequisitesListIconStylesNames = 'icon';
 export type PrerequisitesListIconVariant = 'completed' | 'current' | 'next';

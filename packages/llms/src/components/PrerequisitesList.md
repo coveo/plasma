@@ -8,7 +8,6 @@ description: Displays a list of prerequisites with status indicators (completed,
 > Extends: `BoxProps`, `ElementProps<'ul'>`. Only Plasma-specific props are listed below; inherited props MUST be referenced in Mantine documentation.
 
 **`children`** `ReactNode` · required — The `PrerequisitesList.Item` elements to render.
-**`size`** `'sm' | 'md'` · optional · default: `'sm'` — Controls the size of the list and its icons.
 
 ## Sub-components
 
@@ -24,7 +23,7 @@ description: Displays a list of prerequisites with status indicators (completed,
 ```tsx
 import {PrerequisitesList} from '@coveord/plasma-mantine';
 
-<PrerequisitesList size="md">
+<PrerequisitesList>
     <PrerequisitesList.Item label="Completed prerequisite" status="completed" />
     <PrerequisitesList.Item label="Current prerequisite" status="current" />
     <PrerequisitesList.Item label="Next prerequisite" status="next" />
