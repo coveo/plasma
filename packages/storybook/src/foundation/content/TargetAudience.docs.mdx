@@ -1,4 +1,5 @@
 import {Meta} from '@storybook/addon-docs/blocks';
+import {Table} from '@mantine/core';
 import * as TargetAudienceStories from './TargetAudience.stories';
 
 <Meta of={TargetAudienceStories} />
@@ -7,7 +8,8 @@ import * as TargetAudienceStories from './TargetAudience.stories';
 
 An analysis of the content's primary audience with end-user personas.
 
-Coveo end users can be technical or non-technical—the goal is to tailor UX writing to the least experienced members of the audience. Copy should make the next step obvious, use plain language, and help all users act without having to learn the product first.
+Coveo end users can be technical or non-technical—the goal is to tailor UX writing to the least experienced members of the audience.
+Copy should make the next step obvious, use plain language, and help all users act without having to learn the product first.
 
 ## User personas
 
@@ -15,19 +17,74 @@ Coveo end users can be technical or non-technical—the goal is to tailor UX wri
 
 *"Just tell me what broke, where, and what to do next."*
 
-| Role and responsibilities | Skills | Struggles | Needs and wants |
-|---|---|---|---|
-| Owns implementation setup and ongoing Coveo Administration Console maintenance | Technically comfortable | Needs more context to interpret errors and outcomes | Helpful and scannable copy |
-| Configures, validates, and troubleshoots the Coveo Platform | Can follow complex workflows | Friction from permissions and unclear steps slows her down | Faster navigation |
-| Works across indexing, permissions, and operational fixes | Strong at diagnosing issues and keeping things moving | Finds the UI and workflows harder than they should be | Clear next steps for errors |
-| | | | The ability to self-serve without support |
+<Table withTableBorder withColumnBorders>
+  <Table.Thead>
+    <Table.Tr>
+      <Table.Th>Role and responsibilities</Table.Th>
+      <Table.Th>Skills</Table.Th>
+      <Table.Th>Struggles</Table.Th>
+      <Table.Th>Needs and wants</Table.Th>
+    </Table.Tr>
+  </Table.Thead>
+  <Table.Tbody>
+    <Table.Tr>
+      <Table.Td>Owns implementation setup and ongoing Coveo Administration Console maintenance</Table.Td>
+      <Table.Td>Technically comfortable</Table.Td>
+      <Table.Td>Needs more context to interpret errors and outcomes</Table.Td>
+      <Table.Td>Helpful and scannable copy</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>Configures, validates, and troubleshoots the Coveo Platform</Table.Td>
+      <Table.Td>Can follow complex workflows</Table.Td>
+      <Table.Td>Friction from permissions and unclear steps slows her down</Table.Td>
+      <Table.Td>Faster navigation</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>Works across indexing, permissions, and operational fixes</Table.Td>
+      <Table.Td>Strong at diagnosing issues and keeping things moving</Table.Td>
+      <Table.Td>Finds the UI and workflows harder than they should be</Table.Td>
+      <Table.Td>Clear next steps for errors</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td></Table.Td>
+      <Table.Td></Table.Td>
+      <Table.Td></Table.Td>
+      <Table.Td>The ability to self-serve without support</Table.Td>
+    </Table.Tr>
+  </Table.Tbody>
+</Table>
 
 ### Louise, the Business Operations Owner
 
 *"I need to know whether this is worthwhile without becoming a Coveo Platform expert."*
 
-| Role and responsibilities | Skills | Struggles | Needs and wants |
-|---|---|---|---|
-| Coordinates stakeholders during buying, implementation, and ongoing operations | Comfortable with dashboards and high-level decision-making | Technical language and screens with dense copy are intimidating | Plain-language copy |
-| Tracks adoption, value, and ROI | Cross-functional communicator | Hard to see whether the platform is healthy or delivering value | Knowing exactly where to find what she needs |
-| Uses the console to check progress, status, and business impact | Good at prioritizing and translating business goals | | Clear status and value signals |
+<Table withTableBorder withColumnBorders>
+  <Table.Thead>
+    <Table.Tr>
+      <Table.Th>Role and responsibilities</Table.Th>
+      <Table.Th>Skills</Table.Th>
+      <Table.Th>Struggles</Table.Th>
+      <Table.Th>Needs and wants</Table.Th>
+    </Table.Tr>
+  </Table.Thead>
+  <Table.Tbody>
+    <Table.Tr>
+      <Table.Td>Coordinates stakeholders during buying, implementation, and ongoing operations</Table.Td>
+      <Table.Td>Comfortable with dashboards and high-level decision-making</Table.Td>
+      <Table.Td>Technical language and screens with dense copy are intimidating</Table.Td>
+      <Table.Td>Plain-language copy</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>Tracks adoption, value, and ROI</Table.Td>
+      <Table.Td>Cross-functional communicator</Table.Td>
+      <Table.Td>Hard to see whether the platform is healthy or delivering value</Table.Td>
+      <Table.Td>Knowing exactly where to find what she needs</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>Uses the console to check progress, status, and business impact</Table.Td>
+      <Table.Td>Good at prioritizing and translating business goals</Table.Td>
+      <Table.Td></Table.Td>
+      <Table.Td>Clear status and value signals</Table.Td>
+    </Table.Tr>
+  </Table.Tbody>
+</Table>

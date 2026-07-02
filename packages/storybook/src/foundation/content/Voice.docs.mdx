@@ -1,5 +1,6 @@
 import {Meta} from '@storybook/addon-docs/blocks';
 import {Alert} from '@coveord/plasma-mantine';
+import {Table} from '@mantine/core';
 import {DoTable, ScenarioDoTable} from '../DoTable.js';
 import * as VoiceStories from './Voice.stories';
 
@@ -11,20 +12,40 @@ The tone and personality behind all UX content.
 
 <Alert.Advice title="Note">This page covers voice and tone. For grammar, punctuation, capitalization, and other technical writing rules, see <a href="/?path=/docs/content-writing-mechanics--docs">Writing Mechanics</a>.</Alert.Advice>
 
-## Understanding voice and tone
+## Understanding *voice* and *tone*
 
-**Voice** is constant. It's Coveo's personality, staying consistent no matter where copy appears in the product.
+**Voice** is constant.
+It's Coveo's personality, staying consistent no matter where copy appears in the product.
 
-**Tone**, also called *tone of voice*, is situational. It shifts to match the UI context and emotional state of the user in that moment.
+**Tone**, also called *tone of voice*, is situational.
+It shifts to match the UI context and emotional state of the user in that moment.
 
-Think of it this way—whether you're explaining a complex idea or celebrating an achievement, you're still you. Your voice doesn't change, but you adapt your tone to fit the situation.
+Think of it this way—whether you're explaining a complex idea or celebrating an achievement, you're still you.
+Your voice doesn't change, but you adapt your tone to fit the situation.
 
 Examples of applying voice:
 
-| Scenario | Coveo voice | Non-Coveo voice |
-|---|---|---|
-| A user is deleting a query pipeline association | You're about to delete "association-123". This action can't be undone. | Say goodbye to "association-123"? It'll be gone for good! |
-| A user checks their watchtower for errors | Nothing to report. If something comes up, it'll appear here. | *Crickets...* No news is good news. If something breaks, we'll post it right here. |
+<Table withTableBorder withColumnBorders>
+  <Table.Thead>
+    <Table.Tr>
+      <Table.Th>Scenario</Table.Th>
+      <Table.Th>Coveo voice</Table.Th>
+      <Table.Th>Non-Coveo voice</Table.Th>
+    </Table.Tr>
+  </Table.Thead>
+  <Table.Tbody>
+    <Table.Tr>
+      <Table.Td>A user is deleting a query pipeline association</Table.Td>
+      <Table.Td>You're about to delete "association-123". This action can't be undone.</Table.Td>
+      <Table.Td>Say goodbye to "association-123"? It'll be gone for good!</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>A user checks their watchtower for errors</Table.Td>
+      <Table.Td>Nothing to report. If something comes up, it'll appear here.</Table.Td>
+      <Table.Td><em>Crickets...</em> No news is good news. If something breaks, we'll post it right here.</Table.Td>
+    </Table.Tr>
+  </Table.Tbody>
+</Table>
 
 ## What is Coveo's voice?
 
@@ -32,7 +53,8 @@ Coveo's voice can be described with three main qualities present in every piece 
 
 ### Clear
 
-When something is complex, clear copy breaks it down. UX copy should sound like a knowledgeable colleague explaining something, not a technical or academic manual.
+When something is complex, clear copy breaks it down.
+UX copy should sound like a knowledgeable colleague explaining something, not a technical or academic manual.
 
 This looks like:
 
@@ -51,7 +73,9 @@ Examples of copy:
 
 ### Human
 
-The goal is a natural and intuitive user experience. Copy should be respectful, purposeful, and treat the user like a capable adult. This requires stepping out of the objective or technical mindset and imagining the real person on the other side of the screen.
+The goal is a natural and intuitive user experience.
+Copy should be respectful, purposeful, and treat the user like a capable adult.
+This requires stepping out of the objective or technical mindset and imagining the real person on the other side of the screen.
 
 This looks like:
 
@@ -73,7 +97,8 @@ Examples of copy:
 
 ### Helpful
 
-Helpful copy means focusing on what the user needs to do and why it matters to them. It should answer a question before the user has to ask it, and guide the user forward without being overbearing.
+Helpful copy means focusing on what the user needs to do and why it matters to them.
+It should answer a question before the user has to ask it, and guide the user forward without being overbearing.
 
 This looks like:
 
@@ -103,12 +128,55 @@ The following "dimensions" are like the four pillars of tone and can help in und
 
 ![Four Dimensions of Tone of Voice: formal to casual, serious to funny, respectful to irreverent, matter-of-fact to enthusiastic](/content/dimensions-of-tone.png)
 
-Considering Coveo's product and voice, the tone should never fall on any extreme end. When you're writing copy, aim for the midpoint on all four scales, and based on the context, shift the tone marginally to accommodate.
+Considering Coveo's product and voice, the tone should never fall on any extreme end.
+When you're writing copy, aim for the midpoint on all four scales, and based on the context, shift the tone marginally to accommodate.
 
 Examples:
 
-| UX scenarios | User's mood | Tone of voice | Text |
-|---|---|---|---|
-| Errors and failures, complex features, empty states | Frustrated, impatient, confused | Slightly left (matter-of-fact and respectful) | No query pipelines found. Try changing or clearing your filters. |
-| Notifications and warnings, descriptions, confirmation for actions | Neutral | Neutral | You're about to delete "pipeline-123". This action can't be undone. |
-| Completed setups, upgrades | Pleased, encouraged | Slightly right (enthusiastic and casual) | Success! Your query pipeline "pipeline-123" has been saved. |
+<Table withTableBorder withColumnBorders>
+  <Table.Thead>
+    <Table.Tr>
+      <Table.Th>UX scenarios</Table.Th>
+      <Table.Th>User's mood</Table.Th>
+      <Table.Th>Tone of voice</Table.Th>
+      <Table.Th>Text</Table.Th>
+    </Table.Tr>
+  </Table.Thead>
+  <Table.Tbody>
+    <Table.Tr>
+      <Table.Td>
+        <ul>
+          <li>Errors and failures</li>
+          <li>Complex features</li>
+          <li>Empty states</li>
+        </ul>
+      </Table.Td>
+      <Table.Td>Frustrated, impatient, confused</Table.Td>
+      <Table.Td><strong>Slightly left</strong> (matter-of-fact and respectful)</Table.Td>
+      <Table.Td>No query pipelines found. Try changing or clearing your filters.</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>
+        <ul>
+          <li>Notifications and warnings</li>
+          <li>Descriptions</li>
+          <li>Confirmation for actions</li>
+        </ul>
+      </Table.Td>
+      <Table.Td>Neutral</Table.Td>
+      <Table.Td><strong>Neutral</strong></Table.Td>
+      <Table.Td>You're about to delete "pipeline-123". This action can't be undone.</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>
+        <ul>
+          <li>Completed setups</li>
+          <li>Upgrades</li>
+        </ul>
+      </Table.Td>
+      <Table.Td>Pleased, encouraged</Table.Td>
+      <Table.Td><strong>Slightly right</strong> (enthusiastic and casual)</Table.Td>
+      <Table.Td>Success! Your query pipeline "pipeline-123" has been saved.</Table.Td>
+    </Table.Tr>
+  </Table.Tbody>
+</Table>
