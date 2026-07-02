@@ -9,6 +9,8 @@ Use the exact spelling, capitalization, and punctuation shown here every time yo
 
 Terms that start with _Coveo_, _for_, or _on_ are alphabetized by the next distinguishing word. For example, _Coveo for Salesforce_ appears under S.
 
+**If a product or feature name is not on this list:** check online resources to determine whether it is a proper noun or has an established capitalization convention. Use the most widely-used spelling and capitalization. If it is not a proper noun, do not capitalize it.
+
 ## Official product names
 
 ### A, B, C

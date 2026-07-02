@@ -3,11 +3,14 @@ name: Content Guidelines — Writing Mechanics
 description: Required rules for grammar, punctuation, capitalization, structure, and length in Coveo UX copy.
 ---
 
+> **Note for agents:** The rules in this file are concrete and must be followed exactly. For voice qualities (clear, human, helpful) and tone judgment, see Voice.md — those require interpretation rather than literal application.
+
 ## Vocabulary
 
 - Only use a shortened form when it is more commonly known than the full term.
 - Do not use customer jargon that isn't an official Coveo term.
 - For every official Coveo product, feature, or function name, follow the exact spelling and capitalization in the [Product Vocabulary](./ProductVocabulary.md) list.
+- Use American English spelling throughout (e.g. "customize" not "customise", "color" not "colour", "canceled" not "cancelled"). The exception is proper names — company names, product names, and brand names always use their official spelling regardless of locale.
 
 ### Acronyms and initialisms
 
