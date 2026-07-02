@@ -72,7 +72,8 @@ jobs:
               shell: bash
               run: |
                   BRANCH="${{ github.head_ref || github.ref_name }}"
-                  CLEAN_BRANCH=$(echo "$BRANCH" | tr '/' '-' | tr '[:upper:]' '[:lower:]')
+                  # Replace slashes with dashes, lowercase, and truncate to 37 chars (Chromatic's subdomain limit)
+                  CLEAN_BRANCH=$(echo "$BRANCH" | tr '/' '-' | tr '[:upper:]' '[:lower:]' | cut -c1-37)
                   echo "url=https://${CLEAN_BRANCH}--69e1126f9e24a5e560359ac2.chromatic.com/" >> $GITHUB_OUTPUT
             - name: Add demo link as a comment on the PR
               uses: ./.github/actions/comment-on-pr
