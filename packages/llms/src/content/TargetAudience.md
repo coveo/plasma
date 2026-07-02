@@ -11,7 +11,7 @@ Write for the least technically experienced user in the audience. Copy must make
 
 > "Just tell me what broke, where, and what to do next."
 
-- Configures, validates, and troubleshoots the platform
+- Configures, validates, and troubleshoots the Coveo Platform
 - Works across indexing, permissions, and operational fixes
 - Technically capable but needs more context to interpret errors and outcomes
 - Slowed down by friction from unclear steps and permissions
@@ -19,7 +19,7 @@ Write for the least technically experienced user in the audience. Copy must make
 
 ### Louise — Business Operations Owner
 
-> "I need to know whether this is worthwhile without becoming a platform expert."
+> "I need to know whether this is worthwhile without becoming a Coveo Platform expert."
 
 - Uses the console to check progress, status, and business impact
 - Tracks adoption, value, and ROI
