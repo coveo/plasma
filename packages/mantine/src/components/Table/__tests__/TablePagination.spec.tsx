@@ -18,12 +18,12 @@ describe('Table.Pagination', () => {
         }
     });
 
-    it('calculates the number of pages based on the pageSize and the total number of entries', () => {
+    it('calculates the number of pages based on the perPage and the total number of entries', () => {
         const data = [{name: 'fruit'}, {name: 'vegetable'}];
         const Fixture = () => {
             const store = useTable<RowData>({
                 initialState: {
-                    pagination: {pageSize: 1},
+                    pagination: {perPage: 1},
                     totalEntries: 3,
                 },
             });
@@ -56,7 +56,7 @@ describe('Table.Pagination', () => {
             {name: 'dairy'},
         ];
         const Fixture = () => {
-            const store = useTable<RowData>({initialState: {pagination: {pageSize: 3}}});
+            const store = useTable<RowData>({initialState: {pagination: {perPage: 3}}});
 
             return (
                 <Table
@@ -104,7 +104,7 @@ describe('Table.Pagination', () => {
         const onChangePage = vi.fn();
         const data = [{name: 'fruit'}, {name: 'vegetable'}];
         const Fixture = () => {
-            const store = useTable<RowData>({initialState: {pagination: {pageSize: 1}}});
+            const store = useTable<RowData>({initialState: {pagination: {perPage: 1}}});
             return (
                 <Table store={store} data={data} columns={columns}>
                     <Table.Footer>
@@ -147,7 +147,7 @@ describe('Table.Pagination', () => {
         const Fixture = () => {
             const store = useTable<RowData>({
                 initialState: {
-                    pagination: {pageSize: 1, pageIndex: 2},
+                    pagination: {perPage: 1, page: 2},
                     totalEntries: 3,
                 },
             });
@@ -231,7 +231,7 @@ describe('Table.Pagination', () => {
             const Fixture = () => {
                 const store = useTable<RowData>({
                     initialState: {
-                        pagination: {pageSize: 1, pageIndex: 0},
+                        pagination: {perPage: 1, page: 0},
                         totalEntries: 3,
                     },
                     syncWithUrl: true,
@@ -255,7 +255,7 @@ describe('Table.Pagination', () => {
             const Fixture = () => {
                 const store = useTable<RowData>({
                     initialState: {
-                        pagination: {pageSize: 1, pageIndex: 0},
+                        pagination: {perPage: 1, page: 0},
                         totalEntries: 3,
                     },
                     syncWithUrl: true,

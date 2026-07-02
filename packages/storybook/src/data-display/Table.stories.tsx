@@ -227,7 +227,7 @@ export const Demo: Story = {
         const table = useTable<Person>({
             initialState: {
                 totalEntries: data.length,
-                pagination: withPagination ? {pageSize: 5} : undefined,
+                pagination: withPagination ? {perPage: 5} : undefined,
                 dateRange: withDateRangePicker ? [previousWeek, today] : undefined,
                 predicates: withPredicateFilter ? {age: 'ANY'} : undefined,
             },

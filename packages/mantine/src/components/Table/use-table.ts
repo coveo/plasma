@@ -1,6 +1,6 @@
 import type {DatesRangeValue, DateStringValue} from '@mantine/dates';
 import {useDidUpdate} from '@mantine/hooks';
-import {type ExpandedState, type PaginationState, type SortingState} from '@tanstack/table-core';
+import {type ExpandedState, type SortingState} from '@tanstack/table-core';
 import defaultsDeep from 'lodash.defaultsdeep';
 import {Dispatch, SetStateAction, useCallback, useMemo, useState} from 'react';
 import {useUrlSyncedState, UseUrlSyncedStateOptions} from '../../hooks/use-url-synced-state.js';
@@ -11,11 +11,22 @@ type DeepPartial<T> = {
     [P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P];
 };
 
+export interface PaginationState {
+    /**
+     * Zero-based page index.
+     */
+    page: number;
+    /**
+     * Number of items per page.
+     */
+    perPage: number;
+}
+
 export interface TableState<TData = unknown> {
     /**
      * Current pagination state
      *
-     * @default { pageIndex: 0, pageSize: 50 }
+     * @default { page: 0, perPage: 50 }
      */
     pagination: PaginationState;
     /**
@@ -215,8 +226,8 @@ const defaultOptions: UseTableOptions = {
 
 const defaultState: Partial<TableState> = {
     pagination: {
-        pageIndex: 0,
-        pageSize: 50,
+        page: 0,
+        perPage: 50,
     },
     totalEntries: null,
     sorting: [],
@@ -233,18 +244,18 @@ const serialization = <K extends keyof TableState>(
 ) => Object.freeze(input);
 
 const PAGINATION_SERIALIZATION = serialization<'pagination'>({
-    serializer: ({pageIndex, pageSize}) => [
-        ['page', (pageIndex + 1).toString()],
-        ['pageSize', pageSize.toString()],
+    serializer: ({page, perPage}) => [
+        ['page', (page + 1).toString()],
+        ['perPage', perPage.toString()],
     ],
     deserializer: (params, initialState) => {
         const page = params.get('page');
-        const pageSize = params.get('pageSize');
+        const perPage = params.get('perPage');
 
         return defaultsDeep(
             {
-                pageIndex: page ? Math.max(1, parseInt(page, 10)) - 1 : undefined,
-                pageSize: pageSize ? parseInt(pageSize, 10) : undefined,
+                page: page ? Math.max(1, parseInt(page, 10)) - 1 : undefined,
+                perPage: perPage ? parseInt(perPage, 10) : undefined,
             },
             initialState,
         );
