@@ -1,6 +1,0 @@
-import {Meta, Story} from '@storybook/addon-docs/blocks';
-import * as VoiceStories from './Voice.stories';
-
-<Meta of={VoiceStories} />
-
-<Story of={VoiceStories.Overview} />

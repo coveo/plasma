@@ -1,6 +1,0 @@
-import {Meta, Story} from '@storybook/addon-docs/blocks';
-import * as AboutContentStories from './AboutContent.stories';
-
-<Meta of={AboutContentStories} />
-
-<Story of={AboutContentStories.Overview} />

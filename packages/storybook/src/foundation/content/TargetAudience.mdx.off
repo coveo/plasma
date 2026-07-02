@@ -1,6 +1,0 @@
-import {Meta, Story} from '@storybook/addon-docs/blocks';
-import * as TargetAudienceStories from './TargetAudience.stories';
-
-<Meta of={TargetAudienceStories} />
-
-<Story of={TargetAudienceStories.Overview} />
