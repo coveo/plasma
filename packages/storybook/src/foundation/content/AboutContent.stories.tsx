@@ -13,4 +13,4 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-export const Docs: Story = {};
+export const Overview: Story = {};
