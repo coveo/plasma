@@ -1,16 +1,17 @@
-import {Meta} from '@storybook/addon-docs/blocks';
+import {Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import {Alert} from '@coveord/plasma-mantine';
 import {Table} from '@mantine/core';
 import {DoTable, ScenarioDoTable} from '../DoTable.js';
-import * as VoiceStories from './Voice.stories';
 
-<Meta of={VoiceStories} />
+<Meta title='@content/Voice' id='content-voice' />
 
 # Voice
 
 The tone and personality behind all UX content.
 
-<Alert.Advice title="Note">This page covers voice and tone. For grammar, punctuation, capitalization, and other technical writing rules, see <a href="/?path=/docs/content-writing-mechanics--docs">Writing Mechanics</a>.</Alert.Advice>
+<Unstyled>
+  <Alert.Advice title="Note" mb="md">This page covers voice and tone. For grammar, punctuation, capitalization, and other technical writing rules, see <a href="/?path=/docs/content-writing-mechanics--docs">Writing Mechanics</a>.</Alert.Advice>
+</Unstyled>
 
 ## Understanding *voice* and *tone*
 
@@ -85,8 +86,9 @@ This looks like:
 - Prioritizing problem-solving
 - Not embellishing with technical language
 
+<Unstyled>
 <Alert.Advice title="Note">"Natural" doesn't automatically mean "human." Remember to check that your text is helpful and necessary—AI-generated copy can sound human-like without considering the user's needs and emotional state.</Alert.Advice>
-
+</Unstyled>
 Examples of copy:
 
 <ScenarioDoTable rows={[

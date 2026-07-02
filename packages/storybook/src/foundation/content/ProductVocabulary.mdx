@@ -1,15 +1,16 @@
-import {Meta} from '@storybook/addon-docs/blocks';
+import {Meta, Unstyled, Story} from '@storybook/addon-docs/blocks';
 import {Alert} from '@coveord/plasma-mantine';
 import {Table} from '@mantine/core';
-import * as ProductVocabularyStories from './ProductVocabulary.stories';
 
-<Meta of={ProductVocabularyStories} />
+<Meta title="@content/Product Vocabulary" id="content-product-vocabulary" />
 
 # Product Names & Vocabulary
 
 Terminology standards for Coveo and third-party products, features, and concepts.
 
-<Alert.Advice title="Note">Vocabulary isn't standardized across all Coveo sources or documentation. Always refer to this list when writing for the UI.</Alert.Advice>
+<Unstyled>
+  <Alert.Advice title="Note" mb="md">Vocabulary isn't standardized across all Coveo sources or documentation. Always refer to this list when writing for the UI.</Alert.Advice>
+</Unstyled>
 
 ## Vocabulary
 

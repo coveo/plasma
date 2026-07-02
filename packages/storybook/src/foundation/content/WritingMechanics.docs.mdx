@@ -1,10 +1,9 @@
-import {Meta} from '@storybook/addon-docs/blocks';
-import {Alert} from '@coveord/plasma-mantine';
-import {Table} from '@mantine/core';
-import {DoTable, UseAvoidTable} from '../DoTable.js';
-import * as WritingMechanicsStories from './WritingMechanics.stories';
+import { Meta, Unstyled } from "@storybook/addon-docs/blocks";
+import { Alert } from "@coveord/plasma-mantine";
+import { Table } from "@mantine/core";
+import { DoTable, UseAvoidTable } from "../DoTable.js";
 
-<Meta of={WritingMechanicsStories} />
+<Meta title="@content/Writing Mechanics" id="content-writing-mechanics" />
 
 # Writing Mechanics
 
@@ -31,7 +30,7 @@ It covers the mechanics that keep text consistent and readable across the entire
 
 ### Coveo-specific terms
 
-Each time you reference an official Coveo product, feature, or function, follow the spelling and capitalization defined in the [list of product names](/?path=/docs/content-product-vocabulary--docs).
+Each time you reference an official Coveo product, feature, or function, follow the spelling and capitalization defined in the [list of product names](/docs/content-product-vocabulary--docs).
 
 ### Acronyms & initialisms
 
@@ -44,11 +43,13 @@ Acronyms are read as one word (for example, "SaaS" or "NASA"), while initialisms
 - Don't use periods, hyphens, or spaces
 - Don't use italics or quotation marks
 
-<DoTable rows={[
-  ['RGA', 'rga'],
-  ['RGA', 'R.G.A.'],
-  ['RGA', <em>RGA</em>],
-]} />
+<DoTable
+  rows={[
+    ["RGA", "rga"],
+    ["RGA", "R.G.A."],
+    ["RGA", <em>RGA</em>],
+  ]}
+/>
 
 ### Third-party terms
 
@@ -91,9 +92,7 @@ It's the default for all UI text: headings, labels, buttons, descriptions, toolt
 
 Example of copy:
 
-<DoTable rows={[
-  ['"Save changes"', '"Save Changes"'],
-]} />
+<DoTable rows={[['"Save changes"', '"Save Changes"']]} />
 
 ### Title case
 
@@ -102,9 +101,7 @@ Use title case for navigation menu items only.
 
 Example of copy:
 
-<DoTable rows={[
-  ['"Query Pipelines"', '"Query pipelines"'],
-]} />
+<DoTable rows={[['"Query Pipelines"', '"Query pipelines"']]} />
 
 ### When to capitalize
 
@@ -120,7 +117,7 @@ Example of copy:
 
 - Common nouns used as general terms (for example, "source," "pipeline," "user")
 - Feature or UI element names that aren't trademarked or sold separately
-- Words for emphasis (use **bold** or *italic* text instead)
+- Words for emphasis (use **bold** or _italic_ text instead)
 
 ### Referring to UI elements in copy
 
@@ -132,9 +129,16 @@ Example of copy:
 
 Example of copy:
 
-<DoTable rows={[
-  [<>Select <strong>Save</strong></>, 'Select "save"'],
-]} />
+<DoTable
+  rows={[
+    [
+      <>
+        Select <strong>Save</strong>
+      </>,
+      'Select "save"',
+    ],
+  ]}
+/>
 
 ---
 
@@ -194,9 +198,7 @@ Add periods after full sentences, but not after fragments.
 
 Example of copy:
 
-<DoTable rows={[
-  ['"Email [input field]"', '"Email: [input field]"'],
-]} />
+<DoTable rows={[['"Email [input field]"', '"Email: [input field]"']]} />
 
 ### Exclamation marks
 
@@ -210,9 +212,7 @@ Example of copy:
 
 Example of copy:
 
-<DoTable rows={[
-  ['"Success! Your query pipeline has been created."', '"An error occurred!"'],
-]} />
+<DoTable rows={[['"Success! Your query pipeline has been created."', '"An error occurred!"']]} />
 
 ### Apostrophes
 
@@ -221,9 +221,7 @@ Use "of" phrasing instead.
 
 Example of copy:
 
-<DoTable rows={[
-  ['"On the left side of the screen"', '"On the screen\'s left side"'],
-]} />
+<DoTable rows={[['"On the left side of the screen"', '"On the screen\'s left side"']]} />
 
 ### Spacing
 
@@ -232,9 +230,7 @@ This is a common mistake because French punctuation standards require a space be
 
 Example of copy:
 
-<DoTable rows={[
-  ['"Are you sure?"', '"Are you sure ?"'],
-]} />
+<DoTable rows={[['"Are you sure?"', '"Are you sure ?"']]} />
 
 ### Ellipses
 
@@ -245,9 +241,7 @@ Example of copy:
 
 Example of copy:
 
-<DoTable rows={[
-  ['"Loading..."', '"You can configure this later..."'],
-]} />
+<DoTable rows={[['"Loading..."', '"You can configure this later..."']]} />
 
 ---
 
@@ -263,10 +257,12 @@ This is common in confirmations because attributing the action to the user often
 
 Examples of copy:
 
-<DoTable rows={[
-  ['"Your query pipeline has been saved."', '"You saved your query pipeline."'],
-  ['"The source could not be found."', '"We couldn\'t find the source."'],
-]} />
+<DoTable
+  rows={[
+    ['"Your query pipeline has been saved."', '"You saved your query pipeline."'],
+    ['"The source could not be found."', '"We couldn\'t find the source."'],
+  ]}
+/>
 
 ### Tense
 
@@ -314,53 +310,57 @@ Let the system or the product be the subject instead, or restructure the sentenc
 
 Examples of copy:
 
-<DoTable rows={[
-  ['"Your session has expired."', '"We ended your session."'],
-  ['"No results found."', '"Coveo couldn\'t find any results."'],
-  ['"You don\'t have permission to access this."', '"We can\'t let you access this."'],
-]} />
+<DoTable
+  rows={[
+    ['"Your session has expired."', '"We ended your session."'],
+    ['"No results found."', '"Coveo couldn\'t find any results."'],
+    ['"You don\'t have permission to access this."', '"We can\'t let you access this."'],
+  ]}
+/>
 
 ### Contractions
 
 Contractions make UX copy more natural, but some can make a sentence overly casual and hard to read.
 If the second word in the contraction is "would," "have," or "had," write the words out instead.
 
-<UseAvoidTable rows={[
-  ["aren't", 'are not'],
-  ["can't", 'cannot'],
-  ["couldn't", 'could not'],
-  ["didn't", 'did not'],
-  ["doesn't", 'does not'],
-  ["don't", 'do not'],
-  ["hasn't", 'has not'],
-  ["haven't", 'have not'],
-  ["how's", 'how is'],
-  ["isn't", 'is not'],
-  ["it's", 'it is / it has'],
-  ["shouldn't", 'should not'],
-  ["that's", 'that is'],
-  ["there's", 'there is'],
-  ["they're", 'they are'],
-  ["what's", 'what is'],
-  ["where's", 'where is'],
-  ["won't", 'will not'],
-  ["wouldn't", 'would not'],
-  ["you're", 'you are'],
-  ["you've", 'you have'],
-  ['it will', "it'll"],
-  ['would have', "would've"],
-  ['could have', "could've"],
-  ['should have', "should've"],
-  ['you would', "you'd"],
-  ['you had', "you'd"],
-  ['it would', "it'd"],
-  ['it had', "it'd"],
-  ['there would', "there'd"],
-  ['there will', "there'll"],
-  ['they will', "they'll"],
-  ['they have', "they've"],
-  ['who is', "who's"],
-]} />
+<UseAvoidTable
+  rows={[
+    ["aren't", "are not"],
+    ["can't", "cannot"],
+    ["couldn't", "could not"],
+    ["didn't", "did not"],
+    ["doesn't", "does not"],
+    ["don't", "do not"],
+    ["hasn't", "has not"],
+    ["haven't", "have not"],
+    ["how's", "how is"],
+    ["isn't", "is not"],
+    ["it's", "it is / it has"],
+    ["shouldn't", "should not"],
+    ["that's", "that is"],
+    ["there's", "there is"],
+    ["they're", "they are"],
+    ["what's", "what is"],
+    ["where's", "where is"],
+    ["won't", "will not"],
+    ["wouldn't", "would not"],
+    ["you're", "you are"],
+    ["you've", "you have"],
+    ["it will", "it'll"],
+    ["would have", "would've"],
+    ["could have", "could've"],
+    ["should have", "should've"],
+    ["you would", "you'd"],
+    ["you had", "you'd"],
+    ["it would", "it'd"],
+    ["it had", "it'd"],
+    ["there would", "there'd"],
+    ["there will", "there'll"],
+    ["they will", "they'll"],
+    ["they have", "they've"],
+    ["who is", "who's"],
+  ]}
+/>
 
 ### Sentence length
 
@@ -378,14 +378,38 @@ Shorter is better!
     </Table.Tr>
   </Table.Thead>
   <Table.Tbody>
-    <Table.Tr><Table.Td>Any sentence</Table.Td><Table.Td>20 words</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>Button labels</Table.Td><Table.Td>3 words</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>Tooltips</Table.Td><Table.Td>20 words</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>Error messages</Table.Td><Table.Td>25 words</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>Empty states</Table.Td><Table.Td>25 words</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>Field validation</Table.Td><Table.Td>10 words</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>Modals</Table.Td><Table.Td>25 words</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>Toast notifications</Table.Td><Table.Td>15 words</Table.Td></Table.Tr>
+    <Table.Tr>
+      <Table.Td>Any sentence</Table.Td>
+      <Table.Td>20 words</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>Button labels</Table.Td>
+      <Table.Td>3 words</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>Tooltips</Table.Td>
+      <Table.Td>20 words</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>Error messages</Table.Td>
+      <Table.Td>25 words</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>Empty states</Table.Td>
+      <Table.Td>25 words</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>Field validation</Table.Td>
+      <Table.Td>10 words</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>Modals</Table.Td>
+      <Table.Td>25 words</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>Toast notifications</Table.Td>
+      <Table.Td>15 words</Table.Td>
+    </Table.Tr>
   </Table.Tbody>
 </Table>
 
@@ -400,23 +424,45 @@ This technique is used to structure sentences, paragraphs, pages, and even entir
 
 Examples of copy:
 
-<DoTable rows={[
-  ['"No results found. Try adjusting your filters."', '"Your current filter selection didn\'t return any results. Try adjusting them."'],
-  ['"Access denied. Contact your administrator to request permission."', '"You\'re trying to access a page that requires additional permissions. Contact your administrator."'],
-]} />
+<DoTable
+  rows={[
+    [
+      '"No results found. Try adjusting your filters."',
+      '"Your current filter selection didn\'t return any results. Try adjusting them."',
+    ],
+    [
+      '"Access denied. Contact your administrator to request permission."',
+      '"You\'re trying to access a page that requires additional permissions. Contact your administrator."',
+    ],
+  ]}
+/>
 
 ### Instructions
 
 When writing guidance or instructions, state the result before the required action.
-Frontloading in this situation helps the user understand why they're doing something *before* they do it.
+Frontloading in this situation helps the user understand why they're doing something _before_ they do it.
 
 Example of copy:
 
-<DoTable rows={[
-  [<>To add a source, select <strong>Add source</strong>.</>, <>Select <strong>Add source</strong> to add a source.</>],
-]} />
+<DoTable
+  rows={[
+    [
+      <>
+        To add a source, select <strong>Add source</strong>.
+      </>,
+      <>
+        Select <strong>Add source</strong> to add a source.
+      </>,
+    ],
+  ]}
+/>
 
-<Alert.Advice title="Note">Always prioritize clarity and readability. If breaking this rule makes the message easier to understand, then do it.</Alert.Advice>
+<Unstyled>
+  <Alert.Advice title="Note">
+    Always prioritize clarity and readability. If breaking this rule makes the message easier to
+    understand, then do it.
+  </Alert.Advice>
+</Unstyled>
 
 ### Plain language
 
@@ -432,10 +478,12 @@ The only exception is well-known industry terms or verbs that users likely know 
 
 Examples of copy:
 
-<DoTable rows={[
-  ['"This may take a few minutes."', '"This won\'t happen at the speed of light."'],
-  ['"This is quick to set up."', '"This is a piece of cake to set up."'],
-]} />
+<DoTable
+  rows={[
+    ['"This may take a few minutes."', '"This won\'t happen at the speed of light."'],
+    ['"This is quick to set up."', '"This is a piece of cake to set up."'],
+  ]}
+/>
 
 ### Reducing jargon
 
@@ -449,73 +497,277 @@ Use this table to see what unnecessary words you can replace with everyday ones 
     </Table.Tr>
   </Table.Thead>
   <Table.Tbody>
-    <Table.Tr><Table.Td>able to</Table.Td><Table.Td>can</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>to be able to</Table.Td><Table.Td>to</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>additional</Table.Td><Table.Td>more / other / different</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>administer</Table.Td><Table.Td>manage</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>allows you to</Table.Td><Table.Td>you can use [x] to [y] / with [x], you can [y]</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>alternative</Table.Td><Table.Td>other</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>append</Table.Td><Table.Td>add</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>assist</Table.Td><Table.Td>help</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>begin</Table.Td><Table.Td>start</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>be of interest to them</Table.Td><Table.Td>interest them</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>complete</Table.Td><Table.Td>finish</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>conversely</Table.Td><Table.Td>but / however</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>credentials</Table.Td><Table.Td>username and password</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>currently</Table.Td><Table.Td>now</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>deactivate (a feature)</Table.Td><Table.Td>disable</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>display</Table.Td><Table.Td>show</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>due to the fact that</Table.Td><Table.Td>because / since</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>e.g.</Table.Td><Table.Td>for example / like / such as</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>enable</Table.Td><Table.Td>allow / let</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>enable (a feature)</Table.Td><Table.Td>activate / turn on</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>ensure</Table.Td><Table.Td>make sure (or just state the action)</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>fashion (as in a secured fashion)</Table.Td><Table.Td>way (as in a secured way)</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>following</Table.Td><Table.Td>after / next</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>furthermore</Table.Td><Table.Td>then / so</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>future-proof</Table.Td><Table.Td>lasting / reliable / adaptable</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>gives you the ability</Table.Td><Table.Td>you can use [x] to [y] / with [x], you can [y]</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>illustrate</Table.Td><Table.Td>show</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>in cases where</Table.Td><Table.Td>when</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>initial</Table.Td><Table.Td>first</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>in order to</Table.Td><Table.Td>to</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>in order to [verb], you must [verb]</Table.Td><Table.Td>to [verb], [verb]</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>input (verb)</Table.Td><Table.Td>enter</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>is able to provide</Table.Td><Table.Td>provides</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>leverage</Table.Td><Table.Td>use</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>make a modification</Table.Td><Table.Td>edit</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>manner</Table.Td><Table.Td>way</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>methods</Table.Td><Table.Td>ways</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>modify</Table.Td><Table.Td>edit</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>moreover</Table.Td><Table.Td>then / so</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>nor</Table.Td><Table.Td>or</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>obtain</Table.Td><Table.Td>get</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>on the subject of</Table.Td><Table.Td>about</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>pertaining</Table.Td><Table.Td>related</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>preceding</Table.Td><Table.Td>before</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>prior to</Table.Td><Table.Td>before</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>provided [x], [y] will...</Table.Td><Table.Td>if</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>purchase</Table.Td><Table.Td>buy</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>rather</Table.Td><Table.Td>instead</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>regarding</Table.Td><Table.Td>on / about / for</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>related to</Table.Td><Table.Td>about</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>remedy</Table.Td><Table.Td>fix</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>required to</Table.Td><Table.Td>need to</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>resolve</Table.Td><Table.Td>fix</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>retain</Table.Td><Table.Td>keep</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>should [x] + [verb] / should you [verb]</Table.Td><Table.Td>if</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>simultaneously</Table.Td><Table.Td>at the same time</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>submit (in certain contexts)</Table.Td><Table.Td>send</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>sub-second</Table.Td><Table.Td>under one second</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>subsequent</Table.Td><Table.Td>future / later / upcoming</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>thereafter</Table.Td><Table.Td>after / after that</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>therefore</Table.Td><Table.Td>so</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>to ensure</Table.Td><Table.Td>to / to make sure</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>to surface</Table.Td><Table.Td>to display / to promote</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>unable to</Table.Td><Table.Td>can't</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>utilize</Table.Td><Table.Td>use</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>wish to</Table.Td><Table.Td>want to</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>with the use of</Table.Td><Table.Td>with</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>would like</Table.Td><Table.Td>want to</Table.Td></Table.Tr>
+    <Table.Tr>
+      <Table.Td>able to</Table.Td>
+      <Table.Td>can</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>to be able to</Table.Td>
+      <Table.Td>to</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>additional</Table.Td>
+      <Table.Td>more / other / different</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>administer</Table.Td>
+      <Table.Td>manage</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>allows you to</Table.Td>
+      <Table.Td>you can use [x] to [y] / with [x], you can [y]</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>alternative</Table.Td>
+      <Table.Td>other</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>append</Table.Td>
+      <Table.Td>add</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>assist</Table.Td>
+      <Table.Td>help</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>begin</Table.Td>
+      <Table.Td>start</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>be of interest to them</Table.Td>
+      <Table.Td>interest them</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>complete</Table.Td>
+      <Table.Td>finish</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>conversely</Table.Td>
+      <Table.Td>but / however</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>credentials</Table.Td>
+      <Table.Td>username and password</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>currently</Table.Td>
+      <Table.Td>now</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>deactivate (a feature)</Table.Td>
+      <Table.Td>disable</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>display</Table.Td>
+      <Table.Td>show</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>due to the fact that</Table.Td>
+      <Table.Td>because / since</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>e.g.</Table.Td>
+      <Table.Td>for example / like / such as</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>enable</Table.Td>
+      <Table.Td>allow / let</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>enable (a feature)</Table.Td>
+      <Table.Td>activate / turn on</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>ensure</Table.Td>
+      <Table.Td>make sure (or just state the action)</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>fashion (as in a secured fashion)</Table.Td>
+      <Table.Td>way (as in a secured way)</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>following</Table.Td>
+      <Table.Td>after / next</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>furthermore</Table.Td>
+      <Table.Td>then / so</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>future-proof</Table.Td>
+      <Table.Td>lasting / reliable / adaptable</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>gives you the ability</Table.Td>
+      <Table.Td>you can use [x] to [y] / with [x], you can [y]</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>illustrate</Table.Td>
+      <Table.Td>show</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>in cases where</Table.Td>
+      <Table.Td>when</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>initial</Table.Td>
+      <Table.Td>first</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>in order to</Table.Td>
+      <Table.Td>to</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>in order to [verb], you must [verb]</Table.Td>
+      <Table.Td>to [verb], [verb]</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>input (verb)</Table.Td>
+      <Table.Td>enter</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>is able to provide</Table.Td>
+      <Table.Td>provides</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>leverage</Table.Td>
+      <Table.Td>use</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>make a modification</Table.Td>
+      <Table.Td>edit</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>manner</Table.Td>
+      <Table.Td>way</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>methods</Table.Td>
+      <Table.Td>ways</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>modify</Table.Td>
+      <Table.Td>edit</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>moreover</Table.Td>
+      <Table.Td>then / so</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>nor</Table.Td>
+      <Table.Td>or</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>obtain</Table.Td>
+      <Table.Td>get</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>on the subject of</Table.Td>
+      <Table.Td>about</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>pertaining</Table.Td>
+      <Table.Td>related</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>preceding</Table.Td>
+      <Table.Td>before</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>prior to</Table.Td>
+      <Table.Td>before</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>provided [x], [y] will...</Table.Td>
+      <Table.Td>if</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>purchase</Table.Td>
+      <Table.Td>buy</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>rather</Table.Td>
+      <Table.Td>instead</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>regarding</Table.Td>
+      <Table.Td>on / about / for</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>related to</Table.Td>
+      <Table.Td>about</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>remedy</Table.Td>
+      <Table.Td>fix</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>required to</Table.Td>
+      <Table.Td>need to</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>resolve</Table.Td>
+      <Table.Td>fix</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>retain</Table.Td>
+      <Table.Td>keep</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>should [x] + [verb] / should you [verb]</Table.Td>
+      <Table.Td>if</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>simultaneously</Table.Td>
+      <Table.Td>at the same time</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>submit (in certain contexts)</Table.Td>
+      <Table.Td>send</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>sub-second</Table.Td>
+      <Table.Td>under one second</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>subsequent</Table.Td>
+      <Table.Td>future / later / upcoming</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>thereafter</Table.Td>
+      <Table.Td>after / after that</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>therefore</Table.Td>
+      <Table.Td>so</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>to ensure</Table.Td>
+      <Table.Td>to / to make sure</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>to surface</Table.Td>
+      <Table.Td>to display / to promote</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>unable to</Table.Td>
+      <Table.Td>can't</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>utilize</Table.Td>
+      <Table.Td>use</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>wish to</Table.Td>
+      <Table.Td>want to</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>with the use of</Table.Td>
+      <Table.Td>with</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>would like</Table.Td>
+      <Table.Td>want to</Table.Td>
+    </Table.Tr>
   </Table.Tbody>
 </Table>
