@@ -45,7 +45,7 @@ export const TableFilter = factory<TableFilterFactory>((props, ref) => {
 
     useDidUpdate(() => {
         store.setGlobalFilter(debounced);
-        store.setPagination({pageIndex: 0, pageSize: store.state.pagination.pageSize});
+        store.setPagination({page: 0, perPage: store.state.pagination.perPage});
 
         return cancel;
     }, [debounced]);

@@ -55,7 +55,7 @@ export const TableDateRangePicker = factory<TableDateRangePickerFactory>((props,
 
     const onChange = (dates: DatesRangeValue<DateStringValue | null>) => {
         store.setDateRange(dates);
-        store.setPagination({pageIndex: 0, pageSize: store.state.pagination.pageSize});
+        store.setPagination({page: 0, perPage: store.state.pagination.perPage});
     };
 
     const stylesApiProps = {classNames, styles};

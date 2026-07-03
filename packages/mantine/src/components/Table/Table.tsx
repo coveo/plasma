@@ -4,6 +4,7 @@ import {
     ColumnDef,
     defaultColumnSizing,
     getCoreRowModel,
+    type PaginationState as TanStackPaginationState,
     Row,
     RowSelectionState,
     useReactTable,
@@ -134,14 +135,20 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
         state: {
             globalFilter: store.state.globalFilter,
             sorting: store.state.sorting,
-            pagination: store.state.pagination,
+            pagination: {pageIndex: store.state.pagination.page, pageSize: store.state.pagination.perPage},
             columnVisibility: store.state.columnVisibility,
             expanded: store.state.expanded,
         },
         onGlobalFilterChange: store.setGlobalFilter,
         onExpandedChange: store.setExpanded,
         onSortingChange: store.setSorting,
-        onPaginationChange: store.setPagination,
+        onPaginationChange: (updater) => {
+            store.setPagination((prev) => {
+                const tanstackPrev: TanStackPaginationState = {pageIndex: prev.page, pageSize: prev.perPage};
+                const next = updater instanceof Function ? updater(tanstackPrev) : updater;
+                return {page: next.pageIndex, perPage: next.pageSize};
+            });
+        },
         onColumnVisibilityChange: store.setColumnVisibility,
         columns: store.multiRowSelectionEnabled ? [TableSelectableColumn as ColumnDef<T>].concat(columns) : columns,
         getCoreRowModel: getCoreRowModel(),

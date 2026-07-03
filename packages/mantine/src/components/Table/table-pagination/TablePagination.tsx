@@ -10,21 +10,21 @@ export const TablePagination: FunctionComponent<TablePaginationProps> = ({onPage
 
     const updatePage = (newPage: number) => {
         onPageChange?.(newPage - 1);
-        store.setPagination((prev) => ({...prev, pageIndex: newPage - 1}));
+        store.setPagination((prev) => ({...prev, page: newPage - 1}));
         containerRef.current?.scrollIntoView({behavior: 'smooth'});
     };
 
     const total = table.getPageCount();
 
     useDidUpdate(() => {
-        if (store.state.pagination.pageIndex + 1 > total && total > 0) {
+        if (store.state.pagination.page + 1 > total && total > 0) {
             updatePage(total);
         }
-    }, [store.state.pagination.pageIndex, total]);
+    }, [store.state.pagination.page, total]);
 
     return (
         <Pagination
-            value={store.state.pagination.pageIndex + 1}
+            value={store.state.pagination.page + 1}
             onChange={updatePage}
             total={total}
             boundaries={1}
