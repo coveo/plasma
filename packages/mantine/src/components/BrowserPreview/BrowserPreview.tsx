@@ -26,29 +26,24 @@ export const BrowserPreview = ({
     <Stack className={cx(BrowserPreviewClasses.root, className)} gap={0} maw={544} mih={0} {...others}>
         <Group
             className={BrowserPreviewClasses.header}
-            justify="space-between"
             p="sm"
             bg="var(--mantine-color-default-hover)"
             wrap="nowrap"
+            gap="xxs"
         >
-            <Group gap="xs" wrap="nowrap">
-                <Text c="dimmed" fz="md" lh="18px">
-                    Preview
-                </Text>
-                {!!headerTooltip && (
-                    <Tooltip label={headerTooltip} position="right" maw={400}>
-                        <InfoToken.Information className={BrowserPreviewClasses.infoIcon} />
-                    </Tooltip>
-                )}
-            </Group>
-            {title && (
-                <Text lineClamp={1} c="dimmed" fz="md" lh="18px">
-                    {title}
-                </Text>
+            <Text lineClamp={1} size="md">
+                {title || 'Preview'}
+            </Text>
+            {!!headerTooltip && (
+                <Tooltip label={headerTooltip} position="right">
+                    <InfoToken.Question className={BrowserPreviewClasses.infoIcon} />
+                </Tooltip>
             )}
         </Group>
-        <Flex className={BrowserPreviewClasses.content} p="lg" direction="column">
+        <Flex className={BrowserPreviewClasses.content} p="sm" direction="column" bg="var(--mantine-color-body)">
             {children}
         </Flex>
     </Stack>
 );
+
+BrowserPreview.displayName = 'BrowserPreview';
