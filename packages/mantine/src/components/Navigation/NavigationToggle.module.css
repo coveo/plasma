@@ -1,0 +1,33 @@
+.toggleContainer {
+    --ai-size: 16px;
+
+    position: fixed;
+    top: 0;
+    left: calc(var(--app-shell-navbar-width) + -1 * var(--ai-size) / 2);
+    display: flex;
+    align-items: center;
+    height: var(--app-shell-header-height, 60px);
+    cursor: pointer;
+
+    &[data-collapsed] {
+        &:hover {
+            .toggle {
+                transform: translateX(calc(var(--ai-size) / 2));
+            }
+        }
+
+        .toggle {
+            border-radius: 0 50% 50% 0;
+        }
+    }
+}
+
+.toggle {
+    width: var(--ai-size);
+    height: var(--ai-size);
+    border-radius: var(--mantine-radius-sm);
+    box-shadow: 0 0 calc(2 * var(--ai-size)) 0 var(--mantine-primary-color-filled);
+    transition-timing-function: var(--app-shell-transition-timing-function);
+    transition-duration: var(--app-shell-transition-duration);
+    transition-property: transform border-radius;
+}
