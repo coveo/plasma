@@ -168,8 +168,6 @@ Address the user as "you." Never use "we," "our," or "us." Never use "Coveo" as 
 
 ### Contractions
 
-**Use these:**
-
 | Use                      | Instead of                 |
 | ------------------------ | -------------------------- |
 | aren't                   | are not                    |
@@ -193,8 +191,6 @@ Address the user as "you." Never use "we," "our," or "us." Never use "Coveo" as 
 | wouldn't                 | would not                  |
 | you're                   | you are                    |
 | you've (past participle) | you have (past participle) |
-
-**Do not use these:**
 
 | Don't use | Write out as        |
 | --------- | ------------------- |
