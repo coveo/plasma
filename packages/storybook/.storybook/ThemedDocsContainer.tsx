@@ -18,8 +18,8 @@ export const ThemedDocsContainer = ({children, context, ...props}: PropsWithChil
 
     useEffect(() => {
         const onGlobalsUpdated = ({globals}: {globals: Record<string, unknown>}) => {
-            const isDark = (globals.backgrounds as {value?: string})?.value === 'dark';
-            setIsDark(isDark);
+            const newIsDark = (globals.backgrounds as {value?: string})?.value === 'dark';
+            setIsDark(newIsDark);
         };
         context.channel.on(GLOBALS_UPDATED, onGlobalsUpdated);
         return () => context.channel.off(GLOBALS_UPDATED, onGlobalsUpdated);
