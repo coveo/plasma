@@ -19,10 +19,10 @@
 
         &[data-disabled] {
             opacity: 1;
-            background-color: var(--coveo-color-bg-disabled);
+            background-color: var(--mantine-color-disabled);
 
             & + .icon {
-                color: var(--coveo-color-text-disabled);
+                color: var(--mantine-color-disabled-color);
             }
         }
     }

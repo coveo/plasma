@@ -266,7 +266,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         Chip: Chip.extend({
             defaultProps: {
-                icon: <IconCheck size={16} />,
+                icon: <IconCheck size="var(--chip-icon-size)" />,
             },
             classNames: ChipClasses,
         }),
