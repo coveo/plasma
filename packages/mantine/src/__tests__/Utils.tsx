@@ -2,11 +2,27 @@ import {render, RenderOptions, RenderResult} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import {FunctionComponent, PropsWithChildren, ReactElement} from 'react';
 
+import {Combobox, createTheme, Popover} from '@mantine/core';
 import {Plasmantine} from '../theme/Plasmantine.js';
+
+const testTheme = createTheme({
+    components: {
+        Popover: Popover.extend({
+            defaultProps: {
+                middlewares: {inline: true},
+            },
+        }),
+        Combobox: Combobox.extend({
+            defaultProps: {
+                middlewares: {inline: true},
+            },
+        }),
+    },
+});
 
 const customRender = (ui: ReactElement, options?: Omit<RenderOptions, 'queries'>): RenderResult => {
     const TestWrapper: FunctionComponent<PropsWithChildren> = ({children}) => (
-        <Plasmantine withCssVariables={false} env="test">
+        <Plasmantine withCssVariables={false} theme={testTheme}>
             {children}
         </Plasmantine>
     );

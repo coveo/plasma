@@ -70,7 +70,7 @@ describe('DateRangePicker', () => {
 
         expect(onChange).toHaveBeenCalledTimes(1);
         expect(onChange).toHaveBeenCalledWith(['2022-01-02T00:00:00.000Z', '2022-01-08T23:59:59.999Z']);
-        expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+        expect(screen.queryByRole('dialog')).not.toBeVisible();
     });
 
     it('closes popover when Cancel is clicked', async () => {
@@ -81,7 +81,7 @@ describe('DateRangePicker', () => {
         await screen.findByRole('dialog');
         await user.click(screen.getByRole('button', {name: 'Cancel'}));
 
-        await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument());
+        await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeVisible());
     });
 
     it('calls onCancel when Cancel button is clicked', async () => {

@@ -55,8 +55,8 @@ describe('DateRangePickerPopoverCalendar', () => {
         await user.click(screen.getByRole('button', {name: '14 February 2022'}));
 
         // hides the calendar when the second date is clicked
-        await waitFor(() => expect(screen.queryByRole('button', {name: '8 January 2022'})).not.toBeInTheDocument());
-        expect(screen.queryByRole('button', {name: '8 February 2022'})).not.toBeInTheDocument();
+        await waitFor(() => expect(screen.queryByRole('button', {name: '8 January 2022'})).not.toBeVisible());
+        expect(screen.queryByRole('button', {name: '8 February 2022'})).not.toBeVisible();
 
         expect(screen.getByTestId('json')).toHaveTextContent('["2022-01-08T00:00:00.000Z","2022-02-14T00:00:00.000Z"]');
 
