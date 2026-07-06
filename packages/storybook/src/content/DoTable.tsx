@@ -26,10 +26,14 @@ export const DoTable = ({rows}: DoTableProps) => (
             {rows.map((row, i) => (
                 <Table.Tr key={i}>
                     <Table.Td>
-                        <Text size="sm" component="span">{row[0]}</Text>
+                        <Text size="sm" component="span">
+                            {row[0]}
+                        </Text>
                     </Table.Td>
                     <Table.Td>
-                        <Text size="sm" component="span">{row[1]}</Text>
+                        <Text size="sm" component="span">
+                            {row[1]}
+                        </Text>
                     </Table.Td>
                 </Table.Tr>
             ))}
@@ -54,10 +58,14 @@ export const UseAvoidTable = ({rows}: UseAvoidTableProps) => (
             {rows.map((row, i) => (
                 <Table.Tr key={i}>
                     <Table.Td>
-                        <Text size="sm" component="span">{row[0]}</Text>
+                        <Text size="sm" component="span">
+                            {row[0]}
+                        </Text>
                     </Table.Td>
                     <Table.Td>
-                        <Text size="sm" component="span">{row[1]}</Text>
+                        <Text size="sm" component="span">
+                            {row[1]}
+                        </Text>
                     </Table.Td>
                 </Table.Tr>
             ))}
@@ -83,13 +91,19 @@ export const ScenarioDoTable = ({rows}: ScenarioDoTableProps) => (
             {rows.map((row, i) => (
                 <Table.Tr key={i}>
                     <Table.Td>
-                        <Text size="sm" component="span">{row[0]}</Text>
+                        <Text size="sm" component="span">
+                            {row[0]}
+                        </Text>
                     </Table.Td>
                     <Table.Td>
-                        <Text size="sm" component="span">{row[1]}</Text>
+                        <Text size="sm" component="span">
+                            {row[1]}
+                        </Text>
                     </Table.Td>
                     <Table.Td>
-                        <Text size="sm" component="span">{row[2]}</Text>
+                        <Text size="sm" component="span">
+                            {row[2]}
+                        </Text>
                     </Table.Td>
                 </Table.Tr>
             ))}
