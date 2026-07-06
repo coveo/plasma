@@ -59,8 +59,8 @@ _This component has no additional props beyond the Mantine base. Refer to the [M
 
 Plasma provides pre-configured sub-components that handle styling and behavior. Use these instead of setting props manually.
 
-| Sub-component | Purpose |
-| --- | --- |
+| Sub-component       | Purpose      |
+| ------------------- | ------------ |
 | `Component.SubName` | What it does |
 
 [Add any important notes about specific sub-components in prose beneath the table.]
