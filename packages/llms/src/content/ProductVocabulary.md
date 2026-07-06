@@ -13,8 +13,6 @@ Terms that start with _Coveo_, _for_, or _on_ are alphabetized by the next disti
 
 ## Official product names
 
-### A, B, C
-
 - Action Bar
 - Activity Browser
 - Administration Console
@@ -41,9 +39,6 @@ Terms that start with _Coveo_, _for_, or _on_ are alphabetized by the next disti
 - Contentful
 - Coveo Crawling Module
 - Coveo Customer Success
-
-### D, E, F
-
 - Databricks
 - Dropbox
 - Dynamic Navigation Experience (DNE)
@@ -53,9 +48,6 @@ Terms that start with _Coveo_, _for_, or _on_ are alphabetized by the next disti
 - Event Protocol (EP)
 - Coveo Explorer
 - Figma
-
-### G, H, I
-
 - Genesys
 - GitHub
 - Gmail
@@ -69,9 +61,6 @@ Terms that start with _Coveo_, _for_, or _on_ are alphabetized by the next disti
 - Intelligent Term Detection (ITD)
 - Intent-Aware Product Ranking (IAPR)
 - Interface Editor
-
-### J, K, L
-
 - JavaScript
 - Coveo JavaScript Search Framework
 - Jira Software Cloud
@@ -81,9 +70,6 @@ Terms that start with _Coveo_, _for_, or _on_ are alphabetized by the next disti
 - Lightning Web Components (LWC)
 - Listing Page Optimizer (LPO)
 - Log Browser
-
-### M, N, O
-
 - Coveo Machine Learning
 - Mailchimp
 - Coveo Merchandising Hub (CMH)
@@ -92,9 +78,6 @@ Terms that start with _Coveo_, _for_, or _on_ are alphabetized by the next disti
 - OneDrive for Business
 - OpenText Content Server
 - Optimizely
-
-### P, Q, R
-
 - Pendo
 - Coveo Personalization-as-you-go
 - Coveo Platform
@@ -109,9 +92,6 @@ Terms that start with _Coveo_, _for_, or _on_ are alphabetized by the next disti
 - Relevance Generative Answering (RGA)
 - Coveo Relay library
 - REST API
-
-### S, T, U
-
 - Salesforce
 - Salesforce B2B Commerce
 - Salesforce Insight Panel
@@ -131,9 +111,6 @@ Terms that start with _Coveo_, _for_, or _on_ are alphabetized by the next disti
 - Coveo Support
 - Symantec
 - Tealium
-
-### V, W, X, Y, Z
-
 - Visualforce
 - YouTube
 - Zendesk
@@ -141,20 +118,34 @@ Terms that start with _Coveo_, _for_, or _on_ are alphabetized by the next disti
 
 ## Banned terms
 
-Do not use any of these terms. Use the replacement shown.
+Do not use any of these terms. Use the alternative shown in the second list.
 
-| Banned                                | Use instead            |
-| ------------------------------------- | ---------------------- |
-| Auth                                  | Authentication         |
-| Admin console, Admin UI, Admin portal | Administration Console |
-| c4sf, cfsf                            | Coveo for Salesforce   |
-| c4sc, cfsc                            | Coveo for Sitecore     |
-| Custom login                          | Custom authentication  |
-| HIP                                   | Hosted Insight Panel   |
-| HSP                                   | Hosted Search Page     |
-| KB content                            | Knowledge Base content |
-| Log in, Log out                       | Sign in, Sign out      |
-| Meta data                             | Metadata               |
-| NPM                                   | Node Package Manager   |
-| Pop up, Popup, Pop-up                 | Modal                  |
-| UID, User ID                          | Client ID              |
+Don't use:
+
+1. Auth
+2. Admin console, Admin UI, Admin portal
+3. c4sf, cfsf
+4. c4sc, cfsc
+5. Custom login
+6. HIP
+7. HSP
+8. KB content
+9. Meta data
+10. NPM
+11. Pop up, Popup, Pop-up
+12. User ID
+
+Use:
+
+1. Authentication
+2. Administration Console
+3. Coveo for Salesforce
+4. Coveo for Sitecore
+5. Custom authentication
+6. Hosted Insight Panel
+7. Hosted Search Page
+8. Knowledge Base content
+9. Metadata
+10. Node Package Manager
+11. Modal
+12. Client ID
