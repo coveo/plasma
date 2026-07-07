@@ -165,8 +165,8 @@ const BadgeDisabled = enhanceBadge(
     MantineBadge.withProps({
         variant: 'light',
         color: 'gray',
-        c: 'var(--coveo-color-text-disabled)',
-        bg: 'var(--coveo-color-bg-disabled)',
+        c: 'var(--mantine-color-disabled-color)',
+        bg: 'var(--mantine-color-disabled)',
     }),
     MantineBadge.withProps({
         variant: 'light',

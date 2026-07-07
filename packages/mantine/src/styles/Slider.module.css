@@ -13,7 +13,7 @@
 }
 
 .track[data-disabled] .markLabel {
-    color: var(--coveo-color-text-disabled);
+    color: var(--mantine-color-disabled-color);
 }
 
 .bar {

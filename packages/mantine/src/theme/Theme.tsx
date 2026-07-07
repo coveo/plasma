@@ -266,7 +266,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         Chip: Chip.extend({
             defaultProps: {
-                icon: <IconCheck size={16} />,
+                icon: <IconCheck size="var(--chip-icon-size)" />,
             },
             classNames: ChipClasses,
         }),
@@ -374,6 +374,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         List: List.extend({
             classNames: ListClasses,
+            defaultProps: {
+                size: 'sm',
+            },
         }),
         Modal: Modal.extend({
             classNames: ModalClasses,
