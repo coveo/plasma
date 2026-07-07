@@ -16,14 +16,14 @@ export interface NavigationSideBarProps extends Omit<AppShellNavbarProps, 'hidde
 
 export type NavigationSideBarFactory = Factory<{
     props: NavigationSideBarProps;
-    ref: HTMLInputElement;
+    ref: HTMLElement;
     stylesNames: NavigationSideBarStylesNames;
 }>;
 
 const defaultProps: Partial<NavigationSideBarProps> = {};
 
 export const NavigationSideBar: FunctionComponent<NavigationSideBarProps> = factory<NavigationSideBarFactory>(
-    (_props, ref) => {
+    ({ref, ..._props}) => {
         const {collapsed} = useNavigation();
         const props = useProps('NavigationSideBar', defaultProps, _props);
         const {children, header, ...rest} = props;

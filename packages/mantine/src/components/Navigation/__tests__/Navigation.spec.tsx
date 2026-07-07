@@ -2,8 +2,6 @@ import {AppShell} from '@mantine/core';
 import {render, screen, userEvent} from '@test-utils';
 
 import {Navigation} from '../Navigation.js';
-import {NavigationLink} from '../NavigationLink.js';
-import {NavigationSection} from '../NavigationSection.js';
 
 describe('Navigation', () => {
     describe('NavigationToggle', () => {
@@ -31,10 +29,10 @@ describe('Navigation', () => {
         it('is collapsed initially', async () => {
             const user = userEvent.setup();
             render(
-                <NavigationSection label="Content" leftSection={<span>icon</span>}>
+                <Navigation.Section label="Content" leftSection={<span>icon</span>}>
                     <div>one</div>
                     <div>two</div>
-                </NavigationSection>,
+                </Navigation.Section>,
             );
 
             const section = screen.getByText(/content/i);
@@ -46,42 +44,60 @@ describe('Navigation', () => {
 
         it('hides the section entirely if all children are conditionally hidden', () => {
             render(
-                <NavigationSection label="Content" leftSection={<span>icon</span>}>
+                <Navigation.Section label="Content" leftSection={<span>icon</span>}>
                     {null}
-                </NavigationSection>,
+                </Navigation.Section>,
             );
 
             expect(screen.queryByText(/content/i)).not.toBeInTheDocument();
+        });
+
+        it('shows the section when children change from empty to populated', () => {
+            const {rerender} = render(
+                <Navigation.Section label="Content" leftSection={<span>icon</span>}>
+                    {null}
+                </Navigation.Section>,
+            );
+
+            expect(screen.queryByText(/content/i)).not.toBeInTheDocument();
+
+            rerender(
+                <Navigation.Section label="Content" leftSection={<span>icon</span>}>
+                    <div>child</div>
+                </Navigation.Section>,
+            );
+
+            expect(screen.getByText(/content/i)).toBeInTheDocument();
         });
     });
 
     describe('NavigationLink', () => {
         it('renders with data-navlink attribute', () => {
-            render(<NavigationLink level={2} label="Sources" />);
+            render(<Navigation.Link level={2} label="Sources" />);
             const link = screen.getByText(/Sources/i).closest('[data-navlink]');
             expect(link).toBeInTheDocument();
         });
 
         it('renders as active when the active prop is true', () => {
-            render(<NavigationLink level={2} label="Sources" active />);
+            render(<Navigation.Link level={2} label="Sources" active />);
             const link = screen.getByText(/Sources/i).closest('[data-navlink]');
             expect(link).toHaveAttribute('data-active', 'true');
         });
 
         it('renders as inactive when the active prop is false or not provided', () => {
-            render(<NavigationLink level={2} label="Sources" />);
+            render(<Navigation.Link level={2} label="Sources" />);
             const link = screen.getByText(/Sources/i).closest('[data-navlink]');
             expect(link).not.toHaveAttribute('data-active');
         });
 
         it('renders a badge when the badge prop is provided', () => {
-            render(<NavigationLink level={2} label="Sources" badge="new" />);
-            expect(screen.getByText('new')).toBeInTheDocument();
+            render(<Navigation.Link level={2} label="Sources" badge="new" />);
+            expect(screen.getByText('New')).toBeInTheDocument();
         });
 
         it('renders with a custom component', () => {
             const CustomLink = (props: any) => <button {...props} />;
-            render(<NavigationLink level={1} label="Home" component={CustomLink} />);
+            render(<Navigation.Link level={1} label="Home" component={CustomLink} />);
             expect(screen.getByRole('button', {name: /Home/i})).toBeInTheDocument();
         });
     });

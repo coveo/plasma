@@ -29,5 +29,5 @@
     box-shadow: 0 0 calc(2 * var(--ai-size)) 0 var(--mantine-primary-color-filled);
     transition-timing-function: var(--app-shell-transition-timing-function);
     transition-duration: var(--app-shell-transition-duration);
-    transition-property: transform border-radius;
+    transition-property: transform, border-radius;
 }

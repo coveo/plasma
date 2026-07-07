@@ -1,11 +1,6 @@
 import {AppShell} from '@coveord/plasma-mantine/components/AppShell';
 import {Center} from '@coveord/plasma-mantine/components/Center';
-import {
-    Navigation,
-    NavigationLink,
-    NavigationSection,
-    useNavigation,
-} from '@coveord/plasma-mantine/components/Navigation';
+import {Navigation, useNavigation} from '@coveord/plasma-mantine/components/Navigation';
 import {Text} from '@coveord/plasma-mantine/components/Text';
 import {IconDatabase, IconHome} from '@coveord/plasma-react-icons';
 import type {Meta, StoryObj} from '@storybook/react-vite';
@@ -77,6 +72,7 @@ const links = ['Home', 'Sources', 'Catalogs', 'Fields'] as const;
 interface DemoArgs {
     collapsed: boolean;
     activeLink: string;
+    defaultCollapsed: boolean;
 }
 
 export const Demo: Story = {
@@ -86,48 +82,53 @@ export const Demo: Story = {
             options: links,
             description: 'Currently active link.',
         },
+        collapsed: {
+            control: 'boolean',
+            description: 'Current collapsed state (read-only, synced from toggle).',
+        },
     },
     args: {
         activeLink: 'Home',
+        collapsed: false,
     },
     render: (args) => {
-        const [{activeLink, collapsed}, updateArgs] = useArgs<DemoArgs>();
+        const [{activeLink}, updateArgs] = useArgs<DemoArgs>();
         const [globals] = useGlobals();
         const primaryColor = globals.primaryColor || 'teal';
         const setActive = (link: string) => updateArgs({activeLink: link});
 
         return (
-            <Navigation defaultCollapsed={collapsed} key={String(collapsed)}>
+            <Navigation defaultCollapsed={args.defaultCollapsed}>
                 <Shell onCollapsedChange={(newCollapsed) => updateArgs({collapsed: newCollapsed})}>
                     <Navigation.SideBar header={<Logo />} style={navigationColors[primaryColor]}>
-                        <NavigationLink
+                        <Navigation.Link
                             level={1}
                             label="Home"
                             leftSection={<IconHome size={20} />}
                             active={activeLink === 'Home'}
                             onClick={() => setActive('Home')}
                         />
-                        <NavigationSection leftSection={<IconDatabase size={20} />} label="Content" defaultOpened>
-                            <NavigationLink
+                        <Navigation.Section leftSection={<IconDatabase size={20} />} label="Content" defaultOpened>
+                            <Navigation.Link
                                 level={2}
                                 label="Sources"
                                 active={activeLink === 'Sources'}
                                 onClick={() => setActive('Sources')}
                             />
-                            <NavigationLink
+                            <Navigation.Link
                                 level={2}
                                 label="Catalogs"
                                 active={activeLink === 'Catalogs'}
                                 onClick={() => setActive('Catalogs')}
                             />
-                            <NavigationLink
+                            <Navigation.Link
                                 level={2}
                                 label="Fields"
                                 badge="new"
                                 active={activeLink === 'Fields'}
                                 onClick={() => setActive('Fields')}
                             />
-                        </NavigationSection>
+                        </Navigation.Section>
                     </Navigation.SideBar>
                     <AppShell.Main>
                         <Center>

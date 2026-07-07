@@ -9,7 +9,7 @@ description: Sidebar navigation component with collapsible sections, active link
 
 **`defaultCollapsed`** `boolean` · optional · default: `false` — Whether the navigation starts in collapsed state.
 
-### NavigationLink
+### Navigation.Link
 
 > Extends: `NavLinkProps` from Mantine (excluding `component` and `active`).
 
@@ -18,7 +18,7 @@ description: Sidebar navigation component with collapsible sections, active link
 **`badge`** `'beta' | 'wip' | 'new'` · optional — Badge to display next to the label.
 **`component`** `ElementType` · optional — Custom component to render the link as (e.g., a router Link component).
 
-### NavigationSection
+### Navigation.Section
 
 > Extends: `NavLinkProps` from Mantine. Renders as an expandable group that hides itself when all children are removed.
 
@@ -30,7 +30,7 @@ description: Sidebar navigation component with collapsible sections, active link
 
 **`header`** `ReactNode` · optional — Content rendered at the top of the sidebar (e.g., a logo or app switcher slot).
 
-### NavigationToggle
+### Navigation.Toggle
 
 **`expandLabel`** `string` · optional · default: `'Expand'` — Accessible label for the expand button.
 **`collapseLabel`** `string` · optional · default: `'Collapse'` — Accessible label for the collapse button.
@@ -38,10 +38,12 @@ description: Sidebar navigation component with collapsible sections, active link
 ## Sub-components
 
 - `Navigation.SideBar` — The sidebar container (renders inside `AppShell.Navbar`).
-- `NavigationSection` — Collapsible group of navigation links.
-- `NavigationLink` — Individual navigation item.
-- `NavigationToggle` — Collapse/expand chevron button (included automatically in `Navigation.SideBar`).
-- `NavigationBadge` — Status badge (`beta`, `wip`, `new`) shown on links.
+- `Navigation.Section` — Collapsible group of navigation links.
+- `Navigation.Link` — Individual navigation item.
+- `Navigation.Toggle` — Collapse/expand chevron button (included automatically in `Navigation.SideBar`).
+- `Navigation.Badge` — Status badge (`beta`, `wip`, `new`) shown on links.
+
+> **Backward compatibility:** Standalone named imports (`NavigationSection`, `NavigationLink`, `NavigationToggle`, `NavigationBadge`) are still exported and work identically.
 
 ## Hooks
 
@@ -63,7 +65,7 @@ The `Navigation` provider MUST wrap `AppShell` so that the shell can read the co
 
 ```tsx
 import {AppShell} from '@coveord/plasma-mantine';
-import {Navigation, NavigationLink, NavigationSection, useNavigation} from '@coveord/plasma-mantine';
+import {Navigation, useNavigation} from '@coveord/plasma-mantine';
 import {IconHome, IconDatabase} from '@coveord/plasma-react-icons';
 import {useState} from 'react';
 
@@ -90,22 +92,22 @@ function Example() {
                         '--coveo-background-main-menu': 'rgba(7, 123, 107, 0.4)',
                     }}
                 >
-                    <NavigationLink
+                    <Navigation.Link
                         level={1}
                         label="Home"
                         leftSection={<IconHome size={20} />}
                         active={active === 'Home'}
                         onClick={() => setActive('Home')}
                     />
-                    <NavigationSection leftSection={<IconDatabase size={20} />} label="Content" defaultOpened>
-                        <NavigationLink
+                    <Navigation.Section leftSection={<IconDatabase size={20} />} label="Content" defaultOpened>
+                        <Navigation.Link
                             level={2}
                             label="Sources"
                             active={active === 'Sources'}
                             onClick={() => setActive('Sources')}
                         />
-                        <NavigationLink level={2} label="Fields" badge="new" />
-                    </NavigationSection>
+                        <Navigation.Link level={2} label="Fields" badge="new" />
+                    </Navigation.Section>
                 </Navigation.SideBar>
                 <AppShell.Main>Main content</AppShell.Main>
             </Shell>
@@ -115,8 +117,8 @@ function Example() {
 ```
 
 - Use `level={1}` for top-level items (standalone links or sections) and `level={2}` for nested links within a section.
-- Pass a `component` prop to `NavigationLink` to integrate with your router (e.g., React Router's `Link`).
-- The `NavigationToggle` is automatically included at the bottom of `Navigation.SideBar`.
+- Pass a `component` prop to `Navigation.Link` to integrate with your router (e.g., React Router's `Link`).
+- The `Navigation.Toggle` is automatically included at the bottom of `Navigation.SideBar`.
 
 ---
 

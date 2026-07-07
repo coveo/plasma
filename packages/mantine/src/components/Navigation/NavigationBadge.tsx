@@ -14,11 +14,17 @@ export interface NavigationBadgeProps {
     on?: ComponentProps<SemanticBadge>['on'];
 }
 
+const badgeLabelMapping: Record<NavigationBadgeVariant, string> = {
+    beta: 'Beta',
+    wip: 'WIP',
+    new: 'New',
+};
+
 export const NavigationBadge: FunctionComponent<NavigationBadgeProps> = ({variant, on = 'dark'}) => {
     const BadgeComponent = badgeColorMapping[variant];
     return (
         <BadgeComponent on={on} data-navbadge={variant}>
-            {variant}
+            {badgeLabelMapping[variant]}
         </BadgeComponent>
     );
 };

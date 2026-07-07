@@ -36,7 +36,7 @@
 }
 
 .deactivateAnimation {
-    /* Safari has a really hard time animating the --fade-top. Remove it from transition-property */
+    /* Safari has a really hard time animating the --fade-stop. Remove it from transition-property */
     transition-property: transform, top, height;
 }
 
