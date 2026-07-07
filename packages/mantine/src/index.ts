@@ -294,6 +294,9 @@ export * from './components/NativeSelect/NativeSelect.js';
 // Nav Link
 export * from './components/NavLink/NavLink.js';
 
+// Navigation
+export * from './components/Navigation/Navigation.js';
+
 // Notification
 export * from './components/Notification/Notification.js';
 

@@ -1,5 +1,5 @@
 {
-    "name": "storybook",
+    "name": "@coveord/plasma-storybook",
     "version": "59.7.2",
     "private": true,
     "type": "module",
