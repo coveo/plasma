@@ -11,7 +11,7 @@ import {
     useProps,
 } from '@mantine/core';
 import {flexRender} from '@tanstack/react-table';
-import {ForwardedRef, type MouseEvent} from 'react';
+import {ForwardedRef} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../../../utils/createFactoryComponent.js';
 import {TableLayoutProps} from '../../Table.types.js';
 import {useTableContext} from '../../TableContext.js';
@@ -66,17 +66,11 @@ export const CardLayoutBody = <T,>(props: CardLayoutBodyProps<T> & {ref?: Forwar
         const isSelected = !!row.getIsSelected();
         const shouldKeepSelection = store.rowSelectionForced && isSelected;
 
-        const onClick = (event: MouseEvent<HTMLDivElement>) => {
+        const onClick = () => {
             if (store.multiRowSelectionEnabled) {
                 row.toggleSelected();
-            } else if (store.rowSelectionEnabled) {
-                if (event.detail <= 1) {
-                    if (!shouldKeepSelection) {
-                        row.toggleSelected();
-                    }
-                } else {
-                    onRowDoubleClick?.(row.original, row.index, row);
-                }
+            } else if (store.rowSelectionEnabled && !shouldKeepSelection) {
+                row.toggleSelected();
             }
         };
 
