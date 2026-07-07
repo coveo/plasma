@@ -1,4 +1,4 @@
-import {factory, Factory, List, ListItemProps, StylesApiProps, useProps} from '@mantine/core';
+import {factory, Factory, List, ListItemProps, StylesApiProps, Text, useProps} from '@mantine/core';
 import {usePrerequisitesListContext} from './PrerequisitesListContext.js';
 import {PrerequisitesListIcon, type PrerequisitesListIconVariant} from './PrerequisitesListIcon.js';
 
@@ -10,6 +10,7 @@ interface PrerequisitesListItemProps
     extends Omit<ListItemProps, 'classNames' | 'styles' | 'vars'>, StylesApiProps<PrerequisitesListItemFactory> {
     status: PrerequisitesListItemStatus;
     label: string;
+    description?: string;
 }
 
 type PrerequisitesListItemFactory = Factory<{
@@ -23,7 +24,7 @@ const defaultProps = {} satisfies Partial<PrerequisitesListItemProps>;
 
 export const PrerequisitesListItem = factory<PrerequisitesListItemFactory>((_props, ref) => {
     const props = useProps('PrerequisitesListItem', defaultProps, _props);
-    const {className, style, label, status, vars: _vars, ...others} = props;
+    const {className, style, label, description, status, vars: _vars, ...others} = props;
     const ctx = usePrerequisitesListContext();
 
     return (
@@ -35,6 +36,11 @@ export const PrerequisitesListItem = factory<PrerequisitesListItemFactory>((_pro
             {...others}
         >
             {label}
+            {description && (
+                <Text fz="xs" c="dimmed">
+                    {description}
+                </Text>
+            )}
         </List.Item>
     );
 });

@@ -1,11 +1,11 @@
 ---
 name: PrerequisitesList
-description: Displays a list of prerequisites with status indicators (completed, current, next).
+description: Displays a list of prerequisites with status indicators (complete, incomplete).
 ---
 
 ## Props
 
-> Extends: `BoxProps`, `ElementProps<'ul'>`. Only Plasma-specific props are listed below; inherited props MUST be referenced in Mantine documentation.
+> Extends: `BoxProps`, `StylesApiProps`, `ElementProps<'ul'>`. Only Plasma-specific props are listed below; inherited props MUST be referenced in Mantine documentation.
 
 **`children`** `ReactNode` · required — The `PrerequisitesList.Item` elements to render.
 
@@ -15,8 +15,9 @@ description: Displays a list of prerequisites with status indicators (completed,
 
 ### PrerequisitesList.Item Props
 
-**`status`** `'completed' | 'current' | 'next'` · required — Determines the icon and color displayed.
+**`status`** `'complete' | 'incomplete'` · required — Determines the icon and color displayed. `complete` shows a green checkmark, `incomplete` shows a grey dot.
 **`label`** `string` · required — The text content of the prerequisite.
+**`description`** `string` · optional · default: `undefined` — Optional description text displayed below the label in a smaller, dimmed font.
 
 ## Usage
 
@@ -24,9 +25,16 @@ description: Displays a list of prerequisites with status indicators (completed,
 import {PrerequisitesList} from '@coveord/plasma-mantine';
 
 <PrerequisitesList>
-    <PrerequisitesList.Item label="Completed prerequisite" status="completed" />
-    <PrerequisitesList.Item label="Current prerequisite" status="current" />
-    <PrerequisitesList.Item label="Next prerequisite" status="next" />
+    <PrerequisitesList.Item
+        label="Completed Prerequisite"
+        status="complete"
+        description="Optional description of the item."
+    />
+    <PrerequisitesList.Item
+        label="Incomplete Prerequisite"
+        status="incomplete"
+        description="Optional description of the item."
+    />
 </PrerequisitesList>;
 ```
 

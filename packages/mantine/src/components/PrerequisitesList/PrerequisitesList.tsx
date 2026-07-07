@@ -1,9 +1,9 @@
 import {BoxProps, ElementProps, factory, Factory, List, StylesApiProps, useProps, useStyles} from '@mantine/core';
 import {ReactNode} from 'react';
 import classes from './PrerequisitesList.module.css';
-import {PrerequisitesListItem, type PrerequisitesListItemStylesNames} from './PrerequisitesListItem.js';
 import {PrerequisitesListProvider} from './PrerequisitesListContext.js';
 import type {PrerequisitesListIconStylesNames} from './PrerequisitesListIcon.js';
+import {PrerequisitesListItem, type PrerequisitesListItemStylesNames} from './PrerequisitesListItem.js';
 
 export type PrerequisitesListStylesName = 'root' | PrerequisitesListItemStylesNames | PrerequisitesListIconStylesNames;
 

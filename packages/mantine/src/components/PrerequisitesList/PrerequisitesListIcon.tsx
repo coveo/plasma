@@ -1,18 +1,10 @@
-import {IconCheck, TablerIcon} from '@coveord/plasma-react-icons';
-import {
-    BoxProps,
-    ElementProps,
-    MantineColor,
-    ThemeIcon,
-    ThemeIconVariant,
-    useMantineTheme,
-    useProps,
-} from '@mantine/core';
+import {IconCircleCheckFilled, IconCircleDotFilled, TablerIcon} from '@coveord/plasma-react-icons';
+import {Box, BoxProps, ElementProps, MantineColor, useProps} from '@mantine/core';
 import {forwardRef} from 'react';
 import {usePrerequisitesListContext} from './PrerequisitesListContext.js';
 
 export type PrerequisitesListIconStylesNames = 'icon';
-export type PrerequisitesListIconVariant = 'completed' | 'current' | 'next';
+export type PrerequisitesListIconVariant = 'complete' | 'incomplete';
 
 interface PrerequisitesListIconProps extends BoxProps, ElementProps<'div'> {
     variant: PrerequisitesListIconVariant;
@@ -21,43 +13,24 @@ interface PrerequisitesListIconProps extends BoxProps, ElementProps<'div'> {
 const defaultProps = {} satisfies Partial<PrerequisitesListIconProps>;
 
 const iconMapping = {
-    completed: IconCheck,
-    current: IconCheck,
-    next: IconCheck,
+    complete: IconCircleCheckFilled,
+    incomplete: IconCircleDotFilled,
 } satisfies Record<PrerequisitesListIconVariant, TablerIcon>;
 
 const colorMapping = {
-    completed: 'primary',
-    current: 'primary',
-    next: 'gray',
+    complete: 'green',
+    incomplete: 'var(--mantine-color-placeholder)',
 } satisfies Record<PrerequisitesListIconVariant, MantineColor>;
-
-const variantMapping = {
-    completed: 'filled',
-    current: 'light',
-    next: 'light',
-} satisfies Record<PrerequisitesListIconVariant, ThemeIconVariant>;
 
 export const PrerequisitesListIcon = forwardRef<HTMLDivElement, PrerequisitesListIconProps>((_props, ref) => {
     const props = useProps('PrerequisitesListIcon', defaultProps, _props);
     const {className, style, variant, ...others} = props;
     const ctx = usePrerequisitesListContext();
     const IconComponent = iconMapping[variant];
-    const {primaryColor} = useMantineTheme();
 
     return (
-        <ThemeIcon
-            ref={ref}
-            {...ctx.getStyles('icon', {className, style})}
-            {...others}
-            variant={variantMapping[variant]}
-            color={colorMapping[variant] === 'primary' ? primaryColor : colorMapping[variant]}
-            radius="xl"
-            p="xxs"
-            bd="none"
-            size={24}
-        >
-            <IconComponent size={16} role="img" aria-label={variant} />
-        </ThemeIcon>
+        <Box ref={ref} {...ctx.getStyles('icon', {className, style})} {...others} c={colorMapping[variant]}>
+            <IconComponent size={24} role="img" aria-label={variant} />
+        </Box>
     );
 });
