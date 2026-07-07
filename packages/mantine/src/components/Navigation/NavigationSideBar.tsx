@@ -16,7 +16,7 @@ export interface NavigationSideBarProps extends Omit<AppShellNavbarProps, 'hidde
 
 export type NavigationSideBarFactory = Factory<{
     props: NavigationSideBarProps;
-    ref: HTMLInputElement;
+    ref: HTMLElement;
     stylesNames: NavigationSideBarStylesNames;
 }>;
 

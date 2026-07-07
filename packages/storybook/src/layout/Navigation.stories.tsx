@@ -77,6 +77,7 @@ const links = ['Home', 'Sources', 'Catalogs', 'Fields'] as const;
 interface DemoArgs {
     collapsed: boolean;
     activeLink: string;
+    defaultCollapsed: boolean;
 }
 
 export const Demo: Story = {
@@ -86,18 +87,23 @@ export const Demo: Story = {
             options: links,
             description: 'Currently active link.',
         },
+        collapsed: {
+            control: 'boolean',
+            description: 'Current collapsed state (read-only, synced from toggle).',
+        },
     },
     args: {
         activeLink: 'Home',
+        collapsed: false,
     },
     render: (args) => {
-        const [{activeLink, collapsed}, updateArgs] = useArgs<DemoArgs>();
+        const [{activeLink}, updateArgs] = useArgs<DemoArgs>();
         const [globals] = useGlobals();
         const primaryColor = globals.primaryColor || 'teal';
         const setActive = (link: string) => updateArgs({activeLink: link});
 
         return (
-            <Navigation defaultCollapsed={collapsed} key={String(collapsed)}>
+            <Navigation defaultCollapsed={args.defaultCollapsed}>
                 <Shell onCollapsedChange={(newCollapsed) => updateArgs({collapsed: newCollapsed})}>
                     <Navigation.SideBar header={<Logo />} style={navigationColors[primaryColor]}>
                         <NavigationLink

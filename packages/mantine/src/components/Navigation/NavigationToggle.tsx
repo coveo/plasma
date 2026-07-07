@@ -28,9 +28,15 @@ export const NavigationToggle: FunctionComponent<NavigationToggleProps> = ({
     const Icon = collapsed ? IconChevronRight : IconChevronLeft;
 
     return (
-        <Box className={clsx(className, classes.toggleContainer)} onClick={() => toggleCollapsed()} mod={{collapsed}}>
-            <ActionIcon size="sm" className={classes.toggle} variant="filled">
-                <Icon aria-label={collapsed ? expandLabel : collapseLabel} />
+        <Box className={clsx(className, classes.toggleContainer)} mod={{collapsed}}>
+            <ActionIcon
+                size="sm"
+                className={classes.toggle}
+                variant="filled"
+                aria-label={collapsed ? expandLabel : collapseLabel}
+                onClick={() => toggleCollapsed()}
+            >
+                <Icon />
             </ActionIcon>
         </Box>
     );
