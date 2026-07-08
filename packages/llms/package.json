@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-llms",
-    "version": "60.0.0-next.0",
+    "version": "60.0.0",
     "description": "LLM-friendly documentation for the Plasma design system",
     "keywords": [
         "ai",
