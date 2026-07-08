@@ -1,6 +1,6 @@
 {
     "name": "root",
-    "version": "59.7.1",
+    "version": "59.8.0",
     "private": true,
     "type": "module",
     "scripts": {
