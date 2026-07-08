@@ -254,6 +254,16 @@ Exceptions — do not apply this rule inside:
 
 ---
 
+## Em-dash rule
+
+Do not use em-dashes (`—`) anywhere in prose you write — not as clause separators, not with spaces around them (`word — word`), not at all.
+
+If you feel the need for an em-dash, rewrite the sentence. Use a period, a comma, or split into two sentences instead.
+
+The only exception is when quoting or reproducing existing text that already contains an em-dash.
+
+---
+
 ## Code block preservation
 
 Before rewriting, identify every fenced code block in the `.mdx` file. During the rewrite, do not edit, reformat, fix imports, change indentation, change comments, or change blank lines inside any code block. After rewriting, verify every fenced code block is byte-for-byte identical to the original.
@@ -301,7 +311,8 @@ Key rules:
 - Address the developer as "you" — never "we" or "the user"
 - Plain language — short words, short sentences
 - American spelling throughout
-- No em-dashes, no exclamation marks, no ellipses in instructions
+- No em-dashes (`—`) in prose you write. Do not use them as clause separators, especially not with spaces on both sides (`word — word`). Rewrite the sentence instead. The only exception is when quoting or reproducing existing text that already contains an em-dash.
+- No exclamation marks, no ellipses in instructions
 
 ---
 
