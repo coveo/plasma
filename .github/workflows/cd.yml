@@ -79,9 +79,12 @@ jobs:
                   git push deploy HEAD:next
             - name: Publish prereleases
               if: github.ref_name == 'next'
-              run: |
-                  pnpm release:pre:publish:next
-                  git push deploy --follow-tags
+              uses: changesets/action@6a0a831ff30acef54f2c6aa1cbbc1096b066edaf # v1.7.0
+              with:
+                  publish: pnpm release:pre:publish:next
+                  createGithubReleases: false
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             - name: Copy LLM files into Storybook output
               run: cp -r ./packages/llms/dist/. ./packages/storybook/storybook-static/
             - name: Deploy Storybook to Chromatic
