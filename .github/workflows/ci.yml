@@ -103,7 +103,6 @@ jobs:
                   PLASMA_BASE_URL: ${{ steps.chromatic-url.outputs.url }}
             - name: Copy LLM files into Storybook output
               run: cp -r ./packages/llms/dist/. ./packages/storybook/storybook-static/
-                  echo "url=https://${CLEAN_BRANCH}--69e1126f9e24a5e560359ac2.chromatic.com/" >> $GITHUB_OUTPUT
             - name: Deploy Storybook to Chromatic
               env:
                   CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
