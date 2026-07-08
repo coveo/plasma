@@ -1,5 +1,5 @@
 {
-    "mode": "pre",
+    "mode": "exit",
     "tag": "next",
     "initialVersions": {
         "@coveord/plasma-figma-code-connect": "59.6.0",
