@@ -24,7 +24,7 @@ jobs:
                   fetch-depth: 0
             - uses: ./.github/actions/setup
             - name: Create or update the Changesets release PR
-              uses: changesets/action@6a0a831ff30acef54f2c6aa1cbbc1096b066edaf # v1.7.0
+              uses: step-security/changeset-action@6ddf46283ed49170eb6ca2179818f7d2a0ae687c # v1.9.0
               with:
                   commit: 'chore(release): version packages'
                   title: 'chore(release): version packages'
