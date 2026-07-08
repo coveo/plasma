@@ -93,11 +93,63 @@ This rule applies to all prose sections. It does not apply inside fenced code bl
 
 ## GFM support
 
-`remarkGfm` is enabled in `packages/storybook/.storybook/main.ts`, so these GitHub-Flavored Markdown features work natively:
+`remarkGfm` is enabled in `packages/storybook/.storybook/main.ts`, but **do not use markdown pipe tables** in MDX files. Pipe tables are not rendered correctly at runtime in this Storybook setup.
 
-- Tables (`| col | col |`)
-- Strikethrough (`~~text~~`)
-- Task lists (`- [ ] item`)
+Use the Mantine `<Table>` JSX component instead. See the Tables section below.
+
+---
+
+## Tables
+
+Never use markdown pipe table syntax (`| col | col |`) in MDX files. Always use the Mantine `<Table>` component.
+
+Add the import at the top of the file alongside the `Meta` import:
+
+```mdx
+import {Meta} from '@storybook/addon-docs/blocks';
+import {Table} from '@mantine/core';
+```
+
+Use `withTableBorder` and `withColumnBorders` on every table:
+
+```mdx
+<Table withTableBorder withColumnBorders>
+    <Table.Thead>
+        <Table.Tr>
+            <Table.Th>Column A</Table.Th>
+            <Table.Th>Column B</Table.Th>
+        </Table.Tr>
+    </Table.Thead>
+    <Table.Tbody>
+        <Table.Tr>
+            <Table.Td>Value</Table.Td>
+            <Table.Td>Value</Table.Td>
+        </Table.Tr>
+    </Table.Tbody>
+</Table>
+```
+
+Always leave a blank line between the closing `</Table>` tag and the next prose sentence.
+
+---
+
+## Import formatting (`oxfmt`)
+
+The CI runs `oxfmt` to check formatting. Write all imports with **single quotes and no spaces inside braces**:
+
+```mdx
+import {Meta} from '@storybook/addon-docs/blocks';
+import {Table} from '@mantine/core';
+```
+
+Not:
+
+```mdx
+import {Meta} from '@storybook/addon-docs/blocks';
+import {Table} from '@mantine/core';
+```
+
+`oxfmt` will reformat double-quoted, space-padded imports and fail the check if they are committed that way.
 
 ---
 

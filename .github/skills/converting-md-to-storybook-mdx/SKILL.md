@@ -158,11 +158,14 @@ cd packages/storybook
 pnpm build
 ```
 
+To confirm the build passed, check that `packages/storybook/storybook-static/index.html` has a recent modification time. Do not rely solely on terminal output — it can appear stuck even when the build is still running.
+
 If the build passes:
 
 - Report that Step 1 validation passed.
-- Commit the converted MDX file with this message: `docs(storybook): convert <ComponentName> usage mdx`
-- Continue to the `storybook-component-guidelines` skill for the same component, or wait for the user's instruction.
+- Ask the user to confirm the commit. Use this exact message: `docs(storybook): convert <ComponentName> usage mdx`
+- Do not offer the option to skip the commit or move on without committing. The commit is required before proceeding to Step 2.
+- Only after the commit is made, offer to continue to the `storybook-component-guidelines` skill for the same component.
 
 If the build fails:
 

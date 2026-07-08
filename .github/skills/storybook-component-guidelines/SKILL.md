@@ -195,6 +195,10 @@ Format each prop as:
 
 Convert bullet lists into a table with a Purpose column. Keep descriptive prose notes beneath the table rather than forcing them into table cells.
 
+Use the Mantine `<Table>` JSX component — do not use markdown pipe tables. Add `import {Table} from '@mantine/core';` alongside the `Meta` import. Use `withTableBorder` and `withColumnBorders` on every table. See `references/mdx-patterns.md` for the full table pattern.
+
+Always leave a blank line between the closing `</Table>` tag and the next prose sentence, otherwise the prose may not render correctly.
+
 Pay attention to whether sub-components are optional or required. Some components (like `InfoToken`) expose semantic types only through sub-components because the underlying `type` prop is not public API — in those cases the sub-components are required, not optional. Use "use these instead of setting props manually" for optional wrappers and "you must use these to set the component type" for required ones.
 
 ### Usage
@@ -309,6 +313,8 @@ After rewriting a component, run:
 cd packages/storybook
 pnpm build
 ```
+
+To confirm the build passed, check that `packages/storybook/storybook-static/index.html` has a recent modification time. Do not rely solely on terminal output — it can appear stuck even when the build is still running.
 
 If the build passes:
 
