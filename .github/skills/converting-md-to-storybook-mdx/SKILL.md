@@ -1,102 +1,98 @@
 ---
 name: converting-md-to-storybook-mdx
-description: Converts component .md files from packages/llms/src/components/ into MDX docs-only pages for the Plasma Storybook (packages/storybook). Strips frontmatter, adds the required Meta import and title block, escapes JSX-breaking characters, and places the output where Storybook's story globs will pick it up. Use when a user says "add this to Storybook", "convert to MDX", "do the next entry", or "render in Storybook".
+description: "STEP 1 OF 2 — Converts component .md files from packages/llms/src/components/ into MDX docs-only pages for the Plasma Storybook (packages/storybook). Strips frontmatter, adds the required Meta import and title block, escapes JSX-breaking characters, and places the output where Storybook's story globs will pick it up. Use when a user says 'add this to Storybook', 'convert to MDX', 'do the next entry', or 'render in Storybook'. After this step, use the storybook-component-guidelines skill (Step 2) to rewrite the converted .mdx file into clear, human-readable documentation."
 ---
 
-# Converting Component MD Files to Plasma Storybook MDX
+# Step 1 — Converting Component MD Files to Plasma Storybook MDX
 
-Converts `.md` component files from `packages/llms/src/components/` into `.mdx` docs-only pages for `packages/storybook` in the plasma repo.
+This is **Step 1 of a two-step process**:
 
-## What This Process Is
+1. **(This skill)** Convert the `.md` source file to a `.mdx` file in the correct Storybook folder — preserving the original writing exactly.
+2. **(storybook-component-guidelines skill)** Rewrite the converted `.mdx` file into clear, human-readable documentation for a developer audience.
+
+Do not skip ahead to Step 2 until the `.mdx` file from this step exists and the Storybook build passes.
+
+## What this process is
 
 This is a **duplication then conversion**. You are creating a new `.mdx` file based on the content of an existing `.md` file. The original `.md` file is the source of truth and must never be moved, edited, or deleted. The `.mdx` is a separate new file.
 
-## Background
+**Preserve the original writing exactly.** Do not rephrase, simplify, or improve any copy during this step. Rewriting happens in Step 2.
 
-The source files in `packages/llms/src/components/` describe each Plasma component for LLM consumption. Each one can also serve as a human-readable documentation page in Storybook.
+---
 
-The Plasma Storybook auto-discovers MDX files under:
+## Repository workflow
 
-```text
-packages/storybook/src/**/*.mdx
-```
+- Never work directly on `master`.
+- Before modifying any file, check the current branch: `git branch --show-current`.
+- If the current branch is `master`, create or switch to the correct DS branch before continuing.
+- Process one component at a time. Never batch-convert multiple components in one pass.
+- Validate after every component. Do not continue to the next until the current component's build passes and the user confirms.
+- After a full alphabetic group is complete, push the branch and create a draft PR. Do not request reviewers.
 
-No story registration is needed. A docs-only page only requires a `<Meta>` block at the top.
+See [references/pr-workflow.md](references/pr-workflow.md) for the branch mapping, branch creation commands, commit format, and PR title templates.
 
-The sidebar location is controlled by the `title` in `<Meta>`, which must match the convention used in the component's `.stories.tsx` file.
+---
 
-## Stop Conditions
+## Branch-to-component validation
 
-Stop immediately and ask the user if any of the following are true:
+Before editing a component, confirm it belongs to the current DS branch group:
 
-- The current branch is `master` and the correct DS branch is unclear.
-- There are unrelated uncommitted changes in the working tree.
-- The source `.md` file is missing YAML frontmatter, `name`, or `description`.
-- The target `.mdx` file already exists and the user has not given explicit permission to overwrite it.
-- The component does not belong to the current branch group.
-
-## Process
-
-### Step 0: Confirm you are on the correct branch
-
-Before modifying any file:
-
-1. Check the current branch: `git branch --show-current`
-2. Never modify files while on `master`.
-3. If the current branch is `master`:
-    - Determine the correct DS branch from the component group being worked on.
-    - If the correct DS branch is clear, create or switch to it before making any edits.
-    - If the correct DS branch is unclear, stop and ask the user which branch to use.
-4. If the current branch is not `master`, confirm it matches the expected DS branch for the component before proceeding.
-
-Before creating or switching branches, check for existing changes:
-
-```bash
-git status --short
-```
-
-If there are unrelated uncommitted changes, stop and ask the user before continuing.
-
-### Branch-to-component group mapping
-
-Before editing a component, confirm it belongs to the current DS branch group by component name:
-
-| Component name starts with | Branch                  |
-| -------------------------- | ----------------------- |
-| `A`                        | `DS-400-A-components`   |
-| `B`                        | `DS-401-B-components`   |
-| `C`                        | `DS-426-C-components`   |
-| `E` through `M`            | `DS-403-E-M-components` |
-| `P` through `T`            | `DS-427-P-T-components` |
-
-There are no D, N, or O groups because there are no components for those letters.
+- `Accordion`, `ActionIcon`, `Alert`, `AppShell` → `DS-400-A-components`
+- `Badge`, `BlankSlate`, `BrowserPreview`, `Button` → `DS-401-B-components`
+- `ChildForm`, `Chip`, `CodeEditor`, `Collection`, `CopyToClipboard` → `DS-426-C-components`
+- `EllipsisText` through `Modal` → `DS-403-E-M-components`
+- `PasswordInput` through `Table` → `DS-427-P-T-components`
 
 If the component does not belong to the current branch group, stop and ask the user before continuing.
 
-### Step 1: Identify the source file and target location
+---
+
+## Stop conditions
+
+Stop and ask the user before continuing if:
+
+- The current branch is `master`
+- The target `.mdx` file already exists and would need to be overwritten
+- A Step 2 completion marker is present in an existing file
+- More than one matching `.stories.tsx` file exists for the component
+- No matching `.stories.tsx` exists and the component is not in `references/storybook-fallbacks.md`
+- The component group does not match one of the approved DS branches
+- The Storybook build fails
+
+---
+
+## Process
+
+### 1. Identify the source file and target location
 
 1. **Source file** — the `.md` file from `packages/llms/src/components/`
-2. **Storybook section** — find the corresponding `.stories.tsx` file in `packages/storybook/src/` and read its `title` field. The MDX file goes in the same directory as that stories file.
-3. **Meta title** — use the exact same `title` string from the `.stories.tsx` file (e.g. `@components/layout/Accordion`)
+2. **Stories file** — search for `<ComponentName>.stories.tsx` in `packages/storybook/src/` and read its `title` field. The MDX file goes in the same directory.
+3. **No stories file** — if none exists, check [references/storybook-fallbacks.md](references/storybook-fallbacks.md) for the approved fallback location. If the component is not listed there either, stop and ask the user.
 
-### Step 2: Perform the conversion manually
+### 2. Existing file safety
 
-Before starting, verify the source `.md` file contains valid YAML frontmatter with both `name` and `description`. If the frontmatter is missing, malformed, or does not contain both fields, stop and ask the user.
+Before writing `ComponentName-usage.mdx`:
 
-Each source `.md` file has a YAML block at the top (called frontmatter) that looks like this:
+- If the file does not exist, create it.
+- If it exists and contains `{/* storybook-usage-guidelines: rewritten */}`, stop and ask the user for permission before overwriting. Step 2 is already complete for this file.
+- If it exists but does not contain the marker, explain why overwriting may be safe or unsafe, then ask the user for permission before overwriting.
 
-```yaml
+Never overwrite an existing `.mdx` file without explicit user permission.
+
+### 3. Perform the conversion
+
+Each source `.md` file starts with a YAML frontmatter block:
+
+```
 ---
 name: Accordion
 description: Collapsible content panels with an additional disabled control variant.
 ---
 ```
 
-This block is not valid in an MDX file and must be removed. However, the `name` and `description` values inside it are useful — use them as the opening content of the page instead.
-
 Do the following in order:
 
-1. **Strip the YAML frontmatter** — remove the entire `---` block from the top of the file. Then use the `name` value as the page's `# H1` heading, and always add the `description` value as a plain text line directly beneath it.
+1. **Strip the YAML frontmatter** — remove the entire `---` block. Use the `name` value as the `# H1` heading and add the `description` value as plain text directly beneath it.
 2. **Add the MDX header** — the very first lines of the output file must be:
 
     ```mdx
@@ -105,80 +101,44 @@ Do the following in order:
     <Meta title="@components/section/ComponentName" />
     ```
 
-3. **Escape JSX-breaking characters** — MDX is parsed as JSX (a JavaScript syntax), which means certain characters that are fine in plain Markdown will cause errors. Specifically: any bare `<tag>` or `</tag>` appearing in regular prose text (not inside a code block) must be rewritten as `&lt;tag&gt;`. Content inside backtick inline code or fenced code blocks is safe and must not be changed.
-4. **Handle the `{{BASE_URL}}` link** — every source file ends with `[Full Plasma documentation]({{BASE_URL}})`. The `{{BASE_URL}}` placeholder has no real value in this repo — it is not a working link. Replace the entire line with this MDX comment so it is invisible in the rendered page but not silently lost:
+3. **Escape JSX-sensitive prose** — escape the following characters when they appear outside fenced code blocks and inline code:
 
+    | Prose character or pattern | Escaped form   |
+    | -------------------------- | -------------- |
+    | `<tag>`                    | `&lt;tag&gt;`  |
+    | `</tag>`                   | `&lt;/tag&gt;` |
+    | `{`                        | `&#123;`       |
+    | `}`                        | `&#125;`       |
+
+    Do not escape content inside fenced code blocks or inline code. Do not escape intentional MDX syntax added by this skill, such as `{/* TODO: Replace with full Plasma docs URL */}`.
+
+4. **Handle the `{{BASE_URL}}` link** — replace `[Full Plasma documentation]({{BASE_URL}})` with:
     ```mdx
     {/* TODO: Replace with full Plasma docs URL */}
     ```
+5. **Preserve everything else** — fenced code blocks, inline code, tables, lists, and headings carry over unchanged.
 
-    Do not invent or guess a URL.
+### 4. Output file naming and placement
 
-5. **Preserve everything else** — fenced code blocks, inline code, tables, lists, and headings carry over as-is.
+The file must be named `ComponentName-usage.mdx` and placed in the same folder as the `.stories.tsx` file.
 
-### Step 3: Write the output file
+The `form` section has sub-folders — always read the stories file to find the exact path:
 
-The primary rule is: **the `.mdx` file must live in the same folder as the component's `.stories.tsx` file.** They are a pair — a developer browsing Storybook should find the usage guidelines right next to the interactive stories for the same component.
+| Stories file                                                   | MDX output                                                   |
+| -------------------------------------------------------------- | ------------------------------------------------------------ |
+| `packages/storybook/src/layout/Accordion.stories.tsx`          | `packages/storybook/src/layout/Accordion-usage.mdx`          |
+| `packages/storybook/src/call-to-action/ActionIcon.stories.tsx` | `packages/storybook/src/call-to-action/ActionIcon-usage.mdx` |
+| `packages/storybook/src/form/string/Select.stories.tsx`        | `packages/storybook/src/form/string/Select-usage.mdx`        |
+| `packages/storybook/src/form/array/Collection.stories.tsx`     | `packages/storybook/src/form/array/Collection-usage.mdx`     |
+| `packages/storybook/src/form/boolean/Checkbox.stories.tsx`     | `packages/storybook/src/form/boolean/Checkbox-usage.mdx`     |
+| `packages/storybook/src/form/number/NumberInput.stories.tsx`   | `packages/storybook/src/form/number/NumberInput-usage.mdx`   |
+| `packages/storybook/src/form/date/DatePickerInput.stories.tsx` | `packages/storybook/src/form/date/DatePickerInput-usage.mdx` |
 
-To find the right folder, search for `<ComponentName>.stories.tsx` in `packages/storybook/src/` and place the `.mdx` file in that exact directory. Read the `title` field from that stories file and use it exactly as the `<Meta title>` value — do not alter or reformat it.
+Do not create or modify any `.stories.tsx` file. Do not modify the original `.md` source file.
 
-If the target `.mdx` file already exists, stop and ask the user for explicit permission before overwriting it.
+---
 
-**Example:**
-
-| Stories file                                                   | MDX file to create                                     |
-| -------------------------------------------------------------- | ------------------------------------------------------ |
-| `packages/storybook/src/layout/Accordion.stories.tsx`          | `packages/storybook/src/layout/Accordion.mdx`          |
-| `packages/storybook/src/call-to-action/ActionIcon.stories.tsx` | `packages/storybook/src/call-to-action/ActionIcon.mdx` |
-
-**If no matching `.stories.tsx` exists**, place the `.mdx` in the most appropriate existing folder based on the component's category. The 5 known cases are:
-
-| Component       | Output directory                         |
-| --------------- | ---------------------------------------- |
-| `BlankSlate`    | `packages/storybook/src/feedback/`       |
-| `Chip`          | `packages/storybook/src/data-display/`   |
-| `Input`         | `packages/storybook/src/form/string/`    |
-| `Menu`          | `packages/storybook/src/call-to-action/` |
-| `PasswordInput` | `packages/storybook/src/form/string/`    |
-
-For these, set `<Meta title>` to `@components/<section>/<ComponentName>` using the folder name as the section.
-
-Do not delete or modify the original `.md` source file. Do not create or modify any `.stories.tsx` file.
-
-### Step 4: Verify placement
-
-Confirm the output file is under the watched glob:
-
-```text
-packages/storybook/src/**/*.mdx   ✓
-```
-
-### Step 5: Spot-check in Storybook (optional but recommended)
-
-```bash
-# From packages/storybook
-pnpm storybook
-```
-
-Navigate to the expected sidebar location and confirm the page renders correctly.
-
-## What the Output Looks Like
-
-```mdx
-import {Meta} from '@storybook/addon-docs/blocks';
-
-<Meta title="@components/layout/Accordion" />
-
-# Accordion
-
-Collapsible content panels with an additional disabled control variant.
-
-## Props
-
-...
-```
-
-## Required Validation After Each Component
+## Required validation after each component
 
 After converting a component, run:
 
@@ -187,13 +147,13 @@ cd packages/storybook
 pnpm build
 ```
 
-**If the build passes:**
+If the build passes:
 
-- Report that Step 1 validation passed.
-- Do not commit yet if Step 2 will run next.
-- Continue to the `storybook-component-guidelines` skill for the same component, or wait for the user's instruction.
+- Report that validation passed.
+- Commit the file: `docs(storybook): add <ComponentName> usage guidelines`
+- Wait for the user's confirmation before moving to the next component.
 
-**If the build fails:**
+If the build fails:
 
 - Leave the generated file in place.
 - Stop the workflow.
@@ -201,29 +161,20 @@ pnpm build
 - Do not continue to another component.
 - Do not attempt further fixes unless the user explicitly asks.
 
-The final commit should be handled after Step 2, once the component documentation is rewritten and validated. PR creation is handled by the Step 2 skill after all rewritten files for the branch group are complete and validated.
+---
 
-## Iteration Order
+## Iteration order
 
-If the user specifies a component to start with, begin there. If it is unclear which component you should start with, ask the user before beginning. Don't start without a concrete name of the component you'll be writing for. After each file, continue alphabetically through `packages/llms/src/components/` regardless of which branch you are on — do not rely on previously created `.mdx` files to determine progress. Do one file at a time and wait for confirmation before moving to the next.
+Always work one component at a time. If the user names a component, start there. If the user names a group, process only that group in alphabetical order. Wait for confirmation after each component before continuing.
 
-## Reference Files
+Do not process components outside the active branch group.
 
-- [MDX patterns and troubleshooting](references/mdx-patterns.md) — JSX escaping rules and troubleshooting
-- [Plasma writing rules](../storybook-component-guidelines/references/plasma-writing-rules.md) — capitalization, punctuation, grammar, voice, and jargon rules that apply to all Plasma copy
-- [Expected format](../storybook-component-guidelines/references/expected-format.md) — section structure and formatting standards for component documentation
+---
 
-## Validation Checklist
+## Reference files
 
-Before considering a conversion complete:
-
-- [ ] No YAML frontmatter remains in the output file
-- [ ] `import { Meta }` line is the first line
-- [ ] `<Meta title="..." />` title matches the existing `.stories.tsx` title exactly
-- [ ] No unescaped bare `<tag>` syntax in prose (only inside fenced code blocks or inline code)
-- [ ] `{{BASE_URL}}` link is replaced with a TODO comment
-- [ ] Output file is under `packages/storybook/src/**/*.mdx`
-- [ ] Original `.md` source file is untouched
-- [ ] Build passes (`pnpm build` from `packages/storybook`)
-- [ ] File has not been committed (Step 2 handles the final commit)
-- [ ] No draft PR has been created (Step 2 handles PR creation)
+- [pr-workflow.md](references/pr-workflow.md) — branch rules, branch mapping, commit format, PR titles, draft PR command
+- [storybook-fallbacks.md](references/storybook-fallbacks.md) — approved locations for components with no `.stories.tsx` file
+- [validation-checklist.md](references/validation-checklist.md) — full checklist before marking a component complete
+- [examples.md](references/examples.md) — good and bad output examples
+- [mdx-patterns.md](references/mdx-patterns.md) — JSX escaping rules and Storybook MDX troubleshooting

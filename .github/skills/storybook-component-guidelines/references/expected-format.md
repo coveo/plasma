@@ -4,7 +4,7 @@ The `## Content guidance` section must follow this exact structure.
 
 ## Section placement
 
-Place `## Content guidance` after `## Accessibility expectations` and before `## Common anti-patterns`.
+Place `## Content guidance` after `## Usage` and before any closing footer or link. It is the last substantive section in the page.
 
 ## Structure
 
@@ -52,4 +52,4 @@ Add additional subheadings for any component-specific elements that have distinc
 
 ## Reference example
 
-See `packages/llms/src/components/Accordion.md` for a completed implementation.
+See `packages/llms/src/components/Button.md` for a component with a detailed props section and post-code usage notes. See `packages/llms/src/components/RadioCard.md` for a component with both a `label` and `description` prop that map directly to Content guidance subheadings.
