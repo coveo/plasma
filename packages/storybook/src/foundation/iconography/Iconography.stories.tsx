@@ -89,7 +89,7 @@ const variantFilter = (icon: IconSet, predicates: Record<string, string>) => {
 
 const PlasmaIconsTable = () => {
     const table = useTable<IconSet>({
-        initialState: {totalEntries: plasmaIconsList.length, pagination: {pageSize: 10}, predicates: {variant: '24px'}},
+        initialState: {totalEntries: plasmaIconsList.length, pagination: {perPage: 10}, predicates: {variant: '24px'}},
         enableRowSelection: false,
     });
 
@@ -169,7 +169,7 @@ const tablerColumns = [
 
 const TablerIconsTable = () => {
     const table = useTable<TablerIconRow>({
-        initialState: {totalEntries: tablerIconRows.length, pagination: {pageSize: 10}},
+        initialState: {totalEntries: tablerIconRows.length, pagination: {perPage: 10}},
         enableRowSelection: false,
     });
     return (

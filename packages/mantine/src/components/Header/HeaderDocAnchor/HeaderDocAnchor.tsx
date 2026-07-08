@@ -33,10 +33,10 @@ export type HeaderDocAnchorFactory = Factory<{
     compound: true;
 }>;
 
-const defaultProps: Partial<HeaderDocAnchorProps> = {
+const defaultProps = {
     position: 'right',
     children: <IconExternalLink />,
-};
+} satisfies Partial<HeaderDocAnchorProps>;
 
 export const HeaderDocAnchor = factory<HeaderDocAnchorFactory>((_props, ref) => {
     const props = useProps('PlasmaHeaderActions', defaultProps, _props);

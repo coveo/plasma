@@ -1,5 +1,5 @@
 import {Factory, factory, Grid, GridColProps, Group, useProps} from '@mantine/core';
-import {ReactElement, useMemo} from 'react';
+import {useMemo} from 'react';
 
 import {TableComponentsOrder} from '../Table.js';
 import {useTableContext} from '../TableContext.js';
@@ -16,43 +16,41 @@ type TableHeaderActionsFactory = Factory<{
     compound: true;
 }>;
 
-const defaultProps: Partial<TableHeaderActionsProps> = {};
+const defaultProps = {} satisfies Partial<TableHeaderActionsProps>;
 
-export const TableHeaderActions = factory<TableHeaderActionsFactory>(
-    (props: TableHeaderActionsProps, ref): ReactElement => {
-        const {store, getStyles, getRowActions} = useTableContext();
-        const {style, className, classNames, styles, ...others} = useProps(
-            'PlasmaTableHeaderActions',
-            defaultProps,
-            props,
-        );
+export const TableHeaderActions = factory<TableHeaderActionsFactory>((props: TableHeaderActionsProps, ref) => {
+    const {store, getStyles, getRowActions} = useTableContext();
+    const {style, className, classNames, styles, span, order, ...others} = useProps(
+        'PlasmaTableHeaderActions',
+        defaultProps,
+        props,
+    );
 
-        const actions = useMemo(() => {
-            const selectedRows = store.getSelectedRows();
-            if (selectedRows.length === 0) {
-                return [];
-            }
-            return getRowActions(selectedRows);
-        }, [store.state.rowSelection]);
-
-        if (actions.length === 0) {
-            return null;
+    const actions = useMemo(() => {
+        const selectedRows = store.getSelectedRows();
+        if (selectedRows.length === 0) {
+            return [];
         }
+        return getRowActions(selectedRows);
+    }, [store.state.rowSelection]);
 
-        const stylesApiProps = {classNames, styles};
+    if (actions.length === 0) {
+        return null;
+    }
 
-        return (
-            <Grid.Col
-                span="content"
-                order={TableComponentsOrder.Actions}
-                ref={ref}
-                {...getStyles('headerActionsRoot', {className, style, ...stylesApiProps})}
-                {...others}
-            >
-                <Group gap="xs" {...getStyles('headerActionsGroup', stylesApiProps)}>
-                    <TableActionsList actions={actions} variant="split" />
-                </Group>
-            </Grid.Col>
-        );
-    },
-);
+    const stylesApiProps = {classNames, styles};
+
+    return (
+        <Grid.Col
+            span={span ?? 'content'}
+            order={order ?? TableComponentsOrder.Actions}
+            ref={ref}
+            {...getStyles('headerActionsRoot', {className, style, ...stylesApiProps})}
+            {...others}
+        >
+            <Group gap="xs" {...getStyles('headerActionsGroup', stylesApiProps)}>
+                <TableActionsList actions={actions} variant="split" />
+            </Group>
+        </Grid.Col>
+    );
+});

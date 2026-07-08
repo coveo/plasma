@@ -14,6 +14,7 @@ export const DisabledControl = Accordion.Control.withProps({
 declare module '@mantine/core' {
     // eslint-disable-next-line @typescript-eslint/no-shadow
     namespace Accordion {
+        // oxlint-disable-next-line no-unused-vars
         let ControlDisabled: typeof DisabledControl;
     }
 }

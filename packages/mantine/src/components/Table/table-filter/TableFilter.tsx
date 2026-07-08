@@ -25,23 +25,27 @@ export type TableFilterFactory = Factory<{
     compound: true;
 }>;
 
-const defaultProps: Partial<TableFilterProps> = {
+const defaultProps = {
     placeholder: 'Search by any field',
-};
+} satisfies Partial<TableFilterProps>;
 
 export const TableFilter = factory<TableFilterFactory>((props, ref) => {
     const {store, getStyles} = useTableContext();
-    const {placeholder, classNames, className, styles, style, vars, ...others} = useProps(
-        'PlasmaTableFilter',
-        defaultProps,
-        props,
-    );
+    const {
+        placeholder,
+        classNames,
+        className,
+        styles,
+        style,
+        vars: _vars,
+        ...others
+    } = useProps('PlasmaTableFilter', defaultProps, props);
     const [filter, setFilter] = useState(store.state.globalFilter);
     const [debounced, cancel] = useDebouncedValue(filter, 300);
 
     useDidUpdate(() => {
         store.setGlobalFilter(debounced);
-        store.setPagination({pageIndex: 0, pageSize: store.state.pagination.pageSize});
+        store.setPagination({page: 0, perPage: store.state.pagination.perPage});
 
         return cancel;
     }, [debounced]);

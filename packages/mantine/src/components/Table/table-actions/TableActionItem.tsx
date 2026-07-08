@@ -30,7 +30,7 @@ type TableActionItemFactory = PolymorphicFactory<{
     compound: true;
 }>;
 
-const defaultProps: Partial<TableActionItemProps> = {};
+const defaultProps = {} satisfies Partial<TableActionItemProps>;
 
 export const TableActionItem = polymorphicFactory<TableActionItemFactory>(
     (props: TableActionItemProps & {component?: any}, ref) => {

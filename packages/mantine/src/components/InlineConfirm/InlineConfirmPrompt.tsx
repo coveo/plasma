@@ -40,13 +40,13 @@ export type InlineConfirmPromptFactory = Factory<{
     ref: HTMLDivElement;
 }>;
 
-const defaultProps: Partial<InlineConfirmPromptProps> = {
+const defaultProps = {
     label: 'Are you sure?',
     confirm: <Button.DestructivePrimary>Delete</Button.DestructivePrimary>,
     cancel: <Button.Tertiary>Cancel</Button.Tertiary>,
     gap: 'xs',
     wrap: 'nowrap',
-};
+} satisfies Partial<InlineConfirmPromptProps>;
 
 export const InlineConfirmPrompt = factory<InlineConfirmPromptFactory>((props, ref) => {
     const {inlineConfirmId, label, confirm, cancel, onConfirm, onCancel, ...others} = useProps(
