@@ -1,6 +1,6 @@
 {
     "name": "storybook",
-    "version": "59.7.2",
+    "version": "59.8.0",
     "private": true,
     "type": "module",
     "scripts": {
