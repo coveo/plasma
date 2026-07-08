@@ -1,4 +1,5 @@
-import {Meta} from '@storybook/addon-docs/blocks';
+import { Meta } from "@storybook/addon-docs/blocks";
+import { Table } from "@mantine/core";
 
 <Meta title="@components/layout/Accordion" />
 
@@ -22,12 +23,32 @@ This component has no additional props beyond the Mantine base. Refer to the [Ma
 
 Plasma wraps Mantine's Accordion sub-components with pre-configured defaults. Use these instead of setting props manually.
 
-| Sub-component               | Purpose                                                   |
-| --------------------------- | --------------------------------------------------------- |
-| `Accordion.Item`            | Wrapper for a single accordion entry                      |
-| `Accordion.Control`         | The clickable header that expands or collapses the panel  |
-| `Accordion.ControlDisabled` | A header with no chevron and disabled pointer events      |
-| `Accordion.Panel`           | The content area revealed when an item is expanded        |
+<Table withTableBorder withColumnBorders>
+  <Table.Thead>
+    <Table.Tr>
+      <Table.Th>Sub-component</Table.Th>
+      <Table.Th>Purpose</Table.Th>
+    </Table.Tr>
+  </Table.Thead>
+  <Table.Tbody>
+    <Table.Tr>
+      <Table.Td>`Accordion.Item`</Table.Td>
+      <Table.Td>Wrapper for a single accordion entry</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>`Accordion.Control`</Table.Td>
+      <Table.Td>The clickable header that expands or collapses the panel</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>`Accordion.ControlDisabled`</Table.Td>
+      <Table.Td>A header with no chevron and disabled pointer events</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>`Accordion.Panel`</Table.Td>
+      <Table.Td>The content area revealed when an item is expanded</Table.Td>
+    </Table.Tr>
+  </Table.Tbody>
+</Table>
 
 Use `Accordion.ControlDisabled` for items that are always expanded and can't be collapsed by the user.
 
