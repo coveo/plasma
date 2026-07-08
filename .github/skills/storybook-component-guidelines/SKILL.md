@@ -1,11 +1,20 @@
 ---
-name: storybook-component-docs
-description: Rewrites component usage guideline files in packages/llms/src/components/ from a terse LLM-facing format into a clear, human-readable style suitable for Storybook. Preserves all existing rules and component names. Use when a user says "rewrite the usage guidelines for [Component]", "humanize [Component].md", "prepare [Component] for Storybook", or "do the next component".
+name: storybook-component-guidelines
+description: "STEP 2 OF 2 — Rewrites converted .mdx component usage guideline files in packages/storybook/src/ from a terse, LLM-facing format into clear, human-readable documentation suitable for a developer audience in Storybook. Use only after the converting-md-to-storybook-mdx skill has already created the .mdx file. Use when a user says 'rewrite the usage guidelines for [Component]', 'humanize [Component]-usage.mdx', 'prepare [Component] for Storybook', or 'do the next component'."
 ---
 
-# Writing Component Usage Guidelines for Storybook
+# Step 2 — Rewriting Component Usage Guidelines for Storybook
 
-Rewrites `.md` component files in `packages/llms/src/components/` from a terse, robotic LLM-facing format into clear, human-readable documentation suitable for a developer audience on Storybook.
+This is Step 2 of a two-step process:
+
+1. `converting-md-to-storybook-mdx` converts the source `.md` file from `packages/llms/src/components/` into a Storybook `.mdx` file under `packages/storybook/src/`.
+2. This skill rewrites the converted `.mdx` file into clear, human-readable documentation for a developer audience.
+
+Do not use this skill until Step 1 is complete and the `.mdx` file already exists.
+
+This skill edits only existing `ComponentName-usage.mdx` files under `packages/storybook/src/`.
+
+Never delete, edit, move, or alter any `.md` file under `packages/llms/src/components/`.
 
 ## What This Process Is
 
@@ -13,15 +22,10 @@ This is a **rewrite, not a content expansion.** You are improving how existing i
 
 The goal is to make each file feel like it was written for a developer reading it in Storybook, not for a machine parsing it as a prompt.
 
-**Critical — source file protection:**
-
-You are NOT allowed to delete, edit, move, or alter any existing `.md` file in `packages/llms/src/components/`. Those files are the source of truth and the foundation for creating new documents. The output of this skill is a new `.md` file with the same name, placed under `packages/storybook/src/` — it is a separate file, not a replacement.
-
 **Rewrite rules:**
 
-- Keep the component name exactly as it appears in the frontmatter `name` field. Do not rename files.
 - Keep every rule, constraint, and usage guideline that already exists in the source file.
-- Do not add information that is not already present in the original file — except when filling in a missing or thin Content guidance section through research (see below).
+- Do not add information that is not already present in the original `.mdx` file — except when filling in a missing or thin Content guidance section through research (see below).
 - You may reword sentences for clarity, flow, and tone.
 - You may add brief connecting prose to improve readability between sections.
 - You may use bullet points where they genuinely aid understanding, but do not default to bullet-only formatting throughout. Mix prose and bullets naturally.
@@ -29,72 +33,97 @@ You are NOT allowed to delete, edit, move, or alter any existing `.md` file in `
 
 ---
 
+## Target Files
+
+This skill rewrites existing `.mdx` files under `packages/storybook/src/`.
+
+Files follow this naming convention:
+
+`ComponentName-usage.mdx`
+
+Examples:
+
+- `packages/storybook/src/layout/Accordion-usage.mdx`
+- `packages/storybook/src/call-to-action/Button-usage.mdx`
+- `packages/storybook/src/form/string/Select-usage.mdx`
+
+Do not create a new `.md` file.
+
+Do not edit files under `packages/llms/src/components/`.
+
+Do not rename the `.mdx` file.
+
+---
+
 ## Page Template
 
-Every component file must follow this structure. Use the sections that apply — omit sections that have no relevant content for that component.
+Every rewritten `.mdx` file must follow this structure. Use the sections that apply — omit sections that have no relevant content for that component.
 
-```markdown
----
-name: ComponentName
-description: One sentence description of what the component does.
----
+```mdx
+import {Meta} from '@storybook/addon-docs/blocks';
+
+<Meta title="@components/section/ComponentName" />
+
+{/* storybook-usage-guidelines: rewritten */}
+
+# ComponentName
+
+One sentence description of what the component does.
 
 ## Overview
 
-[1–3 sentences expanding on what this component is and when to use it. Written for a human developer, not an LLM.]
+[1–3 sentences explaining what this component is and when to use it.]
 
 ## Props
 
-[If the component has Plasma-specific props, list them here. If not, use the shorthand line below.]
-
-_This component has no additional props beyond the Mantine base. Refer to the [Mantine documentation](https://mantine.dev) for all available props._
-
-[If props exist, use this format for each:]
-
-**`propName`** `Type` — Description of what this prop does and when to use it. Defaults to `value` if not set.
+[Props content.]
 
 ## Sub-components
 
-[If sub-components exist:]
-
-Plasma provides pre-configured sub-components that handle styling and behavior. Use these instead of setting props manually.
-
-| Sub-component       | Purpose      |
-| ------------------- | ------------ |
-| `Component.SubName` | What it does |
-
-[Add any important notes about specific sub-components in prose beneath the table.]
+[Sub-components content.]
 
 ## Usage
 
-[Code example(s) showing the most common real-world use. Keep as-is from the original — do not alter code.]
-
-[After the code block, add 1–3 sentences or a short list explaining what the example demonstrates, if the code alone is not self-explanatory.]
+[Code examples copied exactly from the original Step 1 `.mdx`.]
 
 ## Content guidance
 
-[See the Content guidance section rules below.]
+[Content guidance rules.]
 
 ---
 
-[Full Plasma documentation]({{BASE_URL}})
+{/* TODO: Replace with full Plasma docs URL */}
 ```
 
 ---
 
 ## Section-by-Section Rules
 
-### Frontmatter
+### Meta block, marker, H1, and description
 
-Keep `name` and `description` exactly as they are. Do not edit these.
+Keep the `import { Meta }` line unchanged.
+
+Keep the `<Meta title="..." />` block unchanged.
+
+As the final edit in Step 2, add this marker immediately after the `<Meta title="..." />` block:
+
+```mdx
+{/* storybook-usage-guidelines: rewritten */}
+```
+
+Keep the `# H1` heading unchanged.
+
+Keep the description line directly beneath the H1 unchanged.
 
 ### Overview
 
-Write 1–3 natural sentences that answer: what is this component, and when would a developer reach for it? This expands on the `description` field without repeating it word for word. It should feel like the opening of a well-written README.
+Write 1–3 natural sentences that answer: what is this component, and when would a developer reach for it? This expands on the description line without repeating it word for word. It should feel like the opening of a well-written README.
 
 ### Props
 
-If there are no Plasma-specific props, use the standardized shorthand line. Do not leave this section blank or omit it.
+If there are no Plasma-specific props, use this standardized shorthand line. Do not leave this section blank or omit it.
+
+_This component has no additional props beyond the Mantine base. Refer to the [Mantine documentation](https://mantine.dev) for all available props._
 
 If props exist, write each one as a sentence or two — not a dense one-liner. The prop name and type stay in code formatting. The description should tell a developer what the prop does in practice, not just what it is.
 
@@ -110,87 +139,241 @@ Keep all code blocks exactly as they are — do not alter, reformat, or correct 
 
 This section needs the most care. The content guidance section gives developers rules for what text to write when using the component — labels, headings, placeholder text, error messages, etc.
 
-**Structure:**
+Follow `references/expected-format.md`.
 
-Use bold subheadings (not heading elements) for each distinct part of the component that has copy rules. Name the UI part, not the concept. Include the sub-component or prop name in backticks where applicable.
+Every Content guidance section must:
 
-Example: `**Control labels (`Accordion.Control`)**`
+- Use `## Content guidance` as the section heading.
+- Use bold subheadings, not `###` headings.
+- Include the prop or sub-component name in backticks where one exists.
+- Name the UI part, not the abstract concept.
+- Include at least two bold subheadings.
+- Use bullets only under each bold subheading.
+- Start each bullet with an imperative verb or "Don't".
+- Include counter-examples inline when the rule is about syntax or phrasing.
+- Cover primary labels, primary body/content, and ordering or grouping logic when applicable.
 
-Under each subheading, write the rules as a short bulleted list. Each bullet should be one rule. Start each bullet with an imperative verb or "Avoid".
-
-Include a counter-example inline when the rule is about syntax or phrasing:
-`"Project settings" — not "Configure your project settings"`
-
-**Minimum coverage:**
-
-Every content guidance section must address at minimum:
-
-- The primary label or title element
-- The primary body or content area
-- Ordering or grouping logic (if the component contains multiple items)
-
-**Research:**
-
-If the existing content guidance section is thin, incomplete, or missing entirely, research at least two authoritative sources before writing it. Prioritize:
-
-- Nielsen Norman Group (nngroup.com)
-- Carbon Design System (carbondesignsystem.com)
-- Material Design (m3.material.io)
-- Red Hat Design System (ux.redhat.com)
-- Other major enterprise design systems
-
-Fetch the actual pages — do not rely on search snippets alone. Look for: character limits, casing rules, punctuation rules, syntax patterns, prohibited patterns.
-
-**Cross-check before writing:**
-
-Any rule drawn from third-party research must be cross-checked against the original source file in `packages/llms/src/components/` and the Plasma writing rules in [plasma-writing-rules.md](references/plasma-writing-rules.md). Coveo's own documentation and guidelines are the source of truth. Do not add rules that contradict or conflict with what is already written in the original file or the Plasma writing rules — discard any third-party guidance that does not align.
-
-Do not cite sources inline.
+Do not invent behavior that is unsupported by the source `.md`, stories, or component code.
 
 ---
 
-## Writing Style
+## Code Block Preservation
 
-All rewritten copy must follow the Plasma writing rules. Key points:
+Before rewriting, identify every fenced code block in the `.mdx` file.
+
+During the rewrite:
+
+- Do not edit code block contents.
+- Do not reformat code.
+- Do not fix imports.
+- Do not change indentation.
+- Do not change comments.
+- Do not change blank lines.
+- Do not change the code fence language.
+
+After rewriting, compare every fenced code block against the original. They must be byte-for-byte identical.
+
+---
+
+## Writing Source of Truth
+
+The published Storybook content section is the only source of truth for writing style, tone, punctuation, capitalization, grammar, and UX copy rules.
+
+Read these files before rewriting:
+
+- `packages/storybook/src/foundation/content/AboutContent.mdx`
+- `packages/storybook/src/foundation/content/Voice.mdx`
+- `packages/storybook/src/foundation/content/WritingMechanics.mdx`
+
+Use `references/expected-format.md` only for the structure of the `## Content guidance` section.
+
+**Key style points:**
 
 - Sentence case for all UI text and headings
 - Active voice, present tense
 - Address the developer as "you" — never "we" or "the user"
 - Plain language — short words, short sentences
-- American spelling throughout (e.g. "behavior" not "behaviour", "standardized" not "standardised", "prioritize" not "prioritise")
-- No jargon replacements (see [plasma-writing-rules.md](references/plasma-writing-rules.md) for the full list)
+- American spelling throughout
 - No em-dashes, no exclamation marks, no ellipses in instructions
-
-Refer to both reference files before writing:
-
-- [plasma-writing-rules.md](references/plasma-writing-rules.md) — voice, grammar, punctuation, and style
-- [expected-format.md](references/expected-format.md) — structure and formatting for the Content guidance section specifically
 
 ---
 
-## Completeness Checklist
+## Source Priority
 
-Before considering a component file done and moving to the next, verify every item below. You cannot move on until all boxes are checked.
+Use sources in this order:
 
-- [ ] Every rule from the original source file in `packages/llms/src/components/` is present in the rewritten file
-- [ ] No rules have been added that do not appear in the original source file (except Content guidance filled in through research and cross-checked against Plasma guidelines)
-- [ ] The component `name` in the frontmatter is unchanged
-- [ ] The `description` in the frontmatter is unchanged
-- [ ] All code blocks are identical to the originals — not altered, reformatted, or corrected
-- [ ] The original source file in `packages/llms/src/components/` has not been touched
-- [ ] The output file is saved under `packages/storybook/src/` — not in `packages/llms/`
-- [ ] American spelling is used throughout
-- [ ] ALL CAPS directives (`SHOULD`, `MUST`, `MAY`) have been rewritten as natural language
-- [ ] Content guidance covers the primary label, primary body, and ordering/grouping logic at minimum
+1. Existing `.mdx` file being rewritten
+2. Original `.md` source file under `packages/llms/src/components/`
+3. Published Storybook content docs
+4. Existing `.stories.tsx` file, if present
+5. Actual component implementation, if needed
+6. Third-party design guidance, only for Content guidance
+
+The original `.md` file is used for cross-checking only. Do not edit it.
+
+The `.stories.tsx` file may be used as secondary context for examples, common usage patterns, and component behavior, but never as the primary writing source of truth.
+
+---
+
+## Research Rules for Content Guidance
+
+Third-party research is allowed only when the existing Content guidance is missing, thin, or incomplete.
+
+Prioritize:
+
+- Nielsen Norman Group
+- Carbon Design System
+- Material Design
+- Red Hat Design System
+- Other major enterprise design systems
+
+Requirements:
+
+- Fetch and read the actual source page.
+- Do not rely on search snippets.
+- Cross-check every researched rule against:
+    1. The original `.md` file
+    2. The existing `.stories.tsx` file, if present
+    3. The actual component code, if needed
+    4. Published Storybook content docs under `packages/storybook/src/foundation/content/`
+
+Do not add a third-party rule if it conflicts with Coveo code, existing component behavior, or published Storybook content guidance.
+
+Do not cite sources inside the MDX file.
+
+Do cite external sources in the final response and in the draft PR notes.
+
+---
+
+## Repository Workflow
+
+- Never modify files while on `master`.
+- Before modifying any file, check the current branch: `git branch --show-current`.
+- Before creating or switching branches, check for unrelated changes: `git status --short`.
+- If there are unrelated uncommitted changes, stop and ask the user before continuing.
+- If the current branch is `master`, determine the correct DS branch from the component group.
+    - If the correct DS branch is clear, create or switch to it before editing.
+    - If the correct DS branch is unclear, stop and ask the user.
+- Process one component at a time. Never batch-rewrite multiple components in one pass.
+- Validate after every component.
+- Commit one component at a time after Step 2 validation.
+- After a full alphabetic group is complete, push the branch and create a draft PR.
+- Do not request reviewers.
+
+See `references/pr-workflow.md` for the branch mapping, branch creation commands, commit format, and PR title templates.
+
+---
+
+## Branch-to-Component Validation
+
+Before editing a component, confirm it belongs to the current DS branch group by component name:
+
+| Component name starts with | Branch                  |
+| -------------------------- | ----------------------- |
+| `A`                        | `DS-400-A-components`   |
+| `B`                        | `DS-401-B-components`   |
+| `C`                        | `DS-426-C-components`   |
+| `E` through `M`            | `DS-403-E-M-components` |
+| `P` through `T`            | `DS-427-P-T-components` |
+
+There are no D, N, or O groups because there are no components for those letters.
+
+If the component does not belong to the current branch group, stop and ask the user before continuing.
+
+---
+
+## Stop Conditions
+
+Stop and ask the user before continuing if:
+
+- The current branch is `master` and the correct DS branch cannot be determined.
+- There are unrelated uncommitted changes in the working tree.
+- The target `.mdx` file does not exist.
+- The target file is not under `packages/storybook/src/`.
+- The file does not appear to be a Step 1 conversion.
+- The original `.md` source file cannot be found for cross-checking.
+- The `<Meta title="..." />`, H1, or description line is missing.
+- The component group does not match one of the approved DS branches.
+- Content guidance would require inventing behavior not supported by the source files.
+- Storybook build fails.
+
+---
+
+## Required Validation After Each Component
+
+After rewriting a component, run:
+
+```bash
+cd packages/storybook
+pnpm build
+```
+
+**If the build passes:**
+
+- Report that Step 2 validation passed.
+- Commit the file with this format: `docs(storybook): add <ComponentName> usage guidelines`
+- Wait for the user's confirmation before moving to the next component.
+
+**If the build fails:**
+
+- Leave the rewritten file in place.
+- Stop the workflow.
+- Report the exact command that failed and the relevant error output.
+- Do not continue to another component.
+- Do not attempt further fixes unless the user explicitly asks.
+
+---
+
+## After an Alphabetic Group Is Complete
+
+When every component in the assigned group has completed Step 1 and Step 2:
+
+1. Confirm the branch name matches the approved group branch.
+2. Confirm no files under `packages/llms/src/components/` were modified.
+3. Run `cd packages/storybook && pnpm build`.
+4. If the build passes, include the passing result in the PR body.
+5. If the build fails, leave the files in place and include the error output in the PR body.
+6. Push the branch.
+7. Create a draft PR.
+8. Do not request reviewers.
+9. Stop after creating the draft PR.
+
+Use `references/pr-body-template.md` for the PR body.
 
 ---
 
 ## Iteration Order
 
-If the user specifies a component to start with, begin there. If it is unclear which component to start with, ask the user before beginning. After the named file, continue one at a time, alphabetically, through `packages/llms/src/components/`. Do one file at a time and wait for the user to review and confirm before moving to the next.
+Always work one component at a time.
+
+If the user names a component, start with that component.
+
+If the user names a group, process only that group:
+
+- A
+- B
+- C
+- E-M
+- P-T
+
+Continue alphabetically within the assigned group.
+
+After each component, validate and wait for confirmation before moving to the next component.
+
+Do not process components outside the active branch group.
 
 ---
 
-## Example output reference
+## Reference Files
 
-See `packages/llms/src/components/Accordion.md` for a completed reference implementation.
+- `references/pr-workflow.md` — branch rules, branch mapping, commit format, PR titles, and draft PR command
+- `references/pr-body-template.md` — draft PR body template
+- `references/validation-checklist.md` — full checklist before marking a component complete
+- `references/examples.md` — good and bad output examples
+- `references/expected-format.md` — required structure for the Content guidance section
+
+---
+
+## Example Output Reference
+
+See `references/examples.md` for good and bad output examples.
