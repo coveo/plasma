@@ -12,15 +12,20 @@ This is **Step 2 of a two-step process**:
 
 Do not use this skill until Step 1 is complete and the `.mdx` file already exists.
 
-**You are NEVER allowed to touch any file under `packages/llms/src/components/`. That folder is off-limits.**
+Never edit, delete, move, rename, or overwrite any file under `packages/llms/src/components/`. You may read the original `.md` source file for cross-checking only. Treat it as read-only source material.
 
 ---
 
 ## Repository workflow
 
-- Never work directly on `master`.
+- Never modify files while on `master`.
 - Before modifying any file, check the current branch: `git branch --show-current`.
-- If the current branch is `master`, create or switch to the correct DS branch before continuing.
+- Before creating or switching branches, check for unrelated changes: `git status --short`.
+- If there are unrelated uncommitted changes, stop and ask the user before continuing.
+- If the current branch is `master`, determine the correct DS branch from the component group.
+    - If the correct DS branch is clear, create or switch to it before editing.
+    - If the correct DS branch is unclear, stop and ask the user.
+- If the current branch is not `master`, confirm it matches the expected DS branch for the component.
 - Process one component at a time. Never batch-rewrite multiple components in one pass.
 - Validate after every component. Do not continue to the next until the current component's build passes and the user confirms.
 - After a full alphabetic group is complete, push the branch and create a draft PR. Do not request reviewers.
@@ -31,13 +36,15 @@ See [references/pr-workflow.md](references/pr-workflow.md) for the branch mappin
 
 ## Branch-to-component validation
 
-Before editing a component, confirm it belongs to the current DS branch group:
+Before editing a component, confirm it belongs to the current DS branch group by component name:
 
-- `Accordion`, `ActionIcon`, `Alert`, `AppShell` → `DS-400-A-components`
-- `Badge`, `BlankSlate`, `BrowserPreview`, `Button` → `DS-401-B-components`
-- `ChildForm`, `Chip`, `CodeEditor`, `Collection`, `CopyToClipboard` → `DS-426-C-components`
-- `EllipsisText` through `Modal` → `DS-403-E-M-components`
-- `PasswordInput` through `Table` → `DS-427-P-T-components`
+- Components starting with `A` → `DS-400-A-components`
+- Components starting with `B` → `DS-401-B-components`
+- Components starting with `C` → `DS-426-C-components`
+- Components starting with `E` through `M` → `DS-403-E-M-components`
+- Components starting with `P` through `T` → `DS-427-P-T-components`
+
+There are no D, N, or O groups because there are no components for those letters.
 
 If the component does not belong to the current branch group, stop and ask the user before continuing.
 
@@ -47,8 +54,15 @@ If the component does not belong to the current branch group, stop and ask the u
 
 Stop and ask the user before continuing if:
 
-- The current branch is `master`
+- The current branch is `master` and the correct DS branch cannot be determined from the component group
+- There are unrelated uncommitted changes in the working tree
 - The Step 1 `.mdx` file does not yet exist for the component
+- The target `.mdx` file is not under `packages/storybook/src/`
+- More than one matching `ComponentName-usage.mdx` file exists
+- The file already contains `{/* storybook-usage-guidelines: rewritten */}` and the user has not explicitly asked to rewrite it again
+- The original `.md` source file cannot be found for read-only cross-checking
+- The `<Meta title="..." />`, H1, or description line is missing
+- Fenced code blocks cannot be compared before and after rewriting
 - Content guidance would require inventing behavior not supported by the source files or component code
 - The Storybook build fails
 - The component group does not match one of the approved DS branches
@@ -73,19 +87,18 @@ This is a **rewrite, not a content expansion.** You are improving how existing i
 
 ## Source priority
 
-Before rewriting, read the following sources in this order:
+Use sources in this order:
 
-1. The existing `.mdx` file being rewritten
-2. The original `.md` source file under `packages/llms/src/components/`
-3. Published Storybook content docs under `packages/storybook/src/content/`:
-    - `AboutContent.mdx`
-    - `Voice.mdx`
-    - `WritingMechanics.mdx`
-4. The existing `.stories.tsx` file (for usage patterns and component behavior)
-5. The actual component implementation, if needed to verify behavior
-6. Third-party design guidance — only for Content guidance, and only when the existing section is missing or thin
+1. Existing `.mdx` file being rewritten
+2. Original `.md` source file under `packages/llms/src/components/`
+3. Writing-practices documentation under `packages/llms/src/content/`
+4. Existing `.stories.tsx` file, if present
+5. Actual component implementation, if needed
+6. Third-party design guidance, only for Content guidance
 
-Never treat `.stories.tsx` as the primary source of truth for writing rules. The published Storybook content docs are the source of truth for voice, grammar, and style.
+The original `.md` component file is used for read-only cross-checking. Do not edit it.
+
+The `.stories.tsx` file may be used as secondary context for examples, common usage patterns, and component behavior, but never as the primary writing source of truth.
 
 ---
 
@@ -109,7 +122,7 @@ import {Meta} from '@storybook/addon-docs/blocks';
 # Accordion
 ```
 
-This marker signals that Step 2 is complete. Skill 1 must not overwrite this file without explicit user permission.
+This marker signals that Step 2 is complete. If the marker is already present, do not add a duplicate. Treat the file as already rewritten unless the user explicitly asks to revise it again. Skill 1 must not overwrite this file without explicit user permission.
 
 ---
 
@@ -153,6 +166,8 @@ One sentence description of what the component does.
 {/* TODO: Replace with full Plasma docs URL */}
 ```
 
+Do not reformat the import line. Keep it exactly as it appears in the Step 1 `.mdx` file.
+
 ---
 
 ## Section-by-section rules
@@ -174,7 +189,7 @@ If the component has no Plasma-specific props, check whether it extends Mantine:
 
 Format each prop as:
 
-**`propName`** `Type` — Description of what this prop does in practice. Defaults to `value` if not set.
+**`propName`** `Type`: Description of what this prop does in practice. Defaults to `value` if not set.
 
 ### Sub-components
 
@@ -192,7 +207,7 @@ This section gives developers rules for what text to write — labels, headings,
 
 Use bold subheadings (not heading elements) for each distinct UI part that has copy rules. Name the part, not the concept. Include the sub-component or prop name in backticks where applicable.
 
-Under each subheading, write one rule per bullet. Start each bullet with an imperative verb or "Avoid". Include a counter-example inline when the rule is about phrasing: `"Project settings" — not "Configure your project settings"`.
+Under each subheading, write one rule per bullet. Start each bullet with an imperative verb or "Don't". Include a counter-example inline when the rule is about phrasing: `"Project settings" — not "Configure your project settings"`.
 
 Every Content guidance section must cover at minimum:
 
@@ -201,6 +216,37 @@ Every Content guidance section must cover at minimum:
 - Ordering or grouping logic (if the component contains multiple items)
 
 See [references/expected-format.md](references/expected-format.md) for the full structure spec.
+
+---
+
+## Prose line formatting
+
+Write one sentence per line in all prose sections.
+
+In MDX, two sentences on adjacent lines with no blank line between them render as a single paragraph — the line break is invisible to the reader.
+Each sentence must be on its own line, separated from the next by a blank line, so that it renders as a separate paragraph.
+
+**Correct:**
+
+```mdx
+Use an Accordion to organize related content into collapsible sections.
+
+It works well when vertical space is limited and not all content needs to be visible at once.
+```
+
+**Incorrect:**
+
+```mdx
+Use an Accordion to organize related content into collapsible sections.
+It works well when vertical space is limited and not all content needs to be visible at once.
+```
+
+Exceptions — do not apply this rule inside:
+
+- Fenced code blocks
+- Table cells
+- Bullet list items
+- Numbered list items
 
 ---
 
@@ -226,24 +272,23 @@ Requirements:
 
 - Fetch and read the actual source page. Do not rely on search snippets.
 - Cross-check every researched rule against:
-    1. The original `.md` file
+    1. The original `.md` component file
     2. The existing `.stories.tsx` file, if present
-    3. The published Storybook content docs under `packages/storybook/src/content/`
+    3. The writing-practices documentation under `packages/llms/src/content/`
     4. The actual component code, if needed
-- Do not add a third-party rule if it conflicts with Coveo code, existing component behavior, or published Storybook content guidance.
+- Do not add a third-party rule if it conflicts with Coveo code, existing component behavior, or the writing-practices documentation under `packages/llms/src/content/`.
 - Do not cite sources inside the MDX file.
 - Do cite external sources in your final response and in the draft PR notes under "External research used".
 
 ---
 
-## Writing style
+## Writing source of truth
 
-Follow the published Storybook content docs as the source of truth. Before rewriting, read:
+The content documentation under `packages/llms/src/content/` is the source of truth for writing style, tone, punctuation, capitalization, grammar, and UX copy rules.
 
-- `packages/storybook/src/content/AboutContent.mdx`
-- `packages/storybook/src/content/Voice.mdx`
-- `packages/storybook/src/content/WritingMechanics.mdx`
-- `packages/storybook/src/content/ProductVocabulary.mdx`
+Read the relevant files in `packages/llms/src/content/` before rewriting component usage guidelines.
+
+Use `references/expected-format.md` only for the structure of the `## Content guidance` section.
 
 Key rules:
 
@@ -268,7 +313,7 @@ pnpm build
 If the build passes:
 
 - Report that validation passed.
-- Commit the file: `docs(storybook): add <ComponentName> usage guidelines`
+- Commit the file: `docs(storybook): rewrite <ComponentName> usage guidelines`
 - Wait for the user's confirmation before moving to the next component.
 
 If the build fails:
@@ -299,7 +344,7 @@ A component is done only when all of the following are true:
 - Storybook build has been run and passed
 - Build result has been reported
 - Source `.md` file is untouched
-- Changes have been committed on the correct DS branch
+- Changes have been committed on the correct DS branch with message `docs(storybook): rewrite <ComponentName> usage guidelines`
 
 ---
 

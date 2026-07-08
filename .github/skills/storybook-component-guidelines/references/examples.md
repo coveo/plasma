@@ -9,7 +9,7 @@ A correct Step 2 rewrite:
 - Rewrites machine-facing directives (`MUST`, `SHOULD`, `MAY`) into natural developer language
 - Preserves every rule from the source — nothing is dropped or changed in meaning
 - Keeps all fenced code blocks byte-for-byte identical to the originals
-- Adds a Content guidance section grounded in the source file, Coveo code, Storybook content docs, or cited external research
+- Adds a Content guidance section grounded in the source file, Coveo code, writing practices documentation under `packages/llms/src/content/`, or cited external research
 - Leaves all files under `packages/llms/src/components/` untouched
 
 ## Bad output
@@ -20,7 +20,7 @@ A Step 2 rewrite that must be rejected:
 - Drops a rule that existed in the original
 - Rewrites or reformats a fenced code block
 - Changes the `<Meta title="..." />` value
-- Uses third-party guidance without cross-checking against Coveo code or Storybook content docs
+- Uses third-party guidance without cross-checking against Coveo code or writing practices documentation under `packages/llms/src/content/`
 - Cites research sources inline in the MDX file
 - Touches any file under `packages/llms/src/components/`
 - Omits the Step 2 completion marker
