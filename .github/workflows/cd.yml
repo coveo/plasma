@@ -46,9 +46,12 @@ jobs:
               uses: ./.github/actions/test
             - name: Publish stable releases
               if: github.ref_name == 'master'
-              run: |
-                  pnpm release:publish
-                  git push --follow-tags
+              uses: changesets/action@6a0a831ff30acef54f2c6aa1cbbc1096b066edaf # v1.7.0
+              with:
+                  publish: pnpm release:publish
+                  createGithubReleases: true
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             - name: Configure git for prerelease commits
               if: github.ref_name == 'next'
               uses: ./.github/actions/configure-git-ssh
