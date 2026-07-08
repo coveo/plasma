@@ -11,6 +11,7 @@ env:
 
 permissions:
     pull-requests: write
+    id-token: write
     actions: read
     contents: write
     security-events: write
