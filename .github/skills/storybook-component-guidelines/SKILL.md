@@ -115,7 +115,7 @@ The top of a finished file must look like this:
 ```mdx
 import {Meta} from '@storybook/addon-docs/blocks';
 
-<Meta title="@components/layout/Accordion" />
+<Meta title="@components/layout/Accordion/Usage" />
 
 {/* storybook-usage-guidelines: rewritten */}
 
@@ -133,7 +133,7 @@ Every component file must follow this structure. Use the sections that apply —
 ```mdx
 import {Meta} from '@storybook/addon-docs/blocks';
 
-<Meta title="@components/section/ComponentName" />
+<Meta title="@components/section/ComponentName/Usage" />
 
 {/* storybook-usage-guidelines: rewritten */}
 
@@ -175,6 +175,14 @@ Do not reformat the import line. Keep it exactly as it appears in the Step 1 `.m
 ### Meta block, H1, and description
 
 Keep the `import { Meta }` line, `<Meta title="..." />`, the `# H1` heading, and the description line exactly as they are. Do not alter any of these.
+
+The `<Meta title>` must follow this pattern, with `/Usage` appended as the final segment:
+
+```mdx
+<Meta title="@components/section/ComponentName/Usage" />
+```
+
+This causes the page to appear as "Usage" in the Storybook sidebar under the component, rather than "Docs".
 
 ### Overview
 

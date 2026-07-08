@@ -109,7 +109,7 @@ Do the following in order:
     ```mdx
     import {Meta} from '@storybook/addon-docs/blocks';
 
-    <Meta title="@components/section/ComponentName" />
+    <Meta title="@components/section/ComponentName/Usage" />
     ```
 
 3. **Escape JSX-sensitive prose** — escape the following characters when they appear outside fenced code blocks and inline code:
@@ -144,6 +144,8 @@ The `form` section has sub-folders — always read the stories file to find the 
 | `packages/storybook/src/form/boolean/Checkbox.stories.tsx`     | `packages/storybook/src/form/boolean/Checkbox-usage.mdx`     |
 | `packages/storybook/src/form/number/NumberInput.stories.tsx`   | `packages/storybook/src/form/number/NumberInput-usage.mdx`   |
 | `packages/storybook/src/form/date/DatePickerInput.stories.tsx` | `packages/storybook/src/form/date/DatePickerInput-usage.mdx` |
+
+The `<Meta title>` for each file must use the title from the `.stories.tsx` file with `/Usage` appended. For example, if the stories file has `title: '@components/layout/Accordion'`, the MDX title must be `@components/layout/Accordion/Usage`.
 
 Do not create or modify any `.stories.tsx` file. Do not modify the original `.md` source file.
 
