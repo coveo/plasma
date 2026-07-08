@@ -22,12 +22,17 @@ This is a **duplication then conversion**. You are creating a new `.mdx` file ba
 
 ## Repository workflow
 
-- Never work directly on `master`.
+- Never modify files while on `master`.
 - Before modifying any file, check the current branch: `git branch --show-current`.
-- If the current branch is `master`, create or switch to the correct DS branch before continuing.
+- Before creating or switching branches, check for unrelated changes: `git status --short`.
+- If there are unrelated uncommitted changes, stop and ask the user before continuing.
+- If the current branch is `master`, determine the correct DS branch from the component group.
+    - If the correct DS branch is clear, create or switch to it before editing.
+    - If the correct DS branch is unclear, stop and ask the user.
+- If the current branch is not `master`, confirm it matches the expected DS branch for the component.
 - Process one component at a time. Never batch-convert multiple components in one pass.
 - Validate after every component. Do not continue to the next until the current component's build passes and the user confirms.
-- After a full alphabetic group is complete, push the branch and create a draft PR. Do not request reviewers.
+- Do not create draft PRs. Draft PR creation is handled by the `storybook-component-guidelines` skill (Step 2) after the full alphabetic group is complete.
 
 See [references/pr-workflow.md](references/pr-workflow.md) for the branch mapping, branch creation commands, commit format, and PR title templates.
 
@@ -35,13 +40,15 @@ See [references/pr-workflow.md](references/pr-workflow.md) for the branch mappin
 
 ## Branch-to-component validation
 
-Before editing a component, confirm it belongs to the current DS branch group:
+Before editing a component, confirm it belongs to the current DS branch group by component name:
 
-- `Accordion`, `ActionIcon`, `Alert`, `AppShell` → `DS-400-A-components`
-- `Badge`, `BlankSlate`, `BrowserPreview`, `Button` → `DS-401-B-components`
-- `ChildForm`, `Chip`, `CodeEditor`, `Collection`, `CopyToClipboard` → `DS-426-C-components`
-- `EllipsisText` through `Modal` → `DS-403-E-M-components`
-- `PasswordInput` through `Table` → `DS-427-P-T-components`
+- Components starting with `A` → `DS-400-A-components`
+- Components starting with `B` → `DS-401-B-components`
+- Components starting with `C` → `DS-426-C-components`
+- Components starting with `E` through `M` → `DS-403-E-M-components`
+- Components starting with `P` through `T` → `DS-427-P-T-components`
+
+There are no D, N, or O groups because there are no components for those letters.
 
 If the component does not belong to the current branch group, stop and ask the user before continuing.
 
@@ -51,7 +58,9 @@ If the component does not belong to the current branch group, stop and ask the u
 
 Stop and ask the user before continuing if:
 
-- The current branch is `master`
+- The current branch is `master` and the correct DS branch cannot be determined from the component group
+- There are unrelated uncommitted changes in the working tree
+- The source `.md` file is missing YAML frontmatter, `name`, or `description`
 - The target `.mdx` file already exists and would need to be overwritten
 - A Step 2 completion marker is present in an existing file
 - More than one matching `.stories.tsx` file exists for the component
@@ -89,6 +98,8 @@ name: Accordion
 description: Collapsible content panels with an additional disabled control variant.
 ---
 ```
+
+Before converting, verify the frontmatter contains both `name` and `description`. If the frontmatter is missing, malformed, or does not contain both fields, stop and ask the user.
 
 Do the following in order:
 
@@ -149,9 +160,9 @@ pnpm build
 
 If the build passes:
 
-- Report that validation passed.
-- Commit the file: `docs(storybook): add <ComponentName> usage guidelines`
-- Wait for the user's confirmation before moving to the next component.
+- Report that Step 1 validation passed.
+- Commit the converted MDX file with this message: `docs(storybook): convert <ComponentName> usage mdx`
+- Continue to the `storybook-component-guidelines` skill for the same component, or wait for the user's instruction.
 
 If the build fails:
 

@@ -7,7 +7,7 @@ Reference for the `converting-md-to-storybook-mdx` skill.
 Every docs-only MDX page needs exactly two things at the top:
 
 ```mdx
-import { Meta } from '@storybook/addon-docs/blocks';
+import {Meta} from '@storybook/addon-docs/blocks';
 
 <Meta title="@components/section/ComponentName" />
 ```
@@ -22,11 +22,11 @@ MDX is parsed as JSX, so some characters valid in Markdown will break the parser
 
 ### Angle brackets in prose
 
-| Context | Action |
-| --- | --- |
-| Inside a fenced code block | Leave as-is — not parsed as JSX |
-| Inside inline code | Leave as-is |
-| Bare `<tag>` or `</tag>` in prose | Escape to `&lt;tag&gt;` |
+| Context                           | Action                          |
+| --------------------------------- | ------------------------------- |
+| Inside a fenced code block        | Leave as-is — not parsed as JSX |
+| Inside inline code                | Leave as-is                     |
+| Bare `<tag>` or `</tag>` in prose | Escape to `&lt;tag&gt;`         |
 
 **Before (breaks MDX):**
 
@@ -45,9 +45,9 @@ Set the &lt;collection&gt; attribute to the name of your index.
 Bare `{` and `}` in prose are treated as JSX expression delimiters. Escape them if they appear outside code blocks:
 
 | Character | Escaped form |
-| --- | --- |
-| `{` | `&#123;` |
-| `}` | `&#125;` |
+| --------- | ------------ |
+| `{`       | `&#123;`     |
+| `}`       | `&#125;`     |
 
 ---
 
@@ -64,6 +64,30 @@ Source files in `packages/llms/src/components/` end with:
 ```mdx
 {/* TODO: Replace with full Plasma docs URL */}
 ```
+
+---
+
+## Prose line formatting
+
+In MDX, two sentences on adjacent lines without a blank line between them render as a single paragraph.
+Each sentence that should appear as its own paragraph must be separated from the next by a blank line.
+
+**Correct:**
+
+```mdx
+Use an Accordion to organize related content into collapsible sections.
+
+It works well when vertical space is limited.
+```
+
+**Incorrect (renders as one paragraph):**
+
+```mdx
+Use an Accordion to organize related content into collapsible sections.
+It works well when vertical space is limited.
+```
+
+This rule applies to all prose sections. It does not apply inside fenced code blocks, table cells, bullet list items, or numbered list items.
 
 ---
 
