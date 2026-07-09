@@ -1,23 +1,58 @@
 import {Meta} from '@storybook/addon-docs/blocks';
+import {Table} from '@mantine/core';
 
 <Meta title="@components/feedback/Alert/Usage" />
 
+{/* storybook-usage-guidelines: rewritten */}
+
 # Alert
+
 Alert callout for contextual information, advice, warnings, critical errors, and success states.
+
+## Overview
+
+Use an Alert to surface an in-page message that needs the user's attention — a tip, a caution, an error, or a confirmation that something succeeded. Alerts are static and contextual; they appear inline near the content they relate to, not as overlays or toasts.
+
+Choose the variant that matches the nature of the message so the visual weight matches the urgency.
 
 ## Props
 
-_No additional props beyond the Mantine base component._
+This component has no additional props beyond the Mantine base. Refer to the [Mantine documentation](https://mantine.dev) for all available props.
 
 ## Sub-components
 
-Plasma provides pre-configured sub-components as convenience wrappers. You SHOULD use these over setting props manually.
+Plasma provides a sub-component for each alert type. Use these instead of setting the `variant` prop manually.
 
-- `Alert.Information`
-- `Alert.Advice`
-- `Alert.Warning`
-- `Alert.Critical`
-- `Alert.Success`
+<Table withTableBorder withColumnBorders>
+    <Table.Thead>
+        <Table.Tr>
+            <Table.Th>Sub-component</Table.Th>
+            <Table.Th>Purpose</Table.Th>
+        </Table.Tr>
+    </Table.Thead>
+    <Table.Tbody>
+        <Table.Tr>
+            <Table.Td>`Alert.Information`</Table.Td>
+            <Table.Td>Neutral context or background information the user may find helpful</Table.Td>
+        </Table.Tr>
+        <Table.Tr>
+            <Table.Td>`Alert.Advice`</Table.Td>
+            <Table.Td>A tip or recommendation to guide the user toward a better outcome</Table.Td>
+        </Table.Tr>
+        <Table.Tr>
+            <Table.Td>`Alert.Warning`</Table.Td>
+            <Table.Td>A condition that may cause problems if ignored</Table.Td>
+        </Table.Tr>
+        <Table.Tr>
+            <Table.Td>`Alert.Critical`</Table.Td>
+            <Table.Td>An error or failure that needs immediate attention</Table.Td>
+        </Table.Tr>
+        <Table.Tr>
+            <Table.Td>`Alert.Success`</Table.Td>
+            <Table.Td>Confirmation that an action completed successfully</Table.Td>
+        </Table.Tr>
+    </Table.Tbody>
+</Table>
 
 ## Usage
 
@@ -28,6 +63,32 @@ import {Alert} from '@coveord/plasma-mantine';
 <Alert.Warning title="Warning">Proceed with caution.</Alert.Warning>
 <Alert.Critical title="Error">Something went wrong.</Alert.Critical>
 ```
+
+Match the sub-component to the intent of the message. Use `Alert.Critical` only for genuine errors — overusing high-urgency variants reduces their effectiveness.
+
+## Content guidance
+
+**`title`:**
+
+- Use sentence case
+- Keep to 1–4 words
+- Name the situation, not the severity: "Unsaved changes" not "Warning"
+- Don't end with punctuation
+
+**Alert body:**
+
+- Write as one or two full sentences ending with a period
+- Lead with what happened or what the user needs to know, then add context or next steps
+- Keep to 25 words or fewer
+- Use plain language — avoid jargon and technical terms the user may not know
+
+**Variant selection:**
+
+- Use `Alert.Information` for neutral context that isn't time-sensitive
+- Use `Alert.Advice` for optional tips that improve the experience
+- Use `Alert.Warning` when ignoring the message could cause data loss or errors
+- Use `Alert.Critical` for failures that block the user or require immediate action
+- Use `Alert.Success` only after a user-initiated action completes — don't use it for passive status updates
 
 ---
 
