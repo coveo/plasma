@@ -1,5 +1,12 @@
 # storybook
 
+## 60.0.1
+
+### Patch Changes
+
+- Updated dependencies [[`9223822`](https://github.com/coveo/plasma/commit/92238225dba236cfff8e19855b419694b7a0ca40)]:
+  - @coveord/plasma-mantine@60.0.1
+
 ## 60.0.0
 
 ### Major Changes
