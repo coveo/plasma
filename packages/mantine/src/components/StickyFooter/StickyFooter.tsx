@@ -32,14 +32,25 @@ export type StickyFooterFactory = Factory<{
     stylesNames: StickyFooterStylesNames;
 }>;
 
-const defaultProps: Partial<StickyFooterProps> = {
+const defaultProps = {
     gap: 'xs',
     justify: 'flex-end',
-};
+} satisfies Partial<StickyFooterProps>;
 
 export const StickyFooter = factory<StickyFooterFactory>((props, ref) => {
-    const {borderTop, justify, gap, children, className, classNames, style, styles, unstyled, vars, ...others} =
-        useProps('StickyFooter', defaultProps, props);
+    const {
+        borderTop,
+        justify,
+        gap,
+        children,
+        className,
+        classNames,
+        style,
+        styles,
+        unstyled,
+        vars: _vars,
+        ...others
+    } = useProps('StickyFooter', defaultProps, props);
     const getStyles = useStyles<StickyFooterFactory>({
         name: 'StickyFooter',
         classes,

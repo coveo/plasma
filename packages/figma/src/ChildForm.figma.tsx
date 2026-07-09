@@ -6,6 +6,6 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2943-5116',
     {
         props: {},
-        example: (props) => <ChildForm in>Content</ChildForm>,
+        example: () => <ChildForm in>Content</ChildForm>,
     },
 );

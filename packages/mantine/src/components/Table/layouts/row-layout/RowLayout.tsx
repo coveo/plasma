@@ -19,7 +19,7 @@ export type RowLayoutFactory = Factory<{
     stylesNames: RowLayoutStylesNames;
     staticComponents: TableLayout;
 }>;
-const defaultProps: Partial<RowLayoutProps> = {};
+const defaultProps = {} satisfies Partial<RowLayoutProps>;
 
 export const RowLayout = ((props: RowLayoutProps) => {
     const {children, styles, classNames, unstyled} = useProps('PlasmaRowLayout', defaultProps, props);

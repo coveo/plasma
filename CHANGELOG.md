@@ -1,3 +1,15 @@
+## 59.8.0 (2026-07-08)
+
+* feat: add Storybook page for Chip component (#4484) d80b76c, closes #4484
+* feat(BrowserPreview): update BrowserPreview style and story (#4488) ee2fa93, closes #4488
+* feat(mantine): add PrerequisitesList component (#4482) fa586f9, closes #4482
+* feat(storybook): add content guidelines pages 41568af
+* DS-616 simplified "Content" section for llms folder (#4486) abc4ff0, closes #4486
+* Move Content outside Foundation folder (#4494) c88bc42, closes #4494
+* fix(ci): truncate branch name to 37 chars in Chromatic URL (#4490) 974f4b1, closes #4490 #4489
+
+
+
 ## <small>59.7.2 (2026-06-29)</small>
 
 * fix(mantine): add missing .js extensions in relative imports (#4485) 80e8ebf, closes #4485

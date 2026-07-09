@@ -1,6 +1,6 @@
 import {render, screen} from '@testing-library/react';
-import {extendScreen} from '../testing-library';
-import MockedIcons from './index';
+import {extendScreen} from '../testing-library/index.js';
+import MockedIcons from './index.js';
 
 const extendedScreen = extendScreen(screen);
 

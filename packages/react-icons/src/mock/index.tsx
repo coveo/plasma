@@ -1,5 +1,5 @@
 import {forwardRef, type SVGProps} from 'react';
-import {MockUtils} from './MockUtils';
+import {MockUtils} from './MockUtils.js';
 
 /**
  * You can use the following mock in jest to avoid loading the actual icons during tests, it can slow down your tests if you don't.

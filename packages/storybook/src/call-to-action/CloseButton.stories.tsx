@@ -1,10 +1,13 @@
 import {CloseButton} from '@coveord/plasma-mantine/components/CloseButton';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
-const meta: Meta<typeof CloseButton> = {
+interface CloseButtonStoryArgs {
+    size: 'sm' | 'md';
+}
+
+const meta: Meta<CloseButtonStoryArgs> = {
     title: '@components/call-to-action/CloseButton',
     id: 'CloseButton',
-    component: CloseButton,
     parameters: {
         layout: 'centered',
     },
@@ -20,8 +23,8 @@ const meta: Meta<typeof CloseButton> = {
     },
 };
 export default meta;
-type Story = StoryObj<typeof CloseButton>;
+type Story = StoryObj<CloseButtonStoryArgs>;
 
 export const Demo: Story = {
-    render: (props: {size: 'sm' | 'md'}) => <CloseButton size={props.size} />,
+    render: (args) => <CloseButton size={args.size} />,
 };

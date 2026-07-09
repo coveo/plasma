@@ -74,7 +74,7 @@ export function Example() {
     const store = useTable<TData>({
         initialState: {
             totalEntries: data.length,
-            pagination: {pageIndex: 0, pageSize: 10},
+            pagination: {page: 0, perPage: 10},
         },
     });
 

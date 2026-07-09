@@ -1,78 +1,72 @@
 {
     "name": "@coveord/plasma-mantine",
-    "version": "59.7.2",
+    "version": "60.0.0",
     "description": "A Plasma flavoured Mantine theme",
     "keywords": [
-        "plasma",
-        "mantine",
         "components",
-        "coveo"
+        "coveo",
+        "mantine",
+        "plasma"
     ],
     "bugs": {
         "url": "https://github.com/coveo/plasma/issues"
     },
+    "license": "Apache-2.0",
+    "author": "Coveo",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/coveo/plasma.git",
         "directory": "packages/mantine"
     },
-    "license": "Apache-2.0",
-    "author": "Coveo",
+    "type": "module",
+    "sideEffects": [
+        "./dist/theme/Plasmantine.js"
+    ],
     "exports": {
         ".": {
-            "require": "./dist/cjs/index.js",
-            "import": "./dist/esm/index.js"
+            "import": "./dist/index.js"
         },
         "./plasmantine": {
-            "types": "./dist/esm/theme.d.ts",
-            "require": "./dist/cjs/theme.js",
-            "import": "./dist/esm/theme.js"
+            "types": "./dist/theme.d.ts",
+            "import": "./dist/theme.js"
         },
         "./core": {
-            "types": "./dist/esm/core.d.ts",
-            "require": "./dist/cjs/core.js",
-            "import": "./dist/esm/core.js"
+            "types": "./dist/core.d.ts",
+            "import": "./dist/core.js"
         },
         "./hooks": {
-            "types": "./dist/esm/hooks.d.ts",
-            "require": "./dist/cjs/hooks.js",
-            "import": "./dist/esm/hooks.js"
+            "types": "./dist/hooks.d.ts",
+            "import": "./dist/hooks.js"
         },
         "./form": {
-            "types": "./dist/esm/form.d.ts",
-            "require": "./dist/cjs/form.js",
-            "import": "./dist/esm/form.js"
+            "types": "./dist/form.d.ts",
+            "import": "./dist/form.js"
         },
         "./notifications": {
-            "types": "./dist/esm/notifications.d.ts",
-            "require": "./dist/cjs/notifications.js",
-            "import": "./dist/esm/notifications.js"
+            "types": "./dist/notifications.d.ts",
+            "import": "./dist/notifications.js"
         },
         "./components/*": {
-            "types": "./dist/esm/components/*/*.d.ts",
-            "require": "./dist/cjs/components/*/*.js",
-            "import": "./dist/esm/components/*/*.js"
+            "types": "./dist/components/*/*.d.ts",
+            "import": "./dist/components/*/*.js"
         },
         "./factory": {
-            "types": "./dist/esm/factory.d.ts",
-            "require": "./dist/cjs/factory.js",
-            "import": "./dist/esm/factory.js"
+            "types": "./dist/factory.d.ts",
+            "import": "./dist/factory.js"
         },
         "./context": {
-            "types": "./dist/esm/context.d.ts",
-            "require": "./dist/cjs/context.js",
-            "import": "./dist/esm/context.js"
-        }
+            "types": "./dist/context.d.ts",
+            "import": "./dist/context.js"
+        },
+        "./package.json": "./package.json"
     },
-    "main": "./dist/cjs/index.js",
-    "module": "./dist/esm/index.js",
     "scripts": {
-        "build": "node ../../scripts/build",
+        "build": "node ../../scripts/build.js",
         "clean": "rimraf dist",
-        "generate:components:exports": "node --experimental-strip-types scripts/GenerateMantineComponentExports.mts",
-        "lintfix": "../../node_modules/.bin/prettier --write \"**/*.{scss,ts,tsx,js,jsx,json,md,yml,html}\" && ../../node_modules/.bin/eslint \"**/*.{ts,tsx}\" --fix",
+        "generate:components:exports": "node --experimental-strip-types scripts/GenerateMantineComponentExports.ts",
+        "lintfix": "oxfmt --write && oxlint --fix",
         "prepublishOnly": "publint",
-        "start": "node ../../scripts/start",
+        "start": "node ../../scripts/start.js",
         "test": "cross-env TZ=UTC vitest run",
         "test:watch": "cross-env TZ=UTC vitest"
     },
@@ -85,14 +79,14 @@
         "@dnd-kit/utilities": "3.2.2",
         "@mantine/utils": "6.0.22",
         "@monaco-editor/react": "4.7.0",
-        "@swc/helpers": "0.5.21",
         "@tanstack/react-table": "8.21.3",
         "@tanstack/table-core": "8.21.3",
         "clsx": "2.1.1",
         "dayjs": "1.11.20",
         "fast-deep-equal": "3.1.3",
         "lodash.defaultsdeep": "4.6.1",
-        "monaco-editor": "0.55.1"
+        "monaco-editor": "0.55.1",
+        "tslib": "2.8.1"
     },
     "devDependencies": {
         "@mantine/carousel": "8.3.18",
@@ -103,8 +97,6 @@
         "@mantine/hooks": "8.3.18",
         "@mantine/modals": "8.3.18",
         "@mantine/notifications": "8.3.18",
-        "@swc/cli": "0.8.1",
-        "@swc/core": "1.15.32",
         "@testing-library/dom": "10.4.1",
         "@testing-library/jest-dom": "6.9.1",
         "@testing-library/react": "16.3.2",
@@ -112,13 +104,11 @@
         "@types/lodash.defaultsdeep": "4.6.9",
         "@types/react": "19.2.14",
         "@types/react-dom": "19.2.3",
-        "@vitest/eslint-plugin": "1.6.16",
+        "@typescript/native-preview": "7.0.0-dev.20260420.1",
         "cross-env": "10.1.0",
         "embla-carousel": "8.6.0",
         "embla-carousel-react": "8.6.0",
-        "eslint-plugin-testing-library": "7.16.2",
-        "eslint-plugin-vitest-globals": "1.6.1",
-        "jsdom": "29.1.0",
+        "jsdom": "29.1.1",
         "postcss": "8.5.14",
         "postcss-preset-mantine": "^1.11.0",
         "postcss-simple-vars": "^7.0.1",
@@ -126,8 +116,6 @@
         "react": "19.2.5",
         "react-dom": "19.2.5",
         "rimraf": "6.1.3",
-        "tslib": "2.8.1",
-        "typescript": "5.9.3",
         "vitest": "4.1.5"
     },
     "peerDependencies": {

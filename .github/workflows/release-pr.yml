@@ -1,0 +1,34 @@
+name: Release PR
+
+on:
+    push:
+        branches:
+            - master
+
+permissions:
+    contents: write
+    pull-requests: write
+
+jobs:
+    release-pr:
+        name: Create Or Update Release PR
+        runs-on: ubuntu-latest
+        steps:
+            - name: Harden Runner
+              uses: step-security/harden-runner@6c3c2f2c1c457b00c10c4848d6f5491db3b629df # v2.18.0
+              with:
+                  egress-policy: audit
+
+            - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+              with:
+                  fetch-depth: 0
+            - uses: ./.github/actions/setup
+            - name: Create or update the Changesets release PR
+              uses: changesets/action@6a0a831ff30acef54f2c6aa1cbbc1096b066edaf # v1.7.0
+              with:
+                  commit: 'chore(release): version packages'
+                  title: 'chore(release): version packages'
+                  version: pnpm changeset:version
+                  commitMode: github-api
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

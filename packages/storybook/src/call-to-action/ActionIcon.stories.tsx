@@ -11,7 +11,6 @@ type ActionIconStoryArgs = ActionIconProps & {
 const meta: Meta<ActionIconStoryArgs> = {
     title: '@components/call-to-action/ActionIcon',
     id: 'ActionIcon',
-    component: ActionIcon,
     parameters: {
         layout: 'centered',
     },
