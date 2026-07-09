@@ -1,26 +1,64 @@
 import {Meta} from '@storybook/addon-docs/blocks';
+import {Table} from '@mantine/core';
 
 <Meta title="@components/layout/AppShell/Usage" />
 
+{/* storybook-usage-guidelines: rewritten */}
+
 # AppShell
+
 Application layout shell with a scrollable main content area.
+
+## Overview
+
+Use AppShell to define the top-level structure of a page — header, navigation, main content, sidebar, and footer. It handles the layout scaffolding so you can focus on the content inside each region.
+
+The key behavior Plasma adds is that `AppShell.Main` wraps its children in a scrollable container that fills the available height, so the main content area scrolls independently from the rest of the shell.
 
 ## Props
 
-_No additional props beyond the Mantine base component._
+This component has no additional props beyond the Mantine base. Refer to the [Mantine documentation](https://mantine.dev) for all available props.
 
 ## Sub-components
 
-Plasma provides pre-configured sub-components as convenience wrappers. You SHOULD use these over setting props manually.
+Plasma provides pre-configured sub-components for each layout region. Use these instead of setting props manually.
 
-- `AppShell.Header`
-- `AppShell.Navbar`
-- `AppShell.Main`
-- `AppShell.Aside`
-- `AppShell.Footer`
-- `AppShell.Section`
+<Table withTableBorder withColumnBorders>
+    <Table.Thead>
+        <Table.Tr>
+            <Table.Th>Sub-component</Table.Th>
+            <Table.Th>Purpose</Table.Th>
+        </Table.Tr>
+    </Table.Thead>
+    <Table.Tbody>
+        <Table.Tr>
+            <Table.Td>`AppShell.Header`</Table.Td>
+            <Table.Td>Fixed top bar — typically holds branding, navigation, and global actions</Table.Td>
+        </Table.Tr>
+        <Table.Tr>
+            <Table.Td>`AppShell.Navbar`</Table.Td>
+            <Table.Td>Side navigation panel</Table.Td>
+        </Table.Tr>
+        <Table.Tr>
+            <Table.Td>`AppShell.Main`</Table.Td>
+            <Table.Td>Scrollable main content area that fills the remaining height</Table.Td>
+        </Table.Tr>
+        <Table.Tr>
+            <Table.Td>`AppShell.Aside`</Table.Td>
+            <Table.Td>Secondary side panel, typically on the right</Table.Td>
+        </Table.Tr>
+        <Table.Tr>
+            <Table.Td>`AppShell.Footer`</Table.Td>
+            <Table.Td>Fixed bottom bar</Table.Td>
+        </Table.Tr>
+        <Table.Tr>
+            <Table.Td>`AppShell.Section`</Table.Td>
+            <Table.Td>A scrollable or fixed section within a Navbar or Aside</Table.Td>
+        </Table.Tr>
+    </Table.Tbody>
+</Table>
 
-`AppShell.Main` wraps its children in a scrollable container that fills the available height. This ensures the main content area scrolls independently from the rest of the shell.
+Use `AppShell.Main` for all primary page content — it's the only region that scrolls independently from the rest of the shell.
 
 ## Usage
 
@@ -37,6 +75,22 @@ function Example() {
     );
 }
 ```
+
+Pass `header` and `navbar` props to `AppShell` to define the dimensions of those regions. The `breakpoint` on `navbar` controls when the sidebar collapses on smaller screens.
+
+## Content guidance
+
+**`AppShell.Header` content:**
+
+- Keep header content concise — the header is visible at all times and shouldn't compete with the main content
+- Use title case for navigation items inside the header
+- Use sentence case for all other text inside the header
+
+**`AppShell.Navbar` content:**
+
+- Use title case for navigation menu items
+- Keep nav labels short — 1 to 3 words where possible
+- Don't use punctuation at the end of nav labels
 
 ---
 
