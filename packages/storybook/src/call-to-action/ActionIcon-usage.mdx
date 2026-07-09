@@ -1,31 +1,86 @@
 import {Meta} from '@storybook/addon-docs/blocks';
+import {Table} from '@mantine/core';
 
 <Meta title="@components/call-to-action/ActionIcon/Usage" />
 
+{/* storybook-usage-guidelines: rewritten */}
+
 # ActionIcon
+
 Icon-only button that can trigger actions and can show a disabled-state tooltip.
+
+## Overview
+
+Use ActionIcon when an action is best represented by an icon alone — for example, delete, close, or edit controls in compact layouts where a full button label would clutter the UI.
+
+It extends Mantine's ActionIcon with support for async click handlers and a tooltip that appears when the button is disabled, letting you explain why the action isn't available.
 
 ## Props
 
-> Extends: `MantineActionIconProps`. Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
+> Extends `MantineActionIconProps`. Only Plasma-specific props are listed below. Refer to the [Mantine documentation](https://mantine.dev) for inherited props.
 
-**`onClick`** `ClickHandler<HTMLButtonElement>` · optional · default: `undefined` — Handler executed on click. Supports standard, async, and parameterless handlers. Async handlers MAY be provided; the button shows a loading state while the promise resolves.
-**`disabledTooltip`** `string` · optional · default: `undefined` — Tooltip message displayed when `disabled` is `true`.
-**`disabledTooltipProps`** `Omit<TooltipProps, 'disabled' | 'label' | 'children'>` · optional · default: `undefined` — Additional tooltip props that MAY be set on the disabled button tooltip.
+**`onClick`** `ClickHandler<HTMLButtonElement>` · optional
+
+Handler executed on click. Supports standard, async, and parameterless handlers. When you pass an async handler, the button automatically shows a loading state while the promise resolves — you don't need to manage that state yourself.
+
+**`disabledTooltip`** `string` · optional
+
+Tooltip message shown when the button has `disabled` set to `true`. Use this to explain why the action isn't available rather than leaving the user to guess.
+
+**`disabledTooltipProps`** `Omit<TooltipProps, 'disabled' | 'label' | 'children'>` · optional
+
+Additional props passed to the disabled-state tooltip. Use this when you need to adjust positioning, delay, or other tooltip behavior beyond the default.
 
 ## Sub-components
 
-Plasma provides pre-configured sub-components as convenience wrappers. You SHOULD use these over setting props manually.
+Plasma provides pre-configured sub-components for each emphasis level. Use these instead of setting props manually.
 
-- `ActionIcon.Group`
-- `ActionIcon.Primary`
-- `ActionIcon.Secondary`
-- `ActionIcon.Tertiary`
-- `ActionIcon.Quaternary`
-- `ActionIcon.DestructivePrimary`
-- `ActionIcon.DestructiveSecondary`
-- `ActionIcon.DestructiveTertiary`
-- `ActionIcon.DestructiveQuaternary`
+<Table withTableBorder withColumnBorders>
+    <Table.Thead>
+        <Table.Tr>
+            <Table.Th>Sub-component</Table.Th>
+            <Table.Th>Purpose</Table.Th>
+        </Table.Tr>
+    </Table.Thead>
+    <Table.Tbody>
+        <Table.Tr>
+            <Table.Td>`ActionIcon.Group`</Table.Td>
+            <Table.Td>Groups multiple ActionIcon buttons together</Table.Td>
+        </Table.Tr>
+        <Table.Tr>
+            <Table.Td>`ActionIcon.Primary`</Table.Td>
+            <Table.Td>Highest emphasis — use for the most important action in context</Table.Td>
+        </Table.Tr>
+        <Table.Tr>
+            <Table.Td>`ActionIcon.Secondary`</Table.Td>
+            <Table.Td>High emphasis — use for important but non-primary actions</Table.Td>
+        </Table.Tr>
+        <Table.Tr>
+            <Table.Td>`ActionIcon.Tertiary`</Table.Td>
+            <Table.Td>Medium emphasis — use for supplementary actions</Table.Td>
+        </Table.Tr>
+        <Table.Tr>
+            <Table.Td>`ActionIcon.Quaternary`</Table.Td>
+            <Table.Td>Low emphasis — use for minor or contextual actions</Table.Td>
+        </Table.Tr>
+        <Table.Tr>
+            <Table.Td>`ActionIcon.DestructivePrimary`</Table.Td>
+            <Table.Td>Highest emphasis for irreversible destructive actions</Table.Td>
+        </Table.Tr>
+        <Table.Tr>
+            <Table.Td>`ActionIcon.DestructiveSecondary`</Table.Td>
+            <Table.Td>High emphasis for destructive actions</Table.Td>
+        </Table.Tr>
+        <Table.Tr>
+            <Table.Td>`ActionIcon.DestructiveTertiary`</Table.Td>
+            <Table.Td>Medium emphasis for destructive actions</Table.Td>
+        </Table.Tr>
+        <Table.Tr>
+            <Table.Td>`ActionIcon.DestructiveQuaternary`</Table.Td>
+            <Table.Td>Low emphasis for destructive actions</Table.Td>
+        </Table.Tr>
+    </Table.Tbody>
+</Table>
 
 ## Usage
 
@@ -51,6 +106,24 @@ const deleteItem = async () => {};
     <IconTrash aria-label="Remove" />
 </ActionIcon.Primary>;
 ```
+
+Choose the sub-component that matches the emphasis level of the action. Use `Destructive` variants for actions that permanently remove or alter data. Pass an async function to `onClick` when the action triggers a network request — the loading state is handled for you.
+
+## Content guidance
+
+**Icon `aria-label`:**
+
+- Write a short verb phrase that describes the action: "Delete", "Remove", "Close", "Edit"
+- Use sentence case
+- Don't repeat the surrounding context — "Delete" not "Delete this item"
+- Don't use "icon" or "button" in the label
+
+**`disabledTooltip`:**
+
+- Explain why the action isn't available, not just that it's unavailable
+- Start with the reason: "You don't have permission to remove this item" not "This action is disabled"
+- Keep to 20 words or fewer
+- Write as a full sentence ending with a period
 
 ---
 
