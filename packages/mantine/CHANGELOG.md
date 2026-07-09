@@ -1,5 +1,11 @@
 # @coveord/plasma-mantine
 
+## 60.0.1
+
+### Patch Changes
+
+- [#4505](https://github.com/coveo/plasma/pull/4505) [`9223822`](https://github.com/coveo/plasma/commit/92238225dba236cfff8e19855b419694b7a0ca40) Thanks [@gdostie](https://github.com/gdostie)! - Fixed CSS cascade ordering in production builds by setting sideEffects to true
+
 ## 60.0.0
 
 ### Major Changes
