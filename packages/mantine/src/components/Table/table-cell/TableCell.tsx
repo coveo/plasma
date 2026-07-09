@@ -8,16 +8,17 @@ import {
     useStyles,
 } from '@mantine/core';
 import clsx from 'clsx';
-import {type ReactNode} from 'react';
+import {type CSSProperties, forwardRef, type MouseEvent, type ReactNode, useEffect, useRef, useState} from 'react';
 import {EllipsisText, type EllipsisTextProps} from '../../EllipsisText/EllipsisText.js';
 import classes from './TableCell.module.css';
 
-export type TableCellStylesNames = 'root' | 'content';
+export type TableCellStylesNames = 'root' | 'content' | 'toggle';
 
 export interface TableCellProps extends BoxProps, Omit<StylesApiProps<TableCellFactory>, 'variant'> {
     children: ReactNode;
     /**
      * When true, text wraps normally without any truncation.
+     * Cannot be combined with `lineClamp` or `expandable`.
      */
     wrap?: boolean;
     /**
@@ -27,8 +28,13 @@ export interface TableCellProps extends BoxProps, Omit<StylesApiProps<TableCellF
      */
     lineClamp?: number;
     /**
+     * When true, shows a "Show more" / "Show less" toggle when content overflows.
+     * Uses `lineClamp` (default 2) for the collapsed state.
+     */
+    expandable?: boolean;
+    /**
      * Props forwarded to the EllipsisText tooltip.
-     * Only applies in ellipsis mode (no `wrap`).
+     * Only applies in ellipsis mode (no `wrap`, no `expandable`).
      */
     tooltipProps?: EllipsisTextProps['tooltipProps'];
 }
@@ -43,8 +49,19 @@ export type TableCellFactory = Factory<{
 const defaultProps: Partial<TableCellProps> = {};
 
 export const TableCell = polymorphicFactory<TableCellFactory>((props, ref) => {
-    const {className, children, style, classNames, styles, unstyled, wrap, lineClamp, tooltipProps, ...others} =
-        useProps('TableCell', defaultProps, props);
+    const {
+        className,
+        children,
+        style,
+        classNames,
+        styles,
+        unstyled,
+        wrap,
+        lineClamp,
+        expandable,
+        tooltipProps,
+        ...others
+    } = useProps('TableCell', defaultProps, props);
 
     const getStyles = useStyles<TableCellFactory>({
         name: 'TableCell',
@@ -56,6 +73,15 @@ export const TableCell = polymorphicFactory<TableCellFactory>((props, ref) => {
         styles,
         unstyled,
     });
+
+    // Expandable mode
+    if (expandable) {
+        return (
+            <ExpandableCell ref={ref} getStyles={getStyles} lineClamp={lineClamp ?? 2} {...others}>
+                {children}
+            </ExpandableCell>
+        );
+    }
 
     // Wrap mode — no truncation
     if (wrap) {
@@ -79,3 +105,56 @@ export const TableCell = polymorphicFactory<TableCellFactory>((props, ref) => {
 });
 
 TableCell.displayName = 'Table.Cell';
+
+// --- Internal ExpandableCell ---
+
+interface ExpandableCellInternalProps extends BoxProps {
+    children: ReactNode;
+    lineClamp: number;
+    getStyles: ReturnType<typeof useStyles<TableCellFactory>>;
+}
+
+const ExpandableCell = forwardRef<HTMLDivElement, ExpandableCellInternalProps>(
+    ({children, lineClamp, getStyles, ...others}, ref) => {
+        const [expanded, setExpanded] = useState(false);
+        const contentRef = useRef<HTMLDivElement>(null);
+        const [overflows, setOverflows] = useState(false);
+
+        useEffect(() => {
+            if (!expanded && contentRef.current) {
+                setOverflows(contentRef.current.scrollHeight > contentRef.current.clientHeight);
+            }
+        }, [expanded]);
+
+        return (
+            <Box ref={ref} {...getStyles('root')} {...others}>
+                <Box
+                    ref={contentRef}
+                    {...getStyles('content')}
+                    className={clsx(getStyles('content').className, {
+                        [classes.clamped]: !expanded,
+                    })}
+                    style={!expanded ? ({'--cell-line-clamp': lineClamp} as CSSProperties) : undefined}
+                >
+                    {children}
+                </Box>
+                {(overflows || expanded) && (
+                    <Box
+                        component="button"
+                        type="button"
+                        aria-expanded={expanded}
+                        {...getStyles('toggle')}
+                        onClick={(e: MouseEvent) => {
+                            e.stopPropagation();
+                            setExpanded((v) => !v);
+                        }}
+                    >
+                        {expanded ? 'Show less' : 'Show more'}
+                    </Box>
+                )}
+            </Box>
+        );
+    },
+);
+
+ExpandableCell.displayName = 'ExpandableCell';

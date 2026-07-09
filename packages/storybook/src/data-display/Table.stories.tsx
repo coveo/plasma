@@ -218,9 +218,14 @@ export const Demo: Story = {
                     cell: ({getValue}) => <Table.Cell>{getValue()}</Table.Cell>,
                 }),
                 columnHelper.accessor('lastActivity', {
-                    header: 'Activity',
+                    header: 'Activity (expandable)',
                     enableSorting: withSorting,
-                    cell: ({getValue}) => <Table.Cell>{dayjs(getValue()).format('LLL')}</Table.Cell>,
+                    size: 200,
+                    cell: ({row}) => (
+                        <Table.Cell expandable lineClamp={2}>
+                            {row.original.bio} — {dayjs(row.original.lastActivity).format('LLL')}
+                        </Table.Cell>
+                    ),
                 }),
             ];
             if (withCollapsibleRows) {

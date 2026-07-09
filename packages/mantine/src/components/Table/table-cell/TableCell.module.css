@@ -13,3 +13,27 @@
     white-space: normal;
     word-break: break-word;
 }
+
+.clamped {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--cell-line-clamp, 2);
+    overflow: hidden;
+}
+
+.toggle {
+    all: unset;
+    cursor: pointer;
+    font-size: var(--mantine-font-size-xs);
+    color: var(--mantine-color-anchor);
+    margin-top: calc(var(--mantine-spacing-xs) / 2);
+
+    @mixin hover {
+        text-decoration: underline;
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--mantine-color-anchor);
+        outline-offset: 2px;
+    }
+}
