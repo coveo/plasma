@@ -36,6 +36,7 @@ import {TableNoData} from './table-no-data/TableNoData.js';
 import {TablePagination} from './table-pagination/TablePagination.js';
 import {TablePerPage} from './table-per-page/TablePerPage.js';
 import {TablePredicate, TablePredicateStylesNames} from './table-predicate/TablePredicate.js';
+import {TableCell} from './table-cell/TableCell.js';
 import {TableState} from './use-table.js';
 
 type TableStylesNames =
@@ -62,6 +63,7 @@ export type PlasmaTableFactory = Factory<{
         AccordionColumn: typeof TableAccordionColumn;
         ActionsColumn: typeof TableActionsColumn;
         ActionItem: typeof TableActionItem;
+        Cell: typeof TableCell;
         CollapsibleColumn: typeof TableCollapsibleColumn;
         DateRangePicker: typeof TableDateRangePicker;
         Filter: typeof TableFilter;
@@ -307,6 +309,10 @@ Table.AccordionColumn = TableAccordionColumn;
  * Generic column to use when your table needs actions on rows
  */
 Table.ActionsColumn = TableActionsColumn;
+/**
+ * A cell wrapper that handles text overflow: ellipsis (default), word wrap, line clamping, or expandable "Show more".
+ */
+Table.Cell = TableCell;
 /**
  * An action to display when a row is selected in the table. Can be displayed as a primary action or menu item.
  */
