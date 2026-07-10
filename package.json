@@ -23,7 +23,7 @@
         "release:pre:publish:next": "changeset publish",
         "release:publish": "changeset publish",
         "setup": "pnpm install",
-        "start": "turbo run build --filter=!storybook && pnpm --recursive --parallel start",
+        "start": "turbo run build --filter=!@coveord/plasma-storybook && pnpm --recursive --parallel start",
         "test": "turbo run test --concurrency=1",
         "turbo:login": "node scripts/turboLogin.js"
     },
