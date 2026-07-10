@@ -1,7 +1,7 @@
-import {Accordion, type AccordionControlProps, type MantineComponent} from '@mantine/core';
+import {Accordion as MantineAccordion, type AccordionControlProps, type MantineComponent} from '@mantine/core';
 import classes from './Accordion.module.css';
 
-export const DisabledControl = Accordion.Control.withProps({
+export const DisabledControl = MantineAccordion.Control.withProps({
     chevron: <></>,
     className: classes.disabled,
 }) as MantineComponent<{
@@ -10,19 +10,14 @@ export const DisabledControl = Accordion.Control.withProps({
     compound: true;
 }>;
 
-// Add the new static component to the Accordion component
-declare module '@mantine/core' {
-    // eslint-disable-next-line @typescript-eslint/no-shadow
-    namespace Accordion {
-        // oxlint-disable-next-line no-unused-vars
-        let ControlDisabled: typeof DisabledControl;
-    }
-}
+const AccordionWithDisabled = MantineAccordion as typeof MantineAccordion & {
+    ControlDisabled: typeof DisabledControl;
+};
 
-Accordion.ControlDisabled = DisabledControl;
-Accordion.displayName = 'Accordion';
-Accordion.Control.displayName = 'Accordion.Control';
-Accordion.Panel.displayName = 'Accordion.Panel';
-Accordion.Item.displayName = 'Accordion.Item';
-Accordion.ControlDisabled.displayName = 'Accordion.ControlDisabled';
-export {Accordion};
+AccordionWithDisabled.ControlDisabled = DisabledControl;
+AccordionWithDisabled.displayName = 'Accordion';
+AccordionWithDisabled.Control.displayName = 'Accordion.Control';
+AccordionWithDisabled.Panel.displayName = 'Accordion.Panel';
+AccordionWithDisabled.Item.displayName = 'Accordion.Item';
+AccordionWithDisabled.ControlDisabled.displayName = 'Accordion.ControlDisabled';
+export {AccordionWithDisabled as Accordion};

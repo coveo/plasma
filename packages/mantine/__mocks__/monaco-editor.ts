@@ -1,6 +1,6 @@
 const editor = {
     create: () => ({
-        dispose: (): void => null,
+        dispose: () => {},
     }),
 };
 

@@ -20,7 +20,7 @@ describe('Button', () => {
 
         it('shows a loader while the promise is waiting to be resolved', async () => {
             const user = userEvent.setup();
-            let resolve: () => void;
+            let resolve!: () => void;
             let isResolved = false;
 
             const promise = () =>
@@ -47,7 +47,7 @@ describe('Button', () => {
 
         it('removes the loading if a promise is rejected', async () => {
             const user = userEvent.setup();
-            let reject: () => void;
+            let reject!: () => void;
             let isRejected = false;
 
             const promise = () =>
@@ -89,7 +89,7 @@ describe('Button', () => {
 
         it('shows loader for async parameterless handler', async () => {
             const user = userEvent.setup();
-            let resolve: () => void;
+            let resolve!: () => void;
             let isResolved = false;
 
             const asyncMutate = () =>

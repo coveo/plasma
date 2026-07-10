@@ -18,5 +18,4 @@ strictPeerDependencies: false
 saveExact: true
 autoInstallPeers: false
 patchedDependencies:
-    '@mantine/form@8.3.18': patches/@mantine__form@8.3.18.patch
     '@monaco-editor/react@4.7.0': patches/@monaco-editor__react@4.7.0.patch

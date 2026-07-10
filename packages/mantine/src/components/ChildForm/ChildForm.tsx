@@ -36,12 +36,9 @@ type ChildFormFactory = Factory<{
 
 const defaultProps = {} satisfies Partial<ChildFormProps>;
 
-export const ChildForm = polymorphicFactory<ChildFormFactory>((props, ref) => {
-    const {className, children, style, classNames, styles, unstyled, vars, title, description, ...others} = useProps(
-        'ChildForm',
-        defaultProps,
-        props,
-    );
+export const ChildForm = polymorphicFactory<ChildFormFactory>((props) => {
+    const {className, children, style, classNames, styles, unstyled, vars, title, description, ref, ...others} =
+        useProps('ChildForm', defaultProps, props);
     const hasDescription =
         description !== null && description !== undefined && description !== '' && typeof description !== 'boolean';
 

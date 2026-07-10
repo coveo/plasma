@@ -8,7 +8,7 @@ describe('DateTimeRangePicker', () => {
     it('does not render the preset textbox when there is no presets', () => {
         render(<DateTimeRangePicker defaultValue={[null, null]} />);
 
-        expect(screen.queryByRole('textbox')).not.toBeInTheDocument();
+        expect(screen.queryByRole('combobox')).not.toBeInTheDocument();
     });
 
     it('updates with the selected dates when choosing a preset', async () => {
@@ -37,7 +37,7 @@ describe('DateTimeRangePicker', () => {
         };
         render(<Fixture />);
 
-        await user.click(screen.getByRole('textbox', {name: 'Date range'}));
+        await user.click(screen.getByRole('combobox', {name: 'Date range'}));
         await user.click(screen.getByRole('option', {name: 'Year 2K'}));
 
         expect(screen.getByTestId('json')).toHaveTextContent('["2000-01-01T00:00:00.000Z","2000-12-31T23:59:59.000Z"]');
@@ -66,7 +66,7 @@ describe('DateTimeRangePicker', () => {
         };
         render(<Fixture />);
 
-        await user.click(screen.getByRole('textbox', {name: 'Date range'}));
+        await user.click(screen.getByRole('combobox', {name: 'Date range'}));
         await user.click(screen.getByRole('option', {name: 'Year 2K'}));
 
         await user.click(screen.getByRole('button', {name: /start/i}));

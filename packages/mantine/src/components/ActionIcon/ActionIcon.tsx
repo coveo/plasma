@@ -41,7 +41,7 @@ type ActionIconOverloadFactory = Factory<{
 }>;
 
 export const ActionIcon = polymorphicFactory<ActionIconOverloadFactory>(
-    ({disabledTooltip, disabled, disabledTooltipProps, loading, onClick, ...others}, ref) => {
+    ({disabledTooltip, disabled, disabledTooltipProps, loading, onClick, ref, ...others}) => {
         const {isLoading, handleClick} = useClickWithLoading(onClick);
         return (
             <ButtonWithDisabledTooltip

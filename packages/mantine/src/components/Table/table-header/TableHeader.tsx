@@ -44,7 +44,7 @@ const defaultProps = {
     borderTop: true,
 } satisfies Partial<TableHeaderProps>;
 
-export const TableHeader = factory<TableHeaderFactory>((props, ref) => {
+export const TableHeader = factory<TableHeaderFactory>((props) => {
     const {store, getStyles} = useTableContext();
     const {
         showActions,
@@ -57,6 +57,7 @@ export const TableHeader = factory<TableHeaderFactory>((props, ref) => {
         styles,
         style,
         vars: _vars,
+        ref,
         ...others
     } = useProps('PlasmaTableHeader', defaultProps, props);
     const selectedRows = store.getSelectedRows();

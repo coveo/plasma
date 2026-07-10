@@ -4,7 +4,7 @@ import {ChildForm} from '../ChildForm.js';
 
 describe('ChildForm', () => {
     it('renders the provided title and description', () => {
-        render(<ChildForm in={true} title="This is a title" description="This is a description" />);
+        render(<ChildForm expanded={true} title="This is a title" description="This is a description" />);
 
         expect(screen.getByText(/this is a title/i)).toBeVisible();
         expect(screen.getByText(/this is a description/i)).toBeVisible();
@@ -13,7 +13,7 @@ describe('ChildForm', () => {
     it('renders a rich description node', () => {
         render(
             <ChildForm
-                in={true}
+                expanded={true}
                 title="This is a title"
                 description={
                     <div>
@@ -29,14 +29,14 @@ describe('ChildForm', () => {
     });
 
     it('renders a numeric description', () => {
-        render(<ChildForm in={true} description={0} />);
+        render(<ChildForm expanded={true} description={0} />);
 
         expect(screen.getByText('0')).toBeInTheDocument();
     });
 
     it('renders the content', () => {
         render(
-            <ChildForm in={true}>
+            <ChildForm expanded={true}>
                 <TextInput label="Text input" />
             </ChildForm>,
         );
@@ -45,7 +45,7 @@ describe('ChildForm', () => {
     });
     it('hides the container', () => {
         render(
-            <ChildForm in={false}>
+            <ChildForm expanded={false}>
                 <TextInput label="Text input" />
             </ChildForm>,
         );

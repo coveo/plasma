@@ -38,9 +38,21 @@ const defaultProps = {
     children: <IconExternalLink />,
 } satisfies Partial<HeaderDocAnchorProps>;
 
-export const HeaderDocAnchor = factory<HeaderDocAnchorFactory>((_props, ref) => {
+export const HeaderDocAnchor = factory<HeaderDocAnchorFactory>((_props) => {
     const props = useProps('PlasmaHeaderActions', defaultProps, _props);
-    const {className, classNames, styles, style, children, label, position, vars, size, ...others} = props;
+    const {
+        className,
+        classNames,
+        styles,
+        style,
+        children,
+        label,
+        position,
+        vars,
+        inline = true,
+        ref,
+        ...others
+    } = props;
 
     const ctx = useHeaderContext();
 

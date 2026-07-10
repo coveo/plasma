@@ -116,8 +116,8 @@ const statusTokenLabels: Record<StatusTokenVariant, string> = {
 };
 
 export const StatusToken: ReturnType<typeof polymorphicFactory<StatusTokenFactory>> =
-    polymorphicFactory<StatusTokenFactory>((props, ref) => {
-        const {variant, vars, className, style, unstyled, styles, classNames, ...others} = useProps(
+    polymorphicFactory<StatusTokenFactory>((props) => {
+        const {variant, vars, className, style, unstyled, styles, classNames, ref, ...others} = useProps(
             'StatusToken',
             defaultProps,
             props,
