@@ -1,17 +1,17 @@
 ---
 name: Content Guidelines — Product Vocabulary
-description: Required spelling and capitalization for Coveo product terminology in the UI. Includes banned terms and approved replacements.
+description: Required spelling and capitalization for product terminology in the UI. Includes banned terms and approved replacements.
 ---
 
 > Always refer to this list when writing for the UI. Vocabulary is not consistent across other Coveo sources or documentation.
 
-Use the exact spelling, capitalization, and punctuation shown here every time you write a Coveo product or feature name.
+Use the exact spelling, capitalization, and punctuation shown here every time you write a product or feature name.
 
 Terms that start with _Coveo_, _for_, or _on_ are alphabetized by the next distinguishing word. For example, _Coveo for Salesforce_ appears under S.
 
 **If a product or feature name is not on this list:** check online resources to determine whether it is a proper noun or has an established capitalization convention. Use the most widely-used spelling and capitalization. If it is not a proper noun, do not capitalize it.
 
-## Official product names
+## Official product terms
 
 - Action Bar
 - Activity Browser
@@ -20,101 +20,108 @@ Terms that start with _Coveo_, _for_, or _on_ are alphabetized by the next disti
 - Coveo Analytics
 - Anthropic
 - Apex
+- API keys
 - AppDirect
 - Atlassian
+- Atomic library
 - Coveo Atomic library
 - Aura
 - Automatic Relevance Tuning (ART)
 - Box Business
 - Brightcove
 - Case Classification (CC)
+- Case Assist
+- Catalog
 - Catalog Semantic Encoder (CSE)
 - Client ID
-- Coveo for Commerce
 - Confluence Cloud
 - Confluence Data Center
-- Confluence Server
 - Content Browser
 - Content Recommendations (CR)
 - Contentful
-- Coveo Crawling Module
-- Coveo Customer Success
+- Conversation Inspector
+- Crawling Module
 - Databricks
 - Dropbox
 - Dynamic Navigation Experience (DNE)
-- Coveo on Elasticsearch
 - Elasticsearch
 - Email Security Provider
 - Event Protocol (EP)
 - Coveo Explorer
+- Fields
 - Figma
 - Genesys
 - GitHub
 - Gmail
 - Google Drive
 - GraphQL
-- Coveo Headless library
-- Hosted Insight Panel
+- Headless library
 - Hosted Search Page
 - In-Product Experience (IPX)
 - Insight Panel
 - Intelligent Term Detection (ITD)
 - Intent-Aware Product Ranking (IAPR)
-- Interface Editor
+- Legacy Interface Editor
 - JavaScript
-- Coveo JavaScript Search Framework
 - Jira Software Cloud
 - Jira Software Data Center
-- Khoros
+- Khoros Community
 - Knowledge Hub
 - Lightning Web Components (LWC)
 - Listing Page Optimizer (LPO)
 - Log Browser
 - Coveo Machine Learning
 - Mailchimp
-- Coveo Merchandising Hub (CMH)
+- Merchandising Hub
+- Microsoft Dynamics 365
 - Node Package Manager
-- Coveo On-Premises Crawling Module
 - OneDrive for Business
 - OpenText Content Server
 - Optimizely
+- Passage Retrieval
 - Pendo
-- Coveo Personalization-as-you-go
+- Personalization As-You-Go
 - Coveo Platform
 - PowerPoint
 - PowerShell
 - Predictive Query Suggestions (PQS)
 - Product Recommendations (PR)
-- Coveo Professional Services
-- Coveo Quantic library
-- Coveo QuickView
+- Quantic library
+- Query Pipelines
 - Query Suggestions (QS)
+- QuickView (product and component, not to be confused with the "Quick view" label)
+- Relay library
 - Relevance Generative Answering (RGA)
-- Coveo Relay library
+- Relevance Inspector
+- Resource Snapshots
 - REST API
+- RSS
 - Salesforce
-- Salesforce B2B Commerce
-- Salesforce Insight Panel
 - Coveo for Salesforce
-- SAP Commerce
+- SAP
+- Search Pages
+- Security Identities
 - Semantic Encoder (SE)
 - ServiceNow
-- Session-Based Product Recommendations (SBPR)
-- SharePoint
+- SharePoint Server
 - SharePoint Online
-- Coveo for Shopify
 - Shopify
+- Coveo for Shopify
 - Sitecore
 - Coveo for Sitecore
+- Sitemap
+- Slack
 - Smart Snippets
 - Splunk
+- Storefront Associations
 - Coveo Support
 - Symantec
 - Tealium
 - Visualforce
+- Visit Browser
+- Web
 - YouTube
 - Zendesk
-- Coveo for Zendesk
 
 ## Banned terms
 
