@@ -46,7 +46,7 @@ jobs:
               uses: ./.github/actions/test
             - name: Publish stable releases
               if: github.ref_name == 'master'
-              uses: changesets/action@6a0a831ff30acef54f2c6aa1cbbc1096b066edaf # v1.7.0
+              uses: step-security/changeset-action@6ddf46283ed49170eb6ca2179818f7d2a0ae687c # v1.9.0
               with:
                   publish: pnpm release:publish
                   createGithubReleases: true
@@ -79,7 +79,7 @@ jobs:
                   git push deploy HEAD:next
             - name: Publish prereleases
               if: github.ref_name == 'next'
-              uses: changesets/action@6a0a831ff30acef54f2c6aa1cbbc1096b066edaf # v1.7.0
+              uses: step-security/changeset-action@6ddf46283ed49170eb6ca2179818f7d2a0ae687c # v1.9.0
               with:
                   publish: pnpm release:pre:publish:next
                   createGithubReleases: false
