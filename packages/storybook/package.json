@@ -5,8 +5,7 @@
     "type": "module",
     "sideEffects": [],
     "scripts": {
-        "build": "storybook build",
-        "chromatic": "chromatic --build-script-name build --exit-zero-on-changes",
+        "build": "storybook build --stats-json",
         "lint": "oxlint",
         "start": "storybook dev -p 6007"
     },
@@ -32,7 +31,6 @@
         "@types/react-dom": "19.2.3",
         "@typescript/native-preview": "7.0.0-dev.20260420.1",
         "@vitejs/plugin-react": "6.0.1",
-        "chromatic": "16.6.1",
         "globals": "17.5.0",
         "postcss-preset-mantine": "1.18.0",
         "storybook": "10.3.5",
