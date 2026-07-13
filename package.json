@@ -30,8 +30,8 @@
     "devDependencies": {
         "@changesets/changelog-github": "0.7.0",
         "@changesets/cli": "2.31.0",
-        "@commitlint/cli": "20.5.3",
-        "@commitlint/config-conventional": "20.5.3",
+        "@commitlint/cli": "21.2.0",
+        "@commitlint/config-conventional": "21.2.0",
         "@types/node": "24.13.2",
         "@typescript/native-preview": "7.0.0-dev.20260706.1",
         "aws-sdk": "2.1693.0",
