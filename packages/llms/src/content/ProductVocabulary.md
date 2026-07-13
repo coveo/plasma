@@ -11,71 +11,49 @@ Terms that start with _Coveo_, _for_, or _on_ are alphabetized by the next disti
 
 **If a product or feature name is not on this list:** check online resources to determine whether it is a proper noun or has an established capitalization convention. Use the most widely-used spelling and capitalization. If it is not a proper noun, do not capitalize it.
 
-## Official product terms
+## Official product terminology
 
 - Action Bar
-- Activity Browser
 - Administration Console
-- Amazon S3
 - Coveo Analytics
 - Anthropic
 - Apex
-- API keys
 - AppDirect
 - Atlassian
 - Atomic library
 - Coveo Atomic library
 - Aura
 - Automatic Relevance Tuning (ART)
-- Box Business
 - Brightcove
 - Case Classification (CC)
-- Case Assist
-- Catalog
 - Catalog Semantic Encoder (CSE)
 - Client ID
-- Confluence Cloud
-- Confluence Data Center
-- Content Browser
 - Content Recommendations (CR)
 - Contentful
-- Conversation Inspector
-- Crawling Module
 - Databricks
-- Dropbox
 - Dynamic Navigation Experience (DNE)
 - Elasticsearch
 - Email Security Provider
 - Event Protocol (EP)
 - Coveo Explorer
-- Fields
 - Figma
 - Genesys
 - GitHub
 - Gmail
-- Google Drive
 - GraphQL
 - Headless library
 - Hosted Search Page
-- In-Product Experience (IPX)
-- Insight Panel
 - Intelligent Term Detection (ITD)
 - Intent-Aware Product Ranking (IAPR)
 - Legacy Interface Editor
 - JavaScript
-- Jira Software Cloud
-- Jira Software Data Center
-- Khoros Community
 - Knowledge Hub
 - Lightning Web Components (LWC)
 - Listing Page Optimizer (LPO)
-- Log Browser
-- Coveo Machine Learning
+- Machine Learning
 - Mailchimp
 - Merchandising Hub
-- Microsoft Dynamics 365
 - Node Package Manager
-- OneDrive for Business
 - OpenText Content Server
 - Optimizely
 - Passage Retrieval
@@ -87,41 +65,72 @@ Terms that start with _Coveo_, _for_, or _on_ are alphabetized by the next disti
 - Predictive Query Suggestions (PQS)
 - Product Recommendations (PR)
 - Quantic library
-- Query Pipelines
 - Query Suggestions (QS)
 - QuickView (product and component, not to be confused with the "Quick view" label)
 - Relay library
 - Relevance Generative Answering (RGA)
-- Relevance Inspector
-- Resource Snapshots
-- REST API
-- RSS
-- Salesforce
 - Coveo for Salesforce
-- SAP
-- Search Pages
-- Security Identities
 - Semantic Encoder (SE)
-- ServiceNow
-- SharePoint Server
-- SharePoint Online
-- Shopify
 - Coveo for Shopify
-- Sitecore
 - Coveo for Sitecore
-- Sitemap
-- Slack
 - Smart Snippets
 - Splunk
-- Storefront Associations
 - Coveo Support
 - Symantec
 - Tealium
 - Visualforce
-- Visit Browser
+
+## Labels
+
+### Source names
+
+- Amazon S3
+- Box Business
+- Catalog
+- Confluence Cloud
+- Confluence Data Center
+- Dropbox Business
+- Google Drive
+- GraphQL API
+- Jira Software Cloud
+- Jira Software Data Center
+- Khoros Community
+- Microsoft Dynamics 365
+- OneDrive for Business
+- REST API
+- RSS
+- Salesforce
+- SAP
+- ServiceNow
+- SharePoint Online
+- SharePoint Server
+- Shopify
+- Sitecore
+- Sitemap
+- Slack
 - Web
 - YouTube
 - Zendesk
+
+### Navigation menu
+
+- Activity browser
+- API keys
+- Case Assist
+- Content browser
+- Conversation inspector
+- Crawling module
+- Fields
+- In-Product Experience (IPX)
+- Insight panel
+- Log browser
+- Query pipelines
+- Relevance inspector
+- Resource snapshots
+- Search pages
+- Security identities
+- Storefront associations
+- Visit browser
 
 ## Banned terms
 
@@ -140,7 +149,6 @@ Don't use:
 9. Meta data
 10. NPM
 11. Pop up, Popup, Pop-up
-12. User ID
 
 Use:
 
@@ -155,4 +163,3 @@ Use:
 9. Metadata
 10. Node Package Manager
 11. Modal
-12. Client ID
