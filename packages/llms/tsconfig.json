@@ -5,10 +5,11 @@
         "moduleResolution": "nodenext",
         "target": "es2022",
         "jsx": "react-jsx",
-        "rootDirs": ["src"],
+        "rootDir": "src",
         "noUnusedLocals": false,
         "types": ["node"],
-        "allowImportingTsExtensions": true
+        "allowImportingTsExtensions": true,
+        "rewriteRelativeImportExtensions": true
     },
     "include": ["src/**/*"]
 }

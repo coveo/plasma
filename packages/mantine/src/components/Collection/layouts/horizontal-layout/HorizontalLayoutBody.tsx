@@ -1,12 +1,13 @@
 import {Box, Stack, useProps} from '@mantine/core';
 import {ForwardedRef, useMemo} from 'react';
+import {CollectionColumnDef} from '../../CollectionColumn.types.js';
 import {useCollectionContext} from '../../CollectionContext.js';
 import {getColumnSizeStyles} from '../shared/columnUtils.js';
 import {createItemRenderers, ItemContentRenderer, LayoutClasses, mapItemsToComponents} from '../shared/itemRenderer.js';
 import {LAYOUT_BODY_DEFAULT_PROPS, LayoutBodyProps} from '../shared/layoutConstants.js';
 import classes from './HorizontalLayout.module.css';
 
-const defaultProps: Partial<LayoutBodyProps> = LAYOUT_BODY_DEFAULT_PROPS;
+const defaultProps = LAYOUT_BODY_DEFAULT_PROPS satisfies Partial<LayoutBodyProps>;
 
 /**
  * Horizontal layout specific content renderer - renders cells in a row
@@ -30,20 +31,19 @@ const renderHorizontalContent: ItemContentRenderer<unknown> = (
     </>
 );
 
-// Create renderers once - they are stable component references
-const horizontalRenderers = createItemRenderers<unknown>();
-
 export const HorizontalLayoutBody = <T,>(props: LayoutBodyProps<T> & {ref?: ForwardedRef<HTMLDivElement>}) => {
     const collectionCtx = useCollectionContext();
     const {items, onRemove, removable, draggable, disabled, readOnly, getItemId, gap, ref, ...others} = useProps(
         'HorizontalLayoutBody',
-        defaultProps as LayoutBodyProps<T>,
+        defaultProps,
         props,
     );
+    const columns = (collectionCtx.columns ?? []) as Array<CollectionColumnDef<T>>;
+    const horizontalRenderers = useMemo(() => createItemRenderers<T>(), []);
 
     const config = useMemo(
         () => ({
-            renderContent: renderHorizontalContent,
+            renderContent: renderHorizontalContent as ItemContentRenderer<T>,
             containerSelector: 'row',
             inlineControls: true,
         }),
@@ -57,7 +57,7 @@ export const HorizontalLayoutBody = <T,>(props: LayoutBodyProps<T> & {ref?: Forw
         draggable,
         disabled,
         readOnly,
-        columns: collectionCtx.columns,
+        columns,
     });
 
     return (

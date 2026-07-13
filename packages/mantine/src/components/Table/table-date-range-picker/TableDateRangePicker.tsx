@@ -33,9 +33,9 @@ export type TableDateRangePickerFactory = Factory<{
     compound: true;
 }>;
 
-const defaultProps: Partial<TableDateRangePickerProps> = {
+const defaultProps = {
     presets: {},
-};
+} satisfies Partial<TableDateRangePickerProps>;
 
 export const TableDateRangePicker = factory<TableDateRangePickerFactory>((props, ref) => {
     const {store, getStyles} = useTableContext();
@@ -49,13 +49,13 @@ export const TableDateRangePicker = factory<TableDateRangePickerFactory>((props,
         className,
         styles,
         style,
-        vars,
+        vars: _vars,
         ...others
     } = useProps('PlasmaTableDateRangePicker', defaultProps, props);
 
     const onChange = (dates: DatesRangeValue<DateStringValue | null>) => {
         store.setDateRange(dates);
-        store.setPagination({pageIndex: 0, pageSize: store.state.pagination.pageSize});
+        store.setPagination({page: 0, perPage: store.state.pagination.perPage});
     };
 
     const stylesApiProps = {classNames, styles};

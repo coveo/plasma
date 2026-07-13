@@ -1,18 +1,19 @@
-import {DateInput, DatePickerProps, DateStringValue, type DatesRangeValue} from '@mantine/dates';
+import {DateInput, DateStringValue, type DatesRangeValue} from '@mantine/dates';
 import dayjs from 'dayjs';
+import {ComponentProps} from 'react';
 
 export interface EditableDateRangePickerProps {
     value: DatesRangeValue<DateStringValue | null>;
-    onChange?(value: DatesRangeValue<DateStringValue> | null): void;
+    onChange?(value: DatesRangeValue<DateStringValue | null>): void;
     onFocus?: () => void;
     /**
      * Props for the start input
      */
-    startProps?: Omit<Partial<DatePickerProps>, 'value' | 'onChange' | 'onFocus'>;
+    startProps?: Omit<Partial<ComponentProps<typeof DateInput>>, 'value' | 'onChange' | 'onFocus'>;
     /**
      * Props for the end input
      */
-    endProps?: Omit<Partial<DatePickerProps>, 'value' | 'onChange' | 'onFocus'>;
+    endProps?: Omit<Partial<ComponentProps<typeof DateInput>>, 'value' | 'onChange' | 'onFocus'>;
 }
 
 export const EditableDateRangePicker = ({
@@ -23,10 +24,10 @@ export const EditableDateRangePicker = ({
     endProps = {},
 }: EditableDateRangePickerProps) => {
     const onChangeStart = (date: DateStringValue | null) => {
-        onChange?.([dayjs(date).startOf('day').toISOString(), value?.[1]]);
+        onChange?.([date ? dayjs(date).startOf('day').toISOString() : null, value?.[1] ?? null]);
     };
     const onChangeEnd = (date: DateStringValue | null) => {
-        onChange?.([value?.[0], dayjs(date).endOf('day').toISOString()]);
+        onChange?.([value?.[0] ?? null, date ? dayjs(date).endOf('day').toISOString() : null]);
     };
 
     return (

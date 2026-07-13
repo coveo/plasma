@@ -31,6 +31,9 @@ import {useMemo} from 'react';
 
 dayjs.extend(LocalizedFormat);
 
+// Set the seed for faker to avoid mismatch in chromatic
+faker.seed(42);
+
 type StoryArgs = TableProps<Person> & {
     withFilter: boolean;
     withPredicateFilter: boolean;
@@ -149,7 +152,7 @@ const TableCards = <TData,>(props: TableLayoutProps<TData>) => {
 };
 
 const CardLayout: TableLayout = ({children}) => <>{children}</>;
-CardLayout.Header = () => null;
+CardLayout.Header = () => <></>;
 CardLayout.displayName = 'Cards';
 CardLayout.Body = TableCards;
 CardLayout.Icon = IconLayoutGrid;
@@ -227,7 +230,7 @@ export const Demo: Story = {
         const table = useTable<Person>({
             initialState: {
                 totalEntries: data.length,
-                pagination: withPagination ? {pageSize: 5} : undefined,
+                pagination: withPagination ? {perPage: 5} : undefined,
                 dateRange: withDateRangePicker ? [previousWeek, today] : undefined,
                 predicates: withPredicateFilter ? {age: 'ANY'} : undefined,
             },

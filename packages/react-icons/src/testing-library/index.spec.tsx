@@ -14,7 +14,7 @@ import {
     findByIconName,
     findAllByIconName,
     extendScreen,
-} from './index';
+} from './index.js';
 
 // Import actual icons from the generated folder
 import SearchSize24Px from '../generated/search/size24Px.js';
@@ -22,7 +22,7 @@ import AddSize16Px from '../generated/add/size16Px.js';
 import DeleteSize24Px from '../generated/delete/size24Px.js';
 
 // Import Tabler icon for testing
-import {IconNumber123} from '../TablerIcons';
+import {IconNumber123} from '../TablerIcons.js';
 
 describe('Plasma Icon Testing Utilities', () => {
     describe('queryByIconName', () => {

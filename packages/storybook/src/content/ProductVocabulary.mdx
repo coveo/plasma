@@ -1,6 +1,6 @@
-import { Meta, Unstyled, Story } from "@storybook/addon-docs/blocks";
-import { Alert } from "@coveord/plasma-mantine";
-import { Table } from "@mantine/core";
+import {Meta, Unstyled, Story} from '@storybook/addon-docs/blocks';
+import {Alert} from '@coveord/plasma-mantine';
+import {Table} from '@mantine/core';
 
 <Meta title="@content/Product Vocabulary" id="content-product-vocabulary" />
 
@@ -9,7 +9,10 @@ import { Table } from "@mantine/core";
 Terminology standards for Coveo and third-party products, features, and concepts.
 
 <Unstyled>
-  <Alert.Advice title="Note" mb="md">Vocabulary isn't standardized across all Coveo sources or documentation. Always refer to this list when writing for the UI.</Alert.Advice>
+    <Alert.Advice title="Note" mb="md">
+        Vocabulary isn't standardized across all Coveo sources or documentation. Always refer to this list when writing
+        for the UI.
+    </Alert.Advice>
 </Unstyled>
 
 ## Vocabulary
@@ -17,8 +20,8 @@ Terminology standards for Coveo and third-party products, features, and concepts
 Use this list to see the acceptable spelling, capitalization, and punctuation for product terminology in the UI.
 
 The vocabulary is listed in alphabetical order.
-However, terms starting with the words *Coveo*, *for*, or *on* are alphabetized by the next distinguishing word (company, feature, or product name).
-For example, *Coveo for Salesforce* is listed under S for *Salesforce*.
+However, terms starting with the words _Coveo_, _for_, or _on_ are alphabetized by the next distinguishing word (company, feature, or product name).
+For example, _Coveo for Salesforce_ is listed under S for _Salesforce_.
 
 ### A
 
@@ -190,25 +193,64 @@ For example, *Coveo for Salesforce* is listed under S for *Salesforce*.
 Use this list to see which words you can't use when writing for the UI. Swap them for their correct counterpart instead.
 
 <Table withTableBorder withColumnBorders>
-  <Table.Thead>
-    <Table.Tr>
-      <Table.Th>Banned term</Table.Th>
-      <Table.Th>Replace with</Table.Th>
-    </Table.Tr>
-  </Table.Thead>
-  <Table.Tbody>
-    <Table.Tr><Table.Td>Auth</Table.Td><Table.Td>Authentication</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>Admin console, Admin UI, Admin portal</Table.Td><Table.Td>Administration Console</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>c4sf, cfsf</Table.Td><Table.Td>Coveo for Salesforce</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>c4sc, cfsc</Table.Td><Table.Td>Coveo for Sitecore</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>Custom login</Table.Td><Table.Td>Custom authentication</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>HIP</Table.Td><Table.Td>Hosted Insight Panel</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>HSP</Table.Td><Table.Td>Hosted Search Page</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>KB content</Table.Td><Table.Td>Knowledge Base content</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>Log in, Log out</Table.Td><Table.Td>Sign in, Sign out</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>Meta data</Table.Td><Table.Td>Metadata</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>NPM</Table.Td><Table.Td>Node Package Manager</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>Pop up, Popup, Pop-up</Table.Td><Table.Td>Modal</Table.Td></Table.Tr>
-    <Table.Tr><Table.Td>UID, User ID</Table.Td><Table.Td>Client ID</Table.Td></Table.Tr>
-  </Table.Tbody>
+    <Table.Thead>
+        <Table.Tr>
+            <Table.Th>Banned term</Table.Th>
+            <Table.Th>Replace with</Table.Th>
+        </Table.Tr>
+    </Table.Thead>
+    <Table.Tbody>
+        <Table.Tr>
+            <Table.Td>Auth</Table.Td>
+            <Table.Td>Authentication</Table.Td>
+        </Table.Tr>
+        <Table.Tr>
+            <Table.Td>Admin console, Admin UI, Admin portal</Table.Td>
+            <Table.Td>Administration Console</Table.Td>
+        </Table.Tr>
+        <Table.Tr>
+            <Table.Td>c4sf, cfsf</Table.Td>
+            <Table.Td>Coveo for Salesforce</Table.Td>
+        </Table.Tr>
+        <Table.Tr>
+            <Table.Td>c4sc, cfsc</Table.Td>
+            <Table.Td>Coveo for Sitecore</Table.Td>
+        </Table.Tr>
+        <Table.Tr>
+            <Table.Td>Custom login</Table.Td>
+            <Table.Td>Custom authentication</Table.Td>
+        </Table.Tr>
+        <Table.Tr>
+            <Table.Td>HIP</Table.Td>
+            <Table.Td>Hosted Insight Panel</Table.Td>
+        </Table.Tr>
+        <Table.Tr>
+            <Table.Td>HSP</Table.Td>
+            <Table.Td>Hosted Search Page</Table.Td>
+        </Table.Tr>
+        <Table.Tr>
+            <Table.Td>KB content</Table.Td>
+            <Table.Td>Knowledge Base content</Table.Td>
+        </Table.Tr>
+        <Table.Tr>
+            <Table.Td>Log in, Log out</Table.Td>
+            <Table.Td>Sign in, Sign out</Table.Td>
+        </Table.Tr>
+        <Table.Tr>
+            <Table.Td>Meta data</Table.Td>
+            <Table.Td>Metadata</Table.Td>
+        </Table.Tr>
+        <Table.Tr>
+            <Table.Td>NPM</Table.Td>
+            <Table.Td>Node Package Manager</Table.Td>
+        </Table.Tr>
+        <Table.Tr>
+            <Table.Td>Pop up, Popup, Pop-up</Table.Td>
+            <Table.Td>Modal</Table.Td>
+        </Table.Tr>
+        <Table.Tr>
+            <Table.Td>UID, User ID</Table.Td>
+            <Table.Td>Client ID</Table.Td>
+        </Table.Tr>
+    </Table.Tbody>
 </Table>

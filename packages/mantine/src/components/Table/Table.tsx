@@ -4,6 +4,7 @@ import {
     ColumnDef,
     defaultColumnSizing,
     getCoreRowModel,
+    type PaginationState as TanStackPaginationState,
     Row,
     RowSelectionState,
     useReactTable,
@@ -77,14 +78,14 @@ export type PlasmaTableFactory = Factory<{
     };
 }>;
 
-const defaultProps: Partial<TableProps<unknown>> = {
+const defaultProps = {
     layouts: [TableLayouts.Rows as TableLayout],
     layoutProps: {},
     loading: false,
     additionalRootNodes: [],
     options: {},
     getRowActions: () => [],
-};
+} satisfies Partial<TableProps<unknown>>;
 
 export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElement>}) => {
     const {
@@ -110,7 +111,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
         styles,
         unstyled,
         ...others
-    } = useProps('PlasmaTable', defaultProps as TableProps<T>, props);
+    } = useProps('PlasmaTable', defaultProps, props);
 
     const getStyles = useStyles<PlasmaTableFactory>({
         name: 'PlasmaTable',
@@ -134,18 +135,24 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
         state: {
             globalFilter: store.state.globalFilter,
             sorting: store.state.sorting,
-            pagination: store.state.pagination,
+            pagination: {pageIndex: store.state.pagination.page, pageSize: store.state.pagination.perPage},
             columnVisibility: store.state.columnVisibility,
             expanded: store.state.expanded,
         },
         onGlobalFilterChange: store.setGlobalFilter,
         onExpandedChange: store.setExpanded,
         onSortingChange: store.setSorting,
-        onPaginationChange: store.setPagination,
+        onPaginationChange: (updater) => {
+            store.setPagination((prev) => {
+                const tanstackPrev: TanStackPaginationState = {pageIndex: prev.page, pageSize: prev.perPage};
+                const next = updater instanceof Function ? updater(tanstackPrev) : updater;
+                return {page: next.pageIndex, perPage: next.pageSize};
+            });
+        },
         onColumnVisibilityChange: store.setColumnVisibility,
         columns: store.multiRowSelectionEnabled ? [TableSelectableColumn as ColumnDef<T>].concat(columns) : columns,
         getCoreRowModel: getCoreRowModel(),
-        manualPagination: options?.getPaginationRowModel === undefined,
+        manualPagination: options.getPaginationRowModel === undefined,
         enableMultiRowSelection: !!store.multiRowSelectionEnabled,
         getRowId,
         getRowCanExpand: (row: Row<T>) => !!getRowExpandedContent?.(row.original, row.index, row),
@@ -155,7 +162,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
             minSize: defaultColumnSizing.minSize,
             maxSize: defaultColumnSizing.maxSize,
         },
-        rowCount: options?.getFilteredRowModel ? undefined : store.state.totalEntries,
+        rowCount: options.getFilteredRowModel ? undefined : (store.state.totalEntries ?? undefined),
         ...options,
     });
 
@@ -232,12 +239,23 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
     }
 
     const Layout =
-        store.state.layout === null ? layouts[0] : layouts.find(({displayName}) => displayName === store.state.layout);
+        store.state.layout === null
+            ? layouts[0]
+            : (layouts.find(({displayName}) => displayName === store.state.layout) ?? layouts[0]);
     const hasRows = table.getRowModel().rows.length > 0;
 
     return (
         <Box ref={mergedRef} {...others} {...getStyles('root')}>
-            <TableProvider<T> value={{getStyles, getRowActions, store, table, layouts, containerRef}}>
+            <TableProvider<T>
+                value={{
+                    getStyles,
+                    getRowActions,
+                    store,
+                    table,
+                    layouts,
+                    containerRef,
+                }}
+            >
                 <Layout>
                     {store.isVacant && !store.isFiltered ? (
                         noData

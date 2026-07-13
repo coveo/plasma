@@ -1,7 +1,11 @@
 #!/usr/bin/env node
-const {spawn} = require('child_process');
-const path = require('path');
-const {existsSync, writeFileSync} = require('node:fs');
+import {spawn} from 'node:child_process';
+import path from 'node:path';
+import {existsSync, cpSync, mkdirSync, globSync} from 'node:fs';
+import {fileURLToPath} from 'node:url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 process.on('unhandledRejection', (err) => {
     throw err;
 });
@@ -11,61 +15,42 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 const onExit = (childProcess) =>
     new Promise((resolve, reject) => {
         childProcess.once('exit', (code) => {
-            code === 0 ? resolve() : reject(new Error('Exit with error code: ' + code));
+            if (code === 0) {
+                resolve();
+            } else {
+                reject(new Error('Exit with error code: ' + code));
+            }
         });
         childProcess.once('error', (error) => {
             reject(error);
         });
     });
 
-const build = async ({watch = false}) => {
-    // compile with swc and tsc
+const copyNonTsFiles = () => {
+    const files = globSync('src/**/*.{css,svg,json,png,jpg}');
+    for (const file of files) {
+        const dest = path.join('dist', file.slice('src/'.length));
+        mkdirSync(path.dirname(dest), {recursive: true});
+        cpSync(file, dest);
+    }
+};
+
+export const build = async ({watch = false}) => {
     try {
-        const tscArgs = ['--emitDeclarationOnly'];
+        const tsgoArgs = [];
         if (existsSync('./tsconfig.build.json')) {
-            tscArgs.push('--project', './tsconfig.build.json');
+            tsgoArgs.push('--project', './tsconfig.build.json');
         }
-        const tscESMArgs = [...tscArgs, '--declarationDir', './dist/esm'];
-        const tscCJSArgs = [...tscArgs, '--declarationDir', './dist/cjs'];
-        const swcArgs = ['./src', '--copy-files', '--config-file', path.resolve(__dirname, '..', 'build.swcrc')];
 
         if (watch) {
-            tscArgs.push('--watch');
-            swcArgs.push('--watch');
+            tsgoArgs.push('--watch');
         }
 
-        const swcCJSArgs = [
-            ...swcArgs,
-            '--config',
-            'module.type=commonjs',
-            '--config',
-            'jsc.target=es5',
-            '--out-dir',
-            './dist/cjs',
-            '--strip-leading-paths',
-        ];
-        const swcES6Args = [
-            ...swcArgs,
-            '--config',
-            'module.type=es6',
-            '--config',
-            'jsc.target=es2020',
-            '--out-dir',
-            './dist/esm',
-            '--strip-leading-paths',
-        ];
+        const tsgoBin = path.resolve(__dirname, '..', 'node_modules', '.bin', 'tsgo');
+        const tsgo = spawn(tsgoBin, tsgoArgs, {stdio: 'inherit'});
+        await onExit(tsgo);
 
-        const dtsESM = spawn('tsc', tscESMArgs, {stdio: 'inherit', shell: true});
-        const dtsCJS = spawn('tsc', tscCJSArgs, {stdio: 'inherit', shell: true});
-        const commonJs = spawn('swc', swcCJSArgs, {stdio: 'inherit', shell: true});
-        const esm = spawn('swc', swcES6Args, {stdio: 'inherit', shell: true});
-        await Promise.all([onExit(dtsESM), onExit(dtsCJS), onExit(commonJs), onExit(esm)]);
-
-        // Ensure NodeJS resolves dist/cjs/**/*.js as dist/cjs/**/*.cjs
-        writeFileSync('dist/cjs/package.json', JSON.stringify({type: 'commonjs'}));
-
-        // Ensure NodeJS resolves dist/esm/**/*.js as dist/esm/**/*.mjs
-        writeFileSync('dist/esm/package.json', JSON.stringify({type: 'module'}));
+        copyNonTsFiles();
 
         console.info('✅');
     } catch (error) {
@@ -74,8 +59,4 @@ const build = async ({watch = false}) => {
     }
 };
 
-if (require.main === module) {
-    build({watch: false});
-}
-
-module.exports = {build};
+void build({watch: false});

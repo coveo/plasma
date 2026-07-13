@@ -35,7 +35,7 @@ describe('Table.Filter', () => {
     it('goes back to the first page when changing the filter', async () => {
         const user = userEvent.setup({advanceTimers: vi.advanceTimersByTime});
         const Fixture = () => {
-            const store = useTable<RowData>({initialState: {pagination: {pageIndex: 1}, totalEntries: 52}});
+            const store = useTable<RowData>({initialState: {pagination: {page: 1}, totalEntries: 52}});
             return (
                 <Table store={store} data={[{name: 'fruit'}, {name: 'vegetable'}]} columns={columns}>
                     <Table.Header>

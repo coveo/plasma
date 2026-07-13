@@ -15,7 +15,7 @@ import {LAYOUT_BODY_DEFAULT_PROPS, LayoutBodyProps} from '../shared/layoutConsta
 import {RemoveButton} from '../shared/RemoveButton.js';
 import classes from './VerticalLayout.module.css';
 
-const defaultProps: Partial<LayoutBodyProps<unknown>> = LAYOUT_BODY_DEFAULT_PROPS;
+const defaultProps = LAYOUT_BODY_DEFAULT_PROPS satisfies Partial<LayoutBodyProps<unknown>>;
 
 /**
  * Renders the stack of fields (columns) for a vertical layout item
@@ -81,16 +81,15 @@ const renderVerticalDraggableContent: DraggableContentRenderer<any> = (
     </Group>
 );
 
-// Create renderers once - they are stable component references
-const verticalRenderers = createItemRenderers<any>();
-
 export const VerticalLayoutBody = <T,>(props: LayoutBodyProps<T> & {ref?: ForwardedRef<HTMLDivElement>}) => {
     const collectionCtx = useCollectionContext();
     const {items, onRemove, removable, draggable, disabled, readOnly, getItemId, gap, ref, ...others} = useProps(
         'VerticalLayoutBody',
-        defaultProps as LayoutBodyProps<T>,
+        defaultProps,
         props,
     );
+    const columns = (collectionCtx.columns ?? []) as Array<CollectionColumnDef<T>>;
+    const verticalRenderers = useMemo(() => createItemRenderers<T>(), []);
 
     const config = useMemo(
         () => ({
@@ -109,7 +108,7 @@ export const VerticalLayoutBody = <T,>(props: LayoutBodyProps<T> & {ref?: Forwar
         draggable,
         disabled,
         readOnly,
-        columns: collectionCtx.columns,
+        columns,
     });
 
     return (

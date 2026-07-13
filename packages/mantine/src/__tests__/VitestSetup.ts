@@ -31,7 +31,7 @@ window.ResizeObserver =
             unobserve = vi.fn();
         },
     );
-document.queryCommandSupported = document.queryCommandSupported || vi.fn().mockReturnValue(true);
+document.queryCommandSupported = document.queryCommandSupported ?? vi.fn().mockReturnValue(true);
 
 // Temporarily workaround for bug in @testing-library/react when use user-event with `vi.useFakeTimers()`
 beforeAll(() => {
