@@ -1,0 +1,10 @@
+- id: oxfmt
+  name: oxfmt
+  description: 'Formatter for the JavaScript Oxidation Compiler'
+  entry: oxfmt
+  language: node
+  'types_or': [javascript, jsx, ts, tsx]
+  args: []
+  require_serial: false
+  additional_dependencies: ['oxfmt@0.57.0']
+  minimum_pre_commit_version: '2.9.2'

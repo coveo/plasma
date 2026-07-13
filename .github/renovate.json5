@@ -29,4 +29,7 @@
         enabled: true,
         extends: ['schedule:weekly'],
     },
+    'pre-commit': {
+        enabled: true,
+    },
 }
