@@ -1,5 +1,5 @@
 import {describe, expect, it} from 'vitest';
-import plasmaIconsMockPlugin from './index';
+import plasmaIconsMockPlugin from './index.js';
 
 describe('plasmaIconsMockPlugin', () => {
     const plugin = plasmaIconsMockPlugin();

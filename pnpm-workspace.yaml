@@ -1,33 +1,22 @@
 packages:
-  - 'packages/*'
+    - 'packages/*'
 allowBuilds:
-  '@coveo/semantic-monorepo-tools': false
-  '@swc/core': false
-  aws-sdk: false
-  core-js-pure: false
-  esbuild: false
-  unrs-resolver: false
+    aws-sdk: false
+    core-js-pure: false
+    esbuild: false
+    unrs-resolver: false
 minimumReleaseAge: 10080 # 7 days in minutes
 minimumReleaseAgeExclude:
-  - '@mantine/*'
-  # Renovate security update: lodash@4.17.23 || 4.18.1
-  - lodash@4.17.23 || 4.18.1
-  # Renovate security update: storybook@10.2.10
-  - storybook@10.2.10
-  # Renovate security update: svgo@4.0.1
-  - svgo@4.0.1
-  # Plasma website (old) broken on 8.0.10
-  - vite@8.0.11
-  # Comes with vite v8.0.11
-  - postcss@8.5.14
+    - '@mantine/*'
 peerDependencyRules:
-  ignoreMissing:
-    - react-native
+    ignoreMissing:
+        - react-native
 overrides:
-  '@babel/traverse': ^7.23.2
-  nwsapi: 2.2.23
+    '@babel/traverse': ^7.23.2
+    nwsapi: 2.2.24
 strictPeerDependencies: false
 saveExact: true
 autoInstallPeers: false
 patchedDependencies:
-  '@coveo/semantic-monorepo-tools@2.7.1': patches/@coveo__semantic-monorepo-tools@2.7.1.patch
+    '@mantine/form@8.3.18': patches/@mantine__form@8.3.18.patch
+    '@monaco-editor/react@4.7.0': patches/@monaco-editor__react@4.7.0.patch

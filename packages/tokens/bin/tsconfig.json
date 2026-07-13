@@ -6,7 +6,9 @@
         "esModuleInterop": true,
         "resolveJsonModule": true,
         "forceConsistentCasingInFileNames": true,
-        "moduleResolution": "node"
+        "moduleResolution": "nodenext",
+        "module": "nodenext",
+        "rootDir": "./"
     },
     "include": ["**/*.ts", "types"]
 }

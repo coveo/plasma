@@ -1,5 +1,5 @@
 import {describe, expect, it} from 'vitest';
-import {groupOptions} from '../groupOptions';
+import {groupOptions} from '../groupOptions.js';
 
 interface TestItem {
     id: number;

@@ -10,8 +10,8 @@ export interface DateRangePickerPreset {
 
 interface DateRangePickerPresetsSelectProps {
     presets: Record<string, DateRangePickerPreset>;
-    value: DatesRangeValue<DateStringValue>;
-    onChange?(value: DatesRangeValue): void;
+    value: DatesRangeValue<DateStringValue | null>;
+    onChange?(value: DatesRangeValue<DateStringValue | null>): void;
     selectProps?: Partial<Omit<SelectProps, 'data' | 'value' | 'onChange'>>;
 }
 
@@ -45,8 +45,11 @@ export const DateRangePickerPresetSelect = ({
         }
     }, [value]);
 
-    const onChangePreset = (presetId: keyof typeof presets) => {
-        const range = presets[presetId].range as any;
+    const onChangePreset = (presetId: string | null) => {
+        if (!presetId) {
+            return;
+        }
+        const range = presets[presetId].range as DatesRangeValue<DateStringValue | null>;
         onChange?.(range);
     };
 

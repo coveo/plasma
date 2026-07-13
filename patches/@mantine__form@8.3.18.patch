@@ -1,0 +1,24 @@
+diff --git a/lib/index.d.mts b/lib/index.d.mts
+index 6f3e4ab19e3624cb7f272a074b1e843fe61a9b14..705ff5df9039bca17e5b70def6077e29023ad9ac 100644
+--- a/lib/index.d.mts
++++ b/lib/index.d.mts
+@@ -10,6 +10,6 @@ export { zodResolver } from './resolvers/zod-resolver/zod-resolver';
+ export { superstructResolver } from './resolvers/superstruct-resolver/superstruct-resolver';
+ export { yupResolver } from './resolvers/yup-resolver/yup-resolver';
+ export { joiResolver } from './resolvers/joi-resolver/joi-resolver';
+-export type * from './types';
++export type * from './types.js';
+ export type { UseFieldInput, UseFieldReturnType } from './use-field';
+ export type { FormArrayElement, LooseKeys } from './paths.types.js';
+diff --git a/lib/index.d.ts b/lib/index.d.ts
+index 6f3e4ab19e3624cb7f272a074b1e843fe61a9b14..705ff5df9039bca17e5b70def6077e29023ad9ac 100644
+--- a/lib/index.d.ts
++++ b/lib/index.d.ts
+@@ -10,6 +10,6 @@ export { zodResolver } from './resolvers/zod-resolver/zod-resolver';
+ export { superstructResolver } from './resolvers/superstruct-resolver/superstruct-resolver';
+ export { yupResolver } from './resolvers/yup-resolver/yup-resolver';
+ export { joiResolver } from './resolvers/joi-resolver/joi-resolver';
+-export type * from './types';
++export type * from './types.js';
+ export type { UseFieldInput, UseFieldReturnType } from './use-field';
+ export type { FormArrayElement, LooseKeys } from './paths.types.js';

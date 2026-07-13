@@ -19,7 +19,7 @@ const plasmaIconsMockPlugin = ({includeDependencies = true}: PlasmaIconsMockPlug
     ({
         name: 'coveord/plasma-react-icons/mock',
         enforce: 'pre',
-        transform: (code: string, id: string): TransformResult => {
+        transform: (code: string, id: string): TransformResult | null => {
             // Only transform relevant files (e.g., .ts, .tsx, .js, .jsx) that import from @coveord/plasma-react-icons
             if (
                 !code.includes('@coveord/plasma-react-icons') ||

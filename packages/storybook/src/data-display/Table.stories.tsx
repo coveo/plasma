@@ -22,6 +22,12 @@ import {useMemo} from 'react';
 
 dayjs.extend(LocalizedFormat);
 
+const SEEDED_DATE = new Date(2023, 0, 1);
+
+// Set the seed for faker to avoid mismatch in chromatic
+faker.seed(42);
+faker.setDefaultRefDate(SEEDED_DATE);
+
 type StoryArgs = TableProps<Person> & {
     withFilter: boolean;
     withPredicateFilter: boolean;
@@ -81,9 +87,9 @@ const options: TableProps<Person>['options'] = {
     getSortedRowModel: getSortedRowModel(),
 };
 
-const today = dayjs().endOf('day').toISOString();
-const previousDay = dayjs().subtract(1, 'day').startOf('day').toISOString();
-const previousWeek = dayjs().subtract(1, 'week').startOf('day').toISOString();
+const today = dayjs(SEEDED_DATE).endOf('day').toISOString();
+const previousDay = dayjs(SEEDED_DATE).subtract(1, 'day').startOf('day').toISOString();
+const previousWeek = dayjs(SEEDED_DATE).subtract(1, 'week').startOf('day').toISOString();
 const datePickerPresets: Record<string, DateRangePickerPreset> = {
     lastDay: {label: 'Last 24 hours', range: [previousDay, today]},
     lastWeek: {label: 'Last week', range: [previousWeek, today]},
@@ -162,7 +168,7 @@ export const Demo: Story = {
         const table = useTable<Person>({
             initialState: {
                 totalEntries: data.length,
-                pagination: withPagination ? {pageSize: 5} : undefined,
+                pagination: withPagination ? {perPage: 5} : undefined,
                 dateRange: withDateRangePicker ? [previousWeek, today] : undefined,
                 predicates: withPredicateFilter ? {age: 'ANY'} : undefined,
             },
@@ -251,7 +257,7 @@ export const Demo: Story = {
                             <Table.DateRangePicker
                                 startProps={{}}
                                 endProps={{}}
-                                rangeCalendarProps={{maxDate: dayjs().endOf('day').toDate()}}
+                                rangeCalendarProps={{maxDate: dayjs(SEEDED_DATE).endOf('day').toDate()}}
                                 presets={datePickerPresets}
                             />
                         )}

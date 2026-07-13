@@ -1,45 +1,39 @@
 {
-    "name": "storybook",
-    "version": "59.7.2",
+    "name": "@coveord/plasma-storybook",
+    "version": "60.0.1",
     "private": true,
     "type": "module",
+    "sideEffects": [],
     "scripts": {
-        "build": "storybook build",
-        "chromatic": "chromatic --build-script-name build",
-        "lint": "../../node_modules/.bin/eslint \"**/*.{ts,tsx}\"",
+        "build": "storybook build --stats-json",
+        "lint": "oxlint",
         "start": "storybook dev -p 6007"
-    },
-    "eslintConfig": {
-        "extends": [
-            "plugin:storybook/recommended"
-        ]
     },
     "dependencies": {
         "@coveord/plasma-mantine": "workspace:*",
         "@coveord/plasma-react-icons": "workspace:*",
-        "@faker-js/faker": "10.4.0",
+        "@faker-js/faker": "10.5.0",
         "@mantine/core": "8.3.18",
         "@mantine/dates": "8.3.18",
         "@mantine/form": "8.3.18",
         "@mantine/hooks": "8.3.18",
         "@mantine/modals": "8.3.18",
         "@mantine/notifications": "8.3.18",
-        "dayjs": "1.11.20",
-        "react": "19.2.5",
-        "react-dom": "19.2.5",
-        "react-hook-form": "7.74.0"
+        "dayjs": "1.11.21",
+        "react": "19.2.7",
+        "react-dom": "19.2.7",
+        "react-hook-form": "7.81.0"
     },
     "devDependencies": {
-        "@storybook/addon-docs": "10.3.5",
-        "@storybook/react-vite": "10.3.5",
-        "@types/react": "19.2.14",
+        "@storybook/addon-docs": "10.4.6",
+        "@storybook/react-vite": "10.4.6",
+        "@types/react": "19.2.17",
         "@types/react-dom": "19.2.3",
-        "@vitejs/plugin-react": "6.0.1",
-        "chromatic": "16.6.1",
-        "globals": "17.5.0",
+        "@typescript/native-preview": "7.0.0-dev.20260706.1",
+        "@vitejs/plugin-react": "6.0.3",
+        "globals": "17.7.0",
         "postcss-preset-mantine": "1.18.0",
-        "storybook": "10.3.5",
-        "typescript": "5.9.3",
+        "storybook": "10.4.6",
         "vite": "8.0.11"
     }
 }

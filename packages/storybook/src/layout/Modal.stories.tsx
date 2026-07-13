@@ -5,6 +5,9 @@ import type {Meta, StoryObj} from '@storybook/react-vite';
 import {useMemo, type ComponentProps} from 'react';
 import {useArgs} from 'storybook/preview-api';
 
+// Set the seed for faker to avoid mismatch in chromatic
+faker.seed(42);
+
 type ModalStoryArgs = ComponentProps<typeof Modal> & {
     helpLabel?: string;
     helpHref?: string;

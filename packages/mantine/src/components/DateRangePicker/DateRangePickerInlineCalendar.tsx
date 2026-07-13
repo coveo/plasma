@@ -86,7 +86,7 @@ export const DateRangePickerInlineCalendar = ({
     const onCalendarApply = () => {
         // In case the user only clicked the start date, but not the end date,
         // assume a single day was meant to be selected.
-        if (!form.values.dates[1]) {
+        if (!form.values.dates[1] && form.values.dates[0]) {
             form.values.dates[1] = endOfDay(form.values.dates[0]);
         }
         onApply(form.values.dates);
