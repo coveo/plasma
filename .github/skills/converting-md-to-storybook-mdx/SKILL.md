@@ -32,9 +32,8 @@ This is a **duplication then conversion**. You are creating a new `.mdx` file ba
 - If the current branch is not `master`, confirm it matches the expected DS branch for the component.
 - Process one component at a time. Never batch-convert multiple components in one pass.
 - Validate after every component. Do not continue to the next until the current component's build passes and the user confirms.
-- Do not create draft PRs. Draft PR creation is handled by the `storybook-component-guidelines` skill (Step 2) after the full alphabetic group is complete.
 
-See [references/pr-workflow.md](references/pr-workflow.md) for the branch mapping, branch creation commands, commit format, and PR title templates.
+See [references/pr-workflow.md](references/pr-workflow.md) for the branch mapping, branch creation commands, and commit format.
 
 ---
 
@@ -165,9 +164,15 @@ To confirm the build passed, check that `packages/storybook/storybook-static/ind
 If the build passes:
 
 - Report that Step 1 validation passed.
-- Ask the user to confirm the commit. Use this exact message: `docs(storybook): convert <ComponentName> usage mdx`
-- Do not offer the option to skip the commit or move on without committing. The commit is required before proceeding to Step 2.
-- Only after the commit is made, offer to continue to the `storybook-component-guidelines` skill for the same component.
+- Present the commit message for the user to confirm:
+
+    ```
+    docs(storybook): convert <ComponentName> usage mdx
+    ```
+
+- Wait for the user to confirm. Do not commit, skip ahead, or offer alternatives — the commit is required before Step 2.
+- Once the user confirms, make the commit.
+- After committing, let the user know Step 1 is complete and offer to continue with the `storybook-component-guidelines` skill (Step 2) for the same component.
 
 If the build fails:
 
@@ -181,7 +186,9 @@ If the build fails:
 
 ## Iteration order
 
-Always work one component at a time. If the user names a component, start there. If the user names a group, process only that group in alphabetical order. Wait for confirmation after each component before continuing.
+Always work one component at a time. If the user names a component, start there. If the user names a group, process only that group in alphabetical order.
+
+After each component: wait for the user to confirm the commit, make the commit, then offer to hand off to the `storybook-component-guidelines` skill (Step 2) for the same component. Do not move on to the next component in the group from within this skill — Step 2 runs between each Step 1 conversion.
 
 Do not process components outside the active branch group.
 
@@ -189,7 +196,7 @@ Do not process components outside the active branch group.
 
 ## Reference files
 
-- [pr-workflow.md](references/pr-workflow.md) — branch rules, branch mapping, commit format, PR titles, draft PR command
+- [pr-workflow.md](references/pr-workflow.md) — branch rules, branch mapping, and commit format
 - [storybook-fallbacks.md](references/storybook-fallbacks.md) — approved locations for components with no `.stories.tsx` file
 - [validation-checklist.md](references/validation-checklist.md) — full checklist before marking a component complete
 - [examples.md](references/examples.md) — good and bad output examples

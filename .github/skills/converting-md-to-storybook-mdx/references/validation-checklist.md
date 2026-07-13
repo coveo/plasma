@@ -27,4 +27,5 @@ Before considering Step 1 complete for a component:
 - [ ] `cd packages/storybook && pnpm build` was run
 - [ ] Build result was recorded
 - [ ] If the build failed, the agent stopped and reported the error output for user review
-- [ ] Changes were committed with the correct commit message format
+- [ ] Commit message was presented to user for confirmation before committing
+- [ ] Changes were committed with message `docs(storybook): convert <ComponentName> usage mdx`

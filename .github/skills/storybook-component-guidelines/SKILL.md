@@ -28,9 +28,9 @@ Never edit, delete, move, rename, or overwrite any file under `packages/llms/src
 - If the current branch is not `master`, confirm it matches the expected DS branch for the component.
 - Process one component at a time. Never batch-rewrite multiple components in one pass.
 - Validate after every component. Do not continue to the next until the current component's build passes and the user confirms.
-- After a full alphabetic group is complete, push the branch and create a draft PR. Do not request reviewers.
+- After a full alphabetic group is complete, push the branch and output the filled PR template to the user.
 
-See [references/pr-workflow.md](references/pr-workflow.md) for the branch mapping, branch creation commands, commit format, and PR title templates.
+See [references/pr-workflow.md](references/pr-workflow.md) for the branch mapping, branch creation commands, and commit format.
 
 ---
 
@@ -300,7 +300,7 @@ Requirements:
     4. The actual component code, if needed
 - Do not add a third-party rule if it conflicts with Coveo code, existing component behavior, or the writing-practices documentation under `packages/llms/src/content/`.
 - Do not cite sources inside the MDX file.
-- Do cite external sources in your final response and in the draft PR notes under "External research used".
+- Do cite external sources in your final response.
 
 ---
 
@@ -338,8 +338,14 @@ To confirm the build passed, check that `packages/storybook/storybook-static/ind
 If the build passes:
 
 - Report that validation passed.
-- Commit the file: `docs(storybook): rewrite <ComponentName> usage guidelines`
-- Wait for the user's confirmation before moving to the next component.
+- Present the commit message for the user to confirm:
+
+    ```
+    docs(storybook): rewrite <ComponentName> usage guidelines
+    ```
+
+- Wait for the user to confirm before committing. Once confirmed, make the commit.
+- After committing, ask if the user wants to continue with the next component in the group or stop here.
 
 If the build fails:
 
@@ -348,6 +354,20 @@ If the build fails:
 - Report the exact command that failed and the relevant error output.
 - Do not continue to another component.
 - Do not attempt further fixes unless the user explicitly asks.
+
+---
+
+## When the full group is complete
+
+Once every component in the group is committed and the user confirms the group is done:
+
+1. Push the branch:
+
+    ```bash
+    git push -u origin <branch-name>
+    ```
+
+2. Output the filled PR template from [references/pr-body-template.md](references/pr-body-template.md) to the user. Fill in all placeholders with real values from the session. Present the PR title and PR body as two separate copy-pasteable blocks so the user can go straight to GitHub and open the PR.
 
 ---
 
@@ -379,18 +399,16 @@ A group is done only when all of the following are true:
 
 - Every component in the group is individually complete
 - The branch name matches the approved DS branch
-- Storybook build result is documented in the PR body
-- Any external research is cited in the PR notes
-- Branch is pushed
-- Draft PR is created using the template in [references/pr-body-template.md](references/pr-body-template.md)
-- No reviewers are requested
+- All changes are committed on the correct DS branch
+- Branch has been pushed with `git push -u origin <branch-name>`
+- The filled PR template has been output to the user as two copy-pasteable blocks: PR title and PR body
 
 ---
 
 ## Reference files
 
-- [pr-workflow.md](references/pr-workflow.md) — branch rules, branch mapping, commit format, PR titles, draft PR command
-- [pr-body-template.md](references/pr-body-template.md) — PR body template
+- [pr-workflow.md](references/pr-workflow.md) — branch rules, branch mapping, and commit format
+- [pr-body-template.md](references/pr-body-template.md) — group completion summary template to output to the user
 - [validation-checklist.md](references/validation-checklist.md) — full checklist before marking a component complete
 - [examples.md](references/examples.md) — good and bad output examples
 - [expected-format.md](references/expected-format.md) — Content guidance section structure

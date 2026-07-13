@@ -7,7 +7,7 @@
 - If the current branch is `master`, create or switch to the correct DS branch for the component group.
 - One component at a time. Never batch-rewrite multiple components in one pass.
 - Validate after every component. Do not continue until the build passes and the user confirms.
-- After a full alphabetic group is complete, push the branch and create a draft PR. Do not request reviewers.
+- After a full alphabetic group is complete, push the branch.
 
 ## Branch mapping
 
@@ -41,34 +41,17 @@ Repeat for each group branch as needed:
 Commit one component at a time after validation:
 
 ```
-docs(storybook): add <ComponentName> usage guidelines
+docs(storybook): rewrite <ComponentName> usage guidelines
 ```
 
 Do not create one large commit for the full group.
 
-## Draft PR command
+## When the group is complete
+
+After all components in the group are committed, push the branch:
 
 ```bash
-gh pr create \
-  --draft \
-  --base master \
-  --head <branch-name> \
-  --title "<PR title>" \
-  --body-file <pr-body-file>
+git push -u origin <branch-name>
 ```
 
-## PR titles
-
-| Branch                  | Draft PR title                                        |
-| ----------------------- | ----------------------------------------------------- |
-| `DS-400-A-components`   | `DS-400: Add Storybook usage docs for A components`   |
-| `DS-401-B-components`   | `DS-401: Add Storybook usage docs for B components`   |
-| `DS-426-C-components`   | `DS-426: Add Storybook usage docs for C components`   |
-| `DS-403-E-M-components` | `DS-403: Add Storybook usage docs for E-M components` |
-| `DS-427-P-T-components` | `DS-427: Add Storybook usage docs for P-T components` |
-
-## Notes
-
-- PRs are always draft. Never request reviewers.
-- Stop after creating the draft PR.
-- Use `references/pr-body-template.md` as the PR body.
+Then output the filled PR template to the user. See `references/pr-body-template.md` for the template. Present the PR title and body as two separate copy-pasteable blocks.

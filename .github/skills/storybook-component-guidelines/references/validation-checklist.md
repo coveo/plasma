@@ -24,10 +24,21 @@ Before considering Step 2 complete for a component:
 - [ ] Content guidance does not invent behavior that is unsupported by the source `.md`, stories, or component code
 - [ ] Footer TODO comment remains present: `{/* TODO: Replace with full Plasma docs URL */}`
 - [ ] External research, if used, was cross-checked against Coveo code and writing practices documentation under `packages/llms/src/content/`
-- [ ] External research sources are noted for PR notes
+- [ ] External research sources are noted in the final response
 - [ ] Original `.md` source file is untouched
 - [ ] `git diff -- packages/llms/src/components` shows no changes
 - [ ] `cd packages/storybook && pnpm build` was run
 - [ ] Build result was recorded
 - [ ] If the build failed, the agent stopped and reported the error output for user review
-- [ ] Changes were committed with the correct commit message format
+- [ ] Commit message was presented to user for confirmation before committing
+- [ ] Changes were committed with message `docs(storybook): rewrite <ComponentName> usage guidelines`
+
+## Group-complete checklist
+
+Before considering the full group done:
+
+- [ ] Every component in the group passes the per-component checklist above
+- [ ] Branch pushed with `git push -u origin <branch-name>`
+- [ ] PR title output to user as a copy-pasteable code block
+- [ ] PR body output to user as a copy-pasteable code block, with all placeholders filled
+- [ ] External research section omitted from PR body if no third-party sources were used
