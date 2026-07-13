@@ -31,6 +31,9 @@ import {useMemo} from 'react';
 
 dayjs.extend(LocalizedFormat);
 
+// Set the seed for faker to avoid mismatch in chromatic
+faker.seed(42);
+
 type StoryArgs = TableProps<Person> & {
     withFilter: boolean;
     withPredicateFilter: boolean;

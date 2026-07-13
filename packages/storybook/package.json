@@ -1,12 +1,12 @@
 {
-    "name": "storybook",
+    "name": "@coveord/plasma-storybook",
     "version": "60.0.1",
     "private": true,
     "type": "module",
     "sideEffects": [],
     "scripts": {
         "build": "storybook build",
-        "chromatic": "chromatic --build-script-name build",
+        "chromatic": "chromatic --build-script-name build --exit-zero-on-changes",
         "lint": "oxlint",
         "start": "storybook dev -p 6007"
     },

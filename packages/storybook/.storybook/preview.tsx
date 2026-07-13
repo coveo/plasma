@@ -30,7 +30,6 @@ const preview: Preview = {
         backgrounds: {
             options: backgroundOptions,
         },
-        chromatic: {disableSnapshot: true},
         docs: {
             codePanel: true,
             container: ThemedDocsContainer,

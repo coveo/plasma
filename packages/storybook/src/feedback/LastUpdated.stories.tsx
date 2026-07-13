@@ -7,6 +7,7 @@ const meta: Meta<typeof LastUpdated> = {
     component: LastUpdated,
     parameters: {
         layout: 'centered',
+        chromatic: {disableSnapshot: true},
     },
     argTypes: {
         time: {
