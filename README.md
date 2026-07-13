@@ -164,13 +164,6 @@ pnpm changeset
 
 Commit the generated file from `.changeset/`. CI will preview the package versions that would be bumped if the PR were merged and later released.
 
-> We have integrated an optional [command line utility](https://github.com/commitizen/cz-cli) to help you build proper commit messages.
->
-> ```bash
-> git add . # stage the changes you want to commit
-> npm run commit-cli # execute the commit message helper
-> ```
-
 ## License
 
 All packages under this repository are distributed under [Apache 2.0 license](LICENSE).

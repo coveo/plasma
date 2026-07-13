@@ -8,7 +8,6 @@
         "changeset": "changeset",
         "changeset:version": "changeset version",
         "clean": "pnpm --recursive --parallel run clean",
-        "commit-cli": "cz",
         "fmt": "oxfmt",
         "fmt:check": "oxfmt --check",
         "preinstall": "npx only-allow pnpm",
@@ -30,14 +29,9 @@
     "devDependencies": {
         "@changesets/changelog-github": "0.7.0",
         "@changesets/cli": "2.31.0",
-        "@commitlint/cli": "20.5.3",
-        "@commitlint/config-conventional": "20.5.3",
         "@types/node": "24.13.2",
         "@typescript/native-preview": "7.0.0-dev.20260706.1",
         "aws-sdk": "2.1693.0",
-        "commitizen": "4.3.2",
-        "conventional-changelog-angular": "8.3.1",
-        "cz-conventional-changelog": "3.3.0",
         "eslint": "10.6.0",
         "eslint-plugin-storybook": "10.4.6",
         "eslint-plugin-testing-library": "7.16.2",
@@ -59,16 +53,6 @@
             "stylelint --fix",
             "oxfmt --write --no-error-on-unmatched-pattern"
         ]
-    },
-    "commitlint": {
-        "extends": [
-            "@commitlint/config-conventional"
-        ]
-    },
-    "config": {
-        "commitizen": {
-            "path": "cz-conventional-changelog"
-        }
     },
     "browserslist": [
         "cover 90%",
