@@ -104,9 +104,13 @@ jobs:
             - name: Copy LLM files into Storybook output
               run: cp -r ./packages/llms/dist/. ./packages/storybook/storybook-static/
             - name: Deploy Storybook to Chromatic
-              env:
-                  CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-              run: pnpm --filter @coveord/plasma-storybook run chromatic --storybookBuildDir storybook-static --ci
+              uses: chromaui/action@94713c544284a14195de3b50ef24301579f1877e # v18.0.1
+              with:
+                  projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+                  storybookBuildDir: storybook-static
+                  workingDir: packages/storybook
+                  exitOnceUploaded: true
+                  onlyChanged: true
             - name: Add demo link as a comment on the PR
               uses: ./.github/actions/comment-on-pr
               with:
