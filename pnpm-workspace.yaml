@@ -1,22 +1,22 @@
 packages:
-    - 'packages/*'
+  - 'packages/*'
 allowBuilds:
-    aws-sdk: false
-    core-js-pure: false
-    esbuild: false
-    unrs-resolver: false
+  aws-sdk: false
+  core-js-pure: false
+  esbuild: false
+  unrs-resolver: false
 minimumReleaseAge: 10080 # 7 days in minutes
 minimumReleaseAgeExclude:
-    - '@mantine/*'
+  - '@mantine/*'
 peerDependencyRules:
-    ignoreMissing:
-        - react-native
+  ignoreMissing:
+    - react-native
 overrides:
-    '@babel/traverse': ^7.23.2
-    nwsapi: 2.2.24
+  '@babel/traverse': ^7.23.2
+  nwsapi: 2.2.24
 strictPeerDependencies: false
 saveExact: true
 autoInstallPeers: false
 patchedDependencies:
-    '@mantine/form@8.3.18': patches/@mantine__form@8.3.18.patch
-    '@monaco-editor/react@4.7.0': patches/@monaco-editor__react@4.7.0.patch
+  '@mantine/form@8.3.18': patches/@mantine__form@8.3.18.patch
+  '@monaco-editor/react@4.7.0': patches/@monaco-editor__react@4.7.0.patch
