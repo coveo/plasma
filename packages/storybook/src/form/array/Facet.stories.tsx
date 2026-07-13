@@ -1,9 +1,13 @@
 import {Facet} from '@coveord/plasma-mantine/components/Facet';
 import {Box} from '@mantine/core';
 import type {Meta, StoryObj} from '@storybook/react-vite';
+import {faker} from '@faker-js/faker';
 import type {ComponentProps} from 'react';
 import {Args} from '../../Args.js';
 import {withTitleInfoProps} from '../LabelInfoArgs.js';
+
+// Set the seed for faker to avoid mismatch in chromatic
+faker.seed(42);
 
 type FacetStoryArgs = ComponentProps<typeof Facet> & {
     labelInfo?: string;
@@ -24,19 +28,19 @@ export const Demo: Story = {
         title: 'Title',
         labelInfo: Args.labelInfo.initialValue,
         data: [
-            {value: 'apple', label: 'Apple', count: Math.floor(Math.random() * 1000), group: 'Fruits'},
-            {value: 'banana', label: 'Banana', count: Math.floor(Math.random() * 1000), group: 'Fruits'},
-            {value: 'kiwi', label: 'Kiwi', count: Math.floor(Math.random() * 1000), group: 'Fruits'},
-            {value: 'mango', label: 'Mango', count: Math.floor(Math.random() * 1000), group: 'Fruits'},
-            {value: 'orange', label: 'Orange', count: Math.floor(Math.random() * 1000), group: 'Fruits'},
-            {value: 'pear', label: 'Pear', count: Math.floor(Math.random() * 1000), group: 'Fruits'},
-            {value: 'strawberry', label: 'Strawberry', count: Math.floor(Math.random() * 1000), group: 'Fruits'},
-            {value: 'broccoli', label: 'Broccoli', count: Math.floor(Math.random() * 1000), group: 'Vegetables'},
-            {value: 'carrot', label: 'Carrot', count: Math.floor(Math.random() * 1000), group: 'Vegetables'},
-            {value: 'cucumber', label: 'Cucumber', count: Math.floor(Math.random() * 1000), group: 'Vegetables'},
-            {value: 'onion', label: 'Onion', count: Math.floor(Math.random() * 1000), group: 'Vegetables'},
-            {value: 'pepper', label: 'Pepper', count: Math.floor(Math.random() * 1000), group: 'Vegetables'},
-            {value: 'potato', label: 'Potato', count: Math.floor(Math.random() * 1000), group: 'Vegetables'},
+            {value: 'apple', label: 'Apple', count: faker.number.int({min: 1, max: 1000}), group: 'Fruits'},
+            {value: 'banana', label: 'Banana', count: faker.number.int({min: 1, max: 1000}), group: 'Fruits'},
+            {value: 'kiwi', label: 'Kiwi', count: faker.number.int({min: 1, max: 1000}), group: 'Fruits'},
+            {value: 'mango', label: 'Mango', count: faker.number.int({min: 1, max: 1000}), group: 'Fruits'},
+            {value: 'orange', label: 'Orange', count: faker.number.int({min: 1, max: 1000}), group: 'Fruits'},
+            {value: 'pear', label: 'Pear', count: faker.number.int({min: 1, max: 1000}), group: 'Fruits'},
+            {value: 'strawberry', label: 'Strawberry', count: faker.number.int({min: 1, max: 1000}), group: 'Fruits'},
+            {value: 'broccoli', label: 'Broccoli', count: faker.number.int({min: 1, max: 1000}), group: 'Vegetables'},
+            {value: 'carrot', label: 'Carrot', count: faker.number.int({min: 1, max: 1000}), group: 'Vegetables'},
+            {value: 'cucumber', label: 'Cucumber', count: faker.number.int({min: 1, max: 1000}), group: 'Vegetables'},
+            {value: 'onion', label: 'Onion', count: faker.number.int({min: 1, max: 1000}), group: 'Vegetables'},
+            {value: 'pepper', label: 'Pepper', count: faker.number.int({min: 1, max: 1000}), group: 'Vegetables'},
+            {value: 'potato', label: 'Potato', count: faker.number.int({min: 1, max: 1000}), group: 'Vegetables'},
         ],
         initialSelection: ['banana'],
         searchPlaceholder: 'Search',
