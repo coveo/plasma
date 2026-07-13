@@ -38,7 +38,7 @@
         "commitizen": "4.3.2",
         "conventional-changelog-angular": "8.3.1",
         "cz-conventional-changelog": "3.3.0",
-        "eslint": "9.39.4",
+        "eslint": "10.6.0",
         "eslint-plugin-storybook": "10.4.6",
         "eslint-plugin-testing-library": "7.16.2",
         "husky": "9.1.7",
