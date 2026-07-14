@@ -143,7 +143,7 @@ export const CardLayoutBody = <T,>(props: CardLayoutBodyProps<T> & {ref?: Forwar
                     {store.multiRowSelectionEnabled ? (
                         <TableSelectAllCheckbox
                             {...ctx.getStyles('selectAllCheckbox', {classNames, styles})}
-                            label="Entire page"
+                            label="Select entire page"
                         />
                     ) : null}
                     <SimpleGrid cols={{base: 1, sm: 2, md: 3, lg: 4}} spacing="md">
