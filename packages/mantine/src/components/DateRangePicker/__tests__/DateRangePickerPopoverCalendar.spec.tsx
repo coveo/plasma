@@ -1,6 +1,6 @@
 import {useForm} from '@mantine/form';
 import {render, screen, userEvent, waitFor} from '@test-utils';
-import {DateRangePickerValue} from '../DateRangePickerInlineCalendar.js';
+import {DatesRangeValue, DateStringValue} from '@mantine/dates';
 
 import {DateRangePickerPopoverCalendar} from '../DateRangePickerPopoverCalendar.js';
 
@@ -14,12 +14,17 @@ describe('DateRangePickerPopoverCalendar', () => {
     it.skip('updates with the selected dates when choosing a preset', async () => {
         const user = userEvent.setup();
         const Fixture = () => {
-            const form = useForm<{dates: DateRangePickerValue}>({initialValues: {dates: [null, null]}});
+            const form = useForm<{dates: DatesRangeValue<DateStringValue | null>}>({
+                initialValues: {dates: [null, null]},
+            });
             return (
                 <>
                     <DateRangePickerPopoverCalendar
                         presets={{
-                            year2k: {label: 'select me', range: [new Date(1999, 11, 31), new Date(2000, 0, 1)]},
+                            year2k: {
+                                label: 'select me',
+                                range: [new Date(1999, 11, 31).toISOString(), new Date(2000, 0, 1).toISOString()],
+                            },
                         }}
                         {...form.getInputProps('dates')}
                     />
@@ -39,7 +44,9 @@ describe('DateRangePickerPopoverCalendar', () => {
         const user = userEvent.setup({delay: null});
         vi.useFakeTimers().setSystemTime(new Date(2022, 0, 31));
         const Fixture = () => {
-            const form = useForm<{dates: DateRangePickerValue}>({initialValues: {dates: [null, null]}});
+            const form = useForm<{dates: DatesRangeValue<DateStringValue | null>}>({
+                initialValues: {dates: [null, null]},
+            });
             return (
                 <>
                     <DateRangePickerPopoverCalendar {...form.getInputProps('dates')} />
@@ -66,7 +73,9 @@ describe('DateRangePickerPopoverCalendar', () => {
     it.skip('calls onApply with the selected dates when typing in the inputs', async () => {
         const user = userEvent.setup();
         const Fixture = () => {
-            const form = useForm<{dates: DateRangePickerValue}>({initialValues: {dates: [null, null]}});
+            const form = useForm<{dates: DatesRangeValue<DateStringValue | null>}>({
+                initialValues: {dates: [null, null]},
+            });
             return (
                 <>
                     <DateRangePickerPopoverCalendar {...form.getInputProps('dates')} />

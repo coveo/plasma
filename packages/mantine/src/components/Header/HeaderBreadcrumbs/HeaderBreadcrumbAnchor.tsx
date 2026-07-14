@@ -23,8 +23,8 @@ export type HeaderBreadcrumbAnchorFactory = PolymorphicFactory<{
     defaultRef: HTMLAnchorElement;
 }>;
 
-export const HeaderBreadcrumbAnchor = polymorphicFactory<HeaderBreadcrumbAnchorFactory>((props, ref) => {
-    const {children, className, classNames, styles, style, single, ...others} = props;
+export const HeaderBreadcrumbAnchor = polymorphicFactory<HeaderBreadcrumbAnchorFactory>((props) => {
+    const {children, className, classNames, styles, style, single, ref, ...others} = props;
     const ctx = useHeaderContext();
 
     const content = single ? (

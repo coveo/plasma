@@ -22,9 +22,9 @@ const defaultProps = {
     gap: 'xs',
 } satisfies Partial<HeaderRightProps>;
 
-export const HeaderRight = factory<HeaderRightFactory>((_props, ref) => {
+export const HeaderRight = factory<HeaderRightFactory>((_props) => {
     const props = useProps('HeaderRight', defaultProps, _props);
-    const {gap, className, classNames, styles, style, children, vars: _vars, ...others} = props;
+    const {gap, className, classNames, styles, style, children, vars, ref, ...others} = props;
     const ctx = useHeaderContext();
 
     return (

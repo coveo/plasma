@@ -20,9 +20,9 @@ export type InputLabelInfoFactory = Factory<{
 
 const defaultProps = {} satisfies Partial<InputLabelInfoProps>;
 
-export const InputLabelInfo = factory<InputLabelInfoFactory>((_props, ref) => {
+export const InputLabelInfo = factory<InputLabelInfoFactory>((_props) => {
     const props = useProps('InputLabelInfo', defaultProps, _props);
-    const {classNames, className, style, styles, unstyled, vars, children, attributes, ...others} = props;
+    const {classNames, className, style, styles, unstyled, vars, children, attributes, ref, ...others} = props;
     const getStyles = useStyles<InputLabelInfoFactory>({
         name: 'InputLabelInfo',
         props,

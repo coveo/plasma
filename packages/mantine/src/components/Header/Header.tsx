@@ -93,7 +93,7 @@ const defaultProps = {
 
 const getSpacing = (variant: HeaderVariant) => (variant === 'secondary' ? 'xxs' : 'xs');
 
-export const Header = factory<HeaderFactory>((_props, ref) => {
+export const Header = factory<HeaderFactory>((_props) => {
     const props = useProps('PlasmaHeader', defaultProps, _props);
     const {
         className,
@@ -107,6 +107,7 @@ export const Header = factory<HeaderFactory>((_props, ref) => {
         vars,
         styles,
         titleComponent: TitleComponent,
+        ref,
         ...others
     } = props;
     const getStyles = useStyles<HeaderFactory>({

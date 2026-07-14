@@ -132,7 +132,7 @@ describe('Collection', () => {
         let items = screen.getAllByTestId(/item-/);
         expect(items).toHaveLength(2);
 
-        const removeBanana = await within(screen.queryByTestId('item-id-banana')).findByRole('button', {
+        const removeBanana = await within(screen.getByTestId('item-id-banana')).findByRole('button', {
             name: /remove/i,
         });
         await user.click(removeBanana);
@@ -163,14 +163,14 @@ describe('Collection', () => {
         render(<Fixture />);
         const items = screen.getAllByTestId(/item-/);
         expect(items).toHaveLength(2);
-        const removeOrange = await within(screen.queryByTestId('item-1')).findByRole('button', {name: /remove/i});
+        const removeOrange = await within(screen.getByTestId('item-1')).findByRole('button', {name: /remove/i});
         await user.click(removeOrange);
 
         expect(onRemoveItemSpy).toHaveBeenCalledExactlyOnceWith(1);
 
         onRemoveItemSpy.mockReset();
 
-        const removeBanana = await within(screen.queryByTestId('item-0')).findByRole('button', {name: /remove/i});
+        const removeBanana = await within(screen.getByTestId('item-0')).findByRole('button', {name: /remove/i});
         await user.click(removeBanana);
 
         expect(onRemoveItemSpy).toHaveBeenCalledExactlyOnceWith(0);
@@ -416,7 +416,7 @@ describe('Collection', () => {
             expect(screen.getByTestId('item-0')).toBeInTheDocument();
             expect(screen.getByTestId('item-1')).toBeInTheDocument();
 
-            const removeOrange = await within(screen.queryByTestId('item-1')).findByRole('button', {name: /remove/i});
+            const removeOrange = await within(screen.getByTestId('item-1')).findByRole('button', {name: /remove/i});
             await user.click(removeOrange);
 
             expect(screen.queryByRole('button', {name: /remove/i})).not.toBeInTheDocument();
@@ -473,7 +473,7 @@ describe('Collection', () => {
                 expect(items[0]).toHaveTextContent('banana');
                 expect(items[1]).toHaveTextContent('orange');
 
-                const removeOrange = await within(screen.queryByTestId('item-1')).findByRole('button', {
+                const removeOrange = await within(screen.getByTestId('item-1')).findByRole('button', {
                     name: /remove/i,
                 });
                 await user.click(removeOrange);

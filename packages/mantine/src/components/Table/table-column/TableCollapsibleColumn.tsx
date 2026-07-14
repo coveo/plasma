@@ -62,7 +62,7 @@ const defaultProps = {
     iconCollapsed: <IconChevronDown aria-label="Expand" size={16} />,
 } satisfies Partial<CollapsibleIconProps>;
 
-const CollapsibleIcon = factory<TableCollapsibleColumnFactory>((props, ref) => {
+const CollapsibleIcon = factory<TableCollapsibleColumnFactory>((props) => {
     const {getStyles} = useTableContext();
     const {
         info,
@@ -76,6 +76,7 @@ const CollapsibleIcon = factory<TableCollapsibleColumnFactory>((props, ref) => {
         onClick: onActionClick,
         color,
         radius,
+        ref,
         ...others
     } = useProps('PlasmaTableCollapsibleColumn', defaultProps, props);
     const handler = info.row.getToggleExpandedHandler();

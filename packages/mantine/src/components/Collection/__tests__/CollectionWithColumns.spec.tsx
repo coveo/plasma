@@ -516,7 +516,7 @@ describe('Collection with columns', () => {
                         {...form.getInputProps('items')}
                         layout={Collection.Layouts.Horizontal}
                     >
-                        {(item) => <div>{item.name}</div>}
+                        {(item: unknown) => <div>{(item as TestItem).name}</div>}
                     </Collection>
                 );
             };

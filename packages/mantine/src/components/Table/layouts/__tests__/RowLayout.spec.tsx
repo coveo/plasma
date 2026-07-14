@@ -8,7 +8,7 @@ describe('RowLayout', () => {
     type RowData = {id: string; firstName: string; lastName?: string; disabled?: boolean};
 
     const columnHelper = createColumnHelper<RowData>();
-    const columns: Array<ColumnDef<RowData>> = [
+    const columns: Array<ColumnDef<RowData, unknown>> = [
         columnHelper.accessor('firstName', {enableSorting: false}),
         columnHelper.accessor('lastName', {enableSorting: false}),
     ];
@@ -37,15 +37,15 @@ describe('RowLayout', () => {
     });
 
     it('formats the data', () => {
-        const customColumns: Array<ColumnDef<RowData>> = [
+        const customColumns: Array<ColumnDef<RowData, unknown>> = [
             columnHelper.accessor('firstName', {
                 header: () => 'First Name',
-                cell: (info) => info.getValue().toUpperCase(),
+                cell: (info) => info.getValue()!.toUpperCase(),
                 enableSorting: false,
             }),
             columnHelper.accessor('lastName', {
                 header: () => 'Last Name',
-                cell: (info) => info.getValue().toUpperCase(),
+                cell: (info) => info.getValue()!.toUpperCase(),
                 enableSorting: false,
             }),
         ];
@@ -64,7 +64,7 @@ describe('RowLayout', () => {
     });
 
     it('adds testid on the data', () => {
-        const customColumns: Array<ColumnDef<RowData>> = [
+        const customColumns: Array<ColumnDef<RowData, unknown>> = [
             columnHelper.accessor('firstName', {}),
             columnHelper.accessor('lastName', {}),
         ];
@@ -89,7 +89,7 @@ describe('RowLayout', () => {
 
     it('opens the collapsible rows when the user click on the toggle', async () => {
         const user = userEvent.setup();
-        const customColumns: Array<ColumnDef<RowData>> = [
+        const customColumns: Array<ColumnDef<RowData, unknown>> = [
             columnHelper.accessor('firstName', {
                 enableSorting: false,
             }),
@@ -128,7 +128,7 @@ describe('RowLayout', () => {
             </div>
         );
 
-        const customColumns: Array<ColumnDef<RowData>> = [
+        const customColumns: Array<ColumnDef<RowData, unknown>> = [
             columnHelper.accessor('firstName', {
                 enableSorting: false,
             }),
@@ -165,7 +165,7 @@ describe('RowLayout', () => {
     it('closes the opened collapsible when using the accordion column and the user expand a different row', async () => {
         const user = userEvent.setup();
         const Content: FunctionComponent<{row: RowData}> = ({row}) => <div>Collapsible content: {row.lastName}</div>;
-        const customColumns: Array<ColumnDef<RowData>> = [
+        const customColumns: Array<ColumnDef<RowData, unknown>> = [
             columnHelper.accessor('firstName', {
                 enableSorting: false,
             }),
@@ -431,15 +431,15 @@ describe('RowLayout', () => {
     });
 
     it('passes down attributes given by getRowAttributes function to the row element', () => {
-        const customColumns: Array<ColumnDef<RowData>> = [
+        const customColumns: Array<ColumnDef<RowData, unknown>> = [
             columnHelper.accessor('firstName', {
                 header: () => 'First Name',
-                cell: (info) => info.getValue().toUpperCase(),
+                cell: (info) => info.getValue()!.toUpperCase(),
                 enableSorting: false,
             }),
             columnHelper.accessor('lastName', {
                 header: () => 'Last Name',
-                cell: (info) => info.getValue().toUpperCase(),
+                cell: (info) => info.getValue()!.toUpperCase(),
                 enableSorting: false,
             }),
         ];
