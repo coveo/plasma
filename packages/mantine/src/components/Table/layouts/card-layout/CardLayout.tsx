@@ -35,7 +35,7 @@ export const CardLayout = ((props: CardLayoutProps) => {
 }) as MantineComponent<CardLayoutFactory>;
 
 CardLayout.Body = CardLayoutBody;
-CardLayout.Header = () => null;
+CardLayout.Header = () => <></>;
 CardLayout.Icon = IconLayoutGrid;
 CardLayout.displayName = 'Cards';
 CardLayout.extend = identity;

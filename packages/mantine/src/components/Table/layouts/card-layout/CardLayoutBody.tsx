@@ -74,8 +74,16 @@ export const CardLayoutBody = <T,>(props: CardLayoutBodyProps<T> & {ref?: Forwar
             }
         };
 
-        const cardStyles = ctx.getStyles('card', {classNames, className, styles, style});
-        const checkboxStyles = ctx.getStyles('cardCheckbox', {classNames, styles});
+        const cardStyles = ctx.getStyles('card', {
+            classNames,
+            className,
+            styles,
+            style,
+        });
+        const checkboxStyles = ctx.getStyles('cardCheckbox', {
+            classNames,
+            styles,
+        });
 
         return (
             <Card
@@ -133,7 +141,10 @@ export const CardLayoutBody = <T,>(props: CardLayoutBodyProps<T> & {ref?: Forwar
             <td colSpan={table.getAllColumns().length}>
                 <Stack px="xl" py="md" gap="md">
                     {store.multiRowSelectionEnabled ? (
-                        <TableSelectAllCheckbox {...ctx.getStyles('selectAllCheckbox', {classNames, styles})} />
+                        <TableSelectAllCheckbox
+                            {...ctx.getStyles('selectAllCheckbox', {classNames, styles})}
+                            label="Entire page"
+                        />
                     ) : null}
                     <SimpleGrid cols={{base: 1, sm: 2, md: 3, lg: 4}} spacing="md">
                         {cards}

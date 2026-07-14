@@ -1,5 +1,6 @@
-import {Checkbox, CheckboxProps, Tooltip} from '@mantine/core';
-import {useTableContext} from '../TableContext';
+import {CheckboxProps, Tooltip} from '@mantine/core';
+import {useTableContext} from '../TableContext.js';
+import {Checkbox} from '../../Checkbox/Checkbox.js';
 
 export interface TableSelectAllCheckboxProps extends Omit<CheckboxProps, 'checked' | 'indeterminate' | 'onChange'> {}
 
