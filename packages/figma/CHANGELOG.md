@@ -1,5 +1,12 @@
 # @coveord/plasma-figma-code-connect
 
+## 60.0.2-next.0
+
+### Patch Changes
+
+- Updated dependencies [[`f98660d`](https://github.com/coveo/plasma/commit/f98660da12f7fb514465ec073c94a73e95f16893)]:
+  - @coveord/plasma-mantine@61.0.0-next.0
+
 ## 60.0.1
 
 ### Patch Changes

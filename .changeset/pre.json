@@ -1,0 +1,14 @@
+{
+    "mode": "pre",
+    "tag": "next",
+    "initialVersions": {
+        "@coveord/plasma-figma-code-connect": "60.0.1",
+        "@coveord/plasma-llms": "60.0.0",
+        "@coveord/plasma-mantine": "60.0.1",
+        "@coveord/plasma-mcp-server": "60.0.0",
+        "@coveord/plasma-react-icons": "60.0.0",
+        "@coveord/plasma-storybook": "60.0.1",
+        "@coveord/plasma-tokens": "60.0.0"
+    },
+    "changesets": ["common-baboons-say"]
+}
