@@ -1,7 +1,5 @@
 import {
     Avatar,
-    Box,
-    Card,
     Center,
     createColumnHelper,
     DateRangePickerPreset,
@@ -10,19 +8,12 @@ import {
     getPaginationRowModel,
     getSortedRowModel,
     Group,
-    renderTableCell,
-    SimpleGrid,
-    Stack,
     Table,
     TableAction,
-    TableLayout,
-    TableLayoutProps,
     TableProps,
-    Title,
     useTable,
-    useTableContext,
 } from '@coveord/plasma-mantine';
-import {IconEdit, IconLayoutGrid, IconTrash} from '@coveord/plasma-react-icons';
+import {IconEdit, IconTrash} from '@coveord/plasma-react-icons';
 import {faker} from '@faker-js/faker';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import dayjs from 'dayjs';
@@ -57,6 +48,9 @@ const meta: Meta<StoryArgs> = {
     title: '@components/data-display/Table',
     id: 'Table',
     component: Table,
+    parameters: {
+        layout: 'fullscreen',
+    },
 };
 export default meta;
 type Story = StoryObj<StoryArgs>;
@@ -100,65 +94,6 @@ const datePickerPresets: Record<string, DateRangePickerPreset> = {
     lastDay: {label: 'Last 24 hours', range: [previousDay, today]},
     lastWeek: {label: 'Last week', range: [previousWeek, today]},
 };
-
-const TableCards = <TData,>(props: TableLayoutProps<TData>) => {
-    const {table, store} = useTableContext<TData>();
-    const headers = table
-        .getFlatHeaders()
-        .filter((header) => header.column.id !== 'select')
-        .map((header) => (
-            <Title order={6} key={header.id}>
-                {renderTableCell(header.column.columnDef.header, header.getContext())}
-            </Title>
-        ));
-
-    const cards = table.getRowModel().rows.map((row) => (
-        <Card
-            key={row.id}
-            mod={{selected: row.getIsSelected()}}
-            variant={store.rowSelectionEnabled ? 'hover' : undefined}
-            onClick={(event) => {
-                if (store.rowSelectionEnabled) {
-                    if (event.detail <= 1) {
-                        row.toggleSelected();
-                    } else {
-                        props.onRowDoubleClick?.(row.original, row.index, row);
-                    }
-                }
-            }}
-        >
-            <Stack gap="sm">
-                {row
-                    .getVisibleCells()
-                    .filter((cell) => cell.column.id !== 'select')
-                    .map((cell, index) => (
-                        <Box key={cell.id}>
-                            <Table.Loading visible={props.loading}>
-                                {headers[index]}
-                                {renderTableCell(cell.column.columnDef.cell, cell.getContext())}
-                            </Table.Loading>
-                        </Box>
-                    ))}
-            </Stack>
-        </Card>
-    ));
-
-    return (
-        <tr>
-            <td style={{padding: 0}}>
-                <SimpleGrid cols={4} spacing="lg" px="xl" py="lg">
-                    {cards}
-                </SimpleGrid>
-            </td>
-        </tr>
-    );
-};
-
-const CardLayout: TableLayout = ({children}) => <>{children}</>;
-CardLayout.Header = () => <></>;
-CardLayout.displayName = 'Cards';
-CardLayout.Body = TableCards;
-CardLayout.Icon = IconLayoutGrid;
 
 export const Demo: Story = {
     args: {
@@ -257,7 +192,7 @@ export const Demo: Story = {
                 data={filteredData}
                 store={table}
                 getRowId={({id}) => id.toString()}
-                layouts={withLayoutSelector ? [Table.Layouts.Rows, CardLayout] : undefined}
+                layouts={withLayoutSelector ? [Table.Layouts.Rows, Table.Layouts.Cards] : undefined}
                 loading={loading}
                 getRowExpandedContent={
                     withCollapsibleRows
