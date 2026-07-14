@@ -24,8 +24,8 @@ describe('CardLayout', () => {
         };
         render(<Fixture />);
 
-        expect(screen.getByTestId('1')).toBeInTheDocument();
-        expect(screen.getByTestId('2')).toBeInTheDocument();
+        expect(screen.getByTestId('1')).toBeVisible();
+        expect(screen.getByTestId('2')).toBeVisible();
         expect(screen.getByText('John')).toBeVisible();
         expect(screen.getByText('Doe')).toBeVisible();
         expect(screen.getByText('Jane')).toBeVisible();
@@ -139,8 +139,8 @@ describe('CardLayout', () => {
 
             const card1 = screen.getByTestId('1');
             const card2 = screen.getByTestId('2');
-            expect(within(card1).getByRole('checkbox', {name: /select row/i})).toBeInTheDocument();
-            expect(within(card2).getByRole('checkbox', {name: /select row/i})).toBeInTheDocument();
+            expect(within(card1).getByRole('checkbox', {name: /select row/i})).toBeVisible();
+            expect(within(card2).getByRole('checkbox', {name: /select row/i})).toBeVisible();
         });
 
         it('selects a card when clicking its checkbox', async () => {
@@ -220,7 +220,7 @@ describe('CardLayout', () => {
             };
             render(<Fixture />);
 
-            expect(screen.getByRole('checkbox', {name: /select all from this page/i})).toBeInTheDocument();
+            expect(screen.getByRole('checkbox', {name: /select all from this page/i})).toBeVisible();
         });
 
         it('selects all cards when clicking the select all checkbox', async () => {
@@ -284,9 +284,7 @@ describe('CardLayout', () => {
             const selectAll = screen.getByRole('checkbox', {name: /select all from this page/i});
             expect(selectAll).not.toBeChecked();
             // Mantine renders a minus icon for indeterminate state
-            expect(
-                selectAll.closest('.mantine-Checkbox-inner')?.querySelector('.tabler-icon-minus'),
-            ).toBeInTheDocument();
+            expect(selectAll.closest('.mantine-Checkbox-inner')?.querySelector('.tabler-icon-minus')).toBeVisible();
         });
 
         it('does not render a select all checkbox when multi-row selection is disabled', () => {
