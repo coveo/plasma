@@ -1,4 +1,5 @@
-import {Plasmantine, useMantineColorScheme} from '@coveord/plasma-mantine';
+import {useMantineColorScheme} from '@coveord/plasma-mantine/core';
+import {Plasmantine} from '@coveord/plasma-mantine/plasmantine';
 import {DocsContainer, type DocsContainerProps} from '@storybook/addon-docs/blocks';
 import {type PropsWithChildren, useEffect, useMemo, useState} from 'react';
 import {GLOBALS_UPDATED} from 'storybook/internal/core-events';
