@@ -3,12 +3,13 @@ import {
     type BoxProps,
     type Factory,
     polymorphicFactory,
+    Spoiler,
     type StylesApiProps,
     useProps,
     useStyles,
 } from '@mantine/core';
 import clsx from 'clsx';
-import {type CSSProperties, forwardRef, type MouseEvent, type ReactNode, useEffect, useRef, useState} from 'react';
+import {forwardRef, type MouseEvent, type ReactNode, useCallback, useState} from 'react';
 import {EllipsisText, type EllipsisTextProps} from '../../EllipsisText/EllipsisText.js';
 import classes from './TableCell.module.css';
 
@@ -116,42 +117,30 @@ interface ExpandableCellInternalProps extends BoxProps {
 
 const ExpandableCell = forwardRef<HTMLDivElement, ExpandableCellInternalProps>(
     ({children, lineClamp, getStyles, ...others}, ref) => {
-        const [expanded, setExpanded] = useState(false);
-        const contentRef = useRef<HTMLDivElement>(null);
-        const [overflows, setOverflows] = useState(false);
+        const [maxHeight, setMaxHeight] = useState(0);
 
-        useEffect(() => {
-            if (!expanded && contentRef.current) {
-                setOverflows(contentRef.current.scrollHeight > contentRef.current.clientHeight);
-            }
-        }, [expanded]);
+        const measureRef = useCallback(
+            (node: HTMLDivElement | null) => {
+                if (node) {
+                    const lineHeight = parseFloat(getComputedStyle(node).lineHeight);
+                    setMaxHeight(lineHeight * lineClamp);
+                }
+            },
+            [lineClamp],
+        );
 
         return (
             <Box ref={ref} {...getStyles('root')} {...others}>
-                <Box
-                    ref={contentRef}
-                    {...getStyles('content')}
-                    className={clsx(getStyles('content').className, {
-                        [classes.clamped]: !expanded,
-                    })}
-                    style={!expanded ? ({'--cell-line-clamp': lineClamp} as CSSProperties) : undefined}
+                <Spoiler
+                    maxHeight={maxHeight}
+                    showLabel="Show more"
+                    hideLabel="Show less"
+                    onClick={(e: MouseEvent) => e.stopPropagation()}
                 >
-                    {children}
-                </Box>
-                {(overflows || expanded) && (
-                    <Box
-                        component="button"
-                        type="button"
-                        aria-expanded={expanded}
-                        {...getStyles('toggle')}
-                        onClick={(e: MouseEvent) => {
-                            e.stopPropagation();
-                            setExpanded((v) => !v);
-                        }}
-                    >
-                        {expanded ? 'Show less' : 'Show more'}
+                    <Box ref={measureRef} {...getStyles('content')}>
+                        {children}
                     </Box>
-                )}
+                </Spoiler>
             </Box>
         );
     },

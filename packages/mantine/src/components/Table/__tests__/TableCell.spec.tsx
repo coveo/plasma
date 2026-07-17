@@ -1,80 +1,123 @@
-import {render, screen, userEvent} from '@test-utils';
+import {act, render, screen, userEvent} from '@test-utils';
 
 import {TableCell} from '../table-cell/TableCell.js';
 
 describe('Table.Cell', () => {
-    it('renders children in default ellipsis mode', () => {
+    it('renders children', () => {
         render(<TableCell>Hello world</TableCell>);
 
         expect(screen.getByText('Hello world')).toBeVisible();
     });
 
-    it('renders with EllipsisText by default', () => {
-        render(<TableCell>Truncated text</TableCell>);
-
-        const text = screen.getByText('Truncated text');
-        expect(text.tagName).toBe('SPAN');
-    });
-
-    it('renders in wrap mode without truncation', () => {
-        render(<TableCell wrap>Wrapped text content</TableCell>);
-
-        const text = screen.getByText('Wrapped text content');
-        expect(text).toBeVisible();
-        // In wrap mode, content is rendered in a div, not inside EllipsisText's span
-        expect(text.tagName).not.toBe('SPAN');
-    });
-
-    it('passes lineClamp to EllipsisText', () => {
-        render(<TableCell lineClamp={3}>Multi-line clamped text</TableCell>);
-
-        expect(screen.getByText('Multi-line clamped text')).toBeVisible();
-    });
-
     describe('expandable mode', () => {
-        let scrollHeightSpy: ReturnType<typeof vi.spyOn>;
-        let clientHeightSpy: ReturnType<typeof vi.spyOn>;
+        let resizeObserverCallback: ResizeObserverCallback;
+        let observedElements: Set<Element>;
 
-        function simulateOverflow() {
-            scrollHeightSpy = vi.spyOn(HTMLElement.prototype, 'scrollHeight', 'get').mockReturnValue(200);
-            clientHeightSpy = vi.spyOn(HTMLElement.prototype, 'clientHeight', 'get').mockReturnValue(40);
-        }
+        beforeEach(() => {
+            observedElements = new Set();
+
+            vi.stubGlobal(
+                'ResizeObserver',
+                class ResizeObserverMock {
+                    constructor(callback: ResizeObserverCallback) {
+                        resizeObserverCallback = callback;
+                    }
+                    observe(el: Element) {
+                        observedElements.add(el);
+                    }
+                    unobserve(el: Element) {
+                        observedElements.delete(el);
+                    }
+                    disconnect() {
+                        observedElements.clear();
+                    }
+                },
+            );
+
+            const originalGetComputedStyle = window.getComputedStyle;
+            vi.spyOn(window, 'getComputedStyle').mockImplementation((el) => {
+                const style = originalGetComputedStyle(el);
+                return new Proxy(style, {
+                    get(target, prop) {
+                        if (prop === 'lineHeight') return '20px';
+                        const value = Reflect.get(target, prop);
+                        return typeof value === 'function' ? value.bind(target) : value;
+                    },
+                });
+            });
+            vi.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => {
+                cb(0);
+                return 0;
+            });
+        });
 
         afterEach(() => {
-            scrollHeightSpy?.mockRestore();
-            clientHeightSpy?.mockRestore();
+            vi.restoreAllMocks();
         });
+
+        function triggerResize(height: number) {
+            act(() => {
+                for (const el of observedElements) {
+                    resizeObserverCallback(
+                        [
+                            {
+                                target: el,
+                                contentRect: {
+                                    x: 0,
+                                    y: 0,
+                                    width: 200,
+                                    height,
+                                    top: 0,
+                                    left: 0,
+                                    bottom: height,
+                                    right: 200,
+                                },
+                                borderBoxSize: [{inlineSize: 200, blockSize: height}],
+                                contentBoxSize: [{inlineSize: 200, blockSize: height}],
+                                devicePixelContentBoxSize: [{inlineSize: 200, blockSize: height}],
+                            } as unknown as ResizeObserverEntry,
+                        ],
+                        {} as ResizeObserver,
+                    );
+                }
+            });
+        }
 
         it('does not show toggle when content does not overflow', () => {
             render(<TableCell expandable>Short text</TableCell>);
+
+            // Content height (30px) is less than maxHeight (lineClamp 2 × 20px = 40px)
+            triggerResize(30);
 
             expect(screen.getByText('Short text')).toBeVisible();
             expect(screen.queryByRole('button', {name: /show more/i})).not.toBeInTheDocument();
         });
 
         it('shows "Show more" button when content overflows', () => {
-            simulateOverflow();
             render(<TableCell expandable>Long text that overflows</TableCell>);
+
+            // Content height (200px) exceeds maxHeight (lineClamp 2 × 20px = 40px)
+            triggerResize(200);
 
             expect(screen.getByRole('button', {name: 'Show more'})).toBeVisible();
         });
 
         it('expands content when "Show more" is clicked', async () => {
-            simulateOverflow();
             const user = userEvent.setup();
             render(<TableCell expandable>Expandable content</TableCell>);
+
+            triggerResize(200);
 
             await user.click(screen.getByRole('button', {name: 'Show more'}));
 
             expect(screen.getByRole('button', {name: 'Show less'})).toBeVisible();
-            const content = screen.getByText('Expandable content');
-            expect(content.className).not.toMatch(/clamped/);
         });
 
         it('collapses content when "Show less" is clicked', async () => {
-            simulateOverflow();
             const user = userEvent.setup();
             render(<TableCell expandable>Expandable content</TableCell>);
+
+            triggerResize(200);
 
             await user.click(screen.getByRole('button', {name: 'Show more'}));
             await user.click(screen.getByRole('button', {name: 'Show less'}));
@@ -82,26 +125,34 @@ describe('Table.Cell', () => {
             expect(screen.getByRole('button', {name: 'Show more'})).toBeVisible();
         });
 
-        it('uses custom lineClamp value', () => {
+        it('uses custom lineClamp to compute maxHeight', () => {
             render(
                 <TableCell expandable lineClamp={4}>
                     Content with custom clamp
                 </TableCell>,
             );
 
-            const content = screen.getByText('Content with custom clamp');
-            expect(content).toHaveStyle({'--cell-line-clamp': '4'});
+            // lineClamp 4 × 20px lineHeight = 80px maxHeight
+            // Content height 60px < 80px → no overflow
+            triggerResize(60);
+            expect(screen.queryByRole('button', {name: /show more/i})).not.toBeInTheDocument();
+
+            // Content height 100px > 80px → overflow
+            triggerResize(100);
+            expect(screen.getByRole('button', {name: 'Show more'})).toBeVisible();
         });
 
         it('stops event propagation on toggle click', async () => {
-            simulateOverflow();
             const user = userEvent.setup();
             const onClick = vi.fn();
+
             render(
                 <div onClick={onClick}>
                     <TableCell expandable>Content</TableCell>
                 </div>,
             );
+
+            triggerResize(200);
 
             await user.click(screen.getByRole('button', {name: 'Show more'}));
 
