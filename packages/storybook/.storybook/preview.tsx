@@ -33,6 +33,9 @@ const preview: Preview = {
         docs: {
             codePanel: true,
             container: ThemedDocsContainer,
+            toc: {
+                headingSelector: 'h2',
+            },
         },
         controls: {
             disableSaveFromUI: true,
