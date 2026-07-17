@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import {spawn} from 'node:child_process';
 import path from 'node:path';
-import {existsSync, cpSync, mkdirSync, globSync} from 'node:fs';
+import {existsSync, cpSync, mkdirSync, globSync, watch as fsWatch} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -26,6 +26,8 @@ const onExit = (childProcess) =>
         });
     });
 
+const nonTsExtensions = /\.(css|svg|json|png|jpg)$/;
+
 const copyNonTsFiles = () => {
     const files = globSync('src/**/*.{css,svg,json,png,jpg}');
     for (const file of files) {
@@ -33,6 +35,27 @@ const copyNonTsFiles = () => {
         mkdirSync(path.dirname(dest), {recursive: true});
         cpSync(file, dest);
     }
+};
+
+const copyFile = (file) => {
+    const dest = path.join('dist', file.slice('src/'.length));
+    mkdirSync(path.dirname(dest), {recursive: true});
+    cpSync(file, dest);
+};
+
+const watchNonTsFiles = () => {
+    const watcher = fsWatch('src', {recursive: true}, (eventType, filename) => {
+        if (filename && nonTsExtensions.test(filename)) {
+            const file = path.join('src', filename);
+            if (existsSync(file)) {
+                copyFile(file);
+                console.info(`[watch] copied ${file} → dist/${filename}`);
+            }
+        }
+    });
+    watcher.on('error', (err) => {
+        console.error('[watch] error watching non-TS files:', err);
+    });
 };
 
 export const build = async ({watch = false}) => {
@@ -48,11 +71,15 @@ export const build = async ({watch = false}) => {
 
         const tsgoBin = path.resolve(__dirname, '..', 'node_modules', '.bin', 'tsgo');
         const tsgo = spawn(tsgoBin, tsgoArgs, {stdio: 'inherit'});
-        await onExit(tsgo);
 
         copyNonTsFiles();
 
-        console.info('✅');
+        if (watch) {
+            watchNonTsFiles();
+        } else {
+            await onExit(tsgo);
+            console.info('✅');
+        }
     } catch (error) {
         console.error(error);
         process.exit(1);
