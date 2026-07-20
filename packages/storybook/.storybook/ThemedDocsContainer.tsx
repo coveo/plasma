@@ -39,7 +39,7 @@ export const ThemedDocsContainer = ({children, context, ...props}: PropsWithChil
         <DocsContainer {...props} context={context} theme={docsTheme}>
             <Plasmantine defaultColorScheme={isDark ? 'dark' : 'light'}>
                 <SchemeWatcher isDark={isDark} />
-                {children}
+                <div className="sb-unstyled">{children}</div>
             </Plasmantine>
         </DocsContainer>
     );
