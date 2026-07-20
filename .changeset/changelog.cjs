@@ -51,8 +51,8 @@ async function getReleaseLine(changeset, _type, options) {
     const firstLine = lines[0].trim();
     const rest = lines.slice(1).join('\n');
 
-    // Rich entry — contains headings, render as a subsection.
-    if (hasHeadings(changeset.summary)) {
+    // Rich entry — contains headings in the body, render as a subsection.
+    if (hasHeadings(rest)) {
         const title = firstLine + (prLink ? ` ${prLink}` : '');
         const body = bumpHeadings(rest.trim());
         return `\n\n#### ${title}\n\n${body}`;

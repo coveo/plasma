@@ -36,10 +36,13 @@ function stripPrLinkFromId(id: string): string {
 
 function getScopedId(order: number, rawId: string): string {
     const cleanId = stripPrLinkFromId(rawId);
-    if (order <= 2) {
-        if (order === 2) {
-            currentH2Id = cleanId;
-        }
+    if (order === 1) {
+        // Reset scope on h1 to prevent cross-document leakage.
+        currentH2Id = undefined;
+        return cleanId;
+    }
+    if (order === 2) {
+        currentH2Id = cleanId;
         return cleanId;
     }
     // h3–h6: prefix with the current h2 scope
