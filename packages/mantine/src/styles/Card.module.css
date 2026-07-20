@@ -1,5 +1,7 @@
 .root {
-    transition: box-shadow 150ms ease-in-out;
+    transition-property: box-shadow;
+    transition-timing-function: var(--coveo-transition-function);
+    transition-duration: var(--coveo-transition-duration);
 
     &:not([data-with-border]) {
         border: 1px solid transparent;

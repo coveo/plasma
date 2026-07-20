@@ -1,20 +1,32 @@
 import type {DatesRangeValue, DateStringValue} from '@mantine/dates';
 import {useDidUpdate} from '@mantine/hooks';
-import {type ExpandedState, type PaginationState, type SortingState} from '@tanstack/table-core';
+import {type ExpandedState, type SortingState} from '@tanstack/table-core';
 import defaultsDeep from 'lodash.defaultsdeep';
 import {Dispatch, SetStateAction, useCallback, useMemo, useState} from 'react';
 import {useUrlSyncedState, UseUrlSyncedStateOptions} from '../../hooks/use-url-synced-state.js';
+import {usePersistedColumnVisibility} from './use-persisted-column-visibility.js';
 
 // Create a deeply optional version of another type
 type DeepPartial<T> = {
     [P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P];
 };
 
+export interface PaginationState {
+    /**
+     * Zero-based page index.
+     */
+    page: number;
+    /**
+     * Number of items per page.
+     */
+    perPage: number;
+}
+
 export interface TableState<TData = unknown> {
     /**
      * Current pagination state
      *
-     * @default { pageIndex: 0, pageSize: 50 }
+     * @default { page: 0, perPage: 50 }
      */
     pagination: PaginationState;
     /**
@@ -191,6 +203,18 @@ export interface UseTableOptions<TData = unknown> {
      * @default false
      */
     syncWithUrl?: boolean;
+    /**
+     * Unique identifier for the table. When provided, column visibility preferences are persisted to localStorage.
+     */
+    tableId?: string;
+    /**
+     * Maximum number of columns that can be visible when restoring persisted visibility from localStorage.
+     * This only affects the initial column visibility resolved on mount when `tableId` is set.
+     * It does not enforce a runtime limit on `setColumnVisibility` — use `TableColumnsSelector` for UI enforcement.
+     *
+     * @default Infinity
+     */
+    maxSelectableColumns?: number;
 }
 
 const defaultOptions: UseTableOptions = {
@@ -202,8 +226,8 @@ const defaultOptions: UseTableOptions = {
 
 const defaultState: Partial<TableState> = {
     pagination: {
-        pageIndex: 0,
-        pageSize: 50,
+        page: 0,
+        perPage: 50,
     },
     totalEntries: null,
     sorting: [],
@@ -220,18 +244,22 @@ const serialization = <K extends keyof TableState>(
 ) => Object.freeze(input);
 
 const PAGINATION_SERIALIZATION = serialization<'pagination'>({
-    serializer: ({pageIndex, pageSize}) => [
-        ['page', (pageIndex + 1).toString()],
-        ['pageSize', pageSize.toString()],
+    serializer: ({page, perPage}) => [
+        ['page', (page + 1).toString()],
+        ['perPage', perPage.toString()],
     ],
-    deserializer: (params, initialState) =>
-        defaultsDeep(
+    deserializer: (params, initialState) => {
+        const page = params.get('page');
+        const perPage = params.get('perPage');
+
+        return defaultsDeep(
             {
-                pageIndex: params.get('page') ? Math.max(1, parseInt(params.get('page'), 10)) - 1 : undefined,
-                pageSize: params.get('pageSize') ? parseInt(params.get('pageSize'), 10) : undefined,
+                page: page ? Math.max(1, parseInt(page, 10)) - 1 : undefined,
+                perPage: perPage ? parseInt(perPage, 10) : undefined,
             },
             initialState,
-        ),
+        );
+    },
 });
 
 const SORTING_SERIALIZATION = serialization<'sorting'>({
@@ -317,7 +345,9 @@ const COLUMN_VISIBILITY_SERIALIZATION = serialization<'columnVisibility'>({
 
 export const useTable = <TData>(userOptions: UseTableOptions<TData> = {}): TableStore<TData> => {
     const options = defaultsDeep({}, userOptions, defaultOptions) as UseTableOptions<TData>;
-    const initialState = defaultsDeep({}, options.initialState, defaultState) as TableState<TData>;
+    const [initialState] = useState(
+        () => defaultsDeep({}, userOptions.initialState, defaultState) as TableState<TData>,
+    );
     /**
      * The `useUrlSyncedState` hook defaults to synchronize, but the table wants to default to not synchronize,
      * so always pass the sync option as a resolved boolean value.
@@ -355,11 +385,29 @@ export const useTable = <TData>(userOptions: UseTableOptions<TData> = {}): Table
         initialState: initialState.dateRange,
         sync,
     });
-    const [columnVisibility, setColumnVisibility] = useUrlSyncedState<TableState<TData>['columnVisibility']>({
+
+    const {initialColumnVisibility, persistColumnVisibility} = usePersistedColumnVisibility(
+        initialState.columnVisibility,
+        options.maxSelectableColumns ?? Infinity,
+        options.tableId,
+    );
+
+    const [columnVisibility, _setColumnVisibility] = useUrlSyncedState<TableState<TData>['columnVisibility']>({
         ...COLUMN_VISIBILITY_SERIALIZATION,
-        initialState: initialState.columnVisibility,
+        initialState: initialColumnVisibility,
         sync,
     });
+
+    const setColumnVisibility: typeof _setColumnVisibility = useCallback(
+        (updater) => {
+            _setColumnVisibility((old) => {
+                const newVis = updater instanceof Function ? updater(old) : updater;
+                persistColumnVisibility(newVis);
+                return newVis;
+            });
+        },
+        [_setColumnVisibility, persistColumnVisibility],
+    );
 
     // unsynced
     const [totalEntries, _setTotalEntries] = useState<TableState<TData>['totalEntries']>(initialState.totalEntries);
@@ -454,8 +502,8 @@ export const useTable = <TData>(userOptions: UseTableOptions<TData> = {}): Table
         clearRowSelection,
         getSelectedRows,
         getSelectedRow,
-        rowSelectionEnabled: options.enableRowSelection,
-        rowSelectionForced: options.forceSelection,
-        multiRowSelectionEnabled: options.enableMultiRowSelection,
+        rowSelectionEnabled: !!options.enableRowSelection,
+        rowSelectionForced: !!options.forceSelection,
+        multiRowSelectionEnabled: !!options.enableMultiRowSelection,
     };
 };

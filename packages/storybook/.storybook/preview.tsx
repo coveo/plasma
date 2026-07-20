@@ -1,12 +1,14 @@
 import './styles/reset.css';
 
-import '@mantine/core/styles.css';
-import '@mantine/dates/styles.css';
-import '@mantine/notifications/styles.css';
+import '@mantine/core/styles.layer.css';
+import '@mantine/dates/styles.layer.css';
+import '@mantine/notifications/styles.layer.css';
 
 import type {Preview} from '@storybook/react-vite';
+import {backgroundOptions, prefersDark} from './backgroundOptions.js';
 import {useColorScheme} from './decorators/useColorScheme.js';
 import {themes, withTheme} from './decorators/withTheme.js';
+import {ThemedDocsContainer} from './ThemedDocsContainer.js';
 
 const preview: Preview = {
     globalTypes: {
@@ -22,20 +24,29 @@ const preview: Preview = {
     },
     initialGlobals: {
         primaryColor: 'teal',
-        backgrounds: {value: 'light'},
+        backgrounds: {value: prefersDark ? 'dark' : 'light'},
     },
     parameters: {
         backgrounds: {
-            options: {
-                dark: {name: 'Dark', value: 'var(--mantine-color-body)'},
-                light: {name: 'Light', value: 'var(--mantine-color-body)'},
-            },
+            options: backgroundOptions,
         },
         docs: {
             codePanel: true,
+            container: ThemedDocsContainer,
         },
         controls: {
             disableSaveFromUI: true,
+        },
+        options: {
+            storySort: {
+                order: [
+                    '@content',
+                    ['About', 'Audience', 'Voice', 'Writing Mechanics', 'Product Vocabulary'],
+                    '@foundation',
+                    '@components',
+                    '*',
+                ],
+            },
         },
     },
     decorators: [useColorScheme, withTheme],

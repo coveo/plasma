@@ -1,4 +1,4 @@
-import {MockUtils} from './MockUtils';
+import {MockUtils} from './MockUtils.js';
 
 describe('MockUtils', () => {
     describe('formatLabel', () => {

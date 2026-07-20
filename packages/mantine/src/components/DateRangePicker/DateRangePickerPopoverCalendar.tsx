@@ -46,25 +46,25 @@ export const DateRangePickerPopoverCalendar = ({
     const [opened, setOpened] = useState(false);
     const ref = useClickOutside(() => setOpened(false));
 
-    const [_value, handleChange] = useUncontrolled<DatesRangeValue<DateStringValue> | null>({
+    const [_value, handleChange] = useUncontrolled<DatesRangeValue<DateStringValue | null>>({
         value,
         defaultValue,
         onChange,
         finalValue: [null, null],
     });
 
-    const onCalendarChange = (dates: DatesRangeValue<DateStringValue | null>) => {
-        if (dates[0] !== null) {
-            dates[0] = dayjs(dates[0]).toISOString();
-        }
-        if (dates[1] !== null) {
-            dates[1] = dayjs(dates[1]).toISOString();
-        }
-        handleChange?.(dates);
-        if (dates[1] !== null) {
+    const onCalendarChange = (dates: DatesRangeValue<Date | string | null>) => {
+        const normalized: DatesRangeValue<DateStringValue | null> = [
+            dates[0] ? dayjs(dates[0]).toISOString() : null,
+            dates[1] ? dayjs(dates[1]).toISOString() : null,
+        ];
+
+        handleChange(normalized);
+        if (normalized[1] !== null) {
             setOpened(false);
         }
     };
+    const calendarValue = _value.map((date) => (date ? new Date(date) : null)) as DatesRangeValue<Date>;
 
     return (
         <>
@@ -95,7 +95,7 @@ export const DateRangePickerPopoverCalendar = ({
                         columnsToScroll={1}
                         firstDayOfWeek={0}
                         allowSingleDateInRange
-                        value={_value}
+                        value={calendarValue}
                         onChange={onCalendarChange}
                         {...rangeCalendarProps}
                     />

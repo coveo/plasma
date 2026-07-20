@@ -12,7 +12,9 @@
 .header {
     position: sticky;
     top: 0;
-    transition: box-shadow 150ms ease;
+    transition-property: box-shadow;
+    transition-timing-function: var(--coveo-transition-function);
+    transition-duration: var(--coveo-transition-duration);
     z-index: 1;
 
     &::after {
@@ -72,7 +74,7 @@
     background-color: var(--coveo-app-background);
     padding: var(--mantine-spacing-sm) var(--mantine-spacing-xl);
     position: relative;
-    min-height: 69px;
+    min-height: 70px;
 
     &:where([data-with-border-top]) {
         border-top: 1px solid var(--mantine-color-default-border);
@@ -81,6 +83,7 @@
 
 .headerGridInner {
     flex-direction: row-reverse;
+    min-height: 60px;
 }
 
 .headerCol {

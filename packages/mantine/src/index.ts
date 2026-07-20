@@ -180,6 +180,7 @@ export * from './components/EllipsisText/EllipsisText.js';
 
 // Facet
 export * from './components/Facet/Facet.js';
+export * from './components/Facet/FacetTypes.js';
 
 // Fieldset
 export * from './components/Fieldset/Fieldset.js';
@@ -326,6 +327,9 @@ export * from './components/Popover/Popover.js';
 // Portal
 export * from './components/Portal/Portal.js';
 
+// PrerequisitesList
+export * from './components/PrerequisitesList/PrerequisitesList.js';
+
 // Progress
 export * from './components/Progress/Progress.js';
 
@@ -400,7 +404,13 @@ export {
     type TableProps,
 } from './components/Table/Table.types.js';
 export {useTableContext} from './components/Table/TableContext.js';
-export {useTable, type TableState, type TableStore, type UseTableOptions} from './components/Table/use-table.js';
+export {
+    useTable,
+    type PaginationState,
+    type TableState,
+    type TableStore,
+    type UseTableOptions,
+} from './components/Table/use-table.js';
 export {useUrlSyncedState, type SearchParamEntry, type UseUrlSyncedStateOptions} from './hooks/use-url-synced-state.js';
 
 // Table of Contents
@@ -451,6 +461,7 @@ export * from './components/VisuallyHidden/VisuallyHidden.js';
 export {noop};
 
 // Theme
+export {type PlasmaColors} from './theme/PlasmaColors.js';
 export * from './theme/plasmaCSSVariablesResolver.js';
 export * from './theme/Plasmantine.js';
 

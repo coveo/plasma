@@ -8,7 +8,8 @@ import {Menu, type MenuItemProps} from '../../Menu/Menu.js';
 export type TableActionItemStylesNames = 'actionItemRoot';
 
 export interface TableActionItemProps
-    extends Omit<ButtonProps, 'classNames' | 'styles' | 'vars' | 'variant' | 'leftSection' | 'rightSection'>,
+    extends
+        Omit<ButtonProps, 'classNames' | 'styles' | 'vars' | 'variant' | 'leftSection' | 'rightSection'>,
         Omit<MenuItemProps, 'classNames' | 'styles' | 'vars' | 'variant' | 'leftSection' | 'disabled'>,
         CompoundStylesApiProps<TableActionItemFactory> {
     /**
@@ -29,7 +30,7 @@ type TableActionItemFactory = PolymorphicFactory<{
     compound: true;
 }>;
 
-const defaultProps: Partial<TableActionItemProps> = {};
+const defaultProps = {} satisfies Partial<TableActionItemProps>;
 
 export const TableActionItem = polymorphicFactory<TableActionItemFactory>(
     (props: TableActionItemProps & {component?: any}, ref) => {

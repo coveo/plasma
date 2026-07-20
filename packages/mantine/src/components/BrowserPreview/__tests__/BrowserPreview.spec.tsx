@@ -6,7 +6,7 @@ describe('BrowserPreview', () => {
     it('shows no tooltip when none specified', async () => {
         render(<BrowserPreview />);
 
-        expect(screen.queryByRole('img', {name: /information/i})).not.toBeInTheDocument();
+        expect(screen.queryByRole('img', {name: /question/i})).not.toBeInTheDocument();
     });
 
     it('renders the specified text as the header tooltip content', async () => {
@@ -15,8 +15,8 @@ describe('BrowserPreview', () => {
 
         render(<BrowserPreview headerTooltip={headerTooltip} />);
 
-        await waitFor(() => screen.findByRole('img', {name: /information/i}));
-        await user.hover(screen.getByRole('img', {name: /information/i}));
+        await waitFor(() => screen.findByRole('img', {name: /question/i}));
+        await user.hover(screen.getByRole('img', {name: /question/i}));
 
         await waitFor(() => expect(screen.getByText(headerTooltip)).toBeVisible());
     });

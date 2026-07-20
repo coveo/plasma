@@ -1,0 +1,15 @@
+{
+    "extends": "../tsconfig-base.json",
+    "compilerOptions": {
+        "module": "nodenext",
+        "moduleResolution": "nodenext",
+        "target": "es2022",
+        "jsx": "react-jsx",
+        "rootDir": "src",
+        "noUnusedLocals": false,
+        "types": ["node"],
+        "allowImportingTsExtensions": true,
+        "rewriteRelativeImportExtensions": true
+    },
+    "include": ["src/**/*"]
+}

@@ -1,0 +1,15 @@
+{
+    "extends": "../tsconfig-base.json",
+    "compilerOptions": {
+        "module": "nodenext",
+        "moduleResolution": "nodenext",
+        "target": "es2022",
+        "outDir": "dist",
+        "rootDir": "src",
+        "noUnusedLocals": false,
+        "resolveJsonModule": true,
+        "types": ["node"]
+    },
+    "include": ["src/**/*"],
+    "exclude": ["dist", "node_modules"]
+}

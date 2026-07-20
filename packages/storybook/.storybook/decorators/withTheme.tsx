@@ -1,4 +1,6 @@
-import {createTheme, Notifications, Plasmantine} from '@coveord/plasma-mantine';
+import {createTheme} from '@coveord/plasma-mantine/core';
+import {Plasmantine} from '@coveord/plasma-mantine/plasmantine';
+import {Notifications} from '@coveord/plasma-mantine/notifications';
 import type {Decorator} from '@storybook/react-vite';
 
 type Theme = 'teal' | 'blue' | 'violet';

@@ -1,7 +1,7 @@
 import {IconSettings} from '@coveord/plasma-react-icons';
 import {Checkbox, Divider, Popover, ScrollArea, Stack, Text, Tooltip} from '@mantine/core';
 import {flexRender, Header, Table} from '@tanstack/react-table';
-import {ActionIcon} from '../../ActionIcon/ActionIcon';
+import {ActionIcon} from '../../ActionIcon/ActionIcon.js';
 
 export interface TableColumnsSelectorOptions {
     /**

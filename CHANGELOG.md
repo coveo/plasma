@@ -1,3 +1,185 @@
+## 59.8.0 (2026-07-08)
+
+* feat: add Storybook page for Chip component (#4484) d80b76c, closes #4484
+* feat(BrowserPreview): update BrowserPreview style and story (#4488) ee2fa93, closes #4488
+* feat(mantine): add PrerequisitesList component (#4482) fa586f9, closes #4482
+* feat(storybook): add content guidelines pages 41568af
+* DS-616 simplified "Content" section for llms folder (#4486) abc4ff0, closes #4486
+* Move Content outside Foundation folder (#4494) c88bc42, closes #4494
+* fix(ci): truncate branch name to 37 chars in Chromatic URL (#4490) 974f4b1, closes #4490 #4489
+
+
+
+## <small>59.7.2 (2026-06-29)</small>
+
+* fix(mantine): add missing .js extensions in relative imports (#4485) 80e8ebf, closes #4485
+
+
+
+## <small>59.7.1 (2026-06-26)</small>
+
+* chore(deps): update dependency eslint-plugin-jsdoc to v63 (#4448) 04afb67, closes #4448
+* chore(deps): update non-major github actions to df4cb1c (#4465) 77a482d, closes #4465
+* fix(ci): add Chromatic demo link to PR comment (#4472) 35c43fa, closes #4472
+* fix(llms): encode files as utf8 with a BOM (#4479) d689263, closes #4479
+* fix(mantine): add missing jsdoc on table components (#4480) 7151c48, closes #4480
+* fix(mantine): only apply inline middlewares in test environment (#4476) 5ea9133, closes #4476
+* fix(storybook): adapt docs page to user color preferences (#4466) eaf3810, closes #4466
+* fix(table): hide column headers when NoData is shown (#4478) 8d34c1b, closes #4478
+
+
+
+## 59.7.0 (2026-06-05)
+
+* feat(InfoToken): color changes on info token (#4462) c5a3d29, closes #4462
+
+
+
+## <small>59.6.1 (2026-06-03)</small>
+
+* fix(storybook): mdx demos need full import (#4464) 50121f3, closes #4464
+
+
+
+## 59.6.0 (2026-06-02)
+
+* feat(storybook): add iconography page (#4459) beabef2, closes #4459
+* Ds 382 foundation storybook (#4449) 10264f0, closes #4449
+
+
+
+## <small>59.5.4 (2026-06-01)</small>
+
+* ci(cd): revert patch semantic-monorepo-tools to publish using npm (#4461) 8722765, closes #4461
+
+
+
+## <small>59.5.2 (2026-05-28)</small>
+
+* ci(cd): patch semantic-monorepo-tools to publish using npm (#4456) 850f943, closes #4456
+
+
+
+## <small>59.5.1 (2026-05-28)</small>
+
+* ci(cd): patch semantic-monorepo-tools to add --access public on publish (#4455) 2db2045, closes #4455
+
+
+
+## 59.5.0 (2026-05-28)
+
+* ci(cd): patch semantic-monorepo-tools to add --no-git-checks (#4453) eae0b85, closes #4453
+* chore(deps): update coveo/semantic-monorepo-tools (#4450) 1477337, closes #4450
+* chore(deps): update pnpm to v11 (#4429) 60c89a3, closes #4429
+* feat: implement plasma mcp server (#4441) 205230a, closes #4441
+* feat(llms): add @coveord/plasma-llms package (#4434) c81a439, closes #4434
+* feat(llms): add initial component specs (#4442) 6fbe68b, closes #4442
+* Ds 153 navlink weight (#4444) 086bfb0, closes #4444
+* fix(mantine, facet): alignement of remove button when title wraps (#4443) 5699893, closes #4443
+* fix(styles): correct background color for radio card and storybook preview (#4440) 841cc42, closes #4440
+* refactor(ci): standardize deploy base URL via shared compute-base-url action (#4426) 33f8ae6, closes #4426
+
+
+
+## <small>59.4.3 (2026-05-11)</small>
+
+* fix(website): update vite and postcss versions to fix old website (#4433) e767a35, closes #4433
+* feat(react-icons, mock): update mock to also mock in node_modules (#4431) 5311d39, closes #4431
+
+
+
+## <small>59.4.2 (2026-05-06)</small>
+
+* fix(Mantine, facet): export types (#4428) ada40f0, closes #4428
+
+
+
+## <small>59.4.1 (2026-05-05)</small>
+
+* feat(mantine, facet): add removable option (#4424) cc20b90, closes #4424
+* chore(deps): lock file maintenance (#4423) 0a55df4, closes #4423
+* chore(deps): update all non-major dependencies (#4415) d3b9da2, closes #4415
+
+
+
+## 59.4.0 (2026-05-01)
+
+* feat(CopyToClipboard): deprecate 'withLabel' prop and update story (#4422) 2065f86, closes #4422
+
+
+
+## 59.3.0 (2026-05-01)
+
+* feat(mantine,RadioCard): update the RadioCard visually (#4414) ea761ee, closes #4414
+* feat(ActionIcon): update styles to match figma (#4421) cff9f32, closes #4421
+* feat(pill): +sm, +md size in pill storybook (#4419) 58dd585, closes #4419
+* fix(inputlabelinfo): make pointer-event auto (#4420) b31e90d, closes #4420
+
+
+
+## 59.2.0 (2026-04-29)
+
+* chore(deps): lock file maintenance (#4416) f6e38db, closes #4416
+* feat(mantine): override combobox chevron (#4411) 3124d12, closes #4411
+
+
+
+## <small>59.1.2 (2026-04-27)</small>
+
+* chore: add chromatic and deployment (#4404) 72bf870, closes #4404
+* chore(deps): lock file maintenance (#4397) da45b9e, closes #4397
+* chore(deps): lock file maintenance (#4409) 36bb39d, closes #4409
+* chore(deps): update actions/github-script action to v9 (#4406) 8f54d89, closes #4406
+* chore(deps): update actions/setup-node digest to 48b55a0 (#4408) ccdd9f3, closes #4408
+* chore(deps): update all non-major dependencies (#4400) 4d47ecb, closes #4400
+* chore(deps): update all non-major dependencies (#4402) 5c90201, closes #4402
+* chore(deps): update all non-major dependencies (#4410) 21c9313, closes #4410
+* fix(mantine, breadcrumbs): update size of component (#4403) 54a9be9, closes #4403
+
+
+
+## <small>59.1.1 (2026-04-13)</small>
+
+* fix(Alert): *border-radius, *padding body (#4399) acede81, closes #4399
+
+
+
+## 59.1.0 (2026-04-13)
+
+* fix(modal): adjust scrollbar behavior for better content visibility (#4398) 9039283, closes #4398
+* chore(deps): update all non-major dependencies (#4390) 200b07e, closes #4390
+* feat(alert): +Success variant, +border (#4393) 3f50eae, closes #4393
+
+
+
+## 59.0.0 (2026-04-10)
+
+* feat(mantine, table): persist column visibility preferences to localStorage (#4377) 4da013b, closes #4377 #4373 #4378 #4379 #4375
+* fix(badge): extend SemanticBadgeProps to include ElementProps for improved type safety (#4396) efd37f7, closes #4396
+* feat(header): header actions gap from 16 to 8 px (#4394) 92842fb, closes #4394
+
+
+### BREAKING CHANGE
+
+* InfoToken is no longer a renderable component
+- Only compound components are exported
+- variant prop is no longer used to set the semantic type
+- variant prop has now two possible values: outline and light
+
+* fix: apply copilot review
+* Prompt variant prop is replaced by compound components
+
+
+## <small>58.0.2 (2026-04-09)</small>
+
+* fix(modal): set body as the scroll container (#4389) f6e0528, closes #4389
+* fix(prompt): add back ref prop to PromptCompoundComponent (#4391) 7a4e51d, closes #4391
+* chore(deps): lock file maintenance (#4383) 790cea4, closes #4383
+* chore(deps): update all non-major dependencies (#4382) 52406f9, closes #4382
+* chore(deps): update dependency vite to v8.0.5 [security] (#4384) aebdbad, closes #4384
+
+
+
 ## <small>58.0.1 (2026-04-03)</small>
 
 * chore(deps): update all non-major dependencies (#4374) 176a9c6, closes #4374

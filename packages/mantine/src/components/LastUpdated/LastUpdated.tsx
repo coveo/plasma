@@ -1,6 +1,6 @@
 import {BoxProps, factory, Factory, Group, GroupProps, StylesApiProps, Text, useProps, useStyles} from '@mantine/core';
 import dayjs from 'dayjs';
-import React from 'react';
+import {ForwardedRef} from 'react';
 
 export type LastUpdatedStylesNames = 'root' | 'label';
 
@@ -30,48 +30,40 @@ export type LastUpdatedFactory = Factory<{
     stylesNames: LastUpdatedStylesNames;
 }>;
 
-const defaultProps: Partial<LastUpdatedProps> = {
+const defaultProps = {
     label: 'Last update:',
     formatter: (time) => dayjs(time).format('h:mm:ss A'),
-};
+} satisfies Partial<LastUpdatedProps>;
 
-export const LastUpdated = factory<LastUpdatedFactory>(
-    (props: LastUpdatedProps, ref: React.ForwardedRef<HTMLDivElement>) => {
-        const {formatter, label, time, classNames, className, styles, style, vars, unstyled, ...others} = useProps(
-            'PlasmaLastUpdated',
-            defaultProps as Partial<LastUpdatedProps>,
-            props,
-        );
+export const LastUpdated = factory<LastUpdatedFactory>((props: LastUpdatedProps, ref: ForwardedRef<HTMLDivElement>) => {
+    const {formatter, label, time, classNames, className, styles, style, vars, unstyled, ...others} = useProps(
+        'PlasmaLastUpdated',
+        defaultProps,
+        props,
+    );
+    const resolvedTime = time ?? dayjs().valueOf();
 
-        const resolvedTime = time ?? dayjs().valueOf();
+    const getStyles = useStyles<LastUpdatedFactory>({
+        name: 'LastUpdated',
+        classes: {},
+        props,
+        className,
+        style,
+        classNames,
+        styles,
+        unstyled,
+        vars,
+    });
+    const stylesApiProps = {classNames, styles};
 
-        const getStyles = useStyles<LastUpdatedFactory>({
-            name: 'LastUpdated',
-            classes: {},
-            props,
-            className,
-            style,
-            classNames,
-            styles,
-            unstyled,
-            vars,
-        });
-        const stylesApiProps = {classNames, styles};
-
-        return (
-            <Group
-                justify={props.justify}
-                ref={ref}
-                {...getStyles('root', {className, style, ...stylesApiProps})}
-                {...others}
-            >
-                <Text size="xs" {...getStyles('label', {className, style, ...stylesApiProps})}>
-                    {label}
-                    <span role="timer">{formatter(resolvedTime)}</span>
-                </Text>
-            </Group>
-        );
-    },
-);
+    return (
+        <Group ref={ref} {...getStyles('root', {className, style, ...stylesApiProps})} {...others}>
+            <Text size="xs" {...getStyles('label', {className, style, ...stylesApiProps})}>
+                {label}
+                <span role="timer">{formatter(resolvedTime)}</span>
+            </Text>
+        </Group>
+    );
+});
 
 LastUpdated.displayName = 'LastUpdated';

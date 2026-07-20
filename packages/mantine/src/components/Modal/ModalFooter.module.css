@@ -2,6 +2,7 @@
     .root {
         margin: calc(-1 * var(--mb-padding));
         margin-top: var(--mb-padding);
+        bottom: calc(-1 * var(--mb-padding));
     }
 }
 

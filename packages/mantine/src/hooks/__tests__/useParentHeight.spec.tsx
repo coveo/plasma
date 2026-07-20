@@ -1,5 +1,5 @@
 import {render, screen, waitFor} from '@testing-library/react';
-import {useParentHeight} from '../useParentHeight';
+import {useParentHeight} from '../useParentHeight.js';
 
 describe('useParentHeight', () => {
     const Fixture = () => {

@@ -1,43 +1,58 @@
 {
     "name": "root",
-    "version": "58.0.1",
+    "version": "59.8.0",
     "private": true,
+    "type": "module",
     "scripts": {
         "build": "turbo run build",
-        "clean": "pnpm --recursive --parallel clean",
-        "commit-cli": "cz",
+        "changeset": "changeset",
+        "changeset:version": "changeset version",
+        "clean": "pnpm --recursive --parallel run clean",
+        "fmt": "oxfmt",
+        "fmt:check": "oxfmt --check",
         "preinstall": "npx only-allow pnpm",
+        "lint": "oxlint",
         "lintfix": "pnpm --recursive --parallel lintfix",
         "pnpm:devPreinstall": "pnpm turbo:login",
         "precommit": "lint-staged",
         "prepare": "husky",
         "reconstruct": "pnpm dlx rimraf packages/*/node_modules packages/*/.turbo node_modules && npm run setup && echo done",
+        "release:pre:enter:next": "changeset pre enter next",
+        "release:pre:exit": "changeset pre exit",
+        "release:pre:publish:next": "changeset publish",
+        "release:publish": "changeset publish",
         "setup": "pnpm install",
-        "start": "turbo run build --filter=!@coveord/plasma-website --filter=!storybook && pnpm --recursive --parallel start",
+        "start": "turbo run build --filter=!@coveord/plasma-storybook && pnpm --recursive --parallel start",
         "test": "turbo run test --concurrency=1",
-        "turbo:login": "node scripts/turboLogin.mjs"
+        "turbo:login": "node scripts/turboLogin.js"
     },
-    "commitlint": {
-        "extends": [
-            "@commitlint/config-conventional"
-        ]
+    "devDependencies": {
+        "@changesets/changelog-github": "0.7.0",
+        "@changesets/cli": "2.31.0",
+        "@types/node": "24.13.2",
+        "@typescript/native-preview": "7.0.0-dev.20260706.1",
+        "aws-sdk": "2.1693.0",
+        "eslint": "10.6.0",
+        "eslint-plugin-storybook": "10.4.6",
+        "eslint-plugin-testing-library": "7.16.2",
+        "husky": "9.1.7",
+        "lint-staged": "17.0.8",
+        "oxfmt": "0.57.0",
+        "oxlint": "1.72.0",
+        "oxlint-tsgolint": "0.24.0",
+        "postcss": "8.5.16",
+        "stylelint": "17.14.0",
+        "stylelint-config-standard-scss": "17.0.0",
+        "turbo": "2.9.6"
     },
     "lint-staged": {
-        "**/package.json": [
-            "sort-package-json"
-        ],
         "**/*.{js,jsx,ts,tsx,mjs,json,md,yml,html}": [
-            "prettier --write"
+            "oxfmt --write --no-error-on-unmatched-pattern"
         ],
         "**/*.{scss,css}": [
             "stylelint --fix",
-            "prettier --write"
+            "oxfmt --write --no-error-on-unmatched-pattern"
         ]
-    },
-    "config": {
-        "commitizen": {
-            "path": "cz-conventional-changelog"
-        }
     },
     "browserslist": [
         "cover 90%",
@@ -45,52 +60,5 @@
         "IE 11",
         "not dead"
     ],
-    "devDependencies": {
-        "@commitlint/cli": "20.5.0",
-        "@commitlint/config-conventional": "20.5.0",
-        "@coveo/semantic-monorepo-tools": "2.7.1",
-        "@types/node": "24.12.0",
-        "@vitest/eslint-plugin": "1.6.13",
-        "aws-sdk": "2.1693.0",
-        "commitizen": "4.3.1",
-        "conventional-changelog-angular": "8.3.0",
-        "cz-conventional-changelog": "3.3.0",
-        "eslint": "9.39.4",
-        "eslint-config-prettier": "10.1.8",
-        "eslint-plugin-import-x": "4.16.2",
-        "eslint-plugin-jsdoc": "62.8.1",
-        "eslint-plugin-prefer-arrow": "1.2.3",
-        "eslint-plugin-react": "7.37.5",
-        "eslint-plugin-react-hooks": "5.2.0",
-        "eslint-plugin-react-refresh": "0.5.2",
-        "eslint-plugin-storybook": "10.3.3",
-        "eslint-plugin-testing-library": "7.16.2",
-        "eslint-plugin-unused-imports": "4.4.1",
-        "globals": "17.4.0",
-        "husky": "9.1.7",
-        "lint-staged": "16.4.0",
-        "postcss": "8.5.8",
-        "prettier": "3.8.1",
-        "sort-package-json": "3.6.1",
-        "stylelint": "17.6.0",
-        "stylelint-config-standard-scss": "17.0.0",
-        "turbo": "2.8.20",
-        "typescript": "5.9.3",
-        "typescript-eslint": "8.57.2"
-    },
-    "packageManager": "pnpm@10.33.0+sha512.10568bb4a6afb58c9eb3630da90cc9516417abebd3fabbe6739f0ae795728da1491e9db5a544c76ad8eb7570f5c4bb3d6c637b2cb41bfdcdb47fa823c8649319",
-    "pnpm": {
-        "peerDependencyRules": {
-            "ignoreMissing": [
-                "react-native"
-            ]
-        },
-        "overrides": {
-            "@babel/traverse": "^7.23.2",
-            "nwsapi": "2.2.23"
-        },
-        "patchedDependencies": {
-            "@stencil/core": "patches/@stencil__core.patch"
-        }
-    }
+    "packageManager": "pnpm@11.10.0+sha512.0b7f8b98060031904c017e3a41eb187a16d40eeb829b95c4f8cb03681761fc4ab53dd219115b9b447f4dce1a05a214764461e7d3703392a9f32f9511ce8c86c8"
 }

@@ -4,6 +4,7 @@ import {
     ColumnDef,
     defaultColumnSizing,
     getCoreRowModel,
+    type PaginationState as TanStackPaginationState,
     Row,
     RowSelectionState,
     useReactTable,
@@ -77,14 +78,14 @@ export type PlasmaTableFactory = Factory<{
     };
 }>;
 
-const defaultProps: Partial<TableProps<unknown>> = {
+const defaultProps = {
     layouts: [TableLayouts.Rows as TableLayout],
     layoutProps: {},
     loading: false,
     additionalRootNodes: [],
     options: {},
     getRowActions: () => [],
-};
+} satisfies Partial<TableProps<unknown>>;
 
 export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElement>}) => {
     const {
@@ -111,7 +112,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
         styles,
         unstyled,
         ...others
-    } = useProps('PlasmaTable', defaultProps as TableProps<T>, props);
+    } = useProps('PlasmaTable', defaultProps, props);
 
     const getStyles = useStyles<PlasmaTableFactory>({
         name: 'PlasmaTable',
@@ -135,18 +136,24 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
         state: {
             globalFilter: store.state.globalFilter,
             sorting: store.state.sorting,
-            pagination: store.state.pagination,
+            pagination: {pageIndex: store.state.pagination.page, pageSize: store.state.pagination.perPage},
             columnVisibility: store.state.columnVisibility,
             expanded: store.state.expanded,
         },
         onGlobalFilterChange: store.setGlobalFilter,
         onExpandedChange: store.setExpanded,
         onSortingChange: store.setSorting,
-        onPaginationChange: store.setPagination,
+        onPaginationChange: (updater) => {
+            store.setPagination((prev) => {
+                const tanstackPrev: TanStackPaginationState = {pageIndex: prev.page, pageSize: prev.perPage};
+                const next = updater instanceof Function ? updater(tanstackPrev) : updater;
+                return {page: next.pageIndex, perPage: next.pageSize};
+            });
+        },
         onColumnVisibilityChange: store.setColumnVisibility,
         columns: store.multiRowSelectionEnabled ? [TableSelectableColumn as ColumnDef<T>].concat(columns) : columns,
         getCoreRowModel: getCoreRowModel(),
-        manualPagination: options?.getPaginationRowModel === undefined,
+        manualPagination: options.getPaginationRowModel === undefined,
         enableMultiRowSelection: !!store.multiRowSelectionEnabled,
         getRowId,
         getRowCanExpand: (row: Row<T>) => !!getRowExpandedContent?.(row.original, row.index, row),
@@ -156,7 +163,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
             minSize: defaultColumnSizing.minSize,
             maxSize: defaultColumnSizing.maxSize,
         },
-        rowCount: options?.getFilteredRowModel ? undefined : store.state.totalEntries,
+        rowCount: options.getFilteredRowModel ? undefined : (store.state.totalEntries ?? undefined),
         ...options,
     });
 
@@ -250,7 +257,9 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
     }
 
     const Layout =
-        store.state.layout === null ? layouts[0] : layouts.find(({displayName}) => displayName === store.state.layout);
+        store.state.layout === null
+            ? layouts[0]
+            : (layouts.find(({displayName}) => displayName === store.state.layout) ?? layouts[0]);
     const hasRows = table.getRowModel().rows.length > 0;
 
     const resolvedGetRowCanEdit = getRowCanEdit ?? (() => true);
@@ -283,13 +292,15 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
                                             </th>
                                         </tr>
                                     ) : null}
-                                    <Layout.Header
-                                        getRowExpandedContent={getRowExpandedContent}
-                                        getRowAttributes={getRowAttributes}
-                                        getRowCanEdit={getRowCanEdit}
-                                        loading={loading}
-                                        {...layoutProps}
-                                    />
+                                    {hasRows || loading ? (
+                                        <Layout.Header
+                                            getRowExpandedContent={getRowExpandedContent}
+                                            getRowAttributes={getRowAttributes}
+                                            getRowCanEdit={getRowCanEdit}
+                                            loading={loading}
+                                            {...layoutProps}
+                                        />
+                                    ) : null}
                                 </thead>
                                 <tbody {...getStyles('body')}>
                                     {hasRows ? (
@@ -330,20 +341,66 @@ export const TableComponentsOrder = {
     LayoutControl: 1,
 };
 
+/**
+ * Generic column to use when your table needs an accordion (collapsible rows, but only one open at a time).
+ */
 Table.AccordionColumn = TableAccordionColumn;
+/**
+ * Generic column to use when your table needs actions on rows
+ */
 Table.ActionsColumn = TableActionsColumn;
+/**
+ * An action to display when a row is selected in the table. Can be displayed as a primary action or menu item.
+ */
 Table.ActionItem = TableActionItem;
+/**
+ * Generic column to use when your table needs collapsible rows
+ */
 Table.CollapsibleColumn = TableCollapsibleColumn;
+/**
+ * A date range picker integrated with the table store that resets pagination on change.
+ */
 Table.DateRangePicker = TableDateRangePicker;
+/**
+ * A search input that filters table rows by matching against any field.
+ * The filter value is debounced and resets pagination to the first page on change.
+ */
 Table.Filter = TableFilter;
+/**
+ * Container for elements displayed below the table body, typically pagination and per-page controls.
+ */
 Table.Footer = TableFooter;
+/**
+ * Container for elements displayed above the table body such as filters, predicates, and actions.
+ */
 Table.Header = TableHeader;
+/**
+ * Displays the time of the last data update, automatically refreshing when table data changes.
+ */
 Table.LastUpdated = TableLastUpdated;
+/**
+ * Available table layout configurations (e.g., Rows, Cards).
+ */
 Table.Layouts = TableLayouts;
+/**
+ * Skeleton overlay displayed while the table data is loading.
+ */
 Table.Loading = TableLoading;
+/**
+ * Container displayed when the table has no data to show.
+ */
 Table.NoData = TableNoData;
+/**
+ * Page navigation control that syncs with the table store and scrolls to the table on page change.
+ */
 Table.Pagination = TablePagination;
+/**
+ * Control allowing users to choose how many results are displayed per page.
+ */
 Table.PerPage = TablePerPage;
+/**
+ * A dropdown that filters table data by a predefined set of values and resets pagination on change.
+ */
 Table.Predicate = TablePredicate;
 
 Table.extend = identity as CustomComponentThemeExtend<PlasmaTableFactory>;

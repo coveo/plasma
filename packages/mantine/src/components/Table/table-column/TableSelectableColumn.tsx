@@ -1,7 +1,8 @@
-import {Checkbox, Tooltip} from '@mantine/core';
+import {Checkbox} from '@mantine/core';
 import {CellContext, ColumnDef} from '@tanstack/table-core';
 import {ChangeEvent, FunctionComponent, MouseEvent, useRef} from 'react';
 import {useTableContext} from '../TableContext.js';
+import {TableSelectAllCheckbox} from './TableSelectAllCheckbox.js';
 
 const SelectableCheckbox: FunctionComponent<{info: CellContext<unknown, unknown>}> = ({info}) => {
     const {row} = info;
@@ -73,19 +74,6 @@ export const TableSelectableColumn: ColumnDef<unknown> = {
         controlColumn: true,
     },
     size: 52, // 16px padding left + 20px checkbox + 16px padding right
-    header: ({table}) => {
-        const label = table.getIsAllRowsSelected() ? 'Unselect all from this page' : 'Select all from this page';
-        return (
-            <Tooltip label={label}>
-                <Checkbox
-                    checked={table.getIsAllPageRowsSelected()}
-                    indeterminate={table.getIsSomePageRowsSelected()}
-                    onChange={table.getToggleAllPageRowsSelectedHandler()}
-                    flex={1}
-                    aria-label={label}
-                />
-            </Tooltip>
-        );
-    },
     cell: (info) => <SelectableCheckbox info={info} />,
+    header: () => <TableSelectAllCheckbox flex={1} />,
 };

@@ -16,12 +16,12 @@ export type PromptCancelButtonFactory = Factory<{
     compound: true;
 }>;
 
-const defaultProps: Partial<PromptCancelButtonProps> = {};
+const defaultProps = {} satisfies Partial<PromptCancelButtonProps>;
 
 export const PromptCancelButton = factory<PromptCancelButtonFactory>((_props, ref) => {
     const {getStyles} = usePromptContext();
     const props = useProps('PromptCancelButton', defaultProps, _props);
-    const {className, classNames, style, styles, unstyled, vars, ...others} = props;
+    const {className, classNames, style, styles, unstyled: _unstyled, vars: _vars, ...others} = props;
 
     return <Button.Tertiary ref={ref} {...others} {...getStyles('cancel', {style, styles, className, classNames})} />;
 });

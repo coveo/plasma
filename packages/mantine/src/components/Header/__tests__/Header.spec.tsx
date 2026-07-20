@@ -83,7 +83,7 @@ describe('Header', () => {
             </Header>,
         );
 
-        const docLink = await screen.findByRole('link', {name: /question/i});
+        const docLink = await screen.findByRole('link', {name: /external/i});
         expect(docLink).toHaveAttribute('href', '/some/path');
     });
 

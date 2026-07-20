@@ -4,8 +4,21 @@
 
 .header {
     gap: var(--mantine-spacing-sm);
+    min-height: unset;
 }
 
 .close {
     align-self: flex-start;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.body {
+    overflow-y: auto;
+    border-end-start-radius: var(--modal-radius, var(--mantine-radius-default));
+    border-end-end-radius: var(--modal-radius, var(--mantine-radius-default));
 }

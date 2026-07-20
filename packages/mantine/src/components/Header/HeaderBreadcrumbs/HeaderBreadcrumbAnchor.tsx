@@ -32,7 +32,7 @@ export const HeaderBreadcrumbAnchor = polymorphicFactory<HeaderBreadcrumbAnchorF
             align="center"
             {...ctx.getStyles('breadcrumbAnchorSingleGroup', {className, classNames, styles, style, props})}
         >
-            <IconChevronLeft aria-label="arrow pointing back" size={16} />
+            <IconChevronLeft aria-label="arrow pointing back" size={20} />
             {children}
         </Flex>
     ) : (

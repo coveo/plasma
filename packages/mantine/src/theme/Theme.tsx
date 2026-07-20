@@ -23,6 +23,7 @@ import {
     CloseButton,
     ColorSwatch,
     Combobox,
+    ComboboxChevron,
     ComboboxSearch,
     createTheme,
     deepMerge,
@@ -70,6 +71,7 @@ import {Accordion} from '../components/Accordion/Accordion.js';
 import {CheckboxIcon} from '../components/CheckboxIcon/CheckboxIcon.js';
 import {CircleLoader} from '../components/CircleLoader/CircleLoader.js';
 import {InfoToken} from '../components/InfoToken/InfoToken.js';
+import {PlasmaComboboxChevron} from '../components/Combobox/PlasmaComboboxChevron.js';
 import AccordionClasses from '../styles/Accordion.module.css';
 import ActionIconClasses from '../styles/ActionIcon.module.css';
 import AlertClasses from '../styles/Alert.module.css';
@@ -81,6 +83,7 @@ import CardClasses from '../styles/Card.module.css';
 import CheckboxClasses from '../styles/Checkbox.module.css';
 import CheckboxIndicatorClasses from '../styles/CheckboxIndicator.module.css';
 import ChipClasses from '../styles/Chip.module.css';
+import CloseButtonClasses from '../styles/CloseButton.module.css';
 import ComboboxClasses from '../styles/Combobox.module.css';
 import DatePickerClasses from '../styles/DatePicker.module.css';
 import DateTimePickerClasses from '../styles/DateTimePicker.module.css';
@@ -184,7 +187,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         ActionIcon: ActionIcon.extend({
             defaultProps: {
-                size: 'lg',
+                size: 'md',
             },
             classNames: ActionIconClasses,
         }),
@@ -218,7 +221,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         Breadcrumbs: Breadcrumbs.extend({
             classNames: BreadcrumbsClasses,
             defaultProps: {
-                separator: <IconSlash size={16} color="var(--mantine-color-dimmed)" />,
+                separator: <IconSlash size={20} color="var(--mantine-color-dimmed)" />,
                 separatorMargin: 'xxs',
             },
         }),
@@ -263,7 +266,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         Chip: Chip.extend({
             defaultProps: {
-                icon: <IconCheck size={16} />,
+                icon: <IconCheck size="var(--chip-icon-size)" />,
             },
             classNames: ChipClasses,
         }),
@@ -271,6 +274,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             defaultProps: {
                 icon: <CrossSize16Px height={16} aria-label="close" />,
             },
+            classNames: CloseButtonClasses,
         }),
         ColorSwatch: ColorSwatch.extend({
             defaultProps: {
@@ -280,8 +284,10 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         Combobox: Combobox.extend({
             classNames: ComboboxClasses,
+        }),
+        ComboboxChevron: ComboboxChevron.extend({
             defaultProps: {
-                middlewares: {inline: true},
+                component: PlasmaComboboxChevron,
             },
         }),
         ComboboxSearch: ComboboxSearch.extend({
@@ -368,6 +374,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         List: List.extend({
             classNames: ListClasses,
+            defaultProps: {
+                size: 'sm',
+            },
         }),
         Modal: Modal.extend({
             classNames: ModalClasses,
@@ -434,7 +443,6 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         Popover: Popover.extend({
             classNames: PopoverClasses,
             defaultProps: {
-                middlewares: {inline: true},
                 position: 'bottom-start',
             },
         }),

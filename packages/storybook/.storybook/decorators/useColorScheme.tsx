@@ -5,7 +5,9 @@ import {useEffect} from 'react';
 export const useColorScheme: Decorator = (Story, context) => {
     const {setColorScheme} = useMantineColorScheme();
     useEffect(() => {
-        setColorScheme(context.globals.backgrounds.value);
+        if (context.globals.backgrounds.value) {
+            setColorScheme(context.globals.backgrounds.value);
+        }
     }, [context.globals.backgrounds.value]);
 
     return <Story />;

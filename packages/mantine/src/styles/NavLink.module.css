@@ -6,16 +6,10 @@
     }
 
     &:where([data-disabled]) {
-        color: var(--coveo-color-text-disabled);
+        color: var(--mantine-color-disabled-color);
     }
 }
 
 .label {
     font-weight: var(--coveo-fw-bold);
-}
-
-.children {
-    & .label {
-        font-weight: var(--coveo-fw-normal);
-    }
 }

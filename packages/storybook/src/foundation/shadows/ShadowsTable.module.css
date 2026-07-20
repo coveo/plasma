@@ -1,0 +1,3 @@
+.shadowRow:hover .shadowCell:last-of-type {
+    background-color: var(--coveo-app-background);
+}

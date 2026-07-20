@@ -1,15 +1,7 @@
-import {
-    Anchor,
-    AnchorProps,
-    CompoundStylesApiProps,
-    Factory,
-    Tooltip,
-    TooltipProps,
-    factory,
-    useProps,
-} from '@mantine/core';
+import {IconExternalLink} from '@coveord/plasma-react-icons';
+import {AnchorProps, CompoundStylesApiProps, Factory, Tooltip, TooltipProps, factory, useProps} from '@mantine/core';
 import {ReactNode} from 'react';
-import {InfoToken} from '../../InfoToken/InfoToken.js';
+import {ActionIcon} from '../../ActionIcon/ActionIcon.js';
 import {useHeaderContext} from '../Header.context.js';
 
 export type HeaderDocAnchorStyleNames = 'docAnchorTooltip' | 'docAnchor';
@@ -41,14 +33,14 @@ export type HeaderDocAnchorFactory = Factory<{
     compound: true;
 }>;
 
-const defaultProps: Partial<HeaderDocAnchorProps> = {
+const defaultProps = {
     position: 'right',
-    children: <InfoToken.Question />,
-};
+    children: <IconExternalLink />,
+} satisfies Partial<HeaderDocAnchorProps>;
 
 export const HeaderDocAnchor = factory<HeaderDocAnchorFactory>((_props, ref) => {
     const props = useProps('PlasmaHeaderActions', defaultProps, _props);
-    const {className, classNames, styles, style, children, label, position, vars, ...others} = props;
+    const {className, classNames, styles, style, children, label, position, vars, size, ...others} = props;
 
     const ctx = useHeaderContext();
 
@@ -59,15 +51,18 @@ export const HeaderDocAnchor = factory<HeaderDocAnchorFactory>((_props, ref) => 
             position={position}
             classNames={{tooltip: ctx.getStyles('docAnchorTooltip', {classNames, styles, props}).className}}
         >
-            <Anchor
+            <ActionIcon.Tertiary
                 ref={ref}
-                inline
+                size={ctx.variant === 'primary' ? 'lg' : 'md'}
+                component="a"
                 target="_blank"
+                rel="noopener noreferrer"
+                aria-label="external"
                 {...ctx.getStyles('docAnchor', {classNames, styles, props, style, className})}
                 {...others}
             >
                 {children}
-            </Anchor>
+            </ActionIcon.Tertiary>
         </Tooltip>
     );
 });

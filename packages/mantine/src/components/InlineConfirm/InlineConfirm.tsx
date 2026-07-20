@@ -31,7 +31,7 @@ export type InlineConfirmFactory = Factory<{
     };
 }>;
 
-const defaultProps: Partial<InlineConfirmProps> = {};
+const defaultProps = {} satisfies Partial<InlineConfirmProps>;
 
 export const InlineConfirm = ((_props) => {
     const {children} = useProps('InlineConfirm', defaultProps, _props);

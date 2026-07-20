@@ -1,5 +1,4 @@
 import {
-    Box,
     factory,
     Factory,
     ModalRootProps,
@@ -9,7 +8,17 @@ import {
     useProps,
     useStyles,
 } from '@mantine/core';
-import {Children, ComponentProps, ComponentType, forwardRef, FunctionComponent, ReactElement, ReactNode} from 'react';
+import {
+    Children,
+    ComponentProps,
+    ComponentType,
+    forwardRef,
+    ForwardRefExoticComponent,
+    isValidElement,
+    ReactElement,
+    ReactNode,
+    RefAttributes,
+} from 'react';
 import {InfoToken} from '../InfoToken/InfoToken.js';
 import {Modal} from '../Modal/Modal.js';
 import {PromptContextProvider} from './Prompt.context.js';
@@ -52,10 +61,11 @@ const PromptVariantIconsMapping: Record<PromptVariant, typeof InfoToken.Informat
     information: InfoToken.Information,
 };
 
-const defaultProps: Partial<PromptInternalProps> = {
+const defaultProps = {
     variant: 'information',
     centered: true,
-};
+    size: 'sm',
+} satisfies Partial<PromptInternalProps>;
 
 const _Prompt = factory<PromptFactory>((_props, ref) => {
     const props = useProps('Prompt', defaultProps, _props);
@@ -86,17 +96,22 @@ const _Prompt = factory<PromptFactory>((_props, ref) => {
     const stylesApiProps = {classNames, styles};
 
     const footers: ReactElement[] = [];
-    const otherChildren: ReactElement[] = [];
+    const otherChildren: ReactNode[] = [];
 
-    Children.forEach(children, (child: ReactElement) => {
-        (child.type === PromptFooter ? footers : otherChildren).push(child);
+    Children.forEach(children, (child) => {
+        if (isValidElement(child) && child.type === PromptFooter) {
+            footers.push(child);
+            return;
+        }
+
+        otherChildren.push(child);
     });
 
     const IconComponent = PromptVariantIconsMapping[variant];
 
     return (
         <PromptContextProvider value={{variant, getStyles}}>
-            <Modal.Root ref={ref} variant="prompt" size="sm" {...others} {...getStyles('root')}>
+            <Modal.Root ref={ref} variant="prompt" {...others} {...getStyles('root')}>
                 <Modal.Overlay {...getStyles('overlay', stylesApiProps)} />
                 <Modal.Content {...getStyles('content', stylesApiProps)}>
                     <Modal.Header {...getStyles('header', stylesApiProps)}>
@@ -114,9 +129,9 @@ const _Prompt = factory<PromptFactory>((_props, ref) => {
                         <Modal.CloseButton {...getStyles('close', stylesApiProps)} />
                     </Modal.Header>
                     <Modal.Body {...getStyles('body', stylesApiProps)}>
-                        <Box {...getStyles('inner', stylesApiProps)}>{otherChildren}</Box>
+                        {otherChildren}
+                        {footers}
                     </Modal.Body>
-                    {footers}
                 </Modal.Content>
             </Modal.Root>
         </PromptContextProvider>
@@ -124,12 +139,12 @@ const _Prompt = factory<PromptFactory>((_props, ref) => {
 });
 _Prompt.displayName = 'Prompt';
 
-type PromptCompoundComponent = ((props: PromptProps) => ReactElement) & Omit<FunctionComponent<PromptProps>, never>;
+type PromptCompoundComponent = ForwardRefExoticComponent<PromptProps & RefAttributes<HTMLDivElement>>;
 
 const PromptFooter: ComponentType<ComponentProps<typeof Modal.Footer>> = (props) => <Modal.Footer {...props} />;
 PromptFooter.displayName = 'Prompt.Footer';
 
-const createPromptCompound = (variant: PromptVariant, displayName: string): PromptCompoundComponent => {
+const createPromptCompound = (variant: PromptVariant, displayName: string) => {
     const Component = forwardRef<HTMLDivElement, PromptProps>((props, ref) => (
         <_Prompt ref={ref} {...props} variant={variant} />
     ));
