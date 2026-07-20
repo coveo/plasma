@@ -10,7 +10,7 @@ import {
     useReactTable,
 } from '@tanstack/react-table';
 import isEqual from 'fast-deep-equal';
-import {Children, ForwardedRef, ReactElement, useEffect, useRef} from 'react';
+import {Children, ForwardedRef, ReactElement, useCallback, useEffect, useRef} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../utils/createFactoryComponent.js';
 import classes from './Table.module.css';
 import {TableLayout, TableProps} from './Table.types.js';
@@ -93,6 +93,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
         data,
         getRowId,
         getRowAttributes,
+        getRowCanEdit,
         getRowExpandedContent,
         getRowActions,
         columns,
@@ -219,6 +220,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
     }, [data]);
 
     const containerRef = useRef<HTMLDivElement>(null);
+    const lastSelectedRowIndex = useRef<number | null>(null);
     useClickOutside(
         () => {
             if (!store.multiRowSelectionEnabled && store.getSelectedRows().length > 0) {
@@ -229,6 +231,22 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
         [containerRef.current, ...additionalRootNodes],
     );
     const mergedRef = useMergedRef(containerRef, ref);
+
+    const handleEscapeKey = useCallback(
+        (event: KeyboardEvent) => {
+            if (event.key === 'Escape' && store.getSelectedRows().length > 0) {
+                store.clearRowSelection();
+            }
+        },
+        [store],
+    );
+
+    useEffect(() => {
+        document.addEventListener('keydown', handleEscapeKey);
+        return () => {
+            document.removeEventListener('keydown', handleEscapeKey);
+        };
+    }, [handleEscapeKey]);
 
     if (!data) {
         return (
@@ -244,16 +262,20 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
             : (layouts.find(({displayName}) => displayName === store.state.layout) ?? layouts[0]);
     const hasRows = table.getRowModel().rows.length > 0;
 
+    const resolvedGetRowCanEdit = getRowCanEdit ?? (() => true);
+
     return (
         <Box ref={mergedRef} {...others} {...getStyles('root')}>
             <TableProvider<T>
                 value={{
                     getStyles,
                     getRowActions,
+                    getRowCanEdit: resolvedGetRowCanEdit,
                     store,
                     table,
                     layouts,
                     containerRef,
+                    lastSelectedRowIndex,
                 }}
             >
                 <Layout>
@@ -274,6 +296,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
                                         <Layout.Header
                                             getRowExpandedContent={getRowExpandedContent}
                                             getRowAttributes={getRowAttributes}
+                                            getRowCanEdit={getRowCanEdit}
                                             loading={loading}
                                             {...layoutProps}
                                         />
@@ -284,6 +307,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
                                         <Layout.Body
                                             getRowExpandedContent={getRowExpandedContent}
                                             getRowAttributes={getRowAttributes}
+                                            getRowCanEdit={getRowCanEdit}
                                             loading={loading}
                                             {...layoutProps}
                                         />

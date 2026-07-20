@@ -85,10 +85,14 @@ const CollapsibleIcon = factory<TableCollapsibleColumnFactory>((props, ref) => {
         onToggle?.(e);
         handler();
     };
+    const onDoubleClick = (e: ReactMouseEvent<HTMLButtonElement>) => {
+        e.stopPropagation();
+    };
     return info.row.getCanExpand() ? (
         <ActionIcon.Quaternary
             ref={ref}
             onClick={onClick}
+            onDoubleClick={onDoubleClick}
             color={color ?? 'gray'}
             radius={radius ?? 'sm'}
             {...getStyles('collapsibleIcon', {className, classNames, styles, style})}

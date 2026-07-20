@@ -41,6 +41,7 @@ type StoryArgs = TableProps<Person> & {
     withRowMultiSelection: boolean;
     withLastUpdated: boolean;
     withCollapsibleRows: boolean;
+    withCanEdit: boolean;
     collapsibleBehavior: 'collapse' | 'accordion';
 };
 
@@ -110,6 +111,7 @@ export const Demo: Story = {
         withRowMultiSelection: false,
         withLastUpdated: false,
         withCollapsibleRows: false,
+        withCanEdit: false,
         collapsibleBehavior: 'collapse',
     },
     argTypes: {
@@ -134,6 +136,7 @@ export const Demo: Story = {
         withRowMultiSelection,
         withLastUpdated,
         withCollapsibleRows,
+        withCanEdit,
         collapsibleBehavior,
     }) => {
         const columns = useMemo(() => {
@@ -194,6 +197,7 @@ export const Demo: Story = {
                 getRowId={({id}) => id.toString()}
                 layouts={withLayoutSelector ? [Table.Layouts.Rows, Table.Layouts.Cards] : undefined}
                 loading={loading}
+                getRowCanEdit={withCanEdit ? (_datum, index) => index % 2 !== 0 : undefined}
                 getRowExpandedContent={
                     withCollapsibleRows
                         ? (datum) => (
