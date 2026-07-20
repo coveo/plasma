@@ -95,6 +95,7 @@ export const plasmaDocsComponents: Record<string, ComponentType<any>> = {
     h4: (props) => <HeadingWithAnchor order={4} mt="md" mb="sm" {...props} />,
     h5: (props) => <HeadingWithAnchor order={5} mt="md" mb="sm" {...props} />,
     h6: (props) => <HeadingWithAnchor order={6} mt="md" mb="sm" {...props} />,
+    em: (props) => <Text span fs="italic" {...props} />,
     a: (props) => <Anchor {...props} />,
     hr: () => <Divider />,
     code: ({className, children, ...props}) => {
