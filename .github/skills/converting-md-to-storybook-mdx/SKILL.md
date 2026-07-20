@@ -79,7 +79,7 @@ Stop and ask the user before continuing if:
 
 ### 2. Existing file safety
 
-Before writing `ComponentName-usage.mdx`:
+Before writing `ComponentName.mdx`:
 
 - If the file does not exist, create it.
 - If it exists and contains `{/* storybook-usage-guidelines: rewritten */}`, stop and ask the user for permission before overwriting. Step 2 is already complete for this file.
@@ -103,12 +103,21 @@ Before converting, verify the frontmatter contains both `name` and `description`
 Do the following in order:
 
 1. **Strip the YAML frontmatter** — remove the entire `---` block. Use the `name` value as the `# H1` heading and add the `description` value as plain text directly beneath it.
-2. **Add the MDX header** — the very first lines of the output file must be:
+2. **Add the MDX header** — when a matching `.stories.tsx` exists, the very first lines of the output file must be:
+
+    ```mdx
+    import {Meta} from '@storybook/addon-docs/blocks';
+    import * as stories from './ComponentName.stories';
+
+    <Meta of={stories} title="@components/section/ComponentName" />
+    ```
+
+    If no stories file exists and you are using an approved fallback path, omit the `stories` import and `of` prop, and keep only:
 
     ```mdx
     import {Meta} from '@storybook/addon-docs/blocks';
 
-    <Meta title="@components/section/ComponentName/Usage" />
+    <Meta title="@components/section/ComponentName" />
     ```
 
 3. **Escape JSX-sensitive prose** — escape the following characters when they appear outside fenced code blocks and inline code:
@@ -120,31 +129,28 @@ Do the following in order:
     | `{`                        | `&#123;`       |
     | `}`                        | `&#125;`       |
 
-    Do not escape content inside fenced code blocks or inline code. Do not escape intentional MDX syntax added by this skill, such as `{/* TODO: Replace with full Plasma docs URL */}`.
+    Do not escape content inside fenced code blocks or inline code.
 
-4. **Handle the `{{BASE_URL}}` link** — replace `[Full Plasma documentation]({{BASE_URL}})` with:
-    ```mdx
-    {/* TODO: Replace with full Plasma docs URL */}
-    ```
+4. **Handle the `{{BASE_URL}}` link** — remove `[Full Plasma documentation]({{BASE_URL}})` entirely.
 5. **Preserve everything else** — fenced code blocks, inline code, tables, lists, and headings carry over unchanged.
 
 ### 4. Output file naming and placement
 
-The file must be named `ComponentName-usage.mdx` and placed in the same folder as the `.stories.tsx` file.
+The file must be named `ComponentName.mdx` and placed in the same folder as the `.stories.tsx` file.
 
 The `form` section has sub-folders — always read the stories file to find the exact path:
 
-| Stories file                                                   | MDX output                                                   |
-| -------------------------------------------------------------- | ------------------------------------------------------------ |
-| `packages/storybook/src/layout/Accordion.stories.tsx`          | `packages/storybook/src/layout/Accordion-usage.mdx`          |
-| `packages/storybook/src/call-to-action/ActionIcon.stories.tsx` | `packages/storybook/src/call-to-action/ActionIcon-usage.mdx` |
-| `packages/storybook/src/form/string/Select.stories.tsx`        | `packages/storybook/src/form/string/Select-usage.mdx`        |
-| `packages/storybook/src/form/array/Collection.stories.tsx`     | `packages/storybook/src/form/array/Collection-usage.mdx`     |
-| `packages/storybook/src/form/boolean/Checkbox.stories.tsx`     | `packages/storybook/src/form/boolean/Checkbox-usage.mdx`     |
-| `packages/storybook/src/form/number/NumberInput.stories.tsx`   | `packages/storybook/src/form/number/NumberInput-usage.mdx`   |
-| `packages/storybook/src/form/date/DatePickerInput.stories.tsx` | `packages/storybook/src/form/date/DatePickerInput-usage.mdx` |
+| Stories file                                                   | MDX output                                             |
+| -------------------------------------------------------------- | ------------------------------------------------------ |
+| `packages/storybook/src/layout/Accordion.stories.tsx`          | `packages/storybook/src/layout/Accordion.mdx`          |
+| `packages/storybook/src/call-to-action/ActionIcon.stories.tsx` | `packages/storybook/src/call-to-action/ActionIcon.mdx` |
+| `packages/storybook/src/form/string/Select.stories.tsx`        | `packages/storybook/src/form/string/Select.mdx`        |
+| `packages/storybook/src/form/array/Collection.stories.tsx`     | `packages/storybook/src/form/array/Collection.mdx`     |
+| `packages/storybook/src/form/boolean/Checkbox.stories.tsx`     | `packages/storybook/src/form/boolean/Checkbox.mdx`     |
+| `packages/storybook/src/form/number/NumberInput.stories.tsx`   | `packages/storybook/src/form/number/NumberInput.mdx`   |
+| `packages/storybook/src/form/date/DatePickerInput.stories.tsx` | `packages/storybook/src/form/date/DatePickerInput.mdx` |
 
-The `<Meta title>` for each file must use the title from the `.stories.tsx` file with `/Usage` appended. For example, if the stories file has `title: '@components/layout/Accordion'`, the MDX title must be `@components/layout/Accordion/Usage`.
+When a stories file exists, use `<Meta of={stories} title="..." />` and set `title` to the exact value from the `.stories.tsx` file, with no added suffix. For example, if the stories file has `title: '@components/layout/Accordion'`, the MDX title must be `@components/layout/Accordion`.
 
 Do not create or modify any `.stories.tsx` file. Do not modify the original `.md` source file.
 
@@ -167,7 +173,7 @@ If the build passes:
 - Present the commit message for the user to confirm:
 
     ```
-    docs(storybook): convert <ComponentName> usage mdx
+    docs(storybook): convert <ComponentName> mdx
     ```
 
 - Wait for the user to confirm. Do not commit, skip ahead, or offer alternatives — the commit is required before Step 2.

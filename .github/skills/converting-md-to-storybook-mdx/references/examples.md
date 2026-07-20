@@ -7,12 +7,13 @@ A correct Step 1 conversion:
 - Preserves every word from the source `.md` exactly — no rephrasing, no improvement
 - Removes the YAML frontmatter block entirely
 - Uses `name` as the `# H1` heading and `description` as the line directly beneath it
-- Adds `import { Meta }` as the very first line
-- Adds `<Meta title="..." />` using the exact title from the `.stories.tsx` file
+- Adds `import {Meta}` as the very first line
+- Adds `import * as stories from './ComponentName.stories';` when a stories file exists
+- Adds `<Meta of={stories} title="..." />` using the exact title from the `.stories.tsx` file
 - Escapes JSX-sensitive prose (`<tag>` → `&lt;tag&gt;`, bare `{` → `&#123;`)
-- Replaces `[Full Plasma documentation]({{BASE_URL}})` with `{/* TODO: Replace with full Plasma docs URL */}`
+- Removes `[Full Plasma documentation]({{BASE_URL}})` entirely
 - Does **not** include the Step 2 completion marker (`{/* storybook-usage-guidelines: rewritten */}`)
-- Is saved as `ComponentName-usage.mdx` in the correct folder
+- Is saved as `ComponentName.mdx` in the correct folder
 
 ## Bad output
 
@@ -20,7 +21,7 @@ A Step 1 conversion that must be rejected:
 
 - Rewrites, simplifies, or improves any source copy (rewriting is Step 2)
 - Leaves the YAML frontmatter block in place
-- Uses an invented or guessed `<Meta title>` instead of reading it from the `.stories.tsx` file
+- Uses an invented or guessed `<Meta ...>` block instead of reading title from the `.stories.tsx` file
 - Places the file outside `packages/storybook/src/`
 - Keeps `[Full Plasma documentation]({{BASE_URL}})` as a rendered link
 - Overwrites an existing `.mdx` file without explicit user permission

@@ -41,7 +41,7 @@ Repeat for each group branch as needed:
 Commit one component at a time after validation:
 
 ```
-docs(storybook): rewrite <ComponentName> usage guidelines
+docs(storybook): rewrite <ComponentName> guidelines
 ```
 
 Do not create one large commit for the full group.

@@ -1,6 +1,6 @@
 ---
 name: storybook-component-guidelines
-description: "STEP 2 OF 2 — Rewrites converted .mdx component usage guideline files in packages/storybook/src/ from a terse, LLM-facing format into clear, human-readable documentation suitable for a developer audience on Storybook. Use after the converting-md-to-storybook-mdx skill (Step 1) has already created the .mdx file. Use when a user says 'rewrite the usage guidelines for [Component]', 'humanize [Component]-usage.mdx', 'prepare [Component] for Storybook', or 'do the next component'."
+description: "STEP 2 OF 2 — Rewrites converted component .mdx files in packages/storybook/src/ from a terse, LLM-facing format into clear, human-readable documentation suitable for a developer audience on Storybook. Use after the converting-md-to-storybook-mdx skill (Step 1) has already created the .mdx file. Use when a user says 'rewrite the usage guidelines for [Component]', 'humanize [Component].mdx', 'prepare [Component] for Storybook', or 'do the next component'."
 ---
 
 # Step 2 — Rewriting Component Usage Guidelines for Storybook
@@ -58,10 +58,10 @@ Stop and ask the user before continuing if:
 - There are unrelated uncommitted changes in the working tree
 - The Step 1 `.mdx` file does not yet exist for the component
 - The target `.mdx` file is not under `packages/storybook/src/`
-- More than one matching `ComponentName-usage.mdx` file exists
+- More than one matching `ComponentName.mdx` file exists
 - The file already contains `{/* storybook-usage-guidelines: rewritten */}` and the user has not explicitly asked to rewrite it again
 - The original `.md` source file cannot be found for read-only cross-checking
-- The `<Meta title="..." />`, H1, or description line is missing
+- The `<Meta ... />`, H1, or description line is missing
 - Fenced code blocks cannot be compared before and after rewriting
 - Content guidance would require inventing behavior not supported by the source files or component code
 - The Storybook build fails
@@ -75,7 +75,7 @@ This is a **rewrite, not a content expansion.** You are improving how existing i
 
 **Rewrite rules:**
 
-- Keep the `<Meta title>`, H1, and description line exactly as they are.
+- Keep the `<Meta ...>`, H1, and description line exactly as they are.
 - Keep every rule, constraint, and usage guideline that already exists in the source.
 - Do not add information beyond what is in the original — except a missing or thin Content guidance section (see Research rules below).
 - Reword sentences for clarity, flow, and tone.
@@ -104,7 +104,7 @@ The `.stories.tsx` file may be used as secondary context for examples, common us
 
 ## Completion marker
 
-As the final edit in Step 2, add this marker immediately after the `<Meta title="..." />` block:
+As the final edit in Step 2, add this marker immediately after the `<Meta ... />` block:
 
 ```mdx
 {/* storybook-usage-guidelines: rewritten */}
@@ -114,8 +114,9 @@ The top of a finished file must look like this:
 
 ```mdx
 import {Meta} from '@storybook/addon-docs/blocks';
+import * as stories from './Accordion.stories';
 
-<Meta title="@components/layout/Accordion/Usage" />
+<Meta of={stories} title="@components/layout/Accordion" />
 
 {/* storybook-usage-guidelines: rewritten */}
 
@@ -132,8 +133,9 @@ Every component file must follow this structure. Use the sections that apply —
 
 ```mdx
 import {Meta} from '@storybook/addon-docs/blocks';
+import * as stories from './ComponentName.stories';
 
-<Meta title="@components/section/ComponentName/Usage" />
+<Meta of={stories} title="@components/section/ComponentName" />
 
 {/* storybook-usage-guidelines: rewritten */}
 
@@ -145,25 +147,9 @@ One sentence description of what the component does.
 
 [1–3 sentences: what is this component and when would a developer reach for it?]
 
-## Props
-
-[Plasma-specific props, or the Mantine shorthand if none exist. See Props rules below.]
-
-## Sub-components
-
-[Table of sub-components with a Purpose column, if applicable.]
-
-## Usage
-
-[Code examples from the original — unchanged. Brief explanation after each block if not self-explanatory.]
-
 ## Content guidance
 
 [See Content guidance rules below.]
-
----
-
-{/* TODO: Replace with full Plasma docs URL */}
 ```
 
 Do not reformat the import line. Keep it exactly as it appears in the Step 1 `.mdx` file.
@@ -174,44 +160,27 @@ Do not reformat the import line. Keep it exactly as it appears in the Step 1 `.m
 
 ### Meta block, H1, and description
 
-Keep the `import { Meta }` line, `<Meta title="..." />`, the `# H1` heading, and the description line exactly as they are. Do not alter any of these.
+Keep the `import {Meta}` line, `import * as stories` line (when present), `<Meta ... />`, the `# H1` heading, and the description line exactly as they are. Do not alter any of these.
 
-The `<Meta title>` must follow this pattern, with `/Usage` appended as the final segment:
+When a stories file exists, `<Meta ... />` must follow this pattern:
 
 ```mdx
-<Meta title="@components/section/ComponentName/Usage" />
+<Meta of={stories} title="@components/section/ComponentName" />
 ```
 
-This causes the page to appear as "Usage" in the Storybook sidebar under the component, rather than "Docs".
+If the component has no stories file and uses an approved fallback location, keep the fallback `<Meta title="..." />` unchanged.
 
 ### Overview
 
 Write 1–3 natural sentences: what is this component, and when would a developer reach for it? Expand on the description without repeating it word for word.
 
-### Props
+### API reference sections
 
-If the component has no Plasma-specific props, check whether it extends Mantine:
+Remove duplicated API reference sections from these docs pages.
 
-- If it **extends Mantine** (the source file says `Extends: MantineXxxProps` or similar), use: _This component has no additional props beyond the Mantine base. Refer to the [Mantine documentation](https://mantine.dev) for all available props._
-- If it is **Plasma-custom** (e.g. `Facet`, `BlankSlate`, `InfoToken`), describe the available props from the source file. Do not use the Mantine shorthand line.
+Do not include `## Props`, `## Sub-components`, or `## Usage` sections in the rewritten output.
 
-Format each prop as:
-
-**`propName`** `Type`: Description of what this prop does in practice. Defaults to `value` if not set.
-
-### Sub-components
-
-Convert bullet lists into a table with a Purpose column. Keep descriptive prose notes beneath the table rather than forcing them into table cells.
-
-Use the Mantine `<Table>` JSX component — do not use markdown pipe tables. Add `import {Table} from '@mantine/core';` alongside the `Meta` import. Use `withTableBorder` and `withColumnBorders` on every table. See `references/mdx-patterns.md` for the full table pattern.
-
-Always leave a blank line between the closing `</Table>` tag and the next prose sentence, otherwise the prose may not render correctly.
-
-Pay attention to whether sub-components are optional or required. Some components (like `InfoToken`) expose semantic types only through sub-components because the underlying `type` prop is not public API — in those cases the sub-components are required, not optional. Use "use these instead of setting props manually" for optional wrappers and "you must use these to set the component type" for required ones.
-
-### Usage
-
-Keep all fenced code blocks byte-for-byte identical to the originals — do not alter, reformat, or correct them. After each block, add a brief explanation if it is not self-explanatory. Rewrite post-code bullet lists as natural prose or a short list.
+Developers should use the component Demo page for API details, controls, and code samples.
 
 ### Content guidance
 
@@ -341,7 +310,7 @@ If the build passes:
 - Present the commit message for the user to confirm:
 
     ```
-    docs(storybook): rewrite <ComponentName> usage guidelines
+    docs(storybook): rewrite <ComponentName> guidelines
     ```
 
 - Wait for the user to confirm before committing. Once confirmed, make the commit.
@@ -389,7 +358,7 @@ A component is done only when all of the following are true:
 - Storybook build has been run and passed
 - Build result has been reported
 - Source `.md` file is untouched
-- Changes have been committed on the correct DS branch with message `docs(storybook): rewrite <ComponentName> usage guidelines`
+- Changes have been committed on the correct DS branch with message `docs(storybook): rewrite <ComponentName> guidelines`
 
 ---
 

@@ -4,7 +4,16 @@ Reference for the `converting-md-to-storybook-mdx` skill.
 
 ## Required MDX structure
 
-Every docs-only MDX page needs exactly two things at the top:
+Every docs-only MDX page tied to a component story needs three things at the top:
+
+```mdx
+import {Meta} from '@storybook/addon-docs/blocks';
+import * as stories from './ComponentName.stories';
+
+<Meta of={stories} title="@components/section/ComponentName" />
+```
+
+If no stories file exists and the component uses an approved fallback path, omit `stories` and `of`:
 
 ```mdx
 import {Meta} from '@storybook/addon-docs/blocks';
@@ -59,11 +68,7 @@ Source files in `packages/llms/src/components/` end with:
 [Full Plasma documentation]({{BASE_URL}})
 ```
 
-`{{BASE_URL}}` is a template placeholder with no value in this repo. Replace it with a TODO comment so it doesn't render as a broken link:
-
-```mdx
-{/* TODO: Replace with full Plasma docs URL */}
-```
+`{{BASE_URL}}` is a template placeholder with no value in this repo. Remove this link entirely so it does not render as a broken or placeholder link.
 
 ---
 
@@ -175,7 +180,7 @@ All MDX files must be placed under `packages/storybook/src/` to be picked up aut
 
 ### Page doesn't appear in sidebar
 
-**Cause:** File is not under `packages/storybook/src/`, or `<Meta title="..." />` is missing or malformed.
+**Cause:** File is not under `packages/storybook/src/`, or `<Meta ... />` is missing or malformed.
 
 **Fix:** Confirm the file path and that the title matches the exact string from the component's `.stories.tsx` file.
 

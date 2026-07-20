@@ -4,7 +4,7 @@ The `## Content guidance` section must follow this exact structure.
 
 ## Section placement
 
-Place `## Content guidance` after `## Usage` and before any closing footer or link. It is the last substantive section in the page.
+Place `## Content guidance` after `## Overview`. It is the last substantive section in the page.
 
 ## Structure
 

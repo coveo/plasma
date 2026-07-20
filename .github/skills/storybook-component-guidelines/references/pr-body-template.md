@@ -18,13 +18,13 @@ Do not summarize or paraphrase the template — output it filled and verbatim.
 ## PR title
 
 ```
-DS-<ticket>: Add Storybook usage docs for <group letter(s)> components
+DS-<ticket>: Add Storybook component docs for <group letter(s)> components
 ```
 
 Examples:
 
-- `DS-400: Add Storybook usage docs for A components`
-- `DS-403: Add Storybook usage docs for E-M components`
+- `DS-400: Add Storybook component docs for A components`
+- `DS-403: Add Storybook component docs for E-M components`
 
 ---
 
@@ -35,7 +35,7 @@ Fill in the placeholders below, then output the result as a single copy-pasteabl
 ```markdown
 ## Summary
 
-Adds Storybook usage documentation for the `<group>` component group.
+Adds Storybook component documentation for the `<group>` component group.
 
 ## Components completed
 
@@ -46,7 +46,7 @@ Adds Storybook usage documentation for the `<group>` component group.
 For each component above:
 
 - MDX file is under `packages/storybook/src/`
-- `<Meta title="..." />` is unchanged after rewrite
+- `<Meta ... />` is unchanged after rewrite
 - H1 and description are unchanged after rewrite
 - Original `.md` source file was not modified
 - Fenced code blocks are unchanged after rewrite
@@ -70,10 +70,10 @@ No reviewers have been requested.
 
 ## PR title mapping
 
-| Branch                  | PR title                                              |
-| ----------------------- | ----------------------------------------------------- |
-| `DS-400-A-components`   | `DS-400: Add Storybook usage docs for A components`   |
-| `DS-401-B-components`   | `DS-401: Add Storybook usage docs for B components`   |
-| `DS-426-C-components`   | `DS-426: Add Storybook usage docs for C components`   |
-| `DS-403-E-M-components` | `DS-403: Add Storybook usage docs for E-M components` |
-| `DS-427-P-T-components` | `DS-427: Add Storybook usage docs for P-T components` |
+| Branch                  | PR title                                                  |
+| ----------------------- | --------------------------------------------------------- |
+| `DS-400-A-components`   | `DS-400: Add Storybook component docs for A components`   |
+| `DS-401-B-components`   | `DS-401: Add Storybook component docs for B components`   |
+| `DS-426-C-components`   | `DS-426: Add Storybook component docs for C components`   |
+| `DS-403-E-M-components` | `DS-403: Add Storybook component docs for E-M components` |
+| `DS-427-P-T-components` | `DS-427: Add Storybook component docs for P-T components` |

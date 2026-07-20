@@ -40,7 +40,7 @@ Repeat for each group branch as needed:
 Commit one component at a time after the build passes and the user confirms:
 
 ```
-docs(storybook): convert <ComponentName> usage mdx
+docs(storybook): convert <ComponentName> mdx
 ```
 
 Do not create one large commit for the full group.
