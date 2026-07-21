@@ -69,8 +69,7 @@ describe('Table HOC', () => {
             }).not.toThrow();
         });
 
-        it('should call the "onUpdateUrl" prop with the query string representing the current state when the table needs to update', () => {
-            jest.useFakeTimers();
+        it('should call the "onUpdateUrl" prop with the query string representing the current state when the table needs to update', async () => {
             const onUpdateUrlSpy = jest.fn();
             const renderBodySpy = jest.fn();
             const TableWithUrlState = tableWithUrlState(TableHOC);
@@ -84,7 +83,7 @@ describe('Table HOC', () => {
             expect(onUpdateUrlSpy).not.toHaveBeenCalled();
 
             table.prop('onUpdate')();
-            jest.runAllTimers();
+            await new Promise((resolve) => setTimeout(resolve, 150));
 
             expect(onUpdateUrlSpy).toHaveBeenCalledTimes(1);
             expect(onUpdateUrlSpy).toHaveBeenCalledWith('');

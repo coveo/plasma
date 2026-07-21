@@ -30,9 +30,16 @@ describe('ModalWizardWithValidations', () => {
             },
         );
 
+        // Wait for react-modal's onAfterOpen to settle
+        await waitFor(() => {
+            expect(screen.getByRole('dialog').closest('.modal-container')).toHaveClass('opened');
+        });
+
         expect(screen.getByRole('button', {name: 'Next'})).toBeEnabled();
         await user.click(screen.getByRole('button', {name: 'Next'}));
-        expect(screen.getByText('Step 2')).toBeVisible();
+        await waitFor(() => {
+            expect(screen.getByText('Step 2')).toBeVisible();
+        });
         expect(screen.getByRole('button', {name: 'Finish'})).toBeDisabled();
     });
 

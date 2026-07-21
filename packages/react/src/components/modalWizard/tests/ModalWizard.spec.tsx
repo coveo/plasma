@@ -1,4 +1,4 @@
-import {render, screen, waitForElementToBeRemoved} from '@test-utils';
+import {render, screen, waitFor, waitForElementToBeRemoved} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 import {PureComponent} from 'react';
 
@@ -50,26 +50,37 @@ describe('ModalWizard', () => {
             {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}},
         );
 
+        // Wait for react-modal's onAfterOpen to settle (adds 'opened' class)
+        await waitFor(() => {
+            expect(screen.getByRole('dialog').closest('.modal-container')).toHaveClass('opened');
+        });
+
         expect(screen.getByText(/Step 1/)).toBeVisible();
         expect(screen.getByText(/Step 2/)).not.toBeVisible();
         expect(screen.getByText(/Step 3/)).not.toBeVisible();
 
         await user.click(screen.getByRole('button', {name: 'Next'}));
 
+        await waitFor(() => {
+            expect(screen.getByText(/Step 2/)).toBeVisible();
+        });
         expect(screen.getByText(/Step 1/)).not.toBeVisible();
-        expect(screen.getByText(/Step 2/)).toBeVisible();
         expect(screen.getByText(/Step 3/)).not.toBeVisible();
 
         await user.click(screen.getByRole('button', {name: 'Next'}));
 
+        await waitFor(() => {
+            expect(screen.getByText(/Step 3/)).toBeVisible();
+        });
         expect(screen.getByText(/Step 1/)).not.toBeVisible();
         expect(screen.getByText(/Step 2/)).not.toBeVisible();
-        expect(screen.getByText(/Step 3/)).toBeVisible();
 
         await user.click(screen.getByRole('button', {name: 'Previous'}));
 
+        await waitFor(() => {
+            expect(screen.getByText(/Step 2/)).toBeVisible();
+        });
         expect(screen.getByText(/Step 1/)).not.toBeVisible();
-        expect(screen.getByText(/Step 2/)).toBeVisible();
         expect(screen.getByText(/Step 3/)).not.toBeVisible();
 
         expect(nextSpy).toHaveBeenCalledTimes(2);
