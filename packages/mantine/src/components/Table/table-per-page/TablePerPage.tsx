@@ -14,20 +14,27 @@ export const TablePerPage: FunctionComponent<TablePerPageProps> & {DEFAULT_SIZE:
 
     const updatePerPage = (newPerPage: string) => {
         onPerPageChange?.(Number(newPerPage));
-        store.setPagination({pageIndex: 0, pageSize: parseInt(newPerPage, 10)});
+        store.setPagination({page: 0, perPage: parseInt(newPerPage, 10)});
     };
 
-    return table.getPageCount() > 0 ? (
+    const totalRows = table.getRowCount();
+    const smallestPageSize = Math.min(...values);
+
+    if (totalRows <= smallestPageSize) {
+        return null;
+    }
+
+    return (
         <Group gap="sm">
             <Text fw={500}>{label}</Text>
             <SegmentedControl
-                value={store.state.pagination.pageSize.toString() ?? choices[1] ?? choices[0]}
+                value={store.state.pagination.perPage.toString() ?? choices[1] ?? choices[0]}
                 onChange={updatePerPage}
                 data={choices}
                 size="sm"
             />
         </Group>
-    ) : null;
+    );
 };
 
 TablePerPage.displayName = 'Table.PerPage';

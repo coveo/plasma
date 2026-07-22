@@ -13,7 +13,7 @@ describe('Table.PerPage', () => {
     it('displays the label', () => {
         const data = [{name: 'fruit'}, {name: 'vegetable'}];
         const Fixture = () => {
-            const store = useTable<RowData>();
+            const store = useTable<RowData>({initialState: {totalEntries: 30}});
             return (
                 <Table store={store} data={data} columns={columns}>
                     <Table.Footer>
@@ -28,9 +28,9 @@ describe('Table.PerPage', () => {
     });
 
     it('displays the values', () => {
-        const data = [{name: 'fruit'}, {name: 'vegetable'}];
+        const data = [{name: 'fruit'}, {name: 'vegetable'}, {name: 'grain'}];
         const Fixture = () => {
-            const store = useTable<RowData>({initialState: {pagination: {pageSize: 2}}});
+            const store = useTable<RowData>({initialState: {pagination: {perPage: 2}, totalEntries: 3}});
             return (
                 <Table store={store} data={data} columns={columns}>
                     <Table.Footer>
@@ -55,8 +55,8 @@ describe('Table.PerPage', () => {
         const Fixture = () => {
             const store = useTable<RowData>({
                 initialState: {
-                    pagination: {pageIndex: 1, pageSize: 50},
-                    totalEntries: 52,
+                    pagination: {page: 1, perPage: 50},
+                    totalEntries: 150,
                 },
             });
             return (
@@ -83,7 +83,7 @@ describe('Table.PerPage', () => {
         const Fixture = () => {
             const store = useTable<RowData>({
                 initialState: {
-                    pagination: {pageIndex: 1, pageSize: 50},
+                    pagination: {page: 1, perPage: 50},
                     totalEntries: 52,
                 },
             });
@@ -123,18 +123,60 @@ describe('Table.PerPage', () => {
         expect(screen.getByTestId('table-footer')).toBeEmptyDOMElement();
     });
 
+    it('renders nothing when total rows fit in the smallest page size', () => {
+        const data = [{name: 'fruit'}, {name: 'vegetable'}];
+        const Fixture = () => {
+            const store = useTable<RowData>({
+                initialState: {
+                    pagination: {perPage: 10},
+                    totalEntries: 5,
+                },
+            });
+            return (
+                <Table store={store} data={data} columns={columns}>
+                    <Table.Footer data-testid="table-footer">
+                        <Table.PerPage values={[10, 25, 50]} />
+                    </Table.Footer>
+                </Table>
+            );
+        };
+        render(<Fixture />);
+        expect(screen.getByTestId('table-footer')).toBeEmptyDOMElement();
+    });
+
+    it('renders when total rows exceed the smallest page size', () => {
+        const data = [{name: 'fruit'}, {name: 'vegetable'}];
+        const Fixture = () => {
+            const store = useTable<RowData>({
+                initialState: {
+                    pagination: {perPage: 50},
+                    totalEntries: 30,
+                },
+            });
+            return (
+                <Table store={store} data={data} columns={columns}>
+                    <Table.Footer>
+                        <Table.PerPage values={[25, 50, 100]} />
+                    </Table.Footer>
+                </Table>
+            );
+        };
+        render(<Fixture />);
+        expect(screen.getByText('Results per page')).toBeVisible();
+    });
+
     describe('when url sync is activated', () => {
         afterEach(() => {
             window.history.replaceState(null, '', '/');
         });
 
-        it('sets the current page size in the url using the parameter "pageSize"', async () => {
+        it('sets the current page size in the url using the parameter "perPage"', async () => {
             const data = [{name: 'fruit'}, {name: 'vegetable'}];
             const user = userEvent.setup();
             const Fixture = () => {
                 const store = useTable<RowData>({
                     initialState: {
-                        pagination: {pageIndex: 0, pageSize: 50},
+                        pagination: {page: 0, perPage: 50},
                         totalEntries: 52,
                     },
                     syncWithUrl: true,
@@ -150,16 +192,16 @@ describe('Table.PerPage', () => {
             };
             render(<Fixture />);
             await user.click(screen.getByRole('radio', {name: '100'}));
-            expect(window.location.search).toBe('?pageSize=100');
+            expect(window.location.search).toBe('?perPage=100');
         });
 
-        it('determines the initial pageSize from the url', async () => {
-            window.history.replaceState(null, '', '?pageSize=100');
+        it('determines the initial perPage from the url', async () => {
+            window.history.replaceState(null, '', '?perPage=100');
             const data = [{name: 'fruit'}, {name: 'vegetable'}];
             const Fixture = () => {
                 const store = useTable<RowData>({
                     initialState: {
-                        pagination: {pageIndex: 0, pageSize: 50},
+                        pagination: {page: 0, perPage: 50},
                         totalEntries: 52,
                     },
                     syncWithUrl: true,

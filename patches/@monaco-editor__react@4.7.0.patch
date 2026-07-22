@@ -1,0 +1,105 @@
+diff --git a/dist/index.d.mts b/dist/index.d.mts
+new file mode 100644
+index 0000000000000000000000000000000000000000..f3bcd7b86117c92605eb8ae5d59c923d07006fef
+--- /dev/null
++++ b/dist/index.d.mts
+@@ -0,0 +1,77 @@
++import { ReactNode } from 'react';
++import * as monaco_editor from 'monaco-editor';
++import { editor } from 'monaco-editor';
++import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
++
++export type Monaco = typeof monaco;
++export type Theme = 'vs-dark' | 'light';
++
++interface CancelablePromise<T> extends Promise<T> {
++    cancel: () => void;
++}
++
++export declare const loader: {
++    init(): CancelablePromise<Monaco>;
++    config(params: { paths?: { vs?: string }; 'vs/nls'?: { availableLanguages?: object }; monaco?: Monaco }): void;
++    __getMonacoInstance(): Monaco | null;
++};
++
++type MonacoDiffEditor = editor.IStandaloneDiffEditor;
++export type DiffOnMount = (editor: MonacoDiffEditor, monaco: Monaco) => void;
++export type DiffBeforeMount = (monaco: Monaco) => void;
++export type DiffEditorProps = {
++    original?: string;
++    modified?: string;
++    language?: string;
++    originalLanguage?: string;
++    modifiedLanguage?: string;
++    originalModelPath?: string;
++    modifiedModelPath?: string;
++    keepCurrentOriginalModel?: boolean;
++    keepCurrentModifiedModel?: boolean;
++    theme?: Theme | string;
++    loading?: ReactNode;
++    options?: editor.IDiffEditorConstructionOptions;
++    width?: number | string;
++    height?: number | string;
++    className?: string;
++    wrapperProps?: object;
++    beforeMount?: DiffBeforeMount;
++    onMount?: DiffOnMount;
++};
++
++export declare function DiffEditor(props: DiffEditorProps): JSX.Element;
++export declare function useMonaco(): typeof monaco_editor | null;
++
++export type OnMount = (editor: editor.IStandaloneCodeEditor, monaco: Monaco) => void;
++export type BeforeMount = (monaco: Monaco) => void;
++export type OnChange = (value: string | undefined, ev: editor.IModelContentChangedEvent) => void;
++export type OnValidate = (markers: editor.IMarker[]) => void;
++export type EditorProps = {
++    defaultValue?: string;
++    defaultLanguage?: string;
++    defaultPath?: string;
++    value?: string;
++    language?: string;
++    path?: string;
++    theme?: Theme | string;
++    line?: number;
++    loading?: ReactNode;
++    options?: editor.IStandaloneEditorConstructionOptions;
++    overrideServices?: editor.IEditorOverrideServices;
++    saveViewState?: boolean;
++    keepCurrentModel?: boolean;
++    width?: number | string;
++    height?: number | string;
++    className?: string;
++    wrapperProps?: object;
++    beforeMount?: BeforeMount;
++    onMount?: OnMount;
++    onChange?: OnChange;
++    onValidate?: OnValidate;
++};
++
++declare function Editor(props: EditorProps): JSX.Element;
++export default Editor;
++
++export type { MonacoDiffEditor };
+diff --git a/package.json b/package.json
+index 788253f228052968795f3bd4e02698282730b2e7..318a3b6897fb26c0cb0aaee3e40d7b69430cfb2c 100644
+--- a/package.json
++++ b/package.json
+@@ -60,5 +60,17 @@
+   },
+   "dependencies": {
+     "@monaco-editor/loader": "^1.5.0"
++  },
++  "exports": {
++    ".": {
++      "import": {
++        "types": "./dist/index.d.mts",
++        "default": "./dist/index.mjs"
++      },
++      "require": {
++        "types": "./dist/index.d.ts",
++        "default": "./dist/index.js"
++      }
++    }
+   }
+ }

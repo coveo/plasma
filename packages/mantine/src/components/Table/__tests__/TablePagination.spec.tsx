@@ -18,12 +18,12 @@ describe('Table.Pagination', () => {
         }
     });
 
-    it('calculates the number of pages based on the pageSize and the total number of entries', () => {
+    it('calculates the number of pages based on the perPage and the total number of entries', () => {
         const data = [{name: 'fruit'}, {name: 'vegetable'}];
         const Fixture = () => {
             const store = useTable<RowData>({
                 initialState: {
-                    pagination: {pageSize: 1},
+                    pagination: {perPage: 1},
                     totalEntries: 3,
                 },
             });
@@ -56,7 +56,7 @@ describe('Table.Pagination', () => {
             {name: 'dairy'},
         ];
         const Fixture = () => {
-            const store = useTable<RowData>({initialState: {pagination: {pageSize: 3}}});
+            const store = useTable<RowData>({initialState: {pagination: {perPage: 3}}});
 
             return (
                 <Table
@@ -104,7 +104,7 @@ describe('Table.Pagination', () => {
         const onChangePage = vi.fn();
         const data = [{name: 'fruit'}, {name: 'vegetable'}];
         const Fixture = () => {
-            const store = useTable<RowData>({initialState: {pagination: {pageSize: 1}}});
+            const store = useTable<RowData>({initialState: {pagination: {perPage: 1}}});
             return (
                 <Table store={store} data={data} columns={columns}>
                     <Table.Footer>
@@ -140,6 +140,27 @@ describe('Table.Pagination', () => {
         expect(screen.getByTestId('table-footer')).toBeEmptyDOMElement();
     });
 
+    it('renders nothing when there is only one page', () => {
+        const data = [{name: 'fruit'}, {name: 'vegetable'}];
+        const Fixture = () => {
+            const store = useTable<RowData>({
+                initialState: {
+                    pagination: {perPage: 50},
+                    totalEntries: 2,
+                },
+            });
+            return (
+                <Table store={store} data={data} columns={columns}>
+                    <Table.Footer data-testid="table-footer">
+                        <Table.Pagination />
+                    </Table.Footer>
+                </Table>
+            );
+        };
+        render(<Fixture />);
+        expect(screen.getByTestId('table-footer')).toBeEmptyDOMElement();
+    });
+
     it('changes page when the current page is greater than the total number of pages', async () => {
         const user = userEvent.setup();
         const onChangePage = vi.fn();
@@ -147,7 +168,7 @@ describe('Table.Pagination', () => {
         const Fixture = () => {
             const store = useTable<RowData>({
                 initialState: {
-                    pagination: {pageSize: 1, pageIndex: 2},
+                    pagination: {perPage: 1, page: 2},
                     totalEntries: 3,
                 },
             });
@@ -178,7 +199,7 @@ describe('Table.Pagination', () => {
         expect(buttons[4]).toHaveAccessibleName('3');
         expect(buttons[5]).toHaveAccessibleName('next page');
 
-        // remove a page
+        // remove a page (totalEntries: 3 -> 2, pageCount: 3 -> 2)
         await user.click(screen.getByTestId('remove-page'));
 
         // The page is 2, but the index is 1
@@ -194,27 +215,13 @@ describe('Table.Pagination', () => {
 
         onChangePage.mockReset();
 
-        // remove a page
+        // remove a page (totalEntries: 2 -> 1, pageCount: 2 -> 1)
         await user.click(screen.getByTestId('remove-page'));
 
         // The page is 1, but the index is 0
         expect(onChangePage).toHaveBeenCalledExactlyOnceWith(0);
 
-        buttons = screen.getAllByRole('button');
-        expect(buttons).toHaveLength(4);
-        expect(buttons[0]).toHaveAccessibleName('change total pages');
-        expect(buttons[1]).toHaveAccessibleName('previous page');
-        expect(buttons[2]).toHaveAccessibleName('1');
-        expect(buttons[3]).toHaveAccessibleName('next page');
-
-        onChangePage.mockReset();
-
-        // remove a page
-        await user.click(screen.getByTestId('remove-page'));
-
-        // There is no more pages
-        expect(onChangePage).not.toHaveBeenCalled();
-
+        // Pagination hides when there is only one page
         buttons = screen.getAllByRole('button');
         expect(buttons).toHaveLength(1);
         expect(buttons[0]).toHaveAccessibleName('change total pages');
@@ -231,7 +238,7 @@ describe('Table.Pagination', () => {
             const Fixture = () => {
                 const store = useTable<RowData>({
                     initialState: {
-                        pagination: {pageSize: 1, pageIndex: 0},
+                        pagination: {perPage: 1, page: 0},
                         totalEntries: 3,
                     },
                     syncWithUrl: true,
@@ -255,7 +262,7 @@ describe('Table.Pagination', () => {
             const Fixture = () => {
                 const store = useTable<RowData>({
                     initialState: {
-                        pagination: {pageSize: 1, pageIndex: 0},
+                        pagination: {perPage: 1, page: 0},
                         totalEntries: 3,
                     },
                     syncWithUrl: true,

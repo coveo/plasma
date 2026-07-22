@@ -25,45 +25,76 @@ jobs:
         environment: production
         steps:
             - name: Harden Runner
-              uses: step-security/harden-runner@8d3c67de8e2fe68ef647c8db1e6a09f647780f40 # v2.19.0
+              uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
               with:
                   egress-policy: audit
 
             - name: Checkout
-              uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+              uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
               with:
                   fetch-depth: 0
             - name: Setup
               uses: ./.github/actions/setup
-            - name: Lint
-              uses: ./.github/actions/lint
-              with:
-                  WORKFLOW: 'cd'
-            - name: Compute base URL
-              id: base-url
-              uses: ./.github/actions/compute-base-url
-              with:
-                  branch: ${{ github.ref_name }}
             - name: Build
               uses: ./.github/actions/build
+            - name: Lint
+              run: pnpm lint
               env:
-                  PLASMA_BASE_URL: ${{ steps.base-url.outputs.base-url }}
+                  # Without this, oxlint fails with a cryptic error (Error: Invalid tsconfig)
+                  OXLINT_TSGOLINT_DANGEROUSLY_SUPPRESS_PROGRAM_DIAGNOSTICS: true
             - name: Test
               uses: ./.github/actions/test
-            - name: Publish
-              uses: ./.github/actions/publish
-              env:
-                  DEBUG: '*'
-                  DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
-            - name: Deploy
-              uses: ./.github/actions/deploy
-              # Demo for next branch is deployed by the CI workflow
-              if: github.ref != 'refs/heads/next'
+            - name: Publish stable releases
+              if: github.ref_name == 'master'
+              uses: step-security/changeset-action@6ddf46283ed49170eb6ca2179818f7d2a0ae687c # v1.9.0
               with:
-                  AWS_ROLE: ${{ secrets.AWS_ROLE }}
-                  AWS_REGION: ${{ secrets.AWS_REGION }}
-                  AWS_BUCKET: ${{ secrets.AWS_BUCKET }}
-            - name: Deploy Storybook to Chromatic
+                  publish: pnpm release:publish
+                  createGithubReleases: true
               env:
-                  CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-              run: pnpm --filter storybook run chromatic --storybookBuildDir storybook-static --ci --exit-zero-on-changes --auto-accept-changes --branchName=${{ github.ref_name }}
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            - name: Configure git for prerelease commits
+              if: github.ref_name == 'next'
+              uses: ./.github/actions/configure-git-ssh
+              with:
+                  deploy-key: ${{ secrets.DEPLOY_KEY }}
+            - name: Bootstrap prerelease mode for next
+              if: github.ref_name == 'next' && !hashFiles('.changeset/pre.json')
+              run: pnpm release:pre:enter:next
+            - name: Version prereleases on next
+              if: github.ref_name == 'next'
+              run: pnpm changeset:version
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            - name: Commit prerelease version updates
+              if: github.ref_name == 'next'
+              shell: bash
+              run: |
+                  if git diff --quiet -- .changeset package.json packages; then
+                    echo "No prerelease version changes to commit"
+                    exit 0
+                  fi
+
+                  git add .changeset package.json packages
+                  git commit -m "chore(release): version packages [skip ci]"
+                  git push deploy HEAD:next
+            - name: Publish prereleases
+              if: github.ref_name == 'next'
+              uses: step-security/changeset-action@6ddf46283ed49170eb6ca2179818f7d2a0ae687c # v1.9.0
+              with:
+                  publish: pnpm release:pre:publish:next
+                  createGithubReleases: false
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            - name: Copy LLM files into Storybook output
+              run: cp -r ./packages/llms/dist/. ./packages/storybook/storybook-static/
+            - name: Deploy Storybook to Chromatic
+              uses: chromaui/action@94713c544284a14195de3b50ef24301579f1877e # v18.0.1
+              with:
+                  projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+                  storybookBuildDir: storybook-static
+                  workingDir: packages/storybook
+                  exitOnceUploaded: true
+                  onlyChanged: true
+                  exitZeroOnChanges: true
+                  autoAcceptChanges: true
+                  branchName: ${{ github.ref_name }}

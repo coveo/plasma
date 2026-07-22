@@ -1,0 +1,9 @@
+import {Meta, Markdown, Unstyled} from '@storybook/addon-docs/blocks';
+import plasmaMantineChangelogs from '../../../mantine/CHANGELOG.md?raw';
+import {plasmaMarkdownOverrides} from '../../.storybook/plasmaMarkdownOverrides';
+
+<Meta title="changelogs/plasma-mantine" id="changelogs-plasma-mantine" />
+
+<Unstyled>
+    <Markdown options={{overrides: plasmaMarkdownOverrides}}>{plasmaMantineChangelogs}</Markdown>
+</Unstyled>

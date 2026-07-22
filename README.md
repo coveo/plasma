@@ -154,14 +154,15 @@ Alternatively, you can run it directly from `packages/{packageName}`, which also
 
 ### Committing your changes
 
-Every commit made to this repository must comply to the [Conventional Commits specification](https://www.conventionalcommits.org/). Our build system is configured to automatically release and publish new versions according to this convention.
+Every commit made to this repository must comply to the [Conventional Commits specification](https://www.conventionalcommits.org/). Release versions are managed with Changesets instead of being inferred from commit messages.
 
-> We have integrated an optional [command line utility](https://github.com/commitizen/cz-cli) to help you build proper commit messages.
->
-> ```bash
-> git add . # stage the changes you want to commit
-> npm run commit-cli # execute the commit message helper
-> ```
+If your PR changes a releasable package, run:
+
+```bash
+pnpm changeset
+```
+
+Commit the generated file from `.changeset/`. CI will preview the package versions that would be bumped if the PR were merged and later released.
 
 ## License
 

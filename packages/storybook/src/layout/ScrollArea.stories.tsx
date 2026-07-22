@@ -2,6 +2,9 @@ import {ScrollArea} from '@coveord/plasma-mantine/components/ScrollArea';
 import {faker} from '@faker-js/faker';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
+// Set the seed for faker to avoid mismatch in chromatic
+faker.seed(42);
+
 const meta: Meta<typeof ScrollArea> = {
     title: '@components/layout/ScrollArea',
     id: 'ScrollArea',

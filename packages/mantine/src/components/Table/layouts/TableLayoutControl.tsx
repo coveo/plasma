@@ -1,4 +1,4 @@
-import {Box, Center, Grid, SegmentedControl, Space} from '@mantine/core';
+import {Grid, Group, SegmentedControl} from '@mantine/core';
 import {TableComponentsOrder} from '../Table.js';
 import {useTableContext} from '../TableContext.js';
 
@@ -10,15 +10,10 @@ export const TableLayoutControl = () => {
                 data={layouts.map(({displayName, Icon}) => ({
                     value: displayName,
                     label: (
-                        <Center>
-                            {Icon ? (
-                                <>
-                                    <Icon size={16} />
-                                    <Space w="xs" />
-                                </>
-                            ) : null}
-                            <Box>{displayName}</Box>
-                        </Center>
+                        <Group gap="xs" wrap="nowrap">
+                            {Icon ? <Icon size={16} /> : null}
+                            {displayName}
+                        </Group>
                     ),
                 }))}
                 value={store.state.layout === null ? layouts[0].displayName : store.state.layout}

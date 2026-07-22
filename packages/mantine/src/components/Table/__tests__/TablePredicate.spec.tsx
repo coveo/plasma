@@ -19,7 +19,7 @@ describe('Table.Predicate', () => {
         const user = userEvent.setup();
         const data = [{name: 'fruit'}, {name: 'vegetable'}];
         const Fixture = () => {
-            const store = useTable<RowData>({initialState: {pagination: {pageIndex: 1}, totalEntries: 52}});
+            const store = useTable<RowData>({initialState: {pagination: {page: 1}, totalEntries: 52}});
             return (
                 <Table store={store} data={data} columns={columns}>
                     <Table.Header>

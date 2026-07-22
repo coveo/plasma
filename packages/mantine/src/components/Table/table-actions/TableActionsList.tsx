@@ -5,6 +5,7 @@ import {
     CSSProperties,
     ExtendComponent,
     Factory,
+    MantineThemeComponent,
     Menu,
     MenuProps,
     Tooltip,
@@ -53,11 +54,11 @@ type TableActionsListFactory = Factory<{
     variant: 'split' | 'combined';
 }>;
 
-const defaultProps: Partial<TableActionsListProps> = {
+const defaultProps = {
     label: 'More',
     primaryGroupLabel: '',
     icon: <MoreSize16Px height={16} />,
-};
+} satisfies Partial<TableActionsListProps>;
 
 interface ActionsDict {
     $$primary: TableAction[];
@@ -70,7 +71,7 @@ interface ActionGroup {
     actions: ReactNode[];
 }
 
-export const TableActionsList = (props: TableActionsListProps) => {
+export function TableActionsList(props: TableActionsListProps) {
     const {getStyles} = useTableContext();
     const {
         actions,
@@ -81,6 +82,9 @@ export const TableActionsList = (props: TableActionsListProps) => {
         styles,
         vars: _vars,
         variant,
+        withinPortal,
+        opened: controlledOpened,
+        onChange: onMenuChange,
         ...others
     } = useProps('PlasmaTableActionsListColumn', defaultProps, props);
     const [opened, setOpened] = useState(false);
@@ -94,6 +98,7 @@ export const TableActionsList = (props: TableActionsListProps) => {
         if (!newOpened) {
             setOpened(false);
         }
+        onMenuChange?.(newOpened);
     };
 
     const actionsGroups: ActionsDict = actions.reduce<ActionsDict>(
@@ -130,7 +135,7 @@ export const TableActionsList = (props: TableActionsListProps) => {
                 <TableActionProvider value={{primary: true}}>{primaryActions}</TableActionProvider>
                 {secondaryActionGroups.length > 0 ? (
                     <TableActionProvider value={{primary: false}}>
-                        <Menu withinPortal={false} {...others} keepMounted>
+                        <Menu withinPortal={withinPortal ?? false} {...others} keepMounted>
                             <Menu.Target>
                                 <Button.Quaternary
                                     {...getStyles('actionsTarget', {styles, classNames})}
@@ -156,7 +161,7 @@ export const TableActionsList = (props: TableActionsListProps) => {
         <InlineConfirm>
             {confirmPrompts}
             <TableActionProvider value={{primary: false}}>
-                <Menu opened={opened} onChange={onChange} {...others} keepMounted>
+                <Menu opened={controlledOpened ?? opened} onChange={onChange} {...others} keepMounted>
                     <Menu.Target>
                         <Tooltip label={label} {...getStyles('actionsTooltip', {styles, classNames})}>
                             <ActionIcon.Quaternary
@@ -182,15 +187,15 @@ export const TableActionsList = (props: TableActionsListProps) => {
             </TableActionProvider>
         </InlineConfirm>
     );
-};
+}
 
 interface ActionsGroupsMenuItemsProps {
-    styles: Partial<Record<TableActionsListStylesNames, CSSProperties>>;
-    classNames: Partial<Record<TableActionsListStylesNames, string>>;
+    styles?: Partial<Record<TableActionsListStylesNames, CSSProperties>>;
+    classNames?: Partial<Record<TableActionsListStylesNames, string>>;
     actionGroups: ActionGroup[];
 }
 
-const ActionsGroupsMenuItems = ({styles, classNames, actionGroups}: ActionsGroupsMenuItemsProps) => {
+const ActionsGroupsMenuItems = ({styles = {}, classNames = {}, actionGroups}: ActionsGroupsMenuItemsProps) => {
     const {getStyles} = useTableContext();
     return actionGroups.map(({name, actions}, index) => (
         <Box key={name} {...getStyles('actionsGroup', {styles, classNames})}>
@@ -205,4 +210,4 @@ const ActionsGroupsMenuItems = ({styles, classNames, actionGroups}: ActionsGroup
     ));
 };
 
-TableActionsList.extend = (input: ExtendComponent<TableActionsListFactory>) => input;
+TableActionsList.extend = (input: ExtendComponent<TableActionsListFactory>): MantineThemeComponent => input;

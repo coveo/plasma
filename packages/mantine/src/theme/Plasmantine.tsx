@@ -13,6 +13,7 @@ import {mergeCSSVariablesResolvers} from './mergeCSSVariablesResolvers.js';
 import {plasmaCSSVariablesResolver} from './plasmaCSSVariablesResolver.js';
 import {plasmaTheme} from './Theme.js';
 
+const emptyTheme = {};
 const testThemeOverride = createTheme({
     components: {
         Combobox: Combobox.extend({defaultProps: {middlewares: {inline: true}}}),
@@ -22,15 +23,15 @@ const testThemeOverride = createTheme({
 
 export const Plasmantine: FunctionComponent<MantineProviderProps> = ({
     children,
-    theme: externalTheme,
+    theme: externalTheme = emptyTheme,
     cssVariablesResolver: externalCSSVariablesResolver,
     env,
     ...others
 }) => {
     const theme =
         env === 'test'
-            ? mergeThemeOverrides(plasmaTheme, testThemeOverride, externalTheme)
-            : mergeThemeOverrides(plasmaTheme, externalTheme);
+            ? mergeThemeOverrides(plasmaTheme, testThemeOverride, externalTheme, emptyTheme)
+            : mergeThemeOverrides(plasmaTheme, externalTheme, emptyTheme);
     const cssVariablesResolver = mergeCSSVariablesResolvers(plasmaCSSVariablesResolver, externalCSSVariablesResolver);
 
     return (

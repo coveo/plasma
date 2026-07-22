@@ -1,6 +1,6 @@
 import {Pill, PillsInput} from '@coveord/plasma-mantine';
 import {figma} from '@figma/code-connect';
-import {type ReactNode} from 'react';
+import type {ReactElement} from 'react';
 
 figma.connect(
     PillsInput,
@@ -27,8 +27,12 @@ figma.connect(
             }),
 
             inputProps: figma.nestedProps('.PillsInput.Input', {
-                leftSection: figma.boolean<ReactNode, never>('Left Section', {true: figma.instance('Swap Left')}),
-                rightSection: figma.boolean<ReactNode, never>('Right Section', {true: figma.instance('Swap Right')}),
+                leftSection: figma.boolean<ReactElement, undefined>('Left Section', {
+                    true: figma.instance<ReactElement>('Swap Left'),
+                }),
+                rightSection: figma.boolean<ReactElement, undefined>('Right Section', {
+                    true: figma.instance<ReactElement>('Swap Right'),
+                }),
                 disabled: figma.enum('State', {Disabled: true}),
                 readOnly: figma.enum('State', {'Read-only': true}),
             }),

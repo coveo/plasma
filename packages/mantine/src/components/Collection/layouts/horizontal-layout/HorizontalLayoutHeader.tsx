@@ -1,4 +1,5 @@
 import {Box, useProps} from '@mantine/core';
+import {clsx} from 'clsx';
 import {ForwardedRef} from 'react';
 import {useCollectionContext} from '../../CollectionContext.js';
 import {getColumnSizeStyles} from '../shared/columnUtils.js';
@@ -6,20 +7,21 @@ import {renderColumnHeader} from '../shared/headerUtils.js';
 import {LAYOUT_HEADER_DEFAULT_PROPS, LayoutHeaderProps} from '../shared/layoutConstants.js';
 import classes from './HorizontalLayout.module.css';
 
-const defaultProps: Partial<LayoutHeaderProps> = LAYOUT_HEADER_DEFAULT_PROPS;
+const defaultProps = LAYOUT_HEADER_DEFAULT_PROPS satisfies Partial<LayoutHeaderProps>;
 
 export const HorizontalLayoutHeader = (props: LayoutHeaderProps & {ref?: ForwardedRef<HTMLDivElement>}) => {
     const collectionCtx = useCollectionContext();
-    const {draggable, removable, style, ref, ...others} = useProps(
+    const {draggable, removable, style, className, ref, ...others} = useProps(
         'HorizontalLayoutHeader',
-        defaultProps as LayoutHeaderProps,
+        defaultProps,
         props,
     );
+    const columns = collectionCtx.columns ?? [];
 
     return (
-        <Box ref={ref} className={classes.headerRow} style={style} {...others}>
+        <Box ref={ref} className={clsx(classes.headerRow, className)} style={style} {...others}>
             {draggable && <div className={classes.dragHandleHeader} />}
-            {collectionCtx.columns.map((column, index) => {
+            {columns.map((column, index) => {
                 const columnId = column.id ?? `column-${index}`;
                 return (
                     <Box key={columnId} className={classes.headerCell} style={getColumnSizeStyles(column)}>

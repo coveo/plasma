@@ -8,32 +8,70 @@ env:
     TURBO_TOKEN: '${{ secrets.TURBO_TOKEN }}'
 
 jobs:
+    release-preview:
+        name: Release Preview
+        if: ${{ !startsWith(github.head_ref , 'changeset-release/') }}
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+            pull-requests: write
+        steps:
+            - name: Harden Runner
+              uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
+              with:
+                  egress-policy: audit
+
+            - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+              with:
+                  fetch-depth: 0
+            - uses: ./.github/actions/setup
+            - name: Generate release preview
+              id: preview
+              shell: bash
+              run: |
+                  {
+                    echo "message<<EOF"
+                    pnpm exec node scripts/releasePreview.js | tee -a "$GITHUB_STEP_SUMMARY"
+                    echo "EOF"
+                  } >> "$GITHUB_OUTPUT"
+            - name: Comment release preview on the PR
+              if: github.event.pull_request.head.repo.full_name == github.repository
+              uses: ./.github/actions/comment-on-pr
+              with:
+                  message: ${{ steps.preview.outputs.message }}
+                  avoidRepostsWith: '<!-- changesets-release-preview -->'
+                  updateExisting: 'true'
     lint:
         name: Lint Changed Files
         runs-on: ubuntu-latest
         steps:
             - name: Harden Runner
-              uses: step-security/harden-runner@8d3c67de8e2fe68ef647c8db1e6a09f647780f40 # v2.19.0
+              uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
               with:
                   egress-policy: audit
 
-            - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+            - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
               with:
                   fetch-depth: 0
             - uses: ./.github/actions/setup
-            - uses: ./.github/actions/lint
-              with:
-                  WORKFLOW: 'ci'
+            - uses: ./.github/actions/build
+            - name: Lint
+              run: pnpm lint
+              env:
+                  # Without this, oxlint fails with a cryptic error (Error: Invalid tsconfig)
+                  OXLINT_TSGOLINT_DANGEROUSLY_SUPPRESS_PROGRAM_DIAGNOSTICS: true
+            - name: Check format
+              run: pnpm fmt:check
     test:
         name: Test
         runs-on: ubuntu-latest
         steps:
             - name: Harden Runner
-              uses: step-security/harden-runner@8d3c67de8e2fe68ef647c8db1e6a09f647780f40 # v2.19.0
+              uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
               with:
                   egress-policy: audit
 
-            - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+            - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
             - uses: ./.github/actions/setup
             - uses: ./.github/actions/test
     demo:
@@ -41,32 +79,17 @@ jobs:
         runs-on: ubuntu-latest
         permissions:
             pull-requests: write
-            id-token: write
             contents: read
         steps:
             - name: Harden Runner
-              uses: step-security/harden-runner@8d3c67de8e2fe68ef647c8db1e6a09f647780f40 # v2.19.0
+              uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
               with:
                   egress-policy: audit
 
-            - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+            - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
               with:
                   fetch-depth: 0
             - uses: ./.github/actions/setup
-            - name: Compute base URL
-              id: base-url
-              uses: ./.github/actions/compute-base-url
-              with:
-                  branch: ${{ github.head_ref || github.ref_name }}
-            - uses: ./.github/actions/build
-              env:
-                  PLASMA_BASE_URL: ${{ steps.base-url.outputs.base-url }}
-            - uses: ./.github/actions/deploy
-              id: deploy-demo
-              with:
-                  AWS_ROLE: ${{ secrets.AWS_ROLE }}
-                  AWS_REGION: ${{ secrets.AWS_REGION }}
-                  AWS_BUCKET: ${{ secrets.AWS_BUCKET }}
             - name: Compute Chromatic URL
               id: chromatic-url
               shell: bash
@@ -74,13 +97,22 @@ jobs:
                   BRANCH="${{ github.head_ref || github.ref_name }}"
                   # Replace slashes with dashes, lowercase, and truncate to 37 chars (Chromatic's subdomain limit)
                   CLEAN_BRANCH=$(echo "$BRANCH" | tr '/' '-' | tr '[:upper:]' '[:lower:]' | cut -c1-37)
-                  echo "url=https://${CLEAN_BRANCH}--69e1126f9e24a5e560359ac2.chromatic.com/" >> $GITHUB_OUTPUT
+                  echo "url=https://${CLEAN_BRANCH}--69e1126f9e24a5e560359ac2.chromatic.com" >> "$GITHUB_OUTPUT"
+            - uses: ./.github/actions/build
+              env:
+                  PLASMA_BASE_URL: ${{ steps.chromatic-url.outputs.url }}
+            - name: Copy LLM files into Storybook output
+              run: cp -r ./packages/llms/dist/. ./packages/storybook/storybook-static/
+            - name: Deploy Storybook to Chromatic
+              uses: chromaui/action@94713c544284a14195de3b50ef24301579f1877e # v18.0.1
+              with:
+                  projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+                  storybookBuildDir: storybook-static
+                  workingDir: packages/storybook
+                  exitOnceUploaded: true
+                  onlyChanged: true
             - name: Add demo link as a comment on the PR
               uses: ./.github/actions/comment-on-pr
               with:
-                  message: 'Live demos of your latest successful build available here:\n- [:art: Storybook (Chromatic)](${{ steps.chromatic-url.outputs.url }})\n- [:books: Storybook](${{ steps.deploy-demo.outputs.demo-output-path }}/)\n- [:globe_with_meridians: Plasma website (deprecated)](${{ steps.deploy-demo.outputs.demo-output-path }}/old/).'
-                  avoidRepostsWith: Live demos of your latest successful build available here
-            - name: Deploy Storybook to Chromatic
-              env:
-                  CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-              run: pnpm --filter storybook run chromatic --storybookBuildDir storybook-static --ci
+                  message: 'Live demo of your latest successful build available here:\n- [:books: Storybook](${{ steps.chromatic-url.outputs.url }}/).'
+                  avoidRepostsWith: Live demo of your latest successful build available here

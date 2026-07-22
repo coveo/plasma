@@ -1,0 +1,16 @@
+.root {
+    --list-marker-gap: var(--mantine-spacing-sm);
+}
+
+.item {
+    font-weight: var(--coveo-fw-bold);
+}
+
+.icon {
+    height: 24px;
+    width: 24px;
+}
+
+.itemIcon {
+    margin-inline-end: var(--mantine-spacing-sm);
+}

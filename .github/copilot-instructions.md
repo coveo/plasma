@@ -9,7 +9,6 @@ Plasma is Coveo's design system used in Coveo Cloud Administration Console. This
 - **`@coveord/plasma-mantine`**: Plasma-flavoured Mantine theme with custom components
 - **`@coveord/plasma-tokens`**: Design tokens (colors, spacing, typography, etc.)
 - **`@coveord/plasma-react-icons`**: Icon components for React
-- **`@coveord/plasma-website`**: Documentation and demo site
 - **`@coveord/plasma-storybook`**: Storybook for component documentation
 - **`@coveord/plasma-figma`**: CodeConnect instances to document components in Figma
 - **`@coveord/plasma-llms`**: LLM-friendly component specs (`llms.txt`, `llms-full.txt`, per-component markdown)
@@ -19,7 +18,6 @@ Plasma is Coveo's design system used in Coveo Cloud Administration Console. This
 
 - **Monorepo**: Managed with pnpm workspaces and Turbo for build orchestration
 - **UI Framework**: React 19 with Mantine UI library
-- **Build Tool**: SWC for fast TypeScript compilation
 - **Testing**: Vitest with React Testing Library
 - **Package Manager**: pnpm
 

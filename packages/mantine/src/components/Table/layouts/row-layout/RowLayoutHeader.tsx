@@ -19,7 +19,7 @@ type RowLayoutHeaderFactory = Factory<{
     compound: true;
 }>;
 
-const defaultProps: Partial<RowLayoutHeaderProps<unknown>> = {};
+const defaultProps = {} satisfies Partial<RowLayoutHeaderProps<unknown>>;
 
 export const RowLayoutHeader = <T,>(props: RowLayoutHeaderProps<T> & {ref?: ForwardedRef<HTMLTableRowElement>}) => {
     const ctx = useRowLayout();
@@ -34,7 +34,7 @@ export const RowLayoutHeader = <T,>(props: RowLayoutHeaderProps<T> & {ref?: Forw
         classNames,
         styles,
         ...others
-    } = useProps('RowLayoutHeader', defaultProps as RowLayoutHeaderProps<T>, props);
+    } = useProps('RowLayoutHeader', defaultProps, props);
     const {table, store} = useTableContext<T>();
 
     const headers = table.getHeaderGroups().map((headerGroup) => (

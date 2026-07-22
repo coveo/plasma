@@ -1,5 +1,5 @@
 import {afterEach, describe, expect, it, vi} from 'vitest';
-import {getStorageItem, removeStorageItem, setStorageItem} from '../local-storage';
+import {getStorageItem, removeStorageItem, setStorageItem} from '../local-storage.js';
 
 const STORAGE_KEY = 'plasma';
 
