@@ -535,6 +535,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             }),
         }),
         Tabs: Tabs.extend({
+            defaultProps: {
+                keepMountedMode: 'display-none',
+            },
             classNames: TabsClasses,
         }),
         Text: Text.extend({
