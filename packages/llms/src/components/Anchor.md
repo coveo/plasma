@@ -67,7 +67,7 @@ Plasma exposes two size options:
 ## Usage
 
 ```tsx
-import {Anchor} from '@coveord/plasma-mantine';
+import {Anchor, Breadcrumbs} from '@coveord/plasma-mantine';
 
 // Standalone link
 function ExternalLink() {
@@ -79,8 +79,7 @@ function ExternalLink() {
 }
 
 // Inside a Breadcrumbs trail — inherit parent font size
-import {Breadcrumbs} from '@coveord/plasma-mantine';
-import {Text} from '@coveord/plasma-mantine';
+import {Anchor, Breadcrumbs} from '@coveord/plasma-mantine';
 
 function BreadcrumbTrail() {
     return (
@@ -88,7 +87,9 @@ function BreadcrumbTrail() {
             <Anchor href="/home" inherit>
                 Home
             </Anchor>
-            <Text inherit>Current page</Text>
+            <Anchor href="/catalog" inherit>
+                Catalog
+            </Anchor>
         </Breadcrumbs>
     );
 }

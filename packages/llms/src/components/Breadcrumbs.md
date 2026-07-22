@@ -22,10 +22,10 @@ description: Horizontal trail of navigation links showing the user's position wi
 
 ## Decision-making guidance
 
-- When there are two ancestors, use two `Anchor` links followed by the current page as a `Text` element.
+- When there are two ancestors, use two `Anchor` links.
 - When there are three or more ancestors, show up to three `Anchor` links — avoid going deeper as it becomes unreadable.
-- The last item in the trail represents the current page and MUST be a non-interactive `Text` element, not an `Anchor`.
-- All ancestor items MUST be `Anchor` elements so they are keyboard-focusable and screen-reader navigable.
+- Do not include the current page in the trail — the page header already shows the current page name.
+- All items MUST be `Anchor` elements so they are keyboard-focusable and screen-reader navigable.
 - Pass `inherit` on each `Anchor` child so its font size matches the `Breadcrumbs` container styling.
 
 ## Interaction notes
@@ -34,20 +34,19 @@ The separator between items is rendered automatically by the component. Do not p
 
 ## Accessibility expectations
 
-- The current page item MUST NOT be a link; wrapping it in `Text` satisfies this requirement.
 - Consider wrapping the `Breadcrumbs` in a `<nav aria-label="Breadcrumb">` landmark when the page does not already have a dedicated navigation region for it.
 - Each ancestor link MUST have descriptive text that matches or summarises the target page title.
 
 ## Common anti-patterns
 
-- Making the current-page item a link — it is a location indicator, not a navigation target.
+- Including the current page in the trail — the page header already communicates where the user is.
 - Nesting more than three levels; deeply nested breadcrumbs become unreadable and suggest that the information architecture needs rethinking.
 - Using plain `<a>` tags instead of `Anchor` children, which bypasses Plasma theming and focus styles.
 
 ## What an AI agent should understand
 
 - `Breadcrumbs` is a thin Plasma wrapper around Mantine's `Breadcrumbs`. All `BreadcrumbsProps` are available.
-- Children are typically a mix of `Anchor` (ancestors) and `Text` (current page).
+- Children are `Anchor` elements representing ancestor pages — do not include the current page.
 - The level 1 pattern uses an `Anchor` containing a `Flex` with an `IconChevronLeft` icon alongside the parent label — this is a design convention, not a prop.
 
 # API reference
@@ -59,10 +58,7 @@ The separator between items is rendered automatically by the component. Do not p
 ## Usage
 
 ```tsx
-import {Anchor} from '@coveord/plasma-mantine';
-import {Breadcrumbs} from '@coveord/plasma-mantine';
-import {Flex} from '@coveord/plasma-mantine';
-import {Text} from '@coveord/plasma-mantine';
+import {Anchor, Breadcrumbs, Flex} from '@coveord/plasma-mantine';
 import {IconChevronLeft} from '@coveord/plasma-react-icons';
 
 // Level 1: single parent with back-arrow affordance
@@ -75,7 +71,6 @@ function Level1() {
                     Catalog
                 </Flex>
             </Anchor>
-            <Text inherit>Product detail</Text>
         </Breadcrumbs>
     );
 }
@@ -90,7 +85,6 @@ function Level2() {
             <Anchor href="/catalog" inherit>
                 Catalog
             </Anchor>
-            <Text inherit>Product detail</Text>
         </Breadcrumbs>
     );
 }
