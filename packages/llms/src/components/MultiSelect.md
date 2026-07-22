@@ -19,7 +19,7 @@ description: Dropdown input that allows users to select multiple values from a p
 
 - When only a single value can be selected — use `Select` instead.
 - When the list of options is very small (2–4 items) and all options benefit from being visible simultaneously — use `Checkbox.Group` or `Chip.Group` for better scannability.
-- When the user needs to enter free-form values that are not constrained to a predefined list — `TagsInput` is more appropriate.
+- When the user needs to enter free-form values that are not constrained to a predefined list — use `Collection` instead, which lets users manage an array of similar grouped inputs.
 
 ## Decision-making guidance
 
