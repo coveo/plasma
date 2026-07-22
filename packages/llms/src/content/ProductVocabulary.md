@@ -3,44 +3,51 @@ name: Content Guidelines — Product Vocabulary
 description: Required spelling and capitalization for product terminology in the UI. Includes banned terms and approved replacements.
 ---
 
-> Always refer to this list when writing for the UI. Vocabulary is not consistent across other Coveo sources or documentation.
+RULE: Always use the spelling and capitalization shown here. Do not rely on other Coveo sources or documentation — vocabulary is not standardized across them.
 
-This page defines correct spelling and capitalization for Coveo product and feature names. Terms are organized by capitalization rule. Check here before writing any product, feature, or tool name.
-
-**If a product or feature name is not listed on this page:** check online resources to determine whether it is a proper noun or has an established capitalization convention. Use the most widely-used spelling and capitalization. If you're unsure, ask your question through this [request form](https://coveord.atlassian.net/jira/software/c/projects/DS/form/600), selecting `Content & Copywriting` as the **Type**.
+RULE: If a term is not listed here, check whether it is a proper noun or has an established capitalization convention. Use the most widely-used form. If uncertain, do not capitalize it.
 
 ## Sentence case
 
-Use sentence case for these terms in descriptions and body text.
+RULE: Write these terms in sentence case (lowercase) in all descriptions and body text.
 
 - agent
-- analytics (when referring to data or events, e.g., "the analytics data." Formerly _usage analytics_.)[^1]
+- analytics — use when referring to data or events (e.g., "the analytics data"). Formerly "usage analytics". To distinguish from a third-party product, use "Coveo Analytics" instead.
 - answer generation
-- API key (_API_ is always capitalized)
+- API key — "API" is always capitalized
+- catalog
 - catalog configuration
 - condition
-- conversational AI
+- conversational AI — "AI" is always capitalized
+- dimension
+- evaluation
 - extension
 - field
 - filter rule
+- group
 - in-product experience
 - indexing pipeline extension
 - listing page
-- machine learning (when referring to the technology in general)[^2]
-- model (when referring to a general model, e.g., "associate the model with a query pipeline", not a type of model)[^3]
+- machine learning — use when referring to the technology in general. To distinguish from a third-party product, use "Coveo Machine Learning" instead.
+- member
+- model — use when referring to a model generically (e.g., "associate the model with a query pipeline"). When naming a specific model type, use its Title Case name from the [Coveo products and models list](#coveo-products-and-models).
 - named filter
 - notification
-- passage retrieval (when referring to the capability or queries, e.g., "passage retrieval queries per second", not the product)[^4]
+- passage retrieval — use when referring to the capability or queries (e.g., "passage retrieval queries per second"). When naming the model type, use "Passage Retrieval" (Title Case).
 - permission filter
+- project
+- property
 - query parameter rule
 - query pipeline
 - query pipeline condition
 - query pipeline setting
 - ranking expression rule
 - ranking weight rule
+- report
 - resource snapshot
 - result ranking rule
-- search page (when referring to a search page generically, e.g., "create a search page")[^5]
+- search page — use when referring to a search page generically (e.g., "create a search page"). When referring to the Administration Console page, use "Search Pages" (Title Case).
+- security identities
 - security identity provider
 - security provider
 - source
@@ -51,23 +58,13 @@ Use sentence case for these terms in descriptions and body text.
 - thesaurus rule
 - trigger rule
 
-[^1]: If you're distinguishing from a third-party concept, use **Analytics** with the "Coveo" prefix — **Coveo Analytics** — as it appears in the [Coveo products and models list](#coveo-products-and-models).
-
-[^2]: If you're distinguishing from a third-party concept, use **Machine Learning** with the "Coveo" prefix — **Coveo Machine Learning** — as it appears in the [Coveo products and models list](#coveo-products-and-models).
-
-[^3]: When naming the model type, e.g., "an Automatic Relevance Tuning model," use the official name as it appears in the [Coveo products and models list](#coveo-products-and-models).
-
-[^4]: When naming the product, use **Passage Retrieval** as it appears in the [Coveo products and models list](#coveo-products-and-models).
-
-[^5]: When referencing the Administration Console page, use **Search Pages** as it appears in the [pages and navigation list](#pages-and-navigation).
-
 ## Title case
 
-This section lists the scenarios in which you should always use Title Case, including when you reference: Administration Console [pages](#pages-and-navigation); [sources](#sources); [tools and libraries](#tools-and-libraries); [Coveo products and ML models](#coveo-products-and-models); and [third-party products](#third-party-products).
+RULE: Write these terms in Title Case in all UI copy — navigation labels, descriptions, body text, and mid-sentence.
 
 ### Pages and navigation
 
-Sections, pages, and tabs in the Administration Console.
+Sections, pages, and tabs in the Administration Console. Use Title Case only when naming a specific navigable space (e.g., "open the Query Pipelines page"). When referring to the same concept generically in body text, use sentence case (e.g., "associate the model with a query pipeline").
 
 - Activity Browser
 - Advanced Reports
@@ -158,11 +155,11 @@ Sources available in the Administration Console.
 
 ### Tools and libraries
 
-Named tools, interfaces, and developer libraries. Some entries are only partially capitalized—follow the exact capitalization listed here.
+Named tools, interfaces, and developer libraries. Follow the exact capitalization listed here.
 
 - Action bar
 - Atomic library
-- Crawling Module — as a downloaded tool or software component. As a Coveo product, see [Coveo products and models](#coveo-products-and-models).
+- Crawling Module — refers to the downloaded tool or software component. To distinguish from a third-party crawling module, use "Coveo Crawling Module".
 - Email Security Provider
 - Headless library
 - Hosted Search Page
@@ -175,14 +172,15 @@ Named tools, interfaces, and developer libraries. Some entries are only partiall
 
 Official Coveo products and machine learning model types.
 
-> By default, use the short names listed here, without the "Coveo" prefix, in all UI copy. However, if the context involves other third-party products and ownership needs to be clear, add the "Coveo" prefix. For example, "Coveo Analytics" instead of "Analytics." The exceptions are products whose names always include "Coveo" and have no short-form alternative: Coveo for Salesforce, Coveo for Sitecore, Coveo Professional Services, and Coveo Support.
+RULE: Use the short names listed here by default — without the "Coveo" prefix. Add "Coveo" as a prefix only when the context involves other third-party products and ownership is unclear. Terms tagged [coveo-prefix: optional] support this. Some names always include "Coveo" and have no short-form alternative: Coveo Platform, Coveo for Salesforce, Coveo for Sitecore, Coveo Professional Services, and Coveo Support.
 
-- Administration Console
-- Analytics (formerly _Usage Analytics_)
+- Administration Console [coveo-prefix: optional]
+- Analytics (formerly "Usage Analytics") [coveo-prefix: optional]
 - Automatic Relevance Tuning (ART)
 - Case Assist
 - Case Classification (CC)
 - Content Recommendation
+- Coveo Platform
 - Coveo for Salesforce
 - Coveo for Sitecore
 - Coveo Professional Services
@@ -193,8 +191,8 @@ Official Coveo products and machine learning model types.
 - Intelligent Term Detection (ITD)
 - Intent-Aware Product Ranking (IAPR)
 - Listing Page Optimizer (LPO)
-- Machine Learning
-- Merchandising Hub
+- Machine Learning [coveo-prefix: optional]
+- Merchandising Hub [coveo-prefix: optional]
 - Passage Retrieval
 - Predictive Query Suggestion (PQS)
 - Product Recommendation
@@ -204,6 +202,8 @@ Official Coveo products and machine learning model types.
 - Smart Snippet
 
 ### Third-party products
+
+Write these third-party product names exactly as listed.
 
 - Anthropic
 - AppDirect
@@ -235,32 +235,18 @@ Official Coveo products and machine learning model types.
 
 ## Terms to avoid
 
-Do not use any of these terms in the UI. Use the alternative shown in the second list.
+RULE: Never use the terms in the left column. Use the replacement in the right column instead.
 
-Avoid:
-
-1. Auth
-2. Admin console, Admin. Console, Admin UI, Admin portal, Coveo Administration Console
-3. c4sf, cfsf
-4. c4sc, cfsc
-5. Custom login
-6. HIP
-7. HSP
-8. KB content
-9. Meta data
-10. NPM
-11. Pop up, Popup, Pop-up
-
-Use:
-
-1. Authentication
-2. Administration Console
-3. Coveo for Salesforce
-4. Coveo for Sitecore
-5. Custom authentication
-6. Hosted Insight Panel
-7. Hosted Search Page
-8. Knowledge Base content
-9. Metadata
-10. Node Package Manager
-11. Modal
+| Avoid                                                                                   | Use instead            |
+| --------------------------------------------------------------------------------------- | ---------------------- |
+| Auth                                                                                    | Authentication         |
+| Admin console / Admin. Console / Admin UI / Admin portal / Coveo Administration Console | Administration Console |
+| c4sf, cfsf                                                                              | Coveo for Salesforce   |
+| c4sc, cfsc                                                                              | Coveo for Sitecore     |
+| Custom login                                                                            | Custom authentication  |
+| HIP                                                                                     | Hosted Insight Panel   |
+| HSP                                                                                     | Hosted Search Page     |
+| KB content                                                                              | Knowledge Base content |
+| Meta data                                                                               | Metadata               |
+| NPM                                                                                     | Node Package Manager   |
+| Pop up / Popup / Pop-up                                                                 | Modal                  |
