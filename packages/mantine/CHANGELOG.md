@@ -1,5 +1,7 @@
 # @coveord/plasma-mantine
 
+## 61.0.0-next.2
+
 ## 61.0.0-next.1
 
 ## 61.0.0-next.0
