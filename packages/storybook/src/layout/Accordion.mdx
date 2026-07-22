@@ -15,7 +15,7 @@ Use an Accordion to organize related content into collapsible sections.
 
 It works well when vertical space is limited and not all content needs to be visible at once — for example, a settings panel where users typically only need one section at a time.
 
-Use `Accordion.ControlDisabled` when the control should look like a header but must not be clickable. To keep the associated panel visible, ensure the item value is included in the Accordion `value`/`defaultValue` and cannot be toggled by user interaction.
+Use `Accordion.ControlDisabled` when the control should look like a header and should not respond to pointer interaction. If the associated panel must stay visible, control the Accordion state in your code instead of relying on `Accordion.ControlDisabled` alone.
 
 ## Content guidance
 
@@ -36,7 +36,7 @@ Use `Accordion.ControlDisabled` when the control should look like a header but m
 
 - Put the most frequently used or important section first
 - Group related items together
-- Don't mix always-visible items (`Accordion.ControlDisabled`) with collapsible ones unless there's a clear reason — if you do, put the always-visible items last
+- Don't mix pointer-disabled items (`Accordion.ControlDisabled`) with collapsible ones unless there's a clear reason — if you do, put the pointer-disabled items last
 
 ---
 
