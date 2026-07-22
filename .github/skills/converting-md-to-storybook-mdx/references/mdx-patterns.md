@@ -98,7 +98,7 @@ This rule applies to all prose sections. It does not apply inside fenced code bl
 
 ## GFM support
 
-`remarkGfm` is enabled in `packages/storybook/.storybook/main.ts`, but **do not use markdown pipe tables** in MDX files. Pipe tables are not rendered correctly at runtime in this Storybook setup.
+`remark-gfm` is **not** installed or configured in this Storybook setup. Markdown pipe tables are not parsed into HTML table elements without it, so they render as raw text.
 
 Use the Mantine `<Table>` JSX component instead. See the Tables section below.
 
