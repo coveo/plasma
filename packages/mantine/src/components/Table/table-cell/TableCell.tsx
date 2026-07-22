@@ -47,7 +47,7 @@ export type TableCellFactory = Factory<{
     stylesNames: TableCellStylesNames;
 }>;
 
-const defaultProps: Partial<TableCellProps> = {};
+const defaultProps = {} satisfies Partial<TableCellProps>;
 
 export const TableCell = polymorphicFactory<TableCellFactory>((props, ref) => {
     const {
