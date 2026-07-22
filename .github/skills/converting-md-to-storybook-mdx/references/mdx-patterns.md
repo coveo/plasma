@@ -33,7 +33,7 @@ MDX is parsed as JSX, so some characters valid in Markdown will break the parser
 
 | Context                           | Action                          |
 | --------------------------------- | ------------------------------- |
-| Inside a fenced code block        | Leave as-is — not parsed as JSX |
+| Inside a fenced code block        | Leave as-is (not parsed as JSX) |
 | Inside inline code                | Leave as-is                     |
 | Bare `<tag>` or `</tag>` in prose | Escape to `&lt;tag&gt;`         |
 
@@ -188,7 +188,7 @@ All MDX files must be placed under `packages/storybook/src/` to be picked up aut
 
 **Cause:** MDX compilation error that didn't surface as a terminal error.
 
-**Fix:** Open browser DevTools console — MDX errors often appear there. Usually a JSX escaping issue.
+**Fix:** Open browser DevTools console. MDX errors often appear there. Usually a JSX escaping issue.
 
 ### Frontmatter still visible in rendered page
 

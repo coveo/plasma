@@ -13,13 +13,21 @@ Before considering Step 2 complete for a component:
 - [ ] `<Meta ... />` is unchanged
 - [ ] H1 is unchanged
 - [ ] Description line is unchanged
-- [ ] Step 2 marker `{/* storybook-usage-guidelines: rewritten */}` is present immediately after `<Meta ... />`
-- [ ] All original rules are preserved — none dropped or changed in meaning
+- [ ] Step 2 marker `{/* storybook-usage-guidelines: rewritten */}` is present immediately after the agent-redirect comment
+- [ ] Agent-redirect comment `{/* For the agent-friendly version... */}` is present immediately after `<Meta ... />`
+- [ ] All original rules are preserved. None were dropped or changed in meaning.
 - [ ] No unsupported product behavior was added
 - [ ] Fenced code blocks are byte-for-byte identical to the originals, including language fences, indentation, comments, and blank lines
 - [ ] `## Props`, `## Sub-components`, and `## Usage` sections were removed from the docs page
 - [ ] Each prose sentence that should render as its own paragraph is on its own line, separated from the next by a blank line
+- [ ] No em-dashes (`—`) appear in any rewritten prose (rewrite as periods, commas, or separate sentences)
+- [ ] No contractions anywhere in prose ("don't", "can't", "it's", "won't", "isn't", "doesn't", "hasn't", etc.)
+- [ ] No passive voice in instructions (no "is used", "can be configured", "should be set")
+- [ ] No title case in headings (only first word and proper nouns capitalized)
+- [ ] No "we", "the user", or "one" as subject (always "you")
+- [ ] No exclamation marks or ellipses
 - [ ] No ALL CAPS directives such as `MUST`, `SHOULD`, or `MAY` remain in the rewritten component documentation
+- [ ] American spelling throughout (no British variants like "colour", "behaviour", "organise", "cancelled")
 - [ ] Content guidance includes at least two bold subheadings
 - [ ] Content guidance covers primary labels, primary body/content, and ordering/grouping when applicable
 - [ ] Content guidance does not invent behavior that is unsupported by the source `.md`, stories, or component code

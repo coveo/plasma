@@ -4,7 +4,7 @@
 
 A correct Step 1 conversion:
 
-- Preserves every word from the source `.md` exactly — no rephrasing, no improvement
+- Preserves every word from the source `.md` exactly, with no rephrasing or improvement
 - Removes the YAML frontmatter block entirely
 - Uses `name` as the `# H1` heading and `description` as the line directly beneath it
 - Adds `import {Meta}` as the very first line
@@ -13,6 +13,7 @@ A correct Step 1 conversion:
 - Escapes JSX-sensitive prose (`<tag>` → `&lt;tag&gt;`, bare `{` → `&#123;`)
 - Removes `[Full Plasma documentation]({{BASE_URL}})` entirely
 - Does **not** include the Step 2 completion marker (`{/* storybook-usage-guidelines: rewritten */}`)
+- Includes the agent-redirect comment linking to the original `.md` file immediately after `<Meta ... />`
 - Is saved as `ComponentName.mdx` in the correct folder
 
 ## Bad output

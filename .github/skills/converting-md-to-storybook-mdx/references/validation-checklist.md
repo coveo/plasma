@@ -23,6 +23,7 @@ Before considering Step 1 complete for a component:
 - [ ] `[Full Plasma documentation]({{BASE_URL}})` was removed entirely
 - [ ] No rendered `{{BASE_URL}}` link or placeholder footer remains
 - [ ] Step 2 marker `{/* storybook-usage-guidelines: rewritten */}` was not added by Skill 1
+- [ ] Agent-redirect comment `{/* For the agent-friendly version... */}` is present immediately after `<Meta ... />`
 - [ ] Original `.md` source file is untouched
 - [ ] `git diff -- packages/llms/src/components` shows no changes
 - [ ] `cd packages/storybook && pnpm build` was run

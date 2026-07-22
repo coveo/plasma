@@ -1,13 +1,13 @@
 ---
 name: converting-md-to-storybook-mdx
-description: "STEP 1 OF 2 — Converts component .md files from packages/llms/src/components/ into MDX docs-only pages for the Plasma Storybook (packages/storybook). Strips frontmatter, adds the required Meta import and title block, escapes JSX-breaking characters, and places the output where Storybook's story globs will pick it up. Use when a user says 'add this to Storybook', 'convert to MDX', 'do the next entry', or 'render in Storybook'. After this step, use the storybook-component-guidelines skill (Step 2) to rewrite the converted .mdx file into clear, human-readable documentation."
+description: "STEP 1 OF 2. Converts component .md files from packages/llms/src/components/ into MDX docs-only pages for the Plasma Storybook (packages/storybook). Strips frontmatter, adds the required Meta import and title block, escapes JSX-breaking characters, and places the output where Storybook's story globs will pick it up. Use when a user says 'add this to Storybook', 'convert to MDX', 'do the next entry', or 'render in Storybook'. After this step, use the storybook-component-guidelines skill (Step 2) to rewrite the converted .mdx file into clear, human-readable documentation."
 ---
 
-# Step 1 — Converting Component MD Files to Plasma Storybook MDX
+# Step 1: Converting Component MD Files to Plasma Storybook MDX
 
 This is **Step 1 of a two-step process**:
 
-1. **(This skill)** Convert the `.md` source file to a `.mdx` file in the correct Storybook folder — preserving the original writing exactly.
+1. **(This skill)** Convert the `.md` source file to a `.mdx` file in the correct Storybook folder, preserving the original writing exactly.
 2. **(storybook-component-guidelines skill)** Rewrite the converted `.mdx` file into clear, human-readable documentation for a developer audience.
 
 Do not skip ahead to Step 2 until the `.mdx` file from this step exists and the Storybook build passes.
@@ -73,9 +73,9 @@ Stop and ask the user before continuing if:
 
 ### 1. Identify the source file and target location
 
-1. **Source file** — the `.md` file from `packages/llms/src/components/`
-2. **Stories file** — search for `<ComponentName>.stories.tsx` in `packages/storybook/src/` and read its `title` field. The MDX file goes in the same directory.
-3. **No stories file** — if none exists, check [references/storybook-fallbacks.md](references/storybook-fallbacks.md) for the approved fallback location. If the component is not listed there either, stop and ask the user.
+1. **Source file:** the `.md` file from `packages/llms/src/components/`
+2. **Stories file:** search for `<ComponentName>.stories.tsx` in `packages/storybook/src/` and read its `title` field. The MDX file goes in the same directory.
+3. **No stories file:** if none exists, check [references/storybook-fallbacks.md](references/storybook-fallbacks.md) for the approved fallback location. If the component is not listed there either, stop and ask the user.
 
 ### 2. Existing file safety
 
@@ -102,8 +102,8 @@ Before converting, verify the frontmatter contains both `name` and `description`
 
 Do the following in order:
 
-1. **Strip the YAML frontmatter** — remove the entire `---` block. Use the `name` value as the `# H1` heading and add the `description` value as plain text directly beneath it.
-2. **Add the MDX header** — when a matching `.stories.tsx` exists, the very first lines of the output file must be:
+1. **Strip the YAML frontmatter:** remove the entire `---` block. Use the `name` value as the `# H1` heading and add the `description` value as plain text directly beneath it.
+2. **Add the MDX header:** when a matching `.stories.tsx` exists, the very first lines of the output file must be:
 
     ```mdx
     import {Meta} from '@storybook/addon-docs/blocks';
@@ -120,7 +120,7 @@ Do the following in order:
     <Meta title="@components/section/ComponentName" />
     ```
 
-3. **Escape JSX-sensitive prose** — escape the following characters when they appear outside fenced code blocks and inline code:
+3. **Escape JSX-sensitive prose:** escape the following characters when they appear outside fenced code blocks and inline code:
 
     | Prose character or pattern | Escaped form   |
     | -------------------------- | -------------- |
@@ -131,14 +131,21 @@ Do the following in order:
 
     Do not escape content inside fenced code blocks or inline code.
 
-4. **Handle the `{{BASE_URL}}` link** — remove `[Full Plasma documentation]({{BASE_URL}})` entirely.
-5. **Preserve everything else** — fenced code blocks, inline code, tables, lists, and headings carry over unchanged.
+4. **Handle the `{{BASE_URL}}` link:** remove `[Full Plasma documentation]({{BASE_URL}})` entirely.
+5. **Preserve everything else:** fenced code blocks, inline code, tables, lists, and headings carry over unchanged.
+6. **Add the agent-redirect comment:** immediately after the `<Meta ... />` block, add the following comment linking to the original agent-friendly source file:
+
+    ```mdx
+    {/* For the agent-friendly version of this documentation, see packages/llms/src/components/ComponentName.md */}
+    ```
+
+    Replace `ComponentName` with the actual component name. This tells agents and contributors that the `.mdx` file is the human-readable version, not the one intended for LLM consumption.
 
 ### 4. Output file naming and placement
 
 The file must be named `ComponentName.mdx` and placed in the same folder as the `.stories.tsx` file.
 
-The `form` section has sub-folders — always read the stories file to find the exact path:
+The `form` section has sub-folders. Always read the stories file to find the exact path:
 
 | Stories file                                                   | MDX output                                             |
 | -------------------------------------------------------------- | ------------------------------------------------------ |
@@ -165,7 +172,7 @@ cd packages/storybook
 pnpm build
 ```
 
-To confirm the build passed, check that `packages/storybook/storybook-static/index.html` has a recent modification time. Do not rely solely on terminal output — it can appear stuck even when the build is still running.
+To confirm the build passed, check that `packages/storybook/storybook-static/index.html` has a recent modification time. Do not rely solely on terminal output, as it can appear stuck even when the build is still running.
 
 If the build passes:
 
@@ -176,7 +183,7 @@ If the build passes:
     docs(storybook): convert <ComponentName> mdx
     ```
 
-- Wait for the user to confirm. Do not commit, skip ahead, or offer alternatives — the commit is required before Step 2.
+- Wait for the user to confirm. Do not commit, skip ahead, or offer alternatives. The commit is required before Step 2.
 - Once the user confirms, make the commit.
 - After committing, let the user know Step 1 is complete and offer to continue with the `storybook-component-guidelines` skill (Step 2) for the same component.
 
@@ -194,7 +201,7 @@ If the build fails:
 
 Always work one component at a time. If the user names a component, start there. If the user names a group, process only that group in alphabetical order.
 
-After each component: wait for the user to confirm the commit, make the commit, then offer to hand off to the `storybook-component-guidelines` skill (Step 2) for the same component. Do not move on to the next component in the group from within this skill — Step 2 runs between each Step 1 conversion.
+After each component: wait for the user to confirm the commit, make the commit, then offer to hand off to the `storybook-component-guidelines` skill (Step 2) for the same component. Do not move on to the next component in the group from within this skill. Step 2 runs between each Step 1 conversion.
 
 Do not process components outside the active branch group.
 
@@ -202,8 +209,8 @@ Do not process components outside the active branch group.
 
 ## Reference files
 
-- [pr-workflow.md](references/pr-workflow.md) — branch rules, branch mapping, and commit format
-- [storybook-fallbacks.md](references/storybook-fallbacks.md) — approved locations for components with no `.stories.tsx` file
-- [validation-checklist.md](references/validation-checklist.md) — full checklist before marking a component complete
-- [examples.md](references/examples.md) — good and bad output examples
-- [mdx-patterns.md](references/mdx-patterns.md) — JSX escaping rules and Storybook MDX troubleshooting
+- [pr-workflow.md](references/pr-workflow.md): branch rules, branch mapping, and commit format
+- [storybook-fallbacks.md](references/storybook-fallbacks.md): approved locations for components with no `.stories.tsx` file
+- [validation-checklist.md](references/validation-checklist.md): full checklist before marking a component complete
+- [examples.md](references/examples.md): good and bad output examples
+- [mdx-patterns.md](references/mdx-patterns.md): JSX escaping rules and Storybook MDX troubleshooting

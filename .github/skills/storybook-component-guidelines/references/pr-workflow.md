@@ -1,4 +1,4 @@
-# PR workflow — Skill 2
+# PR workflow: Skill 2
 
 ## Branch rules
 
@@ -19,7 +19,7 @@
 | E–M             | `DS-403-E-M-components` |
 | P–T             | `DS-427-P-T-components` |
 
-There are no D, N, or O groups — no components exist for those letters.
+There are no D, N, or O groups. No components exist for those letters.
 
 ## Branch creation pattern
 

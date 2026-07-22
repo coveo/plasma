@@ -1,13 +1,13 @@
 ---
 name: storybook-component-guidelines
-description: "STEP 2 OF 2 — Rewrites converted component .mdx files in packages/storybook/src/ from a terse, LLM-facing format into clear, human-readable documentation suitable for a developer audience on Storybook. Use after the converting-md-to-storybook-mdx skill (Step 1) has already created the .mdx file. Use when a user says 'rewrite the usage guidelines for [Component]', 'humanize [Component].mdx', 'prepare [Component] for Storybook', or 'do the next component'."
+description: "STEP 2 OF 2. Rewrites converted component .mdx files in packages/storybook/src/ from a terse, LLM-facing format into clear, human-readable documentation suitable for a developer audience on Storybook. Use after the converting-md-to-storybook-mdx skill (Step 1) has already created the .mdx file. Use when a user says 'rewrite the usage guidelines for [Component]', 'humanize [Component].mdx', 'prepare [Component] for Storybook', or 'do the next component'."
 ---
 
-# Step 2 — Rewriting Component Usage Guidelines for Storybook
+# Step 2: Rewriting Component Usage Guidelines for Storybook
 
 This is **Step 2 of a two-step process**:
 
-1. **(converting-md-to-storybook-mdx skill)** Convert the `.md` source file from `packages/llms/src/components/` into a `.mdx` file in the correct Storybook folder — preserving the original writing exactly.
+1. **(converting-md-to-storybook-mdx skill)** Convert the `.md` source file from `packages/llms/src/components/` into a `.mdx` file in the correct Storybook folder, preserving the original writing exactly.
 2. **(This skill)** Rewrite that converted `.mdx` file into clear, human-readable documentation for a developer audience.
 
 Do not use this skill until Step 1 is complete and the `.mdx` file already exists.
@@ -71,7 +71,7 @@ Stop and ask the user before continuing if:
 
 ## What this process is
 
-This is a **rewrite, not a content expansion.** You are improving how existing information is expressed — not adding new information, not removing rules, and not changing component names or file names.
+This is a **rewrite, not a content expansion.** You are improving how existing information is expressed. Do not add new information, do not remove rules, and do not change component names or file names.
 
 **Rewrite rules:**
 
@@ -118,6 +118,8 @@ import * as stories from './Accordion.stories';
 
 <Meta of={stories} title="@components/layout/Accordion" />
 
+{/* For the agent-friendly version of this documentation, see packages/llms/src/components/Accordion.md */}
+
 {/* storybook-usage-guidelines: rewritten */}
 
 # Accordion
@@ -129,13 +131,15 @@ This marker signals that Step 2 is complete. If the marker is already present, d
 
 ## Page template
 
-Every component file must follow this structure. Use the sections that apply — omit sections that have no relevant content.
+Every component file must follow this structure. Use the sections that apply. Omit sections that have no relevant content.
 
 ```mdx
 import {Meta} from '@storybook/addon-docs/blocks';
 import * as stories from './ComponentName.stories';
 
 <Meta of={stories} title="@components/section/ComponentName" />
+
+{/* For the agent-friendly version of this documentation, see packages/llms/src/components/ComponentName.md */}
 
 {/* storybook-usage-guidelines: rewritten */}
 
@@ -184,11 +188,11 @@ Developers should use the component Demo page for API details, controls, and cod
 
 ### Content guidance
 
-This section gives developers rules for what text to write — labels, headings, placeholder text, error messages, etc.
+This section gives developers rules for what text to write: labels, headings, placeholder text, error messages, and similar UI copy.
 
 Use bold subheadings (not heading elements) for each distinct UI part that has copy rules. Name the part, not the concept. Include the sub-component or prop name in backticks where applicable.
 
-Under each subheading, write one rule per bullet. Start each bullet with an imperative verb or "Don't". Include a counter-example inline when the rule is about phrasing: `"Project settings" — not "Configure your project settings"`.
+Under each subheading, write one rule per bullet. Start each bullet with an imperative verb or "Don't". Include a counter-example inline when the rule is about phrasing: `"Project settings" not "Configure your project settings"`.
 
 Every Content guidance section must cover at minimum:
 
@@ -204,7 +208,7 @@ See [references/expected-format.md](references/expected-format.md) for the full 
 
 Write one sentence per line in all prose sections.
 
-In MDX, two sentences on adjacent lines with no blank line between them render as a single paragraph — the line break is invisible to the reader.
+In MDX, two sentences on adjacent lines with no blank line between them render as a single paragraph. The line break is invisible to the reader.
 Each sentence must be on its own line, separated from the next by a blank line, so that it renders as a separate paragraph.
 
 **Correct:**
@@ -222,7 +226,7 @@ Use an Accordion to organize related content into collapsible sections.
 It works well when vertical space is limited and not all content needs to be visible at once.
 ```
 
-Exceptions — do not apply this rule inside:
+Exceptions. Do not apply this rule inside:
 
 - Fenced code blocks
 - Table cells
@@ -233,7 +237,7 @@ Exceptions — do not apply this rule inside:
 
 ## Em-dash rule
 
-Do not use em-dashes (`—`) anywhere in prose you write — not as clause separators, not with spaces around them (`word — word`), not at all.
+Do not use em-dashes (`—`) anywhere in prose you write. This means no clause separators, no spaced usage (`word — word`), and no em-dashes at all.
 
 If you feel the need for an em-dash, rewrite the sentence. Use a period, a comma, or split into two sentences instead.
 
@@ -273,7 +277,7 @@ Requirements:
 
 ---
 
-## Writing source of truth
+## Writing rules (non-negotiable)
 
 The content documentation under `packages/llms/src/content/` is the source of truth for writing style, tone, punctuation, capitalization, grammar, and UX copy rules.
 
@@ -281,15 +285,49 @@ Read the relevant files in `packages/llms/src/content/` before rewriting compone
 
 Use `references/expected-format.md` only for the structure of the `## Content guidance` section.
 
-Key rules:
+Every rule below is mandatory. Violations are not acceptable in submitted output. If any of these conflict with what you would naturally write, the rule wins.
 
-- Sentence case for all UI text and headings
-- Active voice, present tense
-- Address the developer as "you" — never "we" or "the user"
-- Plain language — short words, short sentences
-- American spelling throughout
-- No em-dashes (`—`) in prose you write. Do not use them as clause separators, especially not with spaces on both sides (`word — word`). Rewrite the sentence instead. The only exception is when quoting or reproducing existing text that already contains an em-dash.
-- No exclamation marks, no ellipses in instructions
+### Voice and tone
+
+- Active voice, present tense. Do not use passive constructions.
+- Address the developer as "you". Never use "we", "the user", "one", or "developers".
+- Plain language. Short words, short sentences. Prefer common words over technical jargon.
+- Do not use contractions. Write "do not" instead of "don't", "cannot" instead of "can't", "it is" instead of "it's", "does not" instead of "doesn't". This applies to all prose in the `.mdx` output.
+
+### Punctuation and formatting
+
+- Sentence case for all UI text and headings. Only capitalize the first word and proper nouns.
+- No em-dashes (`—`). Not as clause separators, not with spaces, not at all. Rewrite the sentence using a period, comma, or split into two sentences.
+- No exclamation marks.
+- No ellipses in instructions.
+- No ALL CAPS for emphasis. Rewrite `MUST`, `SHOULD`, `MAY` as natural language.
+
+### Spelling
+
+- American spelling throughout. Use "color" not "colour", "customize" not "customise", "behavior" not "behaviour", "organize" not "organise", "canceled" not "cancelled".
+
+### Structure
+
+- One sentence per line in prose sections, separated by a blank line.
+- Mix prose and bullets naturally. Do not default to bullet-only formatting.
+- Keep every rule, constraint, and usage guideline that exists in the source. Do not drop content.
+
+---
+
+## Writing self-check (required before committing)
+
+After rewriting the `.mdx` file and before presenting the commit to the user, re-read the entire output and verify every item below passes. If any item fails, fix it before continuing.
+
+- [ ] No contractions anywhere in prose ("don't", "can't", "it's", "won't", "isn't", "doesn't", "hasn't", "wouldn't", "shouldn't", "couldn't")
+- [ ] No em-dashes (`—`) anywhere in prose
+- [ ] No passive voice in instructions (no "is used", "can be configured", "should be set")
+- [ ] No title case in headings (only first word and proper nouns capitalized)
+- [ ] No "we", "the user", or "one" as subject
+- [ ] No exclamation marks or ellipses
+- [ ] No ALL CAPS directives (`MUST`, `SHOULD`, `MAY`, `SHALL`, `WILL`)
+- [ ] American spelling throughout (no British variants like "colour", "behaviour", "organise", "cancelled")
+- [ ] Every prose sentence is on its own line with a blank line between sentences
+- [ ] Plain language: no unnecessarily complex words where simpler alternatives exist
 
 ---
 
@@ -302,7 +340,7 @@ cd packages/storybook
 pnpm build
 ```
 
-To confirm the build passed, check that `packages/storybook/storybook-static/index.html` has a recent modification time. Do not rely solely on terminal output — it can appear stuck even when the build is still running.
+To confirm the build passed, check that `packages/storybook/storybook-static/index.html` has a recent modification time. Do not rely solely on terminal output, as it can appear stuck even when the build is still running.
 
 If the build passes:
 
@@ -348,7 +386,7 @@ Do not process components outside the active branch group.
 
 ---
 
-## Definition of done — one component
+## Definition of done: one component
 
 A component is done only when all of the following are true:
 
@@ -362,7 +400,7 @@ A component is done only when all of the following are true:
 
 ---
 
-## Definition of done — one group
+## Definition of done: one group
 
 A group is done only when all of the following are true:
 
@@ -376,8 +414,8 @@ A group is done only when all of the following are true:
 
 ## Reference files
 
-- [pr-workflow.md](references/pr-workflow.md) — branch rules, branch mapping, and commit format
-- [pr-body-template.md](references/pr-body-template.md) — group completion summary template to output to the user
-- [validation-checklist.md](references/validation-checklist.md) — full checklist before marking a component complete
-- [examples.md](references/examples.md) — good and bad output examples
-- [expected-format.md](references/expected-format.md) — Content guidance section structure
+- [pr-workflow.md](references/pr-workflow.md): branch rules, branch mapping, and commit format
+- [pr-body-template.md](references/pr-body-template.md): group completion summary template to output to the user
+- [validation-checklist.md](references/validation-checklist.md): full checklist before marking a component complete
+- [examples.md](references/examples.md): good and bad output examples
+- [expected-format.md](references/expected-format.md): Content guidance section structure
