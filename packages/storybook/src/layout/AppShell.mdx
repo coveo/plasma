@@ -1,0 +1,36 @@
+import {Meta} from '@storybook/addon-docs/blocks';
+import * as stories from './AppShell.stories';
+
+<Meta of={stories} title="@components/layout/AppShell" />
+
+{/* storybook-usage-guidelines: rewritten */}
+
+# AppShell
+
+Application layout shell with a scrollable main content area.
+
+## Overview
+
+Use AppShell to define the top-level structure of a page — header, navigation, main content, sidebar, and footer. It handles the layout scaffolding so you can focus on the content inside each region.
+
+The key behavior Plasma adds is that `AppShell.Main` wraps its children in a scrollable container that fills the available height, so the main content area scrolls independently from the rest of the shell.
+
+Use `AppShell.Main` for all primary page content. Pass `header` and `navbar` props to `AppShell` to define the dimensions of those regions. The `breakpoint` on `navbar` controls when the sidebar collapses on smaller screens.
+
+## Content guidance
+
+**`AppShell.Header` content:**
+
+- Keep header content concise — the header is visible at all times and shouldn't compete with the main content
+- Use title case for navigation items inside the header
+- Use sentence case for all other text inside the header
+
+**`AppShell.Navbar` content:**
+
+- Use title case for navigation menu items
+- Keep nav labels short — 1 to 3 words where possible
+- Don't use punctuation at the end of nav labels
+
+---
+
+[Plasma documentation](https://plasma.coveo.com/)

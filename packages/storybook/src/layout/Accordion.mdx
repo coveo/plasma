@@ -1,0 +1,43 @@
+import {Meta} from '@storybook/addon-docs/blocks';
+import * as stories from './Accordion.stories';
+
+<Meta of={stories} title="@components/layout/Accordion" />
+
+{/* storybook-usage-guidelines: rewritten */}
+
+# Accordion
+
+Collapsible content panels with an additional disabled control variant.
+
+## Overview
+
+Use an Accordion to organize related content into collapsible sections.
+
+It works well when vertical space is limited and not all content needs to be visible at once — for example, a settings panel where users typically only need one section at a time.
+
+Use `Accordion.ControlDisabled` when the control should look like a header but must not be clickable. To keep the associated panel visible, ensure the item value is included in the Accordion `value`/`defaultValue` and cannot be toggled by user interaction.
+
+## Content guidance
+
+**Control labels (`Accordion.Control`):**
+
+- Use sentence case
+- Keep labels short — ideally 1–4 words
+- Name the content inside, not the action: "Project details" not "View project details"
+- Don't end with a colon or punctuation
+
+**Panel content (`Accordion.Panel`):**
+
+- Write as full sentences when the content is descriptive; use fragments only for lists or form fields
+- Add a period after full sentences; don't add a period after fragments
+- Keep content focused — if a panel needs multiple headings, consider a different layout
+
+**Ordering (`Accordion.Item`):**
+
+- Put the most frequently used or important section first
+- Group related items together
+- Don't mix always-visible items (`Accordion.ControlDisabled`) with collapsible ones unless there's a clear reason — if you do, put the always-visible items last
+
+---
+
+[Plasma documentation](https://plasma.coveo.com/)
