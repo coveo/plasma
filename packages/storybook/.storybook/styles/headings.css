@@ -1,0 +1,21 @@
+.heading {
+    position: relative;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    margin-left: calc(-1em - 4px);
+
+    &:hover .heading-anchor {
+        visibility: visible;
+    }
+}
+
+.heading-anchor {
+    font-size: inherit;
+    display: flex;
+    visibility: hidden;
+}
+
+p:not([class*='mantine-'] p) {
+    margin-block: var(--mantine-spacing-xs);
+}

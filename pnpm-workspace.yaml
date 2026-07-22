@@ -8,6 +8,10 @@ allowBuilds:
 minimumReleaseAge: 10080 # 7 days in minutes
 minimumReleaseAgeExclude:
   - '@mantine/*'
+  # Renovate security update: turbo@2.9.14
+  - turbo@2.9.14
+  # Renovate security update: vite@8.0.16
+  - vite@8.0.16
 peerDependencyRules:
   ignoreMissing:
     - react-native
