@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-storybook",
-    "version": "60.0.2-next.0",
+    "version": "60.0.2-next.1",
     "private": true,
     "type": "module",
     "sideEffects": [],

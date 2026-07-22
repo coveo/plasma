@@ -10,5 +10,14 @@
         "@coveord/plasma-storybook": "60.0.1",
         "@coveord/plasma-tokens": "60.0.0"
     },
-    "changesets": ["common-baboons-say"]
+    "changesets": [
+        "common-baboons-say",
+        "content-guidelines-llms-mcp",
+        "cool-wombats-repeat",
+        "lucky-donkeys-run",
+        "open-pillows-eat",
+        "remove-info-status-token",
+        "table-cell-component",
+        "thin-lions-fly"
+    ]
 }

@@ -1,5 +1,7 @@
 # @coveord/plasma-figma-code-connect
 
+## 60.0.2-next.1
+
 ## 60.0.0
 
 ### Major Changes
