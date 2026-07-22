@@ -88,7 +88,6 @@
 
 .headerGridInner {
     flex-direction: row-reverse;
-    min-height: 60px;
 }
 
 .headerCol {
