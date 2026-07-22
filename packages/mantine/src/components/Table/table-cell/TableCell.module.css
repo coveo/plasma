@@ -1,0 +1,15 @@
+.root {
+    width: 0;
+    min-width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.content {
+    width: 100%;
+}
+
+.wrap {
+    white-space: normal;
+    word-break: break-word;
+}

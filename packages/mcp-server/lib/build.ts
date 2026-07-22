@@ -6,12 +6,32 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import type {ComponentData, LlmsData} from '../src/tools/types.ts';
+import type {ComponentData, ContentGuidelineData, LlmsData} from '../src/tools/types.ts';
 
 const currentDir = path.dirname(fileURLToPath(import.meta.url));
 const llmsDistDir = path.resolve(currentDir, '../../llms/dist');
 const distDir = path.resolve(currentDir, '../dist');
 const dataFile = path.join(distDir, 'data.json');
+
+interface IndexEntry {
+    slug: string;
+    name: string;
+    description: string;
+}
+
+interface BundledDoc extends IndexEntry {
+    content: string;
+}
+
+/** Reads an index.json and loads the corresponding .md files from the same directory. */
+const readDocs = (dir: string): BundledDoc[] => {
+    const indexPath = path.join(dir, 'index.json');
+    const entries: IndexEntry[] = fs.existsSync(indexPath) ? JSON.parse(fs.readFileSync(indexPath, 'utf-8')) : [];
+    return entries.map((entry) => {
+        const content = fs.readFileSync(path.join(dir, `${entry.slug}.md`), 'utf-8');
+        return {...entry, content};
+    });
+};
 
 const main = () => {
     if (!fs.existsSync(llmsDistDir)) {
@@ -19,30 +39,22 @@ const main = () => {
         process.exit(1);
     }
 
-    const llmsDir = path.join(llmsDistDir, 'llms');
-    const descriptionsFile = path.join(llmsDistDir, 'descriptions.json');
-    const descriptions: Record<string, string> = fs.existsSync(descriptionsFile)
-        ? JSON.parse(fs.readFileSync(descriptionsFile, 'utf-8'))
-        : {};
-    const components: ComponentData[] = [];
-
-    for (const file of fs.readdirSync(llmsDir).filter((f) => f.endsWith('.md'))) {
-        const name = file.replace('.md', '');
-        const content = fs.readFileSync(path.join(llmsDir, file), 'utf-8');
-        const description = descriptions[name] ?? '';
-        components.push({name, description, content});
-    }
+    const components: ComponentData[] = readDocs(path.join(llmsDistDir, 'llms', 'components'));
+    const contentGuidelines: ContentGuidelineData[] = readDocs(path.join(llmsDistDir, 'llms', 'content'));
 
     const data: LlmsData = {
         index: fs.readFileSync(path.join(llmsDistDir, 'llms.txt'), 'utf-8'),
         full: fs.readFileSync(path.join(llmsDistDir, 'llms-full.txt'), 'utf-8'),
         skill: fs.readFileSync(path.join(llmsDistDir, 'plasma-skill.md'), 'utf-8'),
         components,
+        contentGuidelines,
     };
 
     fs.mkdirSync(distDir, {recursive: true});
     fs.writeFileSync(dataFile, JSON.stringify(data, null, 2), 'utf-8');
-    console.error(`✅ Bundled data for ${components.length} components → dist/data.json`);
+    console.error(
+        `✅ Bundled data for ${components.length} components and ${contentGuidelines.length} content guidelines → dist/data.json`,
+    );
 };
 
 main();

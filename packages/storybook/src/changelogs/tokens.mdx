@@ -1,0 +1,9 @@
+import {Meta, Markdown, Unstyled} from '@storybook/addon-docs/blocks';
+import plasmaTokensChangelogs from '../../../tokens/CHANGELOG.md?raw';
+import {plasmaMarkdownOverrides} from '../../.storybook/plasmaMarkdownOverrides';
+
+<Meta title="changelogs/plasma-tokens" id="changelogs-plasma-tokens" />
+
+<Unstyled>
+    <Markdown options={{overrides: plasmaMarkdownOverrides}}>{plasmaTokensChangelogs}</Markdown>
+</Unstyled>

@@ -1,7 +1,7 @@
 import type {McpServer} from 'tmcp';
 import {beforeEach, describe, expect, it} from 'vitest';
 import {createServer} from '../createServer.js';
-import {BUTTON, makeData} from '../tools/__tests__/fixtures.js';
+import {BUTTON, VOICE_GUIDELINE, makeData} from '../tools/__tests__/fixtures.js';
 
 // Minimal JSON-RPC helpers
 const req = (id: number, method: string, params: Record<string, unknown> = {}) => ({
@@ -45,7 +45,7 @@ describe('plasma-mcp-server integration', () => {
     });
 
     describe('tools/list', () => {
-        it('registers all four tools', async () => {
+        it('registers all six tools', async () => {
             const response = await server.receive(req(1, 'tools/list'));
             const tools = (response as {result: {tools: Array<{name: string}>}}).result.tools;
             const names = tools.map((t) => t.name);
@@ -53,7 +53,9 @@ describe('plasma-mcp-server integration', () => {
             expect(names).toContain('get_component_doc');
             expect(names).toContain('get_component_props');
             expect(names).toContain('search_docs');
-            expect(tools).toHaveLength(4);
+            expect(names).toContain('list_content_guidelines');
+            expect(names).toContain('get_content_guideline');
+            expect(tools).toHaveLength(6);
         });
 
         it('includes inputSchema for tools that require arguments', async () => {
@@ -161,37 +163,17 @@ describe('plasma-mcp-server integration', () => {
             const response = await server.receive(
                 req(1, 'tools/call', {name: 'search_docs', arguments: {query: 'button'}}),
             );
-            expect(firstText(response)).toMatchInlineSnapshot(`
-              "# Search Results for "button"
-
-              Found 1 component(s):
-
-              ## Button
-
-              A clickable button component
-
-              # Button
-
-              Use the Button to trigger actions.
-
-              ## Props
-
-              | Prop | Type | Default |
-              |------|------|---------|
-              | variant | string | 'filled' |
-              | disabled | boolean | false |
-
-              ## Usage
-
-              Import from \`@coveord/plasma-mantine\`."
-            `);
+            const text = firstText(response);
+            expect(text).toContain('# Search Results for "button"');
+            expect(text).toContain('## Button');
+            expect(text).toContain('A clickable button component');
         });
 
         it('returns a no-results message when nothing matches', async () => {
             const response = await server.receive(
                 req(1, 'tools/call', {name: 'search_docs', arguments: {query: 'xyznonexistent'}}),
             );
-            expect(firstText(response)).toMatchInlineSnapshot(`"No components found matching "xyznonexistent"."`);
+            expect(firstText(response)).toMatchInlineSnapshot(`"No results found matching "xyznonexistent"."`);
         });
 
         it('returns a schema validation error when query argument is missing', async () => {
@@ -209,28 +191,78 @@ describe('plasma-mcp-server integration', () => {
             expect(buttonIdx).toBeLessThan(modalIdx === -1 ? Infinity : modalIdx);
         });
 
+        it('searches across both components and content guidelines', async () => {
+            // "capitalization" only appears in the WritingMechanics guideline
+            const response = await server.receive(
+                req(1, 'tools/call', {name: 'search_docs', arguments: {query: 'capitalization'}}),
+            );
+            const text = firstText(response);
+            expect(text).toContain('Content Guidelines — Writing Mechanics');
+            expect(text).toContain('(Content Guideline)');
+        });
+
         it('searches across both BUTTON and MODAL fixture components', async () => {
             // "overlay" only appears in MODAL
             const response = await server.receive(
                 req(1, 'tools/call', {name: 'search_docs', arguments: {query: 'overlay'}}),
             );
-            expect(firstText(response)).toMatchInlineSnapshot(`
-              "# Search Results for "overlay"
+            const text = firstText(response);
+            expect(text).toContain('## Modal');
+            expect(text).toContain('A dialog overlay component');
+        });
+    });
 
-              Found 1 component(s):
+    describe('list_content_guidelines tool', () => {
+        it('returns a markdown list of all content guidelines', async () => {
+            const response = await server.receive(
+                req(1, 'tools/call', {name: 'list_content_guidelines', arguments: {}}),
+            );
+            const text = firstText(response);
+            expect(text).toContain('# Plasma Content Guidelines');
+            expect(text).toContain('**Content Guidelines — Voice**');
+            expect(text).toContain('**Content Guidelines — Writing Mechanics**');
+        });
+    });
 
-              ## Modal
+    describe('get_content_guideline tool', () => {
+        it('returns full guideline content for a known guideline by slug', async () => {
+            const response = await server.receive(
+                req(1, 'tools/call', {name: 'get_content_guideline', arguments: {guideline: 'Voice'}}),
+            );
+            expect(isError(response)).toBe(false);
+            expect(firstText(response)).toBe(VOICE_GUIDELINE.content);
+        });
 
-              A dialog overlay component
+        it('is case-insensitive', async () => {
+            const response = await server.receive(
+                req(1, 'tools/call', {name: 'get_content_guideline', arguments: {guideline: 'voice'}}),
+            );
+            expect(firstText(response)).toBe(VOICE_GUIDELINE.content);
+        });
 
-              # Modal
+        it('allows lookup by full name', async () => {
+            const response = await server.receive(
+                req(1, 'tools/call', {
+                    name: 'get_content_guideline',
+                    arguments: {guideline: 'Content Guidelines — Voice'},
+                }),
+            );
+            expect(firstText(response)).toBe(VOICE_GUIDELINE.content);
+        });
 
-              Use the Modal to display overlay dialogs.
+        it('returns an error result for an unknown guideline', async () => {
+            const response = await server.receive(
+                req(1, 'tools/call', {name: 'get_content_guideline', arguments: {guideline: 'Nonexistent'}}),
+            );
+            expect(isError(response)).toBe(true);
+            expect(firstText(response)).toMatchInlineSnapshot(
+                `"Content guideline "Nonexistent" not found. Use list_content_guidelines to see available guidelines."`,
+            );
+        });
 
-              ## Usage
-
-              Import from \`@coveord/plasma-mantine\`."
-            `);
+        it('returns a schema validation error when guideline argument is missing', async () => {
+            const response = await server.receive(req(1, 'tools/call', {name: 'get_content_guideline', arguments: {}}));
+            expect(isError(response)).toBe(true);
         });
     });
 });

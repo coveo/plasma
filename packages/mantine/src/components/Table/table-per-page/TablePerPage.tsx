@@ -17,7 +17,14 @@ export const TablePerPage: FunctionComponent<TablePerPageProps> & {DEFAULT_SIZE:
         store.setPagination({page: 0, perPage: parseInt(newPerPage, 10)});
     };
 
-    return table.getPageCount() > 0 ? (
+    const totalRows = table.getRowCount();
+    const smallestPageSize = Math.min(...values);
+
+    if (totalRows <= smallestPageSize) {
+        return null;
+    }
+
+    return (
         <Group gap="sm">
             <Text fw={500}>{label}</Text>
             <SegmentedControl
@@ -27,7 +34,7 @@ export const TablePerPage: FunctionComponent<TablePerPageProps> & {DEFAULT_SIZE:
                 size="sm"
             />
         </Group>
-    ) : null;
+    );
 };
 
 TablePerPage.displayName = 'Table.PerPage';
