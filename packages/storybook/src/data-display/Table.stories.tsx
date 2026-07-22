@@ -141,19 +141,32 @@ export const Demo: Story = {
                 columnHelper.accessor('firstName', {
                     header: 'First name',
                     enableSorting: withSorting,
+                    cell: ({getValue}) => <Table.Cell>{getValue()}</Table.Cell>,
                 }),
                 columnHelper.accessor('lastName', {
                     header: 'Last name',
                     enableSorting: withSorting,
+                    cell: ({getValue}) => <Table.Cell lineClamp={2}>{getValue()}</Table.Cell>,
+                }),
+                columnHelper.accessor('bio', {
+                    header: 'Bio (wrap)',
+                    size: 200,
+                    cell: ({getValue}) => <Table.Cell wrap>{getValue()}</Table.Cell>,
                 }),
                 columnHelper.accessor('age', {
                     header: 'Age',
                     enableSorting: withSorting,
+                    cell: ({getValue}) => <Table.Cell>{getValue()}</Table.Cell>,
                 }),
                 columnHelper.accessor('lastActivity', {
-                    header: 'Activity',
+                    header: 'Activity (expandable)',
                     enableSorting: withSorting,
-                    cell: ({getValue}) => dayjs(getValue()).format('LLL'),
+                    size: 200,
+                    cell: ({row}) => (
+                        <Table.Cell expandable lineClamp={2}>
+                            {row.original.bio} — {dayjs(row.original.lastActivity).format('LLL')}
+                        </Table.Cell>
+                    ),
                 }),
             ];
             if (withCollapsibleRows) {
