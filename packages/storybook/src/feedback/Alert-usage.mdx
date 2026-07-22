@@ -32,7 +32,7 @@ Plasma provides a sub-component for each alert type. Use these instead of settin
     </Table.Thead>
     <Table.Tbody>
         <Table.Tr>
-            <Table.Td>`Alert.Information`</Table.Td>
+            <Table.Td><code>Alert.Information</code></Table.Td>
             <Table.Td>Neutral context or background information the user may find helpful</Table.Td>
         </Table.Tr>
         <Table.Tr>
@@ -59,9 +59,9 @@ Plasma provides a sub-component for each alert type. Use these instead of settin
 ```tsx
 import {Alert} from '@coveord/plasma-mantine';
 
-<Alert.Information title="Note">This is an informational message.</Alert.Information>
-<Alert.Warning title="Warning">Proceed with caution.</Alert.Warning>
-<Alert.Critical title="Error">Something went wrong.</Alert.Critical>
+<Alert.Information title="About this setting">This is an informational message.</Alert.Information>
+<Alert.Warning title="Unsaved changes">Proceed with caution.</Alert.Warning>
+<Alert.Critical title="Unable to save changes">Something went wrong.</Alert.Critical>
 ```
 
 Match the sub-component to the intent of the message. Use `Alert.Critical` only for genuine errors — overusing high-urgency variants reduces their effectiveness.
@@ -92,4 +92,4 @@ Match the sub-component to the intent of the message. Use `Alert.Critical` only 
 
 ---
 
-{/* TODO: Replace with full Plasma docs URL */}
+[Plasma documentation](https://plasma.coveo.com/)

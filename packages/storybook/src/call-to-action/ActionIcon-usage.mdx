@@ -1,7 +1,8 @@
 import {Meta} from '@storybook/addon-docs/blocks';
 import {Table} from '@mantine/core';
+import * as stories from './ActionIcon.stories';
 
-<Meta title="@components/call-to-action/ActionIcon/Usage" />
+<Meta of={stories} title="@components/call-to-action/ActionIcon" />
 
 {/* storybook-usage-guidelines: rewritten */}
 
@@ -44,7 +45,7 @@ Plasma provides pre-configured sub-components for each emphasis level. Use these
     </Table.Thead>
     <Table.Tbody>
         <Table.Tr>
-            <Table.Td>`ActionIcon.Group`</Table.Td>
+            <Table.Td><code>ActionIcon.Group</code></Table.Td>
             <Table.Td>Groups multiple ActionIcon buttons together</Table.Td>
         </Table.Tr>
         <Table.Tr>
@@ -127,4 +128,4 @@ Choose the sub-component that matches the emphasis level of the action. Use `Des
 
 ---
 
-{/* TODO: Replace with full Plasma docs URL */}
+[Plasma documentation](https://plasma.coveo.com/)

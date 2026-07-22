@@ -32,7 +32,7 @@ Plasma wraps Mantine's Accordion sub-components with pre-configured defaults. Us
     </Table.Thead>
     <Table.Tbody>
         <Table.Tr>
-            <Table.Td>`Accordion.Item`</Table.Td>
+            <Table.Td><code>Accordion.Item</code></Table.Td>
             <Table.Td>Wrapper for a single accordion entry</Table.Td>
         </Table.Tr>
         <Table.Tr>
@@ -50,9 +50,9 @@ Plasma wraps Mantine's Accordion sub-components with pre-configured defaults. Us
     </Table.Tbody>
 </Table>
 
-Use `Accordion.ControlDisabled` for items that are always expanded and can't be collapsed by the user.
+Use `Accordion.ControlDisabled` when the control should look like a header but must not be clickable.
 
-It removes the chevron icon and disables pointer events so the control doesn't suggest interactivity.
+To keep the associated panel visible, ensure the item value is included in the Accordion `value`/`defaultValue` and cannot be toggled by user interaction.
 
 ## Usage
 
@@ -61,7 +61,7 @@ import {Accordion} from '@coveord/plasma-mantine';
 
 function Example() {
     return (
-        <Accordion defaultValue="details">
+        <Accordion multiple defaultValue={['details', 'readonly']}>
             <Accordion.Item value="details">
                 <Accordion.Control>Project details</Accordion.Control>
                 <Accordion.Panel>Configure the project name, description, and visibility settings.</Accordion.Panel>
@@ -103,4 +103,4 @@ The second item uses `Accordion.ControlDisabled` — the content is always visib
 
 ---
 
-{/* TODO: Replace with full Plasma docs URL */}
+[Plasma documentation](https://plasma.coveo.com/)
