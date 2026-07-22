@@ -1,4 +1,4 @@
-import {Meta, Unstyled, Story} from '@storybook/addon-docs/blocks';
+import {Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import {Alert} from '@coveord/plasma-mantine';
 import {Table} from '@mantine/core';
 
@@ -6,254 +6,307 @@ import {Table} from '@mantine/core';
 
 # Product Names & Vocabulary
 
-Terminology standards for Coveo and third-party products, features, and concepts.
+This page defines the correct spelling and capitalization for Coveo product and feature names.
+Vocabulary isn't standardized across all Coveo sources or documentation—always refer to this list when naming a product, feature, or tool name in the UI.
+Terms are categorized by capitalization style: [sentence case](#sentence-case) and [Title Case](#title-case), appearing alphabetically.
 
 <Unstyled>
-    <Alert.Advice title="Note" mb="md">
-        Vocabulary isn't standardized across all Coveo sources or documentation. Always refer to this list when writing
-        for the UI.
+    <Alert.Advice title="Term not listed?" mb="md">
+        If a product or feature name isn't listed here, look up whether it's a proper noun or has an established capitalization convention and use the most widely-used form.
+        If you're unsure, submit a <a href="https://coveord.atlassian.net/jira/software/c/projects/DS/form/600">request</a> and select <strong>Content &amp; Copywriting</strong> as the "Type".
     </Alert.Advice>
 </Unstyled>
 
-## Vocabulary
+## Sentence case
 
-Use this list to see the acceptable spelling and punctuation for terminology in the UI.
+This section lists the terminology that should be in sentence case when writing UI body text, labels, and descriptions.
 
-The vocabulary is listed in alphabetical order.
-However, terms starting with the words _Coveo_, _for_, or _on_ are alphabetized by the next distinguishing word (company, feature, or product name).
-For example, _Coveo for Salesforce_ is listed under S for _Salesforce_.
+- agent
+- analytics (Formerly _usage analytics_. Use when referring to data or events, e.g., "the analytics data." Only when distinguishing from a third-party product, use _Coveo Analytics_)
+- answer generation
+- API key (_API_ is always capitalized)
+- catalog
+- catalog configuration
+- condition
+- conversational AI (_AI_ is always capitalized)
+- dimension
+- evaluation
+- extension
+- field
+- filter rule
+- group
+- in-product experience
+- indexing pipeline extension
+- listing page
+- machine learning (when referring to the technology in general. Only when distinguishing from a third-party product, use _Coveo Machine Learning_)
+- member
+- model (when referring to a model generically, e.g., "associate the model with a query pipeline." When naming the type, use the specific model name in [Coveo products and ML models](#coveo-products-and-models))
+- named filter
+- notification
+- passage retrieval (when referring to the capability or queries, e.g., "passage retrieval queries per second." When naming the model type, use _Passage Retrieval_)
+- permission filter
+- project
+- property
+- query parameter rule
+- query pipeline
+- query pipeline condition
+- query pipeline setting
+- ranking expression rule
+- ranking weight rule
+- report
+- resource snapshot
+- result ranking rule
+- search page (when referring to a search page generically, e.g., "create a search page." When referring to the Administration Console page, use _Search Pages_)
+- security identities
+- security identity provider
+- security provider
+- source
+- source mapping
+- statement group
+- stop word rule
+- storefront association
+- thesaurus rule
+- trigger rule
 
-### A
+## Title case
 
-- Action Bar
+This section lists the scenarios in which you should always use Title Case, including when you reference Administration Console [pages](#pages-and-navigation), [sources](#sources), [tools and libraries](#tools-and-libraries), [Coveo products and ML models](#coveo-products-and-models), and [third-party products](#third-party-products).
+
+### Pages and navigation
+
+Sections, pages, and tabs in the Administration Console.
+Use this list only when you're naming a specific space in the Administration Console the user can navigate to, not the general concept or mechanism.
+
 - Activity Browser
-- Administration Console
-- Amazon S3
-- Coveo Analytics
-- Anthropic
-- Apex
-- API keys
-- AppDirect
-- Atlassian
-- Atomic library
-- Coveo Atomic library
-- Aura
-- Automatic Relevance Tuning (ART)
-
-### B
-
-- Box Business
-- Brightcove
-
-### C
-
-- Case Classification (CC)
+- Advanced Reports
+- Agents
+- AI & ML
+- Analytics
+- Answer Manager
+- API Keys
+- Batch Answering
 - Case Assist
-- Catalog
-- Catalog Semantic Encoder (CSE)
-- Client ID
-- Confluence Cloud
-- Confluence Data Center
+- Catalogs
+- Chunk Inspector
+- Commerce
+- Conditions
+- Content
 - Content Browser
-- Content Recommendations (CR)
-- Contentful
 - Conversation Inspector
-- Crawling Module
-
-### D
-
-- Databricks
-- Dropbox
-- Dynamic Navigation Experience (DNE)
-
-### E
-
-- Elasticsearch
-- Email Security Provider
-- Event Protocol (EP)
-- Coveo Explorer
-
-### F
-
+- Crawling Modules
+- Data Health
+- Dimensions
+- Evaluations
+- Extensions
 - Fields
-- Figma
-
-### G
-
-- Genesys
-- GitHub
-- Gmail
-- Google Drive
-- GraphQL
-
-### H
-
-- Headless library
-- Hosted Search Page
-
-### I
-
+- First Steps
+- GenAI Performance
+- Groups
+- Home
 - In-Product Experience (IPX)
 - Insight Panel
-- Intelligent Term Detection (ITD)
-- Intent-Aware Product Ranking (IAPR)
-- Legacy Interface Editor
-
-### J
-
-- JavaScript
-- Jira Software Cloud
-- Jira Software Data Center
-
-### K
-
-- Khoros Community
-- Knowledge Hub
-
-### L
-
-- Lightning Web Components (LWC)
-- Listing Page Optimizer (LPO)
+- License & Usage
 - Log Browser
-
-### M
-
-- Coveo Machine Learning
-- Mailchimp
-- Merchandising Hub
-- Microsoft Dynamics 365
-
-### N
-
-- Node Package Manager
-
-### O
-
-- OneDrive for Business
-- OpenText Content Server
-- Optimizely
-
-### P
-
-- Passage Retrieval
-- Pendo
-- Personalization As-You-Go
-- Coveo Platform
-- PowerPoint
-- PowerShell
-- Predictive Query Suggestions (PQS)
-- Product Recommendations (PR)
-
-### Q
-
-- Quantic library
+- MCP Server
+- Members
+- Models
+- Named Filters
+- Notifications
+- Organization
+- Permission Filters
+- Projects
+- Properties
 - Query Pipelines
-- Query Suggestions (QS)
-- QuickView (product and component, not to be confused with the "Quick view" label)
-
-### R
-
-- Relay library
-- Relevance Generative Answering (RGA)
+- Raw Data
 - Relevance Inspector
+- Reports
 - Resource Snapshots
-- REST API
-- RSS
-
-### S
-
-- Salesforce
-- Coveo for Salesforce
-- SAP
+- Search
 - Search Pages
 - Security Identities
-- Semantic Encoder (SE)
+- Service
+- Settings
+- Sources
+- Storefront Associations
+- System Performance
+- Temporary Access
+- Visit Browser
+
+### Sources
+
+Sources available in the Administration Console.
+
+- Amazon S3
+- Box Business
+- Catalog
+- Confluence Cloud
+- Confluence Data Center
+- Dropbox Business
+- Google Drive
+- GraphQL API
+- Jira Software Cloud
+- Jira Software Data Center
+- Khoros Community
+- Microsoft Dynamics 365
+- OneDrive for Business
+- REST API
+- RSS
+- Salesforce
+- SAP
 - ServiceNow
-- SharePoint Server
 - SharePoint Online
+- SharePoint Server
 - Shopify
-- Coveo for Shopify
 - Sitecore
-- Coveo for Sitecore
 - Sitemap
 - Slack
-- Smart Snippets
-- Splunk
-- Storefront Associations
-- Coveo Support
-- Symantec
-
-### T
-
-- Tealium
-
-### V, W, X, Y, Z
-
-- Visualforce
-- Visit Browser
 - Web
 - YouTube
 - Zendesk
 
-## Banned terminology
+### Tools and libraries
 
-Use this list to see which words you can't use when writing for the UI. Swap them for their correct counterpart instead.
+Named tools, interfaces, and developer libraries.
+Make sure to follow the exact capitalization shown here—some terms have different capitalization conventions.
+
+- Action bar
+- Atomic library
+- Crawling Module (as a downloaded tool or software component. Only when distinguishing from a third-party crawling module, use _Coveo Crawling Module_)
+- Email Security Provider
+- Headless library
+- Hosted Search Page
+- Interface Editor
+- Legacy Interface Editor
+- Quantic library
+- Relay library
+
+### Coveo products and models
+
+Official Coveo products and machine learning model types.
+
+<Unstyled>
+    <Alert.Advice title="Note" mb="md">
+        By default, use the names listed here in all UI copy.
+        However, when the context mentions other third-party products that make ownership unclear, then you can add "Coveo" as a prefix to distinguish the product.
+        Terms marked with an asterisk (*) can take the "Coveo" prefix.
+
+        Some names have no short-form alternative and always include "Coveo": Coveo Platform, Coveo for Salesforce, Coveo for Sitecore, Coveo Professional Services, and Coveo Support.
+    </Alert.Advice> 
+</Unstyled>
+
+- Administration Console*
+- Analytics* (formerly _Usage Analytics_)
+- Automatic Relevance Tuning (ART)
+- Case Assist
+- Case Classification (CC)
+- Content Recommendation
+- Coveo Platform
+- Coveo for Salesforce
+- Coveo for Sitecore
+- Coveo Professional Services
+- Coveo Support
+- Crawling Module
+- Dynamic Navigation Experience (DNE)
+- In-Product Experience (IPX)
+- Intelligent Term Detection (ITD)
+- Intent-Aware Product Ranking (IAPR)
+- Listing Page Optimizer (LPO)
+- Machine Learning*
+- Merchandising Hub*
+- Passage Retrieval
+- Predictive Query Suggestion (PQS)
+- Product Recommendation
+- Query Suggestion (QS)
+- Relevance Generative Answering (RGA)
+- Semantic Encoder (SE)
+- Smart Snippet
+
+### Third-party products
+
+- Anthropic
+- AppDirect
+- Apex
+- Atlassian
+- Aura
+- Brightcove
+- Contentful
+- Databricks
+- Elasticsearch
+- Figma
+- Genesys
+- GitHub
+- Gmail
+- GraphQL
+- JavaScript
+- Lightning Web Components (LWC)
+- Mailchimp
+- Node Package Manager
+- OpenText Content Server
+- Optimizely
+- Pendo
+- PowerPoint
+- PowerShell
+- Splunk
+- Symantec
+- Tealium
+- Visualforce
+
+## Terms to avoid
+
+Based on common mistakes, here's a list of terms to avoid writing in the Administration Console.
+Use their correct replacement shown in the table instead.
 
 <Table withTableBorder withColumnBorders>
-    <Table.Thead>
-        <Table.Tr>
-            <Table.Th>Banned term</Table.Th>
-            <Table.Th>Replace with</Table.Th>
-        </Table.Tr>
-    </Table.Thead>
-    <Table.Tbody>
-        <Table.Tr>
-            <Table.Td>Auth</Table.Td>
-            <Table.Td>Authentication</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>Admin console, Admin UI, Admin portal</Table.Td>
-            <Table.Td>Administration Console</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>c4sf, cfsf</Table.Td>
-            <Table.Td>Coveo for Salesforce</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>c4sc, cfsc</Table.Td>
-            <Table.Td>Coveo for Sitecore</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>Custom login</Table.Td>
-            <Table.Td>Custom authentication</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>HIP</Table.Td>
-            <Table.Td>Hosted Insight Panel</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>HSP</Table.Td>
-            <Table.Td>Hosted Search Page</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>KB content</Table.Td>
-            <Table.Td>Knowledge Base content</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>Meta data</Table.Td>
-            <Table.Td>Metadata</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>NPM</Table.Td>
-            <Table.Td>Node Package Manager</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>Pop up, Popup, Pop-up</Table.Td>
-            <Table.Td>Modal</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>User ID</Table.Td>
-            <Table.Td>Client ID</Table.Td>
-        </Table.Tr>
-    </Table.Tbody>
-</Table>
+        <Table.Thead>
+            <Table.Tr>
+                <Table.Th>Avoid</Table.Th>
+                <Table.Th>Use instead</Table.Th>
+            </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>
+            <Table.Tr>
+                <Table.Td>Auth</Table.Td>
+                <Table.Td>Authentication</Table.Td>
+            </Table.Tr>
+            <Table.Tr>
+                <Table.Td>Admin console, Admin. Console, Admin UI, Admin portal, Coveo Administration Console</Table.Td>
+                <Table.Td>Administration Console</Table.Td>
+            </Table.Tr>
+            <Table.Tr>
+                <Table.Td>c4sf, cfsf</Table.Td>
+                <Table.Td>Coveo for Salesforce</Table.Td>
+            </Table.Tr>
+            <Table.Tr>
+                <Table.Td>c4sc, cfsc</Table.Td>
+                <Table.Td>Coveo for Sitecore</Table.Td>
+            </Table.Tr>
+            <Table.Tr>
+                <Table.Td>Custom login</Table.Td>
+                <Table.Td>Custom authentication</Table.Td>
+            </Table.Tr>
+            <Table.Tr>
+                <Table.Td>HIP</Table.Td>
+                <Table.Td>Hosted Insight Panel</Table.Td>
+            </Table.Tr>
+            <Table.Tr>
+                <Table.Td>HSP</Table.Td>
+                <Table.Td>Hosted Search Page</Table.Td>
+            </Table.Tr>
+            <Table.Tr>
+                <Table.Td>KB content</Table.Td>
+                <Table.Td>Knowledge Base content</Table.Td>
+            </Table.Tr>
+            <Table.Tr>
+                <Table.Td>Meta data</Table.Td>
+                <Table.Td>Metadata</Table.Td>
+            </Table.Tr>
+            <Table.Tr>
+                <Table.Td>NPM</Table.Td>
+                <Table.Td>Node Package Manager</Table.Td>
+            </Table.Tr>
+            <Table.Tr>
+                <Table.Td>Pop up, Popup, Pop-up</Table.Td>
+                <Table.Td>Modal</Table.Td>
+            </Table.Tr>
+        </Table.Tbody>
+    </Table>
