@@ -21,13 +21,15 @@ Before considering Step 2 complete for a component:
 - [ ] `## Props`, `## Sub-components`, and `## Usage` sections were removed from the docs page
 - [ ] Each prose sentence that should render as its own paragraph is on its own line, separated from the next by a blank line
 - [ ] No em-dashes (`—`) appear in any rewritten prose (rewrite as periods, commas, or separate sentences)
-- [ ] No contractions anywhere in prose ("don't", "can't", "it's", "won't", "isn't", "doesn't", "hasn't", etc.)
-- [ ] No passive voice in instructions (no "is used", "can be configured", "should be set")
-- [ ] No title case in headings (only first word and proper nouns capitalized)
-- [ ] No "we", "the user", or "one" as subject (always "you")
-- [ ] No exclamation marks or ellipses
+- [ ] Approved contractions used (don't, can't, it's, etc.) and no banned contractions (it'll, would've, could've, etc.)
+- [ ] Active voice by default. Passive voice only in confirmations or status messages.
+- [ ] Sentence case for all headings and UI text (only first word and proper nouns capitalized)
+- [ ] No "we", "our", "us", or "Coveo" as the subject of an action (always "you" or omit the subject)
+- [ ] At most one exclamation mark per context, only for positive moments
+- [ ] No ellipses except for progress indicators or truncated content
 - [ ] No ALL CAPS directives such as `MUST`, `SHOULD`, or `MAY` remain in the rewritten component documentation
-- [ ] American spelling throughout (no British variants like "colour", "behaviour", "organise", "cancelled")
+- [ ] American English spelling throughout (no British variants like "colour", "behaviour", "organise", "cancelled")
+- [ ] Plain language: jargon replacements from `WritingMechanics.md` applied
 - [ ] Content guidance includes at least two bold subheadings
 - [ ] Content guidance covers primary labels, primary body/content, and ordering/grouping when applicable
 - [ ] Content guidance does not invent behavior that is unsupported by the source `.md`, stories, or component code

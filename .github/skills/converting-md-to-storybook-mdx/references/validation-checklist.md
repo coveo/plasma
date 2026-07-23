@@ -20,6 +20,7 @@ Before considering Step 1 complete for a component:
 - [ ] `description` value appears as plain text directly under the H1
 - [ ] JSX-sensitive characters, including bare angle brackets and curly braces, were escaped in prose outside inline code and fenced code blocks
 - [ ] Inline code and fenced code blocks were not escaped or rewritten
+- [ ] If the source `.md` contained pipe tables, they were converted to Mantine `<Table>` JSX (pipe tables do not render in MDX without `remark-gfm`)
 - [ ] `[Full Plasma documentation]({{BASE_URL}})` was removed entirely
 - [ ] No rendered `{{BASE_URL}}` link or placeholder footer remains
 - [ ] Step 2 marker `{/* storybook-usage-guidelines: rewritten */}` was not added by Skill 1

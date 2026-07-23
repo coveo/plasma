@@ -289,28 +289,47 @@ Every rule below is mandatory. Violations are not acceptable in submitted output
 
 ### Voice and tone
 
-- Active voice, present tense. Do not use passive constructions.
-- Address the developer as "you". Never use "we", "the user", "one", or "developers".
-- Plain language. Short words, short sentences. Prefer common words over technical jargon.
-- Do not use contractions. Write "do not" instead of "don't", "cannot" instead of "can't", "it is" instead of "it's", "does not" instead of "doesn't". This applies to all prose in the `.mdx` output.
+- Active voice by default. Passive voice is acceptable only in confirmations where attributing the action to the user would feel inaccurate ("Your pipeline has been saved." not "You saved your pipeline.").
+- Address the user as "you." Never use "we," "our," "us," or "Coveo" as the subject of an action. Omit the subject entirely when possible.
+- Plain language. Use the simpler word when two options mean the same thing. Do not use idioms or expressions. See the jargon replacements list in `WritingMechanics.md`.
+- Frontload: put the most important information first, then add context or detail.
+
+### Contractions
+
+Use the approved contractions list from `WritingMechanics.md`. The approved set includes: aren't, can't, couldn't, didn't, doesn't, don't, hasn't, haven't, how's, isn't, it's, shouldn't, that's, there's, they're, what's, where's, won't, wouldn't, you're, you've.
+
+Do not use: it'll, would've, could've, should've, you'd, it'd, there'd, there'll, they'll, they've, who's.
 
 ### Punctuation and formatting
 
-- Sentence case for all UI text and headings. Only capitalize the first word and proper nouns.
+- Sentence case for all UI text and headings. Only capitalize the first word and proper nouns. Exception: title case for navigation menu items only.
 - No em-dashes (`—`). Not as clause separators, not with spaces, not at all. Rewrite the sentence using a period, comma, or split into two sentences.
-- No exclamation marks.
-- No ellipses in instructions.
+- Exclamation marks: at most one per context, only for genuinely positive moments (completed setup, new feature enabled). Never use for errors, warnings, neutral states, or instructional copy.
+- No ellipses except to indicate a process in progress or truncated content.
 - No ALL CAPS for emphasis. Rewrite `MUST`, `SHOULD`, `MAY` as natural language.
+- No colons in titles or labels.
+- Do not use the possessive form for objects or UI elements. Rewrite using "of" instead.
 
 ### Spelling
 
-- American spelling throughout. Use "color" not "colour", "customize" not "customise", "behavior" not "behaviour", "organize" not "organise", "canceled" not "cancelled".
+- American English spelling throughout. Use "customize" not "customise", "color" not "colour", "canceled" not "cancelled", "behavior" not "behaviour", "organize" not "organise".
+- Exception: proper names always use their official spelling regardless of locale.
+
+### Sentence length
+
+These are maximums. Shorter is always better.
+
+- Any sentence: 20 words
+- Button labels: 3 words
+- Tooltips: 20 words
+- Error messages: 25 words
 
 ### Structure
 
 - One sentence per line in prose sections, separated by a blank line.
 - Mix prose and bullets naturally. Do not default to bullet-only formatting.
 - Keep every rule, constraint, and usage guideline that exists in the source. Do not drop content.
+- State the result before the required action ("To add a source, select **Add source**." not "Select **Add source** to add a source.").
 
 ---
 
@@ -318,16 +337,18 @@ Every rule below is mandatory. Violations are not acceptable in submitted output
 
 After rewriting the `.mdx` file and before presenting the commit to the user, re-read the entire output and verify every item below passes. If any item fails, fix it before continuing.
 
-- [ ] No contractions anywhere in prose ("don't", "can't", "it's", "won't", "isn't", "doesn't", "hasn't", "wouldn't", "shouldn't", "couldn't")
+- [ ] Approved contractions from `WritingMechanics.md` are used (don't, can't, it's, etc.). No banned contractions (it'll, would've, could've, etc.).
 - [ ] No em-dashes (`—`) anywhere in prose
-- [ ] No passive voice in instructions (no "is used", "can be configured", "should be set")
-- [ ] No title case in headings (only first word and proper nouns capitalized)
-- [ ] No "we", "the user", or "one" as subject
-- [ ] No exclamation marks or ellipses
+- [ ] Active voice by default. Passive voice only in confirmations or status messages.
+- [ ] Sentence case for all headings and UI text (only first word and proper nouns capitalized)
+- [ ] No "we", "our", "us", or "Coveo" as the subject of an action (always "you" or omit the subject)
+- [ ] At most one exclamation mark per context, only for positive moments. None in errors, warnings, or instructions.
+- [ ] No ellipses except for progress indicators or truncated content
 - [ ] No ALL CAPS directives (`MUST`, `SHOULD`, `MAY`, `SHALL`, `WILL`)
-- [ ] American spelling throughout (no British variants like "colour", "behaviour", "organise", "cancelled")
+- [ ] American English spelling throughout (no British variants like "colour", "behaviour", "organise", "cancelled")
 - [ ] Every prose sentence is on its own line with a blank line between sentences
-- [ ] Plain language: no unnecessarily complex words where simpler alternatives exist
+- [ ] Plain language: jargon replacements from `WritingMechanics.md` applied (e.g., "use" not "utilize", "start" not "begin", "can" not "is able to")
+- [ ] Sentence length maximums respected (20 words per sentence, 3 words for buttons)
 
 ---
 
