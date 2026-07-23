@@ -3,6 +3,61 @@ name: Prompt
 description: Confirmation modal with semantic variants and optional footer actions.
 ---
 
+# Usage guidance
+
+## What problem does it solve?
+
+The `Prompt` asks users to confirm or acknowledge an important decision in a focused modal with semantic intent.
+
+It is useful when the user must make a clear choice before continuing.
+
+## When to use it
+
+Use `Prompt` when:
+
+- the user must confirm a meaningful action
+- the decision has risk, consequence, or important feedback
+- semantic tone helps communicate information, success, warning, or critical impact
+- footer actions should clearly separate cancel and confirm choices
+
+## When not to use it
+
+Do not use `Prompt` when:
+
+- the overlay contains a larger form or custom task; use `Modal`
+- the message can remain inline; use `Alert`
+- the action is low-risk and does not need confirmation
+- users need to compare information on the underlying page while deciding
+
+## Decision-making guidance
+
+- Use `Prompt.Warning` when the action needs caution.
+- Use `Prompt.Critical` for destructive or high-risk confirmation.
+- Use `Prompt.Information` for neutral acknowledgment.
+- Use `Prompt.Success` for positive confirmation or completion messaging.
+- Use `Modal` when the content is more than a confirmation decision.
+
+## Content guidance
+
+- Titles SHOULD name the decision.
+- Body text SHOULD explain consequences and reversibility.
+- Confirm button text SHOULD describe the action, not say "OK."
+- Cancel button text SHOULD make the safe alternative clear.
+
+## Common anti-patterns
+
+- Asking for confirmation on routine low-risk actions.
+- Using vague button labels for destructive actions.
+- Putting complex forms inside a prompt.
+
+## What an AI agent should understand
+
+- `Prompt` is a semantic confirmation modal.
+- Use it for decisions, not general overlay content.
+- Use the semantic sub-component that matches the consequence.
+
+# API reference
+
 ## Props
 
 > Extends: `Omit<ModalRootProps, 'classNames' | 'styles' | 'vars' | 'attributes' | 'variant'>`, `Omit<StylesApiProps<PromptFactory>, 'variant'>`. Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
