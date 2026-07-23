@@ -16,7 +16,7 @@ peerDependencyRules:
   ignoreMissing:
     - react-native
 overrides:
-  '@babel/traverse': ^7.23.2
+  '@babel/traverse': ^8.0.0
   nwsapi: 2.2.24
 strictPeerDependencies: false
 saveExact: true
