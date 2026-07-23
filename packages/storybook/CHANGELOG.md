@@ -1,5 +1,7 @@
 # @coveord/plasma-storybook
 
+## 60.0.2
+
 ## 60.0.0
 
 ### Major Changes
