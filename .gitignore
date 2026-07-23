@@ -38,3 +38,7 @@ travis-deploy-key
 
 # environment files
 **/*.env
+
+# cloned repos
+admin-ui-master/
+doc_jekyll-public-site-master/

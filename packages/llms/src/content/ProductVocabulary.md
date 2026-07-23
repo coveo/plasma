@@ -1,151 +1,252 @@
 ---
 name: Content Guidelines — Product Vocabulary
-description: Required spelling and capitalization for Coveo product terminology in the UI. Includes banned terms and approved replacements.
+description: Required spelling and capitalization for product terminology in the UI. Includes banned terms and approved replacements.
 ---
 
-> Always refer to this list when writing for the UI. Vocabulary is not consistent across other Coveo sources or documentation.
+RULE: Always use the spelling and capitalization shown here. Do not rely on other Coveo sources or documentation — vocabulary is not standardized across them.
 
-Use the exact spelling, capitalization, and punctuation shown here every time you write a Coveo product or feature name.
+RULE: If a term is not listed here, check whether it is a proper noun or has an established capitalization convention. Use the most widely-used form. If uncertain, do not capitalize it.
 
-Terms that start with _Coveo_, _for_, or _on_ are alphabetized by the next distinguishing word. For example, _Coveo for Salesforce_ appears under S.
+## Sentence case
 
-**If a product or feature name is not on this list:** check online resources to determine whether it is a proper noun or has an established capitalization convention. Use the most widely-used spelling and capitalization. If it is not a proper noun, do not capitalize it.
+RULE: Write these terms in sentence case (lowercase) in all descriptions and body text.
 
-## Official product names
+- agent
+- analytics — use when referring to data or events (e.g., "the analytics data"). Formerly "usage analytics". To distinguish from a third-party product, use "Coveo Analytics" instead.
+- answer generation
+- API key — "API" is always capitalized
+- catalog
+- catalog configuration
+- condition
+- conversational AI — "AI" is always capitalized
+- dimension
+- evaluation
+- extension
+- field
+- filter rule
+- group
+- in-product experience
+- indexing pipeline extension
+- listing page
+- machine learning — use when referring to the technology in general. To distinguish from a third-party product, use "Coveo Machine Learning" instead.
+- member
+- model — use when referring to a model generically (e.g., "associate the model with a query pipeline"). When naming a specific model type, use its Title Case name from the [Coveo products and models list](#coveo-products-and-models).
+- named filter
+- notification
+- passage retrieval — use when referring to the capability or queries (e.g., "passage retrieval queries per second"). When naming the model type, use "Passage Retrieval" (Title Case).
+- permission filter
+- project
+- property
+- query parameter rule
+- query pipeline
+- query pipeline condition
+- query pipeline setting
+- ranking expression rule
+- ranking weight rule
+- report
+- resource snapshot
+- result ranking rule
+- search page — use when referring to a search page generically (e.g., "create a search page"). When referring to the Administration Console page, use "Search Pages" (Title Case).
+- security identities
+- security identity provider
+- security provider
+- source
+- source mapping
+- statement group
+- stop word rule
+- storefront association
+- thesaurus rule
+- trigger rule
 
-- Action Bar
+## Title case
+
+RULE: Write these terms in Title Case in all UI copy — navigation labels, descriptions, body text, and mid-sentence.
+
+### Pages and navigation
+
+Sections, pages, and tabs in the Administration Console. Use Title Case only when naming a specific navigable space (e.g., "open the Query Pipelines page"). When referring to the same concept generically in body text, use sentence case (e.g., "associate the model with a query pipeline").
+
 - Activity Browser
-- Administration Console
+- Advanced Reports
+- Agents
+- AI & ML
+- Analytics
+- Answer Manager
+- API Keys
+- Batch Answering
+- Case Assist
+- Catalogs
+- Chunk Inspector
+- Commerce
+- Conditions
+- Content
+- Content Browser
+- Conversation Inspector
+- Crawling Modules
+- Data Health
+- Dimensions
+- Evaluations
+- Extensions
+- Fields
+- First Steps
+- GenAI Performance
+- Groups
+- Home
+- In-Product Experience (IPX)
+- Insight Panel
+- License & Usage
+- Log Browser
+- MCP Server
+- Members
+- Models
+- Named Filters
+- Notifications
+- Organization
+- Permission Filters
+- Projects
+- Properties
+- Query Pipelines
+- Raw Data
+- Relevance Inspector
+- Reports
+- Resource Snapshots
+- Search
+- Search Pages
+- Security Identities
+- Service
+- Settings
+- Sources
+- Storefront Associations
+- System Performance
+- Temporary Access
+- Visit Browser
+
+### Sources
+
+Sources available in the Administration Console.
+
 - Amazon S3
-- Coveo Analytics
-- Anthropic
-- Apex
-- AppDirect
-- Atlassian
-- Coveo Atomic library
-- Aura
-- Automatic Relevance Tuning (ART)
 - Box Business
-- Brightcove
-- Case Classification (CC)
-- Catalog Semantic Encoder (CSE)
-- Client ID
-- Coveo for Commerce
+- Catalog
 - Confluence Cloud
 - Confluence Data Center
-- Confluence Server
-- Content Browser
-- Content Recommendations (CR)
-- Contentful
-- Coveo Crawling Module
-- Coveo Customer Success
-- Databricks
-- Dropbox
-- Dynamic Navigation Experience (DNE)
-- Coveo on Elasticsearch
-- Elasticsearch
+- Dropbox Business
+- Google Drive
+- GraphQL API
+- Jira Software Cloud
+- Jira Software Data Center
+- Khoros Community
+- Microsoft Dynamics 365
+- OneDrive for Business
+- REST API
+- RSS
+- Salesforce
+- SAP
+- ServiceNow
+- SharePoint Online
+- SharePoint Server
+- Shopify
+- Sitecore
+- Sitemap
+- Slack
+- Web
+- YouTube
+- Zendesk
+
+### Tools and libraries
+
+Named tools, interfaces, and developer libraries. Follow the exact capitalization listed here.
+
+- Action bar
+- Atomic library
+- Crawling Module — refers to the downloaded tool or software component. To distinguish from a third-party crawling module, use "Coveo Crawling Module".
 - Email Security Provider
-- Event Protocol (EP)
-- Coveo Explorer
+- Headless library
+- Hosted Search Page
+- Interface Editor
+- Legacy Interface Editor
+- Quantic library
+- Relay library
+
+### Coveo products and models
+
+Official Coveo products and machine learning model types.
+
+RULE: Use the short names listed here by default — without the "Coveo" prefix. Add "Coveo" as a prefix only when the context involves other third-party products and ownership is unclear. Terms tagged [coveo-prefix: optional] support this. Some names always include "Coveo" and have no short-form alternative: Coveo Platform, Coveo for Salesforce, Coveo for Sitecore, Coveo Professional Services, and Coveo Support.
+
+- Administration Console [coveo-prefix: optional]
+- Analytics (formerly "Usage Analytics") [coveo-prefix: optional]
+- Automatic Relevance Tuning (ART)
+- Case Assist
+- Case Classification (CC)
+- Content Recommendation
+- Coveo Platform
+- Coveo for Salesforce
+- Coveo for Sitecore
+- Coveo Professional Services
+- Coveo Support
+- Crawling Module
+- Dynamic Navigation Experience (DNE)
+- In-Product Experience (IPX)
+- Intelligent Term Detection (ITD)
+- Intent-Aware Product Ranking (IAPR)
+- Listing Page Optimizer (LPO)
+- Machine Learning [coveo-prefix: optional]
+- Merchandising Hub [coveo-prefix: optional]
+- Passage Retrieval
+- Predictive Query Suggestion (PQS)
+- Product Recommendation
+- Query Suggestion (QS)
+- Relevance Generative Answering (RGA)
+- Semantic Encoder (SE)
+- Smart Snippet
+
+### Third-party products
+
+Write these third-party product names exactly as listed.
+
+- Anthropic
+- AppDirect
+- Apex
+- Atlassian
+- Aura
+- Brightcove
+- Contentful
+- Databricks
+- Elasticsearch
 - Figma
 - Genesys
 - GitHub
 - Gmail
-- Google Drive
 - GraphQL
-- Coveo Headless library
-- Hosted Insight Panel
-- Hosted Search Page
-- In-Product Experience (IPX)
-- Insight Panel
-- Intelligent Term Detection (ITD)
-- Intent-Aware Product Ranking (IAPR)
-- Interface Editor
 - JavaScript
-- Coveo JavaScript Search Framework
-- Jira Software Cloud
-- Jira Software Data Center
-- Khoros
-- Knowledge Hub
 - Lightning Web Components (LWC)
-- Listing Page Optimizer (LPO)
-- Log Browser
-- Coveo Machine Learning
 - Mailchimp
-- Coveo Merchandising Hub (CMH)
 - Node Package Manager
-- Coveo On-Premises Crawling Module
-- OneDrive for Business
 - OpenText Content Server
 - Optimizely
 - Pendo
-- Coveo Personalization-as-you-go
-- Coveo Platform
 - PowerPoint
 - PowerShell
-- Predictive Query Suggestions (PQS)
-- Product Recommendations (PR)
-- Coveo Professional Services
-- Coveo Quantic library
-- Coveo QuickView
-- Query Suggestions (QS)
-- Relevance Generative Answering (RGA)
-- Coveo Relay library
-- REST API
-- Salesforce
-- Salesforce B2B Commerce
-- Salesforce Insight Panel
-- Coveo for Salesforce
-- SAP Commerce
-- Semantic Encoder (SE)
-- ServiceNow
-- Session-Based Product Recommendations (SBPR)
-- SharePoint
-- SharePoint Online
-- Coveo for Shopify
-- Shopify
-- Sitecore
-- Coveo for Sitecore
-- Smart Snippets
 - Splunk
-- Coveo Support
 - Symantec
 - Tealium
 - Visualforce
-- YouTube
-- Zendesk
-- Coveo for Zendesk
 
-## Banned terms
+## Terms to avoid
 
-Do not use any of these terms. Use the alternative shown in the second list.
+RULE: Never use the terms in the left column. Use the replacement in the right column instead.
 
-Don't use:
-
-1. Auth
-2. Admin console, Admin UI, Admin portal
-3. c4sf, cfsf
-4. c4sc, cfsc
-5. Custom login
-6. HIP
-7. HSP
-8. KB content
-9. Meta data
-10. NPM
-11. Pop up, Popup, Pop-up
-12. User ID
-
-Use:
-
-1. Authentication
-2. Administration Console
-3. Coveo for Salesforce
-4. Coveo for Sitecore
-5. Custom authentication
-6. Hosted Insight Panel
-7. Hosted Search Page
-8. Knowledge Base content
-9. Metadata
-10. Node Package Manager
-11. Modal
-12. Client ID
+| Avoid                                                                                   | Use instead            |
+| --------------------------------------------------------------------------------------- | ---------------------- |
+| Auth                                                                                    | Authentication         |
+| Admin console / Admin. Console / Admin UI / Admin portal / Coveo Administration Console | Administration Console |
+| c4sf, cfsf                                                                              | Coveo for Salesforce   |
+| c4sc, cfsc                                                                              | Coveo for Sitecore     |
+| Custom login                                                                            | Custom authentication  |
+| HIP                                                                                     | Hosted Insight Panel   |
+| HSP                                                                                     | Hosted Search Page     |
+| KB content                                                                              | Knowledge Base content |
+| Meta data                                                                               | Metadata               |
+| NPM                                                                                     | Node Package Manager   |
+| Pop up / Popup / Pop-up                                                                 | Modal                  |
