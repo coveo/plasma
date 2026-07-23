@@ -1,5 +1,21 @@
 # @coveord/plasma-mantine
 
+## 60.1.0
+
+### Minor Changes
+
+- Add `Table.Layouts.Cards` — a card-based layout for the Table component
+
+  The new layout renders table data as a responsive grid of cards instead of rows. It supports single and multi-row selection (with a "Select all" checkbox), double-click handling, and integrates with the existing Table store (`forceSelection`, `enableMultiRowSelection`). Collapsible row content is intentionally excluded from this layout.
+
+  Also extracts `TableSelectAllCheckbox` into a shared component reused by both the row layout selectable column and the card layout header. [#4493](https://github.com/coveo/plasma/pull/4493)
+
+- **Table.Cell**: New component for controlling text overflow in table cells. Supports single-line ellipsis (default), multi-line clamping with `lineClamp`, word wrapping with `wrap`, and an expandable "Show more"/"Show less" toggle with `expandable`. [#4499](https://github.com/coveo/plasma/pull/4499)
+
+### Patch Changes
+
+- **Table.Pagination** is now hidden when there is only one page or fewer. **Table.PerPage** is now hidden when the total number of rows is smaller than or equal to the smallest page size option. [#4520](https://github.com/coveo/plasma/pull/4520)
+
 ## 60.0.1
 
 ### Patch Changes
