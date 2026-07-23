@@ -59,7 +59,7 @@ Stop and ask the user before continuing if:
 - The Step 1 `.mdx` file does not yet exist for the component
 - The target `.mdx` file is not under `packages/storybook/src/`
 - More than one matching `ComponentName.mdx` file exists
-- The file already contains `{/* storybook-usage-guidelines: rewritten */}` and the user has not explicitly asked to rewrite it again
+- The file has already been rewritten (Step 2 output is present) and the user has not explicitly asked to rewrite it again
 - The original `.md` source file cannot be found for read-only cross-checking
 - The `<Meta ... />`, H1, or description line is missing
 - Fenced code blocks cannot be compared before and after rewriting
@@ -102,31 +102,6 @@ The `.stories.tsx` file may be used as secondary context for examples, common us
 
 ---
 
-## Completion marker
-
-As the final edit in Step 2, add this marker immediately after the `<Meta ... />` block:
-
-```mdx
-{/* storybook-usage-guidelines: rewritten */}
-```
-
-The top of a finished file must look like this:
-
-```mdx
-import {Meta} from '@storybook/addon-docs/blocks';
-import * as stories from './Accordion.stories';
-
-<Meta of={stories} title="@components/layout/Accordion" />
-
-{/* For the agent-friendly version of this documentation, see packages/llms/src/components/Accordion.md */}
-
-{/* storybook-usage-guidelines: rewritten */}
-
-# Accordion
-```
-
-This marker signals that Step 2 is complete. If the marker is already present, do not add a duplicate. Treat the file as already rewritten unless the user explicitly asks to revise it again. Skill 1 must not overwrite this file without explicit user permission.
-
 ---
 
 ## Page template
@@ -140,8 +115,6 @@ import * as stories from './ComponentName.stories';
 <Meta of={stories} title="@components/section/ComponentName" />
 
 {/* For the agent-friendly version of this documentation, see packages/llms/src/components/ComponentName.md */}
-
-{/* storybook-usage-guidelines: rewritten */}
 
 # ComponentName
 
@@ -413,7 +386,6 @@ A component is done only when all of the following are true:
 
 - Step 1 conversion exists
 - Step 2 rewrite is complete
-- Completion marker `{/* storybook-usage-guidelines: rewritten */}` is present
 - Storybook build has been run and passed
 - Build result has been reported
 - Source `.md` file is untouched

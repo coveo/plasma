@@ -12,7 +12,7 @@ A correct Step 1 conversion:
 - Adds `<Meta of={stories} title="..." />` using the exact title from the `.stories.tsx` file
 - Escapes JSX-sensitive prose (`<tag>` → `&lt;tag&gt;`, bare `{` → `&#123;`)
 - Removes `[Full Plasma documentation]({{BASE_URL}})` entirely
-- Does **not** include the Step 2 completion marker (`{/* storybook-usage-guidelines: rewritten */}`)
+- Does **not** include any completion marker comments
 - Includes the agent-redirect comment linking to the original `.md` file immediately after `<Meta ... />`
 - Is saved as `ComponentName.mdx` in the correct folder
 
@@ -26,4 +26,3 @@ A Step 1 conversion that must be rejected:
 - Places the file outside `packages/storybook/src/`
 - Keeps `[Full Plasma documentation]({{BASE_URL}})` as a rendered link
 - Overwrites an existing `.mdx` file without explicit user permission
-- Adds the Step 2 completion marker during Step 1

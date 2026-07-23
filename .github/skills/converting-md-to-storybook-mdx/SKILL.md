@@ -61,7 +61,6 @@ Stop and ask the user before continuing if:
 - There are unrelated uncommitted changes in the working tree
 - The source `.md` file is missing YAML frontmatter, `name`, or `description`
 - The target `.mdx` file already exists and would need to be overwritten
-- A Step 2 completion marker is present in an existing file
 - More than one matching `.stories.tsx` file exists for the component
 - No matching `.stories.tsx` exists and the component is not in `references/storybook-fallbacks.md`
 - The component group does not match one of the approved DS branches
@@ -82,8 +81,8 @@ Stop and ask the user before continuing if:
 Before writing `ComponentName.mdx`:
 
 - If the file does not exist, create it.
-- If it exists and contains `{/* storybook-usage-guidelines: rewritten */}`, stop and ask the user for permission before overwriting. Step 2 is already complete for this file.
-- If it exists but does not contain the marker, explain why overwriting may be safe or unsafe, then ask the user for permission before overwriting.
+- If it exists and has already been rewritten (Step 2 output is present), stop and ask the user for permission before overwriting.
+- If it exists but has not been rewritten, explain why overwriting may be safe or unsafe, then ask the user for permission before overwriting.
 
 Never overwrite an existing `.mdx` file without explicit user permission.
 

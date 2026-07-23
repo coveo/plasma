@@ -5,7 +5,6 @@
 A correct Step 2 rewrite:
 
 - Keeps `import {Meta}`, `import * as stories` (when present), `<Meta ... />`, the H1, and the description line unchanged
-- Adds the Step 2 completion marker `{/* storybook-usage-guidelines: rewritten */}` immediately after `<Meta ... />`
 - Removes duplicated API reference sections (`## Props`, `## Sub-components`, `## Usage`) from the docs page
 - Rewrites machine-facing directives (`MUST`, `SHOULD`, `MAY`) into natural developer language
 - Preserves every rule from the source, with nothing dropped or changed in meaning
@@ -24,4 +23,3 @@ A Step 2 rewrite that must be rejected:
 - Uses third-party guidance without cross-checking against Coveo code or writing practices documentation under `packages/llms/src/content/`
 - Cites research sources inline in the MDX file
 - Touches any file under `packages/llms/src/components/`
-- Omits the Step 2 completion marker

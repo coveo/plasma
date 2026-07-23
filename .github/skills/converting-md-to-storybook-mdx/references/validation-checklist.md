@@ -11,7 +11,7 @@ Before considering Step 1 complete for a component:
 - [ ] Output file is named `ComponentName.mdx`
 - [ ] Output file is under `packages/storybook/src/`
 - [ ] No existing `.mdx` file was overwritten without explicit user permission
-- [ ] If the existing `.mdx` file had the Step 2 marker, the agent stopped before overwriting
+- [ ] If the existing `.mdx` file had already been rewritten (Step 2), the agent stopped before overwriting
 - [ ] YAML frontmatter was fully removed
 - [ ] `import {Meta}` is the first line
 - [ ] If a stories file exists: `import * as stories from './ComponentName.stories';` is present and `<Meta of={stories} title="..." />` uses the exact story title
@@ -23,7 +23,7 @@ Before considering Step 1 complete for a component:
 - [ ] If the source `.md` contained pipe tables, they were converted to Mantine `<Table>` JSX (pipe tables do not render in MDX without `remark-gfm`)
 - [ ] `[Full Plasma documentation]({{BASE_URL}})` was removed entirely
 - [ ] No rendered `{{BASE_URL}}` link or placeholder footer remains
-- [ ] Step 2 marker `{/* storybook-usage-guidelines: rewritten */}` was not added by Skill 1
+- [ ] No completion marker comments were added by Skill 1
 - [ ] Agent-redirect comment `{/* For the agent-friendly version... */}` is present immediately after `<Meta ... />`
 - [ ] Original `.md` source file is untouched
 - [ ] `git diff -- packages/llms/src/components` shows no changes

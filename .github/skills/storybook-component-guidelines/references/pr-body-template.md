@@ -50,7 +50,6 @@ For each component above:
 - H1 and description are unchanged after rewrite
 - Original `.md` source file was not modified
 - Fenced code blocks are unchanged after rewrite
-- Step 2 completion marker is present
 - Storybook build passed
 
 ## Build result

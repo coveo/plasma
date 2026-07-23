@@ -13,7 +13,6 @@ Before considering Step 2 complete for a component:
 - [ ] `<Meta ... />` is unchanged
 - [ ] H1 is unchanged
 - [ ] Description line is unchanged
-- [ ] Step 2 marker `{/* storybook-usage-guidelines: rewritten */}` is present immediately after the agent-redirect comment
 - [ ] Agent-redirect comment `{/* For the agent-friendly version... */}` is present immediately after `<Meta ... />`
 - [ ] All original rules are preserved. None were dropped or changed in meaning.
 - [ ] No unsupported product behavior was added
