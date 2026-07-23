@@ -1,0 +1,38 @@
+import {Meta} from '@storybook/addon-docs/blocks';
+import * as stories from './ActionIcon.stories';
+
+<Meta of={stories} title="@components/call-to-action/ActionIcon" />
+
+{/* storybook-usage-guidelines: rewritten */}
+
+# ActionIcon
+
+Icon-only button that can trigger actions and can show a disabled-state tooltip.
+
+## Overview
+
+Use ActionIcon when an action is best represented by an icon alone — for example, delete, close, or edit controls in compact layouts where a full button label would clutter the UI.
+
+It extends Mantine's ActionIcon with support for async click handlers and a tooltip that appears when the button is disabled, letting you explain why the action isn't available.
+
+Choose the sub-component that matches the emphasis level of the action. Use `Destructive` variants for actions that permanently remove or alter data. Pass an async function to `onClick` when the action triggers a network request — the loading state is handled for you.
+
+## Content guidance
+
+**Icon `aria-label`:**
+
+- Write a short verb phrase that describes the action: "Delete", "Remove", "Close", "Edit"
+- Use sentence case
+- Don't repeat the surrounding context — "Delete" not "Delete this item"
+- Don't use "icon" or "button" in the label
+
+**`disabledTooltip`:**
+
+- Explain why the action isn't available, not just that it's unavailable
+- Start with the reason: "You don't have permission to remove this item." not "This action is disabled"
+- Keep to 20 words or fewer
+- Write as a full sentence ending with a period
+
+---
+
+[Plasma documentation](https://plasma.coveo.com/)
