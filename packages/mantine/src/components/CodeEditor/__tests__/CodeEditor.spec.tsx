@@ -99,9 +99,11 @@ describe('CodeEditor', () => {
     });
 
     it('defines editorHandle on mount', async () => {
-        let editorHandle: React.MutableRefObject<editor.IStandaloneCodeEditor> = null;
+        let editorHandle: React.MutableRefObject<editor.IStandaloneCodeEditor | null> = null!;
         const EditorWrapper = () => {
-            editorHandle = useRef<editor.IStandaloneCodeEditor | null>(null);
+            editorHandle = useRef<editor.IStandaloneCodeEditor | null>(
+                null,
+            ) as React.MutableRefObject<editor.IStandaloneCodeEditor | null>;
             return <CodeEditor editorHandle={editorHandle} />;
         };
 

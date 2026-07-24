@@ -115,7 +115,7 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
                                 padding: 0,
                             }}
                         >
-                            <Collapse in={row.getIsExpanded()}>
+                            <Collapse expanded={row.getIsExpanded()}>
                                 <Box {...ctx.getStyles('collapsibleWrapper', {classNames, styles})} px="sm" py="xs">
                                     {rowChildren}
                                 </Box>

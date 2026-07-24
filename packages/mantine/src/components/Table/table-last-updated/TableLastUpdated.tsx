@@ -16,9 +16,9 @@ export type TableLastUpdatedFactory = Factory<{
     compound: true;
 }>;
 
-export const TableLastUpdated = factory<TableLastUpdatedFactory>((props, ref) => {
+export const TableLastUpdated = factory<TableLastUpdatedFactory>((props) => {
     const {table, getStyles} = useTableContext();
-    const {classNames: _classNames, styles: _styles, vars: _vars, ...lastUpdatedProps} = props;
+    const {classNames: _classNames, styles: _styles, vars: _vars, ref, ...lastUpdatedProps} = props;
     const [time, setTime] = useState(new Date());
 
     const {className: rootClassName, style: rootStyle} = getStyles('lastUpdatedRoot', {

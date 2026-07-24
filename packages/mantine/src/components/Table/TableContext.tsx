@@ -21,4 +21,4 @@ export interface TableProviderProps<T> {
 
 export const [TableProvider, useTableContext] = createSafeContext<TableContextValue>(
     'Table component was not found in the tree',
-) as [<TData>(props: TableProviderProps<TData>) => ReactElement, <TData>() => TableContextValue<TData>];
+) as unknown as [<TData>(props: TableProviderProps<TData>) => ReactElement, <TData>() => TableContextValue<TData>];

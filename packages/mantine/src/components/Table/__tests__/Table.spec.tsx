@@ -9,7 +9,7 @@ import {useTable} from '../use-table.js';
 type RowData = {id: string; firstName: string; lastName?: string};
 
 const columnHelper = createColumnHelper<RowData>();
-const columns: Array<ColumnDef<RowData>> = [
+const columns: Array<ColumnDef<RowData, unknown>> = [
     columnHelper.accessor('firstName', {enableSorting: false}),
     columnHelper.accessor('lastName', {enableSorting: false}),
 ];
@@ -186,7 +186,7 @@ describe('Table', () => {
         const user = userEvent.setup();
 
         const Fixture = () => {
-            const [cousinNode, setCousinNode] = useState<HTMLDivElement>();
+            const [cousinNode, setCousinNode] = useState<HTMLDivElement | null>(null);
             const store = useTable<RowData>();
 
             return (
@@ -205,7 +205,7 @@ describe('Table', () => {
                             {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
                         ]}
                         columns={columns}
-                        additionalRootNodes={[cousinNode]}
+                        additionalRootNodes={cousinNode ? [cousinNode] : []}
                     />
                 </>
             );

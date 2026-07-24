@@ -22,12 +22,6 @@ export interface TableHeaderProps
      * default true
      */
     showActions?: boolean;
-    /**
-     * Whether to show a border on top of the header
-     *
-     * default true
-     */
-    borderTop?: boolean;
 }
 
 export type TableHeaderFactory = Factory<{
@@ -41,22 +35,21 @@ const defaultProps = {
     unselectAllLabel: 'Unselect all',
     selectedCountLabel: (count) => `${count} selected`,
     showActions: true,
-    borderTop: true,
 } satisfies Partial<TableHeaderProps>;
 
-export const TableHeader = factory<TableHeaderFactory>((props, ref) => {
+export const TableHeader = factory<TableHeaderFactory>((props) => {
     const {store, getStyles} = useTableContext();
     const {
         showActions,
         unselectAllLabel,
         selectedCountLabel,
-        borderTop,
         children,
         classNames,
         className,
         styles,
         style,
         vars: _vars,
+        ref,
         ...others
     } = useProps('PlasmaTableHeader', defaultProps, props);
     const selectedRows = store.getSelectedRows();
@@ -66,12 +59,7 @@ export const TableHeader = factory<TableHeaderFactory>((props, ref) => {
     const gridStyles = getStyles('headerGrid', stylesApiProps);
 
     return (
-        <Box
-            ref={ref}
-            {...getStyles('headerRoot', {className, style, ...stylesApiProps})}
-            {...others}
-            mod={{'with-border-top': borderTop}}
-        >
+        <Box ref={ref} {...getStyles('headerRoot', {className, style, ...stylesApiProps})} {...others}>
             <Grid
                 justify="flex-start"
                 align="center"

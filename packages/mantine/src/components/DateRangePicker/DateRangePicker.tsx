@@ -96,7 +96,7 @@ const defaultProps = {
     formatter: (time) => dayjs(time).format('MMM D, YYYY'),
 } satisfies Partial<DateRangePickerProps>;
 
-export const DateRangePicker = factory<DateRangePickerFactory>((props: DateRangePickerProps, ref) => {
+export const DateRangePicker = factory<DateRangePickerFactory>(({ref, ...props}) => {
     const {
         defaultValue,
         value,

@@ -145,9 +145,9 @@ const varsResolver = createVarsResolver<InfoTokenFactory>((_theme, {type}) => {
     };
 });
 
-const _InfoToken = polymorphicFactory<InfoTokenFactory>((_props, ref) => {
+const _InfoToken = polymorphicFactory<InfoTokenFactory>((_props) => {
     const props = useProps('InfoToken', defaultProps, _props);
-    const {variant, type, vars, className, style, unstyled, styles, classNames, size, ...others} = props;
+    const {variant, type, vars, className, style, unstyled, styles, classNames, size, ref, ...others} = props;
     const getStyles = useStyles<InfoTokenFactory>({
         name: 'InfoToken',
         classes,

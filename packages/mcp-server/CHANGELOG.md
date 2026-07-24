@@ -1,5 +1,7 @@
 # @coveord/plasma-mcp-server
 
+## 60.1.0-next.0
+
 ## 60.0.0
 
 ### Major Changes

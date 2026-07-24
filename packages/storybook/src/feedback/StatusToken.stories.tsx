@@ -14,14 +14,13 @@ type Story = StoryObj<typeof StatusToken>;
 
 export const Demo: Story = {
     args: {
-        variant: 'info',
+        variant: 'success',
         size: 'lg',
     },
     argTypes: {
         variant: {
             control: 'select',
-            options: ['info', 'success', 'caution', 'error', 'disabled', 'waiting', 'edited', 'new'],
-            table: {defaultValue: {summary: 'info'}},
+            options: ['success', 'caution', 'error', 'disabled', 'waiting', 'edited', 'new'],
         },
         size: {
             control: 'select',
