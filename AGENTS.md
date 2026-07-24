@@ -83,6 +83,7 @@ This repo ships agent **skills** in `.github/skills/`. Use them when the task ma
 - **`plasma-component-docs`** — write/update the LLM component specs in `packages/llms/src/components/`. Use when adding a component, updating a spec after an API change, or auditing docs.
 - **`converting-md-to-storybook-mdx`** — **Step 1**: convert a component `.md` spec from `packages/llms/src/components/` into a Storybook `.mdx` page in `packages/storybook`.
 - **`storybook-component-guidelines`** — **Step 2**: rewrite the converted `.mdx` into clear, human-readable Storybook documentation. Runs after Step 1.
+- **`changesets-author`** — write or edit a changeset that follows the enforced template. Use when adding or editing a `.changeset/*.md` file. Scaffold with `pnpm changeset:new` and check with `pnpm changeset:validate`.
 
 There is also a public agent skill served at `https://plasma.coveo.com/plasma-skill.md` (source: `packages/llms/src/skill.md`) and an MCP server (`@coveord/plasma-mcp-server`) for looking up Plasma component APIs. When consulting component APIs, read the specs in `packages/llms/src/components/` or use the Plasma/Mantine MCP servers described in the [README](README.md).
 
@@ -100,7 +101,7 @@ When you change a component's public API:
 1. **Branch** off `master`. Name it `<jira-ticket-number>-short-one-liner-description` (e.g., `ADUI-1234-change-something`). If you don't know the Jira ticket number, ask the user for it; if there is no related Jira ticket, use just the one-liner description (e.g., `change-something`).
 2. Make changes following the conventions above.
 3. `pnpm test`, `pnpm lint`, and `pnpm fmt:check` must all pass.
-4. **Add a changeset** if you touched a releasable package: `pnpm changeset`, then commit the generated file in `.changeset/`. Releases are driven by Changesets, **not** inferred from commit messages.
+4. **Add a changeset** if you touched a releasable package. Load the `changesets-author` skill — it walks through bump selection, the changelog template, and the `pnpm changeset:new` / `pnpm changeset:validate` workflow. Commit the generated `.changeset/*.md` file with your change. CI runs `pnpm changeset:validate` and fails on non-conforming changesets. Releases are driven by Changesets, **not** inferred from commit messages.
 5. **Commit** with a concise, descriptive message. Mention the affected subject/package when it helps: `Add new Button variant`, `Fix primary color token value`.
 6. **Push** the branch and open a draft PR (`gh pr create --draft`); do not push to `master`. Fill in the PR template (`.github/pull_request_template.md`): proposed changes, potential breaking changes, and the acceptance-criteria checklist.
 

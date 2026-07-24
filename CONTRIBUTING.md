@@ -87,6 +87,7 @@ Run all tests from the root with `pnpm test`. From within `packages/{name}` you 
 - **`plasma-component-docs`** — write or update the per-component LLM specs in `packages/llms/src/components/`.
 - **`converting-md-to-storybook-mdx`** — Step 1: convert a component `.md` spec into a Storybook `.mdx` page.
 - **`storybook-component-guidelines`** — Step 2: rewrite the converted `.mdx` into human-readable documentation.
+- **`changesets-author`** — write or edit a changeset that follows the template documented below.
 
 A public agent skill is also served at [`https://plasma.coveo.com/plasma-skill.md`](https://plasma.coveo.com/plasma-skill.md), and the `@coveord/plasma-mcp-server` package exposes Plasma docs to AI agents (see the [README](README.md) for setup).
 
@@ -96,15 +97,114 @@ Write a concise commit message that describes what changed and, when helpful, me
 
 A pre-commit hook (Husky + lint-staged) automatically formats staged files with oxfmt and fixes SCSS with Stylelint. Don't skip hooks (`--no-verify`) unless asked.
 
-## Changesets
+## Writing changesets
 
-Releases are managed with [Changesets](https://github.com/changesets/changesets), **not** inferred from commit messages. If your PR changes a releasable package, run:
+Add a changeset whenever your PR changes a releasable package. The changeset becomes the entry in that
+package's `CHANGELOG.md` (and the Storybook changelog page), so it is written for **consumers** of the
+package.
+
+### Creating one
+
+Scaffold a pre-filled changeset from the template:
 
 ```bash
-pnpm changeset
+pnpm changeset:new           # patch (default)
+pnpm changeset:new minor
+pnpm changeset:new major
+pnpm changeset:new -p @coveord/plasma-tokens -b minor
 ```
 
-Answer the prompts to pick the affected packages and bump type, then commit the generated file in `.changeset/`. CI previews the version bumps your changesets would produce.
+Then edit the generated `.changeset/*.md` file: fill in the `TODO` placeholders, remove the guiding
+comments, and adjust the package(s) and bump in the frontmatter. You can also use the interactive
+`pnpm changeset` if you prefer.
+
+Validate your changeset before pushing (CI runs the same check):
+
+```bash
+pnpm changeset:validate
+```
+
+### Format
+
+A changeset is frontmatter (package + bump) followed by a title and an optional body:
+
+```markdown
+---
+'@coveord/plasma-mantine': minor
+---
+
+Title on the first line
+
+Optional body explaining the change.
+```
+
+**Title (first line)**
+
+- One line, sentence case, **no trailing period**.
+- Written from the consumer's perspective; describe _what changed_, not the implementation.
+- Wrap component / prop / API names in backticks.
+- Do **not** add a `**BREAKING:**` prefix — a `major` bump already marks breaking changes.
+- Keep it to **100 characters or fewer**. Put anything longer in the body.
+
+**Body**
+
+- Separate it from the title with a blank line.
+- Body headings start at a single `#` (they are re-leveled automatically in the changelog).
+- Use ` ```diff ` fenced blocks for before/after code.
+
+**Requirements by bump type**
+
+| Bump    | Body required? | Notes                                              |
+| ------- | -------------- | -------------------------------------------------- |
+| `major` | Yes            | Must include a `# Migration` section (with steps). |
+| `minor` | Yes            | Describe what the feature does and how to use it.  |
+| `patch` | No             | A title alone is fine; add a body for context.     |
+
+### Examples
+
+`major` — breaking change with migration steps:
+
+````markdown
+---
+'@coveord/plasma-mantine': major
+---
+
+Remove the `info` variant from `StatusToken` and make `variant` required
+
+The `variant` prop no longer defaults to `info` — it is now required.
+
+# Migration
+
+Pass a `variant` explicitly to every `StatusToken`:
+
+```diff
+- <StatusToken />
++ <StatusToken variant="success" />
+```
+````
+
+`minor` — new capability:
+
+```markdown
+---
+'@coveord/plasma-mantine': minor
+---
+
+Add `Table.Cell` for controlling text overflow in table cells
+
+Supports single-line ellipsis (default), multi-line clamping with `lineClamp`, word wrapping with
+`wrap`, and an expandable "Show more" toggle with `expandable`.
+```
+
+`patch` — small fix, title only:
+
+```markdown
+---
+'@coveord/plasma-mantine': patch
+---
+
+Fix table header inner grid min height
+```
 
 ## Opening a pull request
 
