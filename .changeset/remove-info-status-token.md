@@ -4,9 +4,7 @@
 
 **BREAKING:** Remove the `info` variant from `StatusToken` and make `variant` required
 
-The `info` variant was not used in the product and was missing from the Figma library.
-
-The `variant` prop no longer defaults to `success` — it is now required.
+The `variant` prop no longer defaults to `info` — it is now required.
 
 ### Migration
 
