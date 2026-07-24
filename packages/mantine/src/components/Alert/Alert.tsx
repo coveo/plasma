@@ -26,7 +26,9 @@ type AlertOverloadFactory = Factory<{
     };
 }>;
 
-export const Alert = polymorphicFactory<AlertOverloadFactory>((props, ref) => <MantineAlert {...props} ref={ref} />);
+export const Alert = polymorphicFactory<AlertOverloadFactory>(({ref, ...props}) => (
+    <MantineAlert {...props} ref={ref} />
+));
 Alert.displayName = 'Alert';
 
 const AlertInformation = Alert.withProps({

@@ -49,7 +49,7 @@ export type TableCellFactory = Factory<{
 
 const defaultProps = {} satisfies Partial<TableCellProps>;
 
-export const TableCell = polymorphicFactory<TableCellFactory>((props, ref) => {
+export const TableCell = polymorphicFactory<TableCellFactory>((props) => {
     const {
         className,
         children,
@@ -61,6 +61,7 @@ export const TableCell = polymorphicFactory<TableCellFactory>((props, ref) => {
         lineClamp,
         expandable,
         tooltipProps,
+        ref,
         ...others
     } = useProps('TableCell', defaultProps, props);
 

@@ -7,7 +7,7 @@ export type AppShellMainFactory = Factory<{
     compound: true;
 }>;
 const BaseAppShellMain = AppShell.Main;
-const AppShellMain = factory<AppShellMainFactory>(({children, ...others}, ref) => (
+const AppShellMain = factory<AppShellMainFactory>(({children, ref, ...others}) => (
     <BaseAppShellMain ref={ref} {...others}>
         <Box className={classes.content}>{children}</Box>
     </BaseAppShellMain>

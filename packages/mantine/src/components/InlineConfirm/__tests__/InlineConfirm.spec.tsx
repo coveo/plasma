@@ -170,7 +170,7 @@ describe('InlineConfirm', () => {
         expect(deleteButton).toBeDisabled();
         expect(screen.queryByRole('tooltip', {name: /You shall not pass/i})).not.toBeInTheDocument();
 
-        await user.hover(deleteButton.parentElement);
+        await user.hover(deleteButton.parentElement!);
 
         expect(await screen.findByRole('tooltip', {name: /You shall not pass/i})).toBeInTheDocument();
     });

@@ -27,7 +27,7 @@ type PlasmaModalFactory = Omit<MantineModalFactory, 'staticComponents'> & {
     };
 };
 
-const PlasmaModal = factory<PlasmaModalFactory>(({title, description, help, ...otherProps}, ref) => {
+const PlasmaModal = factory<PlasmaModalFactory>(({title, description, help, ref, ...otherProps}) => {
     const header =
         typeof title === 'string' ? (
             <Header titleComponent="div" variant="secondary" description={description}>

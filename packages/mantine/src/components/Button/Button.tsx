@@ -41,10 +41,16 @@ type ButtonOverloadFactory = Factory<{
 }>;
 
 export const Button = polymorphicFactory<ButtonOverloadFactory>(
-    (
-        {disabledTooltip, disabled, disabledTooltipProps, loading, onClick, 'data-disabled': dataDisabled, ...others},
+    ({
+        disabledTooltip,
+        disabled,
+        disabledTooltipProps,
+        loading,
+        onClick,
+        'data-disabled': dataDisabled,
         ref,
-    ) => {
+        ...others
+    }) => {
         const {isLoading, handleClick} = useClickWithLoading(onClick);
         return (
             <ButtonWithDisabledTooltip

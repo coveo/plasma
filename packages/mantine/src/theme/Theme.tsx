@@ -67,7 +67,7 @@ import {
     TimePicker,
     YearPicker,
 } from '@mantine/dates';
-import {Accordion} from '../components/Accordion/Accordion.js';
+import {Accordion as MantineAccordion} from '@mantine/core';
 import {CheckboxIcon} from '../components/CheckboxIcon/CheckboxIcon.js';
 import {CircleLoader} from '../components/CircleLoader/CircleLoader.js';
 import {InfoToken} from '../components/InfoToken/InfoToken.js';
@@ -164,6 +164,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             h6: {fontSize: '12px', lineHeight: '1.33', fontWeight: 'var(--coveo-fw-bold)'},
         },
     },
+    fontWeights: {
+        medium: '500',
+    },
     fontSizes: {
         xxs: '10px',
         xs: '12px',
@@ -182,7 +185,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
     primaryShade: 5,
     colors: PlasmaColors,
     components: {
-        Accordion: Accordion.extend({
+        Accordion: MantineAccordion.extend({
             classNames: AccordionClasses,
         }),
         ActionIcon: ActionIcon.extend({
@@ -472,6 +475,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             classNames: ScrollAreaClasses,
         }),
         SegmentedControl: SegmentedControl.extend({
+            defaultProps: {
+                radius: 'md',
+            },
             classNames: SegmentedControlClasses,
         }),
         Select: Select.extend({
@@ -529,6 +535,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             }),
         }),
         Tabs: Tabs.extend({
+            defaultProps: {
+                keepMountedMode: 'display-none',
+            },
             classNames: TabsClasses,
         }),
         Text: Text.extend({

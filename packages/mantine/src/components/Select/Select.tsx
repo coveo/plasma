@@ -3,7 +3,7 @@ import {readOnlyInputStyles} from '../ReadOnly/ReadOnlyInputStyles.js';
 
 const ReadOnlySelect = MantineSelect.withProps({styles: readOnlyInputStyles});
 
-export const Select = factory<SelectFactory>((props, ref) => {
+export const Select = factory<SelectFactory>(({ref, ...props}) => {
     if (props.readOnly && !props.disabled) {
         return <ReadOnlySelect ref={ref} data-readonly {...props} />;
     }

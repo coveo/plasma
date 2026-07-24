@@ -174,7 +174,7 @@ const defaultProps = {
     removable: false,
 } satisfies Partial<FacetProps>;
 
-export const Facet: FunctionComponent<FacetProps> = factory<FacetFactory>((_props, ref) => {
+export const Facet: FunctionComponent<FacetProps> = factory<FacetFactory>((_props) => {
     const props = useProps('Facet', defaultProps, _props);
     const {
         className,
@@ -202,6 +202,7 @@ export const Facet: FunctionComponent<FacetProps> = factory<FacetFactory>((_prop
         styles: _styles,
         limit,
         unstyled,
+        ref,
         ...others
     } = props;
     const combobox = useCombobox();

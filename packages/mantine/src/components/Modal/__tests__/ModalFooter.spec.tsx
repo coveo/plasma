@@ -19,7 +19,7 @@ describe('ModalFooter', () => {
             </Modal.Footer>,
         );
 
-        const footer = screen.getByText('im the children').parentElement;
+        const footer = screen.getByText('im the children').parentElement!;
         expect(footer.offsetHeight % 2).lessThanOrEqual(Number.EPSILON);
     });
 });
