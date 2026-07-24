@@ -1,14 +1,20 @@
 // Custom changelog generator for Plasma.
-// - Suppresses all changelog entries during prereleases.
+// - Suppresses all changelog entries while .changeset/pre.json mode is "pre".
 // - Suppresses dependency update lines entirely.
 // - Simple entries: "- Summary [#PR](url)"
 // - Rich entries (containing headings): "#### Title [#PR](url)\n\nBody..."
 
-const {existsSync} = require('fs');
+const {readFileSync} = require('fs');
 const {join} = require('path');
 
 function isPrerelease() {
-    return existsSync(join(__dirname, 'pre.json'));
+    try {
+        const content = readFileSync(join(__dirname, 'pre.json'), 'utf8');
+        const parsed = JSON.parse(content);
+        return parsed.mode === 'pre';
+    } catch {
+        return false;
+    }
 }
 
 /**
