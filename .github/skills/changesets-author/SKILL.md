@@ -22,7 +22,7 @@ pnpm changeset:new <bump>      # e.g. pnpm changeset:new major
 pnpm changeset:new -p @coveord/plasma-tokens -b minor
 ```
 
-This writes `.changeset/<name>.md` pre-filled with the correct skeleton. Fill in the `TODO`s and remove the guiding comments. Add extra packages to the frontmatter if the change spans more than one.
+This writes `.changeset/<name>.md` pre-filled with the correct skeleton. Replace the `TODO` placeholders. Add extra packages to the frontmatter if the change spans more than one.
 
 ### 3. Apply the format rules
 

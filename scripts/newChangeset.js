@@ -36,41 +36,39 @@ const parseArgs = (argv) => {
 /**
  * Build the changeset body skeleton for a given bump type. The template mirrors
  * the rules enforced by scripts/validateChangesets.js:
- * - Title on the first line (plain, no trailing period).
+ * - Title on the first line after the frontmatter (plain, no trailing period).
  * - Body headings start at a single `#`.
  * - `major` requires a body and a `# Migration` section; `minor` requires a body.
+ *
+ * The skeleton is kept comment-free: the validator treats the first non-empty
+ * line after the frontmatter as the title, so the title placeholder must come
+ * first. Guidance is folded into the `TODO` placeholders instead.
  */
 const buildTemplate = (packageName, bump) => {
     const frontmatter = `---\n'${packageName}': ${bump}\n---\n`;
 
     if (bump === 'major') {
         return `${frontmatter}
-<!-- Title: concise, sentence case, no trailing period, describe the change for consumers. -->
-TODO: describe the breaking change
+TODO: describe the breaking change (sentence case, no trailing period, consumer's view)
 
-<!-- Explain what changed and why. -->
-TODO: details
+TODO: explain what changed and why
 
 # Migration
 
-<!-- Steps consumers must take. Use \`\`\`diff for before/after code. -->
-TODO: migration steps
+TODO: migration steps consumers must take (use \`\`\`diff blocks for before/after code)
 `;
     }
 
     if (bump === 'minor') {
         return `${frontmatter}
-<!-- Title: concise, sentence case, no trailing period. -->
-TODO: describe the new capability
+TODO: describe the new capability (sentence case, no trailing period)
 
-<!-- Explain what it does and how to use it. -->
-TODO: details
+TODO: explain what it does and how to use it
 `;
     }
 
     return `${frontmatter}
-<!-- Title: concise, sentence case, no trailing period. -->
-TODO: describe the fix
+TODO: describe the fix (sentence case, no trailing period)
 `;
 };
 
@@ -94,7 +92,7 @@ const main = () => {
     writeFileSync(filePath, buildTemplate(packageName, bump));
 
     console.log(`Created .changeset/${name}.md (${bump}, ${packageName}).`);
-    console.log('Replace the TODO placeholders and remove the comments, then run `pnpm changeset:validate`.');
+    console.log('Replace the TODO placeholders, then run `pnpm changeset:validate`.');
 };
 
 main();

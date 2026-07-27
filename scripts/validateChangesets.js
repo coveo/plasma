@@ -83,12 +83,23 @@ const validateChangeset = (name, content, knownPackages) => {
         }
     }
 
+    // The title is the first non-empty, non-comment line after the frontmatter.
+    // Track its index (rather than using `indexOf` on the trimmed title) so the
+    // body-after-title slice stays correct even when the title line has
+    // surrounding whitespace or is preceded by guiding HTML comments.
     const bodyLines = body.split('\n');
-    const title = bodyLines.find((line) => line.trim() !== '')?.trim() ?? '';
-    const bodyAfterTitle = bodyLines
-        .slice(bodyLines.indexOf(title) + 1)
-        .join('\n')
-        .trim();
+    const titleIndex = bodyLines.findIndex((line) => {
+        const trimmed = line.trim();
+        return trimmed !== '' && !trimmed.startsWith('<!--');
+    });
+    const title = titleIndex === -1 ? '' : bodyLines[titleIndex].trim();
+    const bodyAfterTitle =
+        titleIndex === -1
+            ? ''
+            : bodyLines
+                  .slice(titleIndex + 1)
+                  .join('\n')
+                  .trim();
 
     // Title rules.
     if (!title) {
