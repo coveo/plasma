@@ -1,5 +1,13 @@
 # @coveord/plasma-mantine
 
+## 61.0.1
+
+### Patch Changes
+
+- Publish the `dist` folder by declaring it in the package `files` field
+
+  Newer pnpm versions honor the repository `.gitignore` when packing, which excluded the gitignored `dist` folder from the published tarball and caused `publint` to fail during release. Declaring `files: ["dist"]` (matching the other Plasma packages) ensures the built output is included. [#4543](https://github.com/coveo/plasma/pull/4543)
+
 ## 61.0.0
 
 ### Major Changes
