@@ -6,6 +6,8 @@
     "scripts": {
         "build": "turbo run build",
         "changeset": "changeset",
+        "changeset:new": "node scripts/newChangeset.js",
+        "changeset:validate": "node scripts/validateChangesets.js",
         "changeset:version": "changeset version",
         "clean": "pnpm --recursive --parallel run clean",
         "fmt": "oxfmt",

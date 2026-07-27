@@ -201,6 +201,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for how to set up the repo, run the demo,
 
 > `@coveord/plasma-style` and `@coveord/plasma-react` are in maintenance mode and live on the [`v53` branch](https://github.com/coveo/plasma/tree/v53).
 
+See [CONTRIBUTING.md](CONTRIBUTING.md#writing-changesets) for the changeset format (title rules, per-bump requirements, and examples). You can scaffold a pre-filled changeset with `pnpm changeset:new` and check it with `pnpm changeset:validate`.
+
 ## License
 
 All packages under this repository are distributed under [Apache 2.0 license](LICENSE).

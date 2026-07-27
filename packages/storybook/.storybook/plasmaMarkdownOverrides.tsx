@@ -98,14 +98,14 @@ export const plasmaDocsComponents: Record<string, ComponentType<any>> = {
     h4: (props) => <HeadingWithAnchor order={4} mt="md" mb="sm" {...props} />,
     h5: (props) => <HeadingWithAnchor order={5} mt="md" mb="sm" {...props} />,
     h6: (props) => <HeadingWithAnchor order={6} mt="md" mb="sm" {...props} />,
-    em: (props) => <Text span fs="italic" {...props} />,
+    em: (props) => <Text span inherit fs="italic" {...props} />,
     a: (props) => <Anchor {...props} />,
     hr: () => <Divider />,
     code: ({className, children, ...props}) => {
         if (typeof className === 'string' && className.startsWith('lang-')) {
             return <Source language={className.replace('lang-', '') as any} code={children} />;
         }
-        return <Code c="grape" className={className} children={children} {...props} />;
+        return <Code c="grape" fz="inherit" className={className} children={children} {...props} />;
     },
     ul: (props) => <List my="xs" {...props} />,
     ol: (props) => <List type="ordered" my="xs" {...props} />,
