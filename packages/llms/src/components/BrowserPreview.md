@@ -3,6 +3,56 @@ name: BrowserPreview
 description: Renders a simulated browser chrome frame around preview content.
 ---
 
+# Usage guidance
+
+## What problem does it solve?
+
+The `BrowserPreview` frames content as a simulated browser view so users can evaluate how a rendered page, result, or experience will look in context.
+
+## When to use it
+
+Use `BrowserPreview` when:
+
+- users need to preview content as it will appear in a browser-like surface
+- the preview benefits from a title or header tooltip
+- the content is separate from the configuration controls around it
+- the interface needs to distinguish editable settings from preview output
+
+## When not to use it
+
+Do not use `BrowserPreview` when:
+
+- the content is the actual page, not a preview
+- the frame would add decoration without clarifying context
+- users need to interact with a full application shell
+- the preview content is too small or abstract to benefit from browser chrome
+
+## Decision-making guidance
+
+- Use `BrowserPreview` for preview surfaces inside configuration or authoring flows.
+- Use `AppShell` for real application layout.
+- Use `Card` or layout primitives for ordinary content grouping.
+
+## Interaction notes
+
+- Preview content MAY be interactive when that helps users validate behavior.
+- Header tooltips SHOULD clarify what is being previewed, not explain the whole feature.
+- Keep controls that modify the preview outside the preview frame when possible.
+
+## Common anti-patterns
+
+- Using browser chrome as decoration around normal content.
+- Putting unrelated controls inside the preview surface.
+- Treating a preview frame as the real navigational shell.
+
+## What an AI agent should understand
+
+- `BrowserPreview` is for simulated browser previews, not application layout.
+- Use it when users need to inspect rendered output in context.
+- Keep configuration controls separate from preview content.
+
+# API reference
+
 ## Props
 
 > Extends: `StackProps`. Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
