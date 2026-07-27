@@ -18,6 +18,9 @@
         "url": "git+https://github.com/coveo/plasma.git",
         "directory": "packages/mantine"
     },
+    "files": [
+        "dist"
+    ],
     "type": "module",
     "sideEffects": true,
     "exports": {
