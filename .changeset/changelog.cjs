@@ -1,7 +1,7 @@
 // Custom changelog generator for Plasma.
 // - Suppresses all changelog entries while .changeset/pre.json mode is "pre".
 // - Delegates dependency update lines to the default GitHub changelog generator.
-// - Simple entries: "- Summary [#PR](url)"
+// - Simple entries: "- Summary [#PR](url)" (PR link at the end of the first line/title)
 // - Rich entries (containing headings): "#### Title [#PR](url)\n\nBody..."
 //   Per the changeset template (see CONTRIBUTING.md), body headings start at a
 //   single "#". They are re-leveled relative to the h4 title so they always nest
@@ -83,8 +83,9 @@ async function getReleaseLine(changeset, _type, options) {
 
     // Simple entry — render as a list item.
     const restLines = rest.trim();
-    const summary = restLines ? `${firstLine}\n\n  ${restLines.split('\n').join('\n  ')}` : firstLine;
-    return `\n\n- ${summary}${prLink ? ` ${prLink}` : ''}`;
+    const title = firstLine + (prLink ? ` ${prLink}` : '');
+    const summary = restLines ? `${title}\n\n  ${restLines.split('\n').join('\n  ')}` : title;
+    return `\n\n- ${summary}`;
 }
 
 async function getDependencyReleaseLine(changesets, dependenciesUpdated, options) {
