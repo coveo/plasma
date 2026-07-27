@@ -3,6 +3,74 @@ name: Collection
 description: Dynamic list input that can render items with column-based layouts or a legacy children render prop.
 ---
 
+# Usage guidance
+
+## What problem does it solve?
+
+The `Collection` lets users add, remove, edit, and optionally reorder repeated form items as one structured field.
+
+It is useful for editable lists such as contacts, recipients, rules, conditions, mappings, or repeated configuration blocks.
+
+## When to use it
+
+Use `Collection` when:
+
+- users manage a repeatable set of structured items
+- each item has one or more editable fields
+- users need add/remove behavior in the same form context
+- stable item identity matters for updates, validation, or form state
+
+## When not to use it
+
+Do not use `Collection` when:
+
+- the list is read-only data; use `Table`, cards, or a list
+- users are selecting from existing options rather than creating repeated items
+- each item is complex enough to need its own page or dedicated editor
+- the repeated fields are unrelated and should not be grouped as one form field
+
+## Decision-making guidance
+
+- Use `Table` for read-only or data-heavy tabular display.
+- Use `ChildForm` for one optional nested section, not a repeatable list.
+
+## States
+
+Important states include:
+
+- empty collection
+- one or more items
+- disabled or read-only collection
+- add disabled because the current state does not allow insertion
+- draggable reorder mode
+
+## Interaction notes
+
+- `newItem` MUST create a valid starting item.
+- `required` SHOULD be used when at least one item must remain.
+- `addDisabledTooltip` SHOULD explain why adding is currently unavailable.
+- Reordering SHOULD preserve item values and validation state.
+
+## Content guidance
+
+- Labels SHOULD describe the repeated item type.
+- Add button labels SHOULD name the item being added, such as "Add contact."
+- Column headers SHOULD be short and describe the fields inside each item.
+
+## Common anti-patterns
+
+- Using `Collection` for static read-only data.
+- Omitting stable item IDs when items can be reordered.
+- Letting users add many empty repeated items without clear validation.
+
+## What an AI agent should understand
+
+- `Collection` is for editable repeated form items.
+- Prefer the column-based API for structured item editing.
+- Use `Table` for data display and `ChildForm` for a single conditional nested section.
+
+# API reference
+
 ## Props
 
 > Extends: `__InputWrapperProps`, `BoxProps`, `StylesApiProps`. Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
