@@ -1,6 +1,6 @@
 // Custom changelog generator for Plasma.
 // - Suppresses all changelog entries while .changeset/pre.json mode is "pre".
-// - Suppresses dependency update lines entirely.
+// - Delegates dependency update lines to the default GitHub changelog generator.
 // - Simple entries: "- Summary [#PR](url)"
 // - Rich entries (containing headings): "#### Title [#PR](url)\n\nBody..."
 //   Per the changeset template (see CONTRIBUTING.md), body headings start at a
@@ -10,6 +10,7 @@
 
 const {readFileSync} = require('fs');
 const {join} = require('path');
+const {default: defaultChangelog} = require('@changesets/changelog-github');
 
 function isPrerelease() {
     try {
@@ -86,8 +87,9 @@ async function getReleaseLine(changeset, _type, options) {
     return `\n\n- ${summary}${prLink ? ` ${prLink}` : ''}`;
 }
 
-async function getDependencyReleaseLine() {
-    return '';
+async function getDependencyReleaseLine(changesets, dependenciesUpdated, options) {
+    if (isPrerelease()) return '';
+    return defaultChangelog.getDependencyReleaseLine(changesets, dependenciesUpdated, options);
 }
 
 module.exports = {getReleaseLine, getDependencyReleaseLine};
