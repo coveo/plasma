@@ -1,12 +1,28 @@
-# Glossary
+import {Meta} from '@storybook/addon-docs/blocks';
 
-Definitions for terms commonly used in the Plasma Design System.
+<Meta title="@guidance/Design Glossary" id="guidance-design-glossary" />
+
+{/* For the agent-friendly version of this documentation, see packages/llms/src/guidance/DesignGlossary.md */}
+
+# Design glossary
+
+Definitions for concepts and terminology used in the Plasma design system.
+
+<Unstyled>
+    <Alert.Advice title="Term not listed?" mb="md">
+        If a term you're looking for is missing from the glossary, please tell the design system by sending a{' '}
+        <a href="https://coveord.atlassian.net/jira/software/c/projects/DS/form/600">request</a>, selecting{' '}
+        <strong>Documentation</strong> as the "Type".
+    </Alert.Advice>
+</Unstyled>
 
 ## A
 
 **Accessibility expectations**: Baseline requirements for contrast, focus, keyboard interaction, and other accessibility considerations.
 
-**Anti-pattern**: An example of how a component or pattern should not be used.
+**Anti-pattern**: An example of how a component or pattern shouldn't be used.
+
+## B
 
 ## C
 
@@ -14,11 +30,13 @@ Definitions for terms commonly used in the Plasma Design System.
 
 **Consistency**: The use of shared foundations to create a unified experience across interfaces.
 
-**Contextual mapping**: The connection between a semantic token and the specific context where it is used.
+**Content guidelines**: Rules established for content to keep the UX clear, consistent, and on brand.
+
+**Contextual mapping**: The connection between a semantic token and the specific context where it's used.
 
 **Core component**: A general-purpose, product-agnostic building block.
 Examples include Button, Input, Dropdown, Checkbox, Modal, and Tabs.
-If a component assumes Coveo data or a Coveo-specific concept, it is not a core component.
+If a component assumes Coveo data or a Coveo-specific concept, it isn't a core component.
 
 ## D
 
@@ -42,29 +60,46 @@ Examples include creating a source, configuring a source, and multi-step setup.
 **Foundation**: A fundamental rule, value, or asset on which components and patterns are built.
 Foundations include color, typography, spacing, radius, elevation, motion, breakpoints, and accessibility expectations.
 
+## G
+
+## H
+
 ## I
 
 **Interaction pattern**: A repeatable solution to a localized interface problem.
 Interaction patterns combine components with behavior, content, and product logic.
 Examples include destructive-action confirmation, empty states, table filtering, and inline validation.
 
+## J
+
+## K
+
 ## L
 
 **Library origin**: The library from which a component originates.
 In Plasma, a component may originate from Mantine or be Plasma-specific.
 
+**Long-form copy**: Extended text that provides context, detail, or instruction in several paragraphs.
+Long-form doesn't appear in the Administration Console, but is typical for product documentation and Level Up+ content.
+
 ## M
 
 **Mantine**: The component library on which most Plasma components are based.
 
+**Microcopy**: The broader category of short, functional text that guides users at decision points, including UI copy and supporting text like tooltips, placeholder text, error messages, and helper text.
+
 **Motion**: The foundational rules governing animation and movement in an interface.
+
+## N
+
+## O
 
 ## P
 
 **Page pattern**: A reusable page-level structure and information architecture.
 Examples include overview pages, detail pages, settings pages, dashboards, and form pages.
 
-**Plasma**: Coveo’s design system.
+**Plasma**: Coveo's design system.
 
 **Plasma-specific component**: A component created for Plasma rather than inherited from the Mantine library.
 
@@ -74,11 +109,19 @@ Examples include overview pages, detail pages, settings pages, dashboards, and f
 Product components understand Coveo concepts or data.
 Examples include a project selector connected to Coveo data, a privileges table, or a source configuration module.
 
+## Q
+
+## R
+
 ## S
 
 **Scalability**: The ability of the system to support multiple products, themes, and future extensions.
 
 **Semantic token**: A token named according to its purpose rather than its raw value.
+
+**Short-form copy**: Brief, scannable text designed to communicate a single idea and reduce confusion.
+Short-form can be anywhere from a few words to a couple of paragraphs.
+This includes page titles, descriptive text for panels and pages, confirmation text, and banner text.
 
 **Single source of truth**: The centralized, authoritative location for a design system value, rule, or artifact.
 
@@ -89,10 +132,25 @@ Examples include a project selector connected to Coveo data, a privileges table,
 **Template**: A reusable page structure used as the basis for a page pattern.
 
 **Token**: Also called a _design token_.
-See [words starting with D](#D).
+See [design token](#d).
 
 **Typography**: The foundational rules governing font families, scales, weights, readability, and hierarchy.
+
+## U
+
+**UI copy**: The text rendered as part of a UI component itself, such as button labels, menu items, field labels, and status messages.
+
+**UX copy**: Also called **_UX writing_**.
+The language within an interface that guides users throughout their whole experience.
 
 ## V
 
 **Visual foundations**: Foundational visual properties such as border radius, shadows, opacity, and motion.
+
+## W
+
+## X
+
+## Y
+
+## Z
