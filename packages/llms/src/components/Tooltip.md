@@ -21,7 +21,6 @@ description: Non-interactive popover that reveals supplementary text when a user
 - When the information is critical for the user to complete their task — critical guidance MUST be visible at all times; use `description` on the form field or inline text instead.
 - When the content requires interaction (links, buttons, form elements) — a tooltip dismisses on mouse-out, making interactive content inside it inaccessible. Use a `Popover` instead.
 - When the content is longer than two short sentences — tooltips are for brief labels, not paragraphs. Use a `Popover` or a drawer for richer content.
-- On mobile touch targets where hover is unavailable — consider `Popover` with a tap trigger.
 
 ## Decision-making guidance
 
