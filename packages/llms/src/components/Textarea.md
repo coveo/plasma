@@ -37,10 +37,7 @@ description: Multi-line text input for collecting longer-form free-text content 
 
 ## Interaction notes
 
-- When `autosize` is enabled, the textarea grows vertically as the user types, up to `maxRows` (if set), then scrolls internally.
-- When `resize` is `'both'` (the default), users can drag the resize handle in the bottom-right corner to manually adjust the field's dimensions.
-- Pressing Tab inside a `Textarea` inserts a tab character by default in most browsers; warn users in `description` if Tab focus-navigation is important in the surrounding form.
-
+- Pressing Tab inside a `Textarea` moves focus to the next control by default; if users must enter tab-indented content, use `CodeEditor` or implement custom key handling.
 ## Accessibility expectations
 
 - The field MUST have a visible label via the `label` prop or an external element connected with `aria-labelledby`.
