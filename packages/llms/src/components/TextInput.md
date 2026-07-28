@@ -45,9 +45,7 @@ description: Single-line text field for free-form string input, with support for
 
 ## Accessibility expectations
 
-- The `label` prop renders a `<label>` associated with the `<input>` via `id`/`htmlFor`. You MUST always pair a visible label with the field.
-- `description` and `error` are linked to the input via `aria-describedby` automatically by Mantine.
-- When using only a `placeholder` and no `label`, add `aria-label` manually so screen readers announce the field's purpose.
+- The `label` prop renders a `<label>` associated with the `<input>` via `id`/`htmlFor`. Prefer a visible label; if you omit it, provide an accessible name with `aria-label` or `aria-labelledby`.
 - `required` sets `aria-required="true"` on the native input.
 
 ## Content guidance
