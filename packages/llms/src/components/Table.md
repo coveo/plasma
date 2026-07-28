@@ -25,7 +25,7 @@ Use `Table` when:
 
 Do not use `Table` when:
 
-- the content is primarily visual or card-like
+- the data shows a progression over time, use chart components instead
 - users are editing a repeatable form list; use `Collection`
 - there are only a few simple values that can be shown as text or cards
 - the layout would require hiding the most important information in many columns
