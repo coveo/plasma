@@ -32,7 +32,7 @@ description: Multi-line text input for collecting longer-form free-text content 
 
 - **Default** — editable, showing `placeholder` when empty.
 - **Disabled** — visually dimmed; interaction is blocked. Use when the field is not applicable in the current context.
-- **Read-only** — displays the value without allowing edits. Use when the value must be visible but not changeable (e.g. a generated summary).
+- **Read-only** — displays the value without allowing edits. Use when the value must be visible but not changeable (e.g. the user lacks permissions to edit).
 - **Error** — the `error` prop renders a validation message below the field in red and marks the border accordingly.
 
 ## Interaction notes
