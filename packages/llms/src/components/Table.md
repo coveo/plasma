@@ -3,7 +3,6 @@ name: Table
 description: Table for displaying tabular data with optional filtering, pagination, row actions, and layout switching.
 ---
 
-> **Note:** This component is currently under active redesign. Usage guidance will be updated once the initiative concludes. In the meantime, use this as a general reference only.
 
 # Usage guidance
 
