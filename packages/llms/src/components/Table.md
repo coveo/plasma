@@ -16,7 +16,7 @@ It is useful for operational views where users need to inspect many records and 
 
 Use `Table` when:
 
-- data is naturally structured as rows and columns
+- each record has many fields which the user may need to consult
 - users need to compare values across records
 - filtering, pagination, row actions, selection, or expandable row content are needed
 - the view needs table-specific empty, loading, footer, or pagination patterns
