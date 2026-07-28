@@ -4,6 +4,7 @@ import {type FunctionComponent, useEffect} from 'react';
 const editor: any = {
     onDidFocusEditorText: vi.fn(),
     onDidBlurEditorText: vi.fn(),
+    onDidDispose: vi.fn(() => ({dispose: vi.fn()})),
     focus: vi
         .fn()
         .mockImplementation(() =>

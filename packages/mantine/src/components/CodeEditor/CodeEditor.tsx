@@ -124,6 +124,12 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
     });
     const [parentHeight, ref] = useParentHeight();
     const editorRef = useRef<monacoEditor.IStandaloneCodeEditor | null>(null);
+    // React 19's `<Activity>` (used by Mantine's Tabs/Collapse/Accordion to hide inactive content) destroys
+    // effects while preserving state. `@monaco-editor/react` disposes the editor in its mount-effect cleanup
+    // but keeps its internal "editor ready" flag, so when the content becomes visible again it never recreates
+    // the editor and ends up operating on a disposed instance, which crashes. We detect the disposal and bump
+    // this key to force a fresh `<Editor>` instance on the next render. The value is preserved via `_value`.
+    const [editorKey, setEditorKey] = useState(0);
 
     const loadLocalMonaco = async () => {
         const monacoInstance = await import('monaco-editor');
@@ -220,6 +226,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
             data-testid="editor-wrapper"
         >
             <Editor
+                key={editorKey}
                 onValidate={handleValidate}
                 defaultLanguage={language}
                 theme={editorTheme}
@@ -245,6 +252,12 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
                         editorHandle.current = editor;
                     }
                     editor.onDidFocusEditorText(() => onFocus?.());
+                    editor.onDidDispose(() => {
+                        // If the editor is disposed while the component is still mounted (e.g. React's
+                        // `<Activity>` tore down the effects to hide the panel), force a fresh instance so we
+                        // never render against a disposed editor when the panel becomes visible again.
+                        setEditorKey((key) => key + 1);
+                    });
                     editor.onDidBlurEditorText(async () => {
                         // monaco editor has a timeout of 500ms populating errors, we want to ensure that checking errors happen after that
                         setTimeout(async () => {
