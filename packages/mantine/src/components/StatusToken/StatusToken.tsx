@@ -13,7 +13,6 @@ import {
 } from '@mantine/core';
 
 import Circle from './icons/circle.svg?raw';
-import Info from './icons/info.svg?raw';
 import Ring from './icons/ring.svg?raw';
 import Square from './icons/square.svg?raw';
 import Triangle from './icons/triangle.svg?raw';
@@ -28,7 +27,7 @@ export type StatusTokenFactory = Factory<{
     variant: StatusTokenVariant;
 }>;
 export type StatusTokenComponentStylesNames = 'root';
-export type StatusTokenVariant = 'info' | 'success' | 'caution' | 'error' | 'disabled' | 'waiting' | 'edited' | 'new';
+export type StatusTokenVariant = 'success' | 'caution' | 'error' | 'disabled' | 'waiting' | 'edited' | 'new';
 export type StatusTokenSize = Extract<MantineSize, 'sm' | 'lg'>;
 export type StatusTokenCssVariables = {
     root: '--status-token-color' | '--status-token-size';
@@ -43,13 +42,11 @@ export interface StatusTokenProps extends BoxProps, StylesApiProps<StatusTokenFa
     size?: StatusTokenSize;
     /**
      * The variant of the token.
-     *
-     * @default 'info'
      */
-    variant?: StatusTokenVariant;
+    variant: StatusTokenVariant;
 }
 
-const defaultProps = {size: 'lg', variant: 'info'} satisfies Partial<StatusTokenProps>;
+const defaultProps = {size: 'lg'} satisfies Partial<StatusTokenProps>;
 
 const resolveThemeColorFromVariant = (variant: StatusTokenVariant, theme: MantineTheme): string => {
     switch (variant) {
@@ -65,8 +62,6 @@ const resolveThemeColorFromVariant = (variant: StatusTokenVariant, theme: Mantin
         case 'edited':
         case 'new':
             return 'var(--mantine-primary-color-filled)';
-        case 'info':
-            return theme.colors.gray[3];
         default:
             return theme.colors.navy[5];
     }
@@ -81,8 +76,6 @@ const resolveIconSrcFromVariant = (variant: StatusTokenVariant): string => {
             return Square;
         case 'disabled':
             return Ring;
-        case 'info':
-            return Info;
         case 'success':
         case 'waiting':
         case 'edited':
@@ -93,9 +86,8 @@ const resolveIconSrcFromVariant = (variant: StatusTokenVariant): string => {
 };
 
 const varsResolver = createVarsResolver<StatusTokenFactory>((theme, {variant, size}) => {
-    const resolvedVariant = variant ?? defaultProps.variant;
     const resolvedSize = size ?? defaultProps.size;
-    const color = resolveThemeColorFromVariant(resolvedVariant, theme);
+    const color = resolveThemeColorFromVariant(variant, theme);
     return {
         root: {
             '--status-token-color': color,
@@ -105,7 +97,6 @@ const varsResolver = createVarsResolver<StatusTokenFactory>((theme, {variant, si
 });
 
 const statusTokenLabels: Record<StatusTokenVariant, string> = {
-    info: 'Info',
     success: 'Success',
     caution: 'Caution',
     error: 'Error',
@@ -116,8 +107,8 @@ const statusTokenLabels: Record<StatusTokenVariant, string> = {
 };
 
 export const StatusToken: ReturnType<typeof polymorphicFactory<StatusTokenFactory>> =
-    polymorphicFactory<StatusTokenFactory>((props, ref) => {
-        const {variant, vars, className, style, unstyled, styles, classNames, ...others} = useProps(
+    polymorphicFactory<StatusTokenFactory>((props) => {
+        const {variant, vars, className, style, unstyled, styles, classNames, ref, ...others} = useProps(
             'StatusToken',
             defaultProps,
             props,

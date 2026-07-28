@@ -1,6 +1,5 @@
 import {BoxProps, factory, Factory, Group, GroupProps, StylesApiProps, Text, useProps, useStyles} from '@mantine/core';
 import dayjs from 'dayjs';
-import {ForwardedRef} from 'react';
 
 export type LastUpdatedStylesNames = 'root' | 'label';
 
@@ -35,7 +34,7 @@ const defaultProps = {
     formatter: (time) => dayjs(time).format('h:mm:ss A'),
 } satisfies Partial<LastUpdatedProps>;
 
-export const LastUpdated = factory<LastUpdatedFactory>((props: LastUpdatedProps, ref: ForwardedRef<HTMLDivElement>) => {
+export const LastUpdated = factory<LastUpdatedFactory>(({ref, ...props}) => {
     const {formatter, label, time, classNames, className, styles, style, vars, unstyled, ...others} = useProps(
         'PlasmaLastUpdated',
         defaultProps,

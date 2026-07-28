@@ -48,8 +48,8 @@ const defaultProps = {
     wrap: 'nowrap',
 } satisfies Partial<InlineConfirmPromptProps>;
 
-export const InlineConfirmPrompt = factory<InlineConfirmPromptFactory>((props, ref) => {
-    const {inlineConfirmId, label, confirm, cancel, onConfirm, onCancel, ...others} = useProps(
+export const InlineConfirmPrompt = factory<InlineConfirmPromptFactory>((props) => {
+    const {inlineConfirmId, label, confirm, cancel, onConfirm, onCancel, ref, ...others} = useProps(
         'InlineConfirmPrompt',
         defaultProps,
         props,

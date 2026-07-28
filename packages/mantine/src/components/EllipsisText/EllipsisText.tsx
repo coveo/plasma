@@ -34,8 +34,8 @@ const defaultProps = {
     tooltipProps: {},
 } satisfies Partial<EllipsisTextProps>;
 
-export const EllipsisText = polymorphicFactory<EllipsisTextFactory>((props, ref) => {
-    const {className, children, style, classNames, styles, unstyled, variant, lineClamp, tooltipProps, ...others} =
+export const EllipsisText = polymorphicFactory<EllipsisTextFactory>((props) => {
+    const {className, children, style, classNames, styles, unstyled, variant, lineClamp, tooltipProps, ref, ...others} =
         useProps('EllipsisText', defaultProps, props);
 
     const getStyles = useStyles<EllipsisTextFactory>({

@@ -41,7 +41,7 @@ describe('Table.Predicate', () => {
         };
         render(<Fixture />);
         expect(screen.getByRole('button', {name: '2', current: 'page'})).toBeVisible();
-        await user.click(screen.getByRole('textbox', {name: 'Rank'}));
+        await user.click(screen.getByRole('combobox', {name: 'Rank'}));
         await user.click(screen.getByRole('option', {name: 'First'}));
         expect(screen.getByRole('button', {name: '1', current: 'page'})).toBeVisible();
     });
@@ -76,7 +76,7 @@ describe('Table.Predicate', () => {
                 );
             };
             render(<Fixture />);
-            await user.click(screen.getByRole('textbox', {name: 'Rank'}));
+            await user.click(screen.getByRole('combobox', {name: 'Rank'}));
             await user.click(screen.getByRole('option', {name: 'First'}));
             expect(window.location.search).toBe('?rank=first');
         });
@@ -106,7 +106,7 @@ describe('Table.Predicate', () => {
                 );
             };
             render(<Fixture />);
-            expect(screen.getByRole('textbox', {name: 'Rank'})).toHaveValue('Second');
+            expect(screen.getByRole('combobox', {name: 'Rank'})).toHaveValue('Second');
         });
     });
 });

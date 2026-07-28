@@ -67,7 +67,7 @@ const defaultProps = {
     size: 'sm',
 } satisfies Partial<PromptInternalProps>;
 
-const _Prompt = factory<PromptFactory>((_props, ref) => {
+const _Prompt = factory<PromptFactory>((_props) => {
     const props = useProps('Prompt', defaultProps, _props);
     const {
         variant,
@@ -80,6 +80,7 @@ const _Prompt = factory<PromptFactory>((_props, ref) => {
         unstyled,
         vars,
         attributes: _attributes,
+        ref,
         ...others
     } = props;
     const getStyles = useStyles<PromptFactory>({

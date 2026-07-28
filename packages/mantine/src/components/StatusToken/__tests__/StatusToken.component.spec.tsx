@@ -2,18 +2,17 @@ import {render, screen} from '@test-utils';
 import {StatusToken, type StatusTokenVariant} from '../StatusToken.js';
 
 describe('StatusToken', () => {
-    it('renders with default props', () => {
-        render(<StatusToken data-testid="status-token" />);
-        expect(screen.getByTestId('status-token')).toHaveAttribute('data-variant', 'info');
-    });
-
-    it('renders with custom size and variant', () => {
-        render(<StatusToken size="sm" data-testid="status-token" variant="success" />);
+    it('renders with given variant', () => {
+        render(<StatusToken variant="success" data-testid="status-token" />);
         expect(screen.getByTestId('status-token')).toHaveAttribute('data-variant', 'success');
     });
 
+    it('renders with custom size and variant', () => {
+        render(<StatusToken size="sm" data-testid="status-token" variant="error" />);
+        expect(screen.getByTestId('status-token')).toHaveAttribute('data-variant', 'error');
+    });
+
     it.each<{variant: StatusTokenVariant; expected: string}>([
-        {variant: 'info', expected: 'Info'},
         {variant: 'success', expected: 'Success'},
         {variant: 'caution', expected: 'Caution'},
         {variant: 'error', expected: 'Error'},
