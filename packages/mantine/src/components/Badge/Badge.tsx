@@ -194,7 +194,9 @@ export type BadgeOverloadFactory = PolymorphicFactory<{
     };
 }>;
 
-export const Badge = polymorphicFactory<BadgeOverloadFactory>((props, ref) => <MantineBadge ref={ref} {...props} />);
+export const Badge = polymorphicFactory<BadgeOverloadFactory>(({ref, ...props}) => (
+    <MantineBadge ref={ref} {...props} />
+));
 
 Badge.Primary = BadgePrimary;
 Badge.Secondary = BadgeSecondary;

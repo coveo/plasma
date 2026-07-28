@@ -1,5 +1,5 @@
 import {CompoundStylesApiProps, PolymorphicFactory, polymorphicFactory, useProps} from '@mantine/core';
-import {ReactNode} from 'react';
+import {type ElementType, type ReactNode} from 'react';
 import {Button, type ButtonProps} from '../../Button/Button.js';
 import {useTableContext} from '../TableContext.js';
 import {useTableActionContext} from './TableActionContext.js';
@@ -32,43 +32,43 @@ type TableActionItemFactory = PolymorphicFactory<{
 
 const defaultProps = {} satisfies Partial<TableActionItemProps>;
 
-export const TableActionItem = polymorphicFactory<TableActionItemFactory>(
-    (props: TableActionItemProps & {component?: any}, ref) => {
-        const {getStyles} = useTableContext();
-        const {primary} = useTableActionContext();
-        const {
-            classNames,
-            className,
-            style,
-            styles,
-            vars: _vars,
-            children,
-            component,
-            ...others
-        } = useProps('PlasmaTableActionItem', defaultProps, props);
+export const TableActionItem = polymorphicFactory<TableActionItemFactory>((allProps) => {
+    const {ref, component, ...restProps} = allProps as typeof allProps & {component?: ElementType};
+    const {getStyles} = useTableContext();
+    const {primary} = useTableActionContext();
+    const {
+        classNames,
+        className,
+        style,
+        styles,
+        vars: _vars,
+        children,
+        ...others
+    } = useProps('PlasmaTableActionItem', defaultProps, restProps);
 
-        if (primary) {
-            return (
-                <Button.Quaternary
-                    component={component}
-                    ref={ref}
-                    {...others}
-                    {...getStyles('actionItemRoot', {className, style, classNames, styles})}
-                >
-                    {children}
-                </Button.Quaternary>
-            );
-        }
-
+    if (primary) {
         return (
-            <Menu.Item
-                component={component}
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            <Button.Quaternary
+                component={component as any}
                 ref={ref}
                 {...others}
                 {...getStyles('actionItemRoot', {className, style, classNames, styles})}
             >
                 {children}
-            </Menu.Item>
+            </Button.Quaternary>
         );
-    },
-);
+    }
+
+    return (
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        <Menu.Item
+            component={component as any}
+            ref={ref}
+            {...others}
+            {...getStyles('actionItemRoot', {className, style, classNames, styles})}
+        >
+            {children}
+        </Menu.Item>
+    );
+});

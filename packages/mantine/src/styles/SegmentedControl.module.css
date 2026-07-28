@@ -1,7 +1,3 @@
-:root {
-    --sc-radius: var(--mantine-radius-sm);
-}
-
 .label {
     @mixin light {
         font-weight: var(--coveo-fw-normal);

@@ -12,8 +12,8 @@ export type HeaderBreadcrumbTextFactory = PolymorphicFactory<{
     defaultRef: HTMLParagraphElement;
 }>;
 
-export const HeaderBreadcrumbText = polymorphicFactory<HeaderBreadcrumbTextFactory>((props, ref) => {
-    const {className, classNames, styles, style, ...others} = props;
+export const HeaderBreadcrumbText = polymorphicFactory<HeaderBreadcrumbTextFactory>((props) => {
+    const {className, classNames, styles, style, ref, ...others} = props;
     const ctx = useHeaderContext();
 
     return (

@@ -32,7 +32,7 @@ const COMPONENT_BY_VARIANT: Record<
 
 const defaultProps = {} satisfies Partial<PromptConfirmButtonProps>;
 
-export const PromptConfirmButton = factory<PromptConfirmButtonFactory>((_props, ref) => {
+export const PromptConfirmButton = factory<PromptConfirmButtonFactory>((_props) => {
     const {variant, getStyles} = usePromptContext();
     const props = useProps('PromptConfirmButton', defaultProps, _props);
     const {
@@ -45,6 +45,7 @@ export const PromptConfirmButton = factory<PromptConfirmButtonFactory>((_props, 
         disabled,
         disabledTooltip,
         disabledTooltipProps,
+        ref,
         ...others
     } = props;
     const Component = COMPONENT_BY_VARIANT[variant];

@@ -7,7 +7,7 @@ import {useTable} from '../use-table.js';
 type RowData = {name: string};
 
 const columnHelper = createColumnHelper<RowData>();
-const columns: Array<ColumnDef<RowData>> = [columnHelper.accessor('name', {enableSorting: false})];
+const columns: Array<ColumnDef<RowData, unknown>> = [columnHelper.accessor('name', {enableSorting: false})];
 
 describe('Table.Pagination', () => {
     beforeEach(() => {
@@ -117,7 +117,7 @@ describe('Table.Pagination', () => {
 
         onChangePage.mockReset();
 
-        await user.click(screen.queryByRole('button', {name: '2'}));
+        await user.click(screen.getByRole('button', {name: '2'}));
 
         await waitFor(() => {
             expect(onChangePage).toHaveBeenCalledExactlyOnceWith(1);
@@ -172,7 +172,7 @@ describe('Table.Pagination', () => {
                     totalEntries: 3,
                 },
             });
-            const removeAPage = () => store.setTotalEntries((prev) => prev - 1);
+            const removeAPage = () => store.setTotalEntries((prev) => (prev ?? 0) - 1);
 
             return (
                 <>
@@ -252,7 +252,7 @@ describe('Table.Pagination', () => {
                 );
             };
             render(<Fixture />);
-            await user.click(screen.queryByRole('button', {name: '2'}));
+            await user.click(screen.getByRole('button', {name: '2'}));
             expect(window.location.search).toBe('?page=2');
         });
 
