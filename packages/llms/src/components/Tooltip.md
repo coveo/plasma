@@ -86,7 +86,7 @@ function DeleteButton() {
     return (
         <Tooltip label="Delete item">
             <ActionIcon aria-label="Delete item" color="red">
-                <DeleteIcon />
+                <IconTrash />
             </ActionIcon>
         </Tooltip>
     );
