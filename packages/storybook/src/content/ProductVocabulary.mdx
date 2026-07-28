@@ -1,27 +1,17 @@
 import {Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import {Alert} from '@coveord/plasma-mantine';
-import {Button, Table} from '@mantine/core';
+import {Table} from '@mantine/core';
+import {ViewAsMarkdownButton} from '../ViewAsMarkdownButton.js';
 
 <Meta title="@content/Product Vocabulary" id="content-product-vocabulary" />
 
 # Product Names & Vocabulary
 
-<Button
-    component="a"
-    href="https://raw.githubusercontent.com/coveo/plasma/refs/heads/master/packages/llms/src/content/ProductVocabulary.md"
-    target="_blank"
-    rel="noopener noreferrer"
-    variant="outline"
-    size="xs"
-    color="teal"
-    style={{marginBottom: '1rem'}}
->
-    View as Markdown
-</Button>
-
 This page defines the correct spelling and capitalization for Coveo product and feature names.
 Vocabulary isn't standardized across all Coveo sources or documentation—always refer to this list when naming a product, feature, or tool name in the UI.
 Terms are categorized by capitalization style: [sentence case](#sentence-case) and [Title Case](#title-case), appearing alphabetically.
+
+<ViewAsMarkdownButton contentPath="ProductVocabulary.md" />
 
 <Unstyled>
     <Alert.Advice title="Term not listed?" mb="md">

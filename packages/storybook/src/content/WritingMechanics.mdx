@@ -1,28 +1,18 @@
 import {Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import {Alert} from '@coveord/plasma-mantine';
-import {Button, Table} from '@mantine/core';
-import {DoTable, UseAvoidTable} from './DoTable.js';
+import {Table} from '@mantine/core';
+import {DoTable, UseAvoidTable} from '../DoTable.js';
+import {ViewAsMarkdownButton} from '../ViewAsMarkdownButton.js';
 
 <Meta title="@content/Writing Mechanics" id="content-writing-mechanics" />
 
 # Writing Mechanics
 
-<Button
-    component="a"
-    href="https://raw.githubusercontent.com/coveo/plasma/refs/heads/master/packages/llms/src/content/WritingMechanics.md"
-    target="_blank"
-    rel="noopener noreferrer"
-    variant="outline"
-    size="xs"
-    color="teal"
-    style={{marginBottom: '1rem'}}
->
-    View as Markdown
-</Button>
-
 The technical rules behind UX copy.
 Consult this page when you need to verify grammar, capitalization, punctuation, or syntax.
 It covers the mechanics that keep text consistent and readable across the entire product.
+
+<ViewAsMarkdownButton contentPath="WritingMechanics.md" />
 
 ## Vocabulary
 
