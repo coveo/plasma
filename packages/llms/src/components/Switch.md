@@ -51,13 +51,6 @@ description: Toggle control for an immediate binary setting, with optional group
 - Omitting a label and relying solely on an icon or surrounding text.
 - Using `Switch.Group` with options that are mutually exclusive (use `Radio.Group` instead).
 
-## What an AI agent should understand
-
-- `Switch` is a thin re-export of Mantine's `Switch` with `Switch.Group` exposed as a sub-component.
-- The `checked` prop makes it controlled; pair it with `onChange` to update state.
-- In a `Switch.Group`, the group holds the selected-values array; individual switches declare their identity via `value`.
-- All label, description, error, required, disabled, and readOnly props come from Mantine's input wrapper pattern.
-
 # API reference
 
 ## Props

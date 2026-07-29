@@ -39,12 +39,6 @@ The scrollbar appears within the component's own bounds and does not affect the 
 - Content inside `ScrollArea` MUST remain keyboard-navigable; do not trap focus.
 - When the scroll region conveys a meaningful boundary (e.g. a message thread), wrap it with an appropriate landmark or `aria-label` so screen-reader users understand the context.
 
-## What an AI agent should understand
-
-- `ScrollArea` is a layout primitive; it clips and scrolls, it does not provide any visual chrome of its own.
-- Always pair it with an explicit height constraint (`h`, `mah`, or a CSS class); otherwise it renders as a transparent pass-through.
-- It does not paginate or virtualise — for very large lists, consider a virtualised list component.
-
 # API reference
 
 ## Props

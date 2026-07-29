@@ -50,12 +50,6 @@ description: Range input that lets users select a numeric value by dragging a th
 - Using a slider for binary choices (on/off); use `Switch` instead.
 - Using a slider when the user needs to type a precise value with many decimal places.
 
-## What an AI agent should understand
-
-- `Slider` is a thin re-export of Mantine's `Slider` with no Plasma-specific props.
-- All configuration (marks, label behaviour, step, min, max, disabled) comes from Mantine's `SliderProps`.
-- The component is in the `form/number` category, meaning it should live inside a form and expose a numeric value.
-
 # API reference
 
 ## Props

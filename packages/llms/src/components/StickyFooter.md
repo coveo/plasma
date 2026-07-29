@@ -45,12 +45,6 @@ Do not use `StickyFooter` when:
 - Putting local row or card actions in a page-level footer.
 - Using the deprecated modal variant instead of `Modal.Footer`.
 
-## What an AI agent should understand
-
-- `StickyFooter` is for edit mode and creation flows, not general page-level actions.
-- It should appear when the user has entered a state where they need to commit or discard changes.
-- Do not use it inside modals; use `Modal.Footer`.
-
 # API reference
 
 ## Props

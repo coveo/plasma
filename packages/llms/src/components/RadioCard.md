@@ -55,12 +55,6 @@ Important states include:
 - Mixing option descriptions with unrelated marketing copy.
 - Disabling an option without explaining why.
 
-## What an AI agent should understand
-
-- `RadioCard` is for single-choice decisions where options need descriptions or card affordance.
-- It should be used inside a radio group.
-- Use compact controls when the options are simple or numerous.
-
 # API reference
 
 ## Props

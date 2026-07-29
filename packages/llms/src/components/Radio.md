@@ -59,13 +59,6 @@ Do not use `Radio` when:
 - Using radio buttons for settings that take effect immediately without a submit action; use `SegmentedControl` or a `Switch` instead.
 - Having more than one pre-selected option in a group (the data model only allows one).
 
-## What an AI agent should understand
-
-- Always use `Radio.Group` as the parent container; individual `Radio` renders one option.
-- The `value` prop on `Radio.Group` (or `defaultValue`) controls which item is selected.
-- `readOnly` is available on individual items but not natively on the group; apply it to each child when the whole group should be read-only.
-- For richer option content, reach for `RadioCard` instead.
-
 # API reference
 
 ## Props

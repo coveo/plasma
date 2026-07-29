@@ -51,13 +51,6 @@ Do not use `Skeleton` when:
 - Leaving skeletons on screen after data has loaded — always swap to real content promptly.
 - Using `Skeleton` for deliberate empty states; `Skeleton` implies transience, not a genuine "no data" scenario.
 
-## What an AI agent should understand
-
-- `Skeleton` is a loading placeholder, not an empty-state pattern.
-- Size it to match the real content's dimensions to prevent layout shift on load.
-- `visible={false}` renders `children` transparently, enabling a clean conditional pattern: `<Skeleton visible={isLoading}><RealContent /></Skeleton>`.
-- For a known completion percentage, prefer `Progress`.
-
 # API reference
 
 ## Props

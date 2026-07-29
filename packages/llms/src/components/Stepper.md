@@ -52,13 +52,6 @@ Steps can be in one of three states automatically managed by the `active` prop:
 - Using `Stepper` for content that is inherently parallel or optional.
 - Omitting `Stepper.Completed` and leaving the user with no confirmation after the last step.
 
-## What an AI agent should understand
-
-- `Stepper` is controlled via the `active` prop (zero-indexed step number). The parent component owns this state.
-- `Stepper.Step`, `Stepper.Completed` are the only valid direct children.
-- Navigation logic (increment, decrement, validation gates) lives entirely in the consuming component.
-- The component is a thin re-export of Mantine's `Stepper` with no Plasma-specific props.
-
 # API reference
 
 ## Props

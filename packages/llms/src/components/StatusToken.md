@@ -54,12 +54,6 @@ Do not use `StatusToken` when:
 - Treating `StatusToken` as an interactive control.
 - Using similar colors for different meanings in the same view.
 
-## What an AI agent should understand
-
-- `StatusToken` is a compact non-interactive status marker.
-- Use it with surrounding text or structure that names the status.
-- Use `Badge` when the status label itself needs to be read.
-
 # API reference
 
 ## Props

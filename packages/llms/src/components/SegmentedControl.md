@@ -56,12 +56,6 @@ Do not use `SegmentedControl` when:
 - More than 5 segments — the visual metaphor breaks down and usability drops.
 - Long labels that cause the bar to overflow or wrap awkwardly.
 
-## What an AI agent should understand
-
-- `SegmentedControl` is for immediate mode/view switching; it always has an active selection.
-- Pass options via the `data` prop as an array of `{label, value, disabled?}` objects.
-- Use `Radio.Group` when the selection is part of a form submission.
-
 # API reference
 
 ## Props

@@ -58,12 +58,6 @@ Important states include:
 - Hiding a very small, important choice set in a dropdown.
 - Using `disabled` when the value should be read-only and readable.
 
-## What an AI agent should understand
-
-- `Select` is for compact single-choice form selection.
-- Use read-only styling for informational values that should not be changed.
-- Choose a visible choice pattern when comparison matters more than compactness.
-
 # API reference
 
 ## Props
