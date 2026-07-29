@@ -57,12 +57,6 @@ Do not use `ActionIcon` when:
 - Using destructive styling for non-destructive actions.
 - Placing many unlabeled icons together without enough distinction.
 
-## What an AI agent should understand
-
-- `ActionIcon` is for compact icon-only actions, not for primary page commands that need visible labels.
-- Choose semantic sub-components instead of manually setting visual variants.
-- Pair `disabled` with `disabledTooltip` when the reason is not obvious.
-
 # API reference
 
 ## Props

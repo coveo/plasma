@@ -24,14 +24,13 @@ Do not use `Badge` when:
 
 - the message needs explanation or action; use `Alert` or inline text
 - only a small semantic marker is needed; use `StatusToken`
-- the value is interactive; use a button, chip, or link pattern
+- the value is interactive; use a button or link pattern
 - the label is too long to scan as metadata
 
 ## Decision-making guidance
 
 - Use `Badge` for readable status or metadata text.
 - Use `StatusToken` when an icon-like status marker is enough or space is very constrained.
-- Use `Chip` when the pill is selectable.
 - Keep the default `small` size for dense lists and inline metadata; use `large` only when the badge must read as a standalone status indicator.
 
 ## Variants
@@ -55,12 +54,6 @@ Do not use `Badge` when:
 - Using badges as buttons.
 - Writing long explanatory messages inside badges.
 - Using semantic colors inconsistently across similar statuses.
-
-## What an AI agent should understand
-
-- `Badge` is for compact visible text metadata.
-- It is not interactive and should not replace alerts or controls.
-- Choose semantic sub-components by status meaning.
 
 # API reference
 

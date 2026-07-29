@@ -83,13 +83,6 @@ Important states include:
 - Using an accordion to avoid designing a clearer content hierarchy.
 - Nesting accordions unless the relationship between levels is unmistakable.
 
-## What an AI agent should understand
-
-- `Accordion` is for progressive disclosure of related in-page content.
-- It is a poor choice when the content is required, critical, or needs direct comparison.
-- Use `Accordion.Item`, `Accordion.Control`, and `Accordion.Panel` together to compose each section.
-- `Accordion.ControlDisabled` is Plasma-specific and should be used for non-interactive controls inside an accordion structure.
-
 # API reference
 
 ## Props

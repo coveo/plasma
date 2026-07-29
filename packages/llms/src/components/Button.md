@@ -65,12 +65,6 @@ Important states include:
 - Disabling a button without explaining how the user can enable it.
 - Hiding destructive consequences behind vague labels such as "OK".
 
-## What an AI agent should understand
-
-- `Button` is for explicit user-triggered actions with visible labels.
-- Prefer semantic sub-components over manual variants.
-- Async `onClick` handlers can be used directly; the button shows loading while pending.
-
 # API reference
 
 ## Props

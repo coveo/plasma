@@ -25,7 +25,7 @@ Do not use `BrowserPreview` when:
 - the content is the actual page, not a preview
 - the frame would add decoration without clarifying context
 - users need to interact with a full application shell
-- the preview content is too small or abstract to benefit from browser chrome
+- the preview content is too small or abstract for the simulated browser frame to add meaningful context
 
 ## Decision-making guidance
 
@@ -44,12 +44,6 @@ Do not use `BrowserPreview` when:
 - Using browser chrome as decoration around normal content.
 - Putting unrelated controls inside the preview surface.
 - Treating a preview frame as the real navigational shell.
-
-## What an AI agent should understand
-
-- `BrowserPreview` is for simulated browser previews, not application layout.
-- Use it when users need to inspect rendered output in context.
-- Keep configuration controls separate from preview content.
 
 # API reference
 

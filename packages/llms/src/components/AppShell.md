@@ -47,13 +47,6 @@ Do not use `AppShell` when:
 - Using `AppShell` for a single card or local page section.
 - Making both shell and inner content compete for scrolling in a way that hides actions.
 
-## What an AI agent should understand
-
-- `AppShell` is for high-level application structure.
-- `AppShell.Main` provides Plasma's scrollable main content behavior.
-- Use `AppShell.Section` to group and space content within a region (e.g. a scrollable list between a fixed top and bottom section inside the navbar).
-- Use smaller layout components for local composition.
-
 # API reference
 
 ## Props

@@ -13,27 +13,27 @@ description: Inline text link that navigates the user to another page or section
 
 - Navigating to an external URL or a different route within the application.
 - Embedding a navigation action inline within a sentence or paragraph.
-- Providing secondary navigation options such as "Learn more" or "See all results" beside descriptive text.
+- Providing secondary navigation options such as "View documentation" or "See all results" beside descriptive text.
 
 ## When not to use it
 
 - When the action triggers a mutation, submission, or workflow step — use `Button` instead.
 - When the link stands alone as a primary call-to-action with enough prominence to warrant a button shape.
-- When breadcrumb-style navigation is needed — use `Breadcrumbs` with `Anchor` children rather than bare `Anchor` elements.
+- When breadcrumb-style navigation is needed — use `Header.Breadcrumbs` with `Header.BreadcrumbAnchor` rather than bare `Anchor` elements.
 
 ## Decision-making guidance
 
 - Prefer `Anchor` over a plain `<a>` element so that Plasma theming, focus styles, and size tokens are applied consistently.
 - Open links in a new tab only when leaving the current context would interrupt the user's task.
-- Use `size="xs"` for compact contexts such as table cells or captions; use `size="sm"` (default) for body text.
-- Pass `inherit` when the anchor sits inside a `Text`, `Breadcrumbs`, or other typographic container so its font size inherits from the parent rather than resetting.
+- Use `size="xs"` for compact contexts such as table cells or captions; use `size="sm"` for body text.
+- Pass `inherit` when the anchor sits inside a `Text` or other typographic container so its font size and font-weight inherit from the parent rather than resetting.
 
 ## Variants
 
-Plasma exposes two size options:
+`Anchor` is a straight re-export of Mantine's `Anchor`, so the full Mantine `size` scale (`xs`–`xl`) is available. In practice, prefer:
 
-- `sm` (default) — standard body-text size.
-- `xs` — smaller, suited to dense UI areas.
+- `sm` — standard body-text links.
+- `xs` — compact areas such as table cells or captions.
 
 ## Accessibility expectations
 
@@ -51,12 +51,6 @@ Plasma exposes two size options:
 - Wrapping large blocks of content in an `Anchor`; links SHOULD target meaningful, concise labels.
 - Omitting `inherit` when placing an `Anchor` inside a typographic component, causing a size mismatch.
 
-## What an AI agent should understand
-
-- `Anchor` is a thin Plasma wrapper around Mantine's `Anchor`; all Mantine `AnchorProps` are available.
-- Use `inherit` when nesting inside `Text` or `Breadcrumbs` to avoid font-size conflicts.
-- For pure navigation links, `Anchor` is always preferable to a `Button` styled as a link.
-
 # API reference
 
 ## Props
@@ -66,7 +60,7 @@ Plasma exposes two size options:
 ## Usage
 
 ```tsx
-import {Anchor, Breadcrumbs} from '@coveord/plasma-mantine';
+import {Alert, Anchor} from '@coveord/plasma-mantine';
 
 // Standalone link
 function ExternalLink() {
@@ -77,19 +71,16 @@ function ExternalLink() {
     );
 }
 
-// Inside a Breadcrumbs trail — inherit parent font size
-import {Anchor, Breadcrumbs} from '@coveord/plasma-mantine';
-
-function BreadcrumbTrail() {
+// Inside an Alert description — inherit the parent font size and weight
+function SomeAlert() {
     return (
-        <Breadcrumbs>
-            <Anchor href="/home" inherit>
-                Home
-            </Anchor>
-            <Anchor href="/catalog" inherit>
-                Catalog
-            </Anchor>
-        </Breadcrumbs>
+        <Alert.Information title="Alert title">
+            Read the{' '}
+            <Anchor inherit href="#details">
+                setup details
+            </Anchor>{' '}
+            before continuing.
+        </Alert.Information>
     );
 }
 ```

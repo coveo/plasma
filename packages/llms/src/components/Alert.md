@@ -54,12 +54,6 @@ Do not use `Alert` when:
 - Using critical alerts for neutral information.
 - Putting long documentation inside an alert instead of linking to supporting content.
 
-## What an AI agent should understand
-
-- `Alert` is for persistent contextual messaging inside a layout.
-- It is not the right choice for transient notifications or optional hints.
-- Choose semantic sub-components according to message intent.
-
 # API reference
 
 ## Props

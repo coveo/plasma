@@ -22,6 +22,7 @@ description: Horizontal trail of navigation links showing the user's position wi
 
 ## Decision-making guidance
 
+- In Plasma products, breadcrumbs are normally placed inside a page `Header` via `Header.Breadcrumbs` / `Header.BreadcrumbAnchor`; use standalone `Breadcrumbs` only outside a `Header` context.
 - When there are two ancestors, use two `Anchor` links.
 - When there are three or more ancestors, show up to three `Anchor` links — avoid going deeper as it becomes unreadable.
 - Do not include the current page in the trail — the page header already shows the current page name.
@@ -42,12 +43,6 @@ The separator between items is rendered automatically by the component. Do not p
 - Including the current page in the trail — the page header already communicates where the user is.
 - Nesting more than three levels; deeply nested breadcrumbs become unreadable and suggest that the information architecture needs rethinking.
 - Using plain `<a>` tags instead of `Anchor` children, which bypasses Plasma theming and focus styles.
-
-## What an AI agent should understand
-
-- `Breadcrumbs` is a thin Plasma wrapper around Mantine's `Breadcrumbs`. All `BreadcrumbsProps` are available.
-- Children are `Anchor` elements representing ancestor pages.
-- The level 1 pattern uses an `Anchor` containing a `Flex` with an `IconChevronLeft` icon alongside the parent label — this is a design convention, not a prop.
 
 # API reference
 
