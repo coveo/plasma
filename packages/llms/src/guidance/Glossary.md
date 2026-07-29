@@ -1,9 +1,9 @@
 ---
-name: Design Glossary
+name: Glossary
 description: Definitions for terms used in the Plasma design system. Use these definitions when interpreting or generating design-system-related content.
 ---
 
-# Design Glossary
+# Glossary
 
 - Accessibility expectations — Baseline requirements for contrast, focus, keyboard interaction, and related concerns
 - Anti-pattern — How a component or pattern should NOT be used
