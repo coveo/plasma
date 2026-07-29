@@ -38,6 +38,7 @@ This writes `.changeset/<name>.md` pre-filled with the correct skeleton. Replace
 **Body**
 
 - Blank line after the title, then markdown.
+- Write the change as prose. **Do not use markdown lists** (`-`, `*`, `+`, or `1.`); `pnpm changeset:validate` rejects them. Use short paragraphs, and a `#` heading only when a section like `# Migration` is required.
 - Headings **start at a single `#`** — they are re-leveled automatically by `.changeset/changelog.cjs`.
 - Use ` ```diff ` blocks for before/after code.
 
