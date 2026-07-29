@@ -1,10 +1,10 @@
 import {Button} from '@mantine/core';
 
-const BASE_URL = 'https://raw.githubusercontent.com/coveo/plasma/refs/heads/master/packages/llms/src/content/';
+const BASE_URL = 'https://plasma.coveo.com/llms/';
 
 interface ViewAsMarkdownButtonProps {
-    /** The markdown filename, e.g. "ProductVocabulary.md" */
-    contentPath: string;
+    /** The markdown filename, e.g. "content/ProductVocabulary.md" */
+    path: string;
 }
 
 export const ViewAsMarkdownButton = ({contentPath}: ViewAsMarkdownButtonProps) => (
@@ -16,7 +16,7 @@ export const ViewAsMarkdownButton = ({contentPath}: ViewAsMarkdownButtonProps) =
         variant="outline"
         size="xs"
         color="teal"
-        style={{marginBottom: '1rem'}}
+        mb="sm"
     >
         View as Markdown
     </Button>
