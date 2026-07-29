@@ -46,12 +46,6 @@ Do not use `LastUpdated` when:
 - Using overly precise timestamps when relative freshness is enough.
 - Confusing data freshness with object modification history.
 
-## What an AI agent should understand
-
-- `LastUpdated` is for communicating data freshness.
-- Use it when recency affects user trust in the current view.
-- Use other metadata patterns for business event timestamps.
-
 # API reference
 
 ## Props

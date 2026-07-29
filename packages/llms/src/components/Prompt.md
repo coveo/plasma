@@ -50,12 +50,6 @@ Do not use `Prompt` when:
 - Using vague button labels for destructive actions.
 - Putting complex forms inside a prompt.
 
-## What an AI agent should understand
-
-- `Prompt` is a semantic confirmation modal.
-- Use it for decisions, not general overlay content.
-- Use the semantic sub-component that matches the consequence.
-
 # API reference
 
 ## Props

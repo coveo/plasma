@@ -42,12 +42,6 @@ description: Renders keyboard key names or shortcuts in a styled monospace badge
 - Putting a full shortcut string like "Ctrl+Shift+P" in one `Kbd` element instead of composing separate `Kbd` per key.
 - Using `Kbd` for non-keyboard text like file paths or code snippets — use `Code` for those.
 
-## What an AI agent should understand
-
-- `Kbd` is a direct re-export of `@mantine/core` `Kbd` with a `displayName` set. All Mantine `Kbd` props are available.
-- Plasma adds no additional props or behaviour beyond the Mantine base component.
-- The rendered HTML element is `<kbd>`, which carries semantic meaning for assistive technologies.
-
 # API reference
 
 ## Props

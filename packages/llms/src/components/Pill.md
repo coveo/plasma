@@ -55,12 +55,6 @@ When `withRemoveButton` is set, clicking the `×` triggers the `onRemove` callba
 - Rendering a `Pill` with `withRemoveButton` but no `onRemove` handler, making the button a no-op.
 - Using `Pill` for navigation or action triggers — use `Chip` or `Button`.
 
-## What an AI agent should understand
-
-- `Pill` is a thin Plasma re-export of Mantine's `Pill` with no additional props.
-- It is primarily intended as a child of `PillsInput.Field` for custom multiselect implementations.
-- `withRemoveButton` controls the visible `×`; wire `onRemove` to remove the item from state.
-
 # API reference
 
 ## Props

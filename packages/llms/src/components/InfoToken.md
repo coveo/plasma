@@ -50,12 +50,6 @@ Do not use `InfoToken` when:
 - Mixing token semantics inconsistently in the same interface.
 - Using decorative tokens where no semantic cue is needed.
 
-## What an AI agent should understand
-
-- `InfoToken` is a compact supporting semantic icon.
-- Use semantic sub-components because the public props do not expose `type`.
-- Use `Alert`, `Badge`, or `StatusToken` when users need more than a supporting cue.
-
 # API reference
 
 ## Props

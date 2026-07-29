@@ -48,12 +48,6 @@ Do not use `Modal` when:
 - Opening a modal for information that could be inline.
 - Using modal footers outside modal contexts.
 
-## What an AI agent should understand
-
-- `Modal` is for focused temporary overlay tasks.
-- Use `Prompt` for confirmation flows.
-- Use `Modal.Footer` for modal action groups.
-
 # API reference
 
 ## Props

@@ -55,14 +55,6 @@ description: Dropdown input that allows users to select multiple values from a p
 - Omitting `clearable` on an optional field, leaving users with no bulk-reset affordance.
 - Providing very long option labels that truncate awkwardly when rendered as pills.
 
-## What an AI agent should understand
-
-- `MultiSelect` is a direct re-export of `@mantine/core` `MultiSelect` with a `displayName` set. All Mantine props are available.
-- Plasma adds no additional props or behaviour beyond the Mantine base component.
-- `data` accepts `string[]`, `{value: string; label: string}[]`, or grouped options `{group: string; items: ...}[]`.
-- Use `Input.LabelInfo` to attach supplementary tooltip guidance alongside the field label.
-- The distinction from `TagsInput`: `MultiSelect` constrains selections to predefined `data`; `TagsInput` allows arbitrary user-entered values.
-
 # API reference
 
 ## Props

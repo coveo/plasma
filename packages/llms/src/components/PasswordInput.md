@@ -48,12 +48,6 @@ Do not use `PasswordInput` when:
 - Showing generated secrets without a copy affordance.
 - Using disabled state for a value that should be readable but not editable.
 
-## What an AI agent should understand
-
-- `PasswordInput` is for masked secret values.
-- Use `readOnly` for non-editable values that still need field readability.
-- Pair with copy behavior when users need to transfer generated secrets.
-
 # API reference
 
 ## Props

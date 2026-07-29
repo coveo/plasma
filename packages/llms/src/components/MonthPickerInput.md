@@ -60,13 +60,6 @@ description: Form input that opens a calendar popover for selecting a single mon
 - Omitting `clearable` on optional fields, forcing users to reload or use workarounds to unset a value.
 - Using `type="multiple"` without a clear rationale — multi-select month patterns are rare and often better served by checkboxes or a `MultiSelect` with month options.
 
-## What an AI agent should understand
-
-- `MonthPickerInput` is a direct re-export of `@mantine/dates` `MonthPickerInput` with a `displayName` set. All Mantine props are available.
-- Plasma adds no additional props or behaviour beyond the Mantine base component.
-- The component shares the same `type`, `clearable`, and `placeholder` patterns used by `DatePickerInput` — the key difference is that the calendar only shows month-level granularity.
-- Pass tooltip content into `Input.LabelInfo` in forms where the field label needs supplementary guidance.
-
 # API reference
 
 ## Props

@@ -70,12 +70,6 @@ description: Toast notification that communicates the outcome of an action with 
 - Stacking many toasts at once for bulk operations — batch them into a single notification.
 - Using `Notification` in place of form validation errors — use inline field validation instead.
 
-## What an AI agent should understand
-
-- `Notification` is a thin Plasma re-export of Mantine's `Notification` with no additional props.
-- For programmatic toasts, import `notifications` from `@coveord/plasma-mantine/notifications` and call `notifications.show()`.
-- Icons are not automatic — always pass the correct icon element to the `icon` prop to match the intended `variant`.
-
 # API reference
 
 ## Props

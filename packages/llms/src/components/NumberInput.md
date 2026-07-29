@@ -59,12 +59,6 @@ Users can type directly into the field or use the `+`/`−` stepper buttons. The
 - Relying on `placeholder` to communicate constraints instead of `description`.
 - Using a plain `TextInput` with manual number validation when `NumberInput` handles it natively.
 
-## What an AI agent should understand
-
-- `NumberInput` is a thin Plasma re-export of Mantine's `NumberInput` with no additional props.
-- Formatting props (`prefix`, `suffix`, `thousandSeparator`, `decimalSeparator`) affect display only, not the underlying numeric value passed to `onChange`.
-- `defaultValue` sets an uncontrolled starting value; use `value` + `onChange` for controlled usage.
-
 # API reference
 
 ## Props

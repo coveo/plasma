@@ -55,12 +55,6 @@ Clicking a page number updates the active page and SHOULD trigger a new data fet
 - Keeping `Pagination` enabled while new data is loading, causing duplicate or race-condition requests.
 - Setting `siblings` or `boundaries` so high that the control spans the full width on small screens.
 
-## What an AI agent should understand
-
-- `Pagination` is a thin Plasma re-export of Mantine's `Pagination` with no additional props.
-- `total` is the number of pages, not the number of records — derive it from `Math.ceil(recordCount / pageSize)`.
-- Use controlled `value` + `onChange` to stay in sync with data-fetching logic.
-
 # API reference
 
 ## Props

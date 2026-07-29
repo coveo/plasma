@@ -48,12 +48,6 @@ Do not use `Menu` when:
 - Mixing unrelated commands in one menu without grouping.
 - Using a menu as a replacement for form controls or navigation structure.
 
-## What an AI agent should understand
-
-- `Menu` is for compact contextual command lists.
-- `Menu.Item` supports Plasma disabled tooltips.
-- Use visible buttons for primary actions and menus for secondary or overflow actions.
-
 # API reference
 
 ## Props

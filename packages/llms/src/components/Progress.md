@@ -47,12 +47,6 @@ Do not use `Progress` when:
 - A `Progress` bar SHOULD be accompanied by a visible text label or an `aria-label` so screen-reader users understand what is being measured.
 - When the value changes dynamically, the wrapping region SHOULD have `role="status"` or `aria-live` so assistive technology announces updates.
 
-## What an AI agent should understand
-
-- `Progress` is for bounded, percentage-based task feedback.
-- Semantic colour is communicated through Mantine's `color` prop mapped from four intent names (`info`, `success`, `caution`, `error`).
-- For unknown durations, prefer `Skeleton` or an indeterminate spinner.
-
 # API reference
 
 ## Props

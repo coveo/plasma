@@ -62,13 +62,6 @@ Clicking a NavLink with children toggles its expanded state rather than navigati
 - Nesting more than one level deep in a sidebar.
 - Omitting `href` when the link is expected to be keyboard- or right-click-navigable.
 
-## What an AI agent should understand
-
-- `NavLink` is a thin Plasma re-export of Mantine's `NavLink` with no additional props.
-- Nest `NavLink` components as children to create collapsible sub-menus.
-- Use `Badge.Primary` (or other `Badge` sub-components) in `rightSection` for status annotations.
-- Pass a router's `Link` component to `component` for client-side navigation.
-
 # API reference
 
 ## Props

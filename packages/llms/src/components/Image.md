@@ -48,12 +48,6 @@ description: Displays a responsive image with configurable object-fit behaviour 
 - Rendering `Image` without a sized container or explicit `w`/`h` — the image will have no defined dimensions and may cause layout shift.
 - Using `Image` for a page-section background — use `BackgroundImage` for that pattern.
 
-## What an AI agent should understand
-
-- `Image` is a direct re-export of `@mantine/core` `Image` with a `displayName` set. All Mantine `Image` props are available.
-- Plasma adds no additional props or behaviour beyond the Mantine base component.
-- The `fit` prop maps directly to the CSS `object-fit` property of the inner `<img>` element.
-
 # API reference
 
 ## Props

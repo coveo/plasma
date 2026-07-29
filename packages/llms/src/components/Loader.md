@@ -44,13 +44,6 @@ description: Animated spinner that communicates an ongoing asynchronous operatio
 - Using a large `Loader` inline inside dense text or a small button — it creates layout disruption; use `size="sm"` for compact contexts.
 - Leaving a `Loader` visible indefinitely on error — always replace it with an error state or message when the operation fails.
 
-## What an AI agent should understand
-
-- `Loader` is a direct re-export of `@mantine/core` `Loader` with a `displayName` set. All Mantine `Loader` props are available.
-- Plasma adds no additional props or behaviour beyond the Mantine base component.
-- The default `size` is `md`.
-- For a circular progress indicator that also shows a label or percentage, look for a `CircleLoader` component in Plasma which provides a more opinionated variant.
-
 # API reference
 
 ## Props

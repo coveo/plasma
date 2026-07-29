@@ -54,12 +54,6 @@ Do not use `Input.LabelInfo` when:
 - Using label info for long documentation.
 - Composing custom fields when a dedicated input component exists.
 
-## What an AI agent should understand
-
-- `Input` is mostly a composition layer for consistent form-field structure.
-- `Input.LabelInfo` is for optional field clarification, not required instructions.
-- Prefer dedicated input components when possible.
-
 # API reference
 
 ## Props
