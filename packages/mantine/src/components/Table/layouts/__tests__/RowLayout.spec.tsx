@@ -382,9 +382,7 @@ describe('RowLayout', () => {
             expect(screen.queryByRole('row', {name: /first last/i, selected: true})).not.toBeInTheDocument();
         });
 
-        it('prevents click on checkboxes if disableRowSelection is true', async () => {
-            const user = userEvent.setup();
-            const onClick = vi.fn();
+        it('does not render selection checkboxes when row selection is disabled and the selection is empty', () => {
             const data: RowData[] = [
                 {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
                 {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
@@ -394,13 +392,53 @@ describe('RowLayout', () => {
                 return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
             };
             render(<Fixture />);
-            await user.click(screen.getByRole('checkbox', {name: /select all/i}));
-            expect(onClick).not.toHaveBeenCalled();
 
-            const rows = screen.getAllByRole('row');
-            await user.click(within(rows[0]).getByRole('checkbox', {name: /select/i}));
+            expect(screen.queryByRole('checkbox', {name: /select all/i})).not.toBeInTheDocument();
+            expect(screen.queryByRole('checkbox', {name: /select row/i})).not.toBeInTheDocument();
+        });
 
-            expect(onClick).not.toHaveBeenCalled();
+        it('renders read-only selection checkboxes when row selection is disabled and the selection is not empty', () => {
+            const data: RowData[] = [
+                {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
+                {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({
+                    enableMultiRowSelection: true,
+                    enableRowSelection: false,
+                    initialState: {rowSelection: {'🆔-2': {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'}}},
+                });
+                return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+            };
+            render(<Fixture />);
+
+            const rowCheckboxes = screen.getAllByRole('checkbox', {name: /select row/i});
+            expect(rowCheckboxes).toHaveLength(2);
+            expect(screen.getByRole('checkbox', {name: /select all/i})).toBeInTheDocument();
+            expect(screen.getByRole('row', {name: /john smith/i, selected: false})).toBeInTheDocument();
+            expect(screen.getByRole('row', {name: /jane doe/i, selected: true})).toBeInTheDocument();
+        });
+
+        it('does not change the selection when clicking read-only checkboxes', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
+                {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({
+                    enableMultiRowSelection: true,
+                    enableRowSelection: false,
+                    initialState: {rowSelection: {'🆔-2': {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'}}},
+                });
+                return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+            };
+            render(<Fixture />);
+
+            await user.click(screen.getAllByRole('checkbox', {name: /select row/i})[0]);
+
+            expect(screen.getByRole('row', {name: /john smith/i, selected: false})).toBeInTheDocument();
+            expect(screen.getByRole('row', {name: /jane doe/i, selected: true})).toBeInTheDocument();
         });
 
         it('does not trigger the double click action when double clicking on the selection checkbox', async () => {

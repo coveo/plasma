@@ -31,7 +31,7 @@ const baseColumns: Array<ColumnDef<RowData>> = [
 ];
 
 describe('TableCollapsibleColumn', () => {
-    it('does not expand the rows when the user clicks on any cell, wehn row selection is active', async () => {
+    it('does not expand the rows when the user clicks on any cell, when row selection is active', async () => {
         const user = userEvent.setup();
         const Fixture = () => {
             const store = useTable<RowData>();
@@ -57,10 +57,37 @@ describe('TableCollapsibleColumn', () => {
         expect(screen.queryByTestId('row-content-a')).not.toBeVisible();
     });
 
-    it('automatically expands the rows when the user clicks on any cell, only if row selection is disalbed', async () => {
+    it('automatically expands the rows when the user clicks on any cell, only if row selection is disabled', async () => {
         const user = userEvent.setup();
         const Fixture = () => {
             const store = useTable<RowData>({enableRowSelection: false});
+            return (
+                <Table
+                    store={store}
+                    data={mockData}
+                    columns={baseColumns}
+                    getRowId={(datum: RowData) => datum.id}
+                    getRowExpandedContent={(datum: RowData) => (
+                        <Box data-testid={`row-content-${datum.id}`}>{datum.body}</Box>
+                    )}
+                />
+            );
+        };
+        render(<Fixture />);
+
+        expect(screen.queryByTestId('row-content-a')).not.toBeVisible();
+        expect(screen.queryByTestId('row-content-b')).not.toBeVisible();
+        await user.click(screen.getByRole('cell', {name: 'Jane Doe'}));
+
+        await waitFor(() => expect(screen.getByTestId('row-content-b')).toBeVisible());
+        expect(screen.queryByTestId('row-content-a')).not.toBeVisible();
+        expect(screen.getByTestId('row-content-b')).toHaveTextContent('coucou 2');
+    });
+
+    it('ignores multi row selection and expands the rows on click when row selection is disabled', async () => {
+        const user = userEvent.setup();
+        const Fixture = () => {
+            const store = useTable<RowData>({enableRowSelection: false, enableMultiRowSelection: true});
             return (
                 <Table
                     store={store}
