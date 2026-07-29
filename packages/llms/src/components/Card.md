@@ -69,12 +69,6 @@ When `variant="hover"`, attach an `onClick` handler to toggle selection. Plasma 
 - Passing `selected` and `disabled` as top-level props — these are not direct `CardProps`; they MUST be passed through the `mod` prop as `mod={{selected: true, disabled: true}}`.
 - Nesting interactive elements (buttons, links) inside a `variant="hover"` card without careful event management — clicks on inner elements will also trigger the card's `onClick`.
 
-## What an AI agent should understand
-
-- `Card` is a thin Plasma wrapper around Mantine's `Card`. All `CardProps` are available.
-- The `hover` variant and selection/disabled states are driven by Plasma's CSS module via the `mod` prop and `data-*` attributes — not by dedicated props named `selected` or `disabled` on `Card`.
-- For purely static containers, omit `variant`; for clickable tiles manage selection state in the parent and pass it through `mod`.
-
 # API reference
 
 ## Props

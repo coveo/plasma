@@ -59,12 +59,6 @@ Important states include:
 - Showing search for very short option lists.
 - Hiding selected filters in a way that makes the result set hard to explain.
 
-## What an AI agent should understand
-
-- `Facet` is for filtering result sets, not collecting form input.
-- Use it when selectable filter values need visibility, counts, grouping, or search.
-- Use form selection components for form decisions.
-
 # API reference
 
 ## Props

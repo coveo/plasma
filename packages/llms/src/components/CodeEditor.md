@@ -57,12 +57,6 @@ Important states include:
 - Making users edit large structured payloads without examples or validation.
 - Setting a very small height for multi-line technical content.
 
-## What an AI agent should understand
-
-- `CodeEditor` is for syntax-sensitive technical text.
-- Choose simpler inputs for ordinary text or prose.
-- Provide language, label, description, and sizing that match the task.
-
 # API reference
 
 ## Props

@@ -63,12 +63,6 @@ Important states include:
 - Omitting stable item IDs when items can be reordered.
 - Letting users add many empty repeated items without clear validation.
 
-## What an AI agent should understand
-
-- `Collection` is for editable repeated form items.
-- Prefer the column-based API for structured item editing.
-- Use `Table` for data display and `ChildForm` for a single conditional nested section.
-
 # API reference
 
 ## Props

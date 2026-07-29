@@ -45,12 +45,6 @@ Do not use `EllipsisText` when:
 - Hiding key differentiators between similar items.
 - Using ellipsis to avoid designing a layout that supports expected content length.
 
-## What an AI agent should understand
-
-- `EllipsisText` is for overflow management in constrained layouts.
-- Use it only when truncated text is acceptable and the full value is supplemental.
-- Do not use it to hide critical content.
-
 # API reference
 
 ## Props

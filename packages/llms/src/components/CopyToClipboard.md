@@ -46,12 +46,6 @@ Do not use `CopyToClipboard` when:
 - Copying hidden or ambiguous values.
 - Using the deprecated label mode instead of placing the action near the value.
 
-## What an AI agent should understand
-
-- `CopyToClipboard` is a utility action for exact read-only values.
-- Prefer it inside input `rightSection` or next to the value it copies.
-- Use tooltip labels to describe and confirm the copy behavior.
-
 # API reference
 
 ## Props

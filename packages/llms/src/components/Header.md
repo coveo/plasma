@@ -49,12 +49,6 @@ Do not use `Header` when:
 - Using page headers inside repeated cards.
 - Hiding important workflow actions in the header when they belong near the form or footer.
 
-## What an AI agent should understand
-
-- `Header` is for page or major-section framing.
-- Use its sub-components for breadcrumbs, right actions, and documentation links.
-- Do not use it as a generic text heading.
-
 # API reference
 
 ## Props

@@ -72,12 +72,6 @@ Important states include:
 - Showing long checkbox lists that are hard to scan
 - Using an indeterminate state without a real parent-child relationship
 
-## What an AI agent should understand
-
-- `Checkbox` is for zero, one, or many selections from a visible set
-- A stand-alone checkbox can represent an optional commitment or confirmation, but not an immediate switch-like control
-- If only one option is allowed or the list is too long to scan comfortably, another pattern is likely a better choice
-
 # API reference
 
 ## Props

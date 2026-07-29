@@ -55,12 +55,6 @@ Important states include:
 - Using chips as decorative tags when the user cannot select them.
 - Mixing unrelated choices in one chip group.
 
-## What an AI agent should understand
-
-- `Chip` is for compact selectable options, not passive metadata.
-- Use `Chip.Group` when chips work together as a choice set.
-- Do not pass visual variants manually; Plasma strips the Mantine variant prop.
-
 # API reference
 
 ## Props

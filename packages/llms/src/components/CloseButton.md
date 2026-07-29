@@ -46,12 +46,6 @@ description: Icon-only button for dismissing or closing an overlaying element su
 - Placing `CloseButton` inside interactive elements that already have click handlers without stopping event propagation.
 - Relying solely on `CloseButton` to close a modal without also handling the Escape key.
 
-## What an AI agent should understand
-
-- `CloseButton` is a thin Plasma wrapper around Mantine's `CloseButton`. All `CloseButtonProps` are available.
-- Plasma constrains the SVG icon sizes via CSS: `sm` renders a 12 × 12 px icon, `md` renders a 16 × 16 px icon.
-- The available sizes in Plasma are `sm` and `md` only; do not pass other Mantine size tokens.
-
 # API reference
 
 ## Props

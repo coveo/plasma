@@ -62,13 +62,6 @@ description: Form input that opens a calendar popover for selecting a single dat
 - Setting `numberOfColumns` without `type="range"` — the multi-column layout is only useful when selecting a range.
 - Omitting `clearable` on an optional date field, forcing users to reload or use workarounds to remove a value.
 
-## What an AI agent should understand
-
-- `DatePickerInput` is a thin Plasma wrapper around `@mantine/dates` `DatePickerInput`. All Mantine props are available.
-- `numberOfColumns` and `columnsToScroll` are only meaningful with `type="range"`.
-- `presets` works with any `type`: each preset is `{label: string; value}`, where `value` is a single ISO date string (`YYYY-MM-DD`) for `type="default"` and a `[start, end]` tuple for `type="range"`.
-- Plasma registers a `displayName` for tooling but adds no additional logic beyond the Mantine base component.
-
 # API reference
 
 ## Props

@@ -50,12 +50,6 @@ Do not use `ChildForm` when:
 - Nesting several child forms deeply.
 - Using `ChildForm` as a general layout card.
 
-## What an AI agent should understand
-
-- `ChildForm` is for conditional nested fields in a parent form.
-- It should be tied to a clear opt-in or condition.
-- Use larger flow patterns when the nested content becomes complex.
-
 # API reference
 
 ## Props
