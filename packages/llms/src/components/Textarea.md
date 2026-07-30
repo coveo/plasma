@@ -38,6 +38,7 @@ description: Multi-line text input for collecting longer-form free-text content 
 ## Interaction notes
 
 - Pressing Tab inside a `Textarea` moves focus to the next control by default; if users must enter tab-indented content, use `CodeEditor` or implement custom key handling.
+
 ## Accessibility expectations
 
 - The field MUST have a visible label via the `label` prop or an external element connected with `aria-labelledby`.
@@ -56,13 +57,6 @@ description: Multi-line text input for collecting longer-form free-text content 
 - Using `Textarea` for a single-line value such as a name or email address — this overstates the expected length and wastes vertical space.
 - Setting `autosize` and a fixed `rows` at the same time — `rows` is ignored when `autosize` is active; use `minRows` instead.
 - Omitting `label` and relying on `placeholder` alone — placeholder disappears when the user starts typing and is not a substitute for an accessible label.
-
-## What an AI agent should understand
-
-- `Textarea` is a thin Plasma re-export of `@mantine/core` `Textarea`. All Mantine props are available.
-- Plasma adds only a `displayName` for tooling; there is no additional logic.
-- `autosize` relies on `@mantine/hooks` `useResizeObserver` internally; no extra dependency is needed.
-- `resize` controls the CSS `resize` property on the underlying `<textarea>` element.
 
 # API reference
 

@@ -3,7 +3,6 @@ name: Table
 description: Table for displaying tabular data with optional filtering, pagination, row actions, and layout switching.
 ---
 
-
 # Usage guidance
 
 ## What problem does it solve?
@@ -70,12 +69,6 @@ Important states include:
 - Putting editable repeated form fields in a table when `Collection` is the intended pattern.
 - Omitting stable row IDs for selectable or reorderable data.
 - Hiding key record identity in expandable content instead of visible columns.
-
-## What an AI agent should understand
-
-- `Table` is for structured data display and operational record actions.
-- Use it with `useTable`, stable columns, and row IDs when available.
-- Use `Collection` for editable repeated form inputs and simpler layouts for non-tabular content.
 
 # API reference
 

@@ -60,12 +60,6 @@ description: Form input that opens a year-grid popover for selecting one year, m
 - Omitting `clearable` on an optional year field, leaving users unable to remove a selection.
 - Leaving the year range unbounded when the domain clearly constrains it (e.g. no fiscal years before the company was founded) — always set `minDate`/`maxDate` to enforce valid ranges.
 
-## What an AI agent should understand
-
-- `YearPickerInput` is a thin Plasma re-export of `@mantine/dates` `YearPickerInput`. All Mantine props are available.
-- Plasma adds only a `displayName` for tooling; there is no additional logic.
-- The value type changes with `type`: a single `Date | null` for `'default'`, `Date[]` for `'multiple'`, and `[Date | null, Date | null]` for `'range'`.
-
 # API reference
 
 ## Props

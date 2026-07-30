@@ -49,13 +49,6 @@ description: Non-interactive popover that reveals supplementary text when a user
 - Using a tooltip to show required information that only some users will discover — if everyone needs it, show it inline.
 - Nesting a tooltip inside another tooltip — this creates confusing layering; redesign the interaction.
 
-## What an AI agent should understand
-
-- `Tooltip` is a thin Plasma re-export of `@mantine/core` `Tooltip`. All Mantine props are available.
-- Plasma adds only a `displayName` for tooling; there is no additional logic.
-- The trigger MUST be a single child element that can receive a `ref`. Wrap functional components that do not forward refs with `forwardRef`.
-- `Tooltip.Floating` (a Mantine sub-component) is available for tooltips that follow the cursor; this is an advanced use case.
-
 # API reference
 
 ## Props

@@ -50,13 +50,6 @@ description: Navigation pattern that organises related content into labelled pan
 - Mixing tab-level and page-level navigation in the same `Tabs.List`.
 - Nesting tab sets inside tab panels (deeply nested tabs are disorienting).
 
-## What an AI agent should understand
-
-- `Tabs` is a thin re-export of Mantine's `Tabs` with sub-components `Tabs.List`, `Tabs.Tab`, and `Tabs.Panel` exposed.
-- The `value` on each `Tabs.Tab` and `Tabs.Panel` MUST match; mismatches silently hide panels.
-- Use `defaultValue` for uncontrolled usage and `value` + `onChange` for controlled.
-- No Plasma-specific props are added; the full Mantine `TabsProps` API applies.
-
 # API reference
 
 ## Props

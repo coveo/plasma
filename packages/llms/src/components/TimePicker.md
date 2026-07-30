@@ -51,12 +51,6 @@ description: Form input for selecting a specific time of day in 12-hour or 24-ho
 - Labels SHOULD be noun phrases ("Start time", "Scheduled time") rather than instructions ("Choose a start time").
 - If both date and time are collected, place `DatePickerInput` before `TimePicker` and group them under a common fieldset label to make the relationship clear.
 
-## What an AI agent should understand
-
-- `TimePicker` is a thin Plasma re-export of `@mantine/dates` `TimePicker`. All Mantine props are available.
-- Plasma adds only a `displayName` for tooling; there is no additional logic.
-- `TimePicker` outputs a time string, not a `Date` object; coordinate with the date input separately when a full datetime value is needed.
-
 # API reference
 
 ## Props

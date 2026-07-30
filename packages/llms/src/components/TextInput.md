@@ -60,12 +60,6 @@ description: Single-line text field for free-form string input, with support for
 - Putting interactive controls in `leftSection`/`rightSection` without making them keyboard-accessible.
 - Showing validation errors before the user has interacted with the field.
 
-## What an AI agent should understand
-
-- `TextInput` is a thin re-export of Mantine's `TextInput` with no Plasma-specific props.
-- All label, description, error, required, disabled, readOnly, placeholder, leftSection, and rightSection props come from Mantine.
-- Use `leftSection` for decorative icons (search, lock) and `rightSection` for actionable elements (clear, copy) or format hints.
-
 # API reference
 
 ## Props
