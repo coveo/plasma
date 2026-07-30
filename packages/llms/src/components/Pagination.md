@@ -24,6 +24,7 @@ Do not use `Pagination` when:
 - infinite scroll or "load more" is the intended pattern — pagination implies discrete pages
 - there is only one page of results
 - the dataset is small enough to display in full without scrolling
+- the list lives inside a dropdown or menu — paginating there forces extra clicks; show a scrollable list or a "load more" pattern instead
 
 ## Decision-making guidance
 
@@ -76,7 +77,7 @@ Key props in practice:
 ## Usage
 
 ```tsx
-import {Pagination} from '@coveord/plasma-mantine/components/Pagination';
+import {Pagination} from '@coveord/plasma-mantine';
 import {useState} from 'react';
 
 function PaginatedTable() {

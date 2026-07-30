@@ -27,6 +27,7 @@ Do not use `Pill` when:
 
 ## Decision-making guidance
 
+- Prefer a ready-made `MultiSelect` over hand-building a `PillsInput` with `Pill` children whenever the values come from a known list.
 - Use `withRemoveButton` only when the user can remove the value. Do not show the remove button on read-only or display-only contexts.
 - Prefer `size="sm"` (the default) for inline use within `PillsInput`. Use `size="md"` when `Pill` is displayed outside of a dense input context.
 - `Pill` is intentionally minimal. If you need rich styling (colour, icon) per tag, consider whether `Badge` or `Chip` better fits the use case.
@@ -73,7 +74,7 @@ Key props in practice:
 ## Usage
 
 ```tsx
-import {Pill} from '@coveord/plasma-mantine/components/Pill';
+import {Pill} from '@coveord/plasma-mantine';
 import {useState} from 'react';
 
 function TagList() {

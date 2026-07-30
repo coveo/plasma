@@ -7,7 +7,7 @@ description: Horizontal bar that communicates how far along a task or process ha
 
 ## What problem does it solve?
 
-The `Progress` bar gives users a quick, at-a-glance sense of completion for a task with a known end point. It replaces vague "loading…" text with a concrete, proportional signal.
+The `Progress` bar gives users a quick, at-a-glance sense of completion for a task with a known end point. It aims to replace the vague `Loader` component with a concrete, proportional signal when the information is available.
 
 ## When to use it
 
@@ -21,7 +21,7 @@ Use `Progress` when:
 
 Do not use `Progress` when:
 
-- the duration or completion percentage is unknown; use `Skeleton` or a spinner instead
+- the duration or completion percentage is unknown; use `Skeleton` or a `Loader` instead
 - you need a circular representation; consider Mantine's `RingProgress` or `SemiCircleProgress` available in Plasma
 - the value is not about progress but about a distribution or proportion; consider a different data visualisation
 

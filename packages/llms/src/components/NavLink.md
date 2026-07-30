@@ -77,8 +77,7 @@ Mantine exposes `NavLink` only as a single component; sub-items are created by r
 ## Usage
 
 ```tsx
-import {Badge} from '@coveord/plasma-mantine';
-import {NavLink} from '@coveord/plasma-mantine/components/NavLink';
+import {Badge, NavLink} from '@coveord/plasma-mantine';
 import {IconHome2} from '@coveord/plasma-react-icons';
 
 function SidebarNav() {

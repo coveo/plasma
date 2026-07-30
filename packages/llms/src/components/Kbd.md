@@ -57,8 +57,7 @@ Key props relevant to Plasma usage patterns:
 ## Usage
 
 ```tsx
-import {Kbd} from '@coveord/plasma-mantine';
-import {Text} from '@mantine/core';
+import {Kbd, Text} from '@coveord/plasma-mantine';
 
 // Single key
 function SingleKeyExample() {

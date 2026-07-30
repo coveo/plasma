@@ -32,7 +32,7 @@ Do not use `Input.LabelInfo` when:
 ## Decision-making guidance
 
 - Use field descriptions for guidance users should read before entering a value.
-- Use `Input.LabelInfo` for optional clarifying context.
+- Use `Input.LabelInfo` for optional clarifying context — always inside the `label` prop of a form field, never on its own.
 - Use `Alert` for broader form-level guidance or warnings.
 - Use component-specific inputs such as `TextInput`, `Select`, or `PasswordInput` when they already provide the needed structure.
 

@@ -7,7 +7,7 @@ description: Dropdown input that allows users to select multiple values from a p
 
 ## What problem does it solve?
 
-`MultiSelect` lets users pick any number of values from a fixed list in a single compact form field, displaying selections as removable pills inside the input — without requiring a visible list of checkboxes that would consume vertical space.
+`MultiSelect` lets users pick any number of values from a fixed list in a single compact form field, displaying selections as removable pills inside the input.
 
 ## When to use it
 

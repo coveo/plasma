@@ -35,13 +35,6 @@ description: Toast notification that communicates the outcome of an action with 
     - `error` — something went wrong; user may need to act
 - Always pair the colour with a matching icon so the meaning is communicated by both colour and shape, not colour alone.
 
-## Severity levels
-
-- Use `info` for general information or updates.
-- Use `success` to confirm an operation completed successfully.
-- Use `warning` for a potential issue that is non-blocking.
-- Use `error` when an operation failed and the user may need to act.
-
 ## States
 
 - **Default** — shows icon, optional title, and message body
@@ -65,7 +58,7 @@ description: Toast notification that communicates the outcome of an action with 
 
 ## Common anti-patterns
 
-- Using `error` variant for informational messages just to draw attention.
+- Using the `error` colour/icon for informational messages just to draw attention.
 - Showing a notification without an icon, leaving the severity ambiguous.
 - Stacking many toasts at once for bulk operations — batch them into a single notification.
 - Using `Notification` in place of form validation errors — use inline field validation instead.
@@ -89,9 +82,8 @@ Key props in practice:
 ## Usage
 
 ```tsx
-import {Notification} from '@coveord/plasma-mantine/components/Notification';
 import {notifications} from '@coveord/plasma-mantine/notifications';
-import {IconCircleCheckFilled, IconAlertSquareFilled} from '@coveord/plasma-react-icons';
+import {IconAlertSquareFilled} from '@coveord/plasma-react-icons';
 
 // Toast via notifications system
 function showError() {

@@ -83,7 +83,7 @@ Key props in practice:
 ## Usage
 
 ```tsx
-import {NumberInput} from '@coveord/plasma-mantine/components/NumberInput';
+import {NumberInput} from '@coveord/plasma-mantine';
 import {IconCoins} from '@coveord/plasma-react-icons';
 
 function BudgetField() {

@@ -23,7 +23,7 @@ description: Animated spinner that communicates an ongoing asynchronous operatio
 
 ## Decision-making guidance
 
-- Use `size="sm"` for inline loaders inside compact UI (buttons, table cells, small panels).
+- Use `size="sm"` for inline loaders inside compact UI such as table cells or small panels. For button loading states, use the `Button` `loading` prop rather than placing a `Loader` inside a button.
 - Use `size="md"` (the default) for section-level loading states.
 - Use `size="lg"` for full-page or prominent loading states.
 - Centre the `Loader` within its container using flexbox or Mantine's layout utilities so it does not appear misaligned.
@@ -71,15 +71,6 @@ function SectionLoader() {
         <div style={{display: 'flex', justifyContent: 'center', padding: 32}}>
             <Loader />
         </div>
-    );
-}
-
-// Small inline loader inside a button
-function SaveButton({saving}: {saving: boolean}) {
-    return (
-        <button disabled={saving} aria-label={saving ? 'Saving…' : 'Save'}>
-            {saving ? <Loader size="sm" /> : 'Save'}
-        </button>
     );
 }
 ```

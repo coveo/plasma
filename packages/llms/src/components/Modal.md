@@ -18,13 +18,12 @@ Use `Modal` when:
 - a contained task should interrupt the current page without replacing it
 - users need focused context, actions, and a clear way to close
 - the content is related to the current page but needs temporary prominence
-- a footer should group modal-specific actions
 
 ## When not to use it
 
 Do not use `Modal` when:
 
-- the task is large enough to deserve its own page or step
+- the task is complex enough to warrant its own page or step — multi-step flows, many form inputs, or content that would need its own tabs
 - users need to compare modal content with the underlying page
 - the overlay is only a simple confirmation; use `Prompt`
 - the content is contextual and lightweight enough for inline disclosure or a menu
@@ -46,7 +45,7 @@ Do not use `Modal` when:
 
 - Putting multi-page workflows inside a modal.
 - Opening a modal for information that could be inline.
-- Using modal footers outside modal contexts.
+- Stacking multiple modals on top of each other — resolve one before opening the next.
 
 # API reference
 
