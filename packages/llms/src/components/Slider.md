@@ -19,7 +19,6 @@ description: Range input that lets users select a numeric value by dragging a th
 
 - The user needs to type an exact value; use `NumberInput` instead.
 - The range is unbounded or very large (thousands of discrete steps); a `NumberInput` is more precise.
-- The interface is touch-only with very tight vertical space; the thumb target may be hard to hit.
 
 ## Decision-making guidance
 

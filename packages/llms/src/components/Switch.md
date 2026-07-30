@@ -1,25 +1,24 @@
 ---
 name: Switch
-description: Toggle control for an immediate binary setting, with optional group support for multiple related toggles.
+description: Toggle control for a binary on/off setting, with optional group support for multiple related toggles.
 ---
 
 # Usage guidance
 
 ## What problem does it solve?
 
-`Switch` gives users a single, immediately-acting control for turning a persistent setting on or off without requiring a separate Save action.
+`Switch` gives users a single control for turning a binary setting on or off. The change can apply immediately or be saved with the surrounding form, depending on the flow.
 
 ## When to use it
 
-- The setting takes effect immediately on toggle (e.g., enable notifications, dark mode, feature flag).
+- The setting is a boolean the user turns on or off (e.g., enable notifications, dark mode, feature flag).
 - The options are a true binary (on / off, enabled / disabled, visible / hidden).
 - Multiple independent boolean settings can be grouped under a shared label using `Switch.Group`.
 
 ## When not to use it
 
-- The user must confirm the choice before it applies; use a `Checkbox` inside a form with a submit button instead.
 - The binary choice is part of a mutually exclusive option set; use `Radio` or `SegmentedControl`.
-- The label describes a form-submitted boolean field rather than an immediate action; `Checkbox` better conveys deferred intent.
+- The control is one of several selections in a set rather than a standalone on/off toggle; use `Checkbox`.
 
 ## Decision-making guidance
 
@@ -36,7 +35,7 @@ description: Toggle control for an immediate binary setting, with optional group
 
 ## Interaction notes
 
-- Toggling fires `onChange` immediately; there is no intermediate uncommitted state.
+- Toggling fires `onChange` immediately; whether the change applies right away or is saved with the surrounding form is up to the consumer.
 - Inside `Switch.Group`, each `Switch` carries its own `value` string; the group's `value` array reflects which switches are on.
 
 ## Accessibility expectations

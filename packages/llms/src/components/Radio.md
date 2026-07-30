@@ -74,8 +74,7 @@ _No additional props beyond the Mantine base component._
 ## Usage
 
 ```tsx
-import {Radio} from '@coveord/plasma-mantine';
-import {Group} from '@coveord/plasma-mantine';
+import {Group, Radio} from '@coveord/plasma-mantine';
 import {useState} from 'react';
 
 function Example() {

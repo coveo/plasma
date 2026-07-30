@@ -1,6 +1,6 @@
 ---
 name: ScrollArea
-description: Container that clips overflowing content and adds a styled scrollbar within a fixed-height region.
+description: Container that clips overflowing content and adds a styled scrollbar within a fixed-height or fixed-width region.
 ---
 
 # Usage guidance

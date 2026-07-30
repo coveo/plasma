@@ -32,7 +32,7 @@ Do not use `Select` when:
 
 - Use `Select` for compact single selection.
 - Use `RadioCard` or radio controls when choices need descriptions or stronger comparison.
-- Use `Checkbox` for zero-to-many selection.
+- Use `Checkbox` for a few always-visible multi-select options, or `MultiSelect` for compact multi-selection from a longer list.
 - Use `readOnly` instead of `disabled` when the value is informational but should remain legible as a field.
 
 ## States

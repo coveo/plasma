@@ -24,7 +24,6 @@ Do not use `SegmentedControl` when:
 - switching between options reveals different content panels below — use `Tabs` instead. `SegmentedControl` changes a mode or setting; `Tabs` navigates between content areas.
 - the control represents a form input that is submitted as part of a form; use `Radio.Group` instead
 - there are more than ~5 options; the bar becomes too wide and individual segments too small
-- options have descriptions or icons that need more space; use `Radio.Group` or `RadioCard`
 - a null/empty state (no selection) is a valid choice; `SegmentedControl` always has an active segment
 
 ## Decision-making guidance

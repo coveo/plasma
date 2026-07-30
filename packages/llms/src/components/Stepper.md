@@ -79,7 +79,7 @@ function Example() {
 
     return (
         <>
-            <Stepper active={active} onStepClick={setActive}>
+            <Stepper active={active} onStepClick={(step) => step <= active && setActive(step)}>
                 <Stepper.Step label="First step" description="Create an account">
                     Step 1 content
                 </Stepper.Step>
