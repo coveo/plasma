@@ -28,6 +28,7 @@ description: Single-line text field for free-form string input, with support for
 - Use `description` for concise help text that is always visible, not a tooltip.
 - Use `error` to surface validation messages inline; do not surface errors only in a toast or banner.
 - Mark fields `required` when empty submission would fail; this adds the visual required indicator and sets `aria-required`.
+- Set the HTML `type` prop to match the expected value (`email`, `tel`, `url`, `number`, `password`, …) so browsers show the right keyboard and apply native validation.
 
 ## States
 

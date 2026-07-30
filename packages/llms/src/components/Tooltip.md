@@ -25,7 +25,7 @@ description: Non-interactive popover that reveals supplementary text when a user
 ## Decision-making guidance
 
 - Keep `label` to a single short phrase or sentence; if you need more space, reconsider whether a `Popover` or adjacent text is more appropriate.
-- Use `position` to avoid clipping against viewport edges or overlapping nearby UI; prefer `"top"` by default and override as needed.
+- Let the tooltip manage its own position by default; only set `position` to fix a specific placement issue (clipping against viewport edges or overlapping nearby UI).
 - Do not use `opened={true}` as a permanent substitute for visible text in production; it is a development/debugging affordance only.
 
 ## Interaction notes
@@ -73,6 +73,7 @@ Key props relevant to Plasma usage patterns:
 
 ```tsx
 import {Tooltip, ActionIcon} from '@coveord/plasma-mantine';
+import {IconTrash} from '@coveord/plasma-react-icons';
 
 // Labelling an icon-only button
 function DeleteButton() {

@@ -20,7 +20,7 @@ description: Navigation pattern that organises related content into labelled pan
 - The categories are sequential steps; use `Stepper`.
 - Only one panel exists; the tab bar adds noise without value.
 - The panels represent separate destinations or pages; use router-level navigation (`Link`, `NavLink`) instead.
-- More than six or seven tabs are needed; consider a secondary sidebar navigation or a `Select`-driven panel switcher.
+- More than six or seven tabs are needed; consider a secondary sidebar navigation.
 
 ## Decision-making guidance
 
@@ -36,7 +36,6 @@ description: Navigation pattern that organises related content into labelled pan
 ## Interaction notes
 
 - Keyboard: arrow keys move focus between tabs; `Enter` or `Space` activates the focused tab.
-- Tabs activate on focus by default in Mantine; set `activateTabWithKeyboard` to `false` if panels have expensive loading cost.
 
 ## Accessibility expectations
 
@@ -48,7 +47,7 @@ description: Navigation pattern that organises related content into labelled pan
 
 - Using tabs for navigation that changes the URL without wiring the `value` to the router, causing the active tab to reset on refresh.
 - Mixing tab-level and page-level navigation in the same `Tabs.List`.
-- Nesting tab sets inside tab panels (deeply nested tabs are disorienting).
+- Nesting tab sets of the same orientation inside one another — disorienting; if nesting is unavoidable, use a different orientation for the inner set (e.g. vertical inside horizontal).
 
 # API reference
 

@@ -27,6 +27,7 @@ Do not use `Table` when:
 - the data shows a progression over time, use chart components instead
 - users are editing a repeatable form list; use `Collection`
 - there are only a few simple values that can be shown as text or cards
+- the number of entries is static and pre-determined — a full table is overkill when all items are already known
 - the layout would require hiding the most important information in many columns
 
 ## Decision-making guidance
@@ -50,11 +51,7 @@ Important states include:
 
 ## Interaction notes
 
-- `store` MUST come from `useTable`.
-- `getRowId` SHOULD be provided when records have stable identifiers.
-- `getRowActions` SHOULD return only actions relevant to the selected row or rows.
 - Expandable row content SHOULD add detail without replacing the row's core scannable information.
-- Additional root nodes MAY be provided when related overlays should not clear row selection.
 
 ## Content guidance
 
@@ -143,7 +140,7 @@ export function Example() {
     const store = useTable<TData>({
         initialState: {
             totalEntries: data.length,
-            pagination: {pageIndex: 0, pageSize: 10},
+            pagination: {page: 0, perPage: 10},
         },
     });
 
