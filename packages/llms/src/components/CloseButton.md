@@ -27,17 +27,10 @@ description: Icon-only button for dismissing or closing an overlaying element su
 - Use `size="sm"` for compact contexts such as chips, tags, and inline alerts where a full-size button would overpower the surrounding element.
 - Do not use `CloseButton` as the sole means of closing a modal — always pair it with an alternative (a "Cancel" button, pressing Escape, or clicking the backdrop) to ensure keyboard and assistive technology users can close the overlay.
 
-## States
-
-- Normal
-- Hover
-- Focus (keyboard)
-- Disabled — pass `disabled` to prevent dismissal (e.g. while a save is in progress).
-
 ## Accessibility expectations
 
 - `CloseButton` renders a `<button>` element and is keyboard-accessible by default.
-- The button MUST be given an `aria-label` — there is no default. Use a specific label such as "Close notification" or "Remove tag: Sales".
+- The default icon provides an `aria-label` of "close". Override it with a more specific `aria-label` when the context needs one (e.g. "Close notification" or "Remove tag: Sales").
 - When used to close a modal, the focus SHOULD return to the element that triggered the modal after dismissal.
 
 ## Common anti-patterns
@@ -57,25 +50,20 @@ description: Icon-only button for dismissing or closing an overlaying element su
 ## Usage
 
 ```tsx
-import {CloseButton} from '@coveord/plasma-mantine';
+import {CloseButton, TextInput} from '@coveord/plasma-mantine';
+import {useState} from 'react';
 
-// Standard modal close button
-function ModalHeader({onClose}: {onClose: () => void}) {
+// Clear button inside an input
+function ClearableInput() {
+    const [value, setValue] = useState('');
     return (
-        <div style={{display: 'flex', justifyContent: 'space-between'}}>
-            <h2>Modal title</h2>
-            <CloseButton aria-label="Close modal" onClick={onClose} />
-        </div>
-    );
-}
-
-// Compact close on a chip/tag
-function RemovableTag({label, onRemove}: {label: string; onRemove: () => void}) {
-    return (
-        <span>
-            {label}
-            <CloseButton size="sm" aria-label={`Remove tag: ${label}`} onClick={onRemove} />
-        </span>
+        <TextInput
+            value={value}
+            onChange={(event) => setValue(event.currentTarget.value)}
+            rightSection={
+                value ? <CloseButton size="sm" aria-label="Clear value" onClick={() => setValue('')} /> : null
+            }
+        />
     );
 }
 ```

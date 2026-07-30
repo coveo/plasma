@@ -35,16 +35,6 @@ Do not use `CodeEditor` when:
 - Use `TextInput` for short single-line values.
 - Use `disabled` when the editor should be readable but not editable.
 
-## States
-
-Important states include:
-
-- controlled or uncontrolled value
-- focused editor
-- disabled read-only editor
-- search action available
-- copy action available
-
 ## Accessibility expectations
 
 - Labels and descriptions SHOULD explain what kind of content is expected.

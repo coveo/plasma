@@ -3,8 +3,6 @@ name: Card
 description: Container that groups related content into a visually distinct surface, optionally interactive with hover and selection states.
 ---
 
-> **Note:** This component will be redesigned. Usage guidance will be updated once the initiative concludes. In the meantime, use this as a general reference only.
-
 # Usage guidance
 
 ## What problem does it solve?
@@ -34,7 +32,7 @@ description: Container that groups related content into a visually distinct surf
 
 ## Variants
 
-- **Default** — static bordered surface with no hover behaviour. Use for informational containers.
+- **`undefined`** (default) — static bordered surface with no hover behaviour. Use for informational containers.
 - **`hover`** — adds a box-shadow on hover, a selection border when `data-selected` is set, and pointer-cursor. Use for clickable tiles.
 
 ## States
@@ -68,6 +66,7 @@ When `variant="hover"`, attach an `onClick` handler to toggle selection. Plasma 
 - Using `variant="hover"` without an `onClick` handler — the pointer cursor implies interactivity that is not present.
 - Passing `selected` and `disabled` as top-level props — these are not direct `CardProps`; they MUST be passed through the `mod` prop as `mod={{selected: true, disabled: true}}`.
 - Nesting interactive elements (buttons, links) inside a `variant="hover"` card without careful event management — clicks on inner elements will also trigger the card's `onClick`.
+- Nesting a `Card` inside another `Card` — flatten the hierarchy or use layout primitives instead.
 
 # API reference
 
@@ -82,14 +81,14 @@ When `variant="hover"`, attach an `onClick` handler to toggle selection. Plasma 
 ## Usage
 
 ```tsx
-import {Card} from '@coveord/plasma-mantine';
+import {Card, Text} from '@coveord/plasma-mantine';
 import {useState} from 'react';
 
 // Static content container
 function InfoCard() {
     return (
         <Card>
-            <p>Some grouped content here.</p>
+            <Text>Some grouped content here.</Text>
         </Card>
     );
 }
@@ -99,7 +98,7 @@ function SelectableTile() {
     const [selected, setSelected] = useState(false);
     return (
         <Card variant="hover" mod={{selected}} onClick={() => setSelected((prev) => !prev)}>
-            <p>Click to select this tile.</p>
+            <Text>Click to select this tile.</Text>
         </Card>
     );
 }
@@ -108,7 +107,7 @@ function SelectableTile() {
 function DisabledTile() {
     return (
         <Card variant="hover" mod={{disabled: true}}>
-            <p>This option is unavailable.</p>
+            <Text>This option is unavailable.</Text>
         </Card>
     );
 }

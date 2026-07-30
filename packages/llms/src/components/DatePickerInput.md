@@ -72,7 +72,7 @@ Key props relevant to Plasma usage patterns:
 
 **`type`** `'default' | 'multiple' | 'range'` · optional · default: `'default'` — Controls selection mode.
 
-**`presets`** `Array<{label: string; value: [string, string]}>` · optional — Shortcut range buttons displayed beside the calendar. Only meaningful with `type="range"`.
+**`presets`** `Array<{label: string; value: string}> | Array<{label: string; value: [string, string]}>` · optional — Shortcut buttons displayed beside the calendar. The value shape depends on `type`: a single ISO date string (`YYYY-MM-DD`) for `type="default"`, or a `[start, end]` tuple for `type="range"`.
 
 **`numberOfColumns`** `number` · optional · default: `1` — Number of calendar months shown simultaneously. Set to `2` with `type="range"` for a better range-selection experience.
 

@@ -18,6 +18,8 @@ Use `Chip` when:
 - the selection should feel lighter than a full form field
 - single or multiple selection can be represented as selectable pills
 
+`Chip.Group` SHOULD be used when related chips form a single choice set.
+
 ## When not to use it
 
 Do not use `Chip` when:
@@ -32,6 +34,7 @@ Do not use `Chip` when:
 - Use `Chip` for compact selectable options.
 - Use `Checkbox` for visible multi-select choices that need labels, descriptions, or standard form behavior.
 - Use `Select` when only one option can be chosen from a larger list.
+- Use `MultiSelect` when users pick several options from a longer list that benefits from search.
 - Use `Badge` for non-interactive labels.
 
 ## States
