@@ -9,7 +9,8 @@
         "**/node_modules",
         "**/dist",
         "CHANGELOG.md",
-        "packages/react-icons/src/generated"
+        "packages/react-icons/src/generated",
+        "packages/storybook/src/components/ComponentsOverview.mdx"
     ],
     "overrides": [
         {
