@@ -1,5 +1,6 @@
 import {
     Avatar,
+    Box,
     Center,
     createColumnHelper,
     DateRangePickerPreset,
