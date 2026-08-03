@@ -401,6 +401,7 @@ export {
     type TableCellStylesNames,
 } from './components/Table/table-cell/TableCell.js';
 export {type TablePredicateProps} from './components/Table/table-predicate/TablePredicate.js';
+export {type TableToolbarProps} from './components/Table/table-toolbar/TableToolbar.js';
 export {Table, TableComponentsOrder, type PlasmaTableFactory} from './components/Table/Table.js';
 export {
     type TableAction,

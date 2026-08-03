@@ -12,13 +12,11 @@ import {
 import isEqual from 'fast-deep-equal';
 import {Children, ForwardedRef, ReactElement, useEffect, useRef} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../utils/createFactoryComponent.js';
-import classes from './Table.module.css';
-import {TableLayout, TableProps} from './Table.types.js';
-import {TableProvider} from './TableContext.js';
 import {TableLayouts} from './layouts/TableLayouts.js';
 import {TableActionItem, TableActionItemStylesNames} from './table-actions/TableActionItem.js';
 import {TableActionsListStylesNames} from './table-actions/TableActionsList.js';
 import {TableHeaderActionsStylesNames} from './table-actions/TableHeaderActions.js';
+import {TableCell} from './table-cell/TableCell.js';
 import {TableActionsColumn} from './table-column/TableActionsColumn.js';
 import {
     TableAccordionColumn,
@@ -37,7 +35,10 @@ import {TableNoData} from './table-no-data/TableNoData.js';
 import {TablePagination} from './table-pagination/TablePagination.js';
 import {TablePerPage} from './table-per-page/TablePerPage.js';
 import {TablePredicate, TablePredicateStylesNames} from './table-predicate/TablePredicate.js';
-import {TableCell} from './table-cell/TableCell.js';
+import {TableToolbar, TableToolbarStylesNames} from './table-toolbar/TableToolbar.js';
+import classes from './Table.module.css';
+import {TableLayout, TableProps} from './Table.types.js';
+import {TableProvider} from './TableContext.js';
 import {TableState} from './use-table.js';
 
 type TableStylesNames =
@@ -54,7 +55,8 @@ type TableStylesNames =
     | TableHeaderStylesNames
     | TableThStylesNames
     | TableLastUpdatedStylesNames
-    | TablePredicateStylesNames;
+    | TablePredicateStylesNames
+    | TableToolbarStylesNames;
 
 export type PlasmaTableFactory = Factory<{
     props: TableProps<unknown>;
@@ -77,6 +79,7 @@ export type PlasmaTableFactory = Factory<{
         Pagination: typeof TablePagination;
         PerPage: typeof TablePerPage;
         Predicate: typeof TablePredicate;
+        Toolbar: typeof TableToolbar;
     };
 }>;
 
@@ -129,6 +132,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
     const convertedChildren = Children.toArray(children) as ReactElement[];
     const header = convertedChildren.find((child) => child.type === TableHeader);
     const footer = convertedChildren.find((child) => child.type === TableFooter);
+    const toolbar = convertedChildren.find((child) => child.type === TableToolbar);
     const lastUpdated = convertedChildren.find((child) => child.type === TableLastUpdated);
     const noData = convertedChildren.find((child) => child.type === TableNoData);
 
@@ -258,53 +262,56 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
                     containerRef,
                 }}
             >
-                <Layout>
-                    {store.isVacant && !store.isFiltered ? (
-                        noData
-                    ) : (
-                        <>
-                            <Box component="table" {...getStyles('table')} mod={{loading}}>
-                                <thead {...getStyles('header')}>
-                                    {header ? (
-                                        <tr>
-                                            <th style={{padding: 0}} colSpan={table.getAllColumns().length}>
-                                                {header}
-                                            </th>
-                                        </tr>
-                                    ) : null}
-                                    {hasRows || loading ? (
-                                        <Layout.Header
-                                            getRowExpandedContent={getRowExpandedContent}
-                                            getRowAttributes={getRowAttributes}
-                                            loading={loading}
-                                            {...layoutProps}
-                                        />
-                                    ) : null}
-                                </thead>
-                                <tbody {...getStyles('body')}>
-                                    {hasRows ? (
-                                        <Layout.Body
-                                            getRowExpandedContent={getRowExpandedContent}
-                                            getRowAttributes={getRowAttributes}
-                                            loading={loading}
-                                            {...layoutProps}
-                                        />
-                                    ) : (
-                                        <tr>
-                                            <td colSpan={table.getAllColumns().length}>
-                                                <TableLoading visible={loading || !store.isFiltered}>
-                                                    {noData}
-                                                </TableLoading>
-                                            </td>
-                                        </tr>
-                                    )}
-                                </tbody>
-                            </Box>
-                            {footer}
-                            {lastUpdated}
-                        </>
-                    )}
-                </Layout>
+                <>
+                    {store.isVacant && !store.isFiltered ? null : toolbar}
+                    <Layout>
+                        {store.isVacant && !store.isFiltered ? (
+                            noData
+                        ) : (
+                            <>
+                                <Box component="table" {...getStyles('table')} mod={{loading}}>
+                                    <thead {...getStyles('header')}>
+                                        {header ? (
+                                            <tr>
+                                                <th style={{padding: 0}} colSpan={table.getAllColumns().length}>
+                                                    {header}
+                                                </th>
+                                            </tr>
+                                        ) : null}
+                                        {hasRows || loading ? (
+                                            <Layout.Header
+                                                getRowExpandedContent={getRowExpandedContent}
+                                                getRowAttributes={getRowAttributes}
+                                                loading={loading}
+                                                {...layoutProps}
+                                            />
+                                        ) : null}
+                                    </thead>
+                                    <tbody {...getStyles('body')}>
+                                        {hasRows ? (
+                                            <Layout.Body
+                                                getRowExpandedContent={getRowExpandedContent}
+                                                getRowAttributes={getRowAttributes}
+                                                loading={loading}
+                                                {...layoutProps}
+                                            />
+                                        ) : (
+                                            <tr>
+                                                <td colSpan={table.getAllColumns().length}>
+                                                    <TableLoading visible={loading || !store.isFiltered}>
+                                                        {noData}
+                                                    </TableLoading>
+                                                </td>
+                                            </tr>
+                                        )}
+                                    </tbody>
+                                </Box>
+                                {footer}
+                                {lastUpdated}
+                            </>
+                        )}
+                    </Layout>
+                </>
             </TableProvider>
         </Box>
     );
@@ -384,5 +391,6 @@ Table.PerPage = TablePerPage;
  * A dropdown that filters table data by a predefined set of values and resets pagination on change.
  */
 Table.Predicate = TablePredicate;
+Table.Toolbar = TableToolbar;
 
 Table.extend = identity as CustomComponentThemeExtend<PlasmaTableFactory>;
