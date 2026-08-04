@@ -5,9 +5,7 @@ description: Complete list of Plasma design system components, grouped by functi
 
 # Components
 
-Components are the building blocks of the Coveo Administration Console UI. Most are based on Mantine. Some are Plasma-specific. All are imported from `@coveord/plasma-mantine`.
-
-This categorization differs from the official Mantine documentation structure: https://mantine.dev/core/package/
+Components are the building blocks of the Coveo Administration Console UI. Most are based on Mantine. Some are Plasma-specific. Prefer importing from `@coveord/plasma-mantine` when available; some entries listed here may be patterns or Mantine add-ons that are not exported by Plasma.
 
 Resources:
 
