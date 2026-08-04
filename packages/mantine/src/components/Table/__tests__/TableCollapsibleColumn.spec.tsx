@@ -1,7 +1,7 @@
 import {Box} from '@mantine/core';
 import {ColumnDef, createColumnHelper} from '@tanstack/table-core';
 import {render, screen, userEvent} from '@test-utils';
-import {waitFor} from '@testing-library/react';
+
 import {Table} from '../Table.js';
 import {useTable} from '../use-table.js';
 
@@ -57,7 +57,7 @@ describe('TableCollapsibleColumn', () => {
         expect(screen.queryByTestId('row-content-a')).not.toBeVisible();
     });
 
-    it('automatically expands the rows when the user clicks on any cell, only if row selection is disabled', async () => {
+    it('does not expand the rows when clicking on a cell even if row selection is disabled', async () => {
         const user = userEvent.setup();
         const Fixture = () => {
             const store = useTable<RowData>({enableRowSelection: false});
@@ -79,12 +79,11 @@ describe('TableCollapsibleColumn', () => {
         expect(screen.queryByTestId('row-content-b')).not.toBeVisible();
         await user.click(screen.getByRole('cell', {name: 'Jane Doe'}));
 
-        await waitFor(() => expect(screen.getByTestId('row-content-b')).toBeVisible());
+        expect(screen.queryByTestId('row-content-b')).not.toBeVisible();
         expect(screen.queryByTestId('row-content-a')).not.toBeVisible();
-        expect(screen.getByTestId('row-content-b')).toHaveTextContent('coucou 2');
     });
 
-    it('ignores multi row selection and expands the rows on click when row selection is disabled', async () => {
+    it('does not expand the rows on click when multi row selection is enabled but row selection is disabled', async () => {
         const user = userEvent.setup();
         const Fixture = () => {
             const store = useTable<RowData>({enableRowSelection: false, enableMultiRowSelection: true});
@@ -106,9 +105,8 @@ describe('TableCollapsibleColumn', () => {
         expect(screen.queryByTestId('row-content-b')).not.toBeVisible();
         await user.click(screen.getByRole('cell', {name: 'Jane Doe'}));
 
-        await waitFor(() => expect(screen.getByTestId('row-content-b')).toBeVisible());
+        expect(screen.queryByTestId('row-content-b')).not.toBeVisible();
         expect(screen.queryByTestId('row-content-a')).not.toBeVisible();
-        expect(screen.getByTestId('row-content-b')).toHaveTextContent('coucou 2');
     });
 
     it('expands the rows according to the initial state', () => {

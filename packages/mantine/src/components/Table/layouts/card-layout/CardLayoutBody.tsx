@@ -62,14 +62,10 @@ export const CardLayoutBody = <T,>(props: CardLayoutBodyProps<T> & {ref?: Forwar
         const shouldKeepSelection = store.rowSelectionForced && isSelected;
 
         const onClick = () => {
-            if (!store.rowSelectionEnabled) {
+            if (!store.rowSelectionEnabled || shouldKeepSelection) {
                 return;
             }
-            if (store.multiRowSelectionEnabled) {
-                row.toggleSelected();
-            } else if (!shouldKeepSelection) {
-                row.toggleSelected();
-            }
+            row.toggleSelected();
         };
 
         const cardStyles = ctx.getStyles('card', {

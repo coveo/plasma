@@ -24,11 +24,6 @@ export type RowLayoutBodyFactory = Factory<{
 
 const defaultProps = {} satisfies Partial<RowLayoutBodyProps<unknown>>;
 
-const toggleCollapsible = (el: HTMLTableRowElement) => {
-    const cell = el.children[el.children.length - 1] as HTMLTableCellElement;
-    cell.querySelector('button')?.click();
-};
-
 export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: ForwardedRef<HTMLTableRowElement>}) => {
     const ctx = useRowLayout();
     const {
@@ -48,13 +43,11 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
         const rowChildren = getRowExpandedContent?.(row.original, row.index, row) ?? null;
         const isSelected = !!row.getIsSelected();
         const shouldKeepSelection = store.rowSelectionForced && isSelected;
-        const onClick = (event: MouseEvent<HTMLTableRowElement>) => {
-            if (rowChildren && !store.rowSelectionEnabled) {
-                toggleCollapsible(event.currentTarget);
+        const onClick = () => {
+            if (!store.rowSelectionEnabled || shouldKeepSelection) {
+                return;
             }
-            if (store.rowSelectionEnabled && !store.multiRowSelectionEnabled && !shouldKeepSelection) {
-                row.toggleSelected();
-            }
+            row.toggleSelected();
         };
 
         return (

@@ -323,6 +323,31 @@ describe('RowLayout', () => {
             });
         });
 
+        it('toggles row selection when clicking on the row', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
+                {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: true});
+                return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+            };
+            render(<Fixture />);
+
+            await user.click(screen.getByRole('row', {name: /john smith/i}));
+            expect(screen.getByRole('row', {name: /john smith/i, selected: true})).toBeInTheDocument();
+            expect(screen.getByRole('row', {name: /jane doe/i, selected: false})).toBeInTheDocument();
+
+            await user.click(screen.getByRole('row', {name: /jane doe/i}));
+            expect(screen.getByRole('row', {name: /john smith/i, selected: true})).toBeInTheDocument();
+            expect(screen.getByRole('row', {name: /jane doe/i, selected: true})).toBeInTheDocument();
+
+            await user.click(screen.getByRole('row', {name: /john smith/i}));
+            expect(screen.getByRole('row', {name: /john smith/i, selected: false})).toBeInTheDocument();
+            expect(screen.getByRole('row', {name: /jane doe/i, selected: true})).toBeInTheDocument();
+        });
+
         it('selects the rows specified in the initial state on mount', () => {
             const data: RowData[] = [
                 {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
