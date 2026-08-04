@@ -64,7 +64,7 @@ Resources:
 - Accordion [Mantine] — Vertically stacked collapsible sections
 - AppShell [Mantine] — Main layout wrapper; includes header and navbar
 - ChildForm [Plasma] — Layout pattern for nesting forms
-- Footer [Plasma] — Sticky footer for page bottoms
+- StickyFooter [Plasma] — Sticky footer for page bottoms
 - Header [Plasma] — Top navigation bar
 - MainSidenav [Plasma] — Main side navigation
 - ScrollArea [Mantine] — Container with custom scrollbars
