@@ -1,6 +1,6 @@
 ### Purpose
 
-<!-- Briefly explain the purpose of your PR. If needed, provide extra context here if needed. -->
+<!-- Briefly explain the purpose of your PR. If needed, provide extra context here. -->
 
 ---
 
