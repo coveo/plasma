@@ -47,10 +47,21 @@ const preview: Preview = {
         options: {
             storySort: {
                 order: [
-                    '@content',
-                    ['About', 'Audience', 'Voice', 'Writing Mechanics', 'Product Vocabulary'],
                     '@foundation',
+                    ['Overview', 'Colors', 'Iconography', 'Radii', 'Shadows', 'Spacings', 'Typography'],
                     '@components',
+                    [
+                        'Overview',
+                        'Call to action',
+                        'Form',
+                        'Feedback',
+                        'Layout',
+                        'Data display',
+                        'Typography',
+                        'Miscellaneous',
+                    ],
+                    '@content',
+                    ['About', 'Audience', 'Voice', 'Writing mechanics', 'Product vocabulary'],
                     '*',
                     'changelogs',
                 ],
