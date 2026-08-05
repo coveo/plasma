@@ -15,16 +15,16 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Harden Runner
-              uses: step-security/harden-runner@6c3c2f2c1c457b00c10c4848d6f5491db3b629df # v2.18.0
+              uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
               with:
                   egress-policy: audit
 
-            - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
               with:
                   fetch-depth: 0
             - uses: ./.github/actions/setup
             - name: Create or update the Changesets release PR
-              uses: changesets/action@6a0a831ff30acef54f2c6aa1cbbc1096b066edaf # v1.7.0
+              uses: step-security/changeset-action@6ddf46283ed49170eb6ca2179818f7d2a0ae687c # v1.9.0
               with:
                   commit: 'chore(release): version packages'
                   title: 'chore(release): version packages'

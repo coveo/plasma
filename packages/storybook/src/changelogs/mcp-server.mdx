@@ -1,0 +1,9 @@
+import {Meta, Markdown, Unstyled} from '@storybook/addon-docs/blocks';
+import plasmaMcpServerChangelogs from '../../../mcp-server/CHANGELOG.md?raw';
+import {plasmaMarkdownOverrides} from '../../.storybook/plasmaMarkdownOverrides';
+
+<Meta title="changelogs/plasma-mcp-server" id="changelogs-plasma-mcp-server" />
+
+<Unstyled>
+    <Markdown options={{overrides: plasmaMarkdownOverrides}}>{plasmaMcpServerChangelogs}</Markdown>
+</Unstyled>

@@ -6,9 +6,10 @@
     "scripts": {
         "build": "turbo run build",
         "changeset": "changeset",
+        "changeset:new": "node scripts/newChangeset.js",
+        "changeset:validate": "node scripts/validateChangesets.js",
         "changeset:version": "changeset version",
         "clean": "pnpm --recursive --parallel run clean",
-        "commit-cli": "cz",
         "fmt": "oxfmt",
         "fmt:check": "oxfmt --check",
         "preinstall": "npx only-allow pnpm",
@@ -23,33 +24,29 @@
         "release:pre:publish:next": "changeset publish",
         "release:publish": "changeset publish",
         "setup": "pnpm install",
-        "start": "turbo run build --filter=!storybook && pnpm --recursive --parallel start",
+        "start": "turbo run build --filter=!@coveord/plasma-storybook && pnpm --recursive --parallel start",
         "test": "turbo run test --concurrency=1",
         "turbo:login": "node scripts/turboLogin.js"
     },
     "devDependencies": {
-        "@changesets/changelog-github": "0.5.1",
-        "@changesets/cli": "2.29.6",
-        "@commitlint/cli": "20.5.2",
-        "@commitlint/config-conventional": "20.5.0",
-        "@types/node": "24.12.2",
-        "@typescript/native-preview": "7.0.0-dev.20260420.1",
+        "@changesets/changelog-github": "0.7.0",
+        "@changesets/cli": "2.31.1",
+        "@changesets/get-github-info": "0.8.0",
+        "@types/node": "24.13.3",
+        "@typescript/native-preview": "7.0.0-dev.20260707.2",
         "aws-sdk": "2.1693.0",
-        "commitizen": "4.3.1",
-        "conventional-changelog-angular": "8.3.1",
-        "cz-conventional-changelog": "3.3.0",
-        "eslint": "9.39.4",
-        "eslint-plugin-storybook": "10.3.5",
+        "eslint": "10.7.0",
+        "eslint-plugin-storybook": "10.5.2",
         "eslint-plugin-testing-library": "7.16.2",
         "husky": "9.1.7",
-        "lint-staged": "16.4.0",
-        "oxfmt": "0.51.0",
-        "oxlint": "1.66.0",
-        "oxlint-tsgolint": "0.23.0",
-        "postcss": "8.5.14",
-        "stylelint": "17.9.1",
+        "lint-staged": "17.0.8",
+        "oxfmt": "0.59.0",
+        "oxlint": "1.74.0",
+        "oxlint-tsgolint": "7.0.2001",
+        "postcss": "8.5.19",
+        "stylelint": "17.14.0",
         "stylelint-config-standard-scss": "17.0.0",
-        "turbo": "2.9.6"
+        "turbo": "2.10.5"
     },
     "lint-staged": {
         "**/*.{js,jsx,ts,tsx,mjs,json,md,yml,html}": [
@@ -60,21 +57,11 @@
             "oxfmt --write --no-error-on-unmatched-pattern"
         ]
     },
-    "commitlint": {
-        "extends": [
-            "@commitlint/config-conventional"
-        ]
-    },
-    "config": {
-        "commitizen": {
-            "path": "cz-conventional-changelog"
-        }
-    },
     "browserslist": [
         "cover 90%",
         "last 1 versions",
         "IE 11",
         "not dead"
     ],
-    "packageManager": "pnpm@11.1.1+sha512.d1fdf5f73c617b64fa1a56a81c3c8dfe0e966e33a6010aa256b517ae77be21d93e05affc0de1a83b0e4f29d569f68b446ae8f068cd7247c0bb3df0fb4d7bdf9a"
+    "packageManager": "pnpm@11.13.1+sha512.b2fc7683b8a6525414e7d13e1ba28caaddde96bf66ec540bfaeb7e702b81f3e0be4d1f295edf7f9fe0396740a8dce4509c582ddf79891f4543fea32d37645f25"
 }

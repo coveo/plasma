@@ -14,8 +14,8 @@ export type HeaderBreadcrumbsFactory = Factory<{
     compound: true;
 }>;
 
-export const HeaderBreadcrumbs = factory<HeaderBreadcrumbsFactory>((props, ref) => {
-    const {children, className, classNames, styles, style, vars: _vars, ...others} = props;
+export const HeaderBreadcrumbs = factory<HeaderBreadcrumbsFactory>((props) => {
+    const {children, className, classNames, styles, style, vars: _vars, ref, ...others} = props;
     const ctx = useHeaderContext();
 
     return (

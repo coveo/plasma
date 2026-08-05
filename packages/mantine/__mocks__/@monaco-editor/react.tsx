@@ -4,15 +4,16 @@ import {type FunctionComponent, useEffect} from 'react';
 const editor: any = {
     onDidFocusEditorText: vi.fn(),
     onDidBlurEditorText: vi.fn(),
+    onDidDispose: vi.fn(() => ({dispose: vi.fn()})),
     focus: vi
         .fn()
         .mockImplementation(() =>
-            document.querySelector('[data-testid="monaco-editor"]').setAttribute('focus', 'true'),
+            document.querySelector('[data-testid="monaco-editor"]')!.setAttribute('focus', 'true'),
         ),
     trigger: vi
         .fn()
         .mockImplementation(() =>
-            document.querySelector('[data-testid="monaco-editor"]').setAttribute('trigger', 'true'),
+            document.querySelector('[data-testid="monaco-editor"]')!.setAttribute('trigger', 'true'),
         ),
 };
 
@@ -25,7 +26,7 @@ const monaco: any = {
 const MockedEditor: FunctionComponent<EditorProps> = (props) => {
     useEffect(() => {
         props.beforeMount?.(monaco);
-        props.onMount(editor, monaco);
+        props.onMount!(editor, monaco);
     }, []);
     return <div data-testid="monaco-editor" />;
 };

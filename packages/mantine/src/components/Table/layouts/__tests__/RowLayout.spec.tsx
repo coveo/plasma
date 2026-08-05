@@ -8,7 +8,7 @@ describe('RowLayout', () => {
     type RowData = {id: string; firstName: string; lastName?: string; disabled?: boolean};
 
     const columnHelper = createColumnHelper<RowData>();
-    const columns: Array<ColumnDef<RowData>> = [
+    const columns: Array<ColumnDef<RowData, unknown>> = [
         columnHelper.accessor('firstName', {enableSorting: false}),
         columnHelper.accessor('lastName', {enableSorting: false}),
     ];
@@ -37,15 +37,15 @@ describe('RowLayout', () => {
     });
 
     it('formats the data', () => {
-        const customColumns: Array<ColumnDef<RowData>> = [
+        const customColumns: Array<ColumnDef<RowData, unknown>> = [
             columnHelper.accessor('firstName', {
                 header: () => 'First Name',
-                cell: (info) => info.getValue().toUpperCase(),
+                cell: (info) => info.getValue()!.toUpperCase(),
                 enableSorting: false,
             }),
             columnHelper.accessor('lastName', {
                 header: () => 'Last Name',
-                cell: (info) => info.getValue().toUpperCase(),
+                cell: (info) => info.getValue()!.toUpperCase(),
                 enableSorting: false,
             }),
         ];
@@ -64,7 +64,7 @@ describe('RowLayout', () => {
     });
 
     it('adds testid on the data', () => {
-        const customColumns: Array<ColumnDef<RowData>> = [
+        const customColumns: Array<ColumnDef<RowData, unknown>> = [
             columnHelper.accessor('firstName', {}),
             columnHelper.accessor('lastName', {}),
         ];
@@ -89,7 +89,7 @@ describe('RowLayout', () => {
 
     it('opens the collapsible rows when the user click on the toggle', async () => {
         const user = userEvent.setup();
-        const customColumns: Array<ColumnDef<RowData>> = [
+        const customColumns: Array<ColumnDef<RowData, unknown>> = [
             columnHelper.accessor('firstName', {
                 enableSorting: false,
             }),
@@ -128,7 +128,7 @@ describe('RowLayout', () => {
             </div>
         );
 
-        const customColumns: Array<ColumnDef<RowData>> = [
+        const customColumns: Array<ColumnDef<RowData, unknown>> = [
             columnHelper.accessor('firstName', {
                 enableSorting: false,
             }),
@@ -165,7 +165,7 @@ describe('RowLayout', () => {
     it('closes the opened collapsible when using the accordion column and the user expand a different row', async () => {
         const user = userEvent.setup();
         const Content: FunctionComponent<{row: RowData}> = ({row}) => <div>Collapsible content: {row.lastName}</div>;
-        const customColumns: Array<ColumnDef<RowData>> = [
+        const customColumns: Array<ColumnDef<RowData, unknown>> = [
             columnHelper.accessor('firstName', {
                 enableSorting: false,
             }),
@@ -323,6 +323,31 @@ describe('RowLayout', () => {
             });
         });
 
+        it('toggles row selection when clicking on the row', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
+                {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: true});
+                return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+            };
+            render(<Fixture />);
+
+            await user.click(screen.getByRole('row', {name: /john smith/i}));
+            expect(screen.getByRole('row', {name: /john smith/i, selected: true})).toBeInTheDocument();
+            expect(screen.getByRole('row', {name: /jane doe/i, selected: false})).toBeInTheDocument();
+
+            await user.click(screen.getByRole('row', {name: /jane doe/i}));
+            expect(screen.getByRole('row', {name: /john smith/i, selected: true})).toBeInTheDocument();
+            expect(screen.getByRole('row', {name: /jane doe/i, selected: true})).toBeInTheDocument();
+
+            await user.click(screen.getByRole('row', {name: /john smith/i}));
+            expect(screen.getByRole('row', {name: /john smith/i, selected: false})).toBeInTheDocument();
+            expect(screen.getByRole('row', {name: /jane doe/i, selected: true})).toBeInTheDocument();
+        });
+
         it('selects the rows specified in the initial state on mount', () => {
             const data: RowData[] = [
                 {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
@@ -382,9 +407,7 @@ describe('RowLayout', () => {
             expect(screen.queryByRole('row', {name: /first last/i, selected: true})).not.toBeInTheDocument();
         });
 
-        it('prevents click on checkboxes if disableRowSelection is true', async () => {
-            const user = userEvent.setup();
-            const onClick = vi.fn();
+        it('does not render selection checkboxes when row selection is disabled and the selection is empty', () => {
             const data: RowData[] = [
                 {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
                 {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
@@ -394,13 +417,53 @@ describe('RowLayout', () => {
                 return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
             };
             render(<Fixture />);
-            await user.click(screen.getByRole('checkbox', {name: /select all/i}));
-            expect(onClick).not.toHaveBeenCalled();
 
-            const rows = screen.getAllByRole('row');
-            await user.click(within(rows[0]).getByRole('checkbox', {name: /select/i}));
+            expect(screen.queryByRole('checkbox', {name: /select all/i})).not.toBeInTheDocument();
+            expect(screen.queryByRole('checkbox', {name: /select row/i})).not.toBeInTheDocument();
+        });
 
-            expect(onClick).not.toHaveBeenCalled();
+        it('renders read-only selection checkboxes when row selection is disabled and the selection is not empty', () => {
+            const data: RowData[] = [
+                {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
+                {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({
+                    enableMultiRowSelection: true,
+                    enableRowSelection: false,
+                    initialState: {rowSelection: {'🆔-2': {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'}}},
+                });
+                return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+            };
+            render(<Fixture />);
+
+            const rowCheckboxes = screen.getAllByRole('checkbox', {name: /select row/i});
+            expect(rowCheckboxes).toHaveLength(2);
+            expect(screen.getByRole('checkbox', {name: /select all/i})).toBeInTheDocument();
+            expect(screen.getByRole('row', {name: /john smith/i, selected: false})).toBeInTheDocument();
+            expect(screen.getByRole('row', {name: /jane doe/i, selected: true})).toBeInTheDocument();
+        });
+
+        it('does not change the selection when clicking read-only checkboxes', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
+                {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({
+                    enableMultiRowSelection: true,
+                    enableRowSelection: false,
+                    initialState: {rowSelection: {'🆔-2': {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'}}},
+                });
+                return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+            };
+            render(<Fixture />);
+
+            await user.click(screen.getAllByRole('checkbox', {name: /select row/i})[0]);
+
+            expect(screen.getByRole('row', {name: /john smith/i, selected: false})).toBeInTheDocument();
+            expect(screen.getByRole('row', {name: /jane doe/i, selected: true})).toBeInTheDocument();
         });
 
         it('does not trigger the double click action when double clicking on the selection checkbox', async () => {
@@ -431,15 +494,15 @@ describe('RowLayout', () => {
     });
 
     it('passes down attributes given by getRowAttributes function to the row element', () => {
-        const customColumns: Array<ColumnDef<RowData>> = [
+        const customColumns: Array<ColumnDef<RowData, unknown>> = [
             columnHelper.accessor('firstName', {
                 header: () => 'First Name',
-                cell: (info) => info.getValue().toUpperCase(),
+                cell: (info) => info.getValue()!.toUpperCase(),
                 enableSorting: false,
             }),
             columnHelper.accessor('lastName', {
                 header: () => 'Last Name',
-                cell: (info) => info.getValue().toUpperCase(),
+                cell: (info) => info.getValue()!.toUpperCase(),
                 enableSorting: false,
             }),
         ];

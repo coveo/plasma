@@ -1,9 +1,11 @@
-import {Plasmantine, useMantineColorScheme} from '@coveord/plasma-mantine';
+import {useMantineColorScheme} from '@coveord/plasma-mantine/core';
+import {Plasmantine} from '@coveord/plasma-mantine/plasmantine';
 import {DocsContainer, type DocsContainerProps} from '@storybook/addon-docs/blocks';
 import {type PropsWithChildren, useEffect, useMemo, useState} from 'react';
 import {GLOBALS_UPDATED} from 'storybook/internal/core-events';
 import {create} from 'storybook/theming';
 import {backgroundOptions, prefersDark} from './backgroundOptions.js';
+import {DocsTheme} from './styles/docsTheme.js';
 
 export const ThemedDocsContainer = ({children, context, ...props}: PropsWithChildren<DocsContainerProps>) => {
     const [isDark, setIsDark] = useState(() => {
@@ -36,9 +38,9 @@ export const ThemedDocsContainer = ({children, context, ...props}: PropsWithChil
 
     return (
         <DocsContainer {...props} context={context} theme={docsTheme}>
-            <Plasmantine defaultColorScheme={isDark ? 'dark' : 'light'}>
+            <Plasmantine defaultColorScheme={isDark ? 'dark' : 'light'} theme={DocsTheme}>
                 <SchemeWatcher isDark={isDark} />
-                {children}
+                <div className="sb-unstyled">{children}</div>
             </Plasmantine>
         </DocsContainer>
     );

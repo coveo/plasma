@@ -1,7 +1,6 @@
 import {
     Avatar,
     Box,
-    Card,
     Center,
     createColumnHelper,
     DateRangePickerPreset,
@@ -10,19 +9,12 @@ import {
     getPaginationRowModel,
     getSortedRowModel,
     Group,
-    renderTableCell,
-    SimpleGrid,
-    Stack,
     Table,
     TableAction,
-    TableLayout,
-    TableLayoutProps,
     TableProps,
-    Title,
     useTable,
-    useTableContext,
 } from '@coveord/plasma-mantine';
-import {IconEdit, IconLayoutGrid, IconTrash} from '@coveord/plasma-react-icons';
+import {IconEdit, IconTrash} from '@coveord/plasma-react-icons';
 import {faker} from '@faker-js/faker';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import dayjs from 'dayjs';
@@ -31,10 +23,16 @@ import {useMemo} from 'react';
 
 dayjs.extend(LocalizedFormat);
 
+const SEEDED_DATE = new Date(2023, 0, 1);
+
+// Set the seed for faker to avoid mismatch in chromatic
+faker.seed(42);
+faker.setDefaultRefDate(SEEDED_DATE);
+
 type StoryArgs = TableProps<Person> & {
     withFilter: boolean;
     withPredicateFilter: boolean;
-    withHeader: boolean;
+    controlPlacement: 'header' | 'toolbar';
     withPagination: boolean;
     withSorting: boolean;
     withDateRangePicker: boolean;
@@ -51,6 +49,9 @@ const meta: Meta<StoryArgs> = {
     title: '@components/data-display/Table',
     id: 'Table',
     component: Table,
+    parameters: {
+        layout: 'fullscreen',
+    },
 };
 export default meta;
 type Story = StoryObj<StoryArgs>;
@@ -87,79 +88,20 @@ const options: TableProps<Person>['options'] = {
     getSortedRowModel: getSortedRowModel(),
 };
 
-const today = dayjs().endOf('day').toISOString();
-const previousDay = dayjs().subtract(1, 'day').startOf('day').toISOString();
-const previousWeek = dayjs().subtract(1, 'week').startOf('day').toISOString();
+const today = dayjs(SEEDED_DATE).endOf('day').toISOString();
+const previousDay = dayjs(SEEDED_DATE).subtract(1, 'day').startOf('day').toISOString();
+const previousWeek = dayjs(SEEDED_DATE).subtract(1, 'week').startOf('day').toISOString();
 const datePickerPresets: Record<string, DateRangePickerPreset> = {
     lastDay: {label: 'Last 24 hours', range: [previousDay, today]},
     lastWeek: {label: 'Last week', range: [previousWeek, today]},
 };
-
-const TableCards = <TData,>(props: TableLayoutProps<TData>) => {
-    const {table, store} = useTableContext<TData>();
-    const headers = table
-        .getFlatHeaders()
-        .filter((header) => header.column.id !== 'select')
-        .map((header) => (
-            <Title order={6} key={header.id}>
-                {renderTableCell(header.column.columnDef.header, header.getContext())}
-            </Title>
-        ));
-
-    const cards = table.getRowModel().rows.map((row) => (
-        <Card
-            key={row.id}
-            mod={{selected: row.getIsSelected()}}
-            variant={store.rowSelectionEnabled ? 'hover' : undefined}
-            onClick={(event) => {
-                if (store.rowSelectionEnabled) {
-                    if (event.detail <= 1) {
-                        row.toggleSelected();
-                    } else {
-                        props.onRowDoubleClick?.(row.original, row.index, row);
-                    }
-                }
-            }}
-        >
-            <Stack gap="sm">
-                {row
-                    .getVisibleCells()
-                    .filter((cell) => cell.column.id !== 'select')
-                    .map((cell, index) => (
-                        <Box key={cell.id}>
-                            <Table.Loading visible={props.loading}>
-                                {headers[index]}
-                                {renderTableCell(cell.column.columnDef.cell, cell.getContext())}
-                            </Table.Loading>
-                        </Box>
-                    ))}
-            </Stack>
-        </Card>
-    ));
-
-    return (
-        <tr>
-            <td style={{padding: 0}}>
-                <SimpleGrid cols={4} spacing="lg" px="xl" py="lg">
-                    {cards}
-                </SimpleGrid>
-            </td>
-        </tr>
-    );
-};
-
-const CardLayout: TableLayout = ({children}) => <>{children}</>;
-CardLayout.Header = () => <></>;
-CardLayout.displayName = 'Cards';
-CardLayout.Body = TableCards;
-CardLayout.Icon = IconLayoutGrid;
 
 export const Demo: Story = {
     args: {
         loading: false,
         withFilter: false,
         withPredicateFilter: false,
-        withHeader: true,
+        controlPlacement: 'header',
         withPagination: false,
         withSorting: false,
         withDateRangePicker: false,
@@ -178,12 +120,16 @@ export const Demo: Story = {
             options: ['collapse', 'accordion'],
             defaultValue: 'collapse',
         },
+        controlPlacement: {
+            control: 'radio',
+            options: ['header', 'toolbar'],
+        },
     },
     render: ({
         loading,
         withFilter,
         withPredicateFilter,
-        withHeader,
+        controlPlacement,
         withPagination,
         withSorting,
         withDateRangePicker,
@@ -200,19 +146,32 @@ export const Demo: Story = {
                 columnHelper.accessor('firstName', {
                     header: 'First name',
                     enableSorting: withSorting,
+                    cell: ({getValue}) => <Table.Cell>{getValue()}</Table.Cell>,
                 }),
                 columnHelper.accessor('lastName', {
                     header: 'Last name',
                     enableSorting: withSorting,
+                    cell: ({getValue}) => <Table.Cell lineClamp={2}>{getValue()}</Table.Cell>,
+                }),
+                columnHelper.accessor('bio', {
+                    header: 'Bio (wrap)',
+                    size: 200,
+                    cell: ({getValue}) => <Table.Cell wrap>{getValue()}</Table.Cell>,
                 }),
                 columnHelper.accessor('age', {
                     header: 'Age',
                     enableSorting: withSorting,
+                    cell: ({getValue}) => <Table.Cell>{getValue()}</Table.Cell>,
                 }),
                 columnHelper.accessor('lastActivity', {
-                    header: 'Activity',
+                    header: 'Activity (expandable)',
                     enableSorting: withSorting,
-                    cell: ({getValue}) => dayjs(getValue()).format('LLL'),
+                    size: 200,
+                    cell: ({row}) => (
+                        <Table.Cell expandable lineClamp={2}>
+                            {row.original.bio} — {dayjs(row.original.lastActivity).format('LLL')}
+                        </Table.Cell>
+                    ),
                 }),
             ];
             if (withCollapsibleRows) {
@@ -251,7 +210,7 @@ export const Demo: Story = {
                 data={filteredData}
                 store={table}
                 getRowId={({id}) => id.toString()}
-                layouts={withLayoutSelector ? [Table.Layouts.Rows, CardLayout] : undefined}
+                layouts={withLayoutSelector ? [Table.Layouts.Rows, Table.Layouts.Cards] : undefined}
                 loading={loading}
                 getRowExpandedContent={
                     withCollapsibleRows
@@ -309,14 +268,40 @@ export const Demo: Story = {
                         : undefined
                 }
             >
-                {withHeader && (
+                {controlPlacement === 'toolbar' && (
+                    <Table.Toolbar renderRoot={(props) => <Group w="100%" mb="xl" {...props} />}>
+                        {withPredicateFilter && (
+                            <Table.Predicate
+                                id="age"
+                                label="Age group"
+                                data={[
+                                    {value: 'ANY', label: 'Any'},
+                                    {value: 'below20', label: 'Below 20'},
+                                    {value: 'between20to60', label: '20 to 60'},
+                                    {value: 'above60', label: 'Above 60'},
+                                ]}
+                            />
+                        )}
+                        {withDateRangePicker && (
+                            <Table.DateRangePicker
+                                startProps={{}}
+                                endProps={{}}
+                                rangeCalendarProps={{maxDate: dayjs().endOf('day').toDate()}}
+                                presets={datePickerPresets}
+                            />
+                        )}
+                        <Box flex={1} />
+                        {withFilter && <Table.Filter />}
+                    </Table.Toolbar>
+                )}
+                {controlPlacement === 'header' && (
                     <Table.Header>
                         {withFilter && <Table.Filter />}
                         {withDateRangePicker && (
                             <Table.DateRangePicker
                                 startProps={{}}
                                 endProps={{}}
-                                rangeCalendarProps={{maxDate: dayjs().endOf('day').toDate()}}
+                                rangeCalendarProps={{maxDate: dayjs(SEEDED_DATE).endOf('day').toDate()}}
                                 presets={datePickerPresets}
                             />
                         )}

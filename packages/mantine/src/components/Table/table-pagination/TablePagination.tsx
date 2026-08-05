@@ -22,6 +22,10 @@ export const TablePagination: FunctionComponent<TablePaginationProps> = ({onPage
         }
     }, [store.state.pagination.page, total]);
 
+    if (total <= 1) {
+        return null;
+    }
+
     return (
         <Pagination
             value={store.state.pagination.page + 1}

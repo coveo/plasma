@@ -10,5 +10,14 @@
         "**/dist",
         "CHANGELOG.md",
         "packages/react-icons/src/generated"
+    ],
+    "overrides": [
+        {
+            "files": ["pnpm-workspace.yaml"],
+            "options": {
+                "tabWidth": 2,
+                "singleQuote": true
+            }
+        }
     ]
 }

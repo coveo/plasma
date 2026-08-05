@@ -1,0 +1,9 @@
+import {Meta, Markdown, Unstyled} from '@storybook/addon-docs/blocks';
+import plasmaReactIconsChangelogs from '../../../react-icons/CHANGELOG.md?raw';
+import {plasmaMarkdownOverrides} from '../../.storybook/plasmaMarkdownOverrides';
+
+<Meta title="changelogs/plasma-react-icons" id="changelogs-plasma-react-icons" />
+
+<Unstyled>
+    <Markdown options={{overrides: plasmaMarkdownOverrides}}>{plasmaReactIconsChangelogs}</Markdown>
+</Unstyled>

@@ -10,7 +10,7 @@ const meta: Meta<ChildFormProps> = {
         layout: 'centered',
     },
     args: {
-        in: true,
+        expanded: true,
     },
     argTypes: {
         title: {control: 'text'},

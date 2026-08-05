@@ -151,6 +151,9 @@ export default meta;
 type Story = StoryObj;
 
 export const Overview: Story = {
+    parameters: {
+        chromatic: {disableSnapshot: true},
+    },
     render: () => (
         <FoundationWrapper
             title="Variables"

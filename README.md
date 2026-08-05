@@ -1,10 +1,48 @@
 # Plasma
 
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg?style=flat-square&logo=appveyor)](https://conventionalcommits.org)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/coveo/plasma/badge)](https://scorecard.dev/viewer/?uri=github.com/coveo/plasma)
+[![TypeScript](https://img.shields.io/badge/TypeScript-ready-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+![module: ESM](https://img.shields.io/badge/module-ESM-F7DF1E)
+[![linted with oxlint](https://img.shields.io/badge/linted%20with-oxlint-000?logo=oxc&logoColor=white)](https://oxc.rs)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 
 Plasma is Coveo's design system used in Coveo Cloud Administration Console. It provides a Mantine-themed component library, design tokens, React icons, and documentation. All components and their documentation are available in [the demo page](https://plasma.coveo.com/).
+
+## Usage
+
+```bash
+npm install @coveord/plasma-mantine @mantine/core @mantine/hooks react react-dom
+```
+
+Wrap your application with the `Plasmantine` provider — it applies the Plasma theme on top of Mantine, so you don't need a separate `MantineProvider`:
+
+```tsx
+import {Plasmantine} from '@coveord/plasma-mantine/plasmantine';
+import '@mantine/core/styles.css';
+
+function App() {
+    return <Plasmantine>{/* your app */}</Plasmantine>;
+}
+```
+
+> **Import invariant:** always import from `@coveord/plasma-mantine`, even when Mantine docs were the reference source.
+
+Each package documents its own installation and usage in its README:
+
+| Package                                                         | Purpose                                               |
+| --------------------------------------------------------------- | ----------------------------------------------------- |
+| [`@coveord/plasma-mantine`](packages/mantine/README.md)         | Mantine-themed component library (main package)       |
+| [`@coveord/plasma-tokens`](packages/tokens/README.md)           | Design tokens (colors, typography, spacing, icons, …) |
+| [`@coveord/plasma-react-icons`](packages/react-icons/README.md) | Plasma iconography as React components                |
+| [`@coveord/plasma-llms`](packages/llms/README.md)               | LLM-friendly component documentation                  |
+| [`@coveord/plasma-mcp-server`](packages/mcp-server/README.md)   | MCP server exposing Plasma docs to AI agents          |
+
+## Compatibility
+
+- **React** — requires React **19.2** or later (`react` and `react-dom`).
+- **Mantine** — built for Mantine **9** (`@mantine/core` and `@mantine/hooks` are required peer dependencies). Optional Mantine packages (`@mantine/notifications`, `@mantine/dates`, `@mantine/form`, `@mantine/modals`, `@mantine/carousel`, `@mantine/code-highlight`) are also on the `9.x` line — install the ones you use.
+- **TypeScript** — ships its own type declarations; no `@types` package needed.
+- **Modules** — distributed as ES modules (`"type": "module"`); use a bundler or a Node.js version that supports ESM.
 
 ## AI Coding Agents
 
@@ -15,7 +53,64 @@ Plasma documents its wrapped components in [`@coveord/plasma-llms`](packages/llm
 
 > **Import invariant:** always import from `@coveord/plasma-mantine`, even when Mantine docs were the reference source.
 
-### GitHub Copilot CLI
+<details>
+<summary><strong>Claude Code</strong></summary>
+
+Add both MCP servers to a project-scoped `.mcp.json` at your repository root (commit it to share the setup with your team):
+
+```json
+{
+    "mcpServers": {
+        "plasma": {
+            "command": "npx",
+            "args": ["-y", "@coveord/plasma-mcp-server"]
+        },
+        "mantine": {
+            "command": "npx",
+            "args": ["-y", "@mantine/mcp-server"]
+        }
+    }
+}
+```
+
+Or add them from the CLI:
+
+```bash
+claude mcp add plasma -- npx -y @coveord/plasma-mcp-server
+claude mcp add mantine -- npx -y @mantine/mcp-server
+```
+
+Run `/mcp` inside Claude Code to verify both servers are connected.
+
+</details>
+
+<details>
+<summary><strong>Opencode</strong></summary>
+
+Add both MCP servers to your [Opencode config](https://opencode.ai/docs/mcp-servers/) (`opencode.json` at your repository root, or `~/.config/opencode/opencode.json` for all projects):
+
+```json
+{
+    "$schema": "https://opencode.ai/config.json",
+    "mcp": {
+        "plasma": {
+            "type": "local",
+            "command": ["npx", "-y", "@coveord/plasma-mcp-server"],
+            "enabled": true
+        },
+        "mantine": {
+            "type": "local",
+            "command": ["npx", "-y", "@mantine/mcp-server"],
+            "enabled": true
+        }
+    }
+}
+```
+
+</details>
+
+<details>
+<summary><strong>GitHub Copilot CLI</strong></summary>
 
 Load the Plasma skill in the terminal:
 
@@ -23,7 +118,10 @@ Load the Plasma skill in the terminal:
 /skill https://plasma.coveo.com/plasma-skill.md
 ```
 
-### GitHub Copilot in VS Code (agent mode)
+</details>
+
+<details>
+<summary><strong>GitHub Copilot in VS Code (agent mode)</strong></summary>
 
 Create `.vscode/mcp.json` in your project:
 
@@ -44,7 +142,10 @@ Create `.vscode/mcp.json` in your project:
 }
 ```
 
-### Kiro
+</details>
+
+<details>
+<summary><strong>Kiro</strong></summary>
 
 **Option 1 — MCP servers** (recommended for component API lookups):
 
@@ -75,7 +176,10 @@ inclusion: always
 ---
 ```
 
-### Codex CLI
+</details>
+
+<details>
+<summary><strong>Codex CLI</strong></summary>
 
 Add to `~/.codex/config.toml` (global) or `.codex/config.toml` (project):
 
@@ -89,87 +193,15 @@ command = "npx"
 args = ["-y", "@mantine/mcp-server"]
 ```
 
-## React Compatibility
-
-Plasma requires **React 19** or later.
-
-## Usage
-
-```bash
-npm install @coveord/plasma-mantine
-```
+</details>
 
 ## Contributing
 
-### Build
+See [CONTRIBUTING.md](CONTRIBUTING.md) for how to set up the repo, run the demo, test, and open a pull request. AI coding agents should read [AGENTS.md](AGENTS.md).
 
-Make sure you have
+> `@coveord/plasma-style` and `@coveord/plasma-react` are in maintenance mode and live on the [`v53` branch](https://github.com/coveo/plasma/tree/v53).
 
-- [Node.js](https://nodejs.org/)'s LTS version
-- [PNPM](https://pnpm.io/installation)
-
-### Where are @coveord/plasma-style and @coveord/plasma-react?
-
-The `@coveord/plasma-style` and `@coveord/plasma-react` packages are in maintenance mode and can be found on the [`v53` branch](https://github.com/coveo/plasma/tree/v53).
-
-## Setup
-
-All the commands in the instructions must be run at the root of the project.
-
-First you need to install the project's dependencies and link the projects together.
-
-```bash
-pnpm install
-```
-
-### Running the demo pages locally
-
-```bash
-pnpm start
-```
-
-Changes made to any source files in any package will make the demo rebuild and refresh. Since the projects are in the same repository and we use pnpm, we don't have to link them together.
-
-### Testing
-
-All new unit tests for components should be written using [Vitest](https://vitest.dev/) and [React Testing Library](https://testing-library.com/).
-
-To run all tests from the root, you can run `pnpm test`
-
-Alternatively, you can run it directly from `packages/{packageName}`, which also allows using two other testing methods:
-
-#### Watching and Debugging
-
-1. First, make sure you're in `packages/{packageName}`.
-2. To watch your tests:
-    1. Run `pnpm test:watch`, wait for it to start up then hit any key. This will show you the menu.
-    2. Then, for example, to focus on a particular spec file, hit `p` to filter by a filename regex pattern, then the name of a spec file (e.g `SingleSelectConnected`).
-    3. Then you can use `fdescribe` and `fit` to focus on individual suites and tests respectively
-3. To debug your tests:
-    1. Run `pnpm test:debug`, wait for it to start up then hit any key to pause.
-    2. In a Chromium browser (Chrome / Brave), go to `chrome://inspect` and connect to the Node process.
-    3. From here, you can add a `debugger` statement in a test, save the file, focus on the suite using `p` and then the spec file name.
-    4. When the file is saved and rerun, the debugger should open in the dev tools!
-    5. You will need to close the dev tools for the process to disconnect
-
-### Committing your changes
-
-Every commit made to this repository must comply to the [Conventional Commits specification](https://www.conventionalcommits.org/). Release versions are managed with Changesets instead of being inferred from commit messages.
-
-If your PR changes a releasable package, run:
-
-```bash
-pnpm changeset
-```
-
-Commit the generated file from `.changeset/`. CI will preview the package versions that would be bumped if the PR were merged and later released.
-
-> We have integrated an optional [command line utility](https://github.com/commitizen/cz-cli) to help you build proper commit messages.
->
-> ```bash
-> git add . # stage the changes you want to commit
-> npm run commit-cli # execute the commit message helper
-> ```
+See [CONTRIBUTING.md](CONTRIBUTING.md#writing-changesets) for the changeset format (title rules, per-bump requirements, and examples). You can scaffold a pre-filled changeset with `pnpm changeset:new` and check it with `pnpm changeset:validate`.
 
 ## License
 

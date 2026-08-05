@@ -1,5 +1,5 @@
 import {BoxProps, ElementProps, factory, Factory, List, StylesApiProps, useProps, useStyles} from '@mantine/core';
-import {ReactNode} from 'react';
+import {type ReactNode, type RefObject} from 'react';
 import classes from './PrerequisitesList.module.css';
 import {PrerequisitesListProvider} from './PrerequisitesListContext.js';
 import type {PrerequisitesListIconStylesNames} from './PrerequisitesListIcon.js';
@@ -26,9 +26,9 @@ export type PrerequisitesListFactory = Factory<{
 
 const defaultProps = {} satisfies Partial<PrerequisitesListProps>;
 
-export const PrerequisitesList = factory<PrerequisitesListFactory>((_props, ref) => {
+export const PrerequisitesList = factory<PrerequisitesListFactory>((_props) => {
     const props = useProps('PrerequisitesList', defaultProps, _props);
-    const {children, classNames, className, styles, style, unstyled, vars: _vars, ...others} = props;
+    const {children, classNames, className, styles, style, unstyled, vars, ref, ...others} = props;
     const getStyles = useStyles<PrerequisitesListFactory>({
         name: 'PrerequisitesList',
         classes,
@@ -43,7 +43,7 @@ export const PrerequisitesList = factory<PrerequisitesListFactory>((_props, ref)
     return (
         <PrerequisitesListProvider value={{getStyles}}>
             <List
-                ref={ref}
+                ref={ref as RefObject<HTMLOListElement | null>}
                 {...getStyles('root')}
                 spacing="sm"
                 size="sm"

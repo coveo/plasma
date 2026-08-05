@@ -9,7 +9,7 @@ import {useTable} from '../use-table.js';
 type RowData = {id: string; firstName: string; lastName?: string};
 
 const columnHelper = createColumnHelper<RowData>();
-const columns: Array<ColumnDef<RowData>> = [
+const columns: Array<ColumnDef<RowData, unknown>> = [
     columnHelper.accessor('firstName', {enableSorting: false}),
     columnHelper.accessor('lastName', {enableSorting: false}),
 ];
@@ -19,11 +19,12 @@ const EmptyState = (props: {isFiltered: boolean}) =>
 
 describe('Table', () => {
     describe('when it is vacant', () => {
-        it('hides the footer and header if the table is not filtered', () => {
+        it('hides the toolbar, footer, and header if the table is not filtered', () => {
             const Fixture = () => {
                 const store = useTable<RowData>({initialState: {totalEntries: 0}});
                 return (
                     <Table data={[]} store={store} columns={columns}>
+                        <Table.Toolbar data-testid="table-toolbar">toolbar</Table.Toolbar>
                         <Table.Header data-testid="table-header">header</Table.Header>
                         <Table.Footer data-testid="table-footer">footer</Table.Footer>
                         <Table.NoData>
@@ -34,6 +35,7 @@ describe('Table', () => {
             };
             render(<Fixture />);
 
+            expect(screen.queryByTestId('table-toolbar')).not.toBeInTheDocument();
             expect(screen.queryByTestId('table-header')).not.toBeInTheDocument();
             expect(screen.queryByTestId('table-footer')).not.toBeInTheDocument();
             expect(screen.getByTestId('empty-state')).toBeVisible();
@@ -58,11 +60,12 @@ describe('Table', () => {
             expect(screen.getByTestId('filtered-empty-state')).toBeVisible();
         });
 
-        it('does not hide the footer and header if the table is filtered', () => {
+        it('does not hide the toolbar, footer, and header if the table is filtered', () => {
             const Fixture = () => {
                 const store = useTable<RowData>({initialState: {globalFilter: 'something'}});
                 return (
                     <Table store={store} data={[]} columns={columns}>
+                        <Table.Toolbar data-testid="table-toolbar">toolbar</Table.Toolbar>
                         <Table.Header data-testid="table-header">header</Table.Header>
                         <Table.Footer data-testid="table-footer">footer</Table.Footer>
                         <Table.NoData>
@@ -73,6 +76,7 @@ describe('Table', () => {
             };
             render(<Fixture />);
 
+            expect(screen.getByTestId('table-toolbar')).toBeVisible();
             expect(screen.getByTestId('table-header')).toBeVisible();
             expect(screen.getByTestId('table-footer')).toBeVisible();
             expect(screen.getByTestId('filtered-empty-state')).toBeVisible();
@@ -186,7 +190,7 @@ describe('Table', () => {
         const user = userEvent.setup();
 
         const Fixture = () => {
-            const [cousinNode, setCousinNode] = useState<HTMLDivElement>();
+            const [cousinNode, setCousinNode] = useState<HTMLDivElement | null>(null);
             const store = useTable<RowData>();
 
             return (
@@ -205,7 +209,7 @@ describe('Table', () => {
                             {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
                         ]}
                         columns={columns}
-                        additionalRootNodes={[cousinNode]}
+                        additionalRootNodes={cousinNode ? [cousinNode] : []}
                     />
                 </>
             );

@@ -10,7 +10,7 @@ import {useUrlSyncedState} from '../use-url-synced-state.js';
  * @returns The separate parts, all are an empty string if not present.
  */
 const extractParts = (href: string) =>
-    /^(?<pathname>[^?#]*)(?<search>\?[^#]*|)(?<hash>#[^?]*|)(?<hashSearch>\?.*|)$/.exec(href).groups as {
+    /^(?<pathname>[^?#]*)(?<search>\?[^#]*|)(?<hash>#[^?]*|)(?<hashSearch>\?.*|)$/.exec(href)!.groups as {
         pathname: string;
         search: string;
         hash: string;
@@ -207,7 +207,7 @@ describe.each(['/', '/#', '/#?', '/#hash?with-question=mark', '/sub/path', '/?le
                     ],
                     deserializer: (params, initial) => ({
                         text: params.get('text') ?? initial.text,
-                        nr: params.has('number') ? Number.parseInt(params.get('number'), 10) : initial.nr,
+                        nr: params.has('number') ? Number.parseInt(params.get('number')!, 10) : initial.nr,
                     }),
                 }),
             );

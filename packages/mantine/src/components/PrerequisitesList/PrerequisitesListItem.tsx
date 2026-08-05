@@ -22,9 +22,9 @@ type PrerequisitesListItemFactory = Factory<{
 
 const defaultProps = {} satisfies Partial<PrerequisitesListItemProps>;
 
-export const PrerequisitesListItem = factory<PrerequisitesListItemFactory>((_props, ref) => {
+export const PrerequisitesListItem = factory<PrerequisitesListItemFactory>((_props) => {
     const props = useProps('PrerequisitesListItem', defaultProps, _props);
-    const {className, style, label, description, status, vars: _vars, ...others} = props;
+    const {className, style, label, description, status, vars, ref, ...others} = props;
     const ctx = usePrerequisitesListContext();
 
     return (

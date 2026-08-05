@@ -1,0 +1,140 @@
+@property --fade-stop {
+    syntax: '<percentage>';
+    initial-value: 40%;
+    inherits: false;
+}
+
+.navbar {
+    --dimmed-text-opacity: 0.72;
+    --dimmed-icon-opacity: 0.4;
+
+    gap: var(--mantine-spacing-xs, 8px);
+    align-items: flex-start;
+    padding-bottom: var(--mantine-spacing-md, 24px);
+    background:
+        radial-gradient(
+            180% 60% at 8% -12%,
+            var(--coveo-navigation-gradient-color, #18d4bb) 0%,
+            transparent var(--fade-stop, 40%)
+        ),
+        var(--mantine-color-violet-9);
+    transition-property: transform, top, height, --fade-stop;
+
+    &:not([data-collapsed]) {
+        .collapseToggle {
+            opacity: 0;
+        }
+    }
+
+    @mixin hover {
+        --fade-stop: 50%;
+
+        .collapseToggle {
+            opacity: 1;
+        }
+    }
+}
+
+.deactivateAnimation {
+    /* Safari has a really hard time animating the --fade-stop. Remove it from transition-property */
+    transition-property: transform, top, height;
+}
+
+.navLink {
+    --nl-bg: var(--coveo-background-main-menu, rgb(7 123 107 / 40%));
+    --nl-hover: var(--coveo-background-main-menu, rgb(7 123 107 / 40%));
+    --nl-color: inherit;
+
+    padding: var(--mantine-spacing-xs, 8px);
+    color: var(--mantine-color-white);
+    line-height: var(--mantine-spacing-sm);
+    border-radius: var(--mantine-radius-default);
+    background-color: transparent;
+
+    svg {
+        opacity: var(--dimmed-icon-opacity);
+    }
+
+    &[data-expanded='true'] {
+        .chevron {
+            opacity: 1;
+        }
+    }
+
+    &[data-level='1'] {
+        height: var(--mantine-spacing-xl, 40px);
+        padding: 12px var(--mantine-spacing-xs, 8px);
+    }
+
+    &[data-level='2'] {
+        height: var(--mantine-spacing-lg, 32px);
+
+        .label {
+            font-weight: 500;
+            opacity: var(--dimmed-text-opacity);
+        }
+    }
+
+    &[data-active],
+    &[data-level]:hover {
+        background-color: var(--coveo-background-main-menu, rgb(7 123 107 / 40%));
+
+        &[data-level='1'] {
+            color: var(--mantine-color-white);
+
+            svg {
+                opacity: 1;
+            }
+        }
+
+        &[data-level='2'] {
+            color: var(--coveo-text-main-menu-selected, #1cebcf);
+
+            .label {
+                opacity: 1;
+            }
+        }
+    }
+
+    &[data-active] {
+        background-color: var(--coveo-background-main-menu, rgb(7 123 107 / 40%));
+
+        &[data-level='1'] {
+            color: var(--mantine-color-white);
+
+            svg {
+                opacity: 1;
+            }
+        }
+
+        &[data-level='2'] {
+            color: var(--coveo-text-main-menu-selected, #1cebcf);
+
+            .label {
+                opacity: 1;
+            }
+        }
+    }
+
+    .section {
+        &:where([data-position='left']) {
+            margin-inline-end: 12px;
+        }
+    }
+}
+
+.scrollbar {
+    &,
+    &:hover {
+        background-color: transparent;
+    }
+
+    &[data-orientation='vertical'] .thumb {
+        background-color: var(--mantine-color-white);
+        opacity: var(--dimmed-icon-opacity);
+    }
+}
+
+.collapseToggle {
+    transition: opacity var(--app-shell-transition-duration) var(--app-shell-transition-timing-function);
+}

@@ -167,7 +167,7 @@ describe('DateRangePicker', () => {
             await user.click(screen.getByRole('button', {name: /select date range/i}));
             await screen.findByRole('dialog');
             await user.click(
-                screen.getByRole('textbox', {
+                screen.getByRole('combobox', {
                     name: 'Date range',
                 }),
             );

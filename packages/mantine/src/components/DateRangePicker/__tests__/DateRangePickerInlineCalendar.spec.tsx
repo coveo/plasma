@@ -2,7 +2,8 @@ import {render, screen, userEvent} from '@test-utils';
 
 import {DateRangePickerInlineCalendar} from '../DateRangePickerInlineCalendar.js';
 
-const endOfDay = (year: number, month: number, day: number): Date => new Date(year, month, day, 23, 59, 59, 999);
+const endOfDay = (year: number, month: number, day: number): string =>
+    new Date(year, month, day, 23, 59, 59, 999).toISOString();
 
 describe('DateRangePickerInlineCalendar', () => {
     it('calls onApply when the user clicks on the apply button', async () => {
@@ -38,7 +39,7 @@ describe('DateRangePickerInlineCalendar', () => {
         render(
             <DateRangePickerInlineCalendar
                 presets={{
-                    year2k: {label: 'select me', range: [new Date(1999, 11, 31), endOfDay(2000, 0, 1)]},
+                    year2k: {label: 'select me', range: [new Date(1999, 11, 31).toISOString(), endOfDay(2000, 0, 1)]},
                 }}
                 initialRange={[null, null]}
                 onApply={onApply}
@@ -54,7 +55,7 @@ describe('DateRangePickerInlineCalendar', () => {
         await user.click(screen.getByRole('option', {name: 'select me'}));
         await user.click(screen.getByRole('button', {name: 'Apply'}));
 
-        expect(onApply).toHaveBeenCalledExactlyOnceWith([new Date(1999, 11, 31), endOfDay(2000, 0, 1)]);
+        expect(onApply).toHaveBeenCalledExactlyOnceWith([new Date(1999, 11, 31).toISOString(), endOfDay(2000, 0, 1)]);
     });
 
     it('calls onApply with the selected dates when clicking in the calendar', async () => {

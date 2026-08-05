@@ -45,7 +45,7 @@ export type RadioCardProps = MantineRadioCardProps &
 
 const defaultProps = {} satisfies Partial<RadioCardProps>;
 
-export const RadioCard = factory<RadioCardFactory>((_props, ref) => {
+export const RadioCard = factory<RadioCardFactory>((_props) => {
     const {
         children,
         classNames,
@@ -58,6 +58,7 @@ export const RadioCard = factory<RadioCardFactory>((_props, ref) => {
         description,
         disabledTooltip,
         readOnly,
+        ref,
         ...others
     } = useProps('RadioCard', defaultProps, _props);
     const getStyles = useStyles<RadioCardFactory>({

@@ -1,6 +1,2 @@
-.env
 dist
 .DS_Store
-
-# cache
-.ultra.cache.json

@@ -1,0 +1,20 @@
+.card {
+    &[data-selectable='true'] {
+        cursor: pointer;
+    }
+
+    &:hover,
+    &[data-selected='true'] {
+        .cardCheckbox {
+            opacity: 1;
+        }
+    }
+}
+
+.cardCheckbox {
+    transition: opacity var(--coveo-transition-duration) var(--coveo-transition-function);
+    opacity: 0;
+    position: absolute;
+    top: var(--mantine-spacing-sm);
+    right: var(--mantine-spacing-sm);
+}

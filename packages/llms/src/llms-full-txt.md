@@ -21,3 +21,7 @@ function App() {
 ## Components
 
 {{COMPONENT_DOCS}}
+
+## Content Guidelines
+
+{{CONTENT_DOCS}}

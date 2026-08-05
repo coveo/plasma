@@ -46,7 +46,7 @@ Fetch the component index to see what Plasma documents:
 Fetch specific component docs (props, sub-components, usage examples):
 
 ```
-{{BASE_URL}}/llms/ComponentName.md
+{{BASE_URL}}/llms/components/ComponentName.md
 ```
 
 Fetch full docs for all Plasma-wrapped components (props, sub-components, usage examples):
@@ -61,6 +61,19 @@ If a component isn't listed in the Plasma index, fetch Mantine's documentation:
 
 ```
 https://mantine.dev/llms.txt
+```
+
+## Content Guidelines
+
+Plasma provides content guidelines for writing UX copy in Coveo products. Always follow these when writing user-facing text (labels, errors, tooltips, descriptions, etc.).
+
+Fetch a specific content guideline:
+
+```
+{{BASE_URL}}/llms/content/Voice.md
+{{BASE_URL}}/llms/content/WritingMechanics.md
+{{BASE_URL}}/llms/content/ProductVocabulary.md
+{{BASE_URL}}/llms/content/TargetAudience.md
 ```
 
 ## Import invariant

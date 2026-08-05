@@ -13,7 +13,7 @@ describe('Table.PerPage', () => {
     it('displays the label', () => {
         const data = [{name: 'fruit'}, {name: 'vegetable'}];
         const Fixture = () => {
-            const store = useTable<RowData>();
+            const store = useTable<RowData>({initialState: {totalEntries: 30}});
             return (
                 <Table store={store} data={data} columns={columns}>
                     <Table.Footer>
@@ -28,9 +28,9 @@ describe('Table.PerPage', () => {
     });
 
     it('displays the values', () => {
-        const data = [{name: 'fruit'}, {name: 'vegetable'}];
+        const data = [{name: 'fruit'}, {name: 'vegetable'}, {name: 'grain'}];
         const Fixture = () => {
-            const store = useTable<RowData>({initialState: {pagination: {perPage: 2}}});
+            const store = useTable<RowData>({initialState: {pagination: {perPage: 2}, totalEntries: 3}});
             return (
                 <Table store={store} data={data} columns={columns}>
                     <Table.Footer>
@@ -56,7 +56,7 @@ describe('Table.PerPage', () => {
             const store = useTable<RowData>({
                 initialState: {
                     pagination: {page: 1, perPage: 50},
-                    totalEntries: 52,
+                    totalEntries: 150,
                 },
             });
             return (
@@ -121,6 +121,48 @@ describe('Table.PerPage', () => {
         };
         render(<Fixture />);
         expect(screen.getByTestId('table-footer')).toBeEmptyDOMElement();
+    });
+
+    it('renders nothing when total rows fit in the smallest page size', () => {
+        const data = [{name: 'fruit'}, {name: 'vegetable'}];
+        const Fixture = () => {
+            const store = useTable<RowData>({
+                initialState: {
+                    pagination: {perPage: 10},
+                    totalEntries: 5,
+                },
+            });
+            return (
+                <Table store={store} data={data} columns={columns}>
+                    <Table.Footer data-testid="table-footer">
+                        <Table.PerPage values={[10, 25, 50]} />
+                    </Table.Footer>
+                </Table>
+            );
+        };
+        render(<Fixture />);
+        expect(screen.getByTestId('table-footer')).toBeEmptyDOMElement();
+    });
+
+    it('renders when total rows exceed the smallest page size', () => {
+        const data = [{name: 'fruit'}, {name: 'vegetable'}];
+        const Fixture = () => {
+            const store = useTable<RowData>({
+                initialState: {
+                    pagination: {perPage: 50},
+                    totalEntries: 30,
+                },
+            });
+            return (
+                <Table store={store} data={data} columns={columns}>
+                    <Table.Footer>
+                        <Table.PerPage values={[25, 50, 100]} />
+                    </Table.Footer>
+                </Table>
+            );
+        };
+        render(<Fixture />);
+        expect(screen.getByText('Results per page')).toBeVisible();
     });
 
     describe('when url sync is activated', () => {
