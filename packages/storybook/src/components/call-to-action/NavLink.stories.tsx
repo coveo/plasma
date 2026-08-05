@@ -2,7 +2,7 @@ import {Badge} from '@coveord/plasma-mantine';
 import {NavLink} from '@coveord/plasma-mantine/components/NavLink';
 import {IconHome2} from '@coveord/plasma-react-icons';
 import type {Meta, StoryObj} from '@storybook/react-vite';
-import {BaseInputArgs, InputWrapperArgs} from '../form/InputWrapperArgs.js';
+import {BaseInputArgs, InputWrapperArgs} from '../forms-and-inputs/InputWrapperArgs.js';
 
 const meta: Meta<typeof NavLink> = {
     title: '@components/call-to-action/NavLink',

@@ -1,5 +1,5 @@
 import {type ReactNode} from 'react';
-import {Args, SharedArgs, type WithLabelInfoArgs} from '../Args.js';
+import {Args, SharedArgs, type WithLabelInfoArgs} from '../../Args.js';
 
 export interface InputWrapperStoryArgs extends WithLabelInfoArgs {
     label: ReactNode;
