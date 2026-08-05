@@ -8,6 +8,7 @@ jobs:
     jira-link:
         name: Replace Jira ticket placeholder with link
         runs-on: ubuntu-latest
+        if: github.event.pull_request.head.repo.full_name == github.repository
         permissions:
             pull-requests: write
         steps:
