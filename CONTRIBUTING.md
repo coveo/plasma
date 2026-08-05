@@ -149,6 +149,7 @@ Optional body explaining the change.
 **Body**
 
 - Separate it from the title with a blank line.
+- Write the change as prose. Do **not** use markdown lists (`-`, `*`, `+`, or `1.`); validation rejects them. Use short paragraphs instead.
 - Body headings start at a single `#` (they are re-leveled automatically in the changelog).
 - Use ` ```diff ` fenced blocks for before/after code.
 

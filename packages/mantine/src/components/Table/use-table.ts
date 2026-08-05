@@ -187,6 +187,8 @@ export interface UseTableOptions<TData = unknown> {
     /**
      * Whether multiple rows can be selected at the same time.
      *
+     * Only applies when `enableRowSelection` is `true`.
+     *
      * @default false
      */
     enableMultiRowSelection?: boolean;

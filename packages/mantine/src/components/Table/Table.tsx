@@ -136,6 +136,11 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
     const lastUpdated = convertedChildren.find((child) => child.type === TableLastUpdated);
     const noData = convertedChildren.find((child) => child.type === TableNoData);
 
+    // Selection checkboxes only exist in multi-selection mode. They are interactive when row selection is
+    // enabled, and read-only when row selection is disabled but a selection already exists to display.
+    const isSelectionColumnVisible =
+        store.multiRowSelectionEnabled && (store.rowSelectionEnabled || store.getSelectedRows().length > 0);
+
     const table = useReactTable({
         data: data || [],
         state: {
@@ -156,7 +161,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
             });
         },
         onColumnVisibilityChange: store.setColumnVisibility,
-        columns: store.multiRowSelectionEnabled ? [TableSelectableColumn as ColumnDef<T>].concat(columns) : columns,
+        columns: isSelectionColumnVisible ? [TableSelectableColumn as ColumnDef<T>].concat(columns) : columns,
         getCoreRowModel: getCoreRowModel(),
         manualPagination: options.getPaginationRowModel === undefined,
         enableMultiRowSelection: !!store.multiRowSelectionEnabled,
