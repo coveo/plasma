@@ -47,13 +47,15 @@ const preview: Preview = {
         options: {
             storySort: {
                 order: [
+                    '@getting started',
+                    ['About Plasma', 'Glossary'],
                     '@foundation',
                     ['Overview', 'Colors', 'Iconography', 'Radii', 'Shadows', 'Spacings', 'Typography'],
                     '@components',
                     [
                         'Overview',
                         'Call to action',
-                        'Form',
+                        'Forms and inputs',
                         'Feedback',
                         'Layout',
                         'Data display',
