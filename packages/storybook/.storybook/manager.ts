@@ -12,15 +12,22 @@ addons.setConfig({
         brandTitle: 'Plasma Design System',
         brandImage,
     }),
+
+    sidebar: {
+        showRoots: true,
+        collapsedRoots: ['foundation', 'content', 'changelogs'],
+    },
 });
 
 // Override the browser tab title to show "Plasma Design System" instead of "Storybook"
 const titleElement = document.querySelector('title');
+
 if (titleElement) {
     const observer = new MutationObserver(() => {
         if (document.title.includes('Storybook')) {
             document.title = document.title.replace('Storybook', 'Plasma Design System');
         }
     });
+
     observer.observe(titleElement, {childList: true});
 }

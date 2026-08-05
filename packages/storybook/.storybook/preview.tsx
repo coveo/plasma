@@ -51,6 +51,8 @@ const preview: Preview = {
                     ['About Plasma', 'Glossary'],
                     '@foundation',
                     ['Overview', 'Colors', 'Iconography', 'Radii', 'Shadows', 'Spacings', 'Typography'],
+                    '@content',
+                    ['About', 'Audience', 'Voice', 'Writing mechanics', 'Product vocabulary'],
                     '@components',
                     [
                         'Overview',
@@ -62,8 +64,6 @@ const preview: Preview = {
                         'Typography',
                         'Miscellaneous',
                     ],
-                    '@content',
-                    ['About', 'Audience', 'Voice', 'Writing mechanics', 'Product vocabulary'],
                     '*',
                     'changelogs',
                 ],
