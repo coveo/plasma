@@ -82,23 +82,12 @@ When `variant="hover"`, attach an `onClick` handler to toggle selection. Plasma 
 
 ```tsx
 import {Card, Text} from '@coveord/plasma-mantine';
-import {useState} from 'react';
 
 // Static content container
 function InfoCard() {
     return (
         <Card>
             <Text>Some grouped content here.</Text>
-        </Card>
-    );
-}
-
-// Selectable tile
-function SelectableTile() {
-    const [selected, setSelected] = useState(false);
-    return (
-        <Card variant="hover" mod={{selected}} onClick={() => setSelected((prev) => !prev)}>
-            <Text>Click to select this tile.</Text>
         </Card>
     );
 }
