@@ -3,7 +3,7 @@ import * as stories from './ActionIcon.stories';
 
 <Meta of={stories} title="@components/call-to-action/ActionIcon" />
 
-{/* storybook-usage-guidelines: rewritten */}
+{/* For the agent-friendly version of this documentation, see packages/llms/src/components/ActionIcon.md */}
 
 # ActionIcon
 
@@ -11,28 +11,46 @@ Icon-only button that can trigger actions and can show a disabled-state tooltip.
 
 ## Overview
 
-Use ActionIcon when an action is best represented by an icon alone — for example, delete, close, or edit controls in compact layouts where a full button label would clutter the UI.
+Use `ActionIcon` when an action can be represented clearly by an icon and space is limited.
 
-It extends Mantine's ActionIcon with support for async click handlers and a tooltip that appears when the button is disabled, letting you explain why the action isn't available.
+It works well in dense interfaces like tables, cards, toolbars, and repeated item rows where a full text button would add visual noise.
 
-Choose the sub-component that matches the emphasis level of the action. Use `Destructive` variants for actions that permanently remove or alter data. Pass an async function to `onClick` when the action triggers a network request — the loading state is handled for you.
+Don't use it when the action is primary, high-stakes, or unfamiliar enough to need visible text, or when several adjacent icon-only actions would be hard to tell apart.
+
+## Emphasis variants
+
+Use the Plasma sub-components to set emphasis. Don't use Mantine's `variant` prop directly.
+
+- `ActionIcon.Primary` — most important compact action in a local context.
+- `ActionIcon.Secondary`, `ActionIcon.Tertiary`, `ActionIcon.Quaternary` — decreasing emphasis.
+- `ActionIcon.DestructivePrimary` — primary destructive action in a local context.
+- `ActionIcon.DestructiveSecondary`, `ActionIcon.DestructiveTertiary`, `ActionIcon.DestructiveQuaternary` — decreasing emphasis for destructive actions. Use `DestructiveQuaternary` for low-emphasis removes in repeated rows.
+- `ActionIcon.Group` — visually groups related icon actions together.
+
+Use lower-emphasis variants for repeated row actions so they don't compete with page-level actions.
+
+Only use destructive variants for actions that remove, delete, revoke, or otherwise negatively affect data.
+
+## Async actions
+
+Async `onClick` handlers are supported. The button shows a loading state while the promise resolves.
+
+## Accessibility
+
+- Icon-only actions need an accessible name. Set `aria-label` on the control or on the icon.
+- Disabled actions should explain why they're unavailable using `disabledTooltip`.
+- The icon can't be the only source of meaning when the action is ambiguous.
 
 ## Content guidance
 
-**Icon `aria-label`:**
+**`aria-label`**
 
-- Write a short verb phrase that describes the action: "Delete", "Remove", "Close", "Edit"
-- Use sentence case
-- Don't repeat the surrounding context — "Delete" not "Delete this item"
-- Don't use "icon" or "button" in the label
+- Describe the action, not the icon: "Remove item" not "Trash".
+- Use sentence case.
+- Keep it short — 1–3 words is ideal.
 
-**`disabledTooltip`:**
+**`disabledTooltip`**
 
-- Explain why the action isn't available, not just that it's unavailable
-- Start with the reason: "You don't have permission to remove this item." not "This action is disabled"
-- Keep to 20 words or fewer
-- Write as a full sentence ending with a period
-
----
-
-[Plasma documentation](https://plasma.coveo.com/)
+- Explain why the action is unavailable, not just that it is: "You don't have permission to remove this item" not "Disabled".
+- Write a full sentence. End with a period.
+- Keep it under 20 words.
