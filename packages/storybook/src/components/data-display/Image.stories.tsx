@@ -2,7 +2,7 @@ import {Image} from '@coveord/plasma-mantine/components/Image';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof Image> = {
-    title: '@components/data-display/Image',
+    title: '@components/Data display/Image',
     id: 'Image',
     component: Image,
     parameters: {

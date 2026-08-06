@@ -3,7 +3,7 @@ import type {Meta, StoryObj} from '@storybook/react-vite';
 import {FunctionComponent, ReactNode} from 'react';
 
 const meta: Meta<ChildFormProps> = {
-    title: '@components/layout/ChildForm',
+    title: '@components/Layout/ChildForm',
     id: 'ChildForm',
     component: ChildForm,
     parameters: {

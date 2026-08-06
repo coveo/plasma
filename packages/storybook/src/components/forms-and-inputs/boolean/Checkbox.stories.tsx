@@ -14,7 +14,7 @@ import {
 import {withLabelInfoProps} from '../LabelInfoArgs.js';
 
 const meta: Meta<typeof Checkbox> = {
-    title: '@components/form/boolean/Checkbox',
+    title: '@components/Forms and inputs/boolean/Checkbox',
     id: 'Checkbox',
     component: Checkbox,
     parameters: {

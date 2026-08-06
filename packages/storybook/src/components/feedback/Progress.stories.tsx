@@ -2,7 +2,7 @@ import {Progress} from '@coveord/plasma-mantine/components/Progress';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof Progress> = {
-    title: '@components/feedback/Progress',
+    title: '@components/Feedback/Progress',
     id: 'Progress',
     component: Progress,
     parameters: {

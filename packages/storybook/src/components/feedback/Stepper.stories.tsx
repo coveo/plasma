@@ -3,7 +3,7 @@ import {StoryObj} from '@storybook/react-vite';
 import {useArgs} from 'storybook/preview-api';
 
 const meta = {
-    title: '@components/feedback/Stepper',
+    title: '@components/Feedback/Stepper',
     id: 'Stepper',
     component: Stepper,
     parameters: {

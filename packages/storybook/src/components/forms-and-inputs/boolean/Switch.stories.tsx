@@ -14,7 +14,7 @@ import {
 import {withLabelInfoProps} from '../LabelInfoArgs.js';
 
 const meta: Meta<typeof Switch> = {
-    title: '@components/form/boolean/Switch',
+    title: '@components/Forms and inputs/boolean/Switch',
     id: 'Switch',
     component: Switch,
     parameters: {

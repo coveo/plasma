@@ -2,7 +2,7 @@ import {Alert} from '@coveord/plasma-mantine/components/Alert';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof Alert> = {
-    title: '@components/feedback/Alert',
+    title: '@components/Feedback/Alert',
     id: 'Alert',
     component: Alert,
     parameters: {

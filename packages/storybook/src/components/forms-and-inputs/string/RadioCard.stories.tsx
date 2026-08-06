@@ -7,7 +7,7 @@ import {InlineInputArgs, type InlineInputStoryArgs} from '../InputWrapperArgs.js
 import {withLabelInfoProps} from '../LabelInfoArgs.js';
 
 const meta: Meta<typeof RadioCard> = {
-    title: '@components/form/string/RadioCard',
+    title: '@components/Forms and inputs/string/RadioCard',
     id: 'RadioCard',
     component: RadioCard,
     parameters: {

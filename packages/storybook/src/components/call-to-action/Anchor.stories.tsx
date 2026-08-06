@@ -2,7 +2,7 @@ import {Anchor} from '@coveord/plasma-mantine/components/Anchor';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof Anchor> = {
-    title: '@components/call-to-action/Anchor',
+    title: '@components/Call to action/Anchor',
     id: 'Anchor',
     component: Anchor,
     parameters: {

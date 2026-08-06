@@ -9,7 +9,7 @@ type ActionIconStoryArgs = ActionIconProps & {
 };
 
 const meta: Meta<ActionIconStoryArgs> = {
-    title: '@components/call-to-action/ActionIcon',
+    title: '@components/Call to action/ActionIcon',
     id: 'ActionIcon',
     parameters: {
         layout: 'centered',

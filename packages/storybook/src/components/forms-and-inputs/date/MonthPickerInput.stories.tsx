@@ -13,7 +13,7 @@ import {
 type MonthPickerInputStoryArgs = ComponentProps<typeof MonthPickerInput> & BaseInputStoryArgs & InputWrapperStoryArgs;
 
 const meta = {
-    title: '@components/form/date/MonthPickerInput',
+    title: '@components/Forms and inputs/date/MonthPickerInput',
     id: 'MonthPickerInput',
     component: MonthPickerInput,
     parameters: {

@@ -2,7 +2,7 @@ import {LastUpdated} from '@coveord/plasma-mantine/components/LastUpdated';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof LastUpdated> = {
-    title: '@components/feedback/LastUpdated',
+    title: '@components/Feedback/LastUpdated',
     id: 'LastUpdated',
     component: LastUpdated,
     parameters: {

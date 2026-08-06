@@ -14,7 +14,7 @@ type ModalStoryArgs = ComponentProps<typeof Modal> & {
 };
 
 const meta = {
-    title: '@components/layout/Modal',
+    title: '@components/Layout/Modal',
     id: 'Modal',
     args: {
         opened: true,

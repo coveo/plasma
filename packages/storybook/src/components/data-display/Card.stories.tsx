@@ -3,7 +3,7 @@ import type {Meta, StoryObj} from '@storybook/react-vite';
 import {useArgs} from 'storybook/preview-api';
 
 const meta: Meta<typeof Card> = {
-    title: '@components/data-display/Card',
+    title: '@components/Data display/Card',
     id: 'Card',
     component: Card,
     parameters: {

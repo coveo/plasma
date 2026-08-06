@@ -5,7 +5,7 @@ import type {Meta, StoryObj} from '@storybook/react-vite';
 import React from 'react';
 
 const meta: Meta<typeof Button> = {
-    title: '@components/call-to-action/Button',
+    title: '@components/Call to action/Button',
     id: 'Button',
     component: Button,
     parameters: {

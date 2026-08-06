@@ -5,7 +5,7 @@ import type {Meta, StoryObj} from '@storybook/react-vite';
 import {BaseInputArgs, InputWrapperArgs} from '../forms-and-inputs/InputWrapperArgs.js';
 
 const meta: Meta<typeof NavLink> = {
-    title: '@components/call-to-action/NavLink',
+    title: '@components/Call to action/NavLink',
     id: 'NavLink',
     component: NavLink,
     parameters: {

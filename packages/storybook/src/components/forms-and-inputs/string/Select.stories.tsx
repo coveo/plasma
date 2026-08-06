@@ -13,7 +13,7 @@ import {
 type SelectStoryArgs = ComponentProps<typeof Select> & BaseInputStoryArgs & InputWrapperStoryArgs;
 
 const meta = {
-    title: '@components/form/string/Select',
+    title: '@components/Forms and inputs/string/Select',
     id: 'Select',
     component: Select,
     parameters: {

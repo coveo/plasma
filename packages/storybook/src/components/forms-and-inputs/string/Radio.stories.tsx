@@ -13,7 +13,7 @@ import {
 import {withLabelInfoProps} from '../LabelInfoArgs.js';
 
 const meta: Meta<typeof Radio> = {
-    title: '@components/form/string/Radio',
+    title: '@components/Forms and inputs/string/Radio',
     id: 'Radio',
     component: Radio,
     parameters: {

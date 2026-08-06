@@ -3,7 +3,7 @@ import {IconApple, IconAvocado, IconCherry, IconLemon} from '@coveord/plasma-rea
 import {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof Accordion> = {
-    title: '@components/layout/Accordion',
+    title: '@components/Layout/Accordion',
     id: 'Accordion',
     component: Accordion,
     parameters: {

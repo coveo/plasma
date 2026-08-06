@@ -9,7 +9,7 @@ interface HeaderStoryProps {
 }
 
 const meta: Meta<HeaderProps & HeaderStoryProps> = {
-    title: '@components/layout/Header',
+    title: '@components/Layout/Header',
     id: 'Header',
     component: Header,
     parameters: {

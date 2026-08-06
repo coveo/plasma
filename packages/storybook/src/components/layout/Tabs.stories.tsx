@@ -3,7 +3,7 @@ import type {Meta, StoryObj} from '@storybook/react-vite';
 import {ReactNode} from 'react';
 
 const meta: Meta<typeof Tabs> = {
-    title: '@components/layout/Tabs',
+    title: '@components/Layout/Tabs',
     id: 'Tabs',
     component: Tabs,
     parameters: {

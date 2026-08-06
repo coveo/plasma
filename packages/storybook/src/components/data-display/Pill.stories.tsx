@@ -2,7 +2,7 @@ import {Pill} from '@coveord/plasma-mantine/components/Pill';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof Pill> = {
-    title: '@components/data-display/Pill',
+    title: '@components/Data display/Pill',
     id: 'Pill',
     component: Pill,
     parameters: {

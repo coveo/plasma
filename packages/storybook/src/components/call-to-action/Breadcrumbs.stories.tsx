@@ -6,7 +6,7 @@ import {IconChevronLeft} from '@coveord/plasma-react-icons';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof Breadcrumbs> = {
-    title: '@components/call-to-action/Breadcrumbs',
+    title: '@components/Call to action/Breadcrumbs',
     id: 'Breadcrumbs',
     component: Breadcrumbs,
     parameters: {

@@ -14,7 +14,7 @@ import {withLabelInfoProps} from '../LabelInfoArgs.js';
 type DatePickerInputStoryArgs = ComponentProps<typeof DatePickerInput> & BaseInputStoryArgs & InputWrapperStoryArgs;
 
 const meta = {
-    title: '@components/form/date/DatePickerInput',
+    title: '@components/Forms and inputs/date/DatePickerInput',
     id: 'DatePickerInput',
     component: DatePickerInput,
     parameters: {

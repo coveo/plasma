@@ -2,7 +2,7 @@ import {SegmentedControl} from '@coveord/plasma-mantine/components/SegmentedCont
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof SegmentedControl> = {
-    title: '@components/form/string/SegmentedControl',
+    title: '@components/Forms and inputs/string/SegmentedControl',
     id: 'SegmentedControl',
     component: SegmentedControl,
     parameters: {

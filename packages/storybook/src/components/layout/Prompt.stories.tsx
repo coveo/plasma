@@ -9,7 +9,7 @@ type PromptStoryArgs = PromptProps & {
 };
 
 const meta: Meta<PromptStoryArgs> = {
-    title: '@components/layout/Prompt',
+    title: '@components/Layout/Prompt',
     id: 'Prompt',
     component: Prompt.Information,
     args: {
