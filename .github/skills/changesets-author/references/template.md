@@ -66,7 +66,7 @@ Fix table header inner grid min height
 
 ## Multiple packages
 
-One line per package in the frontmatter; the strongest bump determines the body requirement.
+One line per package in the frontmatter; the strongest bump determines the body requirement. Write the body as prose, not a list.
 
 ```markdown
 ---
@@ -76,6 +76,5 @@ One line per package in the frontmatter; the strongest bump determines the body 
 
 Add content guidelines to LLM documentation outputs and MCP server
 
-- Include content guideline files in `llms.txt` and `llms-full.txt`
-- Add `list_content_guidelines` and `get_content_guideline` MCP tools
+Content guideline files are now included in `llms.txt` and `llms-full.txt`, and the MCP server exposes new `list_content_guidelines` and `get_content_guideline` tools.
 ```

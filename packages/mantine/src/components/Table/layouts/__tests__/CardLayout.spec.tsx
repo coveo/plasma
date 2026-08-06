@@ -143,6 +143,45 @@ describe('CardLayout', () => {
             expect(within(card2).getByRole('checkbox', {name: /select row/i})).toBeVisible();
         });
 
+        it('does not render selection checkboxes when row selection is disabled and the selection is empty', () => {
+            const data: RowData[] = [
+                {id: '1', firstName: 'John', lastName: 'Doe'},
+                {id: '2', firstName: 'Jane', lastName: 'Smith'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: true, enableRowSelection: false});
+                return (
+                    <Table store={store} getRowId={({id}) => id} data={data} columns={columns} layouts={[CardLayout]} />
+                );
+            };
+            render(<Fixture />);
+
+            expect(screen.queryByRole('checkbox', {name: /select row/i})).not.toBeInTheDocument();
+        });
+
+        it('renders read-only checkboxes when row selection is disabled and the selection is not empty', () => {
+            const data: RowData[] = [
+                {id: '1', firstName: 'John', lastName: 'Doe'},
+                {id: '2', firstName: 'Jane', lastName: 'Smith'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({
+                    enableMultiRowSelection: true,
+                    enableRowSelection: false,
+                    initialState: {rowSelection: {'2': {id: '2', firstName: 'Jane', lastName: 'Smith'}}},
+                });
+                return (
+                    <Table store={store} getRowId={({id}) => id} data={data} columns={columns} layouts={[CardLayout]} />
+                );
+            };
+            render(<Fixture />);
+
+            const rowCheckboxes = screen.getAllByRole('checkbox', {name: /select row/i});
+            expect(rowCheckboxes).toHaveLength(2);
+            expect(screen.getByTestId('1')).toHaveAttribute('aria-selected', 'false');
+            expect(screen.getByTestId('2')).toHaveAttribute('aria-selected', 'true');
+        });
+
         it('selects a card when clicking its checkbox', async () => {
             const user = userEvent.setup();
             const data: RowData[] = [

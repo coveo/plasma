@@ -109,7 +109,7 @@
         "cross-env": "10.1.0",
         "embla-carousel": "8.6.0",
         "embla-carousel-react": "8.6.0",
-        "jsdom": "29.1.1",
+        "jsdom": "30.0.1",
         "postcss": "8.5.19",
         "postcss-preset-mantine": "^1.11.0",
         "postcss-simple-vars": "^7.0.1",
