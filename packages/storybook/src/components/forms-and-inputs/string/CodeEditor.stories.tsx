@@ -1,6 +1,6 @@
 import {CodeEditor} from '@coveord/plasma-mantine/components/CodeEditor';
 import type {Meta, StoryObj} from '@storybook/react-vite';
-import {Args} from '../../Args.js';
+import {Args} from '../../../Args.js';
 import {withLabelInfoProps} from '../LabelInfoArgs.js';
 import {InputWrapperArgs, type InputWrapperStoryArgs} from '../InputWrapperArgs.js';
 

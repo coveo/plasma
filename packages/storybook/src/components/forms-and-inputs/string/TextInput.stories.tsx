@@ -2,7 +2,7 @@ import {TextInput} from '@coveord/plasma-mantine/components/TextInput';
 import {IconSearch, IconX} from '@coveord/plasma-react-icons';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import type {ComponentProps} from 'react';
-import {Args} from '../../Args.js';
+import {Args} from '../../../Args.js';
 import {withLabelInfoProps} from '../LabelInfoArgs.js';
 import {
     BaseInputArgs,

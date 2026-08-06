@@ -3,7 +3,7 @@ import {Box} from '@mantine/core';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import {faker} from '@faker-js/faker';
 import type {ComponentProps} from 'react';
-import {Args} from '../../Args.js';
+import {Args} from '../../../Args.js';
 import {withTitleInfoProps} from '../LabelInfoArgs.js';
 
 // Set the seed for faker to avoid mismatch in chromatic

@@ -1,7 +1,7 @@
 import {YearPickerInput} from '@coveord/plasma-mantine/components/YearPickerInput';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import type {ComponentProps} from 'react';
-import {Args} from '../../Args.js';
+import {Args} from '../../../Args.js';
 import {withLabelInfoProps} from '../LabelInfoArgs.js';
 import {
     BaseInputArgs,

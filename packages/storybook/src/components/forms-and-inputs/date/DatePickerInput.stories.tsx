@@ -2,7 +2,7 @@ import {DatePickerInput} from '@coveord/plasma-mantine/components/DatePickerInpu
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import dayjs from 'dayjs';
 import type {ComponentProps} from 'react';
-import {Args} from '../../Args.js';
+import {Args} from '../../../Args.js';
 import {
     BaseInputArgs,
     InputWrapperArgs,
