@@ -12,6 +12,8 @@ minimumReleaseAgeExclude:
   - turbo@2.9.14
   # Renovate security update: vite@8.0.16
   - vite@8.0.16
+  # Renovate security update: postcss@8.5.23
+  - postcss@8.5.23
 peerDependencyRules:
   ignoreMissing:
     - react-native
