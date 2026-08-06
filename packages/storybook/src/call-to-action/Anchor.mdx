@@ -1,0 +1,41 @@
+import {Meta} from '@storybook/addon-docs/blocks';
+import * as stories from './Anchor.stories';
+
+<Meta of={stories} title="@components/call-to-action/Anchor" />
+
+{/* For the agent-friendly version of this documentation, see packages/llms/src/components/Anchor.md */}
+
+# Anchor
+
+Inline text link that navigates the user to another page or section.
+
+## Overview
+
+Use `Anchor` when a navigation action lives inside prose and a full button would be too heavy for the context.
+
+It works well for external URLs, in-app routes, and secondary navigation options like "View documentation" or "See all results" placed beside descriptive text.
+
+Don't use it for actions that trigger mutations or workflow steps — use `Button` instead.
+Don't use it for breadcrumb-style navigation — use `Header.Breadcrumbs` with `Header.BreadcrumbAnchor`.
+
+## Sizing
+
+- `sm` — standard body text links.
+- `xs` — compact areas like table cells or captions.
+- Pass `inherit` when the anchor sits inside a `Text` or other typographic container so its font size and weight come from the parent.
+
+## Opening links in a new tab
+
+Only open links in a new tab when leaving the current context would interrupt the user's task.
+
+When doing so, signal this to screen-reader users through visible text or an `aria-label`.
+
+## Content guidance
+
+**Link text**
+
+- Describe the destination or action clearly: "Plasma documentation" not "click here" or "read more".
+- Use sentence case.
+- Keep labels short and descriptive.
+- Don't end with punctuation unless it's part of a sentence.
+- Don't wrap large blocks of content in an `Anchor` — links should target concise, meaningful labels.
