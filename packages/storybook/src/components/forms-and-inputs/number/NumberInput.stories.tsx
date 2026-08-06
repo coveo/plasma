@@ -1,0 +1,111 @@
+import {NumberInput} from '@coveord/plasma-mantine/components/NumberInput';
+import {IconCoins} from '@coveord/plasma-react-icons';
+import type {Meta, StoryObj} from '@storybook/react-vite';
+import type {ComponentProps} from 'react';
+import {withLabelInfoProps} from '../LabelInfoArgs.js';
+import {
+    BaseInputArgs,
+    InputWrapperArgs,
+    type BaseInputStoryArgs,
+    type InputWrapperStoryArgs,
+} from '../InputWrapperArgs.js';
+
+type NumberInputStoryArgs = Omit<ComponentProps<typeof NumberInput>, 'leftSection'> &
+    BaseInputStoryArgs &
+    InputWrapperStoryArgs & {
+        leftSection: boolean;
+    };
+
+const meta = {
+    title: '@components/Forms and inputs/number/NumberInput',
+    id: 'NumberInput',
+    component: NumberInput,
+    parameters: {
+        layout: 'centered',
+    },
+    args: {
+        ...InputWrapperArgs.Args,
+        ...BaseInputArgs.Args,
+        leftSection: false,
+        defaultValue: 0,
+    },
+    argTypes: {
+        ...InputWrapperArgs.ArgsTypes,
+        ...BaseInputArgs.ArgsTypes,
+        leftSection: {
+            control: 'boolean',
+            description: 'Show icon in left section',
+            table: {
+                type: {summary: 'ReactNode'},
+            },
+        },
+        prefix: {
+            control: 'text',
+            description: 'Prefix for the input value',
+            table: {
+                type: {summary: 'string'},
+            },
+        },
+        suffix: {
+            control: 'text',
+            description: 'Suffix for the input value',
+            table: {
+                type: {summary: 'string'},
+            },
+        },
+        min: {
+            control: 'number',
+            description: 'Minimum value',
+            table: {
+                type: {summary: 'number'},
+            },
+        },
+        max: {
+            control: 'number',
+            description: 'Maximum value',
+            table: {
+                type: {summary: 'number'},
+            },
+        },
+        allowNegative: {
+            control: 'boolean',
+            description: 'Allow negative values',
+            table: {
+                defaultValue: {summary: 'true'},
+                type: {summary: 'boolean'},
+            },
+        },
+        allowDecimal: {
+            control: 'boolean',
+            description: 'Allow decimal values',
+            table: {
+                defaultValue: {summary: 'true'},
+                type: {summary: 'boolean'},
+            },
+        },
+        thousandSeparator: {
+            control: 'text',
+            description: 'Thousand separator character',
+            table: {
+                defaultValue: {summary: "','"},
+                type: {summary: 'string'},
+            },
+        },
+        decimalSeparator: {
+            control: 'text',
+            description: 'Decimal separator character',
+            table: {
+                defaultValue: {summary: "'.'"},
+                type: {summary: 'string'},
+            },
+        },
+    },
+} satisfies Meta<NumberInputStoryArgs>;
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Demo: Story = {
+    render: ({leftSection, ...props}) => (
+        <NumberInput leftSection={leftSection ? <IconCoins size={16} /> : undefined} {...withLabelInfoProps(props)} />
+    ),
+};
