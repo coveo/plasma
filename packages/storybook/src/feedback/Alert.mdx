@@ -3,7 +3,7 @@ import * as stories from './Alert.stories';
 
 <Meta of={stories} title="@components/feedback/Alert" />
 
-{/* storybook-usage-guidelines: rewritten */}
+{/* For the agent-friendly version of this documentation, see packages/llms/src/components/Alert.md */}
 
 # Alert
 
@@ -11,34 +11,35 @@ Alert callout for contextual information, advice, warnings, critical errors, and
 
 ## Overview
 
-Use an Alert to surface an in-page message that needs the user's attention — a tip, a caution, an error, or a confirmation that something succeeded. Alerts are static and contextual; they appear inline near the content they relate to, not as overlays or toasts.
+Use `Alert` when a message should remain visible in the page layout until the user has had a chance to read it.
 
-Choose the variant that matches the nature of the message so the visual weight matches the urgency. Use `Alert.Critical` only for genuine errors — overusing high-urgency variants reduces their effectiveness.
+It works well for messages that affect the current page, form, or workflow — context, advice, warnings, errors, or success feedback placed near the related content.
+
+Don't use it for transient feedback (use `Notification`), optional field clarification (use helper text), blocking decisions (use `Prompt` or `Modal`), or compact status labels (use `Badge` or `StatusToken`).
+
+## Variants
+
+Use the Plasma sub-components to set message type. Don't use Mantine's `color` or `variant` props directly.
+
+- `Alert.Information` — neutral contextual information.
+- `Alert.Advice` — recommendations or next-best-action guidance.
+- `Alert.Warning` — users can proceed but should be careful.
+- `Alert.Critical` — errors, failures, or blocking issues.
+- `Alert.Success` — persistent success states that remain relevant in context.
 
 ## Content guidance
 
-**`title`:**
+**Title**
 
-- Use sentence case
-- Keep to 1–4 words
-- Name the situation, not the severity: "Unsaved changes" not "Warning"
-- Don't end with punctuation
+- State the message purpose clearly and briefly.
+- Use sentence case.
+- Don't end with a period or colon.
+- Keep it short — ideally under 6 words.
 
-**Alert body:**
+**Body**
 
-- Write as one or two full sentences ending with a period
-- Lead with what happened or what the user needs to know, then add context or next steps
-- Keep to 25 words or fewer
-- Use plain language — avoid jargon and technical terms the user may not know
-
-**Variant selection:**
-
-- Use `Alert.Information` for neutral context that isn't time-sensitive
-- Use `Alert.Advice` for optional tips that improve the experience
-- Use `Alert.Warning` when ignoring the message could cause data loss or errors
-- Use `Alert.Critical` for failures that block the user or require immediate action
-- Use `Alert.Success` only after a user-initiated action completes — don't use it for passive status updates
-
----
-
-[Plasma documentation](https://plasma.coveo.com/)
+- Explain the impact or the next step.
+- Write full sentences. End with a period.
+- For `Alert.Critical`, make the consequence and recovery path clear.
+- Don't put long documentation in the body — link to supporting content instead.
+- Don't stack multiple alerts when related messages can be grouped into one.
