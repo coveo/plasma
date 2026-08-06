@@ -70,7 +70,7 @@
         "@typescript/native-preview": "7.0.0-dev.20260707.2",
         "fs-extra": "11.3.6",
         "glob": "13.0.6",
-        "jsdom": "29.1.1",
+        "jsdom": "30.0.1",
         "lodash.groupby": "4.6.0",
         "lodash.upperfirst": "4.3.1",
         "publint": "0.3.21",
