@@ -35,18 +35,18 @@
         "@types/node": "24.13.3",
         "@typescript/native-preview": "7.0.0-dev.20260707.2",
         "aws-sdk": "2.1693.0",
-        "eslint": "10.7.0",
-        "eslint-plugin-storybook": "10.5.2",
+        "eslint": "10.8.0",
+        "eslint-plugin-storybook": "10.5.5",
         "eslint-plugin-testing-library": "7.16.2",
         "husky": "9.1.7",
-        "lint-staged": "17.0.8",
-        "oxfmt": "0.59.0",
-        "oxlint": "1.74.0",
+        "lint-staged": "17.3.0",
+        "oxfmt": "0.61.0",
+        "oxlint": "1.76.0",
         "oxlint-tsgolint": "7.0.2001",
-        "postcss": "8.5.23",
-        "stylelint": "17.14.0",
+        "postcss": "8.5.25",
+        "stylelint": "17.14.1",
         "stylelint-config-standard-scss": "17.0.0",
-        "turbo": "2.10.5"
+        "turbo": "2.10.8"
     },
     "lint-staged": {
         "**/*.{js,jsx,ts,tsx,mjs,json,md,yml,html}": [
@@ -63,5 +63,5 @@
         "IE 11",
         "not dead"
     ],
-    "packageManager": "pnpm@11.13.1+sha512.b2fc7683b8a6525414e7d13e1ba28caaddde96bf66ec540bfaeb7e702b81f3e0be4d1f295edf7f9fe0396740a8dce4509c582ddf79891f4543fea32d37645f25"
+    "packageManager": "pnpm@11.19.0+sha512.7881f3ed590d472c4a955e2b88b2121791116066dcc88cbca3849ec9b60f1bbaa6d2ccb221fa91da4e1c65bef2bcbe379365aea7ac539c7bf86dedc3a1b22dce"
 }
