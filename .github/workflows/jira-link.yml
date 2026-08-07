@@ -1,0 +1,44 @@
+name: Auto-link Jira ticket
+
+on:
+    pull_request:
+        types: [opened, edited]
+
+jobs:
+    jira-link:
+        name: Replace Jira ticket placeholder with link
+        runs-on: ubuntu-latest
+        if: github.event.pull_request.head.repo.full_name == github.repository
+        permissions:
+            pull-requests: write
+        steps:
+            - name: Harden Runner
+              uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
+              with:
+                  egress-policy: audit
+
+            - name: Update Jira link in PR body
+              uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
+              with:
+                  script: |
+                      const body = context.payload.pull_request.body ?? '';
+
+                      // Match "Jira ticket: PROJ-123" where the ticket is plain text (not already a link)
+                      const updated = body.replace(
+                          /### Jira ticket: ([A-Z]+-\d+)(?!\])/g,
+                          '### Jira ticket: [$1](https://coveord.atlassian.net/browse/$1)'
+                      );
+
+                      if (updated === body) {
+                          console.log('No plain-text Jira ticket placeholder found — nothing to update.');
+                          return;
+                      }
+
+                      await github.rest.pulls.update({
+                          owner: context.repo.owner,
+                          repo: context.repo.repo,
+                          pull_number: context.payload.pull_request.number,
+                          body: updated,
+                      });
+
+                      console.log('PR body updated with Jira link.');
