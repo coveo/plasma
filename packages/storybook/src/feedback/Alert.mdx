@@ -1,0 +1,45 @@
+import {Meta} from '@storybook/addon-docs/blocks';
+import * as stories from './Alert.stories';
+
+<Meta of={stories} title="@components/feedback/Alert" />
+
+{/* For the agent-friendly version of this documentation, see packages/llms/src/components/Alert.md */}
+
+# Alert
+
+Alert callout for contextual information, advice, warnings, critical errors, and success states.
+
+## Overview
+
+Use `Alert` when a message should remain visible in the page layout until the user has had a chance to read it.
+
+It works well for messages that affect the current page, form, or workflow — context, advice, warnings, errors, or success feedback placed near the related content.
+
+Don't use it for transient feedback (use `Notification`), optional field clarification (use helper text), blocking decisions (use `Prompt` or `Modal`), or compact status labels (use `Badge` or `StatusToken`).
+
+## Variants
+
+Use the Plasma sub-components to set message type. Don't use Mantine's `color` or `variant` props directly.
+
+- `Alert.Information` — neutral contextual information.
+- `Alert.Advice` — recommendations or next-best-action guidance.
+- `Alert.Warning` — users can proceed but should be careful.
+- `Alert.Critical` — errors, failures, or blocking issues.
+- `Alert.Success` — persistent success states that remain relevant in context.
+
+## Content guidance
+
+**Title**
+
+- State the message purpose clearly and briefly.
+- Use sentence case.
+- Don't end with a period or colon.
+- Keep it short — ideally under 6 words.
+
+**Body**
+
+- Explain the impact or the next step.
+- Write full sentences. End with a period.
+- For `Alert.Critical`, make the consequence and recovery path clear.
+- Don't put long documentation in the body — link to supporting content instead.
+- Don't stack multiple alerts when related messages can be grouped into one.
