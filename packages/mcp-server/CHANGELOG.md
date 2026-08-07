@@ -1,5 +1,25 @@
 # @coveord/plasma-mcp-server
 
+## 60.2.0
+
+### Minor Changes
+
+- Add `Navigation` component for collapsible sidebar navigation [#4491](https://github.com/coveo/plasma/pull/4491)
+
+  The `Navigation` compound component provides a collapsible sidebar navigation system. `Navigation.SideBar` wraps Mantine's `AppShell.Navbar` with a scrollable content area and a built-in toggle. `Navigation.Section` renders a collapsible group of links that automatically hides when empty. `Navigation.Link` supports nesting levels, badges, and custom router components. `Navigation.Toggle` provides a chevron button to collapse or expand the sidebar. `Navigation.Badge` displays a status badge (Beta, WIP, or New) on links.
+
+  The `useNavigation()` hook exposes `collapsed` state and `toggleCollapsed` for integrating with `AppShell`.
+
+- Add `Table.Toolbar` sub-component for rendering filters outside the header grid [#4481](https://github.com/coveo/plasma/pull/4481)
+
+  `Table.Toolbar` is a new opt-in container that renders above the table. Place `Table.Filter`, `Table.Predicate`, or `Table.DateRangePicker` inside it to display them outside the `Table.Header`. Components inside the toolbar skip the `Grid.Col` wrapper and render as plain flex items instead.
+
+  The toolbar accepts standard Box props and supports `renderRoot` and `className` for full customization. Existing tables are unaffected — the toolbar is entirely additive.
+
+- Publish component guidance, catalog, and glossary to AI agents [#4564](https://github.com/coveo/plasma/pull/4564)
+
+  Published agent-ready component usage guidance, including APIs and implementation patterns throughout Plasma. `ComponentsOverview` now lets agents discover Plasma and Mantine components before they retrieve detailed guidance. The LLM documentation and MCP server now also publish the Plasma glossary as a content guideline, enabling agents to reference design-system terminology.
+
 ## 60.1.0
 
 ### Minor Changes
