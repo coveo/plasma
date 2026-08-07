@@ -1,6 +1,7 @@
 ---
 '@coveord/plasma-mantine': minor
 '@coveord/plasma-llms': minor
+'@coveord/plasma-mcp-server': minor
 ---
 
 Add `Navigation` component for collapsible sidebar navigation
