@@ -1,6 +1,7 @@
 ---
 '@coveord/plasma-mantine': minor
 '@coveord/plasma-llms': minor
+'@coveord/plasma-mcp-server': minor
 ---
 
 Add `Table.Toolbar` sub-component for rendering filters outside the header grid
