@@ -35,7 +35,6 @@ Do not use `StatusToken` when:
 
 ## Variants
 
-- Use `info` (default) for neutral or informational status.
 - Use `success` for healthy or completed states.
 - Use `caution` for warning or attention states.
 - Use `error` for failure or critical states.
@@ -61,7 +60,7 @@ Do not use `StatusToken` when:
 > Extends: `BoxProps`, `StylesApiProps<StatusTokenFactory>`. Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
 
 **`size`** `'sm' | 'lg'` · optional · default: `'lg'` — The size of the token MAY be set to control the rendered icon dimensions.
-**`variant`** `'info' | 'success' | 'caution' | 'error' | 'disabled' | 'waiting' | 'edited' | 'new'` · optional · default: `'info'` — The variant of the token MUST match the status semantics you need to communicate.
+**`variant`** `'success' | 'caution' | 'error' | 'disabled' | 'waiting' | 'edited' | 'new'` · required — The variant of the token MUST match the status semantics you need to communicate.
 
 ## Usage
 

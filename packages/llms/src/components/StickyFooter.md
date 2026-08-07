@@ -23,7 +23,6 @@ Do not use `StickyFooter` when:
 
 - the page is not in an edit or creation state
 - actions apply only to a small local section of the page
-- the content is short enough that actions remain naturally visible without scrolling
 - the footer is inside a modal; use `Modal.Footer` instead
 
 ## Decision-making guidance
