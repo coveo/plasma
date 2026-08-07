@@ -58,14 +58,14 @@ importers:
         specifier: 7.0.2001
         version: 7.0.2001
       postcss:
-        specifier: 8.5.23
-        version: 8.5.23
+        specifier: 8.5.24
+        version: 8.5.24
       stylelint:
         specifier: 17.14.0
         version: 17.14.0(typescript@6.0.3)
       stylelint-config-standard-scss:
         specifier: 17.0.0
-        version: 17.0.0(postcss@8.5.23)(stylelint@17.14.0(typescript@6.0.3))
+        version: 17.0.0(postcss@8.5.24)(stylelint@17.14.0(typescript@6.0.3))
       turbo:
         specifier: 2.10.5
         version: 2.10.5
@@ -219,14 +219,14 @@ importers:
         specifier: 30.0.1
         version: 30.0.1
       postcss:
-        specifier: 8.5.23
-        version: 8.5.23
+        specifier: 8.5.24
+        version: 8.5.24
       postcss-preset-mantine:
         specifier: ^1.11.0
-        version: 1.18.0(postcss@8.5.23)
+        version: 1.18.0(postcss@8.5.24)
       postcss-simple-vars:
         specifier: ^7.0.1
-        version: 7.0.1(postcss@8.5.23)
+        version: 7.0.1(postcss@8.5.24)
       publint:
         specifier: 0.3.21
         version: 0.3.21
@@ -241,7 +241,7 @@ importers:
         version: 6.1.3
       vitest:
         specifier: 4.1.10
-        version: 4.1.10(@types/node@24.13.3)(esbuild@0.27.7)(jsdom@30.0.1)(sugarss@5.0.1(postcss@8.5.23))(yaml@2.9.0)
+        version: 4.1.10(@types/node@24.13.3)(esbuild@0.27.7)(jsdom@30.0.1)(sugarss@5.0.1(postcss@8.5.24))(yaml@2.9.0)
 
   packages/mcp-server:
     dependencies:
@@ -275,7 +275,7 @@ importers:
         version: 5.9.3
       vitest:
         specifier: 4.1.10
-        version: 4.1.10(@types/node@24.13.3)(esbuild@0.27.7)(jsdom@30.0.1)(sugarss@5.0.1(postcss@8.5.23))(yaml@2.9.0)
+        version: 4.1.10(@types/node@24.13.3)(esbuild@0.27.7)(jsdom@30.0.1)(sugarss@5.0.1(postcss@8.5.24))(yaml@2.9.0)
 
   packages/react-icons:
     dependencies:
@@ -348,10 +348,10 @@ importers:
         version: 6.1.3
       vite:
         specifier: 8.1.5
-        version: 8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.23))(yaml@2.9.0)
+        version: 8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.24))(yaml@2.9.0)
       vitest:
         specifier: 4.1.10
-        version: 4.1.10(@types/node@24.13.3)(esbuild@0.27.7)(jsdom@30.0.1)(sugarss@5.0.1(postcss@8.5.23))(yaml@2.9.0)
+        version: 4.1.10(@types/node@24.13.3)(esbuild@0.27.7)(jsdom@30.0.1)(sugarss@5.0.1(postcss@8.5.24))(yaml@2.9.0)
 
   packages/storybook:
     dependencies:
@@ -397,10 +397,10 @@ importers:
     devDependencies:
       '@storybook/addon-docs':
         specifier: 10.5.2
-        version: 10.5.2(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(esbuild@0.27.7)(storybook@10.5.2(@types/react@19.2.17)(prettier@2.8.8)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(vite@8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.23))(yaml@2.9.0))
+        version: 10.5.2(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(esbuild@0.27.7)(storybook@10.5.2(@types/react@19.2.17)(prettier@2.8.8)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(vite@8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.24))(yaml@2.9.0))
       '@storybook/react-vite':
         specifier: 10.5.2
-        version: 10.5.2(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(esbuild@0.27.7)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(storybook@10.5.2(@types/react@19.2.17)(prettier@2.8.8)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(typescript@6.0.3)(vite@8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.23))(yaml@2.9.0))
+        version: 10.5.2(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(esbuild@0.27.7)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(storybook@10.5.2(@types/react@19.2.17)(prettier@2.8.8)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(typescript@6.0.3)(vite@8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.24))(yaml@2.9.0))
       '@types/react':
         specifier: 19.2.17
         version: 19.2.17
@@ -412,19 +412,19 @@ importers:
         version: 7.0.0-dev.20260707.2
       '@vitejs/plugin-react':
         specifier: 6.0.3
-        version: 6.0.3(vite@8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.23))(yaml@2.9.0))
+        version: 6.0.3(vite@8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.24))(yaml@2.9.0))
       globals:
         specifier: 17.7.0
         version: 17.7.0
       postcss-preset-mantine:
         specifier: 1.18.0
-        version: 1.18.0(postcss@8.5.23)
+        version: 1.18.0(postcss@8.5.24)
       storybook:
         specifier: 10.5.2
         version: 10.5.2(@types/react@19.2.17)(prettier@2.8.8)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       vite:
         specifier: 8.1.5
-        version: 8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.23))(yaml@2.9.0)
+        version: 8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.24))(yaml@2.9.0)
 
   packages/tokens:
     dependencies:
@@ -3513,13 +3513,8 @@ packages:
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
 
-  nanoid@3.3.12:
-    resolution: {integrity: sha512-ZB9RH/39qpq5Vu6Y+NmUaFhQR6pp+M2Xt76XBnEwDaGcVAqhlvxrl3B2bKS5D3NH3QR76v3aSrKaF/Kiy7lEtQ==}
-    engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
-    hasBin: true
-
-  nanoid@3.3.16:
-    resolution: {integrity: sha512-bzlKTyNJ7+LdGIIwy8ijFpIqEQIvafahV7eYykJ8Cvh42EdJeODoJ6gUJXpQJvej1BddH8OqTXZNE/KfbWAu8Q==}
+  nanoid@3.3.17:
+    resolution: {integrity: sha512-xQLf0A3HOMlgHq0n247/LRuAOYmB7dXJ/DvAxGvsSBij45XtBSmQycu+F8ODbHwns/XyFZagyL1+J0Offw1E0g==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
@@ -3781,12 +3776,8 @@ packages:
   postcss-value-parser@4.2.0:
     resolution: {integrity: sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==}
 
-  postcss@8.5.19:
-    resolution: {integrity: sha512-Mz8SaolMd8nB+G13WkORcxQKHZ/NE4xXevtkJHVuG+guo9/wYKlIMTKAqGdEmYOXR2ijPjTYNHssizdaVSUNdQ==}
-    engines: {node: ^10 || ^12 || >=14}
-
-  postcss@8.5.23:
-    resolution: {integrity: sha512-g50586zr4bZmwFiTlflMu8E0bDTb5I5gertgwAKmsdUlTQIhZtunzUlD1WSzwcVWPoAVpsrA6vlfCD7oXvRwgg==}
+  postcss@8.5.24:
+    resolution: {integrity: sha512-8RyVklq0owXUTa4xlpzu4l9AaVKIdQvAcOHZWaMh98HgySsUtxRVf/chRe3dsSLqb6i40BzGRzEUddRaI+9TSw==}
     engines: {node: ^10 || ^12 || >=14}
 
   prelude-ls@1.2.1:
@@ -5310,11 +5301,11 @@ snapshots:
 
   '@isaacs/cliui@9.0.0': {}
 
-  '@joshwooding/vite-plugin-react-docgen-typescript@0.7.0(typescript@6.0.3)(vite@8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.23))(yaml@2.9.0))':
+  '@joshwooding/vite-plugin-react-docgen-typescript@0.7.0(typescript@6.0.3)(vite@8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.24))(yaml@2.9.0))':
     dependencies:
       glob: 13.0.6
       react-docgen-typescript: 2.4.0(typescript@6.0.3)
-      vite: 8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.23))(yaml@2.9.0)
+      vite: 8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.24))(yaml@2.9.0)
     optionalDependencies:
       typescript: 6.0.3
 
@@ -5802,10 +5793,10 @@ snapshots:
 
   '@standard-schema/spec@1.1.0': {}
 
-  '@storybook/addon-docs@10.5.2(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(esbuild@0.27.7)(storybook@10.5.2(@types/react@19.2.17)(prettier@2.8.8)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(vite@8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.23))(yaml@2.9.0))':
+  '@storybook/addon-docs@10.5.2(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(esbuild@0.27.7)(storybook@10.5.2(@types/react@19.2.17)(prettier@2.8.8)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(vite@8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.24))(yaml@2.9.0))':
     dependencies:
       '@mdx-js/react': 3.1.1(@types/react@19.2.17)(react@19.2.7)
-      '@storybook/csf-plugin': 10.5.2(esbuild@0.27.7)(storybook@10.5.2(@types/react@19.2.17)(prettier@2.8.8)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(vite@8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.23))(yaml@2.9.0))
+      '@storybook/csf-plugin': 10.5.2(esbuild@0.27.7)(storybook@10.5.2(@types/react@19.2.17)(prettier@2.8.8)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(vite@8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.24))(yaml@2.9.0))
       '@storybook/icons': 2.0.2(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@storybook/react-dom-shim': 10.5.2(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(storybook@10.5.2(@types/react@19.2.17)(prettier@2.8.8)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))
       react: 19.2.7
@@ -5821,24 +5812,24 @@ snapshots:
       - vite
       - webpack
 
-  '@storybook/builder-vite@10.5.2(esbuild@0.27.7)(storybook@10.5.2(@types/react@19.2.17)(prettier@2.8.8)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(vite@8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.23))(yaml@2.9.0))':
+  '@storybook/builder-vite@10.5.2(esbuild@0.27.7)(storybook@10.5.2(@types/react@19.2.17)(prettier@2.8.8)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(vite@8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.24))(yaml@2.9.0))':
     dependencies:
-      '@storybook/csf-plugin': 10.5.2(esbuild@0.27.7)(storybook@10.5.2(@types/react@19.2.17)(prettier@2.8.8)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(vite@8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.23))(yaml@2.9.0))
+      '@storybook/csf-plugin': 10.5.2(esbuild@0.27.7)(storybook@10.5.2(@types/react@19.2.17)(prettier@2.8.8)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(vite@8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.24))(yaml@2.9.0))
       storybook: 10.5.2(@types/react@19.2.17)(prettier@2.8.8)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       ts-dedent: 2.2.0
-      vite: 8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.23))(yaml@2.9.0)
+      vite: 8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.24))(yaml@2.9.0)
     transitivePeerDependencies:
       - esbuild
       - rollup
       - webpack
 
-  '@storybook/csf-plugin@10.5.2(esbuild@0.27.7)(storybook@10.5.2(@types/react@19.2.17)(prettier@2.8.8)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(vite@8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.23))(yaml@2.9.0))':
+  '@storybook/csf-plugin@10.5.2(esbuild@0.27.7)(storybook@10.5.2(@types/react@19.2.17)(prettier@2.8.8)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(vite@8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.24))(yaml@2.9.0))':
     dependencies:
       storybook: 10.5.2(@types/react@19.2.17)(prettier@2.8.8)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       unplugin: 2.3.11
     optionalDependencies:
       esbuild: 0.27.7
-      vite: 8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.23))(yaml@2.9.0)
+      vite: 8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.24))(yaml@2.9.0)
 
   '@storybook/global@5.0.0': {}
 
@@ -5856,11 +5847,11 @@ snapshots:
       '@types/react': 19.2.17
       '@types/react-dom': 19.2.3(@types/react@19.2.17)
 
-  '@storybook/react-vite@10.5.2(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(esbuild@0.27.7)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(storybook@10.5.2(@types/react@19.2.17)(prettier@2.8.8)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(typescript@6.0.3)(vite@8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.23))(yaml@2.9.0))':
+  '@storybook/react-vite@10.5.2(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(esbuild@0.27.7)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(storybook@10.5.2(@types/react@19.2.17)(prettier@2.8.8)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(typescript@6.0.3)(vite@8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.24))(yaml@2.9.0))':
     dependencies:
-      '@joshwooding/vite-plugin-react-docgen-typescript': 0.7.0(typescript@6.0.3)(vite@8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.23))(yaml@2.9.0))
+      '@joshwooding/vite-plugin-react-docgen-typescript': 0.7.0(typescript@6.0.3)(vite@8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.24))(yaml@2.9.0))
       '@rollup/pluginutils': 5.4.0
-      '@storybook/builder-vite': 10.5.2(esbuild@0.27.7)(storybook@10.5.2(@types/react@19.2.17)(prettier@2.8.8)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(vite@8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.23))(yaml@2.9.0))
+      '@storybook/builder-vite': 10.5.2(esbuild@0.27.7)(storybook@10.5.2(@types/react@19.2.17)(prettier@2.8.8)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(vite@8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.24))(yaml@2.9.0))
       '@storybook/react': 10.5.2(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(storybook@10.5.2(@types/react@19.2.17)(prettier@2.8.8)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(typescript@6.0.3)
       empathic: 2.0.1
       magic-string: 0.30.21
@@ -5870,7 +5861,7 @@ snapshots:
       resolve: 1.22.12
       storybook: 10.5.2(@types/react@19.2.17)(prettier@2.8.8)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       tsconfig-paths: 4.2.0
-      vite: 8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.23))(yaml@2.9.0)
+      vite: 8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.24))(yaml@2.9.0)
     optionalDependencies:
       typescript: 6.0.3
     transitivePeerDependencies:
@@ -6217,10 +6208,10 @@ snapshots:
     dependencies:
       valibot: 1.4.2(typescript@5.9.3)
 
-  '@vitejs/plugin-react@6.0.3(vite@8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.23))(yaml@2.9.0))':
+  '@vitejs/plugin-react@6.0.3(vite@8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.24))(yaml@2.9.0))':
     dependencies:
       '@rolldown/pluginutils': 1.0.1
-      vite: 8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.23))(yaml@2.9.0)
+      vite: 8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.24))(yaml@2.9.0)
 
   '@vitest/expect@3.2.4':
     dependencies:
@@ -6239,13 +6230,13 @@ snapshots:
       chai: 6.2.2
       tinyrainbow: 3.1.0
 
-  '@vitest/mocker@4.1.10(vite@8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.23))(yaml@2.9.0))':
+  '@vitest/mocker@4.1.10(vite@8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.24))(yaml@2.9.0))':
     dependencies:
       '@vitest/spy': 4.1.10
       estree-walker: 3.0.3
       magic-string: 0.30.21
     optionalDependencies:
-      vite: 8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.23))(yaml@2.9.0)
+      vite: 8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.24))(yaml@2.9.0)
 
   '@vitest/pretty-format@3.2.4':
     dependencies:
@@ -7529,9 +7520,7 @@ snapshots:
 
   ms@2.1.3: {}
 
-  nanoid@3.3.12: {}
-
-  nanoid@3.3.16: {}
+  nanoid@3.3.17: {}
 
   natural-compare@1.4.0: {}
 
@@ -7779,41 +7768,41 @@ snapshots:
 
   possible-typed-array-names@1.1.0: {}
 
-  postcss-js@4.1.0(postcss@8.5.23):
+  postcss-js@4.1.0(postcss@8.5.24):
     dependencies:
       camelcase-css: 2.0.1
-      postcss: 8.5.23
+      postcss: 8.5.24
 
   postcss-media-query-parser@0.2.3: {}
 
-  postcss-mixins@12.1.2(postcss@8.5.23):
+  postcss-mixins@12.1.2(postcss@8.5.24):
     dependencies:
-      postcss: 8.5.23
-      postcss-js: 4.1.0(postcss@8.5.23)
-      postcss-simple-vars: 7.0.1(postcss@8.5.23)
-      sugarss: 5.0.1(postcss@8.5.23)
+      postcss: 8.5.24
+      postcss-js: 4.1.0(postcss@8.5.24)
+      postcss-simple-vars: 7.0.1(postcss@8.5.24)
+      sugarss: 5.0.1(postcss@8.5.24)
       tinyglobby: 0.2.17
 
-  postcss-nested@7.0.2(postcss@8.5.23):
+  postcss-nested@7.0.2(postcss@8.5.24):
     dependencies:
-      postcss: 8.5.23
+      postcss: 8.5.24
       postcss-selector-parser: 7.1.1
 
-  postcss-preset-mantine@1.18.0(postcss@8.5.23):
+  postcss-preset-mantine@1.18.0(postcss@8.5.24):
     dependencies:
-      postcss: 8.5.23
-      postcss-mixins: 12.1.2(postcss@8.5.23)
-      postcss-nested: 7.0.2(postcss@8.5.23)
+      postcss: 8.5.24
+      postcss-mixins: 12.1.2(postcss@8.5.24)
+      postcss-nested: 7.0.2(postcss@8.5.24)
 
   postcss-resolve-nested-selector@0.1.6: {}
 
-  postcss-safe-parser@7.0.1(postcss@8.5.23):
+  postcss-safe-parser@7.0.1(postcss@8.5.24):
     dependencies:
-      postcss: 8.5.23
+      postcss: 8.5.24
 
-  postcss-scss@4.0.9(postcss@8.5.23):
+  postcss-scss@4.0.9(postcss@8.5.24):
     dependencies:
-      postcss: 8.5.23
+      postcss: 8.5.24
 
   postcss-selector-parser@7.1.1:
     dependencies:
@@ -7825,21 +7814,15 @@ snapshots:
       cssesc: 3.0.0
       util-deprecate: 1.0.2
 
-  postcss-simple-vars@7.0.1(postcss@8.5.23):
+  postcss-simple-vars@7.0.1(postcss@8.5.24):
     dependencies:
-      postcss: 8.5.23
+      postcss: 8.5.24
 
   postcss-value-parser@4.2.0: {}
 
-  postcss@8.5.19:
+  postcss@8.5.24:
     dependencies:
-      nanoid: 3.3.12
-      picocolors: 1.1.1
-      source-map-js: 1.2.1
-
-  postcss@8.5.23:
-    dependencies:
-      nanoid: 3.3.16
+      nanoid: 3.3.17
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
@@ -8224,26 +8207,26 @@ snapshots:
 
   strip-indent@4.1.1: {}
 
-  stylelint-config-recommended-scss@17.0.1(postcss@8.5.23)(stylelint@17.14.0(typescript@6.0.3)):
+  stylelint-config-recommended-scss@17.0.1(postcss@8.5.24)(stylelint@17.14.0(typescript@6.0.3)):
     dependencies:
-      postcss-scss: 4.0.9(postcss@8.5.23)
+      postcss-scss: 4.0.9(postcss@8.5.24)
       stylelint: 17.14.0(typescript@6.0.3)
       stylelint-config-recommended: 18.0.0(stylelint@17.14.0(typescript@6.0.3))
       stylelint-scss: 7.2.0(stylelint@17.14.0(typescript@6.0.3))
     optionalDependencies:
-      postcss: 8.5.23
+      postcss: 8.5.24
 
   stylelint-config-recommended@18.0.0(stylelint@17.14.0(typescript@6.0.3)):
     dependencies:
       stylelint: 17.14.0(typescript@6.0.3)
 
-  stylelint-config-standard-scss@17.0.0(postcss@8.5.23)(stylelint@17.14.0(typescript@6.0.3)):
+  stylelint-config-standard-scss@17.0.0(postcss@8.5.24)(stylelint@17.14.0(typescript@6.0.3)):
     dependencies:
       stylelint: 17.14.0(typescript@6.0.3)
-      stylelint-config-recommended-scss: 17.0.1(postcss@8.5.23)(stylelint@17.14.0(typescript@6.0.3))
+      stylelint-config-recommended-scss: 17.0.1(postcss@8.5.24)(stylelint@17.14.0(typescript@6.0.3))
       stylelint-config-standard: 40.0.0(stylelint@17.14.0(typescript@6.0.3))
     optionalDependencies:
-      postcss: 8.5.23
+      postcss: 8.5.24
 
   stylelint-config-standard@40.0.0(stylelint@17.14.0(typescript@6.0.3)):
     dependencies:
@@ -8293,8 +8276,8 @@ snapshots:
       micromatch: 4.0.8
       normalize-path: 3.0.0
       picocolors: 1.1.1
-      postcss: 8.5.23
-      postcss-safe-parser: 7.0.1(postcss@8.5.23)
+      postcss: 8.5.24
+      postcss-safe-parser: 7.0.1(postcss@8.5.24)
       postcss-selector-parser: 7.1.4
       postcss-value-parser: 4.2.0
       string-width: 8.2.1
@@ -8306,9 +8289,9 @@ snapshots:
       - supports-color
       - typescript
 
-  sugarss@5.0.1(postcss@8.5.23):
+  sugarss@5.0.1(postcss@8.5.24):
     dependencies:
-      postcss: 8.5.23
+      postcss: 8.5.24
 
   supports-color@10.2.2: {}
 
@@ -8534,24 +8517,24 @@ snapshots:
     optionalDependencies:
       typescript: 5.9.3
 
-  vite@8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.23))(yaml@2.9.0):
+  vite@8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.24))(yaml@2.9.0):
     dependencies:
       lightningcss: 1.32.0
       picomatch: 4.0.5
-      postcss: 8.5.19
+      postcss: 8.5.24
       rolldown: 1.1.5
       tinyglobby: 0.2.17
     optionalDependencies:
       '@types/node': 24.13.3
       esbuild: 0.27.7
       fsevents: 2.3.3
-      sugarss: 5.0.1(postcss@8.5.23)
+      sugarss: 5.0.1(postcss@8.5.24)
       yaml: 2.9.0
 
-  vitest@4.1.10(@types/node@24.13.3)(esbuild@0.27.7)(jsdom@30.0.1)(sugarss@5.0.1(postcss@8.5.23))(yaml@2.9.0):
+  vitest@4.1.10(@types/node@24.13.3)(esbuild@0.27.7)(jsdom@30.0.1)(sugarss@5.0.1(postcss@8.5.24))(yaml@2.9.0):
     dependencies:
       '@vitest/expect': 4.1.10
-      '@vitest/mocker': 4.1.10(vite@8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.23))(yaml@2.9.0))
+      '@vitest/mocker': 4.1.10(vite@8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.24))(yaml@2.9.0))
       '@vitest/pretty-format': 4.1.10
       '@vitest/runner': 4.1.10
       '@vitest/snapshot': 4.1.10
@@ -8568,7 +8551,7 @@ snapshots:
       tinyexec: 1.2.4
       tinyglobby: 0.2.17
       tinyrainbow: 3.1.0
-      vite: 8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.23))(yaml@2.9.0)
+      vite: 8.1.5(@types/node@24.13.3)(esbuild@0.27.7)(sugarss@5.0.1(postcss@8.5.24))(yaml@2.9.0)
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 24.13.3
