@@ -9,54 +9,54 @@ import * as stories from './Badge.stories';
 
 Status label that can display short text, counts, or metadata tags.
 
-## Usage guidance
+## Overview
 
-### What problem does it solve?
+Use a Badge to attach a compact, scannable label to an item — for status, category, count, or metadata.
 
-The `Badge` gives users a compact text label for status, category, count, or metadata that needs to be visible near an object.
+It works well in lists, cards, and headers where you need to communicate a state at a glance without interrupting the user's flow.
 
-### When to use it
+## When to use
 
-Use `Badge` when:
+Reach for a Badge when a short text label adds meaningful context to an item and that label needs to stay visible without drawing too much attention.
 
-- a short label adds scannable metadata to an item
-- a state or category should be visible but not interruptive
-- the value is textual and needs more context than an icon alone
-- a list, card, or header needs compact status information
+Good fits include status indicators, category tags, and count callouts in dense layouts.
 
-### When not to use it
+## When not to use
 
-Do not use `Badge` when:
+Don't use a Badge when the information needs explanation or action — use an `Alert` or inline text instead.
 
-- the message needs explanation or action; use `Alert` or inline text
-- only a small semantic marker is needed; use `StatusToken`
-- the value is interactive; use a button or link pattern
-- the label is too long to scan as metadata
+Don't use it as a button or link.
 
-### Decision-making guidance
+If all you need is a small icon-like marker and space is tight, `StatusToken` is a better fit.
 
-- Use `Badge` for readable status or metadata text.
-- Use `StatusToken` when an icon-like status marker is enough or space is very constrained.
-- Keep the default `small` size for dense lists and inline metadata; use `large` only when the badge must read as a standalone status indicator.
+## Choosing a variant
 
-### Variants
+Plasma provides pre-configured sub-components for each semantic meaning.
+Use these instead of setting Mantine's `color` or `variant` props directly.
 
-- Ignore Mantine's `color`/`variant` props for choosing status; select meaning through the Plasma sub-components below.
-- Use `Badge.Primary` for the most prominent neutral label on an item.
-- Use `Badge.Secondary` for lower-emphasis neutral metadata.
-- Use `Badge.Success` for healthy, enabled, or completed states.
-- Use `Badge.Warning` for cautionary states.
-- Use `Badge.Critical` for error or failure states.
-- Use `Badge.Disabled` for unavailable or inactive states.
+- `Badge.Primary` — the most prominent neutral label on an item
+- `Badge.Secondary` — lower-emphasis neutral metadata
+- `Badge.Success` — healthy, enabled, or completed states
+- `Badge.Warning` — cautionary states
+- `Badge.Critical` — error or failure states
+- `Badge.Disabled` — unavailable or inactive states
 
-### Content guidance
+## Size
 
-- Badge text should be short, usually one to three words.
-- Use nouns or concise state labels rather than full sentences.
-- Keep wording consistent across badges in the same set.
+The default `small` size works for dense lists and inline metadata.
 
-### Common anti-patterns
+Use `large` only when the badge needs to read as a standalone status indicator with more visual weight.
 
-- Using badges as buttons.
-- Writing long explanatory messages inside badges.
-- Using semantic colors inconsistently across similar statuses.
+## Content guidance
+
+**Badge label (`children`):**
+
+- Keep text short — one to three words is the target
+- Use nouns or concise state labels, not full sentences
+- Don't write explanatory messages inside a badge
+- Keep wording consistent across badges in the same set: "Active" not "Currently active" alongside "Inactive"
+
+**Semantic color (`Badge.Primary`, `Badge.Success`, etc.):**
+
+- Pick the sub-component that matches the actual meaning of the state, not just the color you want
+- Don't use semantic variants inconsistently across similar statuses in the same view
