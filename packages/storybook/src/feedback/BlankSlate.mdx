@@ -8,9 +8,15 @@ import {Meta} from '@storybook/addon-docs/blocks';
 
 Empty state container for views with no content to display.
 
-## Usage
+## Overview
 
-The most common use case is rendering a table empty state, often with an action to clear filters.
+Use a BlankSlate to fill a view when there's nothing to show yet — for example, an empty table, a filtered result set with no matches, or a section that hasn't been configured.
+
+It provides a consistent, bordered container for an empty-state message and optional actions.
+
+## When to use
+
+The most common use case is a table empty state, paired with a way to recover — like clearing filters.
 
 ```tsx
 import {BlankSlate, Button, Table, Title} from '@coveord/plasma-mantine';
@@ -29,7 +35,7 @@ const Example = () => (
 );
 ```
 
-You can also use `BlankSlate` for simpler empty states.
+You can also use it for simpler empty states with no action.
 
 ```tsx
 import {BlankSlate, Title} from '@coveord/plasma-mantine';
@@ -41,7 +47,7 @@ const EmptyState = () => (
 );
 ```
 
-If the surrounding layout already has its own border, disable the `BlankSlate` border.
+If the surrounding layout already has its own border, turn off the BlankSlate border to avoid doubling up.
 
 ```tsx
 import {BlankSlate, Title} from '@coveord/plasma-mantine';
@@ -53,3 +59,23 @@ const EmptyState = () => (
     </BlankSlate>
 );
 ```
+
+## Content guidance
+
+**Heading (`Title`):**
+
+- Lead with what's missing or why the view is empty: "No data found for those filters" not "Empty"
+- Use sentence case
+- Keep it to one short phrase — don't write a full sentence with a period
+
+**Body or description (`children`):**
+
+- Add a short explanation only when the reason for the empty state isn't obvious from the heading
+- Don't repeat the heading in different words
+- Keep it to one sentence
+
+**Action label (`Button`):**
+
+- Use a verb that describes exactly what happens: "Clear filters" not "Try again"
+- Keep it to three words or fewer
+- Only include an action when there's a clear recovery path
