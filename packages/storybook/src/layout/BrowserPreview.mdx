@@ -1,0 +1,95 @@
+import {Meta} from '@storybook/addon-docs/blocks';
+import * as stories from './BrowserPreview.stories';
+
+<Meta of={stories} title="@components/layout/BrowserPreview" />
+
+{/* For the agent-friendly version of this documentation, see packages/llms/src/components/BrowserPreview.md */}
+
+# BrowserPreview
+
+Renders a simulated browser chrome frame around preview content.
+
+## Usage guidance
+
+### What problem does it solve?
+
+The `BrowserPreview` frames content as a simulated browser view so users can evaluate how a rendered page, result, or experience will look in context.
+
+### When to use it
+
+Use `BrowserPreview` when:
+
+- users need to preview content as it will appear in a browser-like surface
+- the preview benefits from a title or header tooltip
+- the content is separate from the configuration controls around it
+- the interface needs to distinguish editable settings from preview output
+
+### When not to use it
+
+Do not use `BrowserPreview` when:
+
+- the content is the actual page, not a preview
+- the frame would add decoration without clarifying context
+- users need to interact with a full application shell
+- the preview content is too small or abstract for the simulated browser frame to add meaningful context
+
+### Decision-making guidance
+
+- Use `BrowserPreview` for preview surfaces inside configuration or authoring flows.
+- Use `AppShell` for real application layout.
+- Use `Card` or layout primitives for ordinary content grouping.
+
+### Interaction notes
+
+- Preview content may be interactive when that helps users validate behavior.
+- Header tooltips should clarify what is being previewed, not explain the whole feature.
+- Keep controls that modify the preview outside the preview frame when possible.
+
+### Common anti-patterns
+
+- Using browser chrome as decoration around normal content.
+- Putting unrelated controls inside the preview surface.
+- Treating a preview frame as the real navigational shell.
+
+```tsx
+import {useState} from 'react';
+import {BrowserPreview, Flex, Pagination, Stack, Text} from '@coveord/plasma-mantine';
+
+const products = [
+    {name: 'Wireless Mouse', department: 'Accessories', price: '$29'},
+    {name: 'Mechanical Keyboard', department: 'Accessories', price: '$99'},
+    {name: 'USB-C Dock', department: 'Peripherals', price: '$149'},
+    {name: 'Noise-Cancelling Headphones', department: 'Audio', price: '$199'},
+    {name: '4K Monitor', department: 'Displays', price: '$399'},
+    {name: 'Laptop Stand', department: 'Workspace', price: '$59'},
+];
+
+const pageSize = 3;
+
+export function Example() {
+    const [page, setPage] = useState(1);
+    const total = Math.ceil(products.length / pageSize);
+    const currentPageProducts = products.slice((page - 1) * pageSize, page * pageSize);
+
+    return (
+        <BrowserPreview title="Product catalog" headerTooltip="Preview the content exactly as users will see it.">
+            <Stack flex={1}>
+                <Stack gap="xl" pb="sm">
+                    {currentPageProducts.map((product) => (
+                        <Stack key={product.name} gap={0}>
+                            <Text>{product.name}</Text>
+                            <Text size="xs" c="dimmed">
+                                {product.department} • {product.price}
+                            </Text>
+                        </Stack>
+                    ))}
+                </Stack>
+
+                <Flex justify="center" mt="auto">
+                    <Pagination value={page} total={total} onChange={setPage} />
+                </Flex>
+            </Stack>
+        </BrowserPreview>
+    );
+}
+```
