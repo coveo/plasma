@@ -9,46 +9,43 @@ import * as stories from './Breadcrumbs.stories';
 
 Horizontal trail of navigation links showing the user's position within a page hierarchy.
 
-## Usage guidance
+## Overview
 
-### What problem does it solve?
+Use Breadcrumbs to orient users on pages that sit two or more levels deep in a navigation tree.
 
-`Breadcrumbs` shows users where they are within a multi-level information hierarchy and lets them navigate back to ancestor pages without using the browser back button.
+It lets them jump back to any ancestor page without relying on the browser's back button.
 
-### When to use it
+## When to use
 
-- Pages that sit two or more levels deep in a navigation tree.
-- Drill-down workflows such as an item detail page reached from a list.
-- Contexts where the user may want to jump directly to a grandparent level rather than navigating step-by-step.
+Reach for Breadcrumbs on detail pages reached through a drill-down flow — like an item detail page reached from a list — where the user may want to jump directly to a grandparent level.
 
-### When not to use it
+Don't use it in flat, single-level apps where there's no meaningful hierarchy, or inside modals and drawers where closing is the expected exit.
 
-- Flat, single-level applications where there is no meaningful hierarchy.
-- Inside modals or drawers where the user is expected to close rather than navigate away.
+## Placement
 
-### Decision-making guidance
+In Plasma products, place breadcrumbs inside a page `Header` using `Header.Breadcrumbs` and `Header.BreadcrumbAnchor`.
 
-- In Plasma products, breadcrumbs are normally placed inside a page `Header` via `Header.Breadcrumbs` / `Header.BreadcrumbAnchor`; use standalone `Breadcrumbs` only outside a `Header` context.
-- When there are two ancestors, use two `Anchor` links.
-- When there are three or more ancestors, show up to three `Anchor` links — avoid going deeper as it becomes unreadable.
-- Do not include the current page in the trail — the page header already shows the current page name.
-- All items must be `Anchor` elements so they are keyboard-focusable and screen-reader navigable.
-- Pass `inherit` on each `Anchor` child so its font size matches the `Breadcrumbs` container styling.
+Use standalone `Breadcrumbs` only when you're outside a `Header` context.
 
-### Interaction notes
+## How many levels to show
 
-The separator between items is rendered automatically by the component. Do not place separator characters manually between children.
+Show up to three `Anchor` links for three or more ancestors.
 
-### Accessibility expectations
+For a single parent, use one `Anchor` with a back-arrow affordance.
 
-- Consider wrapping the `Breadcrumbs` in a `&lt;nav aria-label="Breadcrumb"&gt;` landmark when the page does not already have a dedicated navigation region for it.
-- Each ancestor link must have descriptive text that matches or summarises the target page title.
+Don't include the current page in the trail — the page header already communicates where the user is.
 
-### Common anti-patterns
+## Implementation notes
 
-- Including the current page in the trail — the page header already communicates where the user is.
-- Nesting more than three levels; deeply nested breadcrumbs become unreadable and suggest that the information architecture needs rethinking.
-- Using plain `&lt;a&gt;` tags instead of `Anchor` children, which bypasses Plasma theming and focus styles.
+All items must be `Anchor` elements so they are keyboard-focusable and screen-reader navigable.
+
+Pass `inherit` on each `Anchor` child so its font size matches the `Breadcrumbs` container styling.
+
+The separator between items renders automatically — don't add separator characters manually between children.
+
+Consider wrapping `Breadcrumbs` in a `&lt;nav aria-label="Breadcrumb"&gt;` landmark when the page doesn't already have a dedicated navigation region.
+
+Don't use plain `&lt;a&gt;` tags instead of `Anchor` children — that bypasses Plasma theming and focus styles.
 
 ```tsx
 import {Anchor, Breadcrumbs, Flex} from '@coveord/plasma-mantine';
@@ -82,3 +79,16 @@ function Level2() {
     );
 }
 ```
+
+## Content guidance
+
+**Ancestor link labels (`Anchor` children):**
+
+- Use the exact name of the target page as it appears in the navigation: "Query pipelines" not "Go back to query pipelines"
+- Keep each label short — one to three words is the target
+- Don't use generic labels like "Back" or "Previous" unless you're using a single-parent back-arrow pattern
+
+**Trail depth:**
+
+- Show at most three ancestor links — nesting deeper makes the trail unreadable and points to an information architecture problem
+- Don't include the current page; the page heading already shows where the user is
