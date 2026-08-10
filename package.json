@@ -43,7 +43,7 @@
         "oxfmt": "0.59.0",
         "oxlint": "1.74.0",
         "oxlint-tsgolint": "7.0.2001",
-        "postcss": "8.5.19",
+        "postcss": "8.5.23",
         "stylelint": "17.14.0",
         "stylelint-config-standard-scss": "17.0.0",
         "turbo": "2.10.5"
