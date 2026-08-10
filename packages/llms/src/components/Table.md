@@ -71,7 +71,7 @@ Important states include:
 
 ## Props
 
-> Extends: `BoxProps & StylesApiProps<PlasmaTableFactory>`. Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
+> Extends: `BoxProps & StylesApiProps<TableFactory>`. Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
 
 **`store`** `TableStore<TData>` · required · default: `undefined` — You MUST pass the table store returned by `useTable`.
 **`data`** `TData[] | null` · required · default: `undefined` — Data to display in the table. You MUST use `null` when the table is initially loading.

@@ -397,15 +397,59 @@ export * from './components/Switch/Switch.js';
 
 // Table - override Mantine Table
 export {flexRender as renderTableCell} from '@tanstack/react-table';
+export {
+    type TableActionItemFactory,
+    type TableActionItemProps,
+    type TableActionItemStylesNames,
+} from './components/Table/table-actions/TableActionItem.js';
 export {TableActionsColumn} from './components/Table/table-column/TableActionsColumn.js';
+export {type TableActionsColumnMeta} from './components/Table/table-column/TableActionsColumn.js';
 export {
     type TableCellProps,
     type TableCellFactory,
     type TableCellStylesNames,
 } from './components/Table/table-cell/TableCell.js';
-export {type TablePredicateProps} from './components/Table/table-predicate/TablePredicate.js';
-export {type TableToolbarProps} from './components/Table/table-toolbar/TableToolbar.js';
-export {Table, TableComponentsOrder, type PlasmaTableFactory} from './components/Table/Table.js';
+export {
+    type TableDateRangePickerFactory,
+    type TableDateRangePickerProps,
+    type TableDateRangePickerStylesNames,
+} from './components/Table/table-date-range-picker/TableDateRangePicker.js';
+export {
+    type TableFilterFactory,
+    type TableFilterProps,
+    type TableFilterStylesNames,
+} from './components/Table/table-filter/TableFilter.js';
+export {type TableFooterProps} from './components/Table/table-footer/TableFooter.js';
+export {
+    type TableHeaderFactory,
+    type TableHeaderProps,
+    type TableHeaderStylesNames,
+} from './components/Table/table-header/TableHeader.js';
+export {
+    type TableLastUpdatedFactory,
+    type TableLastUpdatedProps,
+    type TableLastUpdatedStylesNames,
+} from './components/Table/table-last-updated/TableLastUpdated.js';
+export {type TableNoDataProps} from './components/Table/table-no-data/TableNoData.js';
+export {type TablePaginationProps} from './components/Table/table-pagination/TablePagination.types.js';
+export {type TablePerPageProps} from './components/Table/table-per-page/TablePerPage.types.js';
+export {
+    type TablePredicateFactory,
+    type TablePredicateProps,
+    type TablePredicateStylesNames,
+} from './components/Table/table-predicate/TablePredicate.js';
+export {
+    type TableToolbarFactory,
+    type TableToolbarProps,
+    type TableToolbarStylesNames,
+} from './components/Table/table-toolbar/TableToolbar.js';
+export {
+    Table,
+    TableComponentsOrder,
+    type PlasmaTableFactory,
+    type TableFactory,
+    type TableStylesNames,
+} from './components/Table/Table.js';
 export {
     type TableAction,
     type TableLayout,
