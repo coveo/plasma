@@ -22,7 +22,10 @@ Before considering Step 1 complete for a component:
 - [ ] Inline code and fenced code blocks were not escaped or rewritten
 - [ ] If the source `.md` contained pipe tables, they were converted to Mantine `<Table>` JSX (pipe tables do not render in MDX without `remark-gfm`)
 - [ ] `[Full Plasma documentation]({{BASE_URL}})` was removed entirely
-- [ ] No rendered `{{BASE_URL}}` link or placeholder footer remains
+- [ ] No rendered `{{BASE_URL}}` link or placeholder footer remains in the output `.mdx` file
+- [ ] No em-dashes (`—`) appear in any prose written by the agent
+- [ ] No semicolons (`;`) appear in any prose written by the agent (except when reproducing existing text)
+- [ ] In any prose blocks added by the agent, each sentence is on its own line separated by a blank line
 - [ ] No completion marker comments were added by Skill 1
 - [ ] Agent-redirect comment `{/* For the agent-friendly version... */}` is present immediately after `<Meta ... />`
 - [ ] Original `.md` source file is untouched

@@ -20,6 +20,7 @@ Before considering Step 2 complete for a component:
 - [ ] `## Props`, `## Sub-components`, and `## Usage` sections were removed from the docs page
 - [ ] Each prose sentence that should render as its own paragraph is on its own line, separated from the next by a blank line
 - [ ] No em-dashes (`—`) appear in any rewritten prose (rewrite as periods, commas, or separate sentences)
+- [ ] No semicolons (`;`) appear in any rewritten prose (use a colon, period, or comma instead, except when quoting or reproducing existing text)
 - [ ] Approved contractions used (don't, can't, it's, etc.) and no banned contractions (it'll, would've, could've, etc.)
 - [ ] Active voice by default. Passive voice only in confirmations or status messages.
 - [ ] Sentence case for all headings and UI text (only first word and proper nouns capitalized)

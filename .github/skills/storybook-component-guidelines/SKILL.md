@@ -208,13 +208,19 @@ Exceptions. Do not apply this rule inside:
 
 ---
 
-## Em-dash rule
+## Em-dash and semicolon rule
 
-Do not use em-dashes (`—`) anywhere in prose you write. This means no clause separators, no spaced usage (`word — word`), and no em-dashes at all.
+Do not use em-dashes (`—`) or semicolons (`;`) anywhere in prose you write.
+This means no clause separators, no spaced usage (`word — word`), and no em-dashes at all.
+It also means no semicolons joining independent clauses or separating list items.
 
-If you feel the need for an em-dash, rewrite the sentence. Use a period, a comma, or split into two sentences instead.
+When you feel the need for either, rewrite the sentence using the appropriate substitute:
 
-The only exception is when quoting or reproducing existing text that already contains an em-dash.
+- **Listing or explaining something:** use a colon. Example: "There are two options: light and dark."
+- **Separating two independent clauses:** use a period. Split into two sentences.
+- **Separating two dependent clauses:** use a comma.
+
+The only exception is when quoting or directly reproducing existing text that already contains an em-dash or semicolon.
 
 ---
 
@@ -277,6 +283,7 @@ Do not use: it'll, would've, could've, should've, you'd, it'd, there'd, there'll
 
 - Sentence case for all UI text and headings. Only capitalize the first word and proper nouns. Exception: title case for navigation menu items only.
 - No em-dashes (`—`). Not as clause separators, not with spaces, not at all. Rewrite the sentence using a period, comma, or split into two sentences.
+- No semicolons (`;`) in prose. Use a colon when listing or explaining, a period when separating independent clauses, or a comma when separating dependent clauses. The only exception is quoting or reproducing existing text.
 - Exclamation marks: at most one per context, only for genuinely positive moments (completed setup, new feature enabled). Never use for errors, warnings, neutral states, or instructional copy.
 - No ellipses except to indicate a process in progress or truncated content.
 - No ALL CAPS for emphasis. Rewrite `MUST`, `SHOULD`, `MAY` as natural language.
@@ -312,6 +319,7 @@ After rewriting the `.mdx` file and before presenting the commit to the user, re
 
 - [ ] Approved contractions from `WritingMechanics.md` are used (don't, can't, it's, etc.). No banned contractions (it'll, would've, could've, etc.).
 - [ ] No em-dashes (`—`) anywhere in prose
+- [ ] No semicolons (`;`) in prose (use a colon, period, or comma instead, except when quoting or reproducing existing text)
 - [ ] Active voice by default. Passive voice only in confirmations or status messages.
 - [ ] Sentence case for all headings and UI text (only first word and proper nouns capitalized)
 - [ ] No "we", "our", "us", or "Coveo" as the subject of an action (always "you" or omit the subject)

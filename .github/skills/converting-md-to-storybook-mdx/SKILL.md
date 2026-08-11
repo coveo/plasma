@@ -130,7 +130,7 @@ Do the following in order:
 
     Do not escape content inside fenced code blocks or inline code.
 
-4. **Handle the `{{BASE_URL}}` link:** remove `[Full Plasma documentation]({{BASE_URL}})` entirely.
+4. **Handle the `{{BASE_URL}}` link:** remove `[Full Plasma documentation]({{BASE_URL}})` entirely. This line appears at the end of every source `.md` file. It must not appear anywhere in the output `.mdx` file. If it appears in the output, the step has not been completed correctly.
 5. **Preserve everything else:** fenced code blocks, inline code, lists, and headings carry over unchanged.
 6. **Convert pipe tables to `<Table>` JSX:** markdown pipe tables do not render in this Storybook setup (no `remark-gfm`). If the source `.md` contains pipe tables, convert them to Mantine `<Table>` components during this step. Add `import {Table} from '@mantine/core';` alongside the `Meta` import. Use `withTableBorder` and `withColumnBorders` on every table. See [references/mdx-patterns.md](references/mdx-patterns.md) for the full `<Table>` pattern.
 7. **Add the agent-redirect comment:** immediately after the `<Meta ... />` block, add the following comment linking to the original agent-friendly source file:
@@ -160,6 +160,16 @@ The `form` section has sub-folders. Always read the stories file to find the exa
 When a stories file exists, use `<Meta of={stories} title="..." />` and set `title` to the exact value from the `.stories.tsx` file, with no added suffix. For example, if the stories file has `title: '@components/layout/Accordion'`, the MDX title must be `@components/layout/Accordion`.
 
 Do not create or modify any `.stories.tsx` file. Do not modify the original `.md` source file.
+
+---
+
+## Writing rules for prose you generate
+
+This skill preserves existing content exactly, but you still write prose in a few places: comments, build reports, and messages to the user. Apply these rules to all prose you write.
+
+- **No em-dashes (`—`).** Not as clause separators, not with spaces, not at all. Use a colon when listing or explaining something, a period when separating independent clauses, or a comma when separating dependent clauses.
+- **No semicolons (`;`).** Use a colon, period, or comma instead. The only exception is quoting or directly reproducing existing text that already contains a semicolon.
+- **One sentence per line.** In MDX prose blocks, each sentence must be on its own line, separated from the next by a blank line. Do not wrap multiple sentences onto a single line. This rule does not apply inside fenced code blocks, table cells, or list items.
 
 ---
 
