@@ -132,6 +132,7 @@ export namespace Button {
     export type Props = ButtonProps;
     export type StylesNames = ButtonStylesNames;
     export type CssVariables = ButtonCssVariables;
+    export type Factory = ButtonOverloadFactory;
 
     export namespace Primary {
         export type Props = ButtonProps;

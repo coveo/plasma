@@ -111,6 +111,7 @@ export namespace ActionIcon {
     export type Props = ActionIconProps;
     export type StylesNames = ActionIconStylesNames;
     export type CssVariables = ActionIconCssVariables;
+    export type Factory = ActionIconOverloadFactory;
 
     export namespace Primary {
         export type Props = ActionIconProps;

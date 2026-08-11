@@ -65,6 +65,7 @@ These type-only aliases are available for annotations and do not add runtime sta
 
 - `ChildForm.Props`
 - `ChildForm.StylesNames`
+- `ChildForm.Factory`
 
 ## Usage
 

@@ -209,6 +209,7 @@ export namespace Badge {
     export type Props = BadgeProps;
     export type StylesNames = BadgeStylesNames;
     export type CssVariables = BadgeCssVariables;
+    export type Factory = BadgeOverloadFactory;
 
     export namespace Primary {
         export type Props = SemanticBadgeProps;

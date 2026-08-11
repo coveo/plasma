@@ -77,6 +77,7 @@ These type-only aliases are available for annotations and do not add runtime sta
 - `Alert.Props`
 - `Alert.StylesNames`
 - `Alert.CssVariables`
+- `Alert.Factory`
 - `Alert.{Information, Advice, Warning, Critical, Success}.Props`
 
 ## Usage

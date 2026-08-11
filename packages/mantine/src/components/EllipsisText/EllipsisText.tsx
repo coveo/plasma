@@ -90,4 +90,5 @@ const isOverflowing = (h: HTMLDivElement) => h.scrollWidth > h.clientWidth || h.
 export namespace EllipsisText {
     export type Props = EllipsisTextProps;
     export type StylesNames = EllipsisTextStylesNames;
+    export type Factory = EllipsisTextFactory;
 }

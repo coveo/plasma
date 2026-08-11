@@ -1,13 +1,13 @@
 import {
     Divider,
     Factory,
+    factory,
     Group,
     GroupProps,
     Stack,
     StylesApiProps,
     Text,
     Title,
-    factory,
     useProps,
     useStyles,
 } from '@mantine/core';
@@ -32,7 +32,7 @@ export type {HeaderDocAnchorProps} from './HeaderDocAnchor/HeaderDocAnchor.js';
 export type {HeaderRightProps} from './HeaderRight/HeaderRight.js';
 
 export type HeaderVariant = 'primary' | 'secondary';
-export type HeaderStyleNames =
+export type HeaderStylesNames =
     | 'root'
     | 'title'
     | 'description'
@@ -43,6 +43,10 @@ export type HeaderStyleNames =
     | HeaderBreadcrumbAnchorStyleNames
     | HeaderBreadcrumbTextStyleNames
     | HeaderRightStyleNames;
+/**
+ * @deprecated use HeaderStylesNames instead. Will be removed in the next major version
+ */
+export type HeaderStyleNames = HeaderStylesNames;
 
 export interface HeaderProps
     extends
@@ -79,7 +83,7 @@ export type HeaderFactory = Factory<{
     props: HeaderProps;
     ref: HTMLDivElement;
     variant: HeaderVariant;
-    stylesNames: HeaderStyleNames;
+    stylesNames: HeaderStylesNames;
     staticComponents: {
         Breadcrumbs: typeof HeaderBreadcrumbs;
         BreadcrumbAnchor: typeof HeaderBreadcrumbAnchor;
@@ -173,6 +177,7 @@ Header.DocAnchor = HeaderDocAnchor;
 export namespace Header {
     export type Props = HeaderProps;
     export type Factory = HeaderFactory;
+    export type StylesNames = HeaderStylesNames;
 
     export namespace Breadcrumbs {
         export type Props = HeaderBreadcrumbsProps;

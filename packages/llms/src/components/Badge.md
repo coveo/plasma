@@ -82,6 +82,7 @@ These type-only aliases are available for annotations and do not add runtime sta
 - `Badge.Props`
 - `Badge.StylesNames`
 - `Badge.CssVariables`
+- `Badge.Factory`
 - `Badge.{Primary, Secondary, Success, Warning, Critical, Disabled}.Props`
 
 ## Usage

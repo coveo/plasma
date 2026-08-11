@@ -88,6 +88,7 @@ These type-only aliases are available for annotations and do not add runtime sta
 - `ActionIcon.Props`
 - `ActionIcon.StylesNames`
 - `ActionIcon.CssVariables`
+- `ActionIcon.Factory`
 - `ActionIcon.{Primary, Secondary, Tertiary, Quaternary, DestructivePrimary, DestructiveSecondary, DestructiveTertiary, DestructiveQuaternary}.Props`
 
 ## Usage

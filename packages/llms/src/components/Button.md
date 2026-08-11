@@ -98,6 +98,7 @@ These type-only aliases are available for annotations and do not add runtime sta
 - `Button.Props`
 - `Button.StylesNames`
 - `Button.CssVariables`
+- `Button.Factory`
 - `Button.{Primary, Secondary, Tertiary, Quaternary, DestructivePrimary, DestructiveSecondary, DestructiveTertiary, DestructiveQuaternary}.Props`
 
 ## Usage

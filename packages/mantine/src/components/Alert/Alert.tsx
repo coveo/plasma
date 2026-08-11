@@ -106,6 +106,7 @@ export namespace Alert {
     export type Props = AlertProps;
     export type StylesNames = AlertStylesNames;
     export type CssVariables = AlertCssVariables;
+    export type Factory = AlertOverloadFactory;
 
     export namespace Information {
         export type Props = AlertProps;

@@ -62,6 +62,7 @@ These type-only aliases are available for annotations and do not add runtime sta
 
 - `EllipsisText.Props`
 - `EllipsisText.StylesNames`
+- `EllipsisText.Factory`
 
 ## Usage
 
