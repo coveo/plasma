@@ -70,6 +70,18 @@ describe('DateUtils', () => {
 
             expect(DateUtils.getValidDate(date).toString()).toBe(moment().toDate().toString());
         });
+
+        it('should parse a time with a leading zero on the hour when parsing strictly (fromTime)', () => {
+            const date = 'Jan 02, 2010, 04:00';
+
+            expect(DateUtils.getValidDate(date, true).toString()).toContain('Sat Jan 02 2010 04:00:00 GMT');
+        });
+
+        it('should parse a time without a leading zero on the hour when parsing strictly (fromTime)', () => {
+            const date = 'Jan 02, 2010, 4:00';
+
+            expect(DateUtils.getValidDate(date, true).toString()).toContain('Sat Jan 02 2010 04:00:00 GMT');
+        });
     });
 
     describe('isDifferent', () => {
