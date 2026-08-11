@@ -9,67 +9,44 @@ import * as stories from './Button.stories';
 
 Action button that triggers tasks and provides async loading and disabled-tooltip feedback.
 
-## Usage guidance
+## Overview
 
-### What problem does it solve?
+Use Button when users need to trigger an explicit command — submitting a form, confirming a decision, or moving a workflow forward.
 
-The `Button` lets users intentionally trigger an action, submit a decision, or move a workflow forward.
+It handles async loading automatically and lets you explain why an action is unavailable directly on the button.
 
-It provides clear visual hierarchy for actions and supports async loading and disabled-state explanations.
+## When to use
 
-### When to use it
+Reach for Button when the action label should be visible and the action belongs to a form, modal, footer, toolbar, or page-level command area.
 
-Use `Button` when:
+Don't use it when the action is compact and icon-only — use `ActionIcon` instead.
 
-- the user triggers an explicit command
-- the action label should be visible
-- the action participates in a form, modal, footer, toolbar, or page-level command area
-- the interface needs a clear primary, secondary, tertiary, or destructive action
+Don't use it when the control represents an immediate persistent setting — use a selection or boolean control.
 
-### When not to use it
+Avoid adding so many buttons to one area that the decision hierarchy becomes unclear.
 
-Do not use `Button` when:
+## Choosing a variant
 
-- the action is compact and familiar enough to be icon-only; use `ActionIcon`
-- the control represents an immediate persistent setting; use a selection or boolean control
-- too many buttons would make the decision hierarchy unclear
+Always use the Plasma sub-components instead of passing Mantine's `variant` prop directly.
 
-### Decision-making guidance
+Use `Button.Primary` for the main action in a decision area — one per area when possible.
 
-- Use one primary button per decision area when possible.
-- Use `Button.Secondary` for important supporting actions such as cancel; use `Button.Tertiary` or `Button.Quaternary` for low-emphasis actions such as preview or back.
-- Use destructive variants only when the action can delete, revoke, archive, or otherwise negatively affect data.
+Use `Button.Secondary` for important supporting actions like cancel.
 
-### Variants
+Use `Button.Tertiary` or `Button.Quaternary` for low-emphasis actions like preview or back.
 
-- Ignore Mantine's `variant` values (`filled`, `light`, `outline`, `subtle`, `default`); always select emphasis through the Plasma sub-components below.
-- Use `Button.Primary` for the main action.
-- Use `Button.Secondary` for important alternatives.
-- Use `Button.Tertiary` or `Button.Quaternary` for low-emphasis actions.
-- Use `Button.DestructivePrimary` for the primary destructive action in a decision area (e.g. the confirming delete in a dialog footer).
-- Use `Button.DestructiveSecondary`, `Button.DestructiveTertiary`, or `Button.DestructiveQuaternary` as the destructive action's emphasis decreases.
+Reserve the destructive variants for actions that delete, revoke, archive, or otherwise negatively affect data:
 
-### States
+- `Button.DestructivePrimary` — the confirming action in a destructive dialog (e.g. "Delete")
+- `Button.DestructiveSecondary`, `Button.DestructiveTertiary`, `Button.DestructiveQuaternary` — as emphasis decreases
 
-Important states include:
+## States
 
-- normal
-- loading during async `onClick`
-- disabled with optional tooltip explanation
-- full width when the surrounding layout requires it
+Button supports four important states: normal, loading (during an async `onClick`), disabled with an optional tooltip, and full width.
 
-### Accessibility expectations
+Async `onClick` handlers show a loading indicator automatically while the promise resolves — no extra wiring needed.
 
-- Button text must describe the action that will happen.
-- Disabled buttons should explain the missing requirement when the reason is not visible nearby.
-- Destructive buttons should use wording that makes the consequence clear.
-
-### Common anti-patterns
-
-- Using multiple primary buttons in one decision area.
-- Using a button for navigation.
-- Disabling a button without explaining how the user can enable it.
-- Hiding destructive consequences behind vague labels such as "OK".
+Pair `disabled` with `disabledTooltip` to explain why an action is unavailable when the reason isn't visible nearby.
 
 ```tsx
 import {Button} from '@coveord/plasma-mantine';
@@ -100,6 +77,22 @@ function DisabledExample() {
 }
 ```
 
-- Use sub-components (`Button.Primary`, `Button.Secondary`, etc.) for semantic variants instead of passing `variant` manually.
-- Async `onClick` handlers automatically show a loading state until the promise settles.
-- Pair `disabled` with `disabledTooltip` to explain why an action is unavailable.
+## Content guidance
+
+**Button label (`children`):**
+
+- Describe the action that will happen, not the object: "Save changes" not "Changes"
+- Use sentence case
+- Keep it to three words or fewer
+- Don't use vague labels that hide the consequence: "Delete source" not "OK"
+
+**Disabled tooltip (`disabledTooltip`):**
+
+- Explain what the user needs to do to enable the action: "You need edit permission to publish" not "Action unavailable"
+- Write a full sentence
+- Keep it to 20 words or fewer
+
+**Destructive button labels:**
+
+- Make the consequence explicit: "Delete pipeline" not "Confirm"
+- Match the label to the irreversible action being taken
