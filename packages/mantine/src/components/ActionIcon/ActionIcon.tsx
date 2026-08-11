@@ -107,3 +107,40 @@ ActionIcon.Group.displayName = 'ActionIcon.Group';
 (ActionIconDestructiveSecondary as ComponentType).displayName = 'ActionIcon.DestructiveSecondary';
 (ActionIconDestructiveTertiary as ComponentType).displayName = 'ActionIcon.DestructiveTertiary';
 (ActionIconDestructiveQuaternary as ComponentType).displayName = 'ActionIcon.DestructiveQuaternary';
+export namespace ActionIcon {
+    export type Props = ActionIconProps;
+    export type StylesNames = ActionIconStylesNames;
+    export type CssVariables = ActionIconCssVariables;
+
+    export namespace Primary {
+        export type Props = ActionIconProps;
+    }
+
+    export namespace Secondary {
+        export type Props = ActionIconProps;
+    }
+
+    export namespace Tertiary {
+        export type Props = ActionIconProps;
+    }
+
+    export namespace Quaternary {
+        export type Props = ActionIconProps;
+    }
+
+    export namespace DestructivePrimary {
+        export type Props = ActionIconProps;
+    }
+
+    export namespace DestructiveSecondary {
+        export type Props = ActionIconProps;
+    }
+
+    export namespace DestructiveTertiary {
+        export type Props = ActionIconProps;
+    }
+
+    export namespace DestructiveQuaternary {
+        export type Props = ActionIconProps;
+    }
+}

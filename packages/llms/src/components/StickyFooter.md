@@ -54,6 +54,14 @@ Do not use `StickyFooter` when:
 **`children`** `ReactNode` · optional · default: `undefined` — Footer children SHOULD usually be buttons.
 **`variant`** `'default' | 'modal-footer'` · optional · default: `undefined` — The `modal-footer` variant SHOULD be used when rendering the `StickyFooter` inside `Modal`. The `modal-footer` variant removes the modal's default padding so that the footer properly hugs the bottom of the modal. It also adds a border on top of the footer. Deprecated: You SHOULD use `Modal.Footer` from `@coveord/plasma-mantine/Modal` for modal footers. For other cases, the `default` variant SHOULD suffice.
 
+## TypeScript namespace aliases
+
+These type-only aliases are available for annotations and do not add runtime static properties.
+
+- `StickyFooter.Props`
+- `StickyFooter.StylesNames`
+- `StickyFooter.Factory`
+
 ## Usage
 
 ```tsx

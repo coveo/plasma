@@ -66,6 +66,15 @@ Important states include:
 **`readOnly`** `boolean` · optional · default: `undefined` — When `true`, the card appears read-only and prevents users from changing its value through direct interaction.
 **`disabledTooltip`** `string` · optional · default: `undefined` — When the card is disabled, this message can be shown in a tooltip to explain why selection is unavailable.
 
+## TypeScript namespace aliases
+
+These type-only aliases are available for annotations and do not add runtime static properties.
+
+- `RadioCard.Props`
+- `RadioCard.StylesNames`
+- `RadioCard.CssVariables`
+- `RadioCard.Factory`
+
 ## Usage
 
 ```tsx

@@ -56,6 +56,13 @@ Do not use `EllipsisText` when:
 **`lineClamp`** `TextProps['lineClamp']` · optional · default: `undefined` — Consumers MAY set this line clamp for multi-line truncation; when omitted, the component uses single-line ellipsis behavior.
 **`tooltipProps`** `Partial<Omit<TooltipProps, 'label' | 'opened' | 'children'>>` · optional · default: `{}` — Consumers MAY customize the internal Mantine `Tooltip`, but MUST NOT provide `label`, `opened`, or `children`.
 
+## TypeScript namespace aliases
+
+These type-only aliases are available for annotations and do not add runtime static properties.
+
+- `EllipsisText.Props`
+- `EllipsisText.StylesNames`
+
 ## Usage
 
 Use `EllipsisText` to truncate long text inside a constrained container. The most common use case is a single-line label that shows the full value on hover when it overflows.

@@ -86,3 +86,8 @@ export const EllipsisText = polymorphicFactory<EllipsisTextFactory>((props) => {
 });
 
 const isOverflowing = (h: HTMLDivElement) => h.scrollWidth > h.clientWidth || h.scrollHeight > h.clientHeight;
+
+export namespace EllipsisText {
+    export type Props = EllipsisTextProps;
+    export type StylesNames = EllipsisTextStylesNames;
+}

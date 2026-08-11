@@ -81,6 +81,15 @@ Plasma provides pre-configured sub-components as convenience wrappers. You SHOUL
 - `ActionIcon.DestructiveTertiary`
 - `ActionIcon.DestructiveQuaternary`
 
+## TypeScript namespace aliases
+
+These type-only aliases are available for annotations and do not add runtime static properties.
+
+- `ActionIcon.Props`
+- `ActionIcon.StylesNames`
+- `ActionIcon.CssVariables`
+- `ActionIcon.{Primary, Secondary, Tertiary, Quaternary, DestructivePrimary, DestructiveSecondary, DestructiveTertiary, DestructiveQuaternary}.Props`
+
 ## Usage
 
 ```tsx

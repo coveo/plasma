@@ -18,10 +18,14 @@ import {
     HeaderBreadcrumbAnchor,
     type HeaderBreadcrumbAnchorStyleNames,
 } from './HeaderBreadcrumbs/HeaderBreadcrumbAnchor.js';
-import {HeaderBreadcrumbs, HeaderBreadcrumbsStyleNames} from './HeaderBreadcrumbs/HeaderBreadcrumbs.js';
+import {
+    HeaderBreadcrumbs,
+    HeaderBreadcrumbsProps,
+    HeaderBreadcrumbsStyleNames,
+} from './HeaderBreadcrumbs/HeaderBreadcrumbs.js';
 import {HeaderBreadcrumbText, HeaderBreadcrumbTextStyleNames} from './HeaderBreadcrumbs/HeaderBreadcrumbText.js';
-import {HeaderDocAnchor, HeaderDocAnchorStyleNames} from './HeaderDocAnchor/HeaderDocAnchor.js';
-import {HeaderRight, HeaderRightStyleNames} from './HeaderRight/HeaderRight.js';
+import {HeaderDocAnchor, HeaderDocAnchorProps, HeaderDocAnchorStyleNames} from './HeaderDocAnchor/HeaderDocAnchor.js';
+import {HeaderRight, HeaderRightProps, HeaderRightStyleNames} from './HeaderRight/HeaderRight.js';
 
 export type {HeaderBreadcrumbsProps} from './HeaderBreadcrumbs/HeaderBreadcrumbs.js';
 export type {HeaderDocAnchorProps} from './HeaderDocAnchor/HeaderDocAnchor.js';
@@ -165,3 +169,20 @@ Header.BreadcrumbAnchor = HeaderBreadcrumbAnchor;
 Header.BreadcrumbText = HeaderBreadcrumbText;
 Header.Right = HeaderRight;
 Header.DocAnchor = HeaderDocAnchor;
+
+export namespace Header {
+    export type Props = HeaderProps;
+    export type Factory = HeaderFactory;
+
+    export namespace Breadcrumbs {
+        export type Props = HeaderBreadcrumbsProps;
+    }
+
+    export namespace Right {
+        export type Props = HeaderRightProps;
+    }
+
+    export namespace DocAnchor {
+        export type Props = HeaderDocAnchorProps;
+    }
+}

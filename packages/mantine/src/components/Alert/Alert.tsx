@@ -101,3 +101,29 @@ Alert.Advice = AlertAdvice;
 Alert.Warning = AlertWarning;
 Alert.Critical = AlertCritical;
 Alert.Success = AlertSuccess;
+
+export namespace Alert {
+    export type Props = AlertProps;
+    export type StylesNames = AlertStylesNames;
+    export type CssVariables = AlertCssVariables;
+
+    export namespace Information {
+        export type Props = AlertProps;
+    }
+
+    export namespace Advice {
+        export type Props = AlertProps;
+    }
+
+    export namespace Warning {
+        export type Props = AlertProps;
+    }
+
+    export namespace Critical {
+        export type Props = AlertProps;
+    }
+
+    export namespace Success {
+        export type Props = AlertProps;
+    }
+}

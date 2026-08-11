@@ -353,3 +353,9 @@ Facet.displayName = 'Facet';
 const defaultFilter = (query: string, item: FacetItem) =>
     item.label.toLowerCase().trim().includes(query.toLowerCase().trim()) ||
     item.value.toLowerCase().trim().includes(query.toLowerCase().trim());
+
+export namespace Facet {
+    export type Props = FacetProps;
+    export type StylesNames = FacetStylesNames;
+    export type Factory = FacetFactory;
+}

@@ -79,3 +79,7 @@ export const CopyToClipboard: FunctionComponent<CopyToClipboardProps> = ({withLa
     );
 
 CopyToClipboard.displayName = 'CopyToClipboard';
+
+export namespace CopyToClipboard {
+    export type Props = CopyToClipboardProps;
+}

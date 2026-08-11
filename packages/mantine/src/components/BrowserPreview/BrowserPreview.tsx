@@ -47,3 +47,7 @@ export const BrowserPreview = ({
 );
 
 BrowserPreview.displayName = 'BrowserPreview';
+
+export namespace BrowserPreview {
+    export type Props = BrowserPreviewProps;
+}

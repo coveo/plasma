@@ -59,6 +59,13 @@ Do not use `ChildForm` when:
 **`title`** `string` · optional · default: `undefined` — MAY define the title of the child form.
 **`description`** `ReactNode` · optional · default: `undefined` — MAY define the description of the child form.
 
+## TypeScript namespace aliases
+
+These type-only aliases are available for annotations and do not add runtime static properties.
+
+- `ChildForm.Props`
+- `ChildForm.StylesNames`
+
 ## Usage
 
 ```tsx

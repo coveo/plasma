@@ -132,3 +132,7 @@ export const DateRangePickerInlineCalendar = ({
         </>
     );
 };
+
+export namespace DateRangePickerInlineCalendar {
+    export type Props = DateRangePickerInlineCalendarProps;
+}

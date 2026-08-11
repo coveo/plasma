@@ -58,3 +58,8 @@ export const PrerequisitesList = factory<PrerequisitesListFactory>((_props) => {
 
 PrerequisitesList.displayName = 'PrerequisitesList';
 PrerequisitesList.Item = PrerequisitesListItem;
+
+export namespace PrerequisitesList {
+    export type Props = PrerequisitesListProps;
+    export type Factory = PrerequisitesListFactory;
+}

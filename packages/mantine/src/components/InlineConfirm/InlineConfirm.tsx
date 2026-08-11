@@ -53,3 +53,8 @@ export const InlineConfirm = ((_props) => {
 
 InlineConfirm.Prompt = InlineConfirmPrompt;
 InlineConfirm.Target = InlineConfirmTarget;
+
+export namespace InlineConfirm {
+    export type Props = InlineConfirmProps;
+    export type Factory = InlineConfirmFactory;
+}
