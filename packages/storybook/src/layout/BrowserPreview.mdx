@@ -9,47 +9,33 @@ import * as stories from './BrowserPreview.stories';
 
 Renders a simulated browser chrome frame around preview content.
 
-## Usage guidance
+## Overview
 
-### What problem does it solve?
+Use BrowserPreview to show users how content will look in a browser-like surface.
 
-The `BrowserPreview` frames content as a simulated browser view so users can evaluate how a rendered page, result, or experience will look in context.
+It's designed for configuration and authoring flows where you need to visually separate the editable settings from the rendered output.
 
-### When to use it
+## When to use
 
-Use `BrowserPreview` when:
+Reach for BrowserPreview when the user needs to evaluate how a page, result, or experience will look in context — and that context benefits from a browser frame to set expectations.
 
-- users need to preview content as it will appear in a browser-like surface
-- the preview benefits from a title or header tooltip
-- the content is separate from the configuration controls around it
-- the interface needs to distinguish editable settings from preview output
+It works well when the preview has a title or a tooltip to clarify what's being shown, and when the controls that drive the preview live outside the frame.
 
-### When not to use it
+## When not to use
 
-Do not use `BrowserPreview` when:
+Don't use BrowserPreview when the content is the actual page rather than a preview.
 
-- the content is the actual page, not a preview
-- the frame would add decoration without clarifying context
-- users need to interact with a full application shell
-- the preview content is too small or abstract for the simulated browser frame to add meaningful context
+Don't use it as decoration around ordinary content — the frame should add context, not just chrome.
 
-### Decision-making guidance
+If users need to interact with a full application shell, use `AppShell` instead.
 
-- Use `BrowserPreview` for preview surfaces inside configuration or authoring flows.
-- Use `AppShell` for real application layout.
-- Use `Card` or layout primitives for ordinary content grouping.
+For ordinary content grouping, use `Card` or layout primitives.
 
-### Interaction notes
+## Implementation notes
 
-- Preview content may be interactive when that helps users validate behavior.
-- Header tooltips should clarify what is being previewed, not explain the whole feature.
-- Keep controls that modify the preview outside the preview frame when possible.
+Keep controls that modify the preview outside the preview frame when possible.
 
-### Common anti-patterns
-
-- Using browser chrome as decoration around normal content.
-- Putting unrelated controls inside the preview surface.
-- Treating a preview frame as the real navigational shell.
+Preview content can be interactive when that helps users validate behavior.
 
 ```tsx
 import {useState} from 'react';
@@ -93,3 +79,17 @@ export function Example() {
     );
 }
 ```
+
+## Content guidance
+
+**Title (`title`):**
+
+- Describe what is being previewed, not the feature that drives it: "Product catalog" not "Search results preview"
+- Use sentence case
+- Keep it short — two to four words
+
+**Header tooltip (`headerTooltip`):**
+
+- Clarify what the user is looking at, not how the feature works: "Preview the content exactly as users will see it." not "This component renders a simulated browser frame."
+- Write a full sentence and end with a period
+- Keep it to 20 words or fewer
