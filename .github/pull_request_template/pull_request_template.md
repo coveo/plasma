@@ -1,6 +1,8 @@
 > [!IMPORTANT]
 > **Making documentation changes?** Use [this template](?template=documentation.md).
 
+<!-- This notice will be removed when you mark your PR as "Ready for review" -->
+
 ### Proposed Changes
 
 <!-- Explain what your changes are. -->

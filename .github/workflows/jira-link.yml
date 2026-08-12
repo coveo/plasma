@@ -2,7 +2,7 @@ name: Auto-link Jira ticket
 
 on:
     pull_request:
-        types: [opened, edited]
+        types: [opened, edited, ready_for_review]
 
 jobs:
     jira-link:
@@ -21,13 +21,25 @@ jobs:
               uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
               with:
                   script: |
-                      const body = context.payload.pull_request.body ?? '';
+                      const pr = context.payload.pull_request;
+                      const body = pr.body ?? '';
 
                       // Match "Jira ticket: PROJ-123" where the ticket is plain text (not already a link)
-                      const updated = body.replace(
+                      let updated = body.replace(
                           /### Jira ticket: ([A-Z]+-\d+)(?!\])/g,
                           '### Jira ticket: [$1](https://coveord.atlassian.net/browse/$1)'
                       );
+
+                      // Remove the "use the documentation template" notice once the PR is no longer a draft.
+                      // This fires when a draft is marked "Ready for review", or when a PR is opened directly as non-draft.
+                      const action = context.payload.action;
+                      const isReady = action === 'ready_for_review' || (action === 'opened' && pr.draft === false);
+                      if (isReady) {
+                          updated = updated.replace(
+                              /> \[!IMPORTANT\]\r?\n> \*\*Making documentation changes\?\*\* Use \[this template\]\(\?template=documentation\.md\)\.\r?\n\r?\n<!-- This notice will be removed when your PR is marked as "Ready for review" -->\r?\n\r?\n/,
+                              ''
+                          );
+                      }
 
                       if (updated === body) {
                           console.log('No plain-text Jira ticket placeholder found — nothing to update.');
