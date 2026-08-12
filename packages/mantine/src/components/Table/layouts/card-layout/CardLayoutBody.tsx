@@ -1,18 +1,8 @@
-import {
-    Box,
-    BoxProps,
-    Card,
-    Checkbox,
-    CompoundStylesApiProps,
-    Factory,
-    SimpleGrid,
-    Stack,
-    Title,
-    useProps,
-} from '@mantine/core';
+import {Box, BoxProps, Card, CompoundStylesApiProps, Factory, SimpleGrid, Stack, Title, useProps} from '@mantine/core';
 import {flexRender} from '@tanstack/react-table';
 import {ForwardedRef} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../../../utils/createFactoryComponent.js';
+import {Checkbox} from '../../../Checkbox/Checkbox.js';
 import {TableLayoutProps} from '../../Table.types.js';
 import {useTableContext} from '../../TableContext.js';
 import {TableCollapsibleColumn} from '../../table-column/TableCollapsibleColumn.js';
@@ -48,6 +38,11 @@ export const CardLayoutBody = <T,>(props: CardLayoutBodyProps<T> & {ref?: Forwar
     } = useProps('CardLayoutBody', defaultProps as CardLayoutBodyProps<T>, props);
     const {table, store} = useTableContext<T>();
 
+    // Selection checkboxes only exist in multi-selection mode. They are interactive when row selection is
+    // enabled, and read-only when row selection is disabled but a selection already exists to display.
+    const areSelectionCheckboxesVisible =
+        store.multiRowSelectionEnabled && (store.rowSelectionEnabled || store.getSelectedRows().length > 0);
+
     const headers = table
         .getFlatHeaders()
         .filter((header) => header.column.id !== 'select' && header.column.id !== TableCollapsibleColumn.id)
@@ -67,11 +62,10 @@ export const CardLayoutBody = <T,>(props: CardLayoutBodyProps<T> & {ref?: Forwar
         const shouldKeepSelection = store.rowSelectionForced && isSelected;
 
         const onClick = () => {
-            if (store.multiRowSelectionEnabled) {
-                row.toggleSelected();
-            } else if (store.rowSelectionEnabled && !shouldKeepSelection) {
-                row.toggleSelected();
+            if (!store.rowSelectionEnabled || shouldKeepSelection) {
+                return;
             }
+            row.toggleSelected();
         };
 
         const cardStyles = ctx.getStyles('card', {
@@ -102,10 +96,11 @@ export const CardLayoutBody = <T,>(props: CardLayoutBodyProps<T> & {ref?: Forwar
                 style={cardStyles.style}
                 {...(getRowAttributes?.(row.original, row.index, row) ?? {})}
             >
-                {store.multiRowSelectionEnabled ? (
+                {areSelectionCheckboxesVisible ? (
                     <Checkbox
                         checked={isSelected}
-                        onChange={() => row.toggleSelected()}
+                        onChange={onClick}
+                        readOnly={!store.rowSelectionEnabled}
                         aria-label="Select row"
                         onClick={(event) => event.stopPropagation()}
                         onDoubleClick={(event) => {
@@ -140,7 +135,7 @@ export const CardLayoutBody = <T,>(props: CardLayoutBodyProps<T> & {ref?: Forwar
         <tr>
             <td colSpan={table.getAllColumns().length}>
                 <Stack px="xl" py="md" gap="md">
-                    {store.multiRowSelectionEnabled ? (
+                    {areSelectionCheckboxesVisible ? (
                         <TableSelectAllCheckbox
                             {...ctx.getStyles('selectAllCheckbox', {classNames, styles})}
                             label="Select entire page"

@@ -1,4 +1,4 @@
-import {Box, Center, Factory, Loader, useProps, useStyles} from '@mantine/core';
+import {Box, Center, Factory, Loader, type SkeletonProps, useProps, useStyles} from '@mantine/core';
 import {useClickOutside, useMergedRef} from '@mantine/hooks';
 import {
     ColumnDef,
@@ -12,35 +12,78 @@ import {
 import isEqual from 'fast-deep-equal';
 import {Children, ForwardedRef, ReactElement, useEffect, useRef} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../utils/createFactoryComponent.js';
-import classes from './Table.module.css';
-import {TableLayout, TableProps} from './Table.types.js';
-import {TableProvider} from './TableContext.js';
 import {TableLayouts} from './layouts/TableLayouts.js';
-import {TableActionItem, TableActionItemStylesNames} from './table-actions/TableActionItem.js';
-import {TableActionsListStylesNames} from './table-actions/TableActionsList.js';
-import {TableHeaderActionsStylesNames} from './table-actions/TableHeaderActions.js';
+import {
+    TableActionItem,
+    type TableActionItemFactory,
+    type TableActionItemProps,
+    type TableActionItemStylesNames,
+} from './table-actions/TableActionItem.js';
+import {type TableActionsListStylesNames} from './table-actions/TableActionsList.js';
+import {type TableHeaderActionsStylesNames} from './table-actions/TableHeaderActions.js';
+import {
+    TableCell,
+    type TableCellFactory,
+    type TableCellProps,
+    type TableCellStylesNames,
+} from './table-cell/TableCell.js';
 import {TableActionsColumn} from './table-column/TableActionsColumn.js';
 import {
     TableAccordionColumn,
     TableCollapsibleColumn,
-    TableCollapsibleColumnStylesNames,
+    type TableCollapsibleColumnStylesNames,
 } from './table-column/TableCollapsibleColumn.js';
 import {TableSelectableColumn} from './table-column/TableSelectableColumn.js';
-import {TableDateRangePicker, TableDateRangePickerStylesNames} from './table-date-range-picker/TableDateRangePicker.js';
-import {TableFilter, TableFilterStylesNames} from './table-filter/TableFilter.js';
-import {TableFooter} from './table-footer/TableFooter.js';
-import {TableHeader, TableHeaderStylesNames} from './table-header/TableHeader.js';
-import {TableThStylesNames} from './table-header/Th.js';
-import {TableLastUpdated, TableLastUpdatedStylesNames} from './table-last-updated/TableLastUpdated.js';
+import {
+    TableDateRangePicker,
+    type TableDateRangePickerFactory,
+    type TableDateRangePickerProps,
+    type TableDateRangePickerStylesNames,
+} from './table-date-range-picker/TableDateRangePicker.js';
+import {
+    TableFilter,
+    type TableFilterFactory,
+    type TableFilterProps,
+    type TableFilterStylesNames,
+} from './table-filter/TableFilter.js';
+import {TableFooter, type TableFooterProps} from './table-footer/TableFooter.js';
+import {
+    TableHeader,
+    type TableHeaderFactory,
+    type TableHeaderProps,
+    type TableHeaderStylesNames,
+} from './table-header/TableHeader.js';
+import {type TableThStylesNames} from './table-header/Th.js';
+import {
+    TableLastUpdated,
+    type TableLastUpdatedFactory,
+    type TableLastUpdatedProps,
+    type TableLastUpdatedStylesNames,
+} from './table-last-updated/TableLastUpdated.js';
 import {TableLoading} from './table-loading/TableLoading.js';
-import {TableNoData} from './table-no-data/TableNoData.js';
+import {TableNoData, type TableNoDataProps} from './table-no-data/TableNoData.js';
 import {TablePagination} from './table-pagination/TablePagination.js';
+import {type TablePaginationProps} from './table-pagination/TablePagination.types.js';
 import {TablePerPage} from './table-per-page/TablePerPage.js';
-import {TablePredicate, TablePredicateStylesNames} from './table-predicate/TablePredicate.js';
-import {TableCell} from './table-cell/TableCell.js';
+import {type TablePerPageProps} from './table-per-page/TablePerPage.types.js';
+import {
+    TablePredicate,
+    type TablePredicateFactory,
+    type TablePredicateProps,
+    type TablePredicateStylesNames,
+} from './table-predicate/TablePredicate.js';
+import {
+    TableToolbar,
+    type TableToolbarFactory,
+    type TableToolbarProps,
+    type TableToolbarStylesNames,
+} from './table-toolbar/TableToolbar.js';
+import classes from './Table.module.css';
+import {type TableLayout, type TableProps} from './Table.types.js';
+import {TableProvider} from './TableContext.js';
 import {TableState} from './use-table.js';
 
-type TableStylesNames =
+export type TableStylesNames =
     | 'root'
     | 'table'
     | 'header'
@@ -54,7 +97,8 @@ type TableStylesNames =
     | TableHeaderStylesNames
     | TableThStylesNames
     | TableLastUpdatedStylesNames
-    | TablePredicateStylesNames;
+    | TablePredicateStylesNames
+    | TableToolbarStylesNames;
 
 export type PlasmaTableFactory = Factory<{
     props: TableProps<unknown>;
@@ -77,8 +121,11 @@ export type PlasmaTableFactory = Factory<{
         Pagination: typeof TablePagination;
         PerPage: typeof TablePerPage;
         Predicate: typeof TablePredicate;
+        Toolbar: typeof TableToolbar;
     };
 }>;
+
+export type TableFactory = PlasmaTableFactory;
 
 const defaultProps = {
     layouts: [TableLayouts.Rows as TableLayout],
@@ -129,8 +176,14 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
     const convertedChildren = Children.toArray(children) as ReactElement[];
     const header = convertedChildren.find((child) => child.type === TableHeader);
     const footer = convertedChildren.find((child) => child.type === TableFooter);
+    const toolbar = convertedChildren.find((child) => child.type === TableToolbar);
     const lastUpdated = convertedChildren.find((child) => child.type === TableLastUpdated);
     const noData = convertedChildren.find((child) => child.type === TableNoData);
+
+    // Selection checkboxes only exist in multi-selection mode. They are interactive when row selection is
+    // enabled, and read-only when row selection is disabled but a selection already exists to display.
+    const isSelectionColumnVisible =
+        store.multiRowSelectionEnabled && (store.rowSelectionEnabled || store.getSelectedRows().length > 0);
 
     const table = useReactTable({
         data: data || [],
@@ -152,7 +205,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
             });
         },
         onColumnVisibilityChange: store.setColumnVisibility,
-        columns: store.multiRowSelectionEnabled ? [TableSelectableColumn as ColumnDef<T>].concat(columns) : columns,
+        columns: isSelectionColumnVisible ? [TableSelectableColumn as ColumnDef<T>].concat(columns) : columns,
         getCoreRowModel: getCoreRowModel(),
         manualPagination: options.getPaginationRowModel === undefined,
         enableMultiRowSelection: !!store.multiRowSelectionEnabled,
@@ -258,53 +311,56 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
                     containerRef,
                 }}
             >
-                <Layout>
-                    {store.isVacant && !store.isFiltered ? (
-                        noData
-                    ) : (
-                        <>
-                            <Box component="table" {...getStyles('table')} mod={{loading}}>
-                                <thead {...getStyles('header')}>
-                                    {header ? (
-                                        <tr>
-                                            <th style={{padding: 0}} colSpan={table.getAllColumns().length}>
-                                                {header}
-                                            </th>
-                                        </tr>
-                                    ) : null}
-                                    {hasRows || loading ? (
-                                        <Layout.Header
-                                            getRowExpandedContent={getRowExpandedContent}
-                                            getRowAttributes={getRowAttributes}
-                                            loading={loading}
-                                            {...layoutProps}
-                                        />
-                                    ) : null}
-                                </thead>
-                                <tbody {...getStyles('body')}>
-                                    {hasRows ? (
-                                        <Layout.Body
-                                            getRowExpandedContent={getRowExpandedContent}
-                                            getRowAttributes={getRowAttributes}
-                                            loading={loading}
-                                            {...layoutProps}
-                                        />
-                                    ) : (
-                                        <tr>
-                                            <td colSpan={table.getAllColumns().length}>
-                                                <TableLoading visible={loading || !store.isFiltered}>
-                                                    {noData}
-                                                </TableLoading>
-                                            </td>
-                                        </tr>
-                                    )}
-                                </tbody>
-                            </Box>
-                            {footer}
-                            {lastUpdated}
-                        </>
-                    )}
-                </Layout>
+                <>
+                    {store.isVacant && !store.isFiltered ? null : toolbar}
+                    <Layout>
+                        {store.isVacant && !store.isFiltered ? (
+                            noData
+                        ) : (
+                            <>
+                                <Box component="table" {...getStyles('table')} mod={{loading}}>
+                                    <thead {...getStyles('header')}>
+                                        {header ? (
+                                            <tr>
+                                                <th style={{padding: 0}} colSpan={table.getAllColumns().length}>
+                                                    {header}
+                                                </th>
+                                            </tr>
+                                        ) : null}
+                                        {hasRows || loading ? (
+                                            <Layout.Header
+                                                getRowExpandedContent={getRowExpandedContent}
+                                                getRowAttributes={getRowAttributes}
+                                                loading={loading}
+                                                {...layoutProps}
+                                            />
+                                        ) : null}
+                                    </thead>
+                                    <tbody {...getStyles('body')}>
+                                        {hasRows ? (
+                                            <Layout.Body
+                                                getRowExpandedContent={getRowExpandedContent}
+                                                getRowAttributes={getRowAttributes}
+                                                loading={loading}
+                                                {...layoutProps}
+                                            />
+                                        ) : (
+                                            <tr>
+                                                <td colSpan={table.getAllColumns().length}>
+                                                    <TableLoading visible={loading || !store.isFiltered}>
+                                                        {noData}
+                                                    </TableLoading>
+                                                </td>
+                                            </tr>
+                                        )}
+                                    </tbody>
+                                </Box>
+                                {footer}
+                                {lastUpdated}
+                            </>
+                        )}
+                    </Layout>
+                </>
             </TableProvider>
         </Box>
     );
@@ -384,5 +440,80 @@ Table.PerPage = TablePerPage;
  * A dropdown that filters table data by a predefined set of values and resets pagination on change.
  */
 Table.Predicate = TablePredicate;
+Table.Toolbar = TableToolbar;
 
 Table.extend = identity as CustomComponentThemeExtend<PlasmaTableFactory>;
+
+export namespace Table {
+    export type Props<TData> = TableProps<TData>;
+    export type StylesNames = TableStylesNames;
+    export type Factory = TableFactory;
+
+    export namespace ActionItem {
+        export type Props = TableActionItemProps;
+        export type StylesNames = TableActionItemStylesNames;
+        export type Factory = TableActionItemFactory;
+    }
+
+    export namespace Cell {
+        export type Props = TableCellProps;
+        export type StylesNames = TableCellStylesNames;
+        export type Factory = TableCellFactory;
+    }
+
+    export namespace DateRangePicker {
+        export type Props = TableDateRangePickerProps;
+        export type StylesNames = TableDateRangePickerStylesNames;
+        export type Factory = TableDateRangePickerFactory;
+    }
+
+    export namespace Filter {
+        export type Props = TableFilterProps;
+        export type StylesNames = TableFilterStylesNames;
+        export type Factory = TableFilterFactory;
+    }
+
+    export namespace Footer {
+        export type Props = TableFooterProps;
+    }
+
+    export namespace Header {
+        export type Props = TableHeaderProps;
+        export type StylesNames = TableHeaderStylesNames;
+        export type Factory = TableHeaderFactory;
+    }
+
+    export namespace LastUpdated {
+        export type Props = TableLastUpdatedProps;
+        export type StylesNames = TableLastUpdatedStylesNames;
+        export type Factory = TableLastUpdatedFactory;
+    }
+
+    export namespace Loading {
+        export type Props = SkeletonProps;
+    }
+
+    export namespace NoData {
+        export type Props = TableNoDataProps;
+    }
+
+    export namespace Pagination {
+        export type Props = TablePaginationProps;
+    }
+
+    export namespace PerPage {
+        export type Props = TablePerPageProps;
+    }
+
+    export namespace Predicate {
+        export type Props = TablePredicateProps;
+        export type StylesNames = TablePredicateStylesNames;
+        export type Factory = TablePredicateFactory;
+    }
+
+    export namespace Toolbar {
+        export type Props = TableToolbarProps;
+        export type StylesNames = TableToolbarStylesNames;
+        export type Factory = TableToolbarFactory;
+    }
+}

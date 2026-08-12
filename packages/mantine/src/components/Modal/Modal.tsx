@@ -1,11 +1,18 @@
 import {
     factory,
     Modal as MantineModal,
+    ModalCssVariables,
     ModalFactory as MantineModalFactory,
     ModalProps as MantineModalProps,
+    ModalStylesNames,
 } from '@mantine/core';
 import {Header, type HeaderDocAnchorProps, type HeaderProps} from '../Header/Header.js';
-import {ModalFooter as PlasmaModalFooter} from './ModalFooter.js';
+import {
+    ModalFooter as PlasmaModalFooter,
+    type ModalFooterFactory,
+    type ModalFooterProps,
+    type ModalFooterStylesNames,
+} from './ModalFooter.js';
 
 interface PlasmaModalProps extends MantineModalProps {
     /**
@@ -56,3 +63,16 @@ export type ModalProps = PlasmaModalProps;
 
 export type ModalFactory = PlasmaModalFactory;
 export type {ModalRootProps, ModalCssVariables, ModalStylesNames} from '@mantine/core';
+
+export namespace Modal {
+    export type Props = ModalProps;
+    export type StylesNames = ModalStylesNames;
+    export type CssVariables = ModalCssVariables;
+    export type Factory = ModalFactory;
+
+    export namespace Footer {
+        export type Props = ModalFooterProps;
+        export type StylesNames = ModalFooterStylesNames;
+        export type Factory = ModalFooterFactory;
+    }
+}

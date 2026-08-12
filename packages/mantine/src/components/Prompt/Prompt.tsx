@@ -23,8 +23,18 @@ import {InfoToken} from '../InfoToken/InfoToken.js';
 import {Modal} from '../Modal/Modal.js';
 import {PromptContextProvider} from './Prompt.context.js';
 import classes from './Prompt.module.css';
-import {PromptCancelButton, PromptCancelButtonStylesNamesVariant} from './PromptCancelButton.js';
-import {PromptConfirmButton, PromptConfirmButtonStylesNamesVariant} from './PromptConfirmButton.js';
+import {
+    PromptCancelButton,
+    type PromptCancelButtonProps,
+    type PromptCancelButtonStylesNamesVariant,
+} from './PromptCancelButton.js';
+import {
+    PromptConfirmButton,
+    type PromptConfirmButtonProps,
+    type PromptConfirmButtonStylesNamesVariant,
+} from './PromptConfirmButton.js';
+
+export type {PromptCancelButtonProps, PromptConfirmButtonProps};
 
 export type PromptVariant = 'success' | 'warning' | 'critical' | 'information';
 export type PromptVars = {root: '--prompt-icon-size'};
@@ -162,3 +172,38 @@ export const Prompt = {
     ConfirmButton: PromptConfirmButton,
     Footer: PromptFooter,
 } as const;
+
+export namespace Prompt {
+    export type Props = PromptProps;
+    export type StylesNames = PromptStylesNames;
+    export type CssVariables = PromptVars;
+    export type Factory = PromptFactory;
+
+    export namespace Information {
+        export type Props = PromptProps;
+    }
+
+    export namespace Success {
+        export type Props = PromptProps;
+    }
+
+    export namespace Warning {
+        export type Props = PromptProps;
+    }
+
+    export namespace Critical {
+        export type Props = PromptProps;
+    }
+
+    export namespace Footer {
+        export type Props = Modal.Footer.Props;
+    }
+
+    export namespace CancelButton {
+        export type Props = PromptCancelButtonProps;
+    }
+
+    export namespace ConfirmButton {
+        export type Props = PromptConfirmButtonProps;
+    }
+}

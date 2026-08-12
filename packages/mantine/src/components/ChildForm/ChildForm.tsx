@@ -74,3 +74,9 @@ export const ChildForm = polymorphicFactory<ChildFormFactory>((props) => {
 });
 
 ChildForm.displayName = 'ChildForm';
+
+export namespace ChildForm {
+    export type Props = ChildFormProps;
+    export type StylesNames = ChildFormStylesNames;
+    export type Factory = ChildFormFactory;
+}

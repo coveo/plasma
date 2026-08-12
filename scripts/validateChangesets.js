@@ -56,6 +56,25 @@ const parseChangeset = (content) => {
 /** Return the heading levels (number of leading `#`) found in the body. */
 const headingLevels = (body) => [...body.matchAll(/^(#{1,6}) /gm)].map(([, hashes]) => hashes.length);
 
+/**
+ * Whether the body uses markdown list items. Lines inside fenced code blocks
+ * (e.g. ```diff before/after examples) are ignored so their `-`/`+` markers do
+ * not count as lists.
+ */
+const usesMarkdownList = (body) => {
+    let inFence = false;
+    for (const rawLine of body.split('\n')) {
+        const trimmed = rawLine.trim();
+        if (/^(`{3,}|~{3,})/.test(trimmed)) {
+            inFence = !inFence;
+            continue;
+        }
+        if (inFence) continue;
+        if (/^([-*+]|\d+[.)])\s+/.test(trimmed)) return true;
+    }
+    return false;
+};
+
 const validateChangeset = (name, content, knownPackages) => {
     const errors = [];
     const parsed = parseChangeset(content);
@@ -126,6 +145,11 @@ const validateChangeset = (name, content, knownPackages) => {
     const levels = headingLevels(body);
     if (levels.length > 0 && Math.min(...levels) !== 1) {
         errors.push('Body headings must start at a single `#` (h1).');
+    }
+
+    // The body must be written as prose, not markdown lists.
+    if (usesMarkdownList(bodyAfterTitle)) {
+        errors.push('Body must not use markdown lists; write the change as prose.');
     }
 
     // Per-bump body requirements (based on the strongest declared bump).

@@ -1,5 +1,31 @@
 # @coveord/plasma-mantine
 
+## 61.1.0
+
+### Minor Changes
+
+- Add `Navigation` component for collapsible sidebar navigation [#4491](https://github.com/coveo/plasma/pull/4491)
+
+  The `Navigation` compound component provides a collapsible sidebar navigation system. `Navigation.SideBar` wraps Mantine's `AppShell.Navbar` with a scrollable content area and a built-in toggle. `Navigation.Section` renders a collapsible group of links that automatically hides when empty. `Navigation.Link` supports nesting levels, badges, and custom router components. `Navigation.Toggle` provides a chevron button to collapse or expand the sidebar. `Navigation.Badge` displays a status badge (Beta, WIP, or New) on links.
+
+  The `useNavigation()` hook exposes `collapsed` state and `toggleCollapsed` for integrating with `AppShell`.
+
+- Add `Table.Toolbar` sub-component for rendering filters outside the header grid [#4481](https://github.com/coveo/plasma/pull/4481)
+
+  `Table.Toolbar` is a new opt-in container that renders above the table. Place `Table.Filter`, `Table.Predicate`, or `Table.DateRangePicker` inside it to display them outside the `Table.Header`. Components inside the toolbar skip the `Grid.Col` wrapper and render as plain flex items instead.
+
+  The toolbar accepts standard Box props and supports `renderRoot` and `className` for full customization. Existing tables are unaffected — the toolbar is entirely additive.
+
+### Patch Changes
+
+- Improve `Table` row click interactions for selection and expand/collapse [#4554](https://github.com/coveo/plasma/pull/4554)
+
+  Clicking anywhere on a `Table` row now consistently toggles selection in both single-select and multi-select modes. Previously, only single-select rows responded to row clicks while multi-select mode required clicking the checkbox directly.
+
+  Rows with expandable content no longer expand or collapse on row click regardless of selection mode. Users must click the dedicated toggle icon to expand or collapse a row. This prevents accidental expansion when the intent is to select.
+
+  When `enableRowSelection` is `false`, the user can no longer change the selection. With `enableMultiRowSelection: true`, existing selected rows are still shown with read-only checkboxes, while the checkboxes are hidden entirely when nothing is selected.
+
 ## 61.0.2
 
 ### Patch Changes

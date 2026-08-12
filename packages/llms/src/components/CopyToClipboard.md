@@ -3,6 +3,51 @@ name: CopyToClipboard
 description: Action icon that copies a string value to the clipboard and shows tooltip feedback.
 ---
 
+# Usage guidance
+
+## What problem does it solve?
+
+The `CopyToClipboard` gives users a fast, low-friction way to copy exact values that are difficult or error-prone to select manually.
+
+It is useful for technical identifiers, API keys, tokens, URLs, generated IDs, and other read-only values that users need elsewhere.
+
+## When to use it
+
+Use `CopyToClipboard` when:
+
+- users need to copy an exact string value
+- the value is displayed as read-only or otherwise not meant to be edited in place
+- copying is a secondary utility action attached to a field or value
+- tooltip feedback should confirm the copy action
+
+## When not to use it
+
+Do not use `CopyToClipboard` when:
+
+- the user needs to edit the value before using it
+- the value is short and copying is not a meaningful task
+- the copied value is sensitive and should not be exposed without confirmation
+
+## Decision-making guidance
+
+- When showing a read-only value like an API key or URL in a text field, place the copy icon inside the field on the right side — this is the most common and expected placement.
+- If copying is the main action on the screen (for example, "Copy invite link"), use a full button with a text label instead of the small icon — the icon alone doesn't communicate enough weight.
+- Always make sure it's obvious what the user is copying. The field label, nearby text, or context should tell them exactly what value they'll get in their clipboard.
+
+## Accessibility expectations
+
+- The copied value MUST be clear from the surrounding label or context.
+- Tooltip copy feedback SHOULD be concise.
+- Do not rely on the icon alone when several copy actions appear near each other.
+
+## Common anti-patterns
+
+- Showing copy actions for every minor label on a page.
+- Copying hidden or ambiguous values.
+- Using the deprecated label mode instead of placing the action near the value.
+
+# API reference
+
 ## Props
 
 > Extends: `ActionIconProps`. Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
@@ -13,6 +58,12 @@ description: Action icon that copies a string value to the clipboard and shows t
 **`color`** `MantineColor | (string & {})` · optional · default: `gray` — The icon uses this color when idle.
 **`tooltipLabelCopy`** `string` · optional · default: `Copy to clipboard` — The tooltip displays this text when hovering over the button.
 **`tooltipLabelCopied`** `string` · optional · default: `Copied` — The tooltip displays this text when the value is copied to the clipboard.
+
+## TypeScript namespace aliases
+
+These type-only aliases are available for annotations and do not add runtime static properties.
+
+- `CopyToClipboard.Props`
 
 ## Usage
 

@@ -3,6 +3,53 @@ name: Header
 description: Page-level header with a title and optional breadcrumbs, actions, and a documentation link.
 ---
 
+# Usage guidance
+
+## What problem does it solve?
+
+The `Header` gives a page or major section a clear title area with optional breadcrumbs, description, documentation link, and right-aligned actions.
+
+## When to use it
+
+Use `Header` when:
+
+- a page or major section needs a clear title
+- users need breadcrumb context or a documentation link
+- primary page actions should align with the title area
+- a description helps users understand the scope of the view
+
+## When not to use it
+
+Do not use `Header` when:
+
+- a small card or form group only needs a local heading
+- the heading does not need page-level spacing or action placement
+- actions belong in a sticky footer or modal footer instead
+- the surrounding page already provides the header structure
+
+## Decision-making guidance
+
+- Use the `primary` variant for page headers.
+- Use the `secondary` variant for lower-level sections when the component is still appropriate.
+- Use `Header.Right` for actions that apply to the page or section as a whole.
+- Use `Header.Breadcrumbs` for hierarchy: `Header.BreadcrumbAnchor` for linked ancestor levels and `Header.BreadcrumbText` for the current, non-linked location.
+- Use `Header.DocAnchor` on the `primary` variant whenever relevant external documentation exists — it opens the docs/help, it is not a link to the current page.
+
+## Content guidance
+
+- Header titles SHOULD be specific and scannable.
+- Descriptions SHOULD explain the page purpose, not repeat the title.
+- Breadcrumb text SHOULD reflect the current hierarchy.
+- Actions SHOULD be limited to the most relevant page-level commands.
+
+## Common anti-patterns
+
+- Filling the header with too many actions.
+- Using page headers inside repeated cards.
+- Hiding important workflow actions in the header when they belong near the form or footer.
+
+# API reference
+
 ## Props
 
 > Extends: `GroupProps`, `StylesApiProps`. Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
@@ -22,6 +69,17 @@ Plasma provides pre-configured sub-components as convenience wrappers. You SHOUL
 - `Header.BreadcrumbText`
 - `Header.Right`
 - `Header.DocAnchor`
+
+## TypeScript namespace aliases
+
+These type-only aliases are available for annotations and do not add runtime static properties.
+
+- `Header.Props`
+- `Header.StylesNames`
+- `Header.Factory`
+- `Header.Breadcrumbs.Props`
+- `Header.Right.Props`
+- `Header.DocAnchor.Props`
 
 ## Usage
 

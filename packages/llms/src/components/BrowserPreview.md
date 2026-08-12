@@ -3,12 +3,62 @@ name: BrowserPreview
 description: Renders a simulated browser chrome frame around preview content.
 ---
 
+# Usage guidance
+
+## What problem does it solve?
+
+The `BrowserPreview` frames content as a simulated browser view so users can evaluate how a rendered page, result, or experience will look in context.
+
+## When to use it
+
+Use `BrowserPreview` when:
+
+- users need to preview content as it will appear in a browser-like surface
+- the preview benefits from a title or header tooltip
+- the content is separate from the configuration controls around it
+- the interface needs to distinguish editable settings from preview output
+
+## When not to use it
+
+Do not use `BrowserPreview` when:
+
+- the content is the actual page, not a preview
+- the frame would add decoration without clarifying context
+- users need to interact with a full application shell
+- the preview content is too small or abstract for the simulated browser frame to add meaningful context
+
+## Decision-making guidance
+
+- Use `BrowserPreview` for preview surfaces inside configuration or authoring flows.
+- Use `AppShell` for real application layout.
+- Use `Card` or layout primitives for ordinary content grouping.
+
+## Interaction notes
+
+- Preview content MAY be interactive when that helps users validate behavior.
+- Header tooltips SHOULD clarify what is being previewed, not explain the whole feature.
+- Keep controls that modify the preview outside the preview frame when possible.
+
+## Common anti-patterns
+
+- Using browser chrome as decoration around normal content.
+- Putting unrelated controls inside the preview surface.
+- Treating a preview frame as the real navigational shell.
+
+# API reference
+
 ## Props
 
 > Extends: `StackProps`. Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
 
 **`headerTooltip`** `string` · optional · default: `undefined` — Text displayed in a tooltip in the header.
 **`title`** `string` · optional · default: `undefined` — Custom title displayed at the center of the header.
+
+## TypeScript namespace aliases
+
+These type-only aliases are available for annotations and do not add runtime static properties.
+
+- `BrowserPreview.Props`
 
 ## Usage
 

@@ -3,9 +3,75 @@ name: Table
 description: Table for displaying tabular data with optional filtering, pagination, row actions, and layout switching.
 ---
 
+# Usage guidance
+
+## What problem does it solve?
+
+The `Table` lets users scan, compare, filter, paginate, select, and act on structured data in rows and columns.
+
+It is useful for operational views where users need to inspect many records and perform actions on one or more of them.
+
+## When to use it
+
+Use `Table` when:
+
+- each record has many fields which the user may need to consult
+- users need to compare values across records
+- filtering, pagination, row actions, selection, or expandable row content are needed
+- the view needs table-specific empty, loading, footer, or pagination patterns
+
+## When not to use it
+
+Do not use `Table` when:
+
+- the data shows a progression over time, use chart components instead
+- users are editing a repeatable form list; use `Collection`
+- there are only a few simple values that can be shown as text or cards
+- the number of entries is static and pre-determined — a full table is overkill when all items are already known
+- the layout would require hiding the most important information in many columns
+
+## Decision-making guidance
+
+- Use `Table` for data display and operational record management.
+- Use `Collection` for editable repeated form items.
+- Use `Facet` or table filter sub-components when users need to narrow data.
+- Use row actions for item-specific commands and header/footer actions for table-level commands.
+
+## States
+
+Important states include:
+
+- initially loading with `data={null}`
+- loaded with rows
+- empty or no matching data
+- selected rows
+- expanded rows
+- paginated data
+- filtered data
+
+## Interaction notes
+
+- Expandable row content SHOULD add detail without replacing the row's core scannable information.
+
+## Content guidance
+
+- Column headers SHOULD be short and describe the data clearly.
+- Empty states SHOULD explain whether there is no data or no matching data.
+- Row actions SHOULD use clear verbs and destructive labels when appropriate.
+- Filter labels SHOULD match the terms users use to understand the data.
+
+## Common anti-patterns
+
+- Using a table for layout instead of data.
+- Putting editable repeated form fields in a table when `Collection` is the intended pattern.
+- Omitting stable row IDs for selectable or reorderable data.
+- Hiding key record identity in expandable content instead of visible columns.
+
+# API reference
+
 ## Props
 
-> Extends: `BoxProps & StylesApiProps<PlasmaTableFactory>`. Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
+> Extends: `BoxProps & StylesApiProps<TableFactory>`. Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
 
 **`store`** `TableStore<TData>` · required · default: `undefined` — You MUST pass the table store returned by `useTable`.
 **`data`** `TData[] | null` · required · default: `undefined` — Data to display in the table. You MUST use `null` when the table is initially loading.
@@ -17,7 +83,7 @@ description: Table for displaying tabular data with optional filtering, paginati
 **`layouts`** `TableLayout[]` · optional · default: `[Table.Layouts.Rows]` — Available layouts. This prop MAY be used to expose layout switching.
 **`layoutProps`** `{onRowDoubleClick?: (selectedRow: TData, index: number, row: Row<TData>) => void} & Record<string, unknown>` · optional · default: `{}` — Props passed down to the active layout Header and Body components.
 **`loading`** `boolean` · optional · default: `false` — Whether the table is loading or not. This prop MAY be used to show loading states.
-**`children`** `ReactNode` · optional · default: `undefined` — Children to display in the table. They MUST be wrapped in either `Table.Header` or `Table.Footer`.
+**`children`** `ReactNode` · optional · default: `undefined` — Children can include sub-components like `Table.Toolbar`, `Table.Header`, `Table.Footer`, `Table.NoData`, and `Table.LastUpdated`. Filter controls (`Table.Filter`, `Table.Predicate`, `Table.DateRangePicker`) MUST be placed inside `Table.Header` or `Table.Toolbar`.
 **`additionalRootNodes`** `HTMLElement[]` · optional · default: `[]` — Nodes that are considered inside the table. Rows normally get unselected when clicking outside the table, but the component can have difficulty guessing what is inside or outside, for example when using modals. You MAY use this prop to force the table to consider some nodes to be inside the table.
 **`options`** `Omit<Partial<TableOptions<TData>>, 'initialState' | 'data' | 'columns' | 'manualPagination' | 'enableMultiRowSelection' | 'getRowId' | 'getRowCanExpand' | 'enableRowSelection' | 'onRowSelectionChange'>` · optional · default: `{}` — Additional options MAY be passed to the table with this prop.
 
@@ -40,6 +106,45 @@ Plasma provides pre-configured sub-components as convenience wrappers. You SHOUL
 - `Table.Pagination`
 - `Table.PerPage`
 - `Table.Predicate`
+- `Table.Toolbar`
+
+### Table.Toolbar
+
+Use `Table.Toolbar` to render `Table.Filter`, `Table.Predicate`, and `Table.DateRangePicker` outside of the `Table.Header` grid layout. The toolbar renders above the table layout. Components inside `Table.Toolbar` are not wrapped in `Grid.Col` (unlike when placed in `Table.Header`). You MAY use `renderRoot` to provide a flex container (e.g., `renderRoot={(props) => <Group {...props} />}`) and/or customize styles via standard Box props.
+
+```tsx
+<Table store={store} columns={columns} data={data}>
+    <Table.Toolbar>
+        <Table.Filter />
+        <Table.Predicate id="status" data={[...]} label="Status" />
+        <Table.DateRangePicker />
+    </Table.Toolbar>
+    {/* Table.Header can still be used for layout controls and row selection actions */}
+</Table>
+```
+
+You SHOULD use `Table.Toolbar` when filter components need to be rendered outside the table header grid (e.g., in a custom layout above the table). You MUST still render `Table.Toolbar` inside the `<Table>` component because it requires `useTableContext`.
+
+## TypeScript namespace aliases
+
+These type-only aliases are available for annotations and do not add runtime static properties.
+
+- `Table.Props<TData>`
+- `Table.StylesNames`
+- `Table.Factory`
+- `Table.ActionItem.{Props, StylesNames, Factory}`
+- `Table.Cell.{Props, StylesNames, Factory}`
+- `Table.DateRangePicker.{Props, StylesNames, Factory}`
+- `Table.Filter.{Props, StylesNames, Factory}`
+- `Table.Footer.Props`
+- `Table.Header.{Props, StylesNames, Factory}`
+- `Table.LastUpdated.{Props, StylesNames, Factory}`
+- `Table.Loading.Props`
+- `Table.NoData.Props`
+- `Table.Pagination.Props`
+- `Table.PerPage.Props`
+- `Table.Predicate.{Props, StylesNames, Factory}`
+- `Table.Toolbar.{Props, StylesNames, Factory}`
 
 ## Usage
 
