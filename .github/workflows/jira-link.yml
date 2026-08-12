@@ -36,7 +36,7 @@ jobs:
                       const isReady = action === 'ready_for_review' || (action === 'opened' && pr.draft === false);
                       if (isReady) {
                           updated = updated.replace(
-                              /> \[!IMPORTANT\]\r?\n> \*\*Making documentation changes\?\*\* Use \[this template\]\(\?template=documentation\.md\)\.\r?\n\r?\n<!-- This notice will be removed when your PR is marked as "Ready for review" -->\r?\n\r?\n/,
+                              /> \[!IMPORTANT\]\r?\n> \*\*Making documentation changes\?\*\* Use \[this template\]\(\?template=documentation\.md\)\.\r?\n\r?\n<!-- This notice will be removed when you mark your PR as "Ready for review" -->\r?\n\r?\n/,
                               ''
                           );
                       }
