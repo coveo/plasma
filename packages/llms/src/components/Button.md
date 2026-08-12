@@ -31,7 +31,7 @@ Do not use `Button` when:
 ## Decision-making guidance
 
 - Use one primary button per decision area when possible.
-- Use `Button.Secondary` for important supporting actions such as cancel; use `Button.Tertiary` or `Button.Quaternary` for low-emphasis actions such as preview or back.
+- Use `Button.Secondary` for important supporting actions; use `Button.Tertiary` or `Button.Quaternary` for low-emphasis actions such as preview or back.
 - Use destructive variants only when the action can delete, revoke, archive, or otherwise negatively affect data.
 
 ## Variants
