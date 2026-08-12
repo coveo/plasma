@@ -47,10 +47,14 @@
             }
         }
     }
+
+    &[data-error='true']:not([data-checked]) {
+        --radio-card-outline-color: var(--mantine-color-error);
+    }
 }
 
 .container {
-    gap: var(--mantine-spacing-xs);
+    gap: calc(var(--mantine-spacing-xs) / 2);
     width: 100%;
 }
 
