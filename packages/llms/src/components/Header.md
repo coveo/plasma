@@ -70,6 +70,17 @@ Plasma provides pre-configured sub-components as convenience wrappers. You SHOUL
 - `Header.Right`
 - `Header.DocAnchor`
 
+## TypeScript namespace aliases
+
+These type-only aliases are available for annotations and do not add runtime static properties.
+
+- `Header.Props`
+- `Header.StylesNames`
+- `Header.Factory`
+- `Header.Breadcrumbs.Props`
+- `Header.Right.Props`
+- `Header.DocAnchor.Props`
+
 ## Usage
 
 ```tsx

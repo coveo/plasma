@@ -3,9 +3,75 @@ name: Table
 description: Table for displaying tabular data with optional filtering, pagination, row actions, and layout switching.
 ---
 
+# Usage guidance
+
+## What problem does it solve?
+
+The `Table` lets users scan, compare, filter, paginate, select, and act on structured data in rows and columns.
+
+It is useful for operational views where users need to inspect many records and perform actions on one or more of them.
+
+## When to use it
+
+Use `Table` when:
+
+- each record has many fields which the user may need to consult
+- users need to compare values across records
+- filtering, pagination, row actions, selection, or expandable row content are needed
+- the view needs table-specific empty, loading, footer, or pagination patterns
+
+## When not to use it
+
+Do not use `Table` when:
+
+- the data shows a progression over time, use chart components instead
+- users are editing a repeatable form list; use `Collection`
+- there are only a few simple values that can be shown as text or cards
+- the number of entries is static and pre-determined — a full table is overkill when all items are already known
+- the layout would require hiding the most important information in many columns
+
+## Decision-making guidance
+
+- Use `Table` for data display and operational record management.
+- Use `Collection` for editable repeated form items.
+- Use `Facet` or table filter sub-components when users need to narrow data.
+- Use row actions for item-specific commands and header/footer actions for table-level commands.
+
+## States
+
+Important states include:
+
+- initially loading with `data={null}`
+- loaded with rows
+- empty or no matching data
+- selected rows
+- expanded rows
+- paginated data
+- filtered data
+
+## Interaction notes
+
+- Expandable row content SHOULD add detail without replacing the row's core scannable information.
+
+## Content guidance
+
+- Column headers SHOULD be short and describe the data clearly.
+- Empty states SHOULD explain whether there is no data or no matching data.
+- Row actions SHOULD use clear verbs and destructive labels when appropriate.
+- Filter labels SHOULD match the terms users use to understand the data.
+
+## Common anti-patterns
+
+- Using a table for layout instead of data.
+- Putting editable repeated form fields in a table when `Collection` is the intended pattern.
+- Omitting stable row IDs for selectable or reorderable data.
+- Hiding key record identity in expandable content instead of visible columns.
+
+# API reference
+
 ## Props
 
-> Extends: `BoxProps & StylesApiProps<PlasmaTableFactory>`. Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
+> Extends: `BoxProps & StylesApiProps<TableFactory>`. Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
 
 **`store`** `TableStore<TData>` · required · default: `undefined` — You MUST pass the table store returned by `useTable`.
 **`data`** `TData[] | null` · required · default: `undefined` — Data to display in the table. You MUST use `null` when the table is initially loading.
@@ -58,6 +124,27 @@ Use `Table.Toolbar` to render `Table.Filter`, `Table.Predicate`, and `Table.Date
 ```
 
 You SHOULD use `Table.Toolbar` when filter components need to be rendered outside the table header grid (e.g., in a custom layout above the table). You MUST still render `Table.Toolbar` inside the `<Table>` component because it requires `useTableContext`.
+
+## TypeScript namespace aliases
+
+These type-only aliases are available for annotations and do not add runtime static properties.
+
+- `Table.Props<TData>`
+- `Table.StylesNames`
+- `Table.Factory`
+- `Table.ActionItem.{Props, StylesNames, Factory}`
+- `Table.Cell.{Props, StylesNames, Factory}`
+- `Table.DateRangePicker.{Props, StylesNames, Factory}`
+- `Table.Filter.{Props, StylesNames, Factory}`
+- `Table.Footer.Props`
+- `Table.Header.{Props, StylesNames, Factory}`
+- `Table.LastUpdated.{Props, StylesNames, Factory}`
+- `Table.Loading.Props`
+- `Table.NoData.Props`
+- `Table.Pagination.Props`
+- `Table.PerPage.Props`
+- `Table.Predicate.{Props, StylesNames, Factory}`
+- `Table.Toolbar.{Props, StylesNames, Factory}`
 
 ## Usage
 

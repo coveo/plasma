@@ -19,6 +19,13 @@ description: Displays a list of prerequisites with status indicators (complete, 
 **`label`** `string` · required — The text content of the prerequisite.
 **`description`** `string` · optional · default: `undefined` — Optional description text displayed below the label in a smaller, dimmed font.
 
+## TypeScript namespace aliases
+
+These type-only aliases are available for annotations and do not add runtime static properties.
+
+- `PrerequisitesList.Props`
+- `PrerequisitesList.Factory`
+
 ## Usage
 
 ```tsx

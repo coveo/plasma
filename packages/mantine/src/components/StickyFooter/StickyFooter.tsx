@@ -68,3 +68,9 @@ export const StickyFooter = factory<StickyFooterFactory>((props) => {
 });
 
 StickyFooter.displayName = 'StickyFooter';
+
+export namespace StickyFooter {
+    export type Props = StickyFooterProps;
+    export type StylesNames = StickyFooterStylesNames;
+    export type Factory = StickyFooterFactory;
+}

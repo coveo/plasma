@@ -406,3 +406,9 @@ Collection.displayName = 'Collection';
 Collection.extend = identity as CustomComponentThemeExtend<CollectionFactory>;
 
 Collection.Layouts = CollectionLayouts;
+
+export namespace Collection {
+    export type Props<T> = CollectionProps<T>;
+    export type StylesNames = CollectionStylesNames;
+    export type Factory = CollectionFactory;
+}

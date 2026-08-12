@@ -66,3 +66,9 @@ export const LastUpdated = factory<LastUpdatedFactory>(({ref, ...props}) => {
 });
 
 LastUpdated.displayName = 'LastUpdated';
+
+export namespace LastUpdated {
+    export type Props = LastUpdatedProps;
+    export type StylesNames = LastUpdatedStylesNames;
+    export type Factory = LastUpdatedFactory;
+}

@@ -59,6 +59,16 @@ The Navigation component uses three CSS custom properties for accent colors. Con
 
 If not defined, the defaults are teal-based (matching the Administration Console theme).
 
+## TypeScript namespace aliases
+
+These type-only aliases are available for annotations and do not add runtime static properties.
+
+- `Navigation.Props`
+- `Navigation.SideBar.Props`
+- `Navigation.Link.Props`
+- `Navigation.Toggle.Props`
+- `Navigation.Badge.Props`
+
 ## Usage
 
 The `Navigation` provider MUST wrap `AppShell` so that the shell can read the collapsed state. Use a component inside `Navigation` that calls `useNavigation()` to pass the collapsed state to `AppShell`.

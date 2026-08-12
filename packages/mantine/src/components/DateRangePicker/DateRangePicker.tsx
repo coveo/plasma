@@ -200,3 +200,9 @@ export const DateRangePicker = factory<DateRangePickerFactory>(({ref, ...props})
         </Popover>
     );
 });
+
+export namespace DateRangePicker {
+    export type Props = DateRangePickerProps;
+    export type StylesNames = DateRangePickerStylesNames;
+    export type Factory = DateRangePickerFactory;
+}

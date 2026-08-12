@@ -75,6 +75,16 @@ Plasma provides pre-configured sub-components as convenience wrappers. You SHOUL
 - `Badge.Critical`
 - `Badge.Disabled`
 
+## TypeScript namespace aliases
+
+These type-only aliases are available for annotations and do not add runtime static properties.
+
+- `Badge.Props`
+- `Badge.StylesNames`
+- `Badge.CssVariables`
+- `Badge.Factory`
+- `Badge.{Primary, Secondary, Success, Warning, Critical, Disabled}.Props`
+
 ## Usage
 
 ```tsx

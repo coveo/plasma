@@ -1,11 +1,11 @@
 import {useToggle} from '@mantine/hooks';
 import {ReactElement, ReactNode} from 'react';
 import {NavigationContext} from './Navigation.context.js';
-import {NavigationBadge} from './NavigationBadge.js';
-import {NavigationLink} from './NavigationLink.js';
+import {NavigationBadge, NavigationBadgeProps} from './NavigationBadge.js';
+import {NavigationLink, NavigationLinkProps} from './NavigationLink.js';
 import {NavigationSection} from './NavigationSection.js';
-import {NavigationSideBar} from './NavigationSideBar.js';
-import {NavigationToggle} from './NavigationToggle.js';
+import {NavigationSideBar, NavigationSideBarProps} from './NavigationSideBar.js';
+import {NavigationToggle, NavigationToggleProps} from './NavigationToggle.js';
 
 interface NavigationType {
     (props: NavigationProps): ReactElement;
@@ -45,3 +45,23 @@ export {NavigationLink, type NavigationLinkProps} from './NavigationLink.js';
 export {NavigationToggle, type NavigationToggleProps} from './NavigationToggle.js';
 export {NavigationBadge, type NavigationBadgeProps, type NavigationBadgeVariant} from './NavigationBadge.js';
 export {useNavigation, type NavigationContextType} from './Navigation.context.js';
+
+export namespace Navigation {
+    export type Props = NavigationProps;
+
+    export namespace SideBar {
+        export type Props = NavigationSideBarProps;
+    }
+
+    export namespace Link {
+        export type Props = NavigationLinkProps;
+    }
+
+    export namespace Toggle {
+        export type Props = NavigationToggleProps;
+    }
+
+    export namespace Badge {
+        export type Props = NavigationBadgeProps;
+    }
+}

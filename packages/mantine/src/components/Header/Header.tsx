@@ -1,13 +1,13 @@
 import {
     Divider,
     Factory,
+    factory,
     Group,
     GroupProps,
     Stack,
     StylesApiProps,
     Text,
     Title,
-    factory,
     useProps,
     useStyles,
 } from '@mantine/core';
@@ -18,17 +18,21 @@ import {
     HeaderBreadcrumbAnchor,
     type HeaderBreadcrumbAnchorStyleNames,
 } from './HeaderBreadcrumbs/HeaderBreadcrumbAnchor.js';
-import {HeaderBreadcrumbs, HeaderBreadcrumbsStyleNames} from './HeaderBreadcrumbs/HeaderBreadcrumbs.js';
+import {
+    HeaderBreadcrumbs,
+    HeaderBreadcrumbsProps,
+    HeaderBreadcrumbsStyleNames,
+} from './HeaderBreadcrumbs/HeaderBreadcrumbs.js';
 import {HeaderBreadcrumbText, HeaderBreadcrumbTextStyleNames} from './HeaderBreadcrumbs/HeaderBreadcrumbText.js';
-import {HeaderDocAnchor, HeaderDocAnchorStyleNames} from './HeaderDocAnchor/HeaderDocAnchor.js';
-import {HeaderRight, HeaderRightStyleNames} from './HeaderRight/HeaderRight.js';
+import {HeaderDocAnchor, HeaderDocAnchorProps, HeaderDocAnchorStyleNames} from './HeaderDocAnchor/HeaderDocAnchor.js';
+import {HeaderRight, HeaderRightProps, HeaderRightStyleNames} from './HeaderRight/HeaderRight.js';
 
 export type {HeaderBreadcrumbsProps} from './HeaderBreadcrumbs/HeaderBreadcrumbs.js';
 export type {HeaderDocAnchorProps} from './HeaderDocAnchor/HeaderDocAnchor.js';
 export type {HeaderRightProps} from './HeaderRight/HeaderRight.js';
 
 export type HeaderVariant = 'primary' | 'secondary';
-export type HeaderStyleNames =
+export type HeaderStylesNames =
     | 'root'
     | 'title'
     | 'description'
@@ -39,6 +43,10 @@ export type HeaderStyleNames =
     | HeaderBreadcrumbAnchorStyleNames
     | HeaderBreadcrumbTextStyleNames
     | HeaderRightStyleNames;
+/**
+ * @deprecated use HeaderStylesNames instead. Will be removed in the next major version
+ */
+export type HeaderStyleNames = HeaderStylesNames;
 
 export interface HeaderProps
     extends
@@ -75,7 +83,7 @@ export type HeaderFactory = Factory<{
     props: HeaderProps;
     ref: HTMLDivElement;
     variant: HeaderVariant;
-    stylesNames: HeaderStyleNames;
+    stylesNames: HeaderStylesNames;
     staticComponents: {
         Breadcrumbs: typeof HeaderBreadcrumbs;
         BreadcrumbAnchor: typeof HeaderBreadcrumbAnchor;
@@ -165,3 +173,21 @@ Header.BreadcrumbAnchor = HeaderBreadcrumbAnchor;
 Header.BreadcrumbText = HeaderBreadcrumbText;
 Header.Right = HeaderRight;
 Header.DocAnchor = HeaderDocAnchor;
+
+export namespace Header {
+    export type Props = HeaderProps;
+    export type Factory = HeaderFactory;
+    export type StylesNames = HeaderStylesNames;
+
+    export namespace Breadcrumbs {
+        export type Props = HeaderBreadcrumbsProps;
+    }
+
+    export namespace Right {
+        export type Props = HeaderRightProps;
+    }
+
+    export namespace DocAnchor {
+        export type Props = HeaderDocAnchorProps;
+    }
+}
