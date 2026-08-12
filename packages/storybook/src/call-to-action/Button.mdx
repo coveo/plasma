@@ -11,7 +11,7 @@ Action button that triggers tasks and provides async loading and disabled-toolti
 
 ## Overview
 
-Use Button when users need to trigger an explicit command — submitting a form, confirming a decision, or moving a workflow forward.
+Use Button when users need to trigger an explicit command: submitting a form, confirming a decision, or moving a workflow forward.
 
 It handles async loading automatically and lets you explain why an action is unavailable directly on the button.
 
@@ -19,9 +19,9 @@ It handles async loading automatically and lets you explain why an action is una
 
 Reach for Button when the action label should be visible and the action belongs to a form, modal, footer, toolbar, or page-level command area.
 
-Don't use it when the action is compact and icon-only — use `ActionIcon` instead.
+Don't use it when the action is compact and icon-only. Use `ActionIcon` instead.
 
-Don't use it when the control represents an immediate persistent setting — use a selection or boolean control.
+Don't use it when the control represents an immediate persistent setting. Use a selection or boolean control.
 
 Avoid adding so many buttons to one area that the decision hierarchy becomes unclear.
 
@@ -29,7 +29,7 @@ Avoid adding so many buttons to one area that the decision hierarchy becomes unc
 
 Always use the Plasma sub-components instead of passing Mantine's `variant` prop directly.
 
-Use `Button.Primary` for the main action in a decision area — one per area when possible.
+Use `Button.Primary` for the main action in a decision area, one per area when possible.
 
 Use `Button.Secondary` for important supporting actions like cancel.
 
@@ -37,14 +37,14 @@ Use `Button.Tertiary` or `Button.Quaternary` for low-emphasis actions like previ
 
 Reserve the destructive variants for actions that delete, revoke, archive, or otherwise negatively affect data:
 
-- `Button.DestructivePrimary` — the confirming action in a destructive dialog (e.g. "Delete")
-- `Button.DestructiveSecondary`, `Button.DestructiveTertiary`, `Button.DestructiveQuaternary` — as emphasis decreases
+- `Button.DestructivePrimary`: the confirming action in a destructive dialog (e.g. "Delete")
+- `Button.DestructiveSecondary`, `Button.DestructiveTertiary`, `Button.DestructiveQuaternary`: as emphasis decreases
 
 ## States
 
-Button supports four important states: normal, loading (during an async `onClick`), disabled with an optional tooltip, and full width.
+Button supports 4 important states: normal, loading (during an async `onClick`), disabled with an optional tooltip, and full width.
 
-Async `onClick` handlers show a loading indicator automatically while the promise resolves — no extra wiring needed.
+Async `onClick` handlers show a loading indicator automatically while the promise resolves. No extra wiring needed.
 
 Pair `disabled` with `disabledTooltip` to explain why an action is unavailable when the reason isn't visible nearby.
 
@@ -83,7 +83,7 @@ function DisabledExample() {
 
 - Describe the action that will happen, not the object: "Save changes" not "Changes"
 - Use sentence case
-- Keep it to three words or fewer
+- Keep it to 3 words or fewer
 - Don't use vague labels that hide the consequence: "Delete source" not "OK"
 
 **Disabled tooltip (`disabledTooltip`):**
