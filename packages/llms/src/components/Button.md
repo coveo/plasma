@@ -91,6 +91,16 @@ Plasma provides pre-configured sub-components as convenience wrappers. You SHOUL
 - `Button.DestructiveTertiary`
 - `Button.DestructiveQuaternary`
 
+## TypeScript namespace aliases
+
+These type-only aliases are available for annotations and do not add runtime static properties.
+
+- `Button.Props`
+- `Button.StylesNames`
+- `Button.CssVariables`
+- `Button.Factory`
+- `Button.{Primary, Secondary, Tertiary, Quaternary, DestructivePrimary, DestructiveSecondary, DestructiveTertiary, DestructiveQuaternary}.Props`
+
 ## Usage
 
 ```tsx

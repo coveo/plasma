@@ -86,6 +86,14 @@ Important states include:
 **`limit`** `number` · optional · default: `Infinity` — Limit amount of items showed at a time.
 **`hideSearch`** `boolean` · optional · default: `data.length <= 7` — This prop controls whether the search input is displayed.
 
+## TypeScript namespace aliases
+
+These type-only aliases are available for annotations and do not add runtime static properties.
+
+- `Facet.Props`
+- `Facet.StylesNames`
+- `Facet.Factory`
+
 ## Usage
 
 ```tsx

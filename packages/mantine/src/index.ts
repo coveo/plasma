@@ -214,7 +214,8 @@ export {
     type HeaderFactory,
     type HeaderProps,
     type HeaderRightProps,
-    type HeaderStyleNames,
+    type HeaderStyleNames, // deprecated, remove in next major version
+    type HeaderStylesNames,
     type HeaderVariant,
 } from './components/Header/Header.js';
 

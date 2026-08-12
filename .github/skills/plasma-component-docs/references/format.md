@@ -50,6 +50,22 @@ description: One-sentence description used in llms.txt index.  ← REQUIRED
 
 ---
 
+## TypeScript namespace aliases
+
+When a component exposes generated Mantine-style type aliases, document them in this optional section after `Props` and `Sub-components`, and before `Usage`. State that aliases are type-only and list only aliases that the component actually exposes. List a resolvable compound child's aliases only through its qualifying parent namespace (for example, `Modal.Footer.Props`), never as standalone child aliases.
+
+```markdown
+## TypeScript namespace aliases
+
+These type-only aliases are available for annotations and do not add runtime static properties.
+
+- `Component.Props`
+- `Component.StylesNames`
+- `Component.Factory`
+```
+
+---
+
 ## Usage section
 
 MUST appear after all other sections (Props, Sub-components) and before the footer link. MUST show the most common real-world usage as a self-contained `tsx` snippet. SHOULD use Plasma sub-components where they exist. MAY include 2–3 examples for components with multiple important patterns (e.g. async click, disabled state). MUST NOT be exhaustive — the Props table covers the full API.

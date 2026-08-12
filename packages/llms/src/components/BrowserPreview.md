@@ -54,6 +54,12 @@ Do not use `BrowserPreview` when:
 **`headerTooltip`** `string` · optional · default: `undefined` — Text displayed in a tooltip in the header.
 **`title`** `string` · optional · default: `undefined` — Custom title displayed at the center of the header.
 
+## TypeScript namespace aliases
+
+These type-only aliases are available for annotations and do not add runtime static properties.
+
+- `BrowserPreview.Props`
+
 ## Usage
 
 ```tsx

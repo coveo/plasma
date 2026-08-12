@@ -70,6 +70,16 @@ Plasma provides pre-configured sub-components as convenience wrappers. You SHOUL
 - `Modal.Stack`
 - `Modal.Footer`
 
+## TypeScript namespace aliases
+
+These type-only aliases are available for annotations and do not add runtime static properties.
+
+- `Modal.Props`
+- `Modal.StylesNames`
+- `Modal.CssVariables`
+- `Modal.Factory`
+- `Modal.Footer.{Props, StylesNames, Factory}`
+
 ## Usage
 
 ```tsx

@@ -59,6 +59,12 @@ Do not use `CopyToClipboard` when:
 **`tooltipLabelCopy`** `string` · optional · default: `Copy to clipboard` — The tooltip displays this text when hovering over the button.
 **`tooltipLabelCopied`** `string` · optional · default: `Copied` — The tooltip displays this text when the value is copied to the clipboard.
 
+## TypeScript namespace aliases
+
+These type-only aliases are available for annotations and do not add runtime static properties.
+
+- `CopyToClipboard.Props`
+
 ## Usage
 
 Use `CopyToClipboard` in the `rightSection` of a read-only input when users need to quickly copy values like API keys, tokens, or IDs.

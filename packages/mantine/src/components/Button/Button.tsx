@@ -127,3 +127,42 @@ Button.DestructiveQuaternary = ButtonDestructiveQuaternary;
 (ButtonDestructiveQuaternary as ComponentType).displayName = 'Button.DestructiveQuaternary';
 
 Button.displayName = 'Button';
+
+export namespace Button {
+    export type Props = ButtonProps;
+    export type StylesNames = ButtonStylesNames;
+    export type CssVariables = ButtonCssVariables;
+    export type Factory = ButtonOverloadFactory;
+
+    export namespace Primary {
+        export type Props = ButtonProps;
+    }
+
+    export namespace Secondary {
+        export type Props = ButtonProps;
+    }
+
+    export namespace Tertiary {
+        export type Props = ButtonProps;
+    }
+
+    export namespace Quaternary {
+        export type Props = ButtonProps;
+    }
+
+    export namespace DestructivePrimary {
+        export type Props = ButtonProps;
+    }
+
+    export namespace DestructiveSecondary {
+        export type Props = ButtonProps;
+    }
+
+    export namespace DestructiveTertiary {
+        export type Props = ButtonProps;
+    }
+
+    export namespace DestructiveQuaternary {
+        export type Props = ButtonProps;
+    }
+}

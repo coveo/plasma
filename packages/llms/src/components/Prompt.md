@@ -71,6 +71,22 @@ Plasma provides pre-configured sub-components as convenience wrappers. You SHOUL
 - `Prompt.CancelButton`
 - `Prompt.ConfirmButton`
 
+## TypeScript namespace aliases
+
+These type-only aliases are available for annotations and do not add runtime static properties.
+
+- `Prompt.Props`
+- `Prompt.StylesNames`
+- `Prompt.CssVariables`
+- `Prompt.Factory`
+- `Prompt.Information.Props`
+- `Prompt.Success.Props`
+- `Prompt.Warning.Props`
+- `Prompt.Critical.Props`
+- `Prompt.Footer.Props`
+- `Prompt.CancelButton.Props`
+- `Prompt.ConfirmButton.Props`
+
 ## Usage
 
 ```tsx

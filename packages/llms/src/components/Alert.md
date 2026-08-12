@@ -70,6 +70,16 @@ Plasma provides pre-configured sub-components as convenience wrappers. You SHOUL
 - `Alert.Critical`
 - `Alert.Success`
 
+## TypeScript namespace aliases
+
+These type-only aliases are available for annotations and do not add runtime static properties.
+
+- `Alert.Props`
+- `Alert.StylesNames`
+- `Alert.CssVariables`
+- `Alert.Factory`
+- `Alert.{Information, Advice, Warning, Critical, Success}.Props`
+
 ## Usage
 
 ```tsx
