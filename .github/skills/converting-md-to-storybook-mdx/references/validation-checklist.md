@@ -25,6 +25,7 @@ Before considering Step 1 complete for a component:
 - [ ] No rendered `{{BASE_URL}}` link or placeholder footer remains in the output `.mdx` file
 - [ ] No em-dashes (`—`) appear in any prose written by the agent
 - [ ] No semicolons (`;`) appear in any prose written by the agent (except when reproducing existing text)
+- [ ] Numbers written by the agent use numerals, including ranges and counts ("1-3 words", "3 words or fewer"), except a single number named in prose ("add one component")
 - [ ] In any prose blocks added by the agent, each sentence is on its own line separated by a blank line
 - [ ] No completion marker comments were added by Skill 1
 - [ ] Agent-redirect comment `{/* For the agent-friendly version... */}` is present immediately after `<Meta ... />`

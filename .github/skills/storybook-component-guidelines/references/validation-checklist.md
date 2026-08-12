@@ -29,6 +29,7 @@ Before considering Step 2 complete for a component:
 - [ ] No ellipses except for progress indicators or truncated content
 - [ ] No ALL CAPS directives such as `MUST`, `SHOULD`, or `MAY` remain in the rewritten component documentation
 - [ ] American English spelling throughout (no British variants like "colour", "behaviour", "organise", "cancelled")
+- [ ] Numbers use numerals, including ranges and counts ("1-3 words", "3 words or fewer", "4 states"), except a single number named in prose ("add one component")
 - [ ] Plain language: jargon replacements from `WritingMechanics.md` applied
 - [ ] Content guidance includes at least two bold subheadings
 - [ ] Content guidance covers primary labels, primary body/content, and ordering/grouping when applicable

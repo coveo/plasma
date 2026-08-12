@@ -167,8 +167,9 @@ Do not create or modify any `.stories.tsx` file. Do not modify the original `.md
 
 This skill preserves existing content exactly, but you still write prose in a few places: comments, build reports, and messages to the user. Apply these rules to all prose you write.
 
-- **No em-dashes (`—`).** Not as clause separators, not with spaces, not at all. Use a colon when listing or explaining something, a period when separating independent clauses, or a comma when separating dependent clauses.
-- **No semicolons (`;`).** Use a colon, period, or comma instead. The only exception is quoting or directly reproducing existing text that already contains a semicolon.
+- **No em-dashes (`—`).** Not as clause separators, not with spaces, not at all. Use a colon when listing something, a period when separating independent clauses, or a coordinating conjunction in between dependent clauses.
+- **No semicolons (`;`).** Use a period instead. The only exceptions are code examples or code syntax that purposefully contains semicolons.
+- **Use numerals for numbers.** Write ranges and counts as numerals ("1-3 words" not "one to three words", "3 words or fewer" not "three words or fewer"). The only exception is naming a single number in prose, which stays spelled out ("add one component").
 - **One sentence per line.** In MDX prose blocks, each sentence must be on its own line, separated from the next by a blank line. Do not wrap multiple sentences onto a single line. This rule does not apply inside fenced code blocks, table cells, or list items.
 
 ---

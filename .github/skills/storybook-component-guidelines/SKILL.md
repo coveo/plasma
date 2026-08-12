@@ -295,6 +295,11 @@ Do not use: it'll, would've, could've, should've, you'd, it'd, there'd, there'll
 - American English spelling throughout. Use "customize" not "customise", "color" not "colour", "canceled" not "cancelled", "behavior" not "behaviour", "organize" not "organise".
 - Exception: proper names always use their official spelling regardless of locale.
 
+### Numbers
+
+- Use numerals rather than spelling numbers out, including ranges and counts: "1-3 words" not "one to three words", "3 words or fewer" not "three words or fewer".
+- The only exception is naming a single number in running prose, which stays spelled out: "add one component", "two actions per area".
+
 ### Sentence length
 
 These are maximums. Shorter is always better.
@@ -327,6 +332,7 @@ After rewriting the `.mdx` file and before presenting the commit to the user, re
 - [ ] No ellipses except for progress indicators or truncated content
 - [ ] No ALL CAPS directives (`MUST`, `SHOULD`, `MAY`, `SHALL`, `WILL`)
 - [ ] American English spelling throughout (no British variants like "colour", "behaviour", "organise", "cancelled")
+- [ ] Numbers use numerals, including ranges and counts ("1-3 words", "3 words or fewer", "4 states"), except a single number named in prose ("add one component")
 - [ ] Every prose sentence is on its own line with a blank line between sentences
 - [ ] Plain language: jargon replacements from `WritingMechanics.md` applied (e.g., "use" not "utilize", "start" not "begin", "can" not "is able to")
 - [ ] Sentence length maximums respected (20 words per sentence, 3 words for buttons)
