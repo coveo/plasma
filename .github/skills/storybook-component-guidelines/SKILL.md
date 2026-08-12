@@ -122,7 +122,7 @@ One sentence description of what the component does.
 
 ## Overview
 
-[1–3 sentences: what is this component and when would a developer reach for it?]
+[one to three sentences: what is this component and when would a developer reach for it?]
 
 ## Content guidance
 
@@ -149,7 +149,7 @@ If the component has no stories file and uses an approved fallback location, kee
 
 ### Overview
 
-Write 1–3 natural sentences: what is this component, and when would a developer reach for it? Expand on the description without repeating it word for word.
+Write one to three natural sentences: what is this component, and when would a developer reach for it? Expand on the description without repeating it word for word.
 
 ### API reference sections
 
@@ -179,24 +179,21 @@ See [references/expected-format.md](references/expected-format.md) for the full 
 
 ## Prose line formatting
 
-Write one sentence per line in all prose sections.
+Write one sentence per line in all prose sections by default.
 
-In MDX, two sentences on adjacent lines with no blank line between them render as a single paragraph. The line break is invisible to the reader.
-Each sentence must be on its own line, separated from the next by a blank line, so that it renders as a separate paragraph.
+However, in places where the text works better as two separate paragraphs (for example, the topic changes), add a blank line between the sentences so that it renders as a new paragraph.
 
 **Correct:**
 
 ```mdx
 Use an Accordion to organize related content into collapsible sections.
-
 It works well when vertical space is limited and not all content needs to be visible at once.
 ```
 
 **Incorrect:**
 
 ```mdx
-Use an Accordion to organize related content into collapsible sections.
-It works well when vertical space is limited and not all content needs to be visible at once.
+Use an Accordion to organize related content into collapsible sections. It works well when vertical space is limited and not all content needs to be visible at once.
 ```
 
 Exceptions. Do not apply this rule inside:
@@ -205,22 +202,6 @@ Exceptions. Do not apply this rule inside:
 - Table cells
 - Bullet list items
 - Numbered list items
-
----
-
-## Em-dash and semicolon rule
-
-Do not use em-dashes (`—`) or semicolons (`;`) anywhere in prose you write.
-This means no clause separators, no spaced usage (`word — word`), and no em-dashes at all.
-It also means no semicolons joining independent clauses or separating list items.
-
-When you feel the need for either, rewrite the sentence using the appropriate substitute:
-
-- **Listing or explaining something:** use a colon. Example: "There are two options: light and dark."
-- **Separating two independent clauses:** use a period. Split into two sentences.
-- **Separating two dependent clauses:** use a comma.
-
-The only exception is when quoting or directly reproducing existing text that already contains an em-dash or semicolon.
 
 ---
 
@@ -258,9 +239,11 @@ Requirements:
 
 ## Writing rules (non-negotiable)
 
-The content documentation under `packages/llms/src/content/` is the source of truth for writing style, tone, punctuation, capitalization, grammar, and UX copy rules.
+The content documentation under `packages/llms/src/content/` (including `WritingMechanics.md`) is the base source of truth for voice, tone, vocabulary, capitalization, contractions, spelling, and grammar. However, those docs were written for the UX copywriting in the Coveo Administration Console.
 
-Read the relevant files in `packages/llms/src/content/` before rewriting component usage guidelines.
+This skill is designed for Storybook docs, and therefore contains rules that are specific to doc writing and are not defined in the content/ docs (em-dash, semicolon, and number-formatting). Follow these rules in your output for Storybook pages, even if they differ from the rules in content/.
+
+If you find a conflict between this skill and the content/ docs on anything that isn't explicitly listed as Storybook-specific already, stop and ask the user rather than guessing.
 
 Use `references/expected-format.md` only for the structure of the `## Content guidance` section.
 
@@ -268,27 +251,23 @@ Every rule below is mandatory. Violations are not acceptable in submitted output
 
 ### Voice and tone
 
-- Active voice by default. Passive voice is acceptable only in confirmations where attributing the action to the user would feel inaccurate ("Your pipeline has been saved." not "You saved your pipeline.").
-- Address the user as "you." Never use "we," "our," "us," or "Coveo" as the subject of an action. Omit the subject entirely when possible.
+- Use active voice. It reads more directly in documentation ("The Accordion groups related content." not "Related content is grouped by the Accordion.").
+- Address the reader as "you." Avoid "we," "our," and "us." Do not write about Plasma as a person or as the one performing an action. Describe what a component does directly ("Use the Accordion to group related content." not "Plasma lets you group related content.").
 - Plain language. Use the simpler word when two options mean the same thing. Do not use idioms or expressions. See the jargon replacements list in `WritingMechanics.md`.
 - Frontload: put the most important information first, then add context or detail.
 
 ### Contractions
 
-Use the approved contractions list from `WritingMechanics.md`. The approved set includes: aren't, can't, couldn't, didn't, doesn't, don't, hasn't, haven't, how's, isn't, it's, shouldn't, that's, there's, they're, what's, where's, won't, wouldn't, you're, you've.
-
-Do not use: it'll, would've, could've, should've, you'd, it'd, there'd, there'll, they'll, they've, who's.
+Use contractions naturally to keep the tone approachable. Read the contractions table in `WritingMechanics.md` and strictly adhere to those you should use and avoid.
 
 ### Punctuation and formatting
 
-- Sentence case for all UI text and headings. Only capitalize the first word and proper nouns. Exception: title case for navigation menu items only.
-- No em-dashes (`—`). Not as clause separators, not with spaces, not at all. Rewrite the sentence using a period, comma, or split into two sentences.
-- No semicolons (`;`) in prose. Use a colon when listing or explaining, a period when separating independent clauses, or a comma when separating dependent clauses. The only exception is quoting or reproducing existing text.
-- Exclamation marks: at most one per context, only for genuinely positive moments (completed setup, new feature enabled). Never use for errors, warnings, neutral states, or instructional copy.
-- No ellipses except to indicate a process in progress or truncated content.
+- Use sentence case for headings. Capitalize only the first word and proper nouns.
+- No em-dashes (`—`). Not as clause separators, not with spaces, not at all. Depending on the context, replace with a conjunction, comma, period, or colon (for lists).
+- No semicolons (`;`) in prose. Use a period instead. The only exception is code examples or code blocks that purposefully contain semicolons.
 - No ALL CAPS for emphasis. Rewrite `MUST`, `SHOULD`, `MAY` as natural language.
-- No colons in titles or labels.
-- Do not use the possessive form for objects or UI elements. Rewrite using "of" instead.
+- No colons in headings or titles. This applies to every heading in the doc.
+- Do not use the possessive form for a component or interface element. Rewrite using "of" ("the props of the Accordion" not "the Accordion's props").
 
 ### Spelling
 
@@ -297,24 +276,19 @@ Do not use: it'll, would've, could've, should've, you'd, it'd, there'd, there'll
 
 ### Numbers
 
-- Use numerals rather than spelling numbers out, including ranges and counts: "1-3 words" not "one to three words", "3 words or fewer" not "three words or fewer".
-- The only exception is naming a single number in running prose, which stays spelled out: "add one component", "two actions per area".
+- Spell out numbers one through ten, including inside ranges: "one to three words" not "1-3 words", "three words or fewer" not "3 words or fewer".
+- Use numerals for 11 and higher: "20 words", "25 words".
 
 ### Sentence length
 
-These are maximums. Shorter is always better.
-
-- Any sentence: 20 words
-- Button labels: 3 words
-- Tooltips: 20 words
-- Error messages: 25 words
+All sentences should be under 20 words. This doesn't apply to code examples or code blocks.
 
 ### Structure
 
-- One sentence per line in prose sections, separated by a blank line.
+- Write one sentence per line in prose sections. Add a blank line between sentences only where a new paragraph is warranted, such as a topic change.
 - Mix prose and bullets naturally. Do not default to bullet-only formatting.
 - Keep every rule, constraint, and usage guideline that exists in the source. Do not drop content.
-- State the result before the required action ("To add a source, select **Add source**." not "Select **Add source** to add a source.").
+- When giving an instruction, state the result before the action ("To disable the control, set `disabled`." not "Set `disabled` to disable the control.").
 
 ---
 
@@ -322,20 +296,19 @@ These are maximums. Shorter is always better.
 
 After rewriting the `.mdx` file and before presenting the commit to the user, re-read the entire output and verify every item below passes. If any item fails, fix it before continuing.
 
-- [ ] Approved contractions from `WritingMechanics.md` are used (don't, can't, it's, etc.). No banned contractions (it'll, would've, could've, etc.).
+- [ ] Contractions follow the approved list in `WritingMechanics.md`
 - [ ] No em-dashes (`—`) anywhere in prose
-- [ ] No semicolons (`;`) in prose (use a colon, period, or comma instead, except when quoting or reproducing existing text)
-- [ ] Active voice by default. Passive voice only in confirmations or status messages.
-- [ ] Sentence case for all headings and UI text (only first word and proper nouns capitalized)
-- [ ] No "we", "our", "us", or "Coveo" as the subject of an action (always "you" or omit the subject)
-- [ ] At most one exclamation mark per context, only for positive moments. None in errors, warnings, or instructions.
-- [ ] No ellipses except for progress indicators or truncated content
+- [ ] No semicolons (`;`) in prose (use a period instead, except in code examples or code blocks)
+- [ ] No colons in any headings or titles
+- [ ] Active voice by default
+- [ ] Sentence case for headings (only first word and proper nouns capitalized)
+- [ ] Reader addressed as "you"; no "we", "our", or "us"; Plasma is not written as the doer of the action
 - [ ] No ALL CAPS directives (`MUST`, `SHOULD`, `MAY`, `SHALL`, `WILL`)
 - [ ] American English spelling throughout (no British variants like "colour", "behaviour", "organise", "cancelled")
-- [ ] Numbers use numerals, including ranges and counts ("1-3 words", "3 words or fewer", "4 states"), except a single number named in prose ("add one component")
-- [ ] Every prose sentence is on its own line with a blank line between sentences
+- [ ] Numbers one through ten are spelled out, including in ranges ("one to three words", "three words or fewer"). Numbers 11 and higher use numerals ("20 words", "25 words").
+- [ ] Each prose sentence is on its own line. Blank lines separate paragraphs, not every sentence.
 - [ ] Plain language: jargon replacements from `WritingMechanics.md` applied (e.g., "use" not "utilize", "start" not "begin", "can" not "is able to")
-- [ ] Sentence length maximums respected (20 words per sentence, 3 words for buttons)
+- [ ] Sentence length maximum respected (20 words per sentence)
 
 ---
 

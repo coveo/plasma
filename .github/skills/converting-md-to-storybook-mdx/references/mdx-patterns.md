@@ -74,22 +74,21 @@ Source files in `packages/llms/src/components/` end with:
 
 ## Prose line formatting
 
-In MDX, two sentences on adjacent lines without a blank line between them render as a single paragraph.
-Each sentence that should appear as its own paragraph must be separated from the next by a blank line.
+Write one sentence per line in all prose sections by default.
+
+In MDX, sentences on adjacent lines with no blank line between them render as a single paragraph, which is the default. Add a blank line between sentences only where the text works better as two paragraphs, for example when the topic changes.
 
 **Correct:**
 
 ```mdx
 Use an Accordion to organize related content into collapsible sections.
-
 It works well when vertical space is limited.
 ```
 
-**Incorrect (renders as one paragraph):**
+**Incorrect (two sentences on one line):**
 
 ```mdx
-Use an Accordion to organize related content into collapsible sections.
-It works well when vertical space is limited.
+Use an Accordion to organize related content into collapsible sections. It works well when vertical space is limited.
 ```
 
 This rule applies to all prose sections. It does not apply inside fenced code blocks, table cells, bullet list items, or numbered list items.
