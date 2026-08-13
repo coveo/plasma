@@ -1,10 +1,15 @@
+> [!IMPORTANT]
+> **Making documentation changes?** Use [this template](?template=documentation.md).
+
+<!-- This notice will be removed when you mark your PR as "Ready for review" -->
+
 ### Proposed Changes
 
-<!-- Explain what are your changes. -->
+<!-- Explain what your changes are. -->
 
 ### Potential Breaking Changes
 
-<!-- List all changes that might be breaking to plasma's users if any. -->
+<!-- List all changes that might be breaking for Plasma's users, if any. -->
 
 ### Acceptance Criteria
 
