@@ -79,6 +79,16 @@ Plasma provides pre-configured sub-components as convenience wrappers. You SHOUL
 
 **`children`** `ReactNode` · required · default: `undefined` — The tooltip content to display.
 
+## TypeScript namespace aliases
+
+These type-only aliases are available for annotations and do not add runtime static properties.
+
+- `Input.Props`
+- `Input.Factory`
+- `Input.LabelInfo.Props`
+- `Input.LabelInfo.StylesNames`
+- `Input.LabelInfo.Factory`
+
 ## Usage
 
 ```tsx

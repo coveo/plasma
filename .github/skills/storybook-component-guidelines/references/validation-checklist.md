@@ -18,16 +18,17 @@ Before considering Step 2 complete for a component:
 - [ ] No unsupported product behavior was added
 - [ ] Fenced code blocks are byte-for-byte identical to the originals, including language fences, indentation, comments, and blank lines
 - [ ] `## Props`, `## Sub-components`, and `## Usage` sections were removed from the docs page
-- [ ] Each prose sentence that should render as its own paragraph is on its own line, separated from the next by a blank line
-- [ ] No em-dashes (`—`) appear in any rewritten prose (rewrite as periods, commas, or separate sentences)
-- [ ] Approved contractions used (don't, can't, it's, etc.) and no banned contractions (it'll, would've, could've, etc.)
-- [ ] Active voice by default. Passive voice only in confirmations or status messages.
-- [ ] Sentence case for all headings and UI text (only first word and proper nouns capitalized)
-- [ ] No "we", "our", "us", or "Coveo" as the subject of an action (always "you" or omit the subject)
-- [ ] At most one exclamation mark per context, only for positive moments
-- [ ] No ellipses except for progress indicators or truncated content
+- [ ] Each prose sentence is on its own line. Blank lines are added only where a new paragraph is warranted, not between every sentence.
+- [ ] No em-dashes (`—`) appear in any rewritten prose (replace with a conjunction, comma, period, or colon for lists)
+- [ ] No semicolons (`;`) appear in any rewritten prose (use a period instead, except in code examples or code blocks)
+- [ ] No colons in headings or titles
+- [ ] Contractions read naturally and follow the approved list in `WritingMechanics.md`
+- [ ] Active voice by default
+- [ ] Sentence case for headings (only first word and proper nouns capitalized)
+- [ ] Reader addressed as "you"; no "we", "our", or "us"; Plasma is not framed as the "doer" of the action
 - [ ] No ALL CAPS directives such as `MUST`, `SHOULD`, or `MAY` remain in the rewritten component documentation
 - [ ] American English spelling throughout (no British variants like "colour", "behaviour", "organise", "cancelled")
+- [ ] Numbers one through ten are spelled out, including in ranges ("one to three words", "three words or fewer"). Numbers 11 and higher use numerals ("20 words", "25 words").
 - [ ] Plain language: jargon replacements from `WritingMechanics.md` applied
 - [ ] Content guidance includes at least two bold subheadings
 - [ ] Content guidance covers primary labels, primary body/content, and ordering/grouping when applicable

@@ -56,6 +56,14 @@ Do not use `LastUpdated` when:
 **`time`** `dayjs.ConfigType` · optional · default: `dayjs().valueOf()` — The unformatted time to display, parsed by dayjs when possible.
 **`label`** `string` · optional · default: `'Last update:'` — Label that SHOULD contextualize the time.
 
+## TypeScript namespace aliases
+
+These type-only aliases are available for annotations and do not add runtime static properties.
+
+- `LastUpdated.Props`
+- `LastUpdated.StylesNames`
+- `LastUpdated.Factory`
+
 ## Usage
 
 ```tsx

@@ -204,3 +204,34 @@ Badge.Success = BadgeSuccess;
 Badge.Critical = BadgeCritical;
 Badge.Warning = BadgeWarning;
 Badge.Disabled = BadgeDisabled;
+
+export namespace Badge {
+    export type Props = BadgeProps;
+    export type StylesNames = BadgeStylesNames;
+    export type CssVariables = BadgeCssVariables;
+    export type Factory = BadgeOverloadFactory;
+
+    export namespace Primary {
+        export type Props = SemanticBadgeProps;
+    }
+
+    export namespace Secondary {
+        export type Props = SemanticBadgeProps;
+    }
+
+    export namespace Success {
+        export type Props = SemanticBadgeProps;
+    }
+
+    export namespace Critical {
+        export type Props = SemanticBadgeProps;
+    }
+
+    export namespace Warning {
+        export type Props = SemanticBadgeProps;
+    }
+
+    export namespace Disabled {
+        export type Props = SemanticBadgeProps;
+    }
+}

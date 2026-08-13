@@ -95,6 +95,14 @@ Plasma provides pre-configured sub-components as convenience wrappers. You SHOUL
 
 - `Collection.Layouts`
 
+## TypeScript namespace aliases
+
+These type-only aliases are available for annotations and do not add runtime static properties.
+
+- `Collection.Props<T>`
+- `Collection.StylesNames`
+- `Collection.Factory`
+
 ## Usage
 
 ```tsx

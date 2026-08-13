@@ -25,3 +25,14 @@ export {Input};
 export type InputFactory = PlasmaInputFactory;
 export type {InputProps, InputLabelInfoFactory, InputLabelInfoProps, InputLabelInfoStylesNames};
 export {InputLabelInfo};
+
+export namespace Input {
+    export type Props = InputProps;
+    export type Factory = InputFactory;
+
+    export namespace LabelInfo {
+        export type Props = InputLabelInfoProps;
+        export type StylesNames = InputLabelInfoStylesNames;
+        export type Factory = InputLabelInfoFactory;
+    }
+}

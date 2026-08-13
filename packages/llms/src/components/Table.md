@@ -71,7 +71,7 @@ Important states include:
 
 ## Props
 
-> Extends: `BoxProps & StylesApiProps<PlasmaTableFactory>`. Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
+> Extends: `BoxProps & StylesApiProps<TableFactory>`. Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
 
 **`store`** `TableStore<TData>` · required · default: `undefined` — You MUST pass the table store returned by `useTable`.
 **`data`** `TData[] | null` · required · default: `undefined` — Data to display in the table. You MUST use `null` when the table is initially loading.
@@ -124,6 +124,27 @@ Use `Table.Toolbar` to render `Table.Filter`, `Table.Predicate`, and `Table.Date
 ```
 
 You SHOULD use `Table.Toolbar` when filter components need to be rendered outside the table header grid (e.g., in a custom layout above the table). You MUST still render `Table.Toolbar` inside the `<Table>` component because it requires `useTableContext`.
+
+## TypeScript namespace aliases
+
+These type-only aliases are available for annotations and do not add runtime static properties.
+
+- `Table.Props<TData>`
+- `Table.StylesNames`
+- `Table.Factory`
+- `Table.ActionItem.{Props, StylesNames, Factory}`
+- `Table.Cell.{Props, StylesNames, Factory}`
+- `Table.DateRangePicker.{Props, StylesNames, Factory}`
+- `Table.Filter.{Props, StylesNames, Factory}`
+- `Table.Footer.Props`
+- `Table.Header.{Props, StylesNames, Factory}`
+- `Table.LastUpdated.{Props, StylesNames, Factory}`
+- `Table.Loading.Props`
+- `Table.NoData.Props`
+- `Table.Pagination.Props`
+- `Table.PerPage.Props`
+- `Table.Predicate.{Props, StylesNames, Factory}`
+- `Table.Toolbar.{Props, StylesNames, Factory}`
 
 ## Usage
 

@@ -96,3 +96,10 @@ export const RadioCard = factory<RadioCardFactory>((_props) => {
     );
 });
 RadioCard.displayName = 'RadioCard';
+
+export namespace RadioCard {
+    export type Props = RadioCardProps;
+    export type StylesNames = RadioCardStylesNames;
+    export type CssVariables = RadioCardCssVariables;
+    export type Factory = RadioCardFactory;
+}

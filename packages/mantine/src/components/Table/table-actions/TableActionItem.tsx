@@ -22,7 +22,7 @@ export interface TableActionItemProps
     leftSection?: ReactNode;
 }
 
-type TableActionItemFactory = PolymorphicFactory<{
+export type TableActionItemFactory = PolymorphicFactory<{
     props: TableActionItemProps;
     defaultRef: HTMLButtonElement;
     defaultComponent: 'button';

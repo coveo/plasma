@@ -143,3 +143,9 @@ export const StatusToken: ReturnType<typeof polymorphicFactory<StatusTokenFactor
     });
 
 StatusToken.displayName = 'StatusToken';
+
+export namespace StatusToken {
+    export type Props = StatusTokenProps;
+    export type CssVariables = StatusTokenCssVariables;
+    export type Factory = StatusTokenFactory;
+}
