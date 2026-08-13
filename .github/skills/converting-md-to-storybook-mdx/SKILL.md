@@ -130,7 +130,7 @@ Do the following in order:
 
     Do not escape content inside fenced code blocks or inline code.
 
-4. **Handle the `{{BASE_URL}}` link:** remove `[Full Plasma documentation]({{BASE_URL}})` entirely.
+4. **Handle the `{{BASE_URL}}` link:** remove `[Full Plasma documentation]({{BASE_URL}})` entirely. This line appears at the end of every source `.md` file. It must not appear anywhere in the output `.mdx` file. If it appears in the output, the step has not been completed correctly.
 5. **Preserve everything else:** fenced code blocks, inline code, lists, and headings carry over unchanged.
 6. **Convert pipe tables to `<Table>` JSX:** markdown pipe tables do not render in this Storybook setup (no `remark-gfm`). If the source `.md` contains pipe tables, convert them to Mantine `<Table>` components during this step. Add `import {Table} from '@mantine/core';` alongside the `Meta` import. Use `withTableBorder` and `withColumnBorders` on every table. See [references/mdx-patterns.md](references/mdx-patterns.md) for the full `<Table>` pattern.
 7. **Add the agent-redirect comment:** immediately after the `<Meta ... />` block, add the following comment linking to the original agent-friendly source file:
