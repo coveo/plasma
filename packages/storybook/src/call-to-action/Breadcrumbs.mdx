@@ -11,13 +11,14 @@ Horizontal trail of navigation links showing the user's position within a page h
 
 ## Overview
 
-Use Breadcrumbs to orient users on pages that sit 2 or more levels deep in a navigation tree.
+Use Breadcrumbs to orient users on pages that sit two or more levels deep in a navigation tree.
 
 It lets them jump back to any ancestor page without relying on the browser's back button.
 
 ## When to use
 
-Reach for Breadcrumbs on detail pages reached through a drill-down flow (like an item detail page reached from a list) where the user may want to jump directly to a grandparent level.
+Reach for Breadcrumbs on detail pages within a drill-down flow, like an item detail page opened from a list.
+Use them when the user may want to jump directly to a grandparent level.
 
 Don't use it in flat, single-level apps where there's no meaningful hierarchy, or inside modals and drawers where closing is the expected exit.
 
@@ -29,7 +30,7 @@ Use standalone `Breadcrumbs` only when you're outside a `Header` context.
 
 ## How many levels to show
 
-Show up to 3 `Anchor` links for 3 or more ancestors.
+Show up to three `Anchor` links for three or more ancestors.
 
 For a single parent, use one `Anchor` with a back-arrow affordance.
 
@@ -85,10 +86,10 @@ function Level2() {
 **Ancestor link labels (`Anchor` children):**
 
 - Use the exact name of the target page as it appears in the navigation: "Query pipelines" not "Go back to query pipelines"
-- Keep each label short. 1-3 words is the target
+- Keep each label short. One to three words is the target
 - Don't use generic labels like "Back" or "Previous" unless you're using a single-parent back-arrow pattern
 
 **Trail depth:**
 
-- Show at most 3 ancestor links. Nesting deeper makes the trail unreadable and points to an information architecture problem
+- Show at most three ancestor links. Nesting deeper makes the trail unreadable and points to an information architecture problem
 - Don't include the current page. The page heading already shows where the user is
