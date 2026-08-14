@@ -9,33 +9,32 @@ import * as stories from './Chip.stories';
 
 Selectable pill-shaped control that strips the Mantine variant prop to enforce Plasma styling.
 
-# Usage guidance
+## Overview
 
-## What problem does it solve?
-
-The `Chip` lets users select compact options in a pill-shaped control when the choices are short and benefit from being visible together.
+The Chip lets users select compact options in a pill-shaped control.
+Reach for it when the choices are short and benefit from being visible together.
 
 ## When to use it
 
 Use `Chip` when:
 
-- users choose from a small set of short options
-- the choices can fit comfortably in the available space
-- the selection should feel lighter than a full form field
-- single or multiple selection can be represented as selectable pills
+- Users choose from a small set of short options.
+- The choices fit comfortably in the available space.
+- The selection should feel lighter than a full form field.
+- Single or multiple selection can be shown as selectable pills.
 
-`Chip.Group` SHOULD be used when related chips form a single choice set.
+Use `Chip.Group` when related chips form a single choice set.
 
 ## When not to use it
 
-Do not use `Chip` when:
+Don't use `Chip` when:
 
-- choices are long, numerous, or need search
-- the option descriptions are important to the decision
-- the control is only displaying metadata; use `Badge`
-- the choice is a primary form field that needs stronger labeling or validation
+- Choices are long, numerous, or need search.
+- The option descriptions are important to the decision.
+- The control only displays metadata. Use `Badge` instead.
+- The choice is a primary form field that needs stronger labeling or validation.
 
-## Decision-making guidance
+## Choosing a control
 
 - Use `Chip` for compact selectable options.
 - Use `Checkbox` for visible multi-select choices that need labels, descriptions, or standard form behavior.
@@ -45,49 +44,24 @@ Do not use `Chip` when:
 
 ## States
 
-Important states include:
-
-- selected
-- unselected
-- disabled
-- grouped single-selection or multiple-selection
-
-## Content guidance
-
-- Chip labels SHOULD be short and parallel.
-- Do not use chips when labels wrap or require explanation.
-- Group labels SHOULD explain what the chip set controls.
+- **Selected** marks the chip as chosen.
+- **Unselected** is the default state.
+- **Disabled** prevents interaction.
+- **Grouped** supports single-selection or multiple-selection sets.
 
 ## Common anti-patterns
 
-- Using chips for long lists that need search.
-- Using chips as decorative tags when the user cannot select them.
-- Mixing unrelated choices in one chip group.
+- Don't use chips for long lists that need search.
+- Don't use chips as decorative tags when the user can't select them.
+- Don't mix unrelated choices in one chip group.
 
-# API reference
+## Content guidance
 
-## Props
+**Chip labels:**
 
-_No additional props beyond the Mantine base component. The `variant` prop is stripped and has no effect._
+- Keep labels short and parallel.
+- Don't use chips when a label wraps or needs explanation.
 
-## Sub-components
+**Group labels (`Chip.Group`):**
 
-Plasma provides pre-configured sub-components as convenience wrappers. You SHOULD use these over setting props manually.
-
-- `Chip.Group`
-
-## Usage
-
-```tsx
-import {Chip} from '@coveord/plasma-mantine';
-
-function Example() {
-    return (
-        <Chip.Group multiple defaultValue={['react']}>
-            <Chip value="react">React</Chip>
-            <Chip value="vue">Vue</Chip>
-            <Chip value="angular">Angular</Chip>
-        </Chip.Group>
-    );
-}
-```
+- Explain what the chip set controls.
