@@ -1,3 +1,12 @@
+## 53.3.6 (2026-08-14)
+
+
+### Bug Fixes
+
+* **react, date-picker:** date input with time having leading 0 (#4570) dee8491, closes #4570
+
+
+
 ## 53.3.5 (2026-07-21)
 
 
