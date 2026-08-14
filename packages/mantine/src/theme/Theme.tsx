@@ -11,6 +11,7 @@ import {
 } from '@coveord/plasma-react-icons';
 import {color} from '@coveord/plasma-tokens';
 import {
+    Accordion as MantineAccordion,
     ActionIcon,
     Alert,
     AppShell,
@@ -67,11 +68,13 @@ import {
     TimePicker,
     YearPicker,
 } from '@mantine/dates';
-import {Accordion as MantineAccordion} from '@mantine/core';
+import clsx from 'clsx';
 import {CheckboxIcon} from '../components/CheckboxIcon/CheckboxIcon.js';
 import {CircleLoader} from '../components/CircleLoader/CircleLoader.js';
-import {InfoToken} from '../components/InfoToken/InfoToken.js';
 import {PlasmaComboboxChevron} from '../components/Combobox/PlasmaComboboxChevron.js';
+import {InfoToken} from '../components/InfoToken/InfoToken.js';
+
+import placeholderSvg from '../images/placeholder.svg';
 import AccordionClasses from '../styles/Accordion.module.css';
 import ActionIconClasses from '../styles/ActionIcon.module.css';
 import AlertClasses from '../styles/Alert.module.css';
@@ -116,8 +119,6 @@ import TimePickerClasses from '../styles/TimePicker.module.css';
 import TooltipClasses from '../styles/Tooltip.module.css';
 import YearPickerClasses from '../styles/YearPicker.module.css';
 import {PlasmaColors} from './PlasmaColors.js';
-
-import placeholderSvg from '../images/placeholder.svg';
 import {plasmaVariantColorResolver} from './plasmaVariantColorResolver.js';
 
 export const plasmaTheme: MantineThemeOverride = createTheme({
@@ -255,7 +256,10 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             },
             classNames: (theme, props) => {
                 if (props.readOnly && !props.disabled) {
-                    return deepMerge(CheckboxClasses, ReadOnlyStateClasses);
+                    return {
+                        ...deepMerge(CheckboxClasses, ReadOnlyStateClasses),
+                        input: clsx(CheckboxClasses.input, ReadOnlyStateClasses.input, CheckboxClasses.readOnly),
+                    };
                 }
                 return CheckboxClasses;
             },

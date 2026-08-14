@@ -1,3 +1,4 @@
+import {Stack} from '@coveord/plasma-mantine';
 import {Checkbox} from '@coveord/plasma-mantine/components/Checkbox';
 import {Group} from '@coveord/plasma-mantine/components/Group';
 import {Meta, StoryObj} from '@storybook/react-vite';
@@ -5,10 +6,10 @@ import type {ComponentProps} from 'react';
 import {useArgs} from 'storybook/preview-api';
 import {
     BaseInputArgs,
-    InlineInputArgs,
-    InputWrapperArgs,
     type BaseInputStoryArgs,
+    InlineInputArgs,
     type InlineInputStoryArgs,
+    InputWrapperArgs,
     type InputWrapperStoryArgs,
 } from '../InputWrapperArgs.js';
 import {withLabelInfoProps} from '../LabelInfoArgs.js';
@@ -68,5 +69,34 @@ export const CheckboxGroup: StoryObj<CheckboxGroupStoryArgs> = {
                 <Checkbox value="4" label="Option 4" readOnly={props.readOnly} />
             </Group>
         </Checkbox.Group>
+    ),
+};
+
+export const CheckboxAllStates: StoryObj<CheckboxGroupStoryArgs> = {
+    tags: ['!dev'],
+    render: () => (
+        <Stack gap="md">
+            <Checkbox.Group label="Normal" description="All checkboxes are interactive" value={['checked']}>
+                <Group mt="xs">
+                    <Checkbox value="empty" label="Empty" />
+                    <Checkbox value="checked" label="Checked" />
+                    <Checkbox value="indeterminate" label="Indeterminate" indeterminate />
+                </Group>
+            </Checkbox.Group>
+            <Checkbox.Group label="Read Only" description="All checkboxes are readonly" value={['checked']}>
+                <Group mt="xs">
+                    <Checkbox value="empty" label="Empty" readOnly />
+                    <Checkbox value="checked" label="Checked" checked readOnly />
+                    <Checkbox value="indeterminate" label="Indeterminate" indeterminate readOnly />
+                </Group>
+            </Checkbox.Group>
+            <Checkbox.Group label="Disabled" description="All checkboxes are disabled" value={['checked']}>
+                <Group mt="xs">
+                    <Checkbox value="empty" label="Empty" disabled />
+                    <Checkbox value="checked" label="Checked" checked disabled />
+                    <Checkbox value="indeterminate" label="Indeterminate" indeterminate disabled />
+                </Group>
+            </Checkbox.Group>
+        </Stack>
     ),
 };
