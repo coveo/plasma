@@ -1,0 +1,75 @@
+import {Meta} from '@storybook/addon-docs/blocks';
+import * as stories from './CloseButton.stories';
+
+<Meta of={stories} title="@components/Call to action/CloseButton" />
+
+{/* For the agent-friendly version of this documentation, see packages/llms/src/components/CloseButton.md */}
+
+# CloseButton
+
+Icon-only button for dismissing or closing an overlaying element such as a modal, drawer, or tag.
+
+# Usage guidance
+
+## What problem does it solve?
+
+`CloseButton` provides a standardised dismiss affordance — a small × icon button — for components that can be closed or removed by the user, keeping the action visually lightweight and consistent across the product.
+
+## When to use it
+
+- Dismissing modals, drawers, popovers, or notifications.
+- Removing a tag, chip, or filter pill from a selection.
+- Closing an inline alert or banner that the user can opt out of.
+
+## When not to use it
+
+- When the dismissal action needs a text label for clarity — use a `Button.Tertiary` with a "Close" or "Dismiss" label instead.
+- As a primary or destructive action — `CloseButton` communicates cancellation and closure, not data deletion.
+- When a full-width or prominent cancel action is needed in a form footer — use `Button.Secondary` labelled "Cancel".
+
+## Decision-making guidance
+
+- Use `size="md"` (default) for standalone overlays such as modals and drawers.
+- Use `size="sm"` for compact contexts such as chips, tags, and inline alerts where a full-size button would overpower the surrounding element.
+- Do not use `CloseButton` as the sole means of closing a modal — always pair it with an alternative (a "Cancel" button, pressing Escape, or clicking the backdrop) to ensure keyboard and assistive technology users can close the overlay.
+
+## Accessibility expectations
+
+- `CloseButton` renders a `<button>` element and is keyboard-accessible by default.
+- The default icon provides an `aria-label` of "close". Override it with a more specific `aria-label` when the context needs one (e.g. "Close notification" or "Remove tag: Sales").
+- When used to close a modal, the focus SHOULD return to the element that triggered the modal after dismissal.
+
+## Common anti-patterns
+
+- Using `CloseButton` without an associated overlay or dismissible element — if nothing is being closed, use `ActionIcon` with an appropriate icon and label.
+- Placing `CloseButton` inside interactive elements that already have click handlers without stopping event propagation.
+- Relying solely on `CloseButton` to close a modal without also handling the Escape key.
+
+# API reference
+
+## Props
+
+> Extends: `CloseButtonProps` from `@mantine/core`. No additional Plasma-specific props beyond the Mantine base component.
+
+**`size`** `'sm' | 'md'` · optional · default: `'md'` — Controls the icon size. `sm` renders a 12 px icon; `md` renders a 16 px icon.
+
+## Usage
+
+```tsx
+import {CloseButton, TextInput} from '@coveord/plasma-mantine';
+import {useState} from 'react';
+
+// Clear button inside an input
+function ClearableInput() {
+    const [value, setValue] = useState('');
+    return (
+        <TextInput
+            value={value}
+            onChange={(event) => setValue(event.currentTarget.value)}
+            rightSection={
+                value ? <CloseButton size="sm" aria-label="Clear value" onClick={() => setValue('')} /> : null
+            }
+        />
+    );
+}
+```
