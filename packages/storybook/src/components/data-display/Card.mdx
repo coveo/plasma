@@ -9,101 +9,80 @@ import * as stories from './Card.stories';
 
 Container that groups related content into a visually distinct surface, optionally interactive with hover and selection states.
 
-# Usage guidance
+## Overview
 
-## What problem does it solve?
-
-`Card` lets users scan a collection of related items at a glance — each card summarises one subject and gives enough information to identify it without reading everything. It also works as a static container when content needs visual separation from the rest of the page.
+Card groups related content into one visually distinct surface.
+Reach for it when users need to scan a collection of related items at a glance, where each card summarizes one subject.
+It also works as a static container when a block of content needs separation from the rest of the page.
 
 ## When to use it
 
-- Showing a collection of related items users need to browse and compare — results, resources, options, or feature summaries.
+- Showing a collection of related items users browse and compare, like results, resources, options, or feature summaries.
 - Building a grid or list of selectable tiles where the user clicks to choose one.
-- Wrapping a self-contained block of content — like an onboarding step or a settings panel — that should feel visually distinct from surrounding content.
+- Wrapping a self-contained block of content, such as an onboarding step or a settings panel, that should feel visually distinct.
 
 ## When not to use it
 
-- When the content is part of a large structured dataset — use `Table` instead; cards don't scale to many rows of comparable data.
-- When the content is an in-page message or notification — use `Alert` instead; cards group content, they do not convey alerts or status messages.
-- When selection carries form semantics — use `RadioCard` or `Checkbox`, which have the correct native behaviour.
-- When the content is meant to be read sequentially as continuous text — cards imply independent, scannable units.
-- When the content does not need visual grouping — use layout primitives like `Stack`, `Flex`, or `Grid` without a card shell.
+- When the content belongs to a large structured dataset, use `Table` instead. Cards don't scale to many rows of comparable data.
+- When the content is an in-page message or notification, use `Alert` instead. Cards group content, they don't convey alerts or status messages.
+- When selection carries form semantics, use `RadioCard` or `Checkbox`, which have the correct native behavior.
+- When the content is meant to be read sequentially as continuous text. Cards imply independent, scannable units.
+- When the content doesn't need visual grouping, use layout primitives like `Stack`, `Flex`, or `Grid` without a card shell.
 
-## Decision-making guidance
+## Choosing a variant
 
-- Use the default variant for static, non-interactive content containers.
-- Use `variant="hover"` only when the entire card is a clickable target — for example, a results tile that navigates or toggles a selection.
-- When `variant="hover"` is combined with `mod={{selected: true}}`, the card gains a primary-colour border indicating the active selection. Manage this state externally via `mod`.
-- When `variant="hover"` is combined with `mod={{disabled: true}}`, `pointer-events` are suppressed and the card becomes non-interactive.
+Use the default variant for static, non-interactive content containers.
+Use `variant="hover"` only when the entire card is a clickable target, such as a results tile that navigates or toggles a selection.
+
+Combine `variant="hover"` with `mod={{selected: true}}` to give the card a primary color border that marks the active selection.
+Manage this state externally through `mod`.
+
+Combine `variant="hover"` with `mod={{disabled: true}}` to suppress pointer events and make the card non-interactive.
 
 ## Variants
 
-- **`undefined`** (default) — static bordered surface with no hover behaviour. Use for informational containers.
-- **`hover`** — adds a box-shadow on hover, a selection border when `data-selected` is set, and pointer-cursor. Use for clickable tiles.
+- **Default (`undefined`)** is a static bordered surface with no hover behavior. Use it for informational containers.
+- **`hover`** adds a box-shadow on hover, a selection border when `data-selected` is set, and a pointer cursor. Use it for clickable tiles.
 
 ## States
 
-Relevant to `variant="hover"` only:
+These states apply to `variant="hover"` only.
 
-- **Normal** — no shadow.
-- **Hover** — elevated box-shadow signals interactivity.
-- **Selected** — primary-colour border communicates active selection.
-- **Disabled** — pointer events removed; visually inert.
+- **Normal** has no shadow.
+- **Hover** shows an elevated box-shadow to signal interactivity.
+- **Selected** shows a primary color border to communicate the active selection.
+- **Disabled** removes pointer events and looks visually inert.
 
-## Interaction notes
+## Interaction
 
-When `variant="hover"`, attach an `onClick` handler to toggle selection. Plasma does not manage the selected state internally — pass the current value through `mod={{selected: boolean}}`.
+When you use `variant="hover"`, attach an `onClick` handler to toggle selection.
+The selected state isn't tracked for you, so pass the current value through `mod={{selected: boolean}}`.
 
-## Accessibility expectations
+## Accessibility
 
-- When `variant="hover"` is used as a selectable tile, the `Card` SHOULD carry an appropriate ARIA role (e.g. `role="radio"` within a `role="radiogroup"`, or `role="option"`) and `aria-selected` so that its state is communicated to assistive technology.
-- Keyboard users MUST be able to activate the card with the Enter or Space key when it is interactive; add `tabIndex={0}` and a `onKeyDown` handler if needed alongside `onClick`.
-- Disabled cards SHOULD communicate their state via `aria-disabled="true"` rather than relying solely on visual styling.
-
-## Content guidance
-
-- Each card should represent a single subject — avoid mixing unrelated content in one card.
-- Keep card content concise; users should be able to identify the item at a glance without reading everything.
-- Cards within the same collection SHOULD follow a consistent content structure — the same types of information in the same positions.
-- Avoid more than one or two actions per card; if more are needed, reconsider the layout.
+- When you use `variant="hover"` as a selectable tile, give the card a suitable ARIA role, such as `role="radio"` inside a `role="radiogroup"`, or `role="option"`. Add `aria-selected` so assistive technology can read its state.
+- Keyboard users need to activate an interactive card with the Enter or Space key. Add `tabIndex={0}` and an `onKeyDown` handler alongside `onClick`.
+- Give disabled cards `aria-disabled="true"` instead of relying on visual styling alone.
 
 ## Common anti-patterns
 
-- Using `variant="hover"` without an `onClick` handler — the pointer cursor implies interactivity that is not present.
-- Passing `selected` and `disabled` as top-level props — these are not direct `CardProps`; they MUST be passed through the `mod` prop as `mod={{selected: true, disabled: true}}`.
-- Nesting interactive elements (buttons, links) inside a `variant="hover"` card without careful event management — clicks on inner elements will also trigger the card's `onClick`.
-- Nesting a `Card` inside another `Card` — flatten the hierarchy or use layout primitives instead.
+- Don't use `variant="hover"` without an `onClick` handler. The pointer cursor implies interactivity that isn't there.
+- Don't pass `selected` and `disabled` as top-level props. They aren't direct `CardProps`, so pass them through the `mod` prop as `mod={{selected: true, disabled: true}}`.
+- Don't nest interactive elements like buttons or links inside a `variant="hover"` card without careful event management. Clicks on inner elements also trigger the `onClick` of the card.
+- Don't nest a `Card` inside another `Card`. Flatten the hierarchy or use layout primitives instead.
 
-# API reference
+## Content guidance
 
-## Props
+**Card content:**
 
-> Extends: `CardProps` from `@mantine/core`. No additional Plasma-specific props beyond the Mantine base component; interactive behaviour is controlled via `variant` and `mod`.
+- Represent a single subject per card. Don't mix unrelated content in one card.
+- Keep the content concise so users identify the item at a glance.
 
-**`variant`** `'hover' | undefined` · optional · default: `undefined` — When set to `'hover'`, the card gains hover shadow and supports selected/disabled data attributes.
+**Actions:**
 
-**`mod`** `{selected?: boolean; disabled?: boolean}` · optional — Data attributes used to apply selection border (`data-selected`) and disable pointer events (`data-disabled`). Only meaningful when `variant="hover"`.
+- Limit a card to one or two actions. Reconsider the layout if you need more.
 
-## Usage
+**Cards in a collection:**
 
-```tsx
-import {Card, Text} from '@coveord/plasma-mantine';
-
-// Static content container
-function InfoCard() {
-    return (
-        <Card>
-            <Text>Some grouped content here.</Text>
-        </Card>
-    );
-}
-
-// Disabled tile
-function DisabledTile() {
-    return (
-        <Card variant="hover" mod={{disabled: true}}>
-            <Text>This option is unavailable.</Text>
-        </Card>
-    );
-}
-```
+- Follow a consistent content structure across cards in the same collection.
+- Place the same types of information in the same positions.
