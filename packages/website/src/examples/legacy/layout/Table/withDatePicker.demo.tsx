@@ -39,14 +39,14 @@ const selectionOptions: IDatesSelectionBox[] = [
             },
         ],
         isRange: true,
-        withTime: false,
+        withTime: true,
         hasSetToNowButton: true,
     },
 ];
 
 const tableDatePickerConfig: ConfigSupplier<ITableWithDatePickerConfig> = () => ({
     datesSelectionBoxes: selectionOptions,
-    initialDateRange: [moment().subtract(75, 'years').toDate(), moment().toDate()],
+    initialDateRange: [moment().subtract(10, 'years').toDate(), moment().toDate()],
 });
 
 const TableComposed = compose<any>(tableWithDatePicker(tableDatePickerConfig))(TableHOC);

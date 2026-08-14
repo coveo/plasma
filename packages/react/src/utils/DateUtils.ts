@@ -16,6 +16,12 @@ export interface IDateComponents {
 
 export const SIMPLE_DATE_FORMAT: string = 'MMM DD, YYYY';
 export const LONG_DATE_FORMAT: string = SIMPLE_DATE_FORMAT + ', H:mm';
+/**
+ * Formats accepted when parsing a date string that includes a time. Both the leading-zero
+ * (`HH:mm`, e.g. `04:00`) and the non-leading-zero (`H:mm`, e.g. `4:00`) variants are supported
+ * so that user input is not rejected because of a leading zero.
+ */
+export const LONG_DATE_PARSE_FORMATS: string[] = [LONG_DATE_FORMAT, SIMPLE_DATE_FORMAT + ', HH:mm'];
 export const DATES_SEPARATOR: string = '%';
 
 export class DateUtils {
@@ -78,7 +84,7 @@ export class DateUtils {
     }
 
     static getValidDate(date: string, fromTime: boolean = false): Date {
-        const momentDate: moment.Moment = moment(date, LONG_DATE_FORMAT, fromTime);
+        const momentDate: moment.Moment = moment(date, LONG_DATE_PARSE_FORMATS, fromTime);
         if (momentDate.isValid()) {
             return momentDate.toDate();
         }
