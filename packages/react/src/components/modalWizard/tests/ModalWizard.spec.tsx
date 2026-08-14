@@ -195,6 +195,10 @@ describe('ModalWizard', () => {
             {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}},
         );
 
+        await waitFor(() => {
+            expect(screen.getByRole('dialog').closest('.modal-container')).toHaveClass('opened');
+        });
+
         await user.click(screen.getByRole('button', {name: 'Next'}));
 
         expect(screen.queryByText(/finish/i)).not.toBeInTheDocument();
