@@ -215,7 +215,7 @@ Fix table header inner grid min height
 4. Add a changeset if you touched a releasable package.
 5. Commit your changes with a clear message.
 6. Push your branch and open a PR — do not push directly to `master`.
-7. Fill in the [PR template](.github/pull_request_template.md): proposed changes, potential breaking changes, and the acceptance-criteria checklist.
+7. Fill in the [PR template](.github/PULL_REQUEST_TEMPLATE/pull_request_template.md): proposed changes, potential breaking changes, and the acceptance-criteria checklist.
 
 CI will then run lint and format checks, the test suite, a release preview, and a Chromatic demo build that gets linked as a PR comment. Address any failures before requesting review.
 

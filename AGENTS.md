@@ -103,7 +103,7 @@ When you change a component's public API:
 3. `pnpm test`, `pnpm lint`, and `pnpm fmt:check` must all pass.
 4. **Add a changeset** if you touched a releasable package. Load the `changesets-author` skill — it walks through bump selection, the changelog template, and the `pnpm changeset:new` / `pnpm changeset:validate` workflow. Commit the generated `.changeset/*.md` file with your change. CI runs `pnpm changeset:validate` and fails on non-conforming changesets. Releases are driven by Changesets, **not** inferred from commit messages.
 5. **Commit** with a concise, descriptive message. Mention the affected subject/package when it helps: `Add new Button variant`, `Fix primary color token value`.
-6. **Push** the branch and open a draft PR (`gh pr create --draft`); do not push to `master`. Fill in the PR template (`.github/pull_request_template.md`): proposed changes, potential breaking changes, and the acceptance-criteria checklist.
+6. **Push** the branch and open a draft PR (`gh pr create --draft`); do not push to `master`. Fill in the PR template (`.github/PULL_REQUEST_TEMPLATE/pull_request_template.md`): proposed changes, potential breaking changes, and the acceptance-criteria checklist.
 
 Pre-commit hooks (Husky + lint-staged) auto-run oxfmt and stylelint on staged files. Do not skip hooks (`--no-verify`) unless explicitly asked.
 
