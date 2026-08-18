@@ -1,6 +1,6 @@
-import {createColumnHelper, Table, useTable, type ColumnDef} from '@coveord/plasma-mantine';
-import {Box, Text} from '@mantine/core';
+import {Box, Code, createColumnHelper, Table, useTable} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
+import {CSSVariableValue} from '../CSSVariableValue.js';
 import {FoundationWrapper} from '../FoundationWrapper.js';
 
 const meta: Meta = {
@@ -19,51 +19,50 @@ export default meta;
 type Story = StoryObj;
 
 type RadiusRowData = {
-    name: string;
-    value: string;
-    variable: string;
+    size: string;
 };
 
 const radiiValues: RadiusRowData[] = [
-    {name: 'none', value: '0px', variable: '--mantine-radius-none'},
-    {name: 'xs', value: '2px', variable: '--mantine-radius-xs'},
-    {name: 'sm', value: '4px', variable: '--mantine-radius-sm'},
-    {name: 'md', value: '8px', variable: '--mantine-radius-md'},
-    {name: 'lg', value: '16px', variable: '--mantine-radius-lg'},
-    {name: 'xl', value: '24px', variable: '--mantine-radius-xl'},
-    {name: 'xxl', value: '32px', variable: '--mantine-radius-xxl'},
+    {size: 'default'},
+    {size: 'none'},
+    {size: 'xs'},
+    {size: 'sm'},
+    {size: 'md'},
+    {size: 'lg'},
+    {size: 'xl'},
+    {size: 'xxl'},
 ];
+
+const getVariableName = (size: string): string => `--mantine-radius-${size}`;
 
 const columnHelper = createColumnHelper<RadiusRowData>();
 const columns = [
-    columnHelper.accessor('name', {
-        header: 'Name',
-        cell: ({getValue}) => (
-            <Text fw={600} ff="monospace" size="sm">
-                {getValue()}
-            </Text>
-        ),
+    columnHelper.accessor('size', {
+        header: 'Size',
+        cell: ({getValue}) => <Code fw={600}>{getValue()}</Code>,
         enableSorting: false,
     }),
-    columnHelper.accessor('variable', {
+    columnHelper.accessor('size', {
         header: 'Variable',
-        cell: ({getValue}) => (
-            <Text size="xs" c="dimmed" ff="monospace">
-                {getValue()}
-            </Text>
-        ),
+        cell: ({getValue}) => <Code>{getVariableName(getValue())}</Code>,
         enableSorting: false,
     }),
-    columnHelper.display({
+    columnHelper.accessor('size', {
+        header: 'Value',
+        cell: ({getValue}) => <CSSVariableValue name={getVariableName(getValue())} />,
+        enableSorting: false,
+    }),
+    columnHelper.accessor('size', {
         id: 'preview',
         header: '',
-        cell: ({row}) => (
+        enableSorting: false,
+        cell: ({getValue}) => (
             <Box
                 style={{
                     width: 64,
                     height: 64,
                     backgroundColor: 'var(--mantine-color-blue-6)',
-                    borderRadius: row.original.value,
+                    borderRadius: `var(${getVariableName(getValue())})`,
                 }}
             />
         ),
@@ -84,12 +83,7 @@ export const Radii: Story = {
                 title="Radii"
                 description="The Plasma theme defines the following border radius values. Each radius maps to a CSS variable --mantine-radius-{size}."
             >
-                <Table<RadiusRowData>
-                    store={table}
-                    columns={columns as Array<ColumnDef<RadiusRowData, unknown>>}
-                    data={radiiValues}
-                    getRowId={({name}) => name}
-                />
+                <Table<RadiusRowData> store={table} columns={columns} data={radiiValues} getRowId={({size}) => size} />
             </FoundationWrapper>
         );
     },

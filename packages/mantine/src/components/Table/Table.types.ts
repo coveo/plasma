@@ -71,7 +71,7 @@ export interface TableProps<TData> extends BoxProps, StylesApiProps<PlasmaTableF
      *
      * @see https://tanstack.com/table/v8/docs/guide/column-defs
      */
-    columns: Array<ColumnDef<TData>>;
+    columns: Array<ColumnDef<TData, any>>;
     /**
      * Available layouts
      *
