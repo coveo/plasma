@@ -1,4 +1,4 @@
-import {ColumnDef} from '@tanstack/table-core';
+import {ColumnDef} from '../tanstackTable.js';
 import {TableSelectAllCheckbox} from './TableSelectAllCheckbox.js';
 import {TableSelectRowCheckbox} from './TableSelectRowCheckbox.js';
 

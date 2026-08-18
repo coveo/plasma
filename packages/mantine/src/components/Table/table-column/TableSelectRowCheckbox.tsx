@@ -1,8 +1,8 @@
 import {CheckboxProps} from '@mantine/core';
-import {Row} from '@tanstack/table-core';
 import {ChangeEventHandler} from 'react';
 import {Checkbox} from '../../Checkbox/Checkbox.js';
 import {useTableContext} from '../TableContext.js';
+import {Row} from '../tanstackTable.js';
 
 export interface TableSelectRowCheckboxProps extends Omit<CheckboxProps, 'checked' | 'indeterminate' | 'onChange'> {
     row: Row<unknown>;

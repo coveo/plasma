@@ -1,8 +1,8 @@
 import {createSafeContext, GetStylesApi} from '@mantine/core';
-import {Table} from '@tanstack/table-core';
 import {MutableRefObject, ReactNode} from 'react';
 import {type PlasmaTableFactory} from './Table.js';
 import {TableAction, TableLayout} from './Table.types.js';
+import {TanStackTableInstance} from './tanstackTable.js';
 import {TableStore} from './use-table.js';
 
 export interface TableContextValue<TData = unknown> {
@@ -10,7 +10,7 @@ export interface TableContextValue<TData = unknown> {
     store: TableStore<TData>;
     layouts: TableLayout[];
     getRowActions: (datum: TData[]) => TableAction[];
-    table: Table<TData>;
+    table: TanStackTableInstance<TData>;
     containerRef: MutableRefObject<HTMLDivElement | null>;
 }
 

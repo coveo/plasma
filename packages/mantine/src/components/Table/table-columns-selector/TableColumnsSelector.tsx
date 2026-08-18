@@ -1,7 +1,8 @@
 import {IconSettings} from '@coveord/plasma-react-icons';
 import {Checkbox, Divider, Popover, ScrollArea, Stack, Text, Tooltip} from '@mantine/core';
-import {flexRender, Header, Table} from '@tanstack/react-table';
+import {flexRender} from '@tanstack/react-table';
 import {ActionIcon} from '../../ActionIcon/ActionIcon.js';
+import {Header, TanStackTableInstance} from '../tanstackTable.js';
 
 export interface TableColumnsSelectorOptions {
     /**
@@ -29,7 +30,7 @@ export interface TableColumnsSelectorOptions {
 }
 
 export interface TableColumnsSelectorProps {
-    table: Table<unknown>;
+    table: TanStackTableInstance<unknown>;
     options?: TableColumnsSelectorOptions;
 }
 
