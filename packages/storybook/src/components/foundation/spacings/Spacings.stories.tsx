@@ -1,6 +1,6 @@
-import {createColumnHelper, Table, useTable, type ColumnDef} from '@coveord/plasma-mantine';
-import {Box, Text} from '@mantine/core';
+import {Box, Code, createColumnHelper, Table, useTable} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
+import {CSSVariableValue} from '../CSSVariableValue.js';
 import {FoundationWrapper} from '../FoundationWrapper.js';
 
 const meta: Meta = {
@@ -19,49 +19,46 @@ export default meta;
 type Story = StoryObj;
 
 type SpacingRowData = {
-    name: string;
-    value: string;
-    variable: string;
+    size: string;
 };
 
 const spacings: SpacingRowData[] = [
-    {name: 'xxs', value: '4px', variable: '--mantine-spacing-xxs'},
-    {name: 'xs', value: '8px', variable: '--mantine-spacing-xs'},
-    {name: 'sm', value: '16px', variable: '--mantine-spacing-sm'},
-    {name: 'md', value: '24px', variable: '--mantine-spacing-md'},
-    {name: 'lg', value: '32px', variable: '--mantine-spacing-lg'},
-    {name: 'xl', value: '40px', variable: '--mantine-spacing-xl'},
+    {size: 'xxs'},
+    {size: 'xs'},
+    {size: 'sm'},
+    {size: 'md'},
+    {size: 'lg'},
+    {size: 'xl'},
 ];
+
+const getVariableName = (size: string): string => `--mantine-spacing-${size}`;
 
 const columnHelper = createColumnHelper<SpacingRowData>();
 const columns = [
-    columnHelper.accessor('name', {
-        header: 'Name',
-        cell: ({getValue}) => (
-            <Text fw={600} ff="monospace" size="sm">
-                {getValue()}
-            </Text>
-        ),
+    columnHelper.accessor('size', {
+        header: 'Size',
+        cell: ({getValue}) => <Code fw={600}>{getValue()}</Code>,
         enableSorting: false,
     }),
-    columnHelper.accessor('variable', {
+    columnHelper.accessor('size', {
         header: 'Variable',
-        cell: ({getValue}) => (
-            <Text size="xs" c="dimmed" ff="monospace">
-                {getValue()}
-            </Text>
-        ),
+        cell: ({getValue}) => <Code>{getVariableName(getValue())}</Code>,
         enableSorting: false,
     }),
-    columnHelper.display({
+    columnHelper.accessor('size', {
+        header: 'Value',
+        cell: ({getValue}) => <CSSVariableValue name={getVariableName(getValue())} />,
+        enableSorting: false,
+    }),
+    columnHelper.accessor('size', {
         id: 'preview',
         header: '',
-        cell: ({row}) => (
+        enableSorting: false,
+        cell: ({getValue}) => (
             <Box
                 style={{
-                    width: `var(${row.original.variable})`,
-                    height: `var(${row.original.variable})`,
-                    width: `var(${row.original.variable})`,
+                    width: `var(${getVariableName(getValue())})`,
+                    height: `var(${getVariableName(getValue())})`,
                     backgroundColor: 'var(--mantine-color-blue-6)',
                     minWidth: 4,
                 }}
@@ -84,12 +81,7 @@ export const Spacings: Story = {
                 title="Spacings"
                 description="The Plasma theme defines the following spacing values. Each spacing maps to a CSS variable --mantine-spacing-{size}."
             >
-                <Table<SpacingRowData>
-                    store={table}
-                    columns={columns as Array<ColumnDef<SpacingRowData, unknown>>}
-                    data={spacings}
-                    getRowId={({name}) => name}
-                />
+                <Table<SpacingRowData> store={table} columns={columns} data={spacings} getRowId={({size}) => size} />
             </FoundationWrapper>
         );
     },
