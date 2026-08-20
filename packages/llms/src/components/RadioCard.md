@@ -1,6 +1,6 @@
 ---
 name: RadioCard
-description: Selectable card control that presents a radio option with a label and can include supporting text.
+description: Selectable card control that presents a radio option with a label, supporting text, and validation feedback.
 ---
 
 # Usage guidance
@@ -42,12 +42,14 @@ Important states include:
 - unselected
 - disabled with optional tooltip
 - read-only
+- error, with validation feedback below the card and an error outline when unselected
 
 ## Content guidance
 
 - Labels SHOULD name the option directly.
 - Descriptions SHOULD explain impact, eligibility, or key differences.
 - Keep descriptions parallel across cards so comparison is fair.
+- Error messages SHOULD explain what needs attention and how to resolve it.
 
 ## Common anti-patterns
 
@@ -63,6 +65,7 @@ Important states include:
 
 **`label`** `ReactNode` · required · default: `undefined` — Content rendered as the primary label next to the radio indicator.
 **`description`** `ReactNode` · optional · default: `undefined` — Content rendered below the label as supporting text.
+**`error`** `ReactNode` · optional · default: `undefined` — Renders validation feedback below the card, marks the card invalid, and applies an error outline when the card is unselected.
 **`readOnly`** `boolean` · optional · default: `undefined` — When `true`, the card appears read-only and prevents users from changing its value through direct interaction.
 **`disabledTooltip`** `string` · optional · default: `undefined` — When the card is disabled, this message can be shown in a tooltip to explain why selection is unavailable.
 

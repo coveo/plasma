@@ -34,6 +34,10 @@ export type RadioCardProps = MantineRadioCardProps &
          */
         description?: ReactNode;
         /**
+         * The error message of the card. Appears at the bottom.
+         */
+        error?: ReactNode;
+        /**
          * If true, the radio card will be displayed in a read-only state.
          */
         readOnly?: boolean;
@@ -57,6 +61,7 @@ export const RadioCard = factory<RadioCardFactory>((_props) => {
         label,
         description,
         disabledTooltip,
+        error,
         readOnly,
         ref,
         ...others
@@ -80,8 +85,14 @@ export const RadioCard = factory<RadioCardFactory>((_props) => {
                 {...getStyles('card', {className, style, classNames, styles})}
                 {...others}
                 aria-readonly={readOnly}
+                aria-invalid={error ? true : undefined}
+                mod={{error: !!error}}
             >
-                <Radio.Indicator disabled={disabled} {...getStyles('indicator', {classNames, styles})} />
+                <Radio.Indicator
+                    aria-invalid={error ? true : undefined}
+                    disabled={disabled}
+                    {...getStyles('indicator', {classNames, styles})}
+                />
                 <Stack {...getStyles('container', {classNames, styles})}>
                     <Input.Label {...getStyles('title', {classNames, styles})}>{label}</Input.Label>
                     {description && (
@@ -90,6 +101,7 @@ export const RadioCard = factory<RadioCardFactory>((_props) => {
                         </Input.Description>
                     )}
                     {children}
+                    {error ? <Input.Error>{error}</Input.Error> : null}
                 </Stack>
             </Radio.Card>
         </Tooltip>
