@@ -47,12 +47,12 @@ const preview: Preview = {
         options: {
             storySort: {
                 order: [
-                    '@getting started',
-                    ['About Plasma', 'Glossary'],
+                    '@overview',
+                    ['Getting Started', 'Using LLMs'],
                     '@foundation',
                     ['Overview', 'Colors', 'Iconography', 'Radii', 'Shadows', 'Spacings', 'Typography'],
                     '@content',
-                    ['About', 'Audience', 'Voice', 'Writing mechanics', 'Product vocabulary'],
+                    ['About Content', 'Audience', 'Voice', 'Writing mechanics', 'Product vocabulary', 'Glossary'],
                     '@components',
                     [
                         'Overview',
