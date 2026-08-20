@@ -89,7 +89,7 @@ export const createServer = (data: LlmsData): McpServer => {
     server.tool(
         {
             name: 'search_docs',
-            description: 'Search across all Plasma component documentation',
+            description: 'Search across all Plasma component documentation and content guidelines',
             schema: querySchema,
         },
         async ({query}) => tool.text(searchDocs(data, query)),

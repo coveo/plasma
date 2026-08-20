@@ -46,17 +46,22 @@ Each package documents its own installation and usage in its README:
 
 ## AI Coding Agents
 
-Plasma documents its wrapped components in [`@coveord/plasma-llms`](packages/llms/README.md). The other components are pure Mantine re-exports. For full coverage, configure **both** the Plasma and Mantine MCP servers:
+For the best agent experience, combine the [Plasma skill](https://plasma.coveo.com/plasma-skill.md) with both documentation MCP servers. They serve complementary purposes:
 
-- **Plasma MCP** — authoritative for Plasma-specific props, sub-components, and usage
-- **Mantine MCP** — fallback for re-exported components and inherited props
+- **Plasma skill:** persistent setup, import, and documentation lookup conventions
+- **Plasma MCP:** authoritative on-demand Plasma-specific props, sub-components, usage, and content guidelines
+- **Mantine MCP:** on-demand fallback for re-exported components and inherited props
+
+Use both the skill and MCP servers when the client supports them. The skill uses static [`@coveord/plasma-llms`](packages/llms/README.md) files only as a fallback when MCP is unavailable.
 
 > **Import invariant:** always import from `@coveord/plasma-mantine`, even when Mantine docs were the reference source.
 
 <details>
 <summary><strong>Claude Code</strong></summary>
 
-Add both MCP servers to a project-scoped `.mcp.json` at your repository root (commit it to share the setup with your team):
+**Step 1: Install the Plasma skill.** Save the [Plasma skill](https://plasma.coveo.com/plasma-skill.md) as `.claude/skills/plasma/SKILL.md` in your project.
+
+**Step 2: Configure the MCP servers.** Add both servers to a project-scoped `.mcp.json` at your repository root (commit it to share the setup with your team):
 
 ```json
 {
@@ -87,7 +92,9 @@ Run `/mcp` inside Claude Code to verify both servers are connected.
 <details>
 <summary><strong>Opencode</strong></summary>
 
-Add both MCP servers to your [Opencode config](https://opencode.ai/docs/mcp-servers/) (`opencode.json` at your repository root, or `~/.config/opencode/opencode.json` for all projects):
+**Step 1: Install the Plasma skill.** Save the [Plasma skill](https://plasma.coveo.com/plasma-skill.md) as `.opencode/skills/plasma/SKILL.md` in your project.
+
+**Step 2: Configure the MCP servers.** Add both servers to your [Opencode config](https://opencode.ai/docs/mcp-servers/) (`opencode.json` at your repository root, or `~/.config/opencode/opencode.json` for all projects):
 
 ```json
 {
@@ -112,18 +119,29 @@ Add both MCP servers to your [Opencode config](https://opencode.ai/docs/mcp-serv
 <details>
 <summary><strong>GitHub Copilot CLI</strong></summary>
 
-Load the Plasma skill in the terminal:
+**Step 1: Install the Plasma skill.** Load it in the terminal:
 
 ```
 /skill https://plasma.coveo.com/plasma-skill.md
 ```
+
+**Step 2: Configure the MCP servers.** Add both servers from the terminal:
+
+```bash
+copilot mcp add plasma -- npx -y @coveord/plasma-mcp-server
+copilot mcp add mantine -- npx -y @mantine/mcp-server
+```
+
+The CLI also reads shared workspace MCP configuration from `.mcp.json`.
 
 </details>
 
 <details>
 <summary><strong>GitHub Copilot in VS Code (agent mode)</strong></summary>
 
-Create `.vscode/mcp.json` in your project:
+**Step 1: Install the Plasma skill.** Save the [Plasma skill](https://plasma.coveo.com/plasma-skill.md) as `.github/skills/plasma/SKILL.md` in your project.
+
+**Step 2: Configure the MCP servers.** Create `.vscode/mcp.json` in your project:
 
 ```json
 {
@@ -147,9 +165,15 @@ Create `.vscode/mcp.json` in your project:
 <details>
 <summary><strong>Kiro</strong></summary>
 
-**Option 1 — MCP servers** (recommended for component API lookups):
+**Step 1: Install the Plasma skill as steering.** Create `.kiro/steering/plasma.md`, paste the contents of [`https://plasma.coveo.com/plasma-skill.md`](https://plasma.coveo.com/plasma-skill.md), and replace its frontmatter with:
 
-Create `.kiro/settings/mcp.json` in your project:
+```markdown
+---
+inclusion: always
+---
+```
+
+**Step 2: Configure the MCP servers.** Create `.kiro/settings/mcp.json` in your project:
 
 ```json
 {
@@ -166,22 +190,14 @@ Create `.kiro/settings/mcp.json` in your project:
 }
 ```
 
-**Option 2 — Steering file** (injects Plasma conventions into every agent session):
-
-Create `.kiro/steering/plasma.md` and paste the contents of [`https://plasma.coveo.com/plasma-skill.md`](https://plasma.coveo.com/plasma-skill.md) into it with this frontmatter:
-
-```markdown
----
-inclusion: always
----
-```
-
 </details>
 
 <details>
 <summary><strong>Codex CLI</strong></summary>
 
-Add to `~/.codex/config.toml` (global) or `.codex/config.toml` (project):
+**Step 1: Install the Plasma skill.** Save the [Plasma skill](https://plasma.coveo.com/plasma-skill.md) as `.agents/skills/plasma/SKILL.md` in your project.
+
+**Step 2: Configure the MCP servers.** Add both servers to `~/.codex/config.toml` (global) or `.codex/config.toml` (project):
 
 ```toml
 [mcp_servers.plasma]

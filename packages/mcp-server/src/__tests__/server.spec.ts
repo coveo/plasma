@@ -67,6 +67,15 @@ describe('plasma-mcp-server integration', () => {
                 required: ['component'],
             });
         });
+
+        it('describes search across components and content guidelines', async () => {
+            const response = await server.receive(req(1, 'tools/list'));
+            const tools = (response as {result: {tools: Array<{name: string; description: string}>}}).result.tools;
+            const searchTool = tools.find((t) => t.name === 'search_docs');
+            expect(searchTool?.description).toBe(
+                'Search across all Plasma component documentation and content guidelines',
+            );
+        });
     });
 
     describe('list_components tool', () => {

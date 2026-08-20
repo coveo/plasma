@@ -85,7 +85,7 @@ This repo ships agent **skills** in `.github/skills/`. Use them when the task ma
 - **`storybook-component-guidelines`** — **Step 2**: rewrite the converted `.mdx` into clear, human-readable Storybook documentation. Runs after Step 1.
 - **`changesets-author`** — write or edit a changeset that follows the enforced template. Use when adding or editing a `.changeset/*.md` file. Scaffold with `pnpm changeset:new` and check with `pnpm changeset:validate`.
 
-There is also a public agent skill served at `https://plasma.coveo.com/plasma-skill.md` (source: `packages/llms/src/skill.md`) and an MCP server (`@coveord/plasma-mcp-server`) for looking up Plasma component APIs. When consulting component APIs, read the specs in `packages/llms/src/components/` or use the Plasma/Mantine MCP servers described in the [README](README.md).
+`packages/llms/src/skill.md` is the source for the public Plasma skill served at `https://plasma.coveo.com/plasma-skill.md`. It is intended for agents using Plasma in consumer applications; agents contributing to this repository do not need to install it. Edit the source file, not the generated `packages/llms/dist/plasma-skill.md`, when updating the public skill.
 
 ## Component documentation
 
