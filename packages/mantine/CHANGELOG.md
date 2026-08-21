@@ -1,5 +1,37 @@
 # @coveord/plasma-mantine
 
+## 61.2.0
+
+### Minor Changes
+
+- Add the `MantineTable` component export [#4585](https://github.com/coveo/plasma/pull/4585)
+
+  Import `MantineTable` to use Mantine's table component when the Plasma `Table` component is not appropriate.
+
+- Add `readOnly` support to `CodeEditor` [#4588](https://github.com/coveo/plasma/pull/4588)
+
+  The `readOnly` prop prevents users from changing the editor content while displaying it with read-only styling.
+
+- Add component namespace type aliases [#4568](https://github.com/coveo/plasma/pull/4568)
+
+  Components expose type-only `Props`, `StylesNames`, `CssVariables`, and `Factory` aliases for public, resolvable types. Compound component aliases are available only through their parent namespace paths and add no runtime properties.
+
+- Display validation feedback with `RadioCard.error` [#4572](https://github.com/coveo/plasma/pull/4572)
+
+  `RadioCard` now accepts an `error` prop that renders validation feedback below the card, marks it invalid, and adds an error outline when it is unselected. Pass an actionable validation message to `error` when a radio option needs attention.
+
+### Patch Changes
+
+- Add missing `Table` exports [#4565](https://github.com/coveo/plasma/pull/4565)
+
+  Some `Table` interfaces were missing from the public API. This commit adds them and exports them from `@coveord/plasma-mantine` for external use.
+
+- Fix `Table` column types for inferred cell values [#4584](https://github.com/coveo/plasma/pull/4584)
+
+- Restore read-only Checkbox styling [#4579](https://github.com/coveo/plasma/pull/4579)
+
+  Correct styling for read-only Checkbox inputs so they receive the appropriate read-only appearance.
+
 ## 61.1.0
 
 ### Minor Changes
