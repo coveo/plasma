@@ -17,7 +17,7 @@ jobs:
             pull-requests: write
         steps:
             - name: Harden Runner
-              uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
+              uses: step-security/harden-runner@b09bb98e06d4d774595224525879c09bc6e98c40 # v2.20.1
               with:
                   egress-policy: audit
 
@@ -46,7 +46,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Harden Runner
-              uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
+              uses: step-security/harden-runner@b09bb98e06d4d774595224525879c09bc6e98c40 # v2.20.1
               with:
                   egress-policy: audit
 
@@ -69,7 +69,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Harden Runner
-              uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
+              uses: step-security/harden-runner@b09bb98e06d4d774595224525879c09bc6e98c40 # v2.20.1
               with:
                   egress-policy: audit
 
@@ -84,7 +84,7 @@ jobs:
             contents: read
         steps:
             - name: Harden Runner
-              uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
+              uses: step-security/harden-runner@b09bb98e06d4d774595224525879c09bc6e98c40 # v2.20.1
               with:
                   egress-policy: audit
 
@@ -106,7 +106,7 @@ jobs:
             - name: Copy LLM files into Storybook output
               run: cp -r ./packages/llms/dist/. ./packages/storybook/storybook-static/
             - name: Deploy Storybook to Chromatic
-              uses: chromaui/action@94713c544284a14195de3b50ef24301579f1877e # v18.0.1
+              uses: chromaui/action@14cfaef73576e69f95f47f60058063f46ca38719 # v18.1.0
               with:
                   projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
                   storybookBuildDir: storybook-static
