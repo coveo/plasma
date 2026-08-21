@@ -12,11 +12,6 @@ addons.setConfig({
         brandTitle: 'Plasma Design System',
         brandImage,
     }),
-
-    sidebar: {
-        showRoots: true,
-        collapsedRoots: ['foundation', 'content', 'changelogs'],
-    },
 });
 
 // Override the browser tab title to show "Plasma Design System" instead of "Storybook"

@@ -466,6 +466,7 @@ export {
     type UseTableOptions,
 } from './components/Table/use-table.js';
 export {useUrlSyncedState, type SearchParamEntry, type UseUrlSyncedStateOptions} from './hooks/use-url-synced-state.js';
+export {Table as MantineTable} from '@mantine/core';
 
 // Table of Contents
 export * from './components/TableOfContents/TableOfContents.js';

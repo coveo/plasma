@@ -102,10 +102,10 @@ export const plasmaDocsComponents: Record<string, ComponentType<any>> = {
     a: (props) => <Anchor {...props} />,
     hr: () => <Divider />,
     code: ({className, children, ...props}) => {
-        if (typeof className === 'string' && className.startsWith('lang-')) {
-            return <Source language={className.replace('lang-', '') as any} code={children} />;
+        if (typeof className === 'string' && (className.startsWith('lang-') || className.startsWith('language-'))) {
+            return <Source language={className.replace('lang-', '').replace('language-', '') as any} code={children} />;
         }
-        return <Code c="grape" fz="inherit" className={className} children={children} {...props} />;
+        return <Code c="green.7" fz="inherit" className={className} children={children} {...props} />;
     },
     ul: (props) => <List my="xs" {...props} />,
     ol: (props) => <List type="ordered" my="xs" {...props} />,

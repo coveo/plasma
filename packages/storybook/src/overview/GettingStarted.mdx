@@ -1,0 +1,104 @@
+import {Meta} from '@storybook/addon-docs/blocks';
+import {Anchor, MantineTable as Table} from '@coveord/plasma-mantine';
+
+<Meta title="@overview/Getting Started" id="getting-started" />
+
+# Plasma
+
+Plasma is Coveo's design system for the Administration Console.
+It provides Mantine-based React components, design tokens, icons, and content guidelines for Coveo products.
+
+## Getting Started
+
+### Installation
+
+Install Plasma with its required peer dependencies:
+
+```bash
+npm install @coveord/plasma-mantine @mantine/core @mantine/hooks react react-dom
+```
+
+Install the optional Mantine packages only when your application uses their components.
+
+```bash
+npm install @mantine/carousel @mantine/code-highlight @mantine/dates @mantine/form @mantine/modals @mantine/notifications
+```
+
+<Table withTableBorder withColumnBorders>
+    <Table.Thead>
+        <Table.Tr>
+            <Table.Th>Package</Table.Th>
+            <Table.Th>Use it for</Table.Th>
+        </Table.Tr>
+    </Table.Thead>
+    <Table.Tbody>
+        <Table.Tr>
+            <Table.Td>
+                <a href="https://github.com/coveo/plasma/tree/master/packages/mantine">@coveord/plasma-mantine</a>
+            </Table.Td>
+            <Table.Td>Plasma-themed Mantine components and custom components.</Table.Td>
+        </Table.Tr>
+        <Table.Tr>
+            <Table.Td>
+                <a href="https://github.com/coveo/plasma/tree/master/packages/tokens">@coveord/plasma-tokens</a>
+            </Table.Td>
+            <Table.Td>Design tokens for colors, spacing, typography, and icons.</Table.Td>
+        </Table.Tr>
+        <Table.Tr>
+            <Table.Td>
+                <a href="https://github.com/coveo/plasma/tree/master/packages/react-icons">
+                    @coveord/plasma-react-icons
+                </a>
+            </Table.Td>
+            <Table.Td>Plasma iconography as React components.</Table.Td>
+        </Table.Tr>
+        <Table.Tr>
+            <Table.Td>
+                <a href="https://github.com/coveo/plasma/tree/master/packages/llms">@coveord/plasma-llms</a>
+            </Table.Td>
+            <Table.Td>LLM-friendly component and content documentation.</Table.Td>
+        </Table.Tr>
+        <Table.Tr>
+            <Table.Td>
+                <a href="https://github.com/coveo/plasma/tree/master/packages/mcp-server">@coveord/plasma-mcp-server</a>
+            </Table.Td>
+            <Table.Td>On-demand Plasma documentation for AI agents.</Table.Td>
+        </Table.Tr>
+    </Table.Tbody>
+</Table>
+
+### Setup
+
+Wrap your application with `Plasmantine`.
+It applies the Plasma theme and CSS variables, so you do not need a separate `MantineProvider`.
+
+```tsx
+import {Plasmantine} from '@coveord/plasma-mantine/plasmantine';
+import '@mantine/core/styles.css';
+
+function App() {
+    return <Plasmantine>{/* your app */}</Plasmantine>;
+}
+```
+
+Import the styles for any optional Mantine package you use.
+
+```tsx
+import '@mantine/notifications/styles.css';
+```
+
+### Usage
+
+Render Plasma components anywhere inside `Plasmantine`.
+
+```tsx
+import {Button} from '@coveord/plasma-mantine';
+
+function SaveButton() {
+    return <Button.Primary>Save</Button.Primary>;
+}
+```
+
+## Next Steps
+
+<Anchor href="./?path=/docs/using-llms--docs">Using Plasma with LLMs</Anchor>

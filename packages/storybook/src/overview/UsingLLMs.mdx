@@ -1,0 +1,167 @@
+import {Meta} from '@storybook/addon-docs/blocks';
+import {Accordion} from '@coveord/plasma-mantine';
+
+<Meta title="@overview/Using LLMs" id="using-llms" />
+
+# Using LLMs
+
+Plasma publishes documentation that AI agents can read efficiently. The current page explains how to set in place the recommended setup to maximally benefit from this documentation.
+
+## Set up your AI tool
+
+For the best results, install the Plasma skill and configure both MCP servers in your AI tool:
+
+- The **Plasma skill** gives your agent persistent setup, import, and documentation lookup conventions.
+- The **Plasma and Mantine MCP servers** give your agent access to the entire design system documentation efficiently.
+
+<Accordion variant="filled">
+    <Accordion.Item value="claude-code">
+        <Accordion.Control>Claude Code</Accordion.Control>
+        <Accordion.Panel>
+            **Step 1: Install the Plasma skill.** Save [`plasma-skill.md`](/plasma-skill.md) as `.claude/skills/plasma/SKILL.md` in your project.
+
+            **Step 2: Configure the MCP servers.** Add both servers to a project-scoped `.mcp.json` file:
+
+            ```json
+            {
+                "mcpServers": {
+                    "plasma": {
+                        "command": "npx",
+                        "args": ["-y", "@coveord/plasma-mcp-server"]
+                    },
+                    "mantine": {
+                        "command": "npx",
+                        "args": ["-y", "@mantine/mcp-server"]
+                    }
+                }
+            }
+            ```
+
+            Run `/mcp` in Claude Code to verify both servers are connected.
+        </Accordion.Panel>
+    </Accordion.Item>
+    <Accordion.Item value="codex-cli">
+        <Accordion.Control>Codex CLI</Accordion.Control>
+        <Accordion.Panel>
+            **Step 1: Install the Plasma skill.** Save [`plasma-skill.md`](/plasma-skill.md) as `.agents/skills/plasma/SKILL.md` in your project.
+
+            **Step 2: Configure the MCP servers.** Add both servers to `~/.codex/config.toml`:
+
+            ```toml
+            [mcp_servers.plasma]
+            command = "npx"
+            args = ["-y", "@coveord/plasma-mcp-server"]
+
+            [mcp_servers.mantine]
+            command = "npx"
+            args = ["-y", "@mantine/mcp-server"]
+            ```
+
+            For a project-specific setup, set `CODEX_HOME=.codex` and add the configuration to `.codex/config.toml`.
+        </Accordion.Panel>
+    </Accordion.Item>
+    <Accordion.Item value="github-copilot-cli">
+        <Accordion.Control>GitHub Copilot CLI</Accordion.Control>
+        <Accordion.Panel>
+            **Step 1: Install the Plasma skill.** Load it in the terminal:
+
+            ```
+            /skill https://plasma.coveo.com/plasma-skill.md
+            ```
+
+            **Step 2: Configure the MCP servers.** Add both servers from the terminal:
+
+            ```bash
+            copilot mcp add plasma -- npx -y @coveord/plasma-mcp-server
+            copilot mcp add mantine -- npx -y @mantine/mcp-server
+            ```
+
+            The CLI also reads shared workspace MCP configuration from `.mcp.json`.
+        </Accordion.Panel>
+    </Accordion.Item>
+    <Accordion.Item value="github-copilot-vscode">
+        <Accordion.Control>GitHub Copilot in VS Code</Accordion.Control>
+        <Accordion.Panel>
+            **Step 1: Install the Plasma skill.** Save [`plasma-skill.md`](/plasma-skill.md) as `.github/skills/plasma/SKILL.md` in your project.
+
+            **Step 2: Configure the MCP servers.** Create `.vscode/mcp.json` in your project:
+
+            ```json
+            {
+                "servers": {
+                    "plasma": {
+                        "type": "stdio",
+                        "command": "npx",
+                        "args": ["-y", "@coveord/plasma-mcp-server"]
+                    },
+                    "mantine": {
+                        "type": "stdio",
+                        "command": "npx",
+                        "args": ["-y", "@mantine/mcp-server"]
+                    }
+                }
+            }
+            ```
+
+            Use **MCP: List Servers** in the Command Palette to confirm that both servers run.
+        </Accordion.Panel>
+    </Accordion.Item>
+    <Accordion.Item value="kiro">
+        <Accordion.Control>Kiro</Accordion.Control>
+        <Accordion.Panel>
+            **Step 1: Install the Plasma skill as steering.** Create `.kiro/steering/plasma.md`, paste the contents of [`plasma-skill.md`](/plasma-skill.md), and replace its frontmatter with:
+
+            ```markdown
+            ---
+            inclusion: always
+            ---
+            ```
+
+            **Step 2: Configure the MCP servers.** Create `.kiro/settings/mcp.json` in your project:
+
+            ```json
+            {
+                "mcpServers": {
+                    "plasma": {
+                        "command": "npx",
+                        "args": ["-y", "@coveord/plasma-mcp-server"]
+                    },
+                    "mantine": {
+                        "command": "npx",
+                        "args": ["-y", "@mantine/mcp-server"]
+                    }
+                }
+            }
+            ```
+
+            Restart Kiro after saving the file. Both servers appear in the MCP panel.
+        </Accordion.Panel>
+    </Accordion.Item>
+    <Accordion.Item value="opencode">
+        <Accordion.Control>Opencode</Accordion.Control>
+        <Accordion.Panel>
+            **Step 1: Install the Plasma skill.** Save [`plasma-skill.md`](/plasma-skill.md) as `.opencode/skills/plasma/SKILL.md` in your project.
+
+            **Step 2: Configure the MCP servers.** Add both servers to your project `opencode.json` or global `~/.config/opencode/opencode.json` file:
+
+            ```json
+            {
+                "$schema": "https://opencode.ai/config.json",
+                "mcp": {
+                    "plasma": {
+                        "type": "local",
+                        "command": ["npx", "-y", "@coveord/plasma-mcp-server"],
+                        "enabled": true
+                    },
+                    "mantine": {
+                        "type": "local",
+                        "command": ["npx", "-y", "@mantine/mcp-server"],
+                        "enabled": true
+                    }
+                }
+            }
+            ```
+        </Accordion.Panel>
+    </Accordion.Item>
+
+</Accordion>
