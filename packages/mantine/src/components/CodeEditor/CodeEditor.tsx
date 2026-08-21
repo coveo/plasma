@@ -64,6 +64,7 @@ interface CodeEditorProps
      * In the case where the parent height would be too high for your liking, you can use this prop to set a maximum.
      */
     maxHeight?: number;
+    readOnly?: boolean;
     disabled?: boolean;
     /**
      * Defines how the monaco editor files will be loaded.
@@ -108,6 +109,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         minHeight,
         maxHeight,
         disabled,
+        readOnly,
         monacoLoader,
         options: {tabSize} = {tabSize: 2},
         editorHandle,
@@ -210,7 +212,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         </Group>
     );
     let editorTheme = colorScheme === 'light' ? 'light' : 'vs-dark';
-    if (disabled) {
+    if (disabled || readOnly) {
         editorTheme += '-disabled';
     }
 
@@ -221,7 +223,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
             className={cx(
                 CodeEditorClasses.root,
                 {[CodeEditorClasses.error]: hasError},
-                {[CodeEditorClasses.disabled]: disabled},
+                {[CodeEditorClasses.disabled]: disabled || readOnly},
             )}
             data-testid="editor-wrapper"
         >
@@ -236,7 +238,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
                     scrollBeyondLastLine: false,
                     formatOnPaste: true,
                     fontSize: px(theme.fontSizes.xs) as number,
-                    readOnly: disabled,
+                    readOnly: disabled || readOnly,
                     stickyScroll: {enabled: false},
                     tabSize,
                 }}

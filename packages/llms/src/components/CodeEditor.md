@@ -33,7 +33,8 @@ Do not use `CodeEditor` when:
 - Use `CodeEditor` for technical text where structure matters.
 - Use `Textarea` for freeform prose or comments.
 - Use `TextInput` for short single-line values.
-- Use `disabled` when the editor should be readable but not editable.
+- Use `readOnly` when the editor content should remain readable but not editable.
+- Use `disabled` when the editor is unavailable.
 
 ## Accessibility expectations
 
@@ -63,6 +64,7 @@ Do not use `CodeEditor` when:
 **`editorHandle`** `React.MutableRefObject<monacoEditor.IStandaloneCodeEditor | null>` · optional · default: `undefined` — This ref MAY provide access to the editor's functionality.
 **`minHeight`** `number` · optional · default: `300` — The CodeEditor height, including label and description, is never smaller than this value. By default, the CodeEditor adjusts to fill its parent height. If the parent height is too short, the component uses this value as its minimum height.
 **`maxHeight`** `number` · optional · default: `undefined` — The CodeEditor height, including label and description, is never larger than this value. By default, the CodeEditor adjusts to fill its parent height. This prop can set the maximum height when the parent height would otherwise be too high.
+**`readOnly`** `boolean` · optional · default: `undefined` — When set, the editor prevents content changes and uses read-only styling.
 **`disabled`** `boolean` · optional · default: `undefined` — When set, the editor is read-only and uses disabled styling.
 **`monacoLoader`** `'cdn' | 'local'` · optional · default: `local` — Defines how the Monaco editor files are loaded. When `local` is used, the required [additional configuration](https://github.com/suren-atoyan/monaco-react#use-monaco-editor-as-an-npm-package) MUST be provided.
 **`options`** `Pick<monacoEditor.IStandaloneEditorConstructionOptions, 'tabSize'>` · optional · default: `undefined` — This prop MAY pass options to the Monaco editor. It currently supports only [`tabSize`](https://microsoft.github.io/monaco-editor/typedoc/interfaces/editor.IStandaloneEditorConstructionOptions.html#tabSize).

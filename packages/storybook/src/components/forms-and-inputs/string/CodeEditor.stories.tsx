@@ -1,8 +1,7 @@
 import {CodeEditor} from '@coveord/plasma-mantine/components/CodeEditor';
 import type {Meta, StoryObj} from '@storybook/react-vite';
-import {Args} from '../../../Args.js';
+import {BaseInputArgs, InputWrapperArgs, type InputWrapperStoryArgs} from '../InputWrapperArgs.js';
 import {withLabelInfoProps} from '../LabelInfoArgs.js';
-import {InputWrapperArgs, type InputWrapperStoryArgs} from '../InputWrapperArgs.js';
 
 interface CodeEditorStoryArgs extends InputWrapperStoryArgs {
     disabled: boolean;
@@ -18,13 +17,13 @@ const meta = {
     },
     args: {
         ...InputWrapperArgs.Args,
-        disabled: Args.disabled.initialValue,
+        ...BaseInputArgs.Args,
         language: 'plaintext',
         defaultValue: '// Write your code here',
     },
     argTypes: {
         ...InputWrapperArgs.ArgsTypes,
-        disabled: Args.disabled.type,
+        ...BaseInputArgs.ArgsTypes,
         language: {
             control: 'select',
             options: ['plaintext', 'json', 'markdown', 'python', 'xml'],
