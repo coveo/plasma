@@ -45,4 +45,4 @@ Follow the format in [references/format.md](references/format.md) exactly. Key r
 pnpm turbo run build --filter=@coveord/plasma-llms
 ```
 
-This rebuilds `dist/llms/`, `dist/llms.txt`, `dist/llms-full.txt`, and `dist/plasma-skill.md` from all specs.
+This rebuilds `packages/llms/dist/llms/`, `packages/llms/dist/llms.txt`, and `packages/llms/dist/llms-full.txt` from the component and content specs. It also regenerates `packages/llms/dist/plasma-skill.md` from `packages/llms/src/skill.md`.

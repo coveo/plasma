@@ -89,7 +89,7 @@ Run all tests from the root with `pnpm test`. From within `packages/{name}` you 
 - **`storybook-component-guidelines`** — Step 2: rewrite the converted `.mdx` into human-readable documentation.
 - **`changesets-author`** — write or edit a changeset that follows the template documented below.
 
-A public agent skill is also served at [`https://plasma.coveo.com/plasma-skill.md`](https://plasma.coveo.com/plasma-skill.md), and the `@coveord/plasma-mcp-server` package exposes Plasma docs to AI agents (see the [README](README.md) for setup).
+`packages/llms/src/skill.md` is the source for the public Plasma skill served at [`https://plasma.coveo.com/plasma-skill.md`](https://plasma.coveo.com/plasma-skill.md). It is intended for agents using Plasma in consumer applications, so contributors do not need to install it. Edit the source file rather than the generated `packages/llms/dist/plasma-skill.md`.
 
 ## Committing your changes
 
