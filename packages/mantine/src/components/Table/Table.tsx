@@ -1,16 +1,13 @@
 import {Box, Center, Factory, Loader, type SkeletonProps, useProps, useStyles} from '@mantine/core';
 import {useClickOutside, useMergedRef} from '@mantine/hooks';
 import {
-    ColumnDef,
-    defaultColumnSizing,
-    getCoreRowModel,
     type PaginationState as TanStackPaginationState,
-    Row,
-    RowSelectionState,
-    useReactTable,
+    type RowData,
+    type RowSelectionState,
+    useTable as useTanStackTable,
 } from '@tanstack/react-table';
 import isEqual from 'fast-deep-equal';
-import {Children, ForwardedRef, ReactElement, useEffect, useRef} from 'react';
+import {Children, ForwardedRef, ReactElement, useEffect, useMemo, useRef} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../utils/createFactoryComponent.js';
 import {TableLayouts} from './layouts/TableLayouts.js';
 import {
@@ -81,6 +78,7 @@ import {
 import classes from './Table.module.css';
 import {type TableLayout, type TableProps} from './Table.types.js';
 import {TableProvider} from './TableContext.js';
+import {ColumnDef, defaultColumnSizing, getPlasmaTableFeatures, Row} from './tanstackTable.js';
 import {TableState} from './use-table.js';
 
 export type TableStylesNames =
@@ -185,14 +183,64 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
     const isSelectionColumnVisible =
         store.multiRowSelectionEnabled && (store.rowSelectionEnabled || store.getSelectedRows().length > 0);
 
-    const table = useReactTable({
-        data: data || [],
+    const {
+        getCoreRowModel: _getCoreRowModel,
+        getExpandedRowModel,
+        getFacetedMinMaxValues,
+        getFacetedRowModel,
+        getFacetedUniqueValues,
+        getFilteredRowModel,
+        getGroupedRowModel,
+        getPaginationRowModel,
+        getSortedRowModel,
+        filterFns,
+        sortingFns,
+        aggregationFns,
+        ...tableOptions
+    } = options;
+
+    const features = useMemo(
+        () =>
+            getPlasmaTableFeatures({
+                getCoreRowModel: _getCoreRowModel,
+                getExpandedRowModel,
+                getFacetedMinMaxValues,
+                getFacetedRowModel,
+                getFacetedUniqueValues,
+                getFilteredRowModel,
+                getGroupedRowModel,
+                getPaginationRowModel,
+                getSortedRowModel,
+                filterFns,
+                sortingFns,
+                aggregationFns,
+            }),
+        [
+            _getCoreRowModel,
+            getExpandedRowModel,
+            getFacetedMinMaxValues,
+            getFacetedRowModel,
+            getFacetedUniqueValues,
+            getFilteredRowModel,
+            getGroupedRowModel,
+            getPaginationRowModel,
+            getSortedRowModel,
+            filterFns,
+            sortingFns,
+            aggregationFns,
+        ],
+    );
+
+    const table = useTanStackTable({
+        features,
+        data: (data || []) as Array<T & RowData>,
         state: {
             globalFilter: store.state.globalFilter,
             sorting: store.state.sorting,
             pagination: {pageIndex: store.state.pagination.page, pageSize: store.state.pagination.perPage},
             columnVisibility: store.state.columnVisibility,
             expanded: store.state.expanded,
+            rowSelection: store.state.rowSelection as RowSelectionState,
         },
         onGlobalFilterChange: store.setGlobalFilter,
         onExpandedChange: store.setExpanded,
@@ -206,9 +254,9 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
         },
         onColumnVisibilityChange: store.setColumnVisibility,
         columns: isSelectionColumnVisible ? [TableSelectableColumn as ColumnDef<T>].concat(columns) : columns,
-        getCoreRowModel: getCoreRowModel(),
-        manualPagination: options.getPaginationRowModel === undefined,
+        manualPagination: getPaginationRowModel === undefined,
         enableMultiRowSelection: !!store.multiRowSelectionEnabled,
+        enableRowRangeSelection: false,
         getRowId,
         getRowCanExpand: (row: Row<T>) => !!getRowExpandedContent?.(row.original, row.index, row),
         enableRowSelection: !loading,
@@ -217,16 +265,8 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
             minSize: defaultColumnSizing.minSize,
             maxSize: defaultColumnSizing.maxSize,
         },
-        rowCount: options.getFilteredRowModel ? undefined : (store.state.totalEntries ?? undefined),
-        ...options,
-    });
-
-    table.setOptions((prev) => ({
-        ...prev,
-        state: {
-            ...prev.state,
-            rowSelection: store.state.rowSelection as RowSelectionState,
-        },
+        rowCount: getFilteredRowModel ? undefined : (store.state.totalEntries ?? undefined),
+        ...tableOptions,
         onRowSelectionChange: (rowSelectionUpdater) => {
             store.setRowSelection((old) => {
                 const newRowSelection = (
@@ -235,7 +275,10 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
                         : rowSelectionUpdater
                 ) as TableState<T>['rowSelection'];
 
-                if (isEqual(old, newRowSelection)) {
+                if (
+                    Object.keys(old).length === Object.keys(newRowSelection).length &&
+                    Object.entries(old).every(([rowId, row]) => newRowSelection[rowId] === row)
+                ) {
                     return old;
                 }
 
@@ -255,7 +298,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
                 return newRowSelection;
             });
         },
-    }));
+    });
 
     useEffect(() => {
         // Update the selected rows data when the data prop changes

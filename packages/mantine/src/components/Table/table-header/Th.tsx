@@ -1,9 +1,10 @@
 import {ArrowDownSize16Px, ArrowUpSize16Px, DoubleArrowHeadVSize16Px} from '@coveord/plasma-react-icons';
 import {BoxProps, CompoundStylesApiProps, Factory, Group, UnstyledButton, useProps} from '@mantine/core';
-import {Header, defaultColumnSizing, flexRender} from '@tanstack/react-table';
+import {flexRender} from '@tanstack/react-table';
 import {AriaAttributes, ComponentType, ForwardedRef, SVGProps} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../../utils/createFactoryComponent.js';
 import {useTableContext} from '../TableContext.js';
+import {defaultColumnSizing, Header} from '../tanstackTable.js';
 
 export type TableThStylesNames = 'th';
 

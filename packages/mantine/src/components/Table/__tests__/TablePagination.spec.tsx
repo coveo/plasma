@@ -1,4 +1,4 @@
-import {ColumnDef, createColumnHelper, getPaginationRowModel} from '@tanstack/table-core';
+import {ColumnDef, createColumnHelper, getPaginationRowModel} from '../tanstackTable.js';
 import {render, screen, userEvent, waitFor} from '@test-utils';
 
 import {Table} from '../Table.js';

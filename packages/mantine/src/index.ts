@@ -1,5 +1,5 @@
 import {MantineColorsTuple, noop} from '@mantine/core';
-import {type RowData} from '@tanstack/table-core';
+import {type RowData, type TableFeatures} from '@tanstack/table-core';
 import {type PlasmaColors} from './theme/PlasmaColors.js';
 
 export * from '@mantine/carousel';
@@ -11,6 +11,26 @@ export * from '@mantine/hooks';
 export * from '@mantine/notifications';
 export {type NotificationsProps} from '@mantine/notifications';
 export * from '@tanstack/table-core';
+export {
+    createColumnHelper,
+    defaultColumnSizing,
+    getCoreRowModel,
+    getExpandedRowModel,
+    getFacetedMinMaxValues,
+    getFacetedRowModel,
+    getFacetedUniqueValues,
+    getFilteredRowModel,
+    getGroupedRowModel,
+    getPaginationRowModel,
+    getSortedRowModel,
+} from './components/Table/tanstackTable.js';
+export type {
+    CellContext,
+    ColumnDef,
+    Header as TanStackHeader,
+    Row,
+    TableOptions,
+} from './components/Table/tanstackTable.js';
 
 // Export all components
 // Accordion
@@ -526,9 +546,9 @@ declare module '@mantine/core' {
     }
 }
 
-declare module '@tanstack/react-table' {
+declare module '@tanstack/table-core' {
     // eslint-disable-next-line unused-imports/no-unused-vars
-    interface ColumnMeta<TData extends RowData, TValue> {
+    interface ColumnMeta<TFeatures extends TableFeatures, TData extends RowData, TValue> {
         /**
          * Whether the column is a control column.
          * Control columns are columns that are not part of the data but are used to control the table.

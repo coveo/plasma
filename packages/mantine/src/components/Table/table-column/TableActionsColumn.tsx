@@ -1,11 +1,11 @@
 import {MoreSize16Px} from '@coveord/plasma-react-icons';
 import {useProps} from '@mantine/core';
-import {CellContext, ColumnDef} from '@tanstack/table-core';
 import {FunctionComponent} from 'react';
 import {TableActionsList, TableActionsListProps} from '../table-actions/TableActionsList.js';
 
 import {useTableContext} from '../TableContext.js';
 import {TableColumnsSelector, TableColumnsSelectorOptions} from '../table-columns-selector/TableColumnsSelector.js';
+import {CellContext, ColumnDef} from '../tanstackTable.js';
 
 export interface TableActionsColumnMeta {
     /**

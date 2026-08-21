@@ -1,9 +1,9 @@
 import {IconChevronDown, IconChevronUp} from '@coveord/plasma-react-icons';
 import {Factory, factory, useProps} from '@mantine/core';
-import {CellContext, ColumnDef} from '@tanstack/table-core';
 import {MouseEvent as ReactMouseEvent, ReactNode} from 'react';
 import {ActionIcon, type ActionIconProps} from '../../ActionIcon/ActionIcon.js';
 import {useTableContext} from '../TableContext.js';
+import {CellContext, ColumnDef} from '../tanstackTable.js';
 
 export type TableCollapsibleColumnStylesNames = 'collapsibleIcon';
 

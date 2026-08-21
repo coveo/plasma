@@ -1,9 +1,9 @@
 import {TablerIcon} from '@coveord/plasma-react-icons';
 import {BoxProps, StylesApiProps} from '@mantine/core';
-import {ColumnDef, CoreOptions, Row, TableOptions} from '@tanstack/table-core';
 import {ReactElement, ReactNode} from 'react';
 
 import {type PlasmaTableFactory} from './Table.js';
+import {ColumnDef, Row, TableOptions} from './tanstackTable.js';
 import {TableStore} from './use-table.js';
 
 export type TableLayoutProps<TData = unknown> = Pick<
@@ -45,7 +45,7 @@ export interface TableProps<TData> extends BoxProps, StylesApiProps<PlasmaTableF
     /**
      * Defines how each row is uniquely identified. It is highly recommended that you specify this prop to an ID that makes sense.
      */
-    getRowId?: CoreOptions<TData>['getRowId'];
+    getRowId?: TableOptions<TData>['getRowId'];
     /**
      * Allows to define html attributes that will be passed down to each row.
      */
@@ -69,7 +69,7 @@ export interface TableProps<TData> extends BoxProps, StylesApiProps<PlasmaTableF
     /**
      * Columns to display in the table.
      *
-     * @see https://tanstack.com/table/v8/docs/guide/column-defs
+     * @see https://tanstack.com/table/latest/docs/guide/column-defs
      */
     columns: Array<ColumnDef<TData, any>>;
     /**
