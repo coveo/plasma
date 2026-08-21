@@ -1,5 +1,11 @@
 # @coveord/plasma-mcp-server
 
+## 60.2.1
+
+### Patch Changes
+
+- Prefer MCP tools in Plasma agent guidance [#4586](https://github.com/coveo/plasma/pull/4586)
+
 ## 60.2.0
 
 ### Minor Changes

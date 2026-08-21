@@ -1,5 +1,23 @@
 # @coveord/plasma-llms
 
+## 60.2.1
+
+### Patch Changes
+
+- Prefer MCP tools in Plasma agent guidance [#4586](https://github.com/coveo/plasma/pull/4586)
+
+- Add `readOnly` support to `CodeEditor` [#4588](https://github.com/coveo/plasma/pull/4588)
+
+  The `readOnly` prop prevents users from changing the editor content while displaying it with read-only styling.
+
+- Add component namespace type aliases [#4568](https://github.com/coveo/plasma/pull/4568)
+
+  Components expose type-only `Props`, `StylesNames`, `CssVariables`, and `Factory` aliases for public, resolvable types. Compound component aliases are available only through their parent namespace paths and add no runtime properties.
+
+- Display validation feedback with `RadioCard.error` [#4572](https://github.com/coveo/plasma/pull/4572)
+
+  `RadioCard` now accepts an `error` prop that renders validation feedback below the card, marks it invalid, and adds an error outline when it is unselected. Pass an actionable validation message to `error` when a radio option needs attention.
+
 ## 60.2.0
 
 ### Minor Changes
