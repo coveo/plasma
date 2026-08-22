@@ -1,0 +1,74 @@
+import {Meta} from '@storybook/addon-docs/blocks';
+import * as stories from './Collection.stories';
+
+<Meta of={stories} title="@components/Forms and inputs/array/Collection" />
+
+{/* For the agent-friendly version of this documentation, see packages/llms/src/components/Collection.md */}
+
+# Collection
+
+Dynamic list input that can render items with column-based layouts or a legacy children render prop.
+
+## Overview
+
+The Collection lets users add, remove, edit, and optionally reorder repeated form items as one structured field.
+Reach for it for editable lists such as contacts, recipients, rules, conditions, or configuration blocks.
+
+## When to use it
+
+Use `Collection` when:
+
+- Users manage a repeatable set of structured items.
+- Each item has one or more editable fields.
+- Users need add and remove behavior in the same form context.
+- Stable item identity matters for updates, validation, or form state.
+
+## When not to use it
+
+Don't use `Collection` when:
+
+- The list is read-only data. Use `Table`, cards, or a list instead.
+- Users select from existing options rather than creating repeated items.
+- Each item is complex enough to need its own page or dedicated editor.
+- The repeated fields are unrelated and shouldn't be grouped as one form field.
+
+## Choosing a control
+
+- Use `Table` for read-only or data-heavy tabular display.
+- Use `ChildForm` for one optional nested section, not a repeatable list.
+
+## States
+
+- **Empty** shows no items yet.
+- **One or more items** shows the editable rows.
+- **Disabled or read-only** prevents changes.
+- **Add disabled** blocks insertion when the current state doesn't allow it.
+- **Draggable reorder** lets users reorder items.
+
+## Interaction
+
+- Make `newItem` create a valid starting item.
+- Use `required` when at least one item must remain.
+- Use `addDisabledTooltip` to explain why adding is currently unavailable.
+- Preserve item values and validation state when reordering.
+
+## Common anti-patterns
+
+- Don't use `Collection` for static read-only data.
+- Don't omit stable item IDs when items can be reordered.
+- Don't let users add many empty repeated items without clear validation.
+
+## Content guidance
+
+**Field label (`label`):**
+
+- Describe the repeated item type: `"Contacts" not "List"`.
+
+**Add button (`addLabel`):**
+
+- Name the item being added: `"Add contact" not "Add item"`.
+
+**Column headers (`columns`):**
+
+- Keep headers short.
+- Describe the fields inside each item.

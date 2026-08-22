@@ -1,0 +1,61 @@
+import {Meta} from '@storybook/addon-docs/blocks';
+import * as stories from './CopyToClipboard.stories';
+
+<Meta of={stories} title="@components/Call to action/CopyToClipboard" />
+
+{/* For the agent-friendly version of this documentation, see packages/llms/src/components/CopyToClipboard.md */}
+
+# CopyToClipboard
+
+Action icon that copies a string value to the clipboard and shows tooltip feedback.
+
+## Overview
+
+The CopyToClipboard gives users a fast, low-friction way to copy exact values.
+Reach for it when values are hard or error-prone to select by hand.
+It suits technical identifiers, API keys, tokens, URLs, and other read-only values.
+
+## When to use it
+
+Use `CopyToClipboard` when:
+
+- Users need to copy an exact string value.
+- The value is read-only or not meant to be edited in place.
+- Copying is a secondary utility action attached to a field or value.
+- Tooltip feedback should confirm the copy action.
+
+## When not to use it
+
+Don't use `CopyToClipboard` when:
+
+- The user needs to edit the value before using it.
+- The value is short and copying isn't a meaningful task.
+- The copied value is sensitive and shouldn't be exposed without confirmation.
+
+## Placement
+
+- Place the copy icon inside a read-only text field, on the right side. This is the most common and expected placement for values like an API key or URL.
+- Use a full button with a text label when copying is the main action, such as "Copy invite link". The small icon alone doesn't carry enough weight.
+- Make it obvious what the user is copying. The field label, nearby text, or context should name the exact value.
+
+## Accessibility
+
+- Make the copied value clear from the surrounding label or context.
+- Keep tooltip copy feedback concise.
+- Don't rely on the icon alone when several copy actions appear near each other.
+
+## Common anti-patterns
+
+- Don't show copy actions for every minor label on a page.
+- Don't copy hidden or ambiguous values.
+- Don't use the deprecated label mode. Place the action near the value instead.
+
+## Content guidance
+
+**Tooltip labels (`tooltipLabelCopy`, `tooltipLabelCopied`):**
+
+- Keep the copy feedback concise, such as "Copy to clipboard" and "Copied".
+
+**Surrounding context:**
+
+- Make the label or nearby text name the exact value being copied.
