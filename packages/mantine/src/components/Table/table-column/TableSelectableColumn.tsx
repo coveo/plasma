@@ -12,6 +12,7 @@ export const TableSelectableColumn: ColumnDef<unknown> = {
     meta: {
         controlColumn: true,
     },
+    size: 76,
     header: () => <TableSelectAllCheckbox flex={1} />,
     cell: ({row}) => <TableSelectRowCheckbox row={row} />,
 };

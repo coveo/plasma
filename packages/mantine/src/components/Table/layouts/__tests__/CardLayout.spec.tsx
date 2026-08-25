@@ -202,6 +202,35 @@ describe('CardLayout', () => {
             expect(screen.getByTestId('2')).toHaveAttribute('aria-selected', 'false');
         });
 
+        it('keeps selected cards selected through their checkboxes when row selection is forced', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '1', firstName: 'John', lastName: 'Doe'},
+                {id: '2', firstName: 'Jane', lastName: 'Smith'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({
+                    enableMultiRowSelection: true,
+                    forceSelection: true,
+                    initialState: {rowSelection: {'1': data[0]}},
+                });
+                return (
+                    <Table store={store} getRowId={({id}) => id} data={data} columns={columns} layouts={[CardLayout]} />
+                );
+            };
+            render(<Fixture />);
+
+            const firstCard = screen.getByTestId('1');
+            const secondCard = screen.getByTestId('2');
+            await user.click(within(secondCard).getByRole('checkbox', {name: /select row/i}));
+            expect(firstCard).toHaveAttribute('aria-selected', 'true');
+            expect(secondCard).toHaveAttribute('aria-selected', 'true');
+
+            await user.click(within(firstCard).getByRole('checkbox', {name: /select row/i}));
+            expect(firstCard).toHaveAttribute('aria-selected', 'true');
+            expect(secondCard).toHaveAttribute('aria-selected', 'true');
+        });
+
         it('selects multiple cards', async () => {
             const user = userEvent.setup();
             const data: RowData[] = [

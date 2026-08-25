@@ -2,11 +2,11 @@ import {Box, BoxProps, Card, CompoundStylesApiProps, Factory, SimpleGrid, Stack,
 import {flexRender} from '@tanstack/react-table';
 import {ForwardedRef} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../../../utils/createFactoryComponent.js';
-import {Checkbox} from '../../../Checkbox/Checkbox.js';
 import {TableLayoutProps} from '../../Table.types.js';
 import {useTableContext} from '../../TableContext.js';
 import {TableCollapsibleColumn} from '../../table-column/TableCollapsibleColumn.js';
 import {TableSelectAllCheckbox} from '../../table-column/TableSelectAllCheckbox.js';
+import {TableSelectRowCheckbox} from '../../table-column/TableSelectRowCheckbox.js';
 import {TableLoading} from '../../table-loading/TableLoading.js';
 import {useCardLayout} from './CardLayoutContext.js';
 
@@ -38,11 +38,6 @@ export const CardLayoutBody = <T,>(props: CardLayoutBodyProps<T> & {ref?: Forwar
     } = useProps('CardLayoutBody', defaultProps as CardLayoutBodyProps<T>, props);
     const {table, store} = useTableContext<T>();
 
-    // Selection checkboxes only exist in multi-selection mode. They are interactive when row selection is
-    // enabled, and read-only when row selection is disabled but a selection already exists to display.
-    const areSelectionCheckboxesVisible =
-        store.multiRowSelectionEnabled && (store.rowSelectionEnabled || store.getSelectedRows().length > 0);
-
     const headers = table
         .getFlatHeaders()
         .filter((header) => header.column.id !== 'select' && header.column.id !== TableCollapsibleColumn.id)
@@ -57,6 +52,9 @@ export const CardLayoutBody = <T,>(props: CardLayoutBodyProps<T> & {ref?: Forwar
         .filter((header) => header.column.id !== 'select' && header.column.id !== TableCollapsibleColumn.id)
         .map((header) => header.column.id);
 
+    const cardStyles = ctx.getStyles('card', {classNames, className, styles, style});
+    const checkboxStyles = ctx.getStyles('cardCheckbox', {classNames, styles});
+
     const cards = table.getRowModel().rows.map((row) => {
         const isSelected = !!row.getIsSelected();
         const shouldKeepSelection = store.rowSelectionForced && isSelected;
@@ -67,17 +65,6 @@ export const CardLayoutBody = <T,>(props: CardLayoutBodyProps<T> & {ref?: Forwar
             }
             row.toggleSelected();
         };
-
-        const cardStyles = ctx.getStyles('card', {
-            classNames,
-            className,
-            styles,
-            style,
-        });
-        const checkboxStyles = ctx.getStyles('cardCheckbox', {
-            classNames,
-            styles,
-        });
 
         return (
             <Card
@@ -92,25 +79,10 @@ export const CardLayoutBody = <T,>(props: CardLayoutBodyProps<T> & {ref?: Forwar
                     onRowDoubleClick?.(row.original, row.index, row);
                 }}
                 pos="relative"
-                className={cardStyles.className}
-                style={cardStyles.style}
+                {...cardStyles}
                 {...(getRowAttributes?.(row.original, row.index, row) ?? {})}
             >
-                {areSelectionCheckboxesVisible ? (
-                    <Checkbox
-                        checked={isSelected}
-                        onChange={onClick}
-                        readOnly={!store.rowSelectionEnabled}
-                        aria-label="Select row"
-                        onClick={(event) => event.stopPropagation()}
-                        onDoubleClick={(event) => {
-                            event.preventDefault();
-                            event.stopPropagation();
-                        }}
-                        className={checkboxStyles.className}
-                        style={checkboxStyles.style}
-                    />
-                ) : null}
+                <TableSelectRowCheckbox row={row} {...checkboxStyles} />
                 <Stack gap="sm">
                     {row
                         .getVisibleCells()
@@ -135,12 +107,10 @@ export const CardLayoutBody = <T,>(props: CardLayoutBodyProps<T> & {ref?: Forwar
         <tr>
             <td colSpan={table.getAllColumns().length}>
                 <Stack px="xl" py="md" gap="md">
-                    {areSelectionCheckboxesVisible ? (
-                        <TableSelectAllCheckbox
-                            {...ctx.getStyles('selectAllCheckbox', {classNames, styles})}
-                            label="Select entire page"
-                        />
-                    ) : null}
+                    <TableSelectAllCheckbox
+                        {...ctx.getStyles('selectAllCheckbox', {classNames, styles})}
+                        label="Select entire page"
+                    />
                     <SimpleGrid cols={{base: 1, sm: 2, md: 3, lg: 4}} spacing="md">
                         {cards}
                     </SimpleGrid>

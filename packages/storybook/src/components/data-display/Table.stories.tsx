@@ -25,7 +25,7 @@ dayjs.extend(LocalizedFormat);
 
 const SEEDED_DATE = new Date(2023, 0, 1);
 
-// Set the seed for faker to avoid mismatch in chromatic
+// Set the seed for faker to avoid mismatch in chromatic.
 faker.seed(42);
 faker.setDefaultRefDate(SEEDED_DATE);
 

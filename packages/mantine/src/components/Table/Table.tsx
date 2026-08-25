@@ -27,12 +27,14 @@ import {
     type TableCellProps,
     type TableCellStylesNames,
 } from './table-cell/TableCell.js';
+import {areSelectionCheckboxesVisible} from './table-column/areSelectionCheckboxesVisible.js';
 import {TableActionsColumn} from './table-column/TableActionsColumn.js';
 import {
     TableAccordionColumn,
     TableCollapsibleColumn,
     type TableCollapsibleColumnStylesNames,
 } from './table-column/TableCollapsibleColumn.js';
+import {type TableSelectRowCheckboxStylesNames} from './table-column/TableSelectRowCheckbox.js';
 import {TableSelectableColumn} from './table-column/TableSelectableColumn.js';
 import {
     TableDateRangePicker,
@@ -92,6 +94,7 @@ export type TableStylesNames =
     | TableActionsListStylesNames
     | TableActionItemStylesNames
     | TableCollapsibleColumnStylesNames
+    | TableSelectRowCheckboxStylesNames
     | TableDateRangePickerStylesNames
     | TableFilterStylesNames
     | TableHeaderStylesNames
@@ -180,10 +183,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
     const lastUpdated = convertedChildren.find((child) => child.type === TableLastUpdated);
     const noData = convertedChildren.find((child) => child.type === TableNoData);
 
-    // Selection checkboxes only exist in multi-selection mode. They are interactive when row selection is
-    // enabled, and read-only when row selection is disabled but a selection already exists to display.
-    const isSelectionColumnVisible =
-        store.multiRowSelectionEnabled && (store.rowSelectionEnabled || store.getSelectedRows().length > 0);
+    const selectionCheckboxesVisible = areSelectionCheckboxesVisible(store);
 
     const table = useReactTable({
         data: data || [],
@@ -205,7 +205,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
             });
         },
         onColumnVisibilityChange: store.setColumnVisibility,
-        columns: isSelectionColumnVisible ? [TableSelectableColumn as ColumnDef<T>].concat(columns) : columns,
+        columns: selectionCheckboxesVisible ? [TableSelectableColumn as ColumnDef<T>].concat(columns) : columns,
         getCoreRowModel: getCoreRowModel(),
         manualPagination: options.getPaginationRowModel === undefined,
         enableMultiRowSelection: !!store.multiRowSelectionEnabled,
@@ -309,6 +309,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
                     table,
                     layouts,
                     containerRef,
+                    selectionCheckboxesVisible,
                 }}
             >
                 <>

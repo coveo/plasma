@@ -12,6 +12,7 @@ export interface TableContextValue<TData = unknown> {
     getRowActions: (datum: TData[]) => TableAction[];
     table: Table<TData>;
     containerRef: MutableRefObject<HTMLDivElement | null>;
+    selectionCheckboxesVisible: boolean;
 }
 
 export interface TableProviderProps<T> {
