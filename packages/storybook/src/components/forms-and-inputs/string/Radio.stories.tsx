@@ -47,7 +47,7 @@ export const RadioGroup: StoryObj<RadioGroupStoryArgs> = {
     },
     render: (props) => (
         <Radio.Group {...withLabelInfoProps(props)}>
-            <Group mt="xs">
+            <Group>
                 <Radio value="1" label="Option 1" readOnly={props.readOnly} />
                 <Radio value="2" label="Option 2" readOnly={props.readOnly} />
                 <Radio value="3" label="Option 3" readOnly={props.readOnly} />
