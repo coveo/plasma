@@ -202,6 +202,33 @@ describe('CardLayout', () => {
             expect(screen.getByTestId('2')).toHaveAttribute('aria-selected', 'false');
         });
 
+        it('selects a range of cards with Shift-click', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '1', firstName: 'One'},
+                {id: '2', firstName: 'Two'},
+                {id: '3', firstName: 'Three'},
+                {id: '4', firstName: 'Four'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: true});
+                return (
+                    <Table store={store} getRowId={({id}) => id} data={data} columns={columns} layouts={[CardLayout]} />
+                );
+            };
+            render(<Fixture />);
+
+            await user.click(within(screen.getByTestId('4')).getByRole('checkbox', {name: /select row/i}));
+            await user.keyboard('{Shift>}');
+            await user.click(within(screen.getByTestId('2')).getByRole('checkbox', {name: /select row/i}));
+            await user.keyboard('{/Shift}');
+
+            expect(screen.getByTestId('1')).toHaveAttribute('aria-selected', 'false');
+            for (const id of ['2', '3', '4']) {
+                expect(screen.getByTestId(id)).toHaveAttribute('aria-selected', 'true');
+            }
+        });
+
         it('keeps selected cards selected through their checkboxes when row selection is forced', async () => {
             const user = userEvent.setup();
             const data: RowData[] = [

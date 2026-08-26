@@ -13,6 +13,7 @@ export interface TableContextValue<TData = unknown> {
     table: Table<TData>;
     containerRef: MutableRefObject<HTMLDivElement | null>;
     selectionCheckboxesVisible: boolean;
+    rangeSelectionAnchorRef: MutableRefObject<string | null>;
 }
 
 export interface TableProviderProps<T> {

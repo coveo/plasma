@@ -184,6 +184,13 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
     const noData = convertedChildren.find((child) => child.type === TableNoData);
 
     const selectionCheckboxesVisible = areSelectionCheckboxesVisible(store);
+    const rangeSelectionAnchorRef = useRef<string | null>(null);
+
+    useEffect(() => {
+        if (Object.keys(store.state.rowSelection).length === 0) {
+            rangeSelectionAnchorRef.current = null;
+        }
+    }, [store.state.rowSelection]);
 
     const table = useReactTable({
         data: data || [],
@@ -320,6 +327,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
                     layouts,
                     containerRef,
                     selectionCheckboxesVisible,
+                    rangeSelectionAnchorRef,
                 }}
             >
                 <>
