@@ -52,6 +52,7 @@ Important states include:
 ## Interaction notes
 
 - Expandable row content SHOULD add detail without replacing the row's core scannable information.
+- When row selection is enabled, pressing Escape clears the selection unless `forceSelection` is enabled.
 
 ## Content guidance
 

@@ -226,6 +226,28 @@ describe('Table', () => {
         expect(screen.getByRole('row', {name: /John Doe/i, selected: false})).toBeInTheDocument();
     });
 
+    it('clears a selected row when pressing Escape', async () => {
+        const user = userEvent.setup();
+        const Fixture = () => {
+            const store = useTable<RowData>();
+            return (
+                <Table
+                    store={store}
+                    getRowId={({id}) => id}
+                    data={[{id: '🆔-1', firstName: 'John', lastName: 'Smith'}]}
+                    columns={columns}
+                />
+            );
+        };
+        render(<Fixture />);
+
+        const row = screen.getByRole('row', {name: /John Smith/i});
+        await user.click(row);
+        await user.keyboard('{Escape}');
+
+        expect(row).toHaveAttribute('aria-selected', 'false');
+    });
+
     describe('with multiple layouts', () => {
         const Layout1: TableLayout = ({children}) => <>{children}</>;
         Layout1.displayName = 'Layout 1';
@@ -300,6 +322,62 @@ describe('Table', () => {
     });
 
     describe('when multi row selection is enabled', () => {
+        const data: RowData[] = [
+            {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
+            {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
+        ];
+
+        const Fixture = ({
+            enableRowSelection = true,
+            forceSelection = false,
+            initialRowSelection = {},
+        }: {
+            enableRowSelection?: boolean;
+            forceSelection?: boolean;
+            initialRowSelection?: Record<string, RowData>;
+        }) => {
+            const store = useTable<RowData>({
+                enableMultiRowSelection: true,
+                enableRowSelection,
+                forceSelection,
+                initialState: {rowSelection: initialRowSelection},
+            });
+
+            return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+        };
+
+        it('clears multiple selected rows when pressing Escape', async () => {
+            const user = userEvent.setup();
+            render(<Fixture />);
+
+            await user.click(screen.getByRole('checkbox', {name: /select all/i}));
+            expect(screen.getAllByRole('row', {selected: true})).toHaveLength(2);
+
+            await user.keyboard('{Escape}');
+
+            expect(screen.queryAllByRole('row', {selected: true})).toEqual([]);
+        });
+
+        it('keeps multiple selected rows when row selection is disabled', async () => {
+            const user = userEvent.setup();
+            const initialRowSelection = {'🆔-1': data[0], '🆔-2': data[1]};
+            render(<Fixture enableRowSelection={false} initialRowSelection={initialRowSelection} />);
+
+            await user.keyboard('{Escape}');
+
+            expect(screen.getAllByRole('row', {selected: true})).toHaveLength(2);
+        });
+
+        it('keeps multiple selected rows when row selection is forced', async () => {
+            const user = userEvent.setup();
+            render(<Fixture forceSelection />);
+
+            await user.click(screen.getByRole('checkbox', {name: /select all/i}));
+            await user.keyboard('{Escape}');
+
+            expect(screen.getAllByRole('row', {selected: true})).toHaveLength(2);
+        });
+
         it('does not clear the row selection when clicking outside the table', async () => {
             const user = userEvent.setup();
             const Fixture = () => {

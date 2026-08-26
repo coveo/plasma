@@ -283,6 +283,16 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
         null,
         [containerRef.current, ...additionalRootNodes],
     );
+    useEffect(() => {
+        const clearRowSelection = (event: KeyboardEvent) => {
+            if (event.key === 'Escape' && store.rowSelectionEnabled && !store.rowSelectionForced) {
+                store.clearRowSelection();
+            }
+        };
+
+        document.addEventListener('keydown', clearRowSelection, true);
+        return () => document.removeEventListener('keydown', clearRowSelection, true);
+    }, [store.clearRowSelection, store.rowSelectionEnabled, store.rowSelectionForced]);
     const mergedRef = useMergedRef(containerRef, ref);
 
     if (!data) {
