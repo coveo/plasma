@@ -27,7 +27,6 @@ import {
     type TableCellProps,
     type TableCellStylesNames,
 } from './table-cell/TableCell.js';
-import {areSelectionCheckboxesVisible} from './table-column/areSelectionCheckboxesVisible.js';
 import {TableActionsColumn} from './table-column/TableActionsColumn.js';
 import {
     TableAccordionColumn,
@@ -83,6 +82,7 @@ import {
 import classes from './Table.module.css';
 import {type TableLayout, type TableProps} from './Table.types.js';
 import {TableProvider} from './TableContext.js';
+import {areSelectionCheckboxesVisible, getRangeSelection, selectRange} from './tableSelectionUtils.js';
 import {TableState} from './use-table.js';
 
 export type TableStylesNames =
@@ -264,6 +264,25 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
         },
     }));
 
+    const handleRowSelection = (row: Row<T>, rangeRequested: boolean) => {
+        if (store.rowSelectionEnabled && row.getCanSelect()) {
+            if (rangeRequested && store.multiRowSelectionEnabled) {
+                const rangeSelection = getRangeSelection<T, Row<T>>({
+                    row,
+                    rows: table.getRowModel().rows,
+                    anchorId: rangeSelectionAnchorRef.current,
+                });
+                store.setRowSelection((currentSelection) =>
+                    selectRange<T, Row<T>>(currentSelection, rangeSelection.rows),
+                );
+                rangeSelectionAnchorRef.current = rangeSelection.nextAnchorId;
+            } else if (!store.rowSelectionForced || !row.getIsSelected()) {
+                row.toggleSelected();
+                rangeSelectionAnchorRef.current = row.id;
+            }
+        }
+    };
+
     useEffect(() => {
         // Update the selected rows data when the data prop changes
         if (store.getSelectedRows().length > 0) {
@@ -328,6 +347,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
                     containerRef,
                     selectionCheckboxesVisible,
                     rangeSelectionAnchorRef,
+                    handleRowSelection,
                 }}
             >
                 <>

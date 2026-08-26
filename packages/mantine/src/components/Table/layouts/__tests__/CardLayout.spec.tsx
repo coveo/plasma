@@ -1,5 +1,5 @@
 import {ColumnDef, createColumnHelper} from '@tanstack/table-core';
-import {render, screen, userEvent, within} from '@test-utils';
+import {createEvent, fireEvent, render, screen, userEvent, within} from '@test-utils';
 import {Table} from '../../Table.js';
 import {useTable} from '../../use-table.js';
 import {CardLayout} from '../card-layout/CardLayout.js';
@@ -225,6 +225,82 @@ describe('CardLayout', () => {
 
             expect(screen.getByTestId('1')).toHaveAttribute('aria-selected', 'false');
             for (const id of ['2', '3', '4']) {
+                expect(screen.getByTestId(id)).toHaveAttribute('aria-selected', 'true');
+            }
+        });
+
+        it('selects a range by Shift-clicking card surfaces', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '1', firstName: 'One'},
+                {id: '2', firstName: 'Two'},
+                {id: '3', firstName: 'Three'},
+                {id: '4', firstName: 'Four'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: true});
+                return (
+                    <Table store={store} getRowId={({id}) => id} data={data} columns={columns} layouts={[CardLayout]} />
+                );
+            };
+            render(<Fixture />);
+
+            await user.click(screen.getByTestId('1'));
+            await user.keyboard('{Shift>}');
+            await user.click(screen.getByTestId('3'));
+            await user.keyboard('{/Shift}');
+
+            for (const id of ['1', '2', '3']) {
+                expect(screen.getByTestId(id)).toHaveAttribute('aria-selected', 'true');
+            }
+            expect(screen.getByTestId('4')).toHaveAttribute('aria-selected', 'false');
+        });
+
+        it('prevents text selection when Shift-clicking a selectable card', () => {
+            const data: RowData[] = [{id: '1', firstName: 'One'}];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: true});
+                return (
+                    <Table store={store} getRowId={({id}) => id} data={data} columns={columns} layouts={[CardLayout]} />
+                );
+            };
+            render(<Fixture />);
+
+            const card = screen.getByTestId('1');
+            const shiftMouseDown = createEvent.mouseDown(card, {shiftKey: true});
+            fireEvent(card, shiftMouseDown);
+
+            expect(shiftMouseDown.defaultPrevented).toBe(true);
+        });
+
+        it('shares the range anchor between card surfaces and checkboxes', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '1', firstName: 'One'},
+                {id: '2', firstName: 'Two'},
+                {id: '3', firstName: 'Three'},
+                {id: '4', firstName: 'Four'},
+                {id: '5', firstName: 'Five'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: true});
+                return (
+                    <Table store={store} getRowId={({id}) => id} data={data} columns={columns} layouts={[CardLayout]} />
+                );
+            };
+            render(<Fixture />);
+
+            await user.click(screen.getByTestId('1'));
+            await user.keyboard('{Shift>}');
+            await user.click(within(screen.getByTestId('3')).getByRole('checkbox', {name: /select row/i}));
+            await user.keyboard('{/Shift}');
+
+            await user.click(within(screen.getByTestId('5')).getByRole('checkbox', {name: /select row/i}));
+            await user.keyboard('{Shift>}');
+            await user.click(screen.getByTestId('4'));
+            await user.keyboard('{/Shift}');
+
+            for (const id of ['1', '2', '3', '4', '5']) {
                 expect(screen.getByTestId(id)).toHaveAttribute('aria-selected', 'true');
             }
         });
