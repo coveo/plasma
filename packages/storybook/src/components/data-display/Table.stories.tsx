@@ -51,6 +51,12 @@ const meta: Meta<StoryArgs> = {
     component: Table,
     parameters: {
         layout: 'fullscreen',
+        docs: {
+            description: {
+                component:
+                    'When row selection is enabled, press Escape to clear the selection. Escape does not clear forced selections.',
+            },
+        },
     },
 };
 export default meta;
