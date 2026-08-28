@@ -365,6 +365,33 @@ describe('RowLayout', () => {
             expect(screen.getByRole('row', {name: /jane doe/i, selected: true})).toBeInTheDocument();
         });
 
+        it('keeps selected rows selected through their checkboxes when row selection is forced', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
+                {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({
+                    enableMultiRowSelection: true,
+                    forceSelection: true,
+                    initialState: {rowSelection: {'🆔-1': data[0]}},
+                });
+                return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+            };
+            render(<Fixture />);
+
+            const firstRow = screen.getByRole('row', {name: /john smith/i});
+            const secondRow = screen.getByRole('row', {name: /jane doe/i});
+            await user.click(within(secondRow).getByRole('checkbox', {name: /select row/i}));
+            expect(firstRow).toHaveAttribute('aria-selected', 'true');
+            expect(secondRow).toHaveAttribute('aria-selected', 'true');
+
+            await user.click(within(firstRow).getByRole('checkbox', {name: /select row/i}));
+            expect(firstRow).toHaveAttribute('aria-selected', 'true');
+            expect(secondRow).toHaveAttribute('aria-selected', 'true');
+        });
+
         it('selects all rows of the current page when clicking on the checkbox that is in the column header', async () => {
             const user = userEvent.setup();
             const data: RowData[] = [

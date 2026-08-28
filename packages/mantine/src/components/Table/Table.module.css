@@ -36,6 +36,18 @@
     }
 }
 
+/* Table.SelectRowCheckbox */
+
+.selectRowCheckbox {
+    opacity: 0;
+
+    [aria-selected='true'] &,
+    [aria-selected]:hover &,
+    [aria-selected]:focus-within & {
+        opacity: 1;
+    }
+}
+
 /* Table.Actions */
 
 /* Hide empty menus */

@@ -10,7 +10,12 @@ export interface TableSelectAllCheckboxProps extends Omit<CheckboxProps, 'checke
  * Shared between the RowLayout column header and the CardLayout header.
  */
 export const TableSelectAllCheckbox = (props: TableSelectAllCheckboxProps) => {
-    const {table, store} = useTableContext();
+    const {table, store, selectionCheckboxesVisible} = useTableContext();
+
+    if (!selectionCheckboxesVisible) {
+        return null;
+    }
+
     const readOnly = !store.rowSelectionEnabled;
     const isAllSelected = table.getIsAllPageRowsSelected();
     const isSomeSelected = table.getIsSomePageRowsSelected();
