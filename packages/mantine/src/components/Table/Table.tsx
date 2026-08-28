@@ -276,8 +276,10 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
                     selectRange<T, Row<T>>(currentSelection, rangeSelection.rows),
                 );
                 rangeSelectionAnchorRef.current = rangeSelection.nextAnchorId;
-            } else if (!store.rowSelectionForced || !row.getIsSelected()) {
-                row.toggleSelected();
+            } else {
+                if (!store.rowSelectionForced || !row.getIsSelected()) {
+                    row.toggleSelected();
+                }
                 rangeSelectionAnchorRef.current = row.id;
             }
         }
