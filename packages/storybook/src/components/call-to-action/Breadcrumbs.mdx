@@ -1,0 +1,95 @@
+import {Meta} from '@storybook/addon-docs/blocks';
+import * as stories from './Breadcrumbs.stories';
+
+<Meta of={stories} title="@components/Call to action/Breadcrumbs" />
+
+{/* For the agent-friendly version of this documentation, see packages/llms/src/components/Breadcrumbs.md */}
+
+# Breadcrumbs
+
+Horizontal trail of navigation links showing the user's position within a page hierarchy.
+
+## Overview
+
+Use Breadcrumbs to orient users on pages that sit two or more levels deep in a navigation tree.
+
+It lets them jump back to any ancestor page without relying on the browser's back button.
+
+## When to use
+
+Reach for Breadcrumbs on detail pages within a drill-down flow, like an item detail page opened from a list.
+Use them when the user may want to jump directly to a grandparent level.
+
+Don't use it in flat, single-level apps where there's no meaningful hierarchy, or inside modals and drawers where closing is the expected exit.
+
+## Placement
+
+In Plasma products, place breadcrumbs inside a page `Header` using `Header.Breadcrumbs` and `Header.BreadcrumbAnchor`.
+
+Use standalone `Breadcrumbs` only when you're outside a `Header` context.
+
+## How many levels to show
+
+Show up to three `Anchor` links for three or more ancestors.
+
+For a single parent, use one `Anchor` with a back-arrow affordance.
+
+Don't include the current page in the trail. The page header already communicates where the user is.
+
+## Implementation notes
+
+All items must be `Anchor` elements so they are keyboard-focusable and screen-reader navigable.
+
+Pass `inherit` on each `Anchor` child so its font size matches the `Breadcrumbs` container styling.
+
+The separator between items renders automatically. Don't add separator characters manually between children.
+
+Consider wrapping `Breadcrumbs` in a `&lt;nav aria-label="Breadcrumb"&gt;` landmark when the page doesn't already have a dedicated navigation region.
+
+Don't use plain `&lt;a&gt;` tags instead of `Anchor` children, or it will bypass Plasma theming and focus styles.
+
+```tsx
+import {Anchor, Breadcrumbs, Flex} from '@coveord/plasma-mantine';
+import {IconChevronLeft} from '@coveord/plasma-react-icons';
+
+// Level 1: single parent with back-arrow affordance
+function Level1() {
+    return (
+        <Breadcrumbs>
+            <Anchor href="/catalog" inherit>
+                <Flex align="center">
+                    <IconChevronLeft aria-label="arrow pointing back" size={16} />
+                    Catalog
+                </Flex>
+            </Anchor>
+        </Breadcrumbs>
+    );
+}
+
+// Level 2: two ancestors
+function Level2() {
+    return (
+        <Breadcrumbs>
+            <Anchor href="/home" inherit>
+                Home
+            </Anchor>
+            <Anchor href="/catalog" inherit>
+                Catalog
+            </Anchor>
+        </Breadcrumbs>
+    );
+}
+```
+
+## Content guidance
+
+**Ancestor link labels (`Anchor` children):**
+
+- Use the exact name of the target page as it appears in the navigation: "Query pipelines" not "Go back to query pipelines"
+- Keep each label short. One to three words is the target
+- Don't use generic labels like "Back" or "Previous" unless you're using a single-parent back-arrow pattern
+
+**Trail depth:**
+
+- Show at most three ancestor links. Nesting deeper makes the trail unreadable and points to an information architecture problem
+- Don't include the current page. The page heading already shows where the user is
