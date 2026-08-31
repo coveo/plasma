@@ -1,0 +1,62 @@
+import {Meta} from '@storybook/addon-docs/blocks';
+import * as stories from './ChildForm.stories';
+
+<Meta of={stories} title="@components/Layout/ChildForm" />
+
+{/* For the agent-friendly version of this documentation, see packages/llms/src/components/ChildForm.md */}
+
+# ChildForm
+
+Expandable nested sub-form within a parent form context.
+
+## Overview
+
+ChildForm reveals optional nested fields inside a larger form.
+It keeps those related fields visually grouped so the section reads as one unit.
+Reach for it when a parent form has conditional fields that appear after the user opts in.
+
+## When to use it
+
+Use `ChildForm` when:
+
+- A parent form has optional or conditional fields.
+- Fields should appear only after a user opts into a related configuration.
+- Nested fields belong to the same parent entity.
+- A title and description help explain the conditional section.
+
+## When not to use it
+
+Don't use `ChildForm` when:
+
+- The section is always required and should stay visible.
+- The nested flow is large enough to need a separate step or page.
+- The relationship between parent and child fields is unclear.
+- Hiding fields would make validation errors hard to understand.
+
+## Choosing an approach
+
+- Use `ChildForm` for conditional nested form sections.
+- Use a separate page, step, or modal when the child workflow is complex.
+- Pair it with the control that reveals the section, such as a checkbox or switch.
+
+## Interaction
+
+- Make the opening control clear about what fields will appear.
+- Don't silently discard user-entered data when a child form collapses, unless the product confirms that behavior.
+- Keep validation errors inside a collapsed child form discoverable.
+
+## Common anti-patterns
+
+- Don't hide required fields behind an optional-looking control.
+- Don't nest several child forms deeply.
+- Don't use `ChildForm` as a general layout card.
+
+## Content guidance
+
+**Title (`title`):**
+
+- Name the nested object or configuration: `"Secondary contact" not "More options"`.
+
+**Description (`description`):**
+
+- Explain why the extra fields are needed.

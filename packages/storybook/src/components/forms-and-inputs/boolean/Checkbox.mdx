@@ -1,0 +1,80 @@
+import {Meta} from '@storybook/addon-docs/blocks';
+import * as stories from './Checkbox.stories';
+
+<Meta of={stories} title="@components/Forms and inputs/boolean/Checkbox" />
+
+{/* For the agent-friendly version of this documentation, see packages/llms/src/components/Checkbox.md */}
+
+# Checkbox
+
+Boolean selection control for choosing zero, one, or many visible options, including stand-alone opt-in choices.
+
+## Overview
+
+The Checkbox lets users pick zero, one, or many options from a visible set.
+Reach for it when users compare options directly and the list stays short enough to scan.
+It also covers a stand-alone opt-in choice, such as a single confirmation.
+
+## When to use it
+
+Use `Checkbox` when:
+
+- Users can choose any number of options, from none to many.
+- Options stay visible for comparison.
+- You need a stand-alone optional commitment or confirmation.
+
+Use `Checkbox.Group` when related checkboxes form a single field or choice set.
+
+## When not to use it
+
+Don't use `Checkbox` when:
+
+- Only one option can be selected.
+- The user is choosing between immediate view modes or display states.
+- The list is so long that scanning options becomes inefficient.
+
+## Choosing a control
+
+- Use `Checkbox` when direct visibility of the options matters.
+- Prefer a stand-alone checkbox for an optional commitment or confirmation.
+- Consider a toggle-like option when the result applies immediately.
+- Choose a searchable multi-select pattern when the list grows too long, instead of adding more checkboxes.
+- As a starting guideline, avoid showing more than about eight checkboxes together without a strong reason.
+
+## States
+
+- **Unchecked** is the default, empty state.
+- **Checked** shows a checkmark.
+- **Indeterminate** shows a dash for a partial selection.
+- **Disabled** prevents interaction.
+- **Read-only** applies when the consumer provides it.
+
+## Interaction
+
+- Group related checkboxes together so they read and behave as a set.
+- Show the indeterminate state, a dash instead of a checkmark, only when it reflects a partial selection. For example, when some but not all items in a group are checked.
+- Arrange grouped checkboxes in a single row or stacked vertically, based on how many there are and the space available.
+
+## Accessibility
+
+- Give each checkbox a clear, programmatically associated label.
+- Give related checkbox groups a group label or legend.
+- Use the indeterminate state only when it has a real parent-child meaning.
+- Make sure keyboard users can move through and toggle options predictably.
+
+## Common anti-patterns
+
+- Don't use checkboxes for mutually exclusive choices.
+- Don't show long checkbox lists that are hard to scan.
+- Don't use an indeterminate state without a real parent-child relationship.
+
+## Content guidance
+
+**Checkbox labels (`label`):**
+
+- Keep labels short, self-explanatory, and consistent across a group.
+- For a stand-alone checkbox, describe what happens when it's selected: `"Send me a text notification" not "Text notification"`.
+
+**Group titles (`Checkbox.Group`):**
+
+- Describe the type of options available, not an action to take: `"Notifications" not "Choose your notifications"`.

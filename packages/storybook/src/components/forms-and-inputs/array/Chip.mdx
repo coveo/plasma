@@ -1,0 +1,67 @@
+import {Meta} from '@storybook/addon-docs/blocks';
+import * as stories from './Chip.stories';
+
+<Meta of={stories} title="@components/Forms and inputs/array/Chip" />
+
+{/* For the agent-friendly version of this documentation, see packages/llms/src/components/Chip.md */}
+
+# Chip
+
+Selectable pill-shaped control that strips the Mantine variant prop to enforce Plasma styling.
+
+## Overview
+
+The Chip lets users select compact options in a pill-shaped control.
+Reach for it when the choices are short and benefit from being visible together.
+
+## When to use it
+
+Use `Chip` when:
+
+- Users choose from a small set of short options.
+- The choices fit comfortably in the available space.
+- The selection should feel lighter than a full form field.
+- Single or multiple selection can be shown as selectable pills.
+
+Use `Chip.Group` when related chips form a single choice set.
+
+## When not to use it
+
+Don't use `Chip` when:
+
+- Choices are long, numerous, or need search.
+- The option descriptions are important to the decision.
+- The control only displays metadata. Use `Badge` instead.
+- The choice is a primary form field that needs stronger labeling or validation.
+
+## Choosing a control
+
+- Use `Chip` for compact selectable options.
+- Use `Checkbox` for visible multi-select choices that need labels, descriptions, or standard form behavior.
+- Use `Select` when only one option can be chosen from a larger list.
+- Use `MultiSelect` when users pick several options from a longer list that benefits from search.
+- Use `Badge` for non-interactive labels.
+
+## States
+
+- **Selected** marks the chip as chosen.
+- **Unselected** is the default state.
+- **Disabled** prevents interaction.
+- **Grouped** supports single-selection or multiple-selection sets.
+
+## Common anti-patterns
+
+- Don't use chips for long lists that need search.
+- Don't use chips as decorative tags when the user can't select them.
+- Don't mix unrelated choices in one chip group.
+
+## Content guidance
+
+**Chip labels:**
+
+- Keep labels short and parallel.
+- Don't use chips when a label wraps or needs explanation.
+
+**Group labels (`Chip.Group`):**
+
+- Explain what the chip set controls.

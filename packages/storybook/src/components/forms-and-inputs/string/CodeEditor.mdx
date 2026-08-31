@@ -1,0 +1,66 @@
+import {Meta} from '@storybook/addon-docs/blocks';
+import * as stories from './CodeEditor.stories';
+
+<Meta of={stories} title="@components/Forms and inputs/string/CodeEditor" />
+
+{/* For the agent-friendly version of this documentation, see packages/llms/src/components/CodeEditor.md */}
+
+# CodeEditor
+
+Monaco-based code editor that supports syntax highlighting, validation, search, and copy actions.
+
+## Overview
+
+The CodeEditor gives users a structured surface for editing code-like content.
+Reach for it when plain text entry isn't enough for syntax-sensitive or multi-line technical values.
+It adds syntax highlighting, formatting expectations, search, and copy actions.
+
+## When to use it
+
+Use `CodeEditor` when:
+
+- Users edit JSON, XML, Python, Markdown, or other code-like content.
+- Syntax highlighting helps users understand or validate the value.
+- The content is multi-line and technical.
+- Search or copy actions are useful inside the editor.
+
+## When not to use it
+
+Don't use `CodeEditor` when:
+
+- Users enter ordinary short text. Use `TextInput` instead.
+- Users enter long prose. Use `Textarea` instead.
+- Syntax support would add complexity without helping the task.
+
+## Choosing a control
+
+- Use `CodeEditor` for technical text where structure matters.
+- Use `Textarea` for freeform prose or comments.
+- Use `TextInput` for short single-line values.
+- Use `disabled` when the editor should be readable but not editable.
+
+## Accessibility
+
+- Use labels and descriptions to explain what kind of content is expected.
+- Make validation feedback identify the problem and its location when possible.
+- Give the editor enough height for users to understand the content.
+
+## Common anti-patterns
+
+- Don't use a code editor for ordinary text fields.
+- Don't make users edit large structured payloads without examples or validation.
+- Don't set a very small height for multi-line technical content.
+
+## Content guidance
+
+**Field label (`label`):**
+
+- Name the kind of content the editor expects: `"Payload" not "Input"`.
+
+**Description (`description`):**
+
+- Explain what to enter and any format expectations.
+
+**Validation messages:**
+
+- Identify the problem and its location when possible.
