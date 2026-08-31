@@ -36,11 +36,12 @@ export const RowLayoutHeader = <T,>(props: RowLayoutHeaderProps<T> & {ref?: Forw
         ...others
     } = useProps('RowLayoutHeader', defaultProps, props);
     const {table, store} = useTableContext<T>();
+    const hasSelectableRows = table.getRowModel().rows.some((row) => row.getCanSelect());
 
     const headers = table.getHeaderGroups().map((headerGroup) => (
         <tr
             key={headerGroup.id}
-            data-selectable={store.rowSelectionEnabled}
+            data-selectable={hasSelectableRows}
             data-multi-selection={store.multiRowSelectionEnabled}
             {...ctx.getStyles('headerRow', {className, classNames, styles, style})}
             {...others}

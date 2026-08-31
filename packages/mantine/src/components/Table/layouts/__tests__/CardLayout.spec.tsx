@@ -5,7 +5,7 @@ import {useTable} from '../../use-table.js';
 import {CardLayout} from '../card-layout/CardLayout.js';
 
 describe('CardLayout', () => {
-    type RowData = {id: string; firstName: string; lastName?: string};
+    type RowData = {id: string; firstName: string; lastName?: string; disabled?: boolean};
 
     const columnHelper = createColumnHelper<RowData>();
     const columns: Array<ColumnDef<RowData>> = [
@@ -141,6 +141,36 @@ describe('CardLayout', () => {
             const card2 = screen.getByTestId('2');
             expect(within(card1).getByRole('checkbox', {name: /select row/i})).toBeVisible();
             expect(within(card2).getByRole('checkbox', {name: /select row/i})).toBeVisible();
+        });
+
+        it('selects only cards allowed by the row selection predicate', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '1', firstName: 'Selectable'},
+                {id: '2', firstName: 'Disabled', disabled: true},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({
+                    enableMultiRowSelection: true,
+                    enableRowSelection: (row) => !row.original.disabled,
+                });
+                return (
+                    <Table store={store} getRowId={({id}) => id} data={data} columns={columns} layouts={[CardLayout]} />
+                );
+            };
+            render(<Fixture />);
+
+            const selectableCard = screen.getByTestId('1');
+            const disabledCard = screen.getByTestId('2');
+            expect(selectableCard).toHaveAttribute('data-selectable', 'true');
+            expect(disabledCard).not.toHaveAttribute('data-selectable');
+
+            await user.click(disabledCard);
+            await user.click(within(disabledCard).getByRole('checkbox', {name: /select row/i}));
+            expect(disabledCard).toHaveAttribute('aria-selected', 'false');
+
+            await user.click(selectableCard);
+            expect(selectableCard).toHaveAttribute('aria-selected', 'true');
         });
 
         it('does not render selection checkboxes when row selection is disabled and the selection is empty', () => {

@@ -39,7 +39,8 @@ type StoryArgs = TableProps<Person> & {
     withData: boolean;
     withLayoutSelector: boolean;
     withRowActions: boolean;
-    withRowMultiSelection: boolean;
+    enableRowSelection: boolean;
+    enableMultiRowSelection: boolean;
     withLastUpdated: boolean;
     withCollapsibleRows: boolean;
     collapsibleBehavior: 'collapse' | 'accordion';
@@ -108,7 +109,8 @@ export const Demo: Story = {
         withData: true,
         withLayoutSelector: false,
         withRowActions: false,
-        withRowMultiSelection: false,
+        enableRowSelection: true,
+        enableMultiRowSelection: false,
         withLastUpdated: false,
         withCollapsibleRows: false,
         collapsibleBehavior: 'collapse',
@@ -136,7 +138,8 @@ export const Demo: Story = {
         withData,
         withLayoutSelector,
         withRowActions,
-        withRowMultiSelection,
+        enableRowSelection,
+        enableMultiRowSelection,
         withLastUpdated,
         withCollapsibleRows,
         collapsibleBehavior,
@@ -190,8 +193,8 @@ export const Demo: Story = {
                 dateRange: withDateRangePicker ? [previousWeek, today] : undefined,
                 predicates: withPredicateFilter ? {age: 'ANY'} : undefined,
             },
-            enableRowSelection: withRowActions,
-            enableMultiRowSelection: withRowMultiSelection,
+            enableRowSelection,
+            enableMultiRowSelection,
         });
 
         const filteredData = useMemo(

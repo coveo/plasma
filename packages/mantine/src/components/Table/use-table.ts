@@ -1,6 +1,6 @@
 import type {DatesRangeValue, DateStringValue} from '@mantine/dates';
 import {useDidUpdate} from '@mantine/hooks';
-import {type ExpandedState, type SortingState} from '@tanstack/table-core';
+import {type ExpandedState, type Row, type SortingState} from '@tanstack/table-core';
 import defaultsDeep from 'lodash.defaultsdeep';
 import {Dispatch, SetStateAction, useCallback, useMemo, useState} from 'react';
 import {useUrlSyncedState, UseUrlSyncedStateOptions} from '../../hooks/use-url-synced-state.js';
@@ -21,6 +21,8 @@ export interface PaginationState {
      */
     perPage: number;
 }
+
+export type EnableRowSelection<TData> = boolean | ((row: Row<TData>) => boolean);
 
 export interface TableState<TData = unknown> {
     /**
@@ -164,9 +166,9 @@ export interface TableStore<TData = unknown> {
      */
     multiRowSelectionEnabled: boolean;
     /**
-     * Whether rows can be selected.
+     * Whether rows can be selected, or a predicate that determines whether each row can be selected.
      */
-    rowSelectionEnabled: boolean;
+    rowSelectionEnabled: EnableRowSelection<TData>;
     /**
      * Whether row selection is forced.
      */
@@ -179,15 +181,15 @@ export interface UseTableOptions<TData = unknown> {
      */
     initialState?: DeepPartial<TableState<TData>>;
     /**
-     * Whether rows can be selected.
+     * Whether rows can be selected, or a predicate that determines whether each row can be selected.
      *
      * @default true
      */
-    enableRowSelection?: boolean;
+    enableRowSelection?: EnableRowSelection<TData>;
     /**
      * Whether multiple rows can be selected at the same time.
      *
-     * Only applies when `enableRowSelection` is `true`.
+     * Only applies when row selection is enabled.
      *
      * @default false
      */
@@ -504,7 +506,7 @@ export const useTable = <TData>(userOptions: UseTableOptions<TData> = {}): Table
         clearRowSelection,
         getSelectedRows,
         getSelectedRow,
-        rowSelectionEnabled: !!options.enableRowSelection,
+        rowSelectionEnabled: options.enableRowSelection ?? true,
         rowSelectionForced: !!options.forceSelection,
         multiRowSelectionEnabled: !!options.enableMultiRowSelection,
     };
