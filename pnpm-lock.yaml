@@ -22,8 +22,8 @@ importers:
         specifier: 2.31.1
         version: 2.31.1(@types/node@24.13.3)
       '@changesets/get-github-info':
-        specifier: 0.8.0
-        version: 0.8.0
+        specifier: 1.0.0
+        version: 1.0.0
       '@types/node':
         specifier: 24.13.3
         version: 24.13.3
@@ -573,6 +573,10 @@ packages:
 
   '@changesets/get-github-info@0.8.0':
     resolution: {integrity: sha512-cRnC+xdF0JIik7coko3iUP9qbnfi1iJQ3sAa6dE+Tx3+ET8bjFEm63PA4WEohgjYcmsOikPHWzPsMWWiZmntOQ==}
+
+  '@changesets/get-github-info@1.0.0':
+    resolution: {integrity: sha512-nf5zPSqEKW0eXiJ4ltbjyIQ/srUHfxbghkLCjKdOLI3LehKXhiqxXcpja39eGPaj6qqGx2lFCrLJ7VWYUf9H2w==}
+    engines: {node: ^22.11 || ^24 || >=26}
 
   '@changesets/get-release-plan@4.0.16':
     resolution: {integrity: sha512-2K5Om6CrMPm45rtvckfzWo7e9jOVCKLCnXia5eUPaURH7/LWzri7pK1TycdzAuAtehLkW7VPbWLCSExTHmiI6g==}
@@ -2551,6 +2555,9 @@ packages:
 
   dataloader@1.4.0:
     resolution: {integrity: sha512-68s5jYdlvasItOJnCuI2Q9s4q98g0pCyL3HrcKJu8KNugUl8ahgmZYg38ysLTgQjjXX3H8CJLkAvWrclWfcalw==}
+
+  dataloader@2.2.3:
+    resolution: {integrity: sha512-y2krtASINtPFS1rSDjacrFgn1dcUuoREVabwlOGOe4SdxenREqwjwjElAdwvbGM7kgZz9a3KVicWR7vcz8rnzA==}
 
   dayjs@1.11.21:
     resolution: {integrity: sha512-98IT+HOahAisibz/yjKbzuOBwYcjJ7BCLPzARyHiyEBmRz4fatF+KPJszEHXsGYjUG234aH/cOjW1wwTbKUZlA==}
@@ -4912,6 +4919,10 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
+  '@changesets/get-github-info@1.0.0':
+    dependencies:
+      dataloader: 2.2.3
+
   '@changesets/get-release-plan@4.0.16':
     dependencies:
       '@changesets/assemble-release-plan': 6.0.10
@@ -6591,6 +6602,8 @@ snapshots:
       - '@noble/hashes'
 
   dataloader@1.4.0: {}
+
+  dataloader@2.2.3: {}
 
   dayjs@1.11.21: {}
 
