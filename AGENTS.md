@@ -81,8 +81,7 @@ Formatting is enforced by **oxfmt** (see `.oxfmtrc.json`): print width 120, tab 
 This repo ships agent **skills** in `.github/skills/`. Use them when the task matches — they encode the exact expected format and workflow:
 
 - **`plasma-component-docs`** — write/update the LLM component specs in `packages/llms/src/components/`. Use when adding a component, updating a spec after an API change, or auditing docs.
-- **`converting-md-to-storybook-mdx`** — **Step 1**: convert a component `.md` spec from `packages/llms/src/components/` into a Storybook `.mdx` page in `packages/storybook`.
-- **`storybook-component-guidelines`** — **Step 2**: rewrite the converted `.mdx` into clear, human-readable Storybook documentation. Runs after Step 1.
+- **`storybook-component-docs`** — create or update human-facing component pages in `packages/storybook`. Use the specs in `packages/llms/src/components/` as read-only source material, preserve useful demos and controls, and write concise guidelines for UX designers and developers.
 - **`changesets-author`** — write or edit a changeset that follows the enforced template. Use when adding or editing a `.changeset/*.md` file. Scaffold with `pnpm changeset:new` and check with `pnpm changeset:validate`.
 
 `packages/llms/src/skill.md` is the source for the public Plasma skill served at `https://plasma.coveo.com/plasma-skill.md`. It is intended for agents using Plasma in consumer applications; agents contributing to this repository do not need to install it. Edit the source file, not the generated `packages/llms/dist/plasma-skill.md`, when updating the public skill.
@@ -93,7 +92,7 @@ When you change a component's public API:
 
 1. Update the spec in `packages/llms/src/components/<ComponentName>.md` (use the `plasma-component-docs` skill).
 2. Rebuild the aggregated LLM outputs if needed (the llms package build regenerates `dist/`).
-3. Keep Storybook docs in sync (skills above).
+3. Keep Storybook docs in sync (use the `storybook-component-docs` skill).
 4. Update JSDoc and any affected README.
 
 ## Contributing a pull request
