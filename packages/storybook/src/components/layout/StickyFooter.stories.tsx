@@ -40,8 +40,7 @@ type Story = StoryObj<typeof StickyFooter>;
 export const Default: Story = {
     render: (props) => (
         <StickyFooter {...props}>
-            <Button.Secondary>Cancel</Button.Secondary>
-            <Button.Secondary>Back</Button.Secondary>
+            <Button.Tertiary>Cancel</Button.Tertiary>
             <Button.Primary>Save</Button.Primary>
         </StickyFooter>
     ),
