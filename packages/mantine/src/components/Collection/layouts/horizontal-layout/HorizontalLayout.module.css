@@ -25,7 +25,6 @@
     display: flex;
     gap: var(--mantine-spacing-sm);
     align-items: center;
-    background: var(--mantine-color-body);
 }
 
 .row[data-isdragging='true'] {
