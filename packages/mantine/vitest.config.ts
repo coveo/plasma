@@ -27,11 +27,5 @@ export default defineConfig({
                 inline: [/@monaco-editor\//],
             },
         },
-        alias: [
-            {
-                find: /^monaco-editor$/,
-                replacement: 'monaco-editor/esm/vs/editor/editor.main.js',
-            },
-        ],
     },
 });

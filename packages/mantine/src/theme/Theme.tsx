@@ -354,6 +354,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                         },
                         label: {'--input-asterisk-color': theme.colors.red[2]},
                         error: {},
+                        success: {},
                         description: {},
                     };
                 }
@@ -361,6 +362,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                     root: {'--input-margin-top': props?.label || props?.description ? theme.spacing.xxs : undefined},
                     label: {},
                     error: {},
+                    success: {},
                     description: {},
                 };
             },
