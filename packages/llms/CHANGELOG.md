@@ -1,5 +1,18 @@
 # @coveord/plasma-llms
 
+## 60.2.2
+
+### Patch Changes
+
+- Clear `Table` row selections with Escape [#4591](https://github.com/coveo/plasma/pull/4591)
+
+  Press Escape to clear selected rows when row selection is enabled. Tables with `forceSelection` enabled preserve their selection.
+
+- Select ranges of `Table` rows with Shift-click [#4593](https://github.com/coveo/plasma/pull/4593)
+
+  With multi-row selection enabled, click a row, card, or its checkbox and then Shift-click another selection target to
+  select every selectable row between them on the displayed page. Existing selections outside the range are preserved.
+
 ## 60.2.1
 
 ### Patch Changes
