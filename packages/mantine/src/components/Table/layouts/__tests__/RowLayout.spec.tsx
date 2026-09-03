@@ -1,5 +1,5 @@
 import {ColumnDef, createColumnHelper} from '@tanstack/table-core';
-import {render, screen, userEvent, waitFor, within} from '@test-utils';
+import {createEvent, fireEvent, render, screen, userEvent, waitFor, within} from '@test-utils';
 import {FunctionComponent} from 'react';
 import {Table} from '../../Table.js';
 import {useTable} from '../../use-table.js';
@@ -390,6 +390,149 @@ describe('RowLayout', () => {
             await user.click(within(firstRow).getByRole('checkbox', {name: /select row/i}));
             expect(firstRow).toHaveAttribute('aria-selected', 'true');
             expect(secondRow).toHaveAttribute('aria-selected', 'true');
+        });
+
+        it('uses a forced selected row as the range anchor when it is clicked', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '1', firstName: 'One'},
+                {id: '2', firstName: 'Two'},
+                {id: '3', firstName: 'Three'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({
+                    enableMultiRowSelection: true,
+                    forceSelection: true,
+                    initialState: {rowSelection: {'1': data[0]}},
+                });
+                return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+            };
+            render(<Fixture />);
+
+            await user.click(within(screen.getByTestId('1')).getByRole('checkbox', {name: /select row/i}));
+            await user.keyboard('{Shift>}');
+            await user.click(within(screen.getByTestId('3')).getByRole('checkbox', {name: /select row/i}));
+            await user.keyboard('{/Shift}');
+
+            for (const id of ['1', '2', '3']) {
+                expect(screen.getByTestId(id)).toHaveAttribute('aria-selected', 'true');
+            }
+        });
+
+        it('selects a range of rows with Shift-click and preserves selections outside the range', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '1', firstName: 'One'},
+                {id: '2', firstName: 'Two'},
+                {id: '3', firstName: 'Three'},
+                {id: '4', firstName: 'Four'},
+                {id: '5', firstName: 'Five'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: true});
+                return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+            };
+            render(<Fixture />);
+
+            await user.click(screen.getByTestId('5'));
+            await user.click(within(screen.getByTestId('2')).getByRole('checkbox', {name: /select row/i}));
+            await user.keyboard('{Shift>}');
+            await user.click(within(screen.getByTestId('4')).getByRole('checkbox', {name: /select row/i}));
+            await user.keyboard('{/Shift}');
+
+            expect(screen.getByTestId('1')).toHaveAttribute('aria-selected', 'false');
+            for (const id of ['2', '3', '4', '5']) {
+                expect(screen.getByTestId(id)).toHaveAttribute('aria-selected', 'true');
+            }
+        });
+
+        it('selects a range by Shift-clicking row surfaces', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '1', firstName: 'One'},
+                {id: '2', firstName: 'Two'},
+                {id: '3', firstName: 'Three'},
+                {id: '4', firstName: 'Four'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: true});
+                return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+            };
+            render(<Fixture />);
+
+            await user.click(screen.getByTestId('1'));
+            await user.keyboard('{Shift>}');
+            await user.click(screen.getByTestId('3'));
+            await user.keyboard('{/Shift}');
+
+            for (const id of ['1', '2', '3']) {
+                expect(screen.getByTestId(id)).toHaveAttribute('aria-selected', 'true');
+            }
+            expect(screen.getByTestId('4')).toHaveAttribute('aria-selected', 'false');
+        });
+
+        it('prevents text selection when Shift-clicking a selectable row', () => {
+            const data: RowData[] = [{id: '1', firstName: 'One'}];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: true});
+                return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+            };
+            render(<Fixture />);
+
+            const row = screen.getByTestId('1');
+            const shiftMouseDown = createEvent.mouseDown(row, {shiftKey: true});
+            fireEvent(row, shiftMouseDown);
+
+            expect(shiftMouseDown.defaultPrevented).toBe(true);
+        });
+
+        it('selects the full range when the Shift-click target is already selected', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '1', firstName: 'One'},
+                {id: '2', firstName: 'Two'},
+                {id: '3', firstName: 'Three'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({
+                    enableMultiRowSelection: true,
+                    initialState: {rowSelection: {'3': data[2]}},
+                });
+                return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+            };
+            render(<Fixture />);
+
+            await user.click(within(screen.getByTestId('1')).getByRole('checkbox', {name: /select row/i}));
+            await user.keyboard('{Shift>}');
+            await user.click(within(screen.getByTestId('3')).getByRole('checkbox', {name: /select row/i}));
+            await user.keyboard('{/Shift}');
+
+            expect(screen.getAllByRole('row', {selected: true})).toHaveLength(3);
+        });
+
+        it('resets the range anchor when the selection is cleared', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '1', firstName: 'One'},
+                {id: '2', firstName: 'Two'},
+                {id: '3', firstName: 'Three'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: true});
+                return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+            };
+            render(<Fixture />);
+
+            const firstCheckbox = within(screen.getByTestId('1')).getByRole('checkbox', {name: /select row/i});
+            await user.click(firstCheckbox);
+            await user.click(firstCheckbox);
+            await user.keyboard('{Shift>}');
+            await user.click(within(screen.getByTestId('3')).getByRole('checkbox', {name: /select row/i}));
+            await user.keyboard('{/Shift}');
+
+            expect(screen.getByTestId('1')).toHaveAttribute('aria-selected', 'false');
+            expect(screen.getByTestId('2')).toHaveAttribute('aria-selected', 'false');
+            expect(screen.getByTestId('3')).toHaveAttribute('aria-selected', 'true');
         });
 
         it('selects all rows of the current page when clicking on the checkbox that is in the column header', async () => {

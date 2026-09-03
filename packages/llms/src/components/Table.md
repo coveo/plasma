@@ -53,6 +53,7 @@ Important states include:
 
 - Expandable row content SHOULD add detail without replacing the row's core scannable information.
 - When row selection is enabled, pressing Escape clears the selection unless `forceSelection` is enabled.
+- When multi-row selection is enabled, users MAY click a row, card, or its checkbox and then Shift-click another selection target to select all selectable rows between them on the displayed page. Existing selections outside the range are preserved.
 
 ## Content guidance
 

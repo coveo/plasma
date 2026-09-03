@@ -5,6 +5,7 @@ import {ForwardedRef, Fragment, type MouseEvent} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../../../utils/createFactoryComponent.js';
 import {TableLayoutProps} from '../../Table.types.js';
 import {useTableContext} from '../../TableContext.js';
+import {preventRangeSelectionTextSelection} from '../../tableSelectionUtils.js';
 import {TableCollapsibleColumn} from '../../table-column/TableCollapsibleColumn.js';
 import {TableSelectableColumn} from '../../table-column/TableSelectableColumn.js';
 import {TableLoading} from '../../table-loading/TableLoading.js';
@@ -37,23 +38,24 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
         getRowAttributes,
         ...others
     } = useProps('RowLayoutBody', defaultProps, props);
-    const {table, store} = useTableContext<T>();
+    const {table, store, handleRowSelection} = useTableContext<T>();
 
     const rows = table.getRowModel()?.rows.map((row) => {
         const rowChildren = getRowExpandedContent?.(row.original, row.index, row) ?? null;
         const isSelected = !!row.getIsSelected();
-        const shouldKeepSelection = store.rowSelectionForced && isSelected;
-        const onClick = () => {
-            if (!store.rowSelectionEnabled || shouldKeepSelection) {
-                return;
-            }
-            row.toggleSelected();
+        const onClick = (event: MouseEvent<HTMLTableRowElement>) => {
+            preventRangeSelectionTextSelection(event, row, store);
+            handleRowSelection(row, event.shiftKey);
+        };
+        const onMouseDown = (event: MouseEvent<HTMLTableRowElement>) => {
+            preventRangeSelectionTextSelection(event, row, store);
         };
 
         return (
             <Fragment key={row.id}>
                 <tr
                     onClick={onClick}
+                    onMouseDown={onMouseDown}
                     onDoubleClick={() => {
                         onRowDoubleClick?.(row.original, row.index, row);
                     }}

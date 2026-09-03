@@ -1,6 +1,6 @@
 import {createSafeContext, GetStylesApi} from '@mantine/core';
-import {Table} from '@tanstack/table-core';
-import {MutableRefObject, ReactNode} from 'react';
+import {Row, Table} from '@tanstack/table-core';
+import {ReactNode, RefObject} from 'react';
 import {type PlasmaTableFactory} from './Table.js';
 import {TableAction, TableLayout} from './Table.types.js';
 import {TableStore} from './use-table.js';
@@ -11,8 +11,10 @@ export interface TableContextValue<TData = unknown> {
     layouts: TableLayout[];
     getRowActions: (datum: TData[]) => TableAction[];
     table: Table<TData>;
-    containerRef: MutableRefObject<HTMLDivElement | null>;
+    containerRef: RefObject<HTMLDivElement | null>;
     selectionCheckboxesVisible: boolean;
+    rangeSelectionAnchorRef: RefObject<string | null>;
+    handleRowSelection: (row: Row<TData>, selectRange: boolean) => void;
 }
 
 export interface TableProviderProps<T> {
