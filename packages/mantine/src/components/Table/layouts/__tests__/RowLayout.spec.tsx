@@ -575,10 +575,13 @@ describe('RowLayout', () => {
             const selectableRow = screen.getByTestId('1');
             const disabledRow = screen.getByTestId('2');
             expect(selectableRow).toHaveAttribute('data-selectable', 'true');
+            expect(selectableRow).not.toHaveAttribute('data-selection-disabled');
             expect(disabledRow).toHaveAttribute('data-selectable', 'false');
+            expect(disabledRow).toHaveAttribute('data-selection-disabled', 'true');
+            expect(within(selectableRow).getByRole('checkbox', {name: /select row/i})).toBeVisible();
+            expect(within(disabledRow).queryByRole('checkbox', {name: /select row/i})).not.toBeInTheDocument();
 
             await user.click(disabledRow);
-            await user.click(within(disabledRow).getByRole('checkbox', {name: /select row/i}));
             expect(disabledRow).toHaveAttribute('aria-selected', 'false');
 
             await user.click(screen.getByRole('checkbox', {name: /select all from this page/i}));
@@ -667,8 +670,26 @@ describe('RowLayout', () => {
             const rowCheckboxes = screen.getAllByRole('checkbox', {name: /select row/i});
             expect(rowCheckboxes).toHaveLength(2);
             expect(screen.getByRole('checkbox', {name: /select all/i})).toBeInTheDocument();
-            expect(screen.getByRole('row', {name: /john smith/i, selected: false})).toBeInTheDocument();
-            expect(screen.getByRole('row', {name: /jane doe/i, selected: true})).toBeInTheDocument();
+            expect(screen.getByRole('row', {name: /john smith/i, selected: false})).not.toHaveAttribute(
+                'data-selection-disabled',
+            );
+            expect(screen.getByRole('row', {name: /jane doe/i, selected: true})).not.toHaveAttribute(
+                'data-selection-disabled',
+            );
+        });
+
+        it('does not mark rows as selection disabled while loading', () => {
+            const data: RowData[] = [{id: '1', firstName: 'Selectable'}];
+            const Fixture = () => {
+                const store = useTable<RowData>({
+                    enableMultiRowSelection: true,
+                    enableRowSelection: (row) => !row.original.disabled,
+                });
+                return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} loading />;
+            };
+            render(<Fixture />);
+
+            expect(screen.getByTestId('1')).not.toHaveAttribute('data-selection-disabled');
         });
 
         it('does not change the selection when clicking read-only checkboxes', async () => {

@@ -163,10 +163,13 @@ describe('CardLayout', () => {
             const selectableCard = screen.getByTestId('1');
             const disabledCard = screen.getByTestId('2');
             expect(selectableCard).toHaveAttribute('data-selectable', 'true');
+            expect(selectableCard).not.toHaveAttribute('data-selection-disabled');
             expect(disabledCard).not.toHaveAttribute('data-selectable');
+            expect(disabledCard).toHaveAttribute('data-selection-disabled', 'true');
+            expect(within(selectableCard).getByRole('checkbox', {name: /select row/i})).toBeVisible();
+            expect(within(disabledCard).queryByRole('checkbox', {name: /select row/i})).not.toBeInTheDocument();
 
             await user.click(disabledCard);
-            await user.click(within(disabledCard).getByRole('checkbox', {name: /select row/i}));
             expect(disabledCard).toHaveAttribute('aria-selected', 'false');
 
             await user.click(selectableCard);
@@ -210,6 +213,31 @@ describe('CardLayout', () => {
             expect(rowCheckboxes).toHaveLength(2);
             expect(screen.getByTestId('1')).toHaveAttribute('aria-selected', 'false');
             expect(screen.getByTestId('2')).toHaveAttribute('aria-selected', 'true');
+            expect(screen.getByTestId('1')).not.toHaveAttribute('data-selection-disabled');
+            expect(screen.getByTestId('2')).not.toHaveAttribute('data-selection-disabled');
+        });
+
+        it('does not mark cards as selection disabled while loading', () => {
+            const data: RowData[] = [{id: '1', firstName: 'Selectable'}];
+            const Fixture = () => {
+                const store = useTable<RowData>({
+                    enableMultiRowSelection: true,
+                    enableRowSelection: (row) => !row.original.disabled,
+                });
+                return (
+                    <Table
+                        store={store}
+                        getRowId={({id}) => id}
+                        data={data}
+                        columns={columns}
+                        layouts={[CardLayout]}
+                        loading
+                    />
+                );
+            };
+            render(<Fixture />);
+
+            expect(screen.getByTestId('1')).not.toHaveAttribute('data-selection-disabled');
         });
 
         it('selects a card when clicking its checkbox', async () => {
