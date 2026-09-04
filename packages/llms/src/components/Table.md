@@ -53,6 +53,7 @@ Important states include:
 
 - Expandable row content SHOULD add detail without replacing the row's core scannable information.
 - When row selection is enabled, pressing Escape clears the selection unless `forceSelection` is enabled.
+- `enableRowSelection` MAY be a predicate when only some rows should be selectable. Rows rejected by the predicate cannot be selected through their surface or checkbox and are skipped by select-all and range selection.
 - When multi-row selection is enabled, users MAY click a row, card, or its checkbox and then Shift-click another selection target to select all selectable rows between them on the displayed page. Existing selections outside the range are preserved.
 
 ## Content guidance
@@ -88,6 +89,12 @@ Important states include:
 **`children`** `ReactNode` · optional · default: `undefined` — Children can include sub-components like `Table.Toolbar`, `Table.Header`, `Table.Footer`, `Table.NoData`, and `Table.LastUpdated`. Filter controls (`Table.Filter`, `Table.Predicate`, `Table.DateRangePicker`) MUST be placed inside `Table.Header` or `Table.Toolbar`.
 **`additionalRootNodes`** `HTMLElement[]` · optional · default: `[]` — Nodes that are considered inside the table. Rows normally get unselected when clicking outside the table, but the component can have difficulty guessing what is inside or outside, for example when using modals. You MAY use this prop to force the table to consider some nodes to be inside the table.
 **`options`** `Omit<Partial<TableOptions<TData>>, 'initialState' | 'data' | 'columns' | 'manualPagination' | 'enableMultiRowSelection' | 'getRowId' | 'getRowCanExpand' | 'enableRowSelection' | 'onRowSelectionChange'>` · optional · default: `{}` — Additional options MAY be passed to the table with this prop.
+
+## `useTable` row selection options
+
+**`enableRowSelection`** `boolean | ((row: Row<TData>) => boolean)` · optional · default: `true`: Whether rows can be selected, or a predicate that determines whether each row can be selected. Selection is temporarily disabled while `Table` is loading.
+**`enableMultiRowSelection`** `boolean` · optional · default: `false`: Whether multiple rows can be selected at the same time. Only applies when row selection is enabled.
+**`forceSelection`** `boolean` · optional · default: `false`: Forces the user to always have one row selected. When activating that setting, a good practice is to have a row already selected in the initial state.
 
 ## Sub-components
 
@@ -159,6 +166,7 @@ type TData = {
     firstName: string;
     lastName: string;
     age: number;
+    type: 'Custom' | 'System';
 };
 
 const columnHelper = createColumnHelper<TData>();
@@ -172,8 +180,8 @@ const columns = [
 export function Example() {
     const data = useMemo<TData[]>(
         () => [
-            {id: '1', firstName: 'Ada', lastName: 'Lovelace', age: 36},
-            {id: '2', firstName: 'Grace', lastName: 'Hopper', age: 85},
+            {id: '1', firstName: 'Ada', lastName: 'Lovelace', age: 36, type: 'Custom'},
+            {id: '2', firstName: 'Grace', lastName: 'Hopper', age: 85, type: 'System'},
         ],
         [],
     );
@@ -183,6 +191,7 @@ export function Example() {
             totalEntries: data.length,
             pagination: {page: 0, perPage: 10},
         },
+        enableRowSelection: (row) => row.original.type !== 'System',
     });
 
     return <Table<TData> store={store} columns={columns} data={data} getRowId={({id}) => id} />;

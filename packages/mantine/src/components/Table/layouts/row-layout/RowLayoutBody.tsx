@@ -59,7 +59,7 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
                     onDoubleClick={() => {
                         onRowDoubleClick?.(row.original, row.index, row);
                     }}
-                    data-selectable={store.rowSelectionEnabled}
+                    data-selectable={row.getCanSelect()}
                     data-selected={isSelected}
                     data-multi-selection={store.multiRowSelectionEnabled}
                     aria-selected={isSelected}
@@ -77,7 +77,7 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
                         };
 
                         const onCollapsibleCellClick = (event: MouseEvent<HTMLTableCellElement>) => {
-                            if (cell.column.id === TableSelectableColumn.id && store.rowSelectionEnabled) {
+                            if (cell.column.id === TableSelectableColumn.id && row.getCanSelect()) {
                                 event.stopPropagation();
                             }
                         };

@@ -556,7 +556,64 @@ describe('RowLayout', () => {
             expect(screen.queryAllByRole('row', {selected: true})).toEqual([]);
         });
 
-        it('prevents row selection if disableRowSelection is true', async () => {
+        it('selects only rows allowed by the row selection predicate', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '1', firstName: 'Selectable'},
+                {id: '2', firstName: 'Disabled', disabled: true},
+                {id: '3', firstName: 'Also selectable'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({
+                    enableMultiRowSelection: true,
+                    enableRowSelection: (row) => !row.original.disabled,
+                });
+                return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+            };
+            render(<Fixture />);
+
+            const selectableRow = screen.getByTestId('1');
+            const disabledRow = screen.getByTestId('2');
+            expect(selectableRow).toHaveAttribute('data-selectable', 'true');
+            expect(disabledRow).toHaveAttribute('data-selectable', 'false');
+
+            await user.click(disabledRow);
+            await user.click(within(disabledRow).getByRole('checkbox', {name: /select row/i}));
+            expect(disabledRow).toHaveAttribute('aria-selected', 'false');
+
+            await user.click(screen.getByRole('checkbox', {name: /select all from this page/i}));
+            expect(selectableRow).toHaveAttribute('aria-selected', 'true');
+            expect(disabledRow).toHaveAttribute('aria-selected', 'false');
+            expect(screen.getByTestId('3')).toHaveAttribute('aria-selected', 'true');
+        });
+
+        it('skips rows rejected by the row selection predicate when selecting a range', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '1', firstName: 'One'},
+                {id: '2', firstName: 'Two', disabled: true},
+                {id: '3', firstName: 'Three'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({
+                    enableMultiRowSelection: true,
+                    enableRowSelection: (row) => !row.original.disabled,
+                });
+                return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+            };
+            render(<Fixture />);
+
+            await user.click(screen.getByTestId('1'));
+            await user.keyboard('{Shift>}');
+            await user.click(screen.getByTestId('3'));
+            await user.keyboard('{/Shift}');
+
+            expect(screen.getByTestId('1')).toHaveAttribute('aria-selected', 'true');
+            expect(screen.getByTestId('2')).toHaveAttribute('aria-selected', 'false');
+            expect(screen.getByTestId('3')).toHaveAttribute('aria-selected', 'true');
+        });
+
+        it('prevents row selection when row selection is disabled', async () => {
             const user = userEvent.setup();
             const data: RowData[] = [
                 {id: '🆔-1', firstName: 'first', lastName: 'last'},

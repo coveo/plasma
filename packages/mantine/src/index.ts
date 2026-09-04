@@ -459,6 +459,7 @@ export {
 } from './components/Table/Table.types.js';
 export {useTableContext} from './components/Table/TableContext.js';
 export {
+    type EnableRowSelection,
     useTable,
     type PaginationState,
     type TableState,
