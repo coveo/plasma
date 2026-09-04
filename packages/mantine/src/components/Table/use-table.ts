@@ -22,6 +22,9 @@ export interface PaginationState {
     perPage: number;
 }
 
+/**
+ * Enables or disables row selection globally, or determines whether each row can be selected.
+ */
 export type EnableRowSelection<TData> = boolean | ((row: Row<TData>) => boolean);
 
 export interface TableState<TData = unknown> {
@@ -166,7 +169,9 @@ export interface TableStore<TData = unknown> {
      */
     multiRowSelectionEnabled: boolean;
     /**
-     * Whether rows can be selected, or a predicate that determines whether each row can be selected.
+     * The row selection configuration currently used by the table.
+     *
+     * Reflects the `enableRowSelection` option passed to `useTable`, defaulting to `true` when omitted.
      */
     rowSelectionEnabled: EnableRowSelection<TData>;
     /**
@@ -181,7 +186,10 @@ export interface UseTableOptions<TData = unknown> {
      */
     initialState?: DeepPartial<TableState<TData>>;
     /**
-     * Whether rows can be selected, or a predicate that determines whether each row can be selected.
+     * Configures which rows users can select.
+     *
+     * Set to `true` to allow selecting every row, `false` to disable row selection, or provide a predicate to determine
+     * whether each row can be selected.
      *
      * @default true
      */
