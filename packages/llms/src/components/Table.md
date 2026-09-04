@@ -53,7 +53,7 @@ Important states include:
 
 - Expandable row content SHOULD add detail without replacing the row's core scannable information.
 - When row selection is enabled, pressing Escape clears the selection unless `forceSelection` is enabled.
-- `enableRowSelection` MAY be a predicate when only some rows should be selectable. Rows rejected by the predicate cannot be selected through their surface or checkbox and are skipped by select-all and range selection.
+- `enableRowSelection` MAY be a predicate when only some rows should be selectable. Rows rejected by the predicate are displayed at 50% opacity, do not render a selection checkbox, cannot be selected through their surface, and are skipped by select-all and range selection.
 - When multi-row selection is enabled, users MAY click a row, card, or its checkbox and then Shift-click another selection target to select all selectable rows between them on the displayed page. Existing selections outside the range are preserved.
 
 ## Content guidance
@@ -92,7 +92,7 @@ Important states include:
 
 ## `useTable` row selection options
 
-**`enableRowSelection`** `boolean | ((row: Row<TData>) => boolean)` · optional · default: `true`: Whether rows can be selected, or a predicate that determines whether each row can be selected. Selection is temporarily disabled while `Table` is loading.
+**`enableRowSelection`** `boolean | ((row: Row<TData>) => boolean)` · optional · default: `true`: Whether rows can be selected, or a predicate that determines whether each row can be selected. Rows rejected by the predicate are displayed at 50% opacity and do not render a selection checkbox. Selection is temporarily disabled while `Table` is loading.
 **`enableMultiRowSelection`** `boolean` · optional · default: `false`: Whether multiple rows can be selected at the same time. Only applies when row selection is enabled.
 **`forceSelection`** `boolean` · optional · default: `false`: Forces the user to always have one row selected. When activating that setting, a good practice is to have a row already selected in the initial state.
 

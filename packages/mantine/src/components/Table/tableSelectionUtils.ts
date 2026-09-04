@@ -1,3 +1,4 @@
+import type {Row} from '@tanstack/table-core';
 import type {TableState, TableStore} from './use-table.js';
 
 interface SelectableRow {
@@ -35,6 +36,9 @@ interface RangeSelectionMouseEvent {
 
 export const areSelectionCheckboxesVisible = <T>(store: SelectionVisibilityStore<T>): boolean =>
     store.multiRowSelectionEnabled && (!!store.rowSelectionEnabled || store.getSelectedRows().length > 0);
+
+export const isRowSelectionPredicateRejected = <T>(row: Row<T>, store: TableStore<T>): boolean =>
+    typeof store.rowSelectionEnabled === 'function' && !store.rowSelectionEnabled(row);
 
 export const getSelectableRowsInRange = <TRow extends SelectableRow>(
     rows: TRow[],
