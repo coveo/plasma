@@ -190,6 +190,7 @@ export interface UseTableOptions<TData = unknown> {
      *
      * Set to `true` to allow selecting every row, `false` to disable row selection, or provide a predicate to determine
      * whether each row can be selected.
+     * Rows rejected by the predicate are displayed with reduced opacity and do not render a selection checkbox.
      *
      * @default true
      */

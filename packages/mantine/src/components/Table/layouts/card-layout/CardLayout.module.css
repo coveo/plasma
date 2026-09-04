@@ -2,6 +2,10 @@
     &[data-selectable='true'] {
         cursor: pointer;
     }
+
+    &[data-selection-disabled='true'] {
+        opacity: 0.5;
+    }
 }
 
 .cardCheckbox {

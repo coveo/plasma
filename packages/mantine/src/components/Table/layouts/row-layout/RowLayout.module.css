@@ -18,8 +18,10 @@
         padding-left: 40px;
     }
 
-    @mixin hover {
-        background-color: var(--mantine-color-gray-light-hover);
+    &[data-selectable='true'] {
+        @mixin hover {
+            background-color: var(--mantine-color-gray-light-hover);
+        }
     }
 
     &[data-selectable='false'] input[type='checkbox'] {
@@ -41,6 +43,10 @@
         &[data-multi-selection='true'] {
             background-color: transparent;
         }
+    }
+
+    &[data-selection-disabled='true'] {
+        opacity: 0.5;
     }
 
     &[data-collapsible-cell='true'] {
