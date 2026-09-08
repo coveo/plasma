@@ -12,7 +12,7 @@
     "dependencies": {
         "@coveord/plasma-mantine": "workspace:*",
         "@coveord/plasma-react-icons": "workspace:*",
-        "@figma/code-connect": "1.4.9",
+        "@figma/code-connect": "2.0.0",
         "react": "19.2.7"
     },
     "devDependencies": {
