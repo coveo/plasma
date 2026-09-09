@@ -238,6 +238,29 @@ describe('RowLayout', () => {
         );
     });
 
+    it('does not call the double click action for a row rejected by the selection predicate', async () => {
+        const user = userEvent.setup();
+        const doubleClickSpy = vi.fn();
+        const data: RowData[] = [{id: '🆔-1', firstName: 'Mario', disabled: true}];
+        const Fixture = () => {
+            const store = useTable<RowData>({enableRowSelection: (row) => !row.original.disabled});
+            return (
+                <Table<RowData>
+                    store={store}
+                    getRowId={({id}) => id}
+                    data={data}
+                    columns={columns}
+                    layoutProps={{onRowDoubleClick: doubleClickSpy}}
+                />
+            );
+        };
+        render(<Fixture />);
+
+        await user.dblClick(screen.getByRole('cell', {name: 'Mario'}));
+
+        expect(doubleClickSpy).not.toHaveBeenCalled();
+    });
+
     it('toggles row selection when clicking on a selected row', async () => {
         const user = userEvent.setup();
         const data: RowData[] = [

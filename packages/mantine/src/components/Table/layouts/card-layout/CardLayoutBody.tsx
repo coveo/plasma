@@ -79,7 +79,9 @@ export const CardLayoutBody = <T,>(props: CardLayoutBodyProps<T> & {ref?: Forwar
                 onClick={onClick}
                 onMouseDown={onMouseDown}
                 onDoubleClick={() => {
-                    onRowDoubleClick?.(row.original, row.index, row);
+                    if (!isSelectionDisabled) {
+                        onRowDoubleClick?.(row.original, row.index, row);
+                    }
                 }}
                 pos="relative"
                 {...cardStyles}

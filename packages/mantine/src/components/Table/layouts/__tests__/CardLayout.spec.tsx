@@ -123,6 +123,30 @@ describe('CardLayout', () => {
         );
     });
 
+    it('does not call onRowDoubleClick for a card rejected by the selection predicate', async () => {
+        const user = userEvent.setup();
+        const doubleClickSpy = vi.fn();
+        const data: RowData[] = [{id: '1', firstName: 'John', lastName: 'Doe', disabled: true}];
+        const Fixture = () => {
+            const store = useTable<RowData>({enableRowSelection: (row) => !row.original.disabled});
+            return (
+                <Table
+                    store={store}
+                    getRowId={({id}) => id}
+                    data={data}
+                    columns={columns}
+                    layouts={[CardLayout]}
+                    layoutProps={{onRowDoubleClick: doubleClickSpy}}
+                />
+            );
+        };
+        render(<Fixture />);
+
+        await user.dblClick(screen.getByTestId('1'));
+
+        expect(doubleClickSpy).not.toHaveBeenCalled();
+    });
+
     describe('multi-row selection', () => {
         it('renders a checkbox in each card', () => {
             const data: RowData[] = [

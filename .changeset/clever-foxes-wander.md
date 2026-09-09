@@ -5,4 +5,4 @@
 
 Distinguish rows unavailable for selection in the Table component
 
-Rows rejected by the `enableRowSelection` predicate now appear at 50% opacity and do not display a selection checkbox.
+Rows rejected by the `enableRowSelection` predicate now appear at 50% opacity, do not display a selection checkbox, and do not trigger `onRowDoubleClick`.

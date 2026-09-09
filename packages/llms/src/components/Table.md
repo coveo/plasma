@@ -53,7 +53,7 @@ Important states include:
 
 - Expandable row content SHOULD add detail without replacing the row's core scannable information.
 - When row selection is enabled, pressing Escape clears the selection unless `forceSelection` is enabled.
-- `enableRowSelection` MAY be a predicate when only some rows should be selectable. Rows rejected by the predicate are displayed at 50% opacity, do not render a selection checkbox, cannot be selected through their surface, and are skipped by select-all and range selection.
+- `enableRowSelection` MAY be a predicate when only some rows should be selectable. Rows rejected by the predicate are displayed at 50% opacity, do not render a selection checkbox, cannot be selected through their surface, do not trigger `onRowDoubleClick`, and are skipped by select-all and range selection.
 - When multi-row selection is enabled, users MAY click a row, card, or its checkbox and then Shift-click another selection target to select all selectable rows between them on the displayed page. Existing selections outside the range are preserved.
 
 ## Content guidance

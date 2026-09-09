@@ -58,7 +58,9 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
                     onClick={onClick}
                     onMouseDown={onMouseDown}
                     onDoubleClick={() => {
-                        onRowDoubleClick?.(row.original, row.index, row);
+                        if (!isSelectionDisabled) {
+                            onRowDoubleClick?.(row.original, row.index, row);
+                        }
                     }}
                     data-selectable={row.getCanSelect()}
                     data-selected={isSelected}
