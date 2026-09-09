@@ -218,7 +218,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
         enableMultiRowSelection: !!store.multiRowSelectionEnabled,
         getRowId,
         getRowCanExpand: (row: Row<T>) => !!getRowExpandedContent?.(row.original, row.index, row),
-        enableRowSelection: !loading,
+        enableRowSelection: loading ? false : store.rowSelectionEnabled,
         defaultColumn: {
             size: undefined,
             minSize: defaultColumnSizing.minSize,

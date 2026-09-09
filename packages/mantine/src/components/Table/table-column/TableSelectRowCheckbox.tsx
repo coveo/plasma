@@ -23,13 +23,13 @@ export const TableSelectRowCheckbox = <T,>({
     onDoubleClick,
     ...props
 }: TableSelectRowCheckboxProps<T>) => {
-    const {store, getStyles, selectionCheckboxesVisible, handleRowSelection} = useTableContext<T>();
+    const {getStyles, selectionCheckboxesVisible, handleRowSelection} = useTableContext<T>();
 
     if (!selectionCheckboxesVisible) {
         return null;
     }
 
-    const readOnly = !store.rowSelectionEnabled;
+    const readOnly = !row.getCanSelect();
     const handleClick: MouseEventHandler<HTMLInputElement> = (event) => {
         event.stopPropagation();
         handleRowSelection(row, event.shiftKey);

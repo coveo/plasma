@@ -16,7 +16,7 @@ export const TableSelectAllCheckbox = (props: TableSelectAllCheckboxProps) => {
         return null;
     }
 
-    const readOnly = !store.rowSelectionEnabled;
+    const readOnly = !store.rowSelectionEnabled || !table.getRowModel().rows.some((row) => row.getCanSelect());
     const isAllSelected = table.getIsAllPageRowsSelected();
     const isSomeSelected = table.getIsSomePageRowsSelected();
     const label = isAllSelected ? 'Unselect all from this page' : 'Select all from this page';

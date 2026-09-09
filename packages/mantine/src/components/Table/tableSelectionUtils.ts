@@ -34,7 +34,7 @@ interface RangeSelectionMouseEvent {
 }
 
 export const areSelectionCheckboxesVisible = <T>(store: SelectionVisibilityStore<T>): boolean =>
-    store.multiRowSelectionEnabled && (store.rowSelectionEnabled || store.getSelectedRows().length > 0);
+    store.multiRowSelectionEnabled && (!!store.rowSelectionEnabled || store.getSelectedRows().length > 0);
 
 export const getSelectableRowsInRange = <TRow extends SelectableRow>(
     rows: TRow[],
