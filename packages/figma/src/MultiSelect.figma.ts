@@ -10,10 +10,27 @@ const labelProps = (function () {
         required: nestedLayer51.type !== 'ERROR' ? nestedLayer51.getBoolean('Asterisk') : undefined,
     };
 })();
-const description = (function () {
-    const nestedLayer52 = figma.selectedInstance.findInstance('.Input.Description');
+const wrapperProps = (function () {
+    const nestedLayer52 = figma.selectedInstance.findInstance('Input.Wrapper');
     return {
-        text: nestedLayer52.type !== 'ERROR' ? nestedLayer52.getString('Description') : undefined,
+        description:
+            nestedLayer52.type !== 'ERROR'
+                ? nestedLayer52.getBoolean('Description', {
+                      true: (function () {
+                          const nestedLayer53 = figma.selectedInstance.findInstance('.Input.Description');
+                          return nestedLayer53.type !== 'ERROR' ? nestedLayer53.getString('Description') : undefined;
+                      })(),
+                  })
+                : undefined,
+        error:
+            nestedLayer52.type !== 'ERROR'
+                ? nestedLayer52.getBoolean('Error', {
+                      true: (function () {
+                          const nestedLayer54 = figma.selectedInstance.findInstance('.Input.Error');
+                          return nestedLayer54.type !== 'ERROR' ? nestedLayer54.getString('Error') : undefined;
+                      })(),
+                  })
+                : undefined,
     };
 })();
 const disabled = figma.selectedInstance.getEnum('State', {
@@ -22,19 +39,13 @@ const disabled = figma.selectedInstance.getEnum('State', {
 const readOnly = figma.selectedInstance.getEnum('State', {
     'Read-only': true,
 });
-const error = (function () {
-    const nestedLayer53 = figma.selectedInstance.findInstance('.Input.Error');
-    return {
-        message: nestedLayer53.type !== 'ERROR' ? nestedLayer53.getString('Error') : undefined,
-    };
-})();
 const placeholder = (function () {
-    const nestedLayer54 = figma.selectedInstance.findInstance('.Input.Input');
+    const nestedLayer55 = figma.selectedInstance.findInstance('.Input.Input');
     return {
         text:
-            nestedLayer54.type !== 'ERROR'
-                ? nestedLayer54.getBoolean('Placeholder', {
-                      true: nestedLayer54.getString('Text'),
+            nestedLayer55.type !== 'ERROR'
+                ? nestedLayer55.getBoolean('Placeholder', {
+                      true: nestedLayer55.getString('Text'),
                       false: undefined,
                   })
                 : undefined,
@@ -47,10 +58,10 @@ export default {
     example: figma.code`<MultiSelect${figma.helpers.react.renderProp(
         'label',
         labelProps.label,
-    )}${figma.helpers.react.renderProp('description', description.text)}${figma.helpers.react.renderProp(
+    )}${figma.helpers.react.renderProp('description', wrapperProps.description)}${figma.helpers.react.renderProp(
         'placeholder',
         placeholder.text,
-    )}${figma.helpers.react.renderProp('error', error.message)}${figma.helpers.react.renderProp(
+    )}${figma.helpers.react.renderProp('error', wrapperProps.error)}${figma.helpers.react.renderProp(
         'required',
         labelProps.required,
     )}${figma.helpers.react.renderProp('disabled', disabled)}${figma.helpers.react.renderProp('readOnly', readOnly)}/>`,

@@ -3,7 +3,7 @@
 
 import figma from 'figma';
 
-const children = figma.properties.children(['.Accordion.Item']);
+const children = figma.selectedInstance.__properties__.children(['.Accordion.Item']);
 
 export default {
     id: 'Accordion',
