@@ -136,13 +136,13 @@ importers:
         version: 2.1693.0
       eslint:
         specifier: 10.7.0
-        version: 10.7.0
+        version: 10.7.0(supports-color@10.2.2)
       eslint-plugin-storybook:
         specifier: 10.5.2
-        version: 10.5.2(eslint@10.7.0)(storybook@10.5.2(@types/react@19.2.17)(prettier@2.8.8)(react@19.2.7))(typescript@6.0.3)
+        version: 10.5.2(eslint@10.7.0(supports-color@10.2.2))(storybook@10.5.2(@types/react@19.2.17)(prettier@2.8.8)(react@19.2.7))(typescript@6.0.3)
       eslint-plugin-testing-library:
         specifier: 7.16.2
-        version: 7.16.2(eslint@10.7.0)(typescript@6.0.3)
+        version: 7.16.2(eslint@10.7.0(supports-color@10.2.2))(typescript@6.0.3)
       husky:
         specifier: 9.1.7
         version: 9.1.7
@@ -180,8 +180,8 @@ importers:
         specifier: workspace:*
         version: link:../react-icons
       '@figma/code-connect':
-        specifier: 1.4.9
-        version: 1.4.9
+        specifier: 2.0.0
+        version: 2.0.0(supports-color@10.2.2)
       react:
         specifier: 19.2.7
         version: 19.2.7
@@ -1045,8 +1045,8 @@ packages:
     resolution: {integrity: sha512-bsxD8WLS5lIj7aaoCx1YJkktqYj5vlBUE6HWzu2Q51ksrGJ0H737ECCKlFU7Yf8Br45z9t99frBp/J7kzbMPAg==}
     engines: {node: ^20.19.0 || ^22.13.0 || ^23.5.0 || >=24.0.0, npm: '>=10'}
 
-  '@figma/code-connect@1.4.9':
-    resolution: {integrity: sha512-Ifan9Kb5oXHAh0wXu0BM8Iy+AEhWM8NoJSTBr3oU0vQTwggleK55CUHnh5zEYl6tQjj83mg6mTo4klDgcgDprg==}
+  '@figma/code-connect@2.0.0':
+    resolution: {integrity: sha512-FNpemwBciNCpskBZ8TK0iRa+oZR5H6+NP8XVDawww8Vz1bFoIrPu0y3NvPR0xnjtrOhAu+3DXqZmSR4cb0V+2w==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -2939,6 +2939,11 @@ packages:
   es-set-tostringtag@2.1.0:
     resolution: {integrity: sha512-j6vWzfrGVfyXxge+O0x5sh6cvxAog0a/4Rdd2K36zCMV5eJ+/+tOAngRO8cODMNWbVRdVlmGZQL2YS3yR8bIUA==}
     engines: {node: '>= 0.4'}
+
+  esbuild-wasm@0.27.3:
+    resolution: {integrity: sha512-AUXuOxZ145/5Az+lIqk6TdJbxKTyDGkXMJpTExmBdbnHR6n6qAFx+F4oG9ORpVYJ9dQYeQAqzv51TO4DFKsbXw==}
+    engines: {node: '>=18'}
+    hasBin: true
 
   esbuild@0.28.2:
     resolution: {integrity: sha512-HKVLS8dvII+xoKW9kmqxbRKrnWEXfJJr/FZhhJmiqIB0e053QNYFqOBouTMO/k5sID4MvCiUCvv8b9M4h32wIA==}
@@ -4934,7 +4939,7 @@ snapshots:
       '@babel/types': 7.29.7
       '@jridgewell/remapping': 2.3.5
       convert-source-map: 2.0.0
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@10.2.2)
       gensync: 1.0.0-beta.2
       json5: 2.2.3
       semver: 6.3.1
@@ -5006,7 +5011,7 @@ snapshots:
       '@babel/parser': 7.29.8
       '@babel/template': 7.29.7
       '@babel/types': 7.29.8
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@10.2.2)
     transitivePeerDependencies:
       - supports-color
 
@@ -5406,17 +5411,17 @@ snapshots:
   '@esbuild/win32-x64@0.28.2':
     optional: true
 
-  '@eslint-community/eslint-utils@4.10.1(eslint@10.7.0)':
+  '@eslint-community/eslint-utils@4.10.1(eslint@10.7.0(supports-color@10.2.2))':
     dependencies:
-      eslint: 10.7.0
+      eslint: 10.7.0(supports-color@10.2.2)
       eslint-visitor-keys: 3.4.3
 
   '@eslint-community/regexpp@4.12.2': {}
 
-  '@eslint/config-array@0.23.5':
+  '@eslint/config-array@0.23.5(supports-color@10.2.2)':
     dependencies:
       '@eslint/object-schema': 3.0.5
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@10.2.2)
       minimatch: 10.2.6
     transitivePeerDependencies:
       - supports-color
@@ -5440,7 +5445,7 @@ snapshots:
 
   '@faker-js/faker@10.5.0': {}
 
-  '@figma/code-connect@1.4.9':
+  '@figma/code-connect@2.0.0(supports-color@10.2.2)':
     dependencies:
       boxen: 5.1.1
       chalk: 4.1.2
@@ -5448,10 +5453,11 @@ snapshots:
       compare-versions: 6.1.1
       cross-spawn: 7.0.6
       dotenv: 16.6.1
+      esbuild-wasm: 0.27.3
       fast-fuzzy: 1.12.0
       find-up: 5.0.0
       glob: 11.1.0
-      jsdom: 24.1.3
+      jsdom: 24.1.3(supports-color@10.2.2)
       lodash: 4.18.1
       minimatch: 9.0.9
       ora: 5.4.1
@@ -6354,7 +6360,7 @@ snapshots:
     dependencies:
       '@typescript-eslint/tsconfig-utils': 8.67.0(typescript@6.0.3)
       '@typescript-eslint/types': 8.67.0
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@10.2.2)
       typescript: 6.0.3
     transitivePeerDependencies:
       - supports-color
@@ -6376,7 +6382,7 @@ snapshots:
       '@typescript-eslint/tsconfig-utils': 8.67.0(typescript@6.0.3)
       '@typescript-eslint/types': 8.67.0
       '@typescript-eslint/visitor-keys': 8.67.0
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@10.2.2)
       minimatch: 10.2.6
       semver: 7.8.5
       tinyglobby: 0.2.17
@@ -6385,13 +6391,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/utils@8.67.0(eslint@10.7.0)(typescript@6.0.3)':
+  '@typescript-eslint/utils@8.67.0(eslint@10.7.0(supports-color@10.2.2))(typescript@6.0.3)':
     dependencies:
-      '@eslint-community/eslint-utils': 4.10.1(eslint@10.7.0)
+      '@eslint-community/eslint-utils': 4.10.1(eslint@10.7.0(supports-color@10.2.2))
       '@typescript-eslint/scope-manager': 8.67.0
       '@typescript-eslint/types': 8.67.0
       '@typescript-eslint/typescript-estree': 8.67.0(typescript@6.0.3)
-      eslint: 10.7.0
+      eslint: 10.7.0(supports-color@10.2.2)
       typescript: 6.0.3
     transitivePeerDependencies:
       - supports-color
@@ -6875,9 +6881,11 @@ snapshots:
 
   dayjs@1.11.21: {}
 
-  debug@4.4.3:
+  debug@4.4.3(supports-color@10.2.2):
     dependencies:
       ms: 2.1.3
+    optionalDependencies:
+      supports-color: 10.2.2
 
   decimal.js@10.6.0: {}
 
@@ -7006,6 +7014,8 @@ snapshots:
       has-tostringtag: 1.0.2
       hasown: 2.0.4
 
+  esbuild-wasm@0.27.3: {}
+
   esbuild@0.28.2:
     optionalDependencies:
       '@esbuild/aix-ppc64': 0.28.2
@@ -7039,21 +7049,21 @@ snapshots:
 
   escape-string-regexp@4.0.0: {}
 
-  eslint-plugin-storybook@10.5.2(eslint@10.7.0)(storybook@10.5.2(@types/react@19.2.17)(prettier@2.8.8)(react@19.2.7))(typescript@6.0.3):
+  eslint-plugin-storybook@10.5.2(eslint@10.7.0(supports-color@10.2.2))(storybook@10.5.2(@types/react@19.2.17)(prettier@2.8.8)(react@19.2.7))(typescript@6.0.3):
     dependencies:
       '@typescript-eslint/types': 8.67.0
-      '@typescript-eslint/utils': 8.67.0(eslint@10.7.0)(typescript@6.0.3)
-      eslint: 10.7.0
+      '@typescript-eslint/utils': 8.67.0(eslint@10.7.0(supports-color@10.2.2))(typescript@6.0.3)
+      eslint: 10.7.0(supports-color@10.2.2)
       storybook: 10.5.2(@types/react@19.2.17)(prettier@2.8.8)(react@19.2.7)
     transitivePeerDependencies:
       - supports-color
       - typescript
 
-  eslint-plugin-testing-library@7.16.2(eslint@10.7.0)(typescript@6.0.3):
+  eslint-plugin-testing-library@7.16.2(eslint@10.7.0(supports-color@10.2.2))(typescript@6.0.3):
     dependencies:
       '@typescript-eslint/scope-manager': 8.67.0
-      '@typescript-eslint/utils': 8.67.0(eslint@10.7.0)(typescript@6.0.3)
-      eslint: 10.7.0
+      '@typescript-eslint/utils': 8.67.0(eslint@10.7.0(supports-color@10.2.2))(typescript@6.0.3)
+      eslint: 10.7.0(supports-color@10.2.2)
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -7069,11 +7079,11 @@ snapshots:
 
   eslint-visitor-keys@5.0.1: {}
 
-  eslint@10.7.0:
+  eslint@10.7.0(supports-color@10.2.2):
     dependencies:
-      '@eslint-community/eslint-utils': 4.10.1(eslint@10.7.0)
+      '@eslint-community/eslint-utils': 4.10.1(eslint@10.7.0(supports-color@10.2.2))
       '@eslint-community/regexpp': 4.12.2
-      '@eslint/config-array': 0.23.5
+      '@eslint/config-array': 0.23.5(supports-color@10.2.2)
       '@eslint/config-helpers': 0.6.0
       '@eslint/core': 1.2.1
       '@eslint/plugin-kit': 0.7.2
@@ -7083,7 +7093,7 @@ snapshots:
       '@types/estree': 1.0.9
       ajv: 6.15.0
       cross-spawn: 7.0.6
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@10.2.2)
       escape-string-regexp: 4.0.0
       eslint-scope: 9.1.2
       eslint-visitor-keys: 5.0.1
@@ -7383,17 +7393,17 @@ snapshots:
 
   html-tags@5.1.0: {}
 
-  http-proxy-agent@7.0.2:
+  http-proxy-agent@7.0.2(supports-color@10.2.2):
     dependencies:
       agent-base: 7.1.4
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@10.2.2)
     transitivePeerDependencies:
       - supports-color
 
-  https-proxy-agent@7.0.6:
+  https-proxy-agent@7.0.6(supports-color@10.2.2):
     dependencies:
       agent-base: 7.1.4
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@10.2.2)
     transitivePeerDependencies:
       - supports-color
 
@@ -7529,15 +7539,15 @@ snapshots:
     dependencies:
       argparse: 2.0.1
 
-  jsdom@24.1.3:
+  jsdom@24.1.3(supports-color@10.2.2):
     dependencies:
       cssstyle: 4.6.0
       data-urls: 5.0.0
       decimal.js: 10.6.0
       form-data: 4.0.6
       html-encoding-sniffer: 4.0.0
-      http-proxy-agent: 7.0.2
-      https-proxy-agent: 7.0.6
+      http-proxy-agent: 7.0.2(supports-color@10.2.2)
+      https-proxy-agent: 7.0.6(supports-color@10.2.2)
       is-potential-custom-element-name: 1.0.1
       nwsapi: 2.2.24
       parse5: 7.3.0
@@ -8540,7 +8550,7 @@ snapshots:
       cosmiconfig: 9.0.2(typescript@6.0.3)
       css-functions-list: 3.3.3
       css-tree: 3.2.1
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@10.2.2)
       fast-glob: 3.3.3
       fastest-levenshtein: 1.0.16
       file-entry-cache: 11.1.5
