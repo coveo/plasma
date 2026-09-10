@@ -5,7 +5,7 @@ import figma from 'figma';
 
 export default {
     id: 'Stepper',
-    imports: ["import { Stepper } from '@coveord/plasma-mantine';"],
+    imports: ["import { Stepper } from '@coveord/plasma-mantine';", "import { useState } from 'react';"],
     example: figma.code`function Example() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [active, setActive] = useState(0);

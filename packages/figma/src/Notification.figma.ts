@@ -16,8 +16,9 @@ if (figma.selectedInstance.getPropertyValue('Variant') === 'Information') {
 
     template = {
         id: 'Notification',
-        imports: ["import { Notification } from './'"],
+        imports: ["import { Notification, notifications as mantineNotifications } from '@coveord/plasma-mantine';"],
         example: figma.code`function Example() {
+    const notifications = { ...mantineNotifications, showSuccess: mantineNotifications.show, showError: mantineNotifications.show, showWarning: mantineNotifications.show };
     notifications.show({
         title: ${figma.helpers.react.renderPropValue(title)},
         message: ${figma.helpers.react.renderPropValue(message)},
@@ -36,8 +37,9 @@ if (figma.selectedInstance.getPropertyValue('Variant') === 'Information') {
 
     template = {
         id: 'Notification',
-        imports: ["import { Notification } from './'"],
+        imports: ["import { Notification, notifications as mantineNotifications } from '@coveord/plasma-mantine';"],
         example: figma.code`function Example() {
+    const notifications = { ...mantineNotifications, showSuccess: mantineNotifications.show, showError: mantineNotifications.show, showWarning: mantineNotifications.show };
     notifications.showSuccess({
         title: ${figma.helpers.react.renderPropValue(title)},
         message: ${figma.helpers.react.renderPropValue(message)},
@@ -56,8 +58,9 @@ if (figma.selectedInstance.getPropertyValue('Variant') === 'Information') {
 
     template = {
         id: 'Notification',
-        imports: ["import { Notification } from './'"],
+        imports: ["import { Notification, notifications as mantineNotifications } from '@coveord/plasma-mantine';"],
         example: figma.code`function Example() {
+    const notifications = { ...mantineNotifications, showSuccess: mantineNotifications.show, showError: mantineNotifications.show, showWarning: mantineNotifications.show };
     notifications.showWarning({
         title: ${figma.helpers.react.renderPropValue(title)},
         message: ${figma.helpers.react.renderPropValue(message)},
@@ -76,8 +79,9 @@ if (figma.selectedInstance.getPropertyValue('Variant') === 'Information') {
 
     template = {
         id: 'Notification',
-        imports: ["import { Notification } from './'"],
+        imports: ["import { Notification, notifications as mantineNotifications } from '@coveord/plasma-mantine';"],
         example: figma.code`function Example() {
+    const notifications = { ...mantineNotifications, showSuccess: mantineNotifications.show, showError: mantineNotifications.show, showWarning: mantineNotifications.show };
     notifications.showError({
         title: ${figma.helpers.react.renderPropValue(title)},
         message: ${figma.helpers.react.renderPropValue(message)},
@@ -96,8 +100,9 @@ if (figma.selectedInstance.getPropertyValue('Variant') === 'Information') {
 
     template = {
         id: 'Notification',
-        imports: ["import { Notification } from './'"],
+        imports: ["import { Notification, notifications as mantineNotifications } from '@coveord/plasma-mantine';"],
         example: figma.code`function Example() {
+    const notifications = { ...mantineNotifications, showSuccess: mantineNotifications.show, showError: mantineNotifications.show, showWarning: mantineNotifications.show };
     const id = notifications.show({
         title: ${figma.helpers.react.renderPropValue(title)},
         message: ${figma.helpers.react.renderPropValue(message)},
@@ -125,8 +130,9 @@ if (figma.selectedInstance.getPropertyValue('Variant') === 'Information') {
 
     template = {
         id: 'Notification',
-        imports: ["import { Notification } from './'"],
+        imports: ["import { Notification, notifications as mantineNotifications } from '@coveord/plasma-mantine';"],
         example: figma.code`function Example() {
+    const notifications = { ...mantineNotifications, showSuccess: mantineNotifications.show, showError: mantineNotifications.show, showWarning: mantineNotifications.show };
     const id = notifications.show({
         title: ${figma.helpers.react.renderPropValue(title)},
         message: ${figma.helpers.react.renderPropValue(message)},
