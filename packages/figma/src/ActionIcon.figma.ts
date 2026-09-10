@@ -136,14 +136,14 @@ if (figma.selectedInstance.getPropertyValue('Variant') === 'Primary') {
     });
 
     template = {
-        id: 'ActionIcon.Quaternary',
+        id: 'ActionIcon.Primary',
         imports: ["import { ActionIcon } from '@coveord/plasma-mantine';"],
-        example: figma.code`<ActionIcon.Quaternary${figma.helpers.react.renderProp(
+        example: figma.code`<ActionIcon.Primary${figma.helpers.react.renderProp(
             'disabled',
             disabled,
         )}${figma.helpers.react.renderProp('size', size)}>
                 ${figma.helpers.react.renderChildren(children.icon)}
-            </ActionIcon.Quaternary>`,
+            </ActionIcon.Primary>`,
         metadata: {nestable: true},
     };
 }

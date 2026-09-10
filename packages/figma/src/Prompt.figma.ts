@@ -71,14 +71,14 @@ if (figma.selectedInstance.getPropertyValue('Variant') === 'Information') {
     const children = figma.selectedInstance.getString('Text');
 
     template = {
-        id: 'Prompt.Critical',
+        id: 'Prompt.Information',
         imports: ["import { Prompt } from '@coveord/plasma-mantine';"],
-        example: figma.code`<Prompt.Critical${figma.helpers.react.renderProp(
+        example: figma.code`<Prompt.Information${figma.helpers.react.renderProp(
             'title',
             title,
         )} opened onClose={() => void 0}>
                 ${figma.helpers.react.renderChildren(children)}
-            </Prompt.Critical>`,
+            </Prompt.Information>`,
         metadata: {nestable: true},
     };
 }

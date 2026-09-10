@@ -3,7 +3,12 @@
 
 import figma from 'figma';
 
-const children = figma.selectedInstance.__properties__.children(['.Accordion.Item']);
+const children = (function () {
+    const nestedLayer1 = figma.selectedInstance.findInstance('.Accordion');
+    return nestedLayer1.type !== 'ERROR'
+        ? nestedLayer1.__properties__.children(['.Accordion.Item'])
+        : figma.selectedInstance.__properties__.children(['.Accordion.Item']);
+})();
 
 export default {
     id: 'Accordion',

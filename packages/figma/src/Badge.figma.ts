@@ -182,9 +182,9 @@ if (figma.selectedInstance.getPropertyValue('Type') === 'Primary') {
     const placeholder = figma.selectedInstance.getString('Placeholder');
 
     template = {
-        id: 'Badge.Disabled',
+        id: 'Badge.Primary',
         imports: ["import { Badge } from '@coveord/plasma-mantine';"],
-        example: figma.code`<Badge.Disabled${figma.helpers.react.renderProp(
+        example: figma.code`<Badge.Primary${figma.helpers.react.renderProp(
             'size',
             size,
         )}${figma.helpers.react.renderProp(
@@ -192,7 +192,7 @@ if (figma.selectedInstance.getPropertyValue('Type') === 'Primary') {
             leftSection,
         )}${figma.helpers.react.renderProp('rightSection', rightSection)}>
                 ${figma.helpers.react.renderChildren(placeholder)}
-            </Badge.Disabled>`,
+            </Badge.Primary>`,
         metadata: {nestable: true},
     };
 }

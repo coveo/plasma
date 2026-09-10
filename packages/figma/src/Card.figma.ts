@@ -52,7 +52,7 @@ if (figma.selectedInstance.getPropertyValue('State') === 'Default') {
     template = {
         id: 'Card',
         imports: ["import { Card } from '@coveord/plasma-mantine';"],
-        example: figma.code`<Card mod={{ disabled: true }}>${figma.helpers.react.renderChildren(children)}</Card>`,
+        example: figma.code`<Card>${figma.helpers.react.renderChildren(children)}</Card>`,
         metadata: {nestable: true},
     };
 }

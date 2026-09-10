@@ -123,9 +123,9 @@ if (figma.selectedInstance.getPropertyValue('Variant') === 'Primary') {
     });
 
     template = {
-        id: 'Button.DestructiveQuaternary',
+        id: 'Button.DestructivePrimary',
         imports: ["import { Button } from '@coveord/plasma-mantine';"],
-        example: figma.code`<Button.DestructiveQuaternary${figma.helpers.react.renderProp(
+        example: figma.code`<Button.DestructivePrimary${figma.helpers.react.renderProp(
             'leftSection',
             leftSection,
         )}${figma.helpers.react.renderProp(
@@ -133,7 +133,7 @@ if (figma.selectedInstance.getPropertyValue('Variant') === 'Primary') {
             rightSection,
         )}${figma.helpers.react.renderProp('disabled', disabled)}>
                 ${figma.helpers.react.renderChildren(placeholder)}
-            </Button.DestructiveQuaternary>`,
+            </Button.DestructivePrimary>`,
         metadata: {nestable: true},
     };
 }

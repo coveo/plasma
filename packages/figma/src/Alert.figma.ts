@@ -105,15 +105,15 @@ if (figma.selectedInstance.getPropertyValue('Variant') === 'Information') {
     });
 
     template = {
-        id: 'Alert.Critical',
+        id: 'Alert.Information',
         imports: ["import { Alert, Text } from '@coveord/plasma-mantine';"],
-        example: figma.code`<Alert.Critical${figma.helpers.react.renderProp(
+        example: figma.code`<Alert.Information${figma.helpers.react.renderProp(
             'withCloseButton',
             withCloseButton,
         )}${figma.helpers.react.renderProp('title', title)}>
                 <Text>${figma.helpers.react.renderChildren(message)}</Text>
                 ${figma.helpers.react.renderChildren(contentSwap)}
-            </Alert.Critical>`,
+            </Alert.Information>`,
         metadata: {nestable: true},
     };
 }

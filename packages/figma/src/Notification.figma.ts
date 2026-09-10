@@ -18,8 +18,7 @@ if (figma.selectedInstance.getPropertyValue('Variant') === 'Information') {
         id: 'Notification',
         imports: ["import { notifications as mantineNotifications } from '@coveord/plasma-mantine';"],
         example: figma.code`function Example() {
-    const notifications = { ...mantineNotifications, showSuccess: mantineNotifications.show, showError: mantineNotifications.show, showWarning: mantineNotifications.show };
-    notifications.show({
+    mantineNotifications.show({
         title: ${figma.helpers.react.renderPropValue(title)},
         message: ${figma.helpers.react.renderPropValue(message)},
     });
@@ -39,8 +38,7 @@ if (figma.selectedInstance.getPropertyValue('Variant') === 'Information') {
         id: 'Notification',
         imports: ["import { notifications as mantineNotifications } from '@coveord/plasma-mantine';"],
         example: figma.code`function Example() {
-    const notifications = { ...mantineNotifications, showSuccess: mantineNotifications.show, showError: mantineNotifications.show, showWarning: mantineNotifications.show };
-    notifications.showSuccess({
+    mantineNotifications.show({
         title: ${figma.helpers.react.renderPropValue(title)},
         message: ${figma.helpers.react.renderPropValue(message)},
     });
@@ -60,8 +58,7 @@ if (figma.selectedInstance.getPropertyValue('Variant') === 'Information') {
         id: 'Notification',
         imports: ["import { notifications as mantineNotifications } from '@coveord/plasma-mantine';"],
         example: figma.code`function Example() {
-    const notifications = { ...mantineNotifications, showSuccess: mantineNotifications.show, showError: mantineNotifications.show, showWarning: mantineNotifications.show };
-    notifications.showWarning({
+    mantineNotifications.show({
         title: ${figma.helpers.react.renderPropValue(title)},
         message: ${figma.helpers.react.renderPropValue(message)},
     });
@@ -81,8 +78,7 @@ if (figma.selectedInstance.getPropertyValue('Variant') === 'Information') {
         id: 'Notification',
         imports: ["import { notifications as mantineNotifications } from '@coveord/plasma-mantine';"],
         example: figma.code`function Example() {
-    const notifications = { ...mantineNotifications, showSuccess: mantineNotifications.show, showError: mantineNotifications.show, showWarning: mantineNotifications.show };
-    notifications.showError({
+    mantineNotifications.show({
         title: ${figma.helpers.react.renderPropValue(title)},
         message: ${figma.helpers.react.renderPropValue(message)},
     });
@@ -102,8 +98,7 @@ if (figma.selectedInstance.getPropertyValue('Variant') === 'Information') {
         id: 'Notification',
         imports: ["import { notifications as mantineNotifications } from '@coveord/plasma-mantine';"],
         example: figma.code`function Example() {
-    const notifications = { ...mantineNotifications, showSuccess: mantineNotifications.show, showError: mantineNotifications.show, showWarning: mantineNotifications.show };
-    const id = notifications.show({
+    const id = mantineNotifications.show({
         title: ${figma.helpers.react.renderPropValue(title)},
         message: ${figma.helpers.react.renderPropValue(message)},
         loading: true,
@@ -111,7 +106,7 @@ if (figma.selectedInstance.getPropertyValue('Variant') === 'Information') {
     {
         /* Some async operations */
     }
-    setTimeout(() => notifications.update({
+    setTimeout(() => mantineNotifications.update({
         id,
         title: 'Loaded',
         message: 'The operation has completed',
@@ -132,8 +127,7 @@ if (figma.selectedInstance.getPropertyValue('Variant') === 'Information') {
         id: 'Notification',
         imports: ["import { notifications as mantineNotifications } from '@coveord/plasma-mantine';"],
         example: figma.code`function Example() {
-    const notifications = { ...mantineNotifications, showSuccess: mantineNotifications.show, showError: mantineNotifications.show, showWarning: mantineNotifications.show };
-    const id = notifications.show({
+    const id = mantineNotifications.show({
         title: ${figma.helpers.react.renderPropValue(title)},
         message: ${figma.helpers.react.renderPropValue(message)},
         loading: true,
@@ -141,7 +135,7 @@ if (figma.selectedInstance.getPropertyValue('Variant') === 'Information') {
     {
         /* Some async operations */
     }
-    setTimeout(() => notifications.update({
+    setTimeout(() => mantineNotifications.update({
         id,
         title: 'Loaded',
         message: 'The operation has completed',

@@ -145,9 +145,9 @@ if (figma.selectedInstance.getPropertyValue('Type') === 'Information') {
     });
 
     template = {
-        id: 'InfoToken.Error',
+        id: 'InfoToken.Information',
         imports: ["import { InfoToken } from '@coveord/plasma-mantine';"],
-        example: figma.code`<InfoToken.Error${figma.helpers.react.renderProp(
+        example: figma.code`<InfoToken.Information${figma.helpers.react.renderProp(
             'variant',
             variant,
         )}${figma.helpers.react.renderProp('size', size)}/>`,
