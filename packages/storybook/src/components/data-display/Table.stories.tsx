@@ -40,6 +40,7 @@ type StoryArgs = TableProps<Person> & {
     withLayoutSelector: boolean;
     withRowActions: boolean;
     enableRowSelection: boolean;
+    withUnselectableRows: boolean;
     enableMultiRowSelection: boolean;
     withLastUpdated: boolean;
     withCollapsibleRows: boolean;
@@ -65,6 +66,7 @@ type Person = {
     bio: string;
     pic: string;
     lastActivity: Date;
+    selectable: boolean;
 };
 
 const columnHelper = createColumnHelper<Person>();
@@ -72,7 +74,7 @@ const columnHelper = createColumnHelper<Person>();
 const makeData = (len: number): Person[] =>
     Array(len)
         .fill(0)
-        .map(() => ({
+        .map((_, index) => ({
             id: faker.string.uuid(),
             pic: faker.image.avatar(),
             firstName: faker.person.firstName(),
@@ -80,6 +82,7 @@ const makeData = (len: number): Person[] =>
             age: faker.number.int(40),
             bio: faker.lorem.sentences({min: 1, max: 5}),
             lastActivity: faker.date.recent({days: 7}),
+            selectable: index % 3 !== 0,
         }));
 
 const options: TableProps<Person>['options'] = {
@@ -110,6 +113,7 @@ export const Demo: Story = {
         withLayoutSelector: false,
         withRowActions: false,
         enableRowSelection: true,
+        withUnselectableRows: false,
         enableMultiRowSelection: false,
         withLastUpdated: false,
         withCollapsibleRows: false,
@@ -126,6 +130,9 @@ export const Demo: Story = {
             control: 'radio',
             options: ['header', 'toolbar'],
         },
+        withUnselectableRows: {
+            if: {arg: 'enableRowSelection', truthy: true},
+        },
     },
     render: ({
         loading,
@@ -139,6 +146,7 @@ export const Demo: Story = {
         withLayoutSelector,
         withRowActions,
         enableRowSelection,
+        withUnselectableRows,
         enableMultiRowSelection,
         withLastUpdated,
         withCollapsibleRows,
@@ -193,7 +201,7 @@ export const Demo: Story = {
                 dateRange: withDateRangePicker ? [previousWeek, today] : undefined,
                 predicates: withPredicateFilter ? {age: 'ANY'} : undefined,
             },
-            enableRowSelection,
+            enableRowSelection: enableRowSelection && (withUnselectableRows ? (row) => row.original.selectable : true),
             enableMultiRowSelection,
         });
 
