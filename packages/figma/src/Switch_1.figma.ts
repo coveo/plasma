@@ -49,11 +49,11 @@ export default {
         labelProps.label,
     )}${figma.helpers.react.renderProp(
         'description',
-        wrapperProps.descriptionProps.description,
+        wrapperProps.descriptionProps?.description,
     )}${figma.helpers.react.renderProp(
         'required',
         labelProps.required,
-    )}${figma.helpers.react.renderProp('error', wrapperProps.errorProps.error)}>
+    )}${figma.helpers.react.renderProp('error', wrapperProps.errorProps?.error)}>
                 <Group mt="xs">
                     <Switch label="Label"/>
                     <Switch label="Label"/>

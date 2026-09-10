@@ -78,14 +78,14 @@ export default {
         labelProps.label,
     )}${figma.helpers.react.renderProp(
         'description',
-        wrapperProps.descriptionProps.description,
+        wrapperProps.descriptionProps?.description,
     )}${figma.helpers.react.renderProp('leftSection', inputProps.leftSection)}${figma.helpers.react.renderProp(
         'rightSection',
         inputProps.rightSection,
     )}${figma.helpers.react.renderProp('required', labelProps.required)}${figma.helpers.react.renderProp(
         'disabled',
         inputProps.disabled,
-    )}${figma.helpers.react.renderProp('error', wrapperProps.errorProps.error)}>
+    )}${figma.helpers.react.renderProp('error', wrapperProps.errorProps?.error)}>
                 <Pill.Group>
                     <Pill withRemoveButton>Item</Pill>
                     <Pill withRemoveButton>Item</Pill>

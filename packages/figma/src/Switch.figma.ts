@@ -42,12 +42,12 @@ export default {
     example: figma.code`<Switch${figma.helpers.react.renderProp('checked', checked)}${figma.helpers.react.renderProp(
         'label',
         labelProps.label,
-    )}${figma.helpers.react.renderProp('description', descriptionProps.description)}${figma.helpers.react.renderProp(
+    )}${figma.helpers.react.renderProp('description', descriptionProps?.description)}${figma.helpers.react.renderProp(
         'disabled',
         disabled,
     )}${figma.helpers.react.renderProp('readOnly', readOnly)}${figma.helpers.react.renderProp(
         'required',
         labelProps.required,
-    )}${figma.helpers.react.renderProp('error', errorProps.error)}/>`,
+    )}${figma.helpers.react.renderProp('error', errorProps?.error)}/>`,
     metadata: {nestable: true},
 };

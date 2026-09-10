@@ -79,7 +79,7 @@ export default {
         labelProps.label,
     )}${figma.helpers.react.renderProp(
         'description',
-        wrapperProps.descriptionProps.description,
+        wrapperProps.descriptionProps?.description,
     )}${figma.helpers.react.renderProp('placeholder', inputProps.placeholder)}${figma.helpers.react.renderProp(
         'leftSection',
         inputProps.leftSection,
@@ -88,7 +88,7 @@ export default {
         inputProps.disabled,
     )}${figma.helpers.react.renderProp('readOnly', inputProps.readOnly)}${figma.helpers.react.renderProp(
         'error',
-        wrapperProps.errorProps.error,
+        wrapperProps.errorProps?.error,
     )}/>`,
     metadata: {nestable: true},
 };

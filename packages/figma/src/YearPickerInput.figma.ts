@@ -89,8 +89,8 @@ if (figma.selectedInstance.getPropertyValue('Variant') === 'Year') {
             labelProps.label,
         )}${figma.helpers.react.renderProp('required', labelProps.required)}${figma.helpers.react.renderProp(
             'description',
-            wrapperProps.descriptionProps.description,
-        )}${figma.helpers.react.renderProp('error', wrapperProps.errorProps.error)}${figma.helpers.react.renderProp(
+            wrapperProps.descriptionProps?.description,
+        )}${figma.helpers.react.renderProp('error', wrapperProps.errorProps?.error)}${figma.helpers.react.renderProp(
             'placeholder',
             inputProps.placeholder,
         )}${figma.helpers.react.renderProp('leftSection', inputProps.leftSection)}${figma.helpers.react.renderProp(
@@ -187,8 +187,8 @@ if (figma.selectedInstance.getPropertyValue('Variant') === 'Year') {
             labelProps.label,
         )}${figma.helpers.react.renderProp('required', labelProps.required)}${figma.helpers.react.renderProp(
             'description',
-            wrapperProps.descriptionProps.description,
-        )}${figma.helpers.react.renderProp('error', wrapperProps.errorProps.error)}${figma.helpers.react.renderProp(
+            wrapperProps.descriptionProps?.description,
+        )}${figma.helpers.react.renderProp('error', wrapperProps.errorProps?.error)}${figma.helpers.react.renderProp(
             'placeholder',
             inputProps.placeholder,
         )}${figma.helpers.react.renderProp('leftSection', inputProps.leftSection)}${figma.helpers.react.renderProp(
@@ -285,8 +285,8 @@ if (figma.selectedInstance.getPropertyValue('Variant') === 'Year') {
             labelProps.label,
         )}${figma.helpers.react.renderProp('required', labelProps.required)}${figma.helpers.react.renderProp(
             'description',
-            wrapperProps.descriptionProps.description,
-        )}${figma.helpers.react.renderProp('error', wrapperProps.errorProps.error)}${figma.helpers.react.renderProp(
+            wrapperProps.descriptionProps?.description,
+        )}${figma.helpers.react.renderProp('error', wrapperProps.errorProps?.error)}${figma.helpers.react.renderProp(
             'placeholder',
             inputProps.placeholder,
         )}${figma.helpers.react.renderProp('leftSection', inputProps.leftSection)}${figma.helpers.react.renderProp(
@@ -383,8 +383,8 @@ if (figma.selectedInstance.getPropertyValue('Variant') === 'Year') {
             labelProps.label,
         )}${figma.helpers.react.renderProp('required', labelProps.required)}${figma.helpers.react.renderProp(
             'description',
-            wrapperProps.descriptionProps.description,
-        )}${figma.helpers.react.renderProp('error', wrapperProps.errorProps.error)}${figma.helpers.react.renderProp(
+            wrapperProps.descriptionProps?.description,
+        )}${figma.helpers.react.renderProp('error', wrapperProps.errorProps?.error)}${figma.helpers.react.renderProp(
             'placeholder',
             inputProps.placeholder,
         )}${figma.helpers.react.renderProp('leftSection', inputProps.leftSection)}${figma.helpers.react.renderProp(

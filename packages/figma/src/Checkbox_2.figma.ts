@@ -68,10 +68,10 @@ export default {
         labelProps.label,
     )}${figma.helpers.react.renderProp(
         'description',
-        inputWrapperProps.descriptionProps.description,
+        inputWrapperProps.descriptionProps?.description,
     )}${figma.helpers.react.renderProp('required', labelProps.required)}${figma.helpers.react.renderProp(
         'error',
-        inputWrapperProps.errorProps.error,
+        inputWrapperProps.errorProps?.error,
     )}${figma.helpers.react.renderProp(
         'disabled',
         checkboxGroupProps.disabled,

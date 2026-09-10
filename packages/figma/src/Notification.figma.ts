@@ -16,7 +16,7 @@ if (figma.selectedInstance.getPropertyValue('Variant') === 'Information') {
 
     template = {
         id: 'Notification',
-        imports: ["import { Notification, notifications as mantineNotifications } from '@coveord/plasma-mantine';"],
+        imports: ["import { notifications as mantineNotifications } from '@coveord/plasma-mantine';"],
         example: figma.code`function Example() {
     const notifications = { ...mantineNotifications, showSuccess: mantineNotifications.show, showError: mantineNotifications.show, showWarning: mantineNotifications.show };
     notifications.show({
@@ -37,7 +37,7 @@ if (figma.selectedInstance.getPropertyValue('Variant') === 'Information') {
 
     template = {
         id: 'Notification',
-        imports: ["import { Notification, notifications as mantineNotifications } from '@coveord/plasma-mantine';"],
+        imports: ["import { notifications as mantineNotifications } from '@coveord/plasma-mantine';"],
         example: figma.code`function Example() {
     const notifications = { ...mantineNotifications, showSuccess: mantineNotifications.show, showError: mantineNotifications.show, showWarning: mantineNotifications.show };
     notifications.showSuccess({
@@ -58,7 +58,7 @@ if (figma.selectedInstance.getPropertyValue('Variant') === 'Information') {
 
     template = {
         id: 'Notification',
-        imports: ["import { Notification, notifications as mantineNotifications } from '@coveord/plasma-mantine';"],
+        imports: ["import { notifications as mantineNotifications } from '@coveord/plasma-mantine';"],
         example: figma.code`function Example() {
     const notifications = { ...mantineNotifications, showSuccess: mantineNotifications.show, showError: mantineNotifications.show, showWarning: mantineNotifications.show };
     notifications.showWarning({
@@ -79,7 +79,7 @@ if (figma.selectedInstance.getPropertyValue('Variant') === 'Information') {
 
     template = {
         id: 'Notification',
-        imports: ["import { Notification, notifications as mantineNotifications } from '@coveord/plasma-mantine';"],
+        imports: ["import { notifications as mantineNotifications } from '@coveord/plasma-mantine';"],
         example: figma.code`function Example() {
     const notifications = { ...mantineNotifications, showSuccess: mantineNotifications.show, showError: mantineNotifications.show, showWarning: mantineNotifications.show };
     notifications.showError({
@@ -100,7 +100,7 @@ if (figma.selectedInstance.getPropertyValue('Variant') === 'Information') {
 
     template = {
         id: 'Notification',
-        imports: ["import { Notification, notifications as mantineNotifications } from '@coveord/plasma-mantine';"],
+        imports: ["import { notifications as mantineNotifications } from '@coveord/plasma-mantine';"],
         example: figma.code`function Example() {
     const notifications = { ...mantineNotifications, showSuccess: mantineNotifications.show, showError: mantineNotifications.show, showWarning: mantineNotifications.show };
     const id = notifications.show({
@@ -130,7 +130,7 @@ if (figma.selectedInstance.getPropertyValue('Variant') === 'Information') {
 
     template = {
         id: 'Notification',
-        imports: ["import { Notification, notifications as mantineNotifications } from '@coveord/plasma-mantine';"],
+        imports: ["import { notifications as mantineNotifications } from '@coveord/plasma-mantine';"],
         example: figma.code`function Example() {
     const notifications = { ...mantineNotifications, showSuccess: mantineNotifications.show, showError: mantineNotifications.show, showWarning: mantineNotifications.show };
     const id = notifications.show({

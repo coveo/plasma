@@ -22,12 +22,7 @@ const error = (function () {
         text: nestedLayer67.type !== 'ERROR' ? nestedLayer67.getString('Error') : undefined,
     };
 })();
-const addButton = (function () {
-    const nestedLayer68 = figma.selectedInstance.findInstance('Button');
-    return {
-        text: nestedLayer68.type !== 'ERROR' ? nestedLayer68.getString('Placeholder') : undefined,
-    };
-})();
+const addButton = figma.selectedInstance.getString('Placeholder');
 
 export default {
     id: 'Collection',
@@ -41,7 +36,7 @@ export default {
     )}${figma.helpers.react.renderProp(
         'error',
         error.text,
-    )}${figma.helpers.react.renderProp('addLabel', addButton.text)} columns={[
+    )}${figma.helpers.react.renderProp('addLabel', addButton)} columns={[
         {
             header: 'Name',
             cell: (item) => <div>{item.name}</div>,

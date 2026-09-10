@@ -41,7 +41,7 @@ export default {
         disabled,
     )}${figma.helpers.react.renderProp('error', error.errorMessage)}${figma.helpers.react.renderProp(
         'description',
-        descriptionProps.description,
+        descriptionProps?.description,
     )}/>`,
     metadata: {nestable: true},
 };

@@ -32,7 +32,7 @@ export default {
     example: figma.code`<RadioCard${figma.helpers.react.renderProp('checked', checked)}${figma.helpers.react.renderProp(
         'label',
         labelProps.label,
-    )}${figma.helpers.react.renderProp('description', descriptionProps.description)}${figma.helpers.react.renderProp(
+    )}${figma.helpers.react.renderProp('description', descriptionProps?.description)}${figma.helpers.react.renderProp(
         'disabled',
         disabled,
     )}${figma.helpers.react.renderProp('readOnly', readOnly)}/>`,
