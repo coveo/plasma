@@ -1,5 +1,11 @@
 # @coveord/plasma-tokens
 
+## 60.0.1
+
+### Patch Changes
+
+- Publish source maps with embedded TypeScript sources [#4604](https://github.com/coveo/plasma/pull/4604)
+
 ## 60.0.0
 
 ### Major Changes

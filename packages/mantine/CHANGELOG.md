@@ -1,5 +1,41 @@
 # @coveord/plasma-mantine
 
+## 61.3.0
+
+### Minor Changes
+
+- Clear `Table` row selections with Escape [#4591](https://github.com/coveo/plasma/pull/4591)
+
+  Press Escape to clear selected rows when row selection is enabled. Tables with `forceSelection` enabled preserve their selection.
+
+- Improve `Table` row-selection controls [#4590](https://github.com/coveo/plasma/pull/4590)
+
+  `Table` row and card layouts now share consistent row-selection checkbox behavior. Forced selections cannot be
+  cleared through a checkbox, row checkboxes remain hidden until their row is hovered, focused, or selected, and the
+  row-selection column uses less horizontal space.
+
+- Allow conditional row selection with `useTable` [#4597](https://github.com/coveo/plasma/pull/4597)
+
+  `enableRowSelection` now accepts a predicate in addition to a boolean. Return `false` for rows that users must not be able to select. Rejected rows are skipped by row and card interactions, checkboxes, select-all, and Shift-click range selection.
+
+- Select ranges of `Table` rows with Shift-click [#4593](https://github.com/coveo/plasma/pull/4593)
+
+  With multi-row selection enabled, click a row, card, or its checkbox and then Shift-click another selection target to
+  select every selectable row between them on the displayed page. Existing selections outside the range are preserved.
+
+### Patch Changes
+
+- Distinguish rows unavailable for selection in the Table component [#4601](https://github.com/coveo/plasma/pull/4601)
+
+  Rows rejected by the `enableRowSelection` predicate now appear at 50% opacity, do not display a selection checkbox, and do not trigger `onRowDoubleClick`.
+
+- Let horizontal `Collection` rows inherit their container background [#4599](https://github.com/coveo/plasma/pull/4599)
+
+- Publish source maps with embedded TypeScript sources [#4604](https://github.com/coveo/plasma/pull/4604)
+- Updated dependencies [[`adb7ac2`](https://github.com/coveo/plasma/commit/adb7ac2e05eefdace63be0188e510aca07e098bf)]:
+  - @coveord/plasma-react-icons@60.0.1
+  - @coveord/plasma-tokens@60.0.1
+
 ## 61.2.0
 
 ### Minor Changes
