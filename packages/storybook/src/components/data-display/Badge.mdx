@@ -1,0 +1,63 @@
+import {Meta} from '@storybook/addon-docs/blocks';
+import * as stories from './Badge.stories';
+
+<Meta of={stories} title="@components/Data display/Badge" />
+
+{/* For the agent-friendly version of this documentation, see packages/llms/src/components/Badge.md */}
+
+# Badge
+
+Status label that can display short text, counts, or metadata tags.
+
+## Overview
+
+Use a Badge to attach a compact, scannable label to an item for status, category, count, or metadata.
+
+It works well in lists, cards, and headers where you need to communicate a state at a glance without interrupting the user's flow.
+
+## When to use
+
+Reach for a Badge when a short text label adds meaningful context to an item.
+Use it when that label needs to stay visible without drawing too much attention.
+
+Good fits include status indicators, category tags, and count callouts in dense layouts.
+
+## When not to use
+
+Don't use a Badge when the information needs explanation or action. Use an `Alert` or inline text instead.
+
+Don't use it as a button or link.
+
+If all you need is a small icon-like marker and space is tight, `StatusToken` is a better fit.
+
+## Choosing a variant
+
+Plasma provides pre-configured sub-components for each semantic meaning.
+Use these instead of setting Mantine's `color` or `variant` props directly.
+
+- `Badge.Primary`: the most prominent neutral label on an item
+- `Badge.Secondary`: lower-emphasis neutral metadata
+- `Badge.Success`: healthy, enabled, or completed states
+- `Badge.Warning`: cautionary states
+- `Badge.Critical`: error or failure states
+- `Badge.Disabled`: unavailable or inactive states
+
+## Size
+
+The default `small` size works for dense lists and inline metadata.
+
+Use `large` only when the badge needs to read as a standalone status indicator with more visual weight.
+
+## Content guidance
+
+**Badge label (`children`):**
+
+- Keep text short: one to three words is the target
+- Use nouns or concise state labels, not full sentences
+- Don't write explanatory messages inside a badge
+- Keep wording consistent across badges in the same set: "Active" not "Currently active" alongside "Inactive"
+
+**Semantic color (`Badge.Primary`, `Badge.Success`, etc.):**
+
+- Pick the sub-component that matches the actual meaning of the state, not just the color you want
+- Don't use semantic variants inconsistently across similar statuses in the same view

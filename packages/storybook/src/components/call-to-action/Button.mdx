@@ -1,0 +1,99 @@
+import {Meta} from '@storybook/addon-docs/blocks';
+import * as stories from './Button.stories';
+
+<Meta of={stories} title="@components/Call to action/Button" />
+
+{/* For the agent-friendly version of this documentation, see packages/llms/src/components/Button.md */}
+
+# Button
+
+Action button that triggers tasks and provides async loading and disabled-tooltip feedback.
+
+## Overview
+
+Use Button when users need to trigger an explicit command: submitting a form, confirming a decision, or moving a workflow forward.
+
+It handles async loading automatically and lets you explain why an action is unavailable directly on the button.
+
+## When to use
+
+Reach for Button when the action label should be visible.
+It fits actions that belong to a form, modal, footer, toolbar, or page-level command area.
+
+Don't use it when the action is compact and icon-only. Use `ActionIcon` instead.
+
+Don't use it when the control represents an immediate persistent setting. Use a selection or boolean control.
+
+Avoid adding so many buttons to one area that the decision hierarchy becomes unclear.
+
+## Choosing a variant
+
+Always use the Plasma sub-components instead of passing Mantine's `variant` prop directly.
+
+Use `Button.Primary` for the main action in a decision area, one per area when possible.
+
+Use `Button.Secondary` for important supporting actions like cancel.
+
+Use `Button.Tertiary` or `Button.Quaternary` for low-emphasis actions like preview or back.
+
+Reserve the destructive variants for actions that delete, revoke, archive, or otherwise negatively affect data:
+
+- `Button.DestructivePrimary`: the confirming action in a destructive dialog (e.g. "Delete")
+- `Button.DestructiveSecondary`, `Button.DestructiveTertiary`, `Button.DestructiveQuaternary`: as emphasis decreases
+
+## States
+
+Button supports four important states: normal, loading (during an async `onClick`), disabled with an optional tooltip, and full width.
+
+Async `onClick` handlers show a loading indicator automatically while the promise resolves. No extra wiring needed.
+
+Pair `disabled` with `disabledTooltip` to explain why an action is unavailable when the reason isn't visible nearby.
+
+```tsx
+import {Button} from '@coveord/plasma-mantine';
+
+function Example() {
+    return (
+        <Button.Group>
+            <Button.Secondary>Cancel</Button.Secondary>
+            <Button.Primary>Save</Button.Primary>
+        </Button.Group>
+    );
+}
+
+async function handlePublish() {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+}
+
+function AsyncExample() {
+    return <Button.Primary onClick={handlePublish}>Publish</Button.Primary>;
+}
+
+function DisabledExample() {
+    return (
+        <Button.Primary disabled disabledTooltip="You need edit permission to publish">
+            Publish
+        </Button.Primary>
+    );
+}
+```
+
+## Content guidance
+
+**Button label (`children`):**
+
+- Describe the action that will happen, not the object: "Save changes" not "Changes"
+- Use sentence case
+- Keep it to three words or fewer
+- Don't use vague labels that hide the consequence: "Delete source" not "OK"
+
+**Disabled tooltip (`disabledTooltip`):**
+
+- Explain what the user needs to do to enable the action: "You need edit permission to publish" not "Action unavailable"
+- Write a full sentence
+- Keep it to 20 words or fewer
+
+**Destructive button labels:**
+
+- Make the consequence explicit: "Delete pipeline" not "Confirm"
+- Match the label to the irreversible action being taken

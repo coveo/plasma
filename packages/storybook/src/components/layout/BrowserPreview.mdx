@@ -1,0 +1,97 @@
+import {Meta} from '@storybook/addon-docs/blocks';
+import * as stories from './BrowserPreview.stories';
+
+<Meta of={stories} title="@components/Layout/BrowserPreview" />
+
+{/* For the agent-friendly version of this documentation, see packages/llms/src/components/BrowserPreview.md */}
+
+# BrowserPreview
+
+Renders a simulated browser chrome frame around preview content.
+
+## Overview
+
+Use BrowserPreview to show users how content will look in a browser-like surface.
+
+It's designed for configuration and authoring flows where you need to visually separate the editable settings from the rendered output.
+
+## When to use
+
+Reach for BrowserPreview when the user needs to evaluate how a page, result, or experience will look in context.
+Use it when that context benefits from a browser frame to set expectations.
+
+It works well when the preview has a title or a tooltip to clarify what's being shown.
+It also fits when the controls that drive the preview live outside the frame.
+
+## When not to use
+
+Don't use BrowserPreview when the content is the actual page rather than a preview.
+
+Don't use it as decoration around ordinary content. The frame should add context, not just chrome.
+
+If users need to interact with a full application shell, use `AppShell` instead.
+
+For ordinary content grouping, use `Card` or layout primitives.
+
+## Implementation notes
+
+Keep controls that modify the preview outside the preview frame when possible.
+
+Preview content can be interactive when that helps users validate behavior.
+
+```tsx
+import {useState} from 'react';
+import {BrowserPreview, Flex, Pagination, Stack, Text} from '@coveord/plasma-mantine';
+
+const products = [
+    {name: 'Wireless Mouse', department: 'Accessories', price: '$29'},
+    {name: 'Mechanical Keyboard', department: 'Accessories', price: '$99'},
+    {name: 'USB-C Dock', department: 'Peripherals', price: '$149'},
+    {name: 'Noise-Cancelling Headphones', department: 'Audio', price: '$199'},
+    {name: '4K Monitor', department: 'Displays', price: '$399'},
+    {name: 'Laptop Stand', department: 'Workspace', price: '$59'},
+];
+
+const pageSize = 3;
+
+export function Example() {
+    const [page, setPage] = useState(1);
+    const total = Math.ceil(products.length / pageSize);
+    const currentPageProducts = products.slice((page - 1) * pageSize, page * pageSize);
+
+    return (
+        <BrowserPreview title="Product catalog" headerTooltip="Preview the content exactly as users will see it.">
+            <Stack flex={1}>
+                <Stack gap="xl" pb="sm">
+                    {currentPageProducts.map((product) => (
+                        <Stack key={product.name} gap={0}>
+                            <Text>{product.name}</Text>
+                            <Text size="xs" c="dimmed">
+                                {product.department} • {product.price}
+                            </Text>
+                        </Stack>
+                    ))}
+                </Stack>
+
+                <Flex justify="center" mt="auto">
+                    <Pagination value={page} total={total} onChange={setPage} />
+                </Flex>
+            </Stack>
+        </BrowserPreview>
+    );
+}
+```
+
+## Content guidance
+
+**Title (`title`):**
+
+- Describe what is being previewed, not the feature that drives it: "Product catalog" not "Search results preview"
+- Use sentence case
+- Keep it short: two to four words
+
+**Header tooltip (`headerTooltip`):**
+
+- Clarify what the user is looking at, not how the feature works: "Preview the content exactly as users will see it." not "This component renders a simulated browser frame."
+- Write a full sentence and end with a period
+- Keep it to 20 words or fewer
