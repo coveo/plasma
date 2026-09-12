@@ -1,0 +1,64 @@
+import {Meta} from '@storybook/addon-docs/blocks';
+import * as stories from './Accordion.stories';
+
+<Meta of={stories} title="@components/layout/Accordion" />
+
+{/* For the agent-friendly version of this documentation, see packages/llms/src/components/Accordion.md */}
+
+# Accordion
+
+Collapsible content group for progressively revealing related sections without leaving the current page.
+
+## Overview
+
+Use an Accordion when related content can be grouped under clear section labels and users benefit from scanning those labels before reading the details.
+
+It works well when the content is secondary to the main task and doesn't need to be visible all at once.
+
+Don't use it when content is required to complete the current task, when sections are navigation destinations, or when hiding content could cause users to miss errors or required decisions.
+
+## When to use multiple open sections
+
+Use the `multiple` prop when users commonly compare information across sections or need more than one section open while working.
+
+## Choosing between Accordion and similar components
+
+- Use `Tabs` when each section is a peer view and users choose one at a time.
+- Use an `Alert` or inline helper text when information is important enough to stay visible.
+- Use a table, list, or cards when users need to compare many items side by side.
+- Use `Accordion.ControlDisabled` when a section heading should appear in the structure but shouldn't be interactive.
+
+## Variants
+
+- `default` — standard accordion treatment.
+- `contained` — adds a clearer visual boundary from surrounding content.
+- `separated` — each item reads as an independent expandable section.
+- `filled` — stronger visual weight.
+
+## Content guidance
+
+**Control labels (`Accordion.Control`)**
+
+- Keep labels short and specific, ideally 1–4 words.
+- Describe the content inside, not the action of expanding: "Project details" not "View project details".
+- Use sentence case.
+- Don't end with a colon or punctuation.
+
+**Panel content (`Accordion.Panel`)**
+
+- Keep content focused on one section topic.
+- Write full sentences for descriptive content; use fragments only for lists or form fields.
+- Add a period after full sentences; don't add one after fragments.
+- If every label needs a long sentence to make sense, the content likely needs a different structure.
+
+**Ordering (`Accordion.Item`)**
+
+- Put the most important or frequently used section first.
+- Group related items together.
+- If you mix `Accordion.ControlDisabled` items with collapsible ones, put the non-interactive items last.
+
+## Accessibility
+
+- Each control needs clear label text that describes its panel content.
+- Keep panel content logically related to its control.
+- Interactive content inside open panels must remain keyboard reachable.
