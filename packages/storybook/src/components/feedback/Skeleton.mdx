@@ -1,0 +1,40 @@
+import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import * as SkeletonStories from './Skeleton.stories';
+
+<Meta of={SkeletonStories} />
+
+# Skeleton
+
+Placeholder that reserves the shape of content while it loads.
+
+## Overview
+
+The `Skeleton` reduces layout shifts and perceived wait time by showing where incoming content will appear.
+
+It works best when the approximate size and shape of that content are known.
+
+## Usage
+
+<Canvas of={SkeletonStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- Asynchronous content will replace a predictable layout.
+- Users benefit from seeing the rough shape of incoming text, images, avatars, or cards.
+- The interface needs to reserve space while data loads.
+
+### When not to use
+
+- When completion can be measured, use `Progress`.
+- For a compact indeterminate indicator, use `Loader` or the `Button` loading state.
+- When the final content shape isn't predictable.
+- For a true empty state, show an empty-state message instead.
+
+### Best practices
+
+- Match each placeholder's dimensions to the content it replaces.
+- Use `circle` for avatar or round icon placeholders.
+- Combine multiple skeletons to reflect the structure of a larger content region.
+- Set `aria-busy` on the surrounding region while content is pending, then clear it when content loads.

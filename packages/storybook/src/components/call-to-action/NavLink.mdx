@@ -1,0 +1,46 @@
+import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import * as NavLinkStories from './NavLink.stories';
+
+<Meta of={NavLinkStories} />
+
+# NavLink
+
+Navigation item for sidebars and vertical menus.
+
+## Overview
+
+The `NavLink` communicates the current location and supports icons, badges, disabled states, and one level of nested links.
+
+## Usage
+
+<Canvas of={NavLinkStories.Demo} />
+<Controls of={NavLinkStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- To build a sidebar or vertical navigation menu.
+- To identify the section that users are viewing.
+- To group one level of child navigation links.
+- To add a helpful route icon or status badge.
+
+### When not to use
+
+- For links within prose, use an `Anchor`.
+- For commands or data changes, use a `Button`.
+- For flat horizontal navigation, use tabs or another navigation pattern.
+
+### Best practices
+
+- Mark only the link for the current route as active.
+- Set `href` when the item navigates to a destination.
+- Use the left section for route icons and the right section for contextual badges.
+- Keep nested navigation to one level.
+- Remove unavailable destinations instead of relying on disabled links alone.
+
+### Content guidelines
+
+- Give each item a short, specific navigation label.
+- Use title case for navigation menu items.
+- Keep labels distinct enough to scan quickly.

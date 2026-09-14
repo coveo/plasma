@@ -1,0 +1,43 @@
+import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import * as ImageStories from './Image.stories';
+
+<Meta of={ImageStories} />
+
+# Image
+
+Responsive image that controls how visual content fits within defined dimensions.
+
+## Overview
+
+`Image` renders an image with predictable sizing, cropping, and fallback behavior.
+
+Use it for meaningful or decorative images inside cards, panels, and other bounded layouts.
+
+## Usage
+
+<Canvas of={ImageStories.Demo} />
+<Controls of={ImageStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- Show a thumbnail or illustration inside a card, panel, or sized container.
+- Control whether an image fills its dimensions or remains fully visible.
+
+### When not to use
+
+- For a full section background, use `BackgroundImage`.
+- For a circular user or account image, use `Avatar`.
+
+### Best practices
+
+- Set explicit dimensions to reduce layout shift while the image loads.
+- Use the default `cover` fit when cropping is acceptable.
+- Use `contain` when the entire image needs to remain visible.
+- Rely on the Plasma fallback or provide a context-specific `fallbackSrc` for failed sources.
+
+### Content guidelines
+
+- Describe meaningful image content with concise `alt` text.
+- Use `alt=""` when an image is purely decorative.

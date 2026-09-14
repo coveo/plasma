@@ -1,62 +1,61 @@
-import {Anchor} from '@coveord/plasma-mantine/components/Anchor';
-import {Breadcrumbs} from '@coveord/plasma-mantine/components/Breadcrumbs';
-import {Flex} from '@coveord/plasma-mantine/components/Flex';
-import {Text} from '@coveord/plasma-mantine/components/Text';
+import {Anchor, Breadcrumbs, Flex} from '@coveord/plasma-mantine';
 import {IconChevronLeft} from '@coveord/plasma-react-icons';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
-const meta: Meta<typeof Breadcrumbs> = {
+interface BreadcrumbsStoryArgs {
+    ancestorCount: 1 | 2 | 3;
+}
+
+const meta: Meta<BreadcrumbsStoryArgs> = {
     title: '@components/Call to action/Breadcrumbs',
     id: 'Breadcrumbs',
-    component: Breadcrumbs,
     parameters: {
         layout: 'centered',
     },
     args: {
-        level: 1,
-    } as any,
+        ancestorCount: 1,
+    },
     argTypes: {
-        level: {
-            control: {type: 'number', min: 1, max: 3},
-            description: 'The level of the breadcrumb',
+        ancestorCount: {
+            control: 'inline-radio',
+            options: [1, 2, 3],
+            description: 'Sets the number of ancestor links shown in this example.',
             table: {
                 defaultValue: {summary: '1'},
-                type: {summary: 'number'},
+                type: {summary: '1 | 2 | 3'},
             },
         },
-    } as any,
+    },
 };
 export default meta;
-type Story = StoryObj<typeof Breadcrumbs>;
+type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
-    render: (props: any) => {
-        switch (props.level) {
+    render: ({ancestorCount}) => {
+        switch (ancestorCount) {
             case 2:
                 return (
                     <Breadcrumbs>
                         <Anchor href="#" inherit>
-                            Grand parent
+                            Grandparent
                         </Anchor>
                         <Anchor href="#" inherit>
                             Parent
                         </Anchor>
-                        <Text inherit>Current</Text>
                     </Breadcrumbs>
                 );
             case 3:
                 return (
                     <Breadcrumbs>
                         <Anchor href="#" inherit>
-                            Great grand parent
+                            Great-grandparent
                         </Anchor>
                         <Anchor href="#" inherit>
-                            Grand parent
+                            Grandparent
                         </Anchor>
                         <Anchor href="#" inherit>
                             Parent
                         </Anchor>
-                        <Text inherit>Current</Text>
                     </Breadcrumbs>
                 );
             case 1:
@@ -65,11 +64,10 @@ export const Demo: Story = {
                     <Breadcrumbs>
                         <Anchor href="#" inherit>
                             <Flex align="center">
-                                <IconChevronLeft aria-label="arrow pointing back" size={16} />
+                                <IconChevronLeft aria-hidden="true" size={16} />
                                 Parent
                             </Flex>
                         </Anchor>
-                        <Text inherit>Current</Text>
                     </Breadcrumbs>
                 );
         }

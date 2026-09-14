@@ -1,0 +1,46 @@
+import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import * as FacetStories from './Facet.stories';
+
+<Meta of={FacetStories} />
+
+# Facet
+
+Searchable list of selectable values for filtering a result set.
+
+## Overview
+
+The `Facet` helps users narrow search, analytics, catalog, or table results by a known dimension.
+
+It supports multiple selections, grouped values, result counts, and search for longer lists.
+
+## Usage
+
+<Canvas of={FacetStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- Users filter results by one or more values in a category.
+- Option counts help users understand the available results.
+- A longer list benefits from search or grouping.
+
+### When not to use
+
+- For a value submitted as part of a form, use a form selection control.
+- For a compact single-selection field, use a `Select` or `Radio`.
+- For dates, ranges, or predicates, use a specialized filter.
+
+### Best practices
+
+- Keep short lists directly scannable. Search is hidden by default for seven or fewer values.
+- Keep selected filters visible so users can explain the current results.
+- Group related values under clear, distinct headings.
+- Use counts only when they accurately reflect the available results.
+
+### Content guidelines
+
+- Name the filter dimension in the title, such as **Sources** or **Language**.
+- Match option labels to terms users recognize in the results.
+- Format counts consistently within the filter panel.
+- Make empty and no-match messages concise and specific.

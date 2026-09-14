@@ -1,0 +1,38 @@
+import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import * as ActionIconStories from './ActionIcon.stories';
+
+<Meta of={ActionIconStories} />
+
+# ActionIcon
+
+Icon-only button for compact, familiar actions.
+
+## Overview
+
+The `ActionIcon` triggers an action without adding a visible text label. It works best in dense layouts and repeated item controls.
+
+## Usage
+
+<Canvas of={ActionIconStories.Demo} />
+<Controls of={ActionIconStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- The action has a familiar, recognizable icon.
+- Space is limited in a table, card, or toolbar.
+- The action supports nearby content instead of carrying the main page task.
+
+### When not to use
+
+- For a primary, unfamiliar, or high-impact action, use a `Button` with a visible label.
+- If the icon is ambiguous, use a text label.
+- If many adjacent icons are difficult to distinguish, simplify or regroup the actions.
+
+### Best practices
+
+- Give every icon-only action an accessible name that describes the action.
+- Select emphasis through the Plasma sub-components shown in Usage.
+- Reserve destructive emphasis for actions that negatively affect data.
+- Explain why a disabled action is unavailable with `disabledTooltip`.

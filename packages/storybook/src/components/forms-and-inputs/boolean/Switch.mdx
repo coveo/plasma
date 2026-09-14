@@ -1,0 +1,45 @@
+import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import * as SwitchStories from './Switch.stories';
+
+<Meta of={SwitchStories} />
+
+# Switch
+
+Toggle control for turning a binary setting on or off.
+
+## Overview
+
+The `Switch` communicates the current state of an independent setting and lets users change it directly.
+
+Use `Switch.Group` when several related settings remain independent from one another.
+
+## Usage
+
+<Canvas of={SwitchStories.Default} />
+
+## Guidelines
+
+### When to use
+
+- Users turn a true binary setting on or off.
+- The control represents states such as enabled, visible, or active.
+- Several independent settings share one category.
+
+### When not to use
+
+- For mutually exclusive options, use a `Radio` or `SegmentedControl`.
+- For selecting any number of options from a set, use a `Checkbox`.
+- For destructive or irreversible actions, use an explicit confirmation flow.
+
+### Best practices
+
+- Give every switch a visible, programmatically associated label.
+- Describe the active state, not the action of toggling it.
+- Add a concise description when users need to understand the setting's effect.
+- Keep grouped switches independent. Use a different control when only one option can be active.
+- Show the current state when a switch is disabled or read-only.
+
+### Content guidelines
+
+- Use labels such as **Email notifications**, not **Enable email notifications**.
+- Keep descriptions to one sentence and explain the result of turning the setting on.

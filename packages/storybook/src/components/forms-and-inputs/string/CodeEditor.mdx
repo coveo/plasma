@@ -1,0 +1,46 @@
+import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import * as CodeEditorStories from './CodeEditor.stories';
+
+<Meta of={CodeEditorStories} />
+
+# CodeEditor
+
+Monaco-based editor for entering and reviewing structured, syntax-sensitive content.
+
+## Overview
+
+`CodeEditor` gives technical content a dedicated editing surface with syntax highlighting, search, copy, and validation behavior.
+
+Use it when structure matters and a standard text field would make the content difficult to understand or edit.
+
+## Usage
+
+<Canvas of={CodeEditorStories.Demo} />
+<Controls of={CodeEditorStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- Users edit JSON, XML, Python, Markdown, or other code-like content.
+- Syntax highlighting helps users understand or validate a value.
+- Multi-line technical content benefits from search or copy actions.
+
+### When not to use
+
+- Use `TextInput` for short, single-line values.
+- Use `Textarea` for comments, descriptions, or other prose.
+- Avoid editor complexity when syntax support does not help the task.
+
+### Best practices
+
+- Match the language to the expected syntax.
+- Give the editor enough height to understand and edit the content.
+- Use `readOnly` when content remains available for review and copy.
+- Provide examples and useful validation for large structured values.
+
+### Content guidelines
+
+- Label the kind of content users need to enter.
+- Describe required structure or formatting before users start editing.
+- Make validation messages identify the problem and its location when possible.

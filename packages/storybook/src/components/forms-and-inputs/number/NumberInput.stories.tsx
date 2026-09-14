@@ -1,4 +1,4 @@
-import {NumberInput} from '@coveord/plasma-mantine/components/NumberInput';
+import {NumberInput} from '@coveord/plasma-mantine';
 import {IconCoins} from '@coveord/plasma-react-icons';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import type {ComponentProps} from 'react';
@@ -22,6 +22,25 @@ const meta = {
     component: NumberInput,
     parameters: {
         layout: 'centered',
+        controls: {
+            include: [
+                'label',
+                'description',
+                'error',
+                'required',
+                'disabled',
+                'readOnly',
+                'leftSection',
+                'prefix',
+                'suffix',
+                'min',
+                'max',
+                'allowNegative',
+                'allowDecimal',
+                'thousandSeparator',
+                'decimalSeparator',
+            ],
+        },
     },
     args: {
         ...InputWrapperArgs.Args,
@@ -32,44 +51,79 @@ const meta = {
     argTypes: {
         ...InputWrapperArgs.ArgsTypes,
         ...BaseInputArgs.ArgsTypes,
+        label: {
+            control: 'text',
+            description: 'Content displayed as the field label.',
+            table: {type: {summary: 'ReactNode'}, defaultValue: {summary: 'undefined'}},
+        },
+        description: {
+            control: 'text',
+            description: 'Helper content displayed below the label.',
+            table: {type: {summary: 'ReactNode'}, defaultValue: {summary: 'undefined'}},
+        },
+        error: {
+            control: 'text',
+            description: 'Validation feedback displayed below the input.',
+            table: {type: {summary: 'ReactNode'}, defaultValue: {summary: 'undefined'}},
+        },
+        required: {
+            control: 'boolean',
+            description: 'Marks the field as required and displays a required indicator.',
+            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
+        },
+        disabled: {
+            control: 'boolean',
+            description: 'Disables the input and its increment and decrement controls.',
+            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
+        },
+        readOnly: {
+            control: 'boolean',
+            description: 'Prevents users from changing the value.',
+            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
+        },
         leftSection: {
             control: 'boolean',
-            description: 'Show icon in left section',
+            description: 'Toggles a representative icon before the value in this example.',
             table: {
-                type: {summary: 'ReactNode'},
+                type: {summary: 'boolean'},
+                defaultValue: {summary: 'false'},
             },
         },
         prefix: {
             control: 'text',
-            description: 'Prefix for the input value',
+            description: 'Adds text before the numeric value.',
             table: {
                 type: {summary: 'string'},
+                defaultValue: {summary: 'undefined'},
             },
         },
         suffix: {
             control: 'text',
-            description: 'Suffix for the input value',
+            description: 'Adds text after the numeric value.',
             table: {
                 type: {summary: 'string'},
+                defaultValue: {summary: 'undefined'},
             },
         },
         min: {
             control: 'number',
-            description: 'Minimum value',
+            description: 'Sets the minimum allowed value.',
             table: {
-                type: {summary: 'number'},
+                type: {summary: 'NumberInputNumericType'},
+                defaultValue: {summary: 'undefined'},
             },
         },
         max: {
             control: 'number',
-            description: 'Maximum value',
+            description: 'Sets the maximum allowed value.',
             table: {
-                type: {summary: 'number'},
+                type: {summary: 'NumberInputNumericType'},
+                defaultValue: {summary: 'undefined'},
             },
         },
         allowNegative: {
             control: 'boolean',
-            description: 'Allow negative values',
+            description: 'Allows users to enter negative values.',
             table: {
                 defaultValue: {summary: 'true'},
                 type: {summary: 'boolean'},
@@ -77,7 +131,7 @@ const meta = {
         },
         allowDecimal: {
             control: 'boolean',
-            description: 'Allow decimal values',
+            description: 'Allows users to enter decimal values.',
             table: {
                 defaultValue: {summary: 'true'},
                 type: {summary: 'boolean'},
@@ -85,15 +139,15 @@ const meta = {
         },
         thousandSeparator: {
             control: 'text',
-            description: 'Thousand separator character',
+            description: 'Sets the character used to group thousands.',
             table: {
-                defaultValue: {summary: "','"},
-                type: {summary: 'string'},
+                defaultValue: {summary: 'undefined'},
+                type: {summary: 'string | boolean'},
             },
         },
         decimalSeparator: {
             control: 'text',
-            description: 'Decimal separator character',
+            description: 'Sets the character used as the decimal separator.',
             table: {
                 defaultValue: {summary: "'.'"},
                 type: {summary: 'string'},

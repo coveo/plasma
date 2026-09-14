@@ -1,0 +1,45 @@
+import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import * as StepperStories from './Stepper.stories';
+
+<Meta of={StepperStories} />
+
+# Stepper
+
+Progress indicator that guides users through a linear, multi-step task.
+
+## Overview
+
+The `Stepper` breaks a complex flow into distinct stages and shows what is complete, active, and upcoming.
+
+Users can move forward with navigation controls and return to completed steps when they need to review earlier work.
+
+## Usage
+
+<Canvas of={StepperStories.WithNavigation} />
+
+## Guidelines
+
+### When to use
+
+- A task has a clear sequence of distinct stages.
+- Showing all stage content at once would make the task harder to complete.
+- Users may need to return to completed stages.
+
+### When not to use
+
+- For a task with only a start and completion state, use a simpler flow.
+- For parallel or optional tasks that don't have a required order.
+- When more than five or six steps would make the header difficult to scan.
+
+### Best practices
+
+- Provide **Back** and **Next** controls instead of relying only on step headers.
+- Let users select completed steps, but prevent them from skipping required upcoming steps.
+- Use `Stepper.Completed` to confirm that the flow has finished.
+- Keep the logical and keyboard focus order aligned with the visual step order.
+
+### Content guidelines
+
+- Keep step labels to two or three words.
+- Use descriptions only for short supporting details.
+- Make navigation button labels describe the direction or result.

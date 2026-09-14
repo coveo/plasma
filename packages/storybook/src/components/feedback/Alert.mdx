@@ -1,0 +1,46 @@
+import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import * as AlertStories from './Alert.stories';
+
+<Meta of={AlertStories} />
+
+# Alert
+
+Persistent callout that communicates contextual information, advice, warnings, errors, or success.
+
+## Overview
+
+The `Alert` keeps an important message visible near the page, form, or workflow it affects.
+
+Use its semantic sub-components to give each message a consistent icon and visual treatment.
+
+## Usage
+
+<Canvas of={AlertStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- A message needs to remain visible in the page layout.
+- Users need context, advice, or feedback near related content.
+- The message matters more than helper text but doesn't require an interruption.
+
+### When not to use
+
+- For lightweight, transient feedback, use a `Notification`.
+- For optional field clarification, use helper text or `Input.LabelInfo`.
+- For a blocking decision, use a `Prompt` or `Modal`.
+- For a compact status, use a `Badge` or `StatusToken`.
+
+### Best practices
+
+- Select intent with `Alert.Information`, `Alert.Advice`, `Alert.Warning`, `Alert.Critical`, or `Alert.Success`.
+- Match the alert intent to the importance of the message.
+- Group related messages instead of stacking several alerts.
+- Link to supporting content instead of placing long documentation in an alert.
+
+### Content guidelines
+
+- Write a short title that states the purpose of the message.
+- Explain the impact or next step in the body.
+- For critical alerts, make the consequence and recovery path clear.

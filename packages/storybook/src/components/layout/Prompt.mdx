@@ -1,0 +1,44 @@
+import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import * as PromptStories from './Prompt.stories';
+
+<Meta of={PromptStories} />
+
+# Prompt
+
+Confirmation dialog with semantic intent and focused footer actions.
+
+## Overview
+
+The `Prompt` asks users to confirm or acknowledge an important decision before continuing. Information, success, warning, and critical variants communicate the consequence or tone of that decision.
+
+## Usage
+
+<Canvas of={PromptStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- Users must confirm a meaningful or consequential action.
+- Semantic tone helps communicate information, success, warning, or critical impact.
+- The decision has a clear cancel and confirm path.
+
+### When not to use
+
+- The overlay contains a larger form or custom task. Use `Modal` instead.
+- The message can remain visible inline. Use `Alert` instead.
+- A routine, low-risk action does not need confirmation.
+
+### Best practices
+
+- Use the warning variant when an action needs caution.
+- Reserve the critical variant for destructive or high-risk decisions.
+- Keep the prompt focused on one decision and place its actions in `Prompt.Footer`.
+- Avoid prompts when users need to compare information on the underlying page.
+
+### Content guidelines
+
+- Name the decision in the title.
+- Explain the consequences and whether the action is reversible.
+- Use a specific confirm label such as **Delete source**, not **OK**.
+- Make the safe alternative clear in the cancel label.

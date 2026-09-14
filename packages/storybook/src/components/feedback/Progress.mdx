@@ -1,0 +1,39 @@
+import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import * as ProgressStories from './Progress.stories';
+
+<Meta of={ProgressStories} />
+
+# Progress
+
+Horizontal bar that shows how far a measurable task or process has advanced.
+
+## Overview
+
+The `Progress` gives users a proportional view of completion when a task has a known endpoint.
+
+It provides more concrete feedback than an indeterminate loading indicator.
+
+## Usage
+
+<Canvas of={ProgressStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- A task has a measurable value between 0 and 100.
+- Users benefit from seeing advancement toward a known endpoint.
+- Semantic color helps communicate the health or outcome of the process.
+
+### When not to use
+
+- When progress can't be measured, use a `Loader` or `Skeleton`.
+- For a circular presentation, use `RingProgress` or `SemiCircleProgress`.
+- For a distribution or proportion that isn't progress, use a suitable data visualization.
+
+### Best practices
+
+- Pair the bar with visible text when the exact value matters.
+- Add a visible label or `aria-label` that names what the bar measures.
+- Announce meaningful dynamic updates with a live region when needed.
+- Use color consistently for information, success, caution, and error states.

@@ -1,0 +1,46 @@
+import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import * as YearPickerInputStories from './YearPickerInput.stories';
+
+<Meta of={YearPickerInputStories} />
+
+# YearPickerInput
+
+Year-grid input for selecting one year, multiple years, or a continuous year range.
+
+## Overview
+
+The `YearPickerInput` collects year-level values without asking users for unnecessary month or day details.
+
+It provides a structured grid for report years, milestones, and comparison periods.
+
+## Usage
+
+<Canvas of={YearPickerInputStories.Demo} />
+<Controls of={YearPickerInputStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- Users need a fiscal, calendar, graduation, or founding year.
+- Users need a continuous span of years for reporting or comparison.
+- A year grid is easier to scan than typing an unconstrained value.
+
+### When not to use
+
+- For a specific date, use a `DatePickerInput`.
+- When the year is derived from other data, calculate it instead of asking users.
+- For a small fixed set of years, use a `Select`.
+
+### Best practices
+
+- Use `default` for one year and `range` for a continuous span.
+- Use `multiple` only for nonconsecutive years.
+- Set `minDate` and `maxDate` when the domain limits valid years.
+- Enable `clearable` for optional fields.
+
+### Content guidelines
+
+- Use a short noun phrase for the label, such as **Report year** or **Founding year**.
+- Match the placeholder to the mode, such as **Pick a year** or **Pick a year range**.
+- Explain the valid year or order in validation feedback.

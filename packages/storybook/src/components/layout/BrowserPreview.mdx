@@ -1,0 +1,41 @@
+import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import * as BrowserPreviewStories from './BrowserPreview.stories';
+
+<Meta of={BrowserPreviewStories} />
+
+# BrowserPreview
+
+Simulated browser frame that places preview content in context.
+
+## Overview
+
+The `BrowserPreview` separates rendered output from the settings or authoring controls around it. Its browser-like header helps users understand that they are evaluating a preview rather than the current application page.
+
+## Usage
+
+<Canvas of={BrowserPreviewStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- Users need to evaluate content as it will appear in a browser-like surface.
+- A configuration or authoring flow needs a clear preview region.
+- A title or brief tooltip helps identify the preview.
+
+### When not to use
+
+- The content is the actual page rather than a preview.
+- A browser frame adds decoration without useful context.
+- The interface needs a real application layout. Use `AppShell` instead.
+
+### Best practices
+
+- Keep controls that change the output outside the preview frame when possible.
+- Include interactive preview content only when it helps users validate behavior.
+- Use ordinary layout primitives for content that does not need browser context.
+
+### Content guidelines
+
+- Use a short title that identifies what is being previewed.
+- Keep the header tooltip focused on the preview, not the entire feature.

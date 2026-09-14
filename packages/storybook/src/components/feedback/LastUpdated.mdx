@@ -1,0 +1,44 @@
+import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import * as LastUpdatedStories from './LastUpdated.stories';
+
+<Meta of={LastUpdatedStories} />
+
+# LastUpdated
+
+Timestamp that tells users when visible data was last refreshed or synchronized.
+
+## Overview
+
+The `LastUpdated` helps users judge the freshness of information in dashboards, monitoring views, and other async surfaces.
+
+It provides a consistent label and time format that you can customize when the context requires it.
+
+## Usage
+
+<Canvas of={LastUpdatedStories.Demo} />
+<Controls of={LastUpdatedStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- Users need to know when visible data was last refreshed.
+- A view updates through polling or another background process.
+- Data freshness can affect a user's decision.
+
+### When not to use
+
+- For a business event such as creation or modification time, use regular text or a table column.
+- For static data where recency doesn't affect decisions.
+- For a detailed history, use an audit trail.
+
+### Best practices
+
+- Make sure the timestamp reflects the data currently on screen.
+- Keep the default label and format unless the context needs different wording or precision.
+- Avoid precision that doesn't help users judge freshness.
+
+### Content guidelines
+
+- Name what was updated when the surrounding context isn't clear.
+- Match the timestamp precision to the decisions users need to make.

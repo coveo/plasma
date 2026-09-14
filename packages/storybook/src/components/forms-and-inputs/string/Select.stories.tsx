@@ -1,4 +1,4 @@
-import {Select} from '@coveord/plasma-mantine/components/Select';
+import {Select} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import type {ComponentProps} from 'react';
 import {Args} from '../../../Args.js';
@@ -18,6 +18,21 @@ const meta = {
     component: Select,
     parameters: {
         layout: 'centered',
+        controls: {
+            include: [
+                'label',
+                'labelInfo',
+                'description',
+                'error',
+                'required',
+                'disabled',
+                'readOnly',
+                'placeholder',
+                'searchable',
+                'clearable',
+                'allowDeselect',
+            ],
+        },
     },
     args: {
         ...InputWrapperArgs.Args,
@@ -31,10 +46,49 @@ const meta = {
     argTypes: {
         ...InputWrapperArgs.ArgsTypes,
         ...BaseInputArgs.ArgsTypes,
-        placeholder: Args.placeholder.type,
+        label: {
+            control: 'text',
+            description: 'Content displayed as the field label.',
+            table: {type: {summary: 'ReactNode'}, defaultValue: {summary: 'undefined'}},
+        },
+        labelInfo: {
+            control: 'text',
+            description: 'Sets the Input.LabelInfo tooltip content in this example.',
+            table: {type: {summary: 'string'}, defaultValue: {summary: "'Additional information'"}},
+        },
+        description: {
+            control: 'text',
+            description: 'Helper content displayed below the label.',
+            table: {type: {summary: 'ReactNode'}, defaultValue: {summary: 'undefined'}},
+        },
+        error: {
+            control: 'text',
+            description: 'Validation feedback displayed below the input.',
+            table: {type: {summary: 'ReactNode'}, defaultValue: {summary: 'undefined'}},
+        },
+        required: {
+            control: 'boolean',
+            description: 'Marks the field as required and displays a required indicator.',
+            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
+        },
+        disabled: {
+            control: 'boolean',
+            description: 'Disables the input.',
+            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
+        },
+        readOnly: {
+            control: 'boolean',
+            description: 'Prevents users from changing the selected value.',
+            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
+        },
+        placeholder: {
+            ...Args.placeholder.type,
+            description: 'Text displayed when no option is selected.',
+            table: {type: {summary: 'string'}, defaultValue: {summary: 'undefined'}},
+        },
         searchable: {
             control: 'boolean',
-            description: 'Allow searching through options',
+            description: 'Lets users filter options by typing.',
             table: {
                 defaultValue: {summary: 'false'},
                 type: {summary: 'boolean'},
@@ -42,7 +96,7 @@ const meta = {
         },
         clearable: {
             control: 'boolean',
-            description: 'Allow clearing the value',
+            description: 'Displays a clear button when the input has a value.',
             table: {
                 defaultValue: {summary: 'false'},
                 type: {summary: 'boolean'},
@@ -50,7 +104,7 @@ const meta = {
         },
         allowDeselect: {
             control: 'boolean',
-            description: 'Allow deselecting the value by clicking on the selected option',
+            description: 'Lets users clear the value by selecting the active option again.',
             table: {
                 defaultValue: {summary: 'true'},
                 type: {summary: 'boolean'},

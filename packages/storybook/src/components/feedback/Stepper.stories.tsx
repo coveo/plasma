@@ -90,7 +90,10 @@ export const WithNavigation: Story = {
 
         return (
             <>
-                <Stepper active={active} onStepClick={(stepIndex) => setActive({active: stepIndex})}>
+                <Stepper
+                    active={active}
+                    onStepClick={(stepIndex) => stepIndex <= active && setActive({active: stepIndex})}
+                >
                     <Stepper.Step label={props.firstStepLabel} description={props.firstStepDescription}>
                         Step 1 content: Create an account
                     </Stepper.Step>
