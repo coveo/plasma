@@ -27,6 +27,11 @@ export interface PaginationState {
  */
 export type EnableRowSelection<TData> = boolean | ((row: Row<TData>) => boolean);
 
+/**
+ * Enables or disables multi-row selection globally, or determines whether each row can be bulk selected.
+ */
+export type EnableMultiRowSelection<TData> = boolean | ((row: Row<TData>) => boolean);
+
 export interface TableState<TData = unknown> {
     /**
      * Current pagination state
@@ -165,9 +170,9 @@ export interface TableStore<TData = unknown> {
      */
     getSelectedRow: () => TData | null;
     /**
-     * Whether the user can select multiple rows at the same time.
+     * The multi-row selection configuration currently used by the table.
      */
-    multiRowSelectionEnabled: boolean;
+    multiRowSelectionEnabled: EnableMultiRowSelection<TData>;
     /**
      * The row selection configuration currently used by the table.
      *
@@ -196,13 +201,15 @@ export interface UseTableOptions<TData = unknown> {
      */
     enableRowSelection?: EnableRowSelection<TData>;
     /**
-     * Whether multiple rows can be selected at the same time.
+     * Configures which rows can be selected as part of a multi-row selection.
      *
-     * Only applies when row selection is enabled.
+     * Set to `true` to allow bulk-selecting every row, `false` to disable multi-row selection, or provide a predicate
+     * to determine whether each row can be bulk selected. Rows rejected by the predicate remain single-selectable,
+     * but are displayed with reduced opacity and excluded from checkboxes, select-all, and range selection.
      *
      * @default false
      */
-    enableMultiRowSelection?: boolean;
+    enableMultiRowSelection?: EnableMultiRowSelection<TData>;
     /**
      * Forces the user to always have one row selected.
      * When activating that setting, a good practice is to have a row already selected in the initial state.
@@ -517,6 +524,6 @@ export const useTable = <TData>(userOptions: UseTableOptions<TData> = {}): Table
         getSelectedRow,
         rowSelectionEnabled: options.enableRowSelection ?? true,
         rowSelectionForced: !!options.forceSelection,
-        multiRowSelectionEnabled: !!options.enableMultiRowSelection,
+        multiRowSelectionEnabled: options.enableMultiRowSelection ?? false,
     };
 };

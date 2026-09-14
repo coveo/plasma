@@ -4,7 +4,11 @@ import {ForwardedRef, type MouseEvent} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../../../utils/createFactoryComponent.js';
 import {TableLayoutProps} from '../../Table.types.js';
 import {useTableContext} from '../../TableContext.js';
-import {isRowSelectionPredicateRejected, preventRangeSelectionTextSelection} from '../../tableSelectionUtils.js';
+import {
+    isRowMultiSelectionPredicateRejected,
+    isRowSelectionPredicateRejected,
+    preventRangeSelectionTextSelection,
+} from '../../tableSelectionUtils.js';
 import {TableCollapsibleColumn} from '../../table-column/TableCollapsibleColumn.js';
 import {TableSelectAllCheckbox} from '../../table-column/TableSelectAllCheckbox.js';
 import {TableSelectRowCheckbox} from '../../table-column/TableSelectRowCheckbox.js';
@@ -58,7 +62,9 @@ export const CardLayoutBody = <T,>(props: CardLayoutBodyProps<T> & {ref?: Forwar
 
     const cards = table.getRowModel().rows.map((row) => {
         const isSelected = !!row.getIsSelected();
-        const isSelectionDisabled = isRowSelectionPredicateRejected(row, store);
+        const isRowSelectionRejected = isRowSelectionPredicateRejected(row, store);
+        const isMultiRowSelectionRejected = isRowMultiSelectionPredicateRejected(row, store);
+        const isSelectionRestricted = isRowSelectionRejected || isMultiRowSelectionRejected;
         const onClick = (event: MouseEvent<HTMLDivElement>) => {
             preventRangeSelectionTextSelection(event, row, store);
             handleRowSelection(row, event.shiftKey);
@@ -73,13 +79,13 @@ export const CardLayoutBody = <T,>(props: CardLayoutBodyProps<T> & {ref?: Forwar
                 mod={{selected: isSelected}}
                 variant={row.getCanSelect() ? 'hover' : undefined}
                 data-selectable={row.getCanSelect() || undefined}
-                data-selection-disabled={isSelectionDisabled || undefined}
+                data-selection-disabled={isSelectionRestricted || undefined}
                 aria-selected={isSelected}
                 data-testid={row.id}
                 onClick={onClick}
                 onMouseDown={onMouseDown}
                 onDoubleClick={() => {
-                    if (!isSelectionDisabled) {
+                    if (!isRowSelectionRejected) {
                         onRowDoubleClick?.(row.original, row.index, row);
                     }
                 }}

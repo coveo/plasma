@@ -15,6 +15,7 @@ export interface TableContextValue<TData = unknown> {
     selectionCheckboxesVisible: boolean;
     rangeSelectionAnchorRef: RefObject<string | null>;
     handleRowSelection: (row: Row<TData>, selectRange: boolean) => void;
+    handlePageSelection: (rows: Row<TData>[], selected: boolean) => void;
 }
 
 export interface TableProviderProps<T> {

@@ -3,7 +3,7 @@ import {Row} from '@tanstack/table-core';
 import {MouseEventHandler} from 'react';
 import {Checkbox} from '../../Checkbox/Checkbox.js';
 import {useTableContext} from '../TableContext.js';
-import {isRowSelectionPredicateRejected} from '../tableSelectionUtils.js';
+import {isRowMultiSelectionPredicateRejected, isRowSelectionPredicateRejected} from '../tableSelectionUtils.js';
 
 export interface TableSelectRowCheckboxProps<T> extends Omit<CheckboxProps, 'checked' | 'indeterminate' | 'onChange'> {
     row: Row<T>;
@@ -26,7 +26,11 @@ export const TableSelectRowCheckbox = <T,>({
 }: TableSelectRowCheckboxProps<T>) => {
     const {getStyles, selectionCheckboxesVisible, handleRowSelection, store} = useTableContext<T>();
 
-    if (!selectionCheckboxesVisible || isRowSelectionPredicateRejected(row, store)) {
+    if (
+        !selectionCheckboxesVisible ||
+        isRowSelectionPredicateRejected(row, store) ||
+        isRowMultiSelectionPredicateRejected(row, store)
+    ) {
         return null;
     }
 

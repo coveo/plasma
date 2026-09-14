@@ -7,10 +7,11 @@ import {
 } from './tableSelectionUtils.js';
 
 describe('tableSelectionUtils', () => {
-    const makeRow = (id: string, canSelect = true, isSelected = false) => ({
+    const makeRow = (id: string, canSelect = true, canMultiSelect = true, isSelected = false) => ({
         id,
         original: {id},
         getCanSelect: () => canSelect,
+        getCanMultiSelect: () => canMultiSelect,
         getIsSelected: () => isSelected,
     });
 
@@ -52,6 +53,12 @@ describe('tableSelectionUtils', () => {
 
         it('skips rows that cannot be selected', () => {
             const rows = [makeRow('1'), makeRow('2', false), makeRow('3')];
+
+            expect(getSelectableRowsInRange(rows, '1', '3')).toEqual([rows[0], rows[2]]);
+        });
+
+        it('skips rows that cannot be multi-selected', () => {
+            const rows = [makeRow('1'), makeRow('2', true, false), makeRow('3')];
 
             expect(getSelectableRowsInRange(rows, '1', '3')).toEqual([rows[0], rows[2]]);
         });

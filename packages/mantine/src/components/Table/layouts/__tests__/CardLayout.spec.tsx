@@ -200,6 +200,39 @@ describe('CardLayout', () => {
             expect(selectableCard).toHaveAttribute('aria-selected', 'true');
         });
 
+        it('excludes cards rejected by the multi-row selection predicate from bulk selection', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '1', firstName: 'Bulk selectable'},
+                {id: '2', firstName: 'Single selectable', disabled: true},
+                {id: '3', firstName: 'Also bulk selectable'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: (row) => !row.original.disabled});
+                return (
+                    <Table store={store} getRowId={({id}) => id} data={data} columns={columns} layouts={[CardLayout]} />
+                );
+            };
+            render(<Fixture />);
+
+            const singleSelectableCard = screen.getByTestId('2');
+            expect(singleSelectableCard).toHaveAttribute('data-selectable', 'true');
+            expect(singleSelectableCard).toHaveAttribute('data-selection-disabled', 'true');
+            expect(within(singleSelectableCard).queryByRole('checkbox', {name: /select row/i})).not.toBeInTheDocument();
+
+            await user.click(screen.getByRole('checkbox', {name: /select all from this page/i}));
+
+            expect(screen.getByTestId('1')).toHaveAttribute('aria-selected', 'true');
+            expect(singleSelectableCard).toHaveAttribute('aria-selected', 'false');
+            expect(screen.getByTestId('3')).toHaveAttribute('aria-selected', 'true');
+
+            await user.click(singleSelectableCard);
+
+            expect(screen.getByTestId('1')).toHaveAttribute('aria-selected', 'false');
+            expect(singleSelectableCard).toHaveAttribute('aria-selected', 'true');
+            expect(screen.getByTestId('3')).toHaveAttribute('aria-selected', 'false');
+        });
+
         it('does not render selection checkboxes when row selection is disabled and the selection is empty', () => {
             const data: RowData[] = [
                 {id: '1', firstName: 'John', lastName: 'Doe'},

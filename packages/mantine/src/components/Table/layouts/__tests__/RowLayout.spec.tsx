@@ -1,4 +1,4 @@
-import {ColumnDef, createColumnHelper} from '@tanstack/table-core';
+import {ColumnDef, createColumnHelper, getPaginationRowModel} from '@tanstack/table-core';
 import {createEvent, fireEvent, render, screen, userEvent, waitFor, within} from '@test-utils';
 import {FunctionComponent} from 'react';
 import {Table} from '../../Table.js';
@@ -611,6 +611,156 @@ describe('RowLayout', () => {
             expect(selectableRow).toHaveAttribute('aria-selected', 'true');
             expect(disabledRow).toHaveAttribute('aria-selected', 'false');
             expect(screen.getByTestId('3')).toHaveAttribute('aria-selected', 'true');
+        });
+
+        it('excludes rows rejected by the multi-row selection predicate from bulk controls', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '1', firstName: 'Bulk selectable'},
+                {id: '2', firstName: 'Single selectable', disabled: true},
+                {id: '3', firstName: 'Also bulk selectable'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({
+                    enableMultiRowSelection: (row) => !row.original.disabled,
+                });
+                return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+            };
+            render(<Fixture />);
+
+            const singleSelectableRow = screen.getByTestId('2');
+            expect(singleSelectableRow).toHaveAttribute('data-selectable', 'true');
+            expect(singleSelectableRow).toHaveAttribute('data-selection-disabled', 'true');
+            expect(within(singleSelectableRow).queryByRole('checkbox', {name: /select row/i})).not.toBeInTheDocument();
+
+            await user.click(screen.getByRole('checkbox', {name: /select all from this page/i}));
+
+            expect(screen.getByTestId('1')).toHaveAttribute('aria-selected', 'true');
+            expect(singleSelectableRow).toHaveAttribute('aria-selected', 'false');
+            expect(screen.getByTestId('3')).toHaveAttribute('aria-selected', 'true');
+            expect(screen.getByRole('checkbox', {name: /unselect all from this page/i})).toBeChecked();
+        });
+
+        it('keeps rows rejected by the multi-row selection predicate exclusively selected', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '1', firstName: 'One'},
+                {id: '2', firstName: 'Two', disabled: true},
+                {id: '3', firstName: 'Three'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: (row) => !row.original.disabled});
+                return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+            };
+            render(<Fixture />);
+
+            await user.click(screen.getByTestId('1'));
+            await user.click(screen.getByTestId('2'));
+            expect(screen.getByTestId('1')).toHaveAttribute('aria-selected', 'false');
+            expect(screen.getByTestId('2')).toHaveAttribute('aria-selected', 'true');
+
+            await user.click(screen.getByTestId('3'));
+            expect(screen.getByTestId('2')).toHaveAttribute('aria-selected', 'false');
+            expect(screen.getByTestId('3')).toHaveAttribute('aria-selected', 'true');
+
+            await user.click(screen.getByTestId('1'));
+            expect(screen.getByTestId('1')).toHaveAttribute('aria-selected', 'true');
+            expect(screen.getByTestId('3')).toHaveAttribute('aria-selected', 'true');
+        });
+
+        it('clears an exclusive selection outside the current client-side page', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '1', firstName: 'Bulk selectable'},
+                {id: '2', firstName: 'Single selectable', disabled: true},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({
+                    enableMultiRowSelection: (row) => !row.original.disabled,
+                    initialState: {
+                        pagination: {page: 0, perPage: 1},
+                        rowSelection: {'2': data[1]},
+                    },
+                });
+                return (
+                    <>
+                        <Table
+                            store={store}
+                            getRowId={({id}) => id}
+                            data={data}
+                            columns={columns}
+                            options={{getPaginationRowModel: getPaginationRowModel()}}
+                        />
+                        <div data-testid="selected-row-ids">
+                            {store
+                                .getSelectedRows()
+                                .map(({id}) => id)
+                                .join(',')}
+                        </div>
+                    </>
+                );
+            };
+            render(<Fixture />);
+
+            expect(screen.getByTestId('selected-row-ids')).toHaveTextContent('2');
+
+            await user.click(screen.getByTestId('1'));
+
+            expect(screen.getByTestId('selected-row-ids')).toHaveTextContent('1');
+        });
+
+        it('skips rows rejected by the multi-row selection predicate during range selection', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '1', firstName: 'One'},
+                {id: '2', firstName: 'Two', disabled: true},
+                {id: '3', firstName: 'Three'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: (row) => !row.original.disabled});
+                return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+            };
+            render(<Fixture />);
+
+            await user.click(screen.getByTestId('1'));
+            await user.keyboard('{Shift>}');
+            await user.click(screen.getByTestId('3'));
+            await user.keyboard('{/Shift}');
+
+            expect(screen.getByTestId('1')).toHaveAttribute('aria-selected', 'true');
+            expect(screen.getByTestId('2')).toHaveAttribute('aria-selected', 'false');
+            expect(screen.getByTestId('3')).toHaveAttribute('aria-selected', 'true');
+
+            await user.keyboard('{Shift>}');
+            await user.click(screen.getByTestId('2'));
+            await user.keyboard('{/Shift}');
+
+            expect(screen.getByTestId('1')).toHaveAttribute('aria-selected', 'false');
+            expect(screen.getByTestId('2')).toHaveAttribute('aria-selected', 'true');
+            expect(screen.getByTestId('3')).toHaveAttribute('aria-selected', 'false');
+        });
+
+        it('calls the double click action for rows rejected only by the multi-row selection predicate', async () => {
+            const user = userEvent.setup();
+            const doubleClickSpy = vi.fn();
+            const data: RowData[] = [{id: '1', firstName: 'Single selectable', disabled: true}];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: (row) => !row.original.disabled});
+                return (
+                    <Table
+                        store={store}
+                        getRowId={({id}) => id}
+                        data={data}
+                        columns={columns}
+                        layoutProps={{onRowDoubleClick: doubleClickSpy}}
+                    />
+                );
+            };
+            render(<Fixture />);
+
+            await user.dblClick(screen.getByTestId('1'));
+
+            expect(doubleClickSpy).toHaveBeenCalledOnce();
         });
 
         it('skips rows rejected by the row selection predicate when selecting a range', async () => {
