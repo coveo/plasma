@@ -9,8 +9,8 @@ describe('listContentGuidelines', () => {
 
           Guidelines for writing UX copy in Coveo products.
 
-          - **Content Guidelines — Voice**: Coveo's required voice qualities (clear, human, helpful) and how to apply tone by context.
-          - **Content Guidelines — Writing Mechanics**: Required rules for grammar, punctuation, capitalization, structure, and length in Coveo UX copy."
+          - **Voice**: Coveo's required voice qualities (clear, human, helpful) and how to apply tone by context.
+          - **Writing Mechanics**: Required rules for grammar, punctuation, capitalization, structure, and length in Coveo UX copy."
         `);
     });
 

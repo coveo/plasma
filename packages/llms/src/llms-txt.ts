@@ -7,7 +7,12 @@ const currentDir = path.dirname(fileURLToPath(import.meta.url));
 const template = fs.readFileSync(path.resolve(currentDir, '../src/llms-txt.md'), 'utf-8');
 
 /** Generates the llms.txt index file following the llmstxt.org standard. */
-export const generateLlmsTxt = (components: DocEntry[], contentGuidelines: DocEntry[], baseUrl: string): string => {
+export const generateLlmsTxt = (
+    components: DocEntry[],
+    contentGuidelines: DocEntry[],
+    foundations: DocEntry[],
+    baseUrl: string,
+): string => {
     const componentList = components
         .map(
             (c) =>
@@ -19,5 +24,12 @@ export const generateLlmsTxt = (components: DocEntry[], contentGuidelines: DocEn
         .map((g) => `- [${g.name}](${baseUrl}/llms/content/${g.slug}.md): ${g.description || g.name}`)
         .join('\n');
 
-    return template.replace('{{COMPONENT_LIST}}', componentList).replace('{{CONTENT_LIST}}', contentList);
+    const foundationList = foundations
+        .map((f) => `- [${f.name}](${baseUrl}/llms/foundations/${f.slug}.md): ${f.description || f.name}`)
+        .join('\n');
+
+    return template
+        .replace('{{COMPONENT_LIST}}', componentList)
+        .replace('{{CONTENT_LIST}}', contentList)
+        .replace('{{FOUNDATION_LIST}}', foundationList);
 };

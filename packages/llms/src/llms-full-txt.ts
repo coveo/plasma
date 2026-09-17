@@ -24,8 +24,13 @@ const formatEntry = (entry: DocEntry): string => {
     return `${header}\n\n${body}`;
 };
 
-/** Generates llms-full.txt — a single file concatenating all component and content guideline documentation. */
-export const generateLlmsFullTxt = (components: DocEntry[], contentGuidelines: DocEntry[]): string =>
+/** Generates llms-full.txt — a single file concatenating all component, content guideline, and foundation documentation. */
+export const generateLlmsFullTxt = (
+    components: DocEntry[],
+    contentGuidelines: DocEntry[],
+    foundations: DocEntry[],
+): string =>
     template
         .replace('{{COMPONENT_DOCS}}', components.map(formatEntry).join(BOUNDARY))
-        .replace('{{CONTENT_DOCS}}', contentGuidelines.map(formatEntry).join(BOUNDARY));
+        .replace('{{CONTENT_DOCS}}', contentGuidelines.map(formatEntry).join(BOUNDARY))
+        .replace('{{FOUNDATION_DOCS}}', foundations.map(formatEntry).join(BOUNDARY));
