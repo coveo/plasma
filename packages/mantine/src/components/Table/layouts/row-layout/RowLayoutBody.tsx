@@ -5,11 +5,7 @@ import {ForwardedRef, Fragment, type MouseEvent} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../../../utils/createFactoryComponent.js';
 import {TableLayoutProps} from '../../Table.types.js';
 import {useTableContext} from '../../TableContext.js';
-import {
-    isRowMultiSelectionPredicateRejected,
-    isRowSelectionPredicateRejected,
-    preventRangeSelectionTextSelection,
-} from '../../tableSelectionUtils.js';
+import {isRowSelectionPredicateRejected, preventRangeSelectionTextSelection} from '../../tableSelectionUtils.js';
 import {TableCollapsibleColumn} from '../../table-column/TableCollapsibleColumn.js';
 import {TableSelectableColumn} from '../../table-column/TableSelectableColumn.js';
 import {TableLoading} from '../../table-loading/TableLoading.js';
@@ -48,8 +44,6 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
         const rowChildren = getRowExpandedContent?.(row.original, row.index, row) ?? null;
         const isSelected = !!row.getIsSelected();
         const isRowSelectionRejected = isRowSelectionPredicateRejected(row, store);
-        const isMultiRowSelectionRejected = isRowMultiSelectionPredicateRejected(row, store);
-        const isSelectionRestricted = isRowSelectionRejected || isMultiRowSelectionRejected;
         const onClick = (event: MouseEvent<HTMLTableRowElement>) => {
             preventRangeSelectionTextSelection(event, row, store);
             handleRowSelection(row, event.shiftKey);
@@ -71,7 +65,6 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
                     data-selectable={row.getCanSelect()}
                     data-selected={isSelected}
                     data-multi-selection={!!store.multiRowSelectionEnabled}
-                    data-selection-disabled={isSelectionRestricted || undefined}
                     aria-selected={isSelected}
                     data-testid={row.id}
                     {...ctx.getStyles('row', {classNames, className, styles, style})}

@@ -4,11 +4,7 @@ import {ForwardedRef, type MouseEvent} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../../../utils/createFactoryComponent.js';
 import {TableLayoutProps} from '../../Table.types.js';
 import {useTableContext} from '../../TableContext.js';
-import {
-    isRowMultiSelectionPredicateRejected,
-    isRowSelectionPredicateRejected,
-    preventRangeSelectionTextSelection,
-} from '../../tableSelectionUtils.js';
+import {isRowSelectionPredicateRejected, preventRangeSelectionTextSelection} from '../../tableSelectionUtils.js';
 import {TableCollapsibleColumn} from '../../table-column/TableCollapsibleColumn.js';
 import {TableSelectAllCheckbox} from '../../table-column/TableSelectAllCheckbox.js';
 import {TableSelectRowCheckbox} from '../../table-column/TableSelectRowCheckbox.js';
@@ -63,8 +59,6 @@ export const CardLayoutBody = <T,>(props: CardLayoutBodyProps<T> & {ref?: Forwar
     const cards = table.getRowModel().rows.map((row) => {
         const isSelected = !!row.getIsSelected();
         const isRowSelectionRejected = isRowSelectionPredicateRejected(row, store);
-        const isMultiRowSelectionRejected = isRowMultiSelectionPredicateRejected(row, store);
-        const isSelectionRestricted = isRowSelectionRejected || isMultiRowSelectionRejected;
         const onClick = (event: MouseEvent<HTMLDivElement>) => {
             preventRangeSelectionTextSelection(event, row, store);
             handleRowSelection(row, event.shiftKey);
@@ -78,8 +72,7 @@ export const CardLayoutBody = <T,>(props: CardLayoutBodyProps<T> & {ref?: Forwar
                 key={row.id}
                 mod={{selected: isSelected}}
                 variant={row.getCanSelect() ? 'hover' : undefined}
-                data-selectable={row.getCanSelect() || undefined}
-                data-selection-disabled={isSelectionRestricted || undefined}
+                data-selectable={row.getCanSelect()}
                 aria-selected={isSelected}
                 data-testid={row.id}
                 onClick={onClick}

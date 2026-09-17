@@ -2,6 +2,7 @@ import {
     areSelectionCheckboxesVisible,
     getRangeSelection,
     getSelectableRowsInRange,
+    hasActiveBulkSelection,
     preventRangeSelectionTextSelection,
     selectRange,
 } from './tableSelectionUtils.js';
@@ -40,6 +41,27 @@ describe('tableSelectionUtils', () => {
 
         it('returns false when row selection is disabled and no selected rows exist', () => {
             expect(areSelectionCheckboxesVisible(makeStore({rowSelectionEnabled: false}))).toBe(false);
+        });
+    });
+
+    describe('hasActiveBulkSelection', () => {
+        const makeTable = (selectedRows: ReturnType<typeof makeRow>[]) =>
+            ({getSelectedRowModel: () => ({rows: selectedRows})}) as never;
+
+        it('returns false when no row is selected', () => {
+            expect(hasActiveBulkSelection(makeTable([]))).toBe(false);
+        });
+
+        it('returns true when a selected row is bulk-eligible', () => {
+            expect(hasActiveBulkSelection(makeTable([makeRow('1', true, true, true)]))).toBe(true);
+        });
+
+        it('returns false when the only selected row cannot be multi-selected', () => {
+            expect(hasActiveBulkSelection(makeTable([makeRow('1', true, false, true)]))).toBe(false);
+        });
+
+        it('returns false when the only selected row cannot be selected', () => {
+            expect(hasActiveBulkSelection(makeTable([makeRow('1', false, true, true)]))).toBe(false);
         });
     });
 

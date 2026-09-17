@@ -43,7 +43,8 @@
 
     [aria-selected='true'] &,
     [aria-selected]:hover &,
-    [aria-selected]:focus-within & {
+    [aria-selected]:focus-within &,
+    [data-bulk-selection-active='true'] & {
         opacity: 1;
     }
 }

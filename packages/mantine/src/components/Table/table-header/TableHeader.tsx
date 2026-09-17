@@ -7,6 +7,7 @@ import {TableLayoutControl} from '../layouts/TableLayoutControl.js';
 import {TableHeaderActions} from '../table-actions/TableHeaderActions.js';
 import {TableComponentsOrder} from '../Table.js';
 import {useTableContext} from '../TableContext.js';
+import {hasActiveBulkSelection} from '../tableSelectionUtils.js';
 
 export type TableHeaderStylesNames = 'headerRoot' | 'headerGrid' | 'headerGridInner' | 'headerCol';
 
@@ -38,7 +39,7 @@ const defaultProps = {
 } satisfies Partial<TableHeaderProps>;
 
 export const TableHeader = factory<TableHeaderFactory>((props) => {
-    const {store, getStyles} = useTableContext();
+    const {store, table, getStyles} = useTableContext();
     const {
         showActions,
         unselectAllLabel,
@@ -53,6 +54,7 @@ export const TableHeader = factory<TableHeaderFactory>((props) => {
         ...others
     } = useProps('PlasmaTableHeader', defaultProps, props);
     const selectedRows = store.getSelectedRows();
+    const bulkSelectionActive = hasActiveBulkSelection(table);
 
     const stylesApiProps = {classNames, styles};
     const innerStyles = getStyles('headerGridInner', stylesApiProps);
@@ -66,7 +68,7 @@ export const TableHeader = factory<TableHeaderFactory>((props) => {
                 classNames={{inner: innerStyles.className, root: gridStyles.className}}
                 styles={{inner: innerStyles.style, root: gridStyles.style}}
             >
-                {store.multiRowSelectionEnabled && selectedRows.length > 0 ? (
+                {bulkSelectionActive && selectedRows.length > 0 ? (
                     <Grid.Col
                         span="auto"
                         {...getStyles('headerCol', stylesApiProps)}

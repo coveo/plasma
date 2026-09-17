@@ -598,9 +598,7 @@ describe('RowLayout', () => {
             const selectableRow = screen.getByTestId('1');
             const disabledRow = screen.getByTestId('2');
             expect(selectableRow).toHaveAttribute('data-selectable', 'true');
-            expect(selectableRow).not.toHaveAttribute('data-selection-disabled');
             expect(disabledRow).toHaveAttribute('data-selectable', 'false');
-            expect(disabledRow).toHaveAttribute('data-selection-disabled', 'true');
             expect(within(selectableRow).getByRole('checkbox', {name: /select row/i})).toBeVisible();
             expect(within(disabledRow).queryByRole('checkbox', {name: /select row/i})).not.toBeInTheDocument();
 
@@ -630,7 +628,7 @@ describe('RowLayout', () => {
 
             const singleSelectableRow = screen.getByTestId('2');
             expect(singleSelectableRow).toHaveAttribute('data-selectable', 'true');
-            expect(singleSelectableRow).toHaveAttribute('data-selection-disabled', 'true');
+            expect(singleSelectableRow).not.toHaveAttribute('data-selection-disabled');
             expect(within(singleSelectableRow).queryByRole('checkbox', {name: /select row/i})).not.toBeInTheDocument();
 
             await user.click(screen.getByRole('checkbox', {name: /select all from this page/i}));
@@ -639,6 +637,60 @@ describe('RowLayout', () => {
             expect(singleSelectableRow).toHaveAttribute('aria-selected', 'false');
             expect(screen.getByTestId('3')).toHaveAttribute('aria-selected', 'true');
             expect(screen.getByRole('checkbox', {name: /unselect all from this page/i})).toBeChecked();
+        });
+
+        it('reveals the selection checkboxes only once a bulk-eligible row is selected', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '1', firstName: 'One'},
+                {id: '2', firstName: 'Two'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: true});
+                return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+            };
+            render(<Fixture />);
+
+            expect(screen.getByRole('table')).not.toHaveAttribute('data-bulk-selection-active');
+
+            await user.click(screen.getByTestId('1'));
+
+            expect(screen.getByRole('table')).toHaveAttribute('data-bulk-selection-active', 'true');
+        });
+
+        it('does not reveal the selection checkboxes when a single-select-only row is selected', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '1', firstName: 'Bulk selectable'},
+                {id: '2', firstName: 'Single selectable', disabled: true},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: (row) => !row.original.disabled});
+                return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+            };
+            render(<Fixture />);
+
+            await user.click(screen.getByTestId('2'));
+
+            expect(screen.getByTestId('2')).toHaveAttribute('aria-selected', 'true');
+            expect(screen.getByRole('table')).not.toHaveAttribute('data-bulk-selection-active');
+        });
+
+        it('reveals the selection checkboxes on mount when a bulk-eligible row is preselected', () => {
+            const data: RowData[] = [
+                {id: '1', firstName: 'One'},
+                {id: '2', firstName: 'Two'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({
+                    enableMultiRowSelection: true,
+                    initialState: {rowSelection: {'1': {id: '1', firstName: 'One'}}},
+                });
+                return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+            };
+            render(<Fixture />);
+
+            expect(screen.getByRole('table')).toHaveAttribute('data-bulk-selection-active', 'true');
         });
 
         it('keeps rows rejected by the multi-row selection predicate exclusively selected', async () => {

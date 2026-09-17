@@ -1,4 +1,4 @@
-import type {Row} from '@tanstack/table-core';
+import type {Row, Table} from '@tanstack/table-core';
 import type {TableState, TableStore} from './use-table.js';
 
 interface SelectableRow {
@@ -45,6 +45,16 @@ export const isRowMultiSelectionPredicateRejected = <T>(row: Row<T>, store: Tabl
     typeof store.multiRowSelectionEnabled === 'function' && !row.getCanMultiSelect();
 
 export const isRowBulkSelectable = (row: SelectableRow): boolean => row.getCanSelect() && row.getCanMultiSelect();
+
+/**
+ * Whether a bulk-eligible row is currently selected.
+ *
+ * Used to reveal the selection checkboxes and the header selected-count control only once a row that participates in
+ * bulk selection has been selected. Rows rejected by the multi-row selection predicate are selected exclusively and
+ * therefore do not activate bulk selection.
+ */
+export const hasActiveBulkSelection = <T>(table: Pick<Table<T>, 'getSelectedRowModel'>): boolean =>
+    table.getSelectedRowModel().rows.some(isRowBulkSelectable);
 
 export const getSelectableRowsInRange = <TRow extends SelectableRow>(
     rows: TRow[],

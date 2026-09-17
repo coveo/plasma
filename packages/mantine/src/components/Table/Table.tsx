@@ -80,7 +80,7 @@ import {
 import classes from './Table.module.css';
 import {type TableLayout, type TableProps} from './Table.types.js';
 import {TableProvider} from './TableContext.js';
-import {areSelectionCheckboxesVisible} from './tableSelectionUtils.js';
+import {areSelectionCheckboxesVisible, hasActiveBulkSelection} from './tableSelectionUtils.js';
 import {useTableSelection} from './use-table-selection.js';
 
 export type TableStylesNames =
@@ -227,6 +227,8 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
     });
     const mergedRef = useMergedRef(containerRef, ref);
 
+    const bulkSelectionActive = hasActiveBulkSelection(table);
+
     if (!data) {
         return (
             <Center style={{flexGrow: 1}}>
@@ -264,7 +266,11 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
                             noData
                         ) : (
                             <>
-                                <Box component="table" {...getStyles('table')} mod={{loading}}>
+                                <Box
+                                    component="table"
+                                    {...getStyles('table')}
+                                    mod={{loading, 'bulk-selection-active': bulkSelectionActive}}
+                                >
                                     <thead {...getStyles('header')}>
                                         {header ? (
                                             <tr>

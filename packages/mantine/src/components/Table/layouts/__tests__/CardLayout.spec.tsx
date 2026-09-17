@@ -187,9 +187,7 @@ describe('CardLayout', () => {
             const selectableCard = screen.getByTestId('1');
             const disabledCard = screen.getByTestId('2');
             expect(selectableCard).toHaveAttribute('data-selectable', 'true');
-            expect(selectableCard).not.toHaveAttribute('data-selection-disabled');
-            expect(disabledCard).not.toHaveAttribute('data-selectable');
-            expect(disabledCard).toHaveAttribute('data-selection-disabled', 'true');
+            expect(disabledCard).toHaveAttribute('data-selectable', 'false');
             expect(within(selectableCard).getByRole('checkbox', {name: /select row/i})).toBeVisible();
             expect(within(disabledCard).queryByRole('checkbox', {name: /select row/i})).not.toBeInTheDocument();
 
@@ -217,7 +215,7 @@ describe('CardLayout', () => {
 
             const singleSelectableCard = screen.getByTestId('2');
             expect(singleSelectableCard).toHaveAttribute('data-selectable', 'true');
-            expect(singleSelectableCard).toHaveAttribute('data-selection-disabled', 'true');
+            expect(singleSelectableCard).not.toHaveAttribute('data-selection-disabled');
             expect(within(singleSelectableCard).queryByRole('checkbox', {name: /select row/i})).not.toBeInTheDocument();
 
             await user.click(screen.getByRole('checkbox', {name: /select all from this page/i}));
