@@ -1,5 +1,11 @@
 # @coveord/plasma-tokens
 
+## 60.0.2
+
+### Patch Changes
+
+- Maintain compatibility with updated build dependencies [#4535](https://github.com/coveo/plasma/pull/4535)
+
 ## 60.0.1
 
 ### Patch Changes

@@ -1,5 +1,19 @@
 # @coveord/plasma-mantine
 
+## 61.3.1
+
+### Patch Changes
+
+- Maintain compatibility with updated build dependencies [#4535](https://github.com/coveo/plasma/pull/4535)
+
+- Fix `Table` rendering every row at 50% opacity when `enableRowSelection` is `false` [#4612](https://github.com/coveo/plasma/pull/4612)
+
+  The reduced opacity is now reserved for rows rejected by an `enableRowSelection` predicate. A `Table` with selection disabled through the boolean `false` value renders its rows at full opacity.
+
+- Updated dependencies [[`e1881a3`](https://github.com/coveo/plasma/commit/e1881a3d19b83db28604b97fd914e0a9c819455f)]:
+  - @coveord/plasma-tokens@60.0.2
+  - @coveord/plasma-react-icons@60.0.1
+
 ## 61.3.0
 
 ### Minor Changes
