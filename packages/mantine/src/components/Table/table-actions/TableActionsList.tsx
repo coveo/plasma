@@ -121,12 +121,10 @@ export function TableActionsList(props: TableActionsListProps) {
 
     const primaryActions = actionsGroups.$$primary.map((action) => action.component);
     const confirmPrompts = actionsGroups.$$confirmPrompt.map((confirmPromptAction) => confirmPromptAction.component);
-    const secondaryActionGroups = Object.entries(actionsGroups.secondary).map(
-        ([group, groupActions]): ActionGroup => ({
-            name: group,
-            actions: groupActions,
-        }),
-    );
+    const secondaryActionGroups = Object.entries(actionsGroups.secondary).map(([group, groupActions]): ActionGroup => ({
+        name: group,
+        actions: groupActions,
+    }));
 
     if (variant === 'split') {
         return (

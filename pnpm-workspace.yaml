@@ -25,4 +25,4 @@ saveExact: true
 autoInstallPeers: false
 patchedDependencies:
   '@monaco-editor/react@4.7.0': patches/@monaco-editor__react@4.7.0.patch
-  '@testing-library/user-event@14.6.1': patches/@testing-library__user-event@14.6.1.patch
+  '@testing-library/user-event@14.6.6': patches/@testing-library__user-event@14.6.6.patch
