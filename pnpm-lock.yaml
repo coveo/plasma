@@ -111,7 +111,7 @@ overrides:
 
 patchedDependencies:
   '@monaco-editor/react@4.7.0': 77e0deac9f7ae79168bda5cc229167bce26810c2407f531eb18d81adff31c7b0
-  '@testing-library/user-event@14.6.6': 27b5b13cb70ebe64704ed80f957dd9d7fa8e24913ecb4d10350c35e361f57e87
+  '@testing-library/user-event@14.6.6': 28b755be10ac8c667079c3f6aafe2bb731bacd8c10cdaa907c9227778bfe276c
 
 importers:
 
@@ -295,7 +295,7 @@ importers:
         version: 16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.5(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       '@testing-library/user-event':
         specifier: 14.6.6
-        version: 14.6.6(patch_hash=27b5b13cb70ebe64704ed80f957dd9d7fa8e24913ecb4d10350c35e361f57e87)(@testing-library/dom@10.4.1)
+        version: 14.6.6(patch_hash=28b755be10ac8c667079c3f6aafe2bb731bacd8c10cdaa907c9227778bfe276c)(@testing-library/dom@10.4.1)
       '@types/lodash.defaultsdeep':
         specifier: 4.6.9
         version: 4.6.9
@@ -6135,7 +6135,7 @@ snapshots:
       '@types/react': 19.2.18
       '@types/react-dom': 19.2.5(@types/react@19.2.18)
 
-  '@testing-library/user-event@14.6.6(patch_hash=27b5b13cb70ebe64704ed80f957dd9d7fa8e24913ecb4d10350c35e361f57e87)(@testing-library/dom@10.4.1)':
+  '@testing-library/user-event@14.6.6(patch_hash=28b755be10ac8c667079c3f6aafe2bb731bacd8c10cdaa907c9227778bfe276c)(@testing-library/dom@10.4.1)':
     dependencies:
       '@testing-library/dom': 10.4.1
 
@@ -8234,7 +8234,7 @@ snapshots:
       '@storybook/icons': 2.1.0(react@19.2.8)
       '@testing-library/dom': 10.4.1
       '@testing-library/jest-dom': 6.9.1
-      '@testing-library/user-event': 14.6.6(patch_hash=27b5b13cb70ebe64704ed80f957dd9d7fa8e24913ecb4d10350c35e361f57e87)(@testing-library/dom@10.4.1)
+      '@testing-library/user-event': 14.6.6(patch_hash=28b755be10ac8c667079c3f6aafe2bb731bacd8c10cdaa907c9227778bfe276c)(@testing-library/dom@10.4.1)
       '@vitest/expect': 3.2.4
       '@vitest/spy': 3.2.4
       '@webcontainer/env': 1.1.1
