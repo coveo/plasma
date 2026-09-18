@@ -1,5 +1,11 @@
 # @coveord/plasma-mcp-server
 
+## 60.2.2
+
+### Patch Changes
+
+- Publish source maps with embedded TypeScript sources [#4604](https://github.com/coveo/plasma/pull/4604)
+
 ## 60.2.1
 
 ### Patch Changes
