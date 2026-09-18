@@ -599,6 +599,8 @@ describe('RowLayout', () => {
             const disabledRow = screen.getByTestId('2');
             expect(selectableRow).toHaveAttribute('data-selectable', 'true');
             expect(disabledRow).toHaveAttribute('data-selectable', 'false');
+            expect(selectableRow).toHaveAttribute('data-selection-rejected', 'false');
+            expect(disabledRow).toHaveAttribute('data-selection-rejected', 'true');
             expect(within(selectableRow).getByRole('checkbox', {name: /select row/i})).toBeVisible();
             expect(within(disabledRow).queryByRole('checkbox', {name: /select row/i})).not.toBeInTheDocument();
 
@@ -875,6 +877,21 @@ describe('RowLayout', () => {
 
             expect(screen.queryByRole('checkbox', {name: /select all/i})).not.toBeInTheDocument();
             expect(screen.queryByRole('checkbox', {name: /select row/i})).not.toBeInTheDocument();
+        });
+
+        it('does not mark rows as selection rejected when row selection is disabled', () => {
+            const data: RowData[] = [
+                {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
+                {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: true, enableRowSelection: false});
+                return <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+            };
+            render(<Fixture />);
+
+            expect(screen.getByTestId('🆔-1')).toHaveAttribute('data-selection-rejected', 'false');
+            expect(screen.getByTestId('🆔-2')).toHaveAttribute('data-selection-rejected', 'false');
         });
 
         it('renders read-only selection checkboxes when row selection is disabled and the selection is not empty', () => {

@@ -3,7 +3,7 @@
         cursor: pointer;
     }
 
-    &[data-selectable='false'] {
+    &[data-selection-rejected='true'] {
         opacity: 0.5;
     }
 }

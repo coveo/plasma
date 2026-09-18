@@ -188,6 +188,8 @@ describe('CardLayout', () => {
             const disabledCard = screen.getByTestId('2');
             expect(selectableCard).toHaveAttribute('data-selectable', 'true');
             expect(disabledCard).toHaveAttribute('data-selectable', 'false');
+            expect(selectableCard).toHaveAttribute('data-selection-rejected', 'false');
+            expect(disabledCard).toHaveAttribute('data-selection-rejected', 'true');
             expect(within(selectableCard).getByRole('checkbox', {name: /select row/i})).toBeVisible();
             expect(within(disabledCard).queryByRole('checkbox', {name: /select row/i})).not.toBeInTheDocument();
 
@@ -245,6 +247,23 @@ describe('CardLayout', () => {
             render(<Fixture />);
 
             expect(screen.queryByRole('checkbox', {name: /select row/i})).not.toBeInTheDocument();
+        });
+
+        it('does not mark cards as selection rejected when row selection is disabled', () => {
+            const data: RowData[] = [
+                {id: '1', firstName: 'John', lastName: 'Doe'},
+                {id: '2', firstName: 'Jane', lastName: 'Smith'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: true, enableRowSelection: false});
+                return (
+                    <Table store={store} getRowId={({id}) => id} data={data} columns={columns} layouts={[CardLayout]} />
+                );
+            };
+            render(<Fixture />);
+
+            expect(screen.getByTestId('1')).toHaveAttribute('data-selection-rejected', 'false');
+            expect(screen.getByTestId('2')).toHaveAttribute('data-selection-rejected', 'false');
         });
 
         it('renders read-only checkboxes when row selection is disabled and the selection is not empty', () => {
