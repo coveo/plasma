@@ -1,5 +1,28 @@
 # @coveord/plasma-llms
 
+## 60.2.2
+
+### Patch Changes
+
+- Clear `Table` row selections with Escape [#4591](https://github.com/coveo/plasma/pull/4591)
+
+  Press Escape to clear selected rows when row selection is enabled. Tables with `forceSelection` enabled preserve their selection.
+
+- Distinguish rows unavailable for selection in the Table component [#4601](https://github.com/coveo/plasma/pull/4601)
+
+  Rows rejected by the `enableRowSelection` predicate now appear at 50% opacity, do not display a selection checkbox, and do not trigger `onRowDoubleClick`.
+
+- Allow conditional bulk row selection with `useTable` [#4608](https://github.com/coveo/plasma/pull/4608)
+
+  `enableMultiRowSelection` now accepts a predicate in addition to a boolean. Return `false` for rows that should remain single-selectable but must be excluded from checkboxes, select-all, and Shift-click range selection. These rows are always selected exclusively.
+
+  When multi-row selection is enabled, the selection checkboxes stay hidden until a bulk-eligible row is selected, at which point every checkbox is revealed. Selecting a row rejected by the predicate selects it exclusively, like single selection, without revealing the checkboxes, and the `Table.Header` selected-count control stays hidden while only such rows are selected.
+
+- Select ranges of `Table` rows with Shift-click [#4593](https://github.com/coveo/plasma/pull/4593)
+
+  With multi-row selection enabled, click a row, card, or its checkbox and then Shift-click another selection target to
+  select every selectable row between them on the displayed page. Existing selections outside the range are preserved.
+
 ## 60.2.1
 
 ### Patch Changes

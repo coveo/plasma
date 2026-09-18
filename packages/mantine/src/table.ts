@@ -8,4 +8,11 @@ export {
     type TableProps,
 } from './components/Table/Table.types.js';
 export {useTableContext} from './components/Table/TableContext.js';
-export {useTable, type TableState, type TableStore, type UseTableOptions} from './components/Table/use-table.js';
+export {
+    type EnableMultiRowSelection,
+    type EnableRowSelection,
+    useTable,
+    type TableState,
+    type TableStore,
+    type UseTableOptions,
+} from './components/Table/use-table.js';

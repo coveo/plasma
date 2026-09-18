@@ -1,7 +1,7 @@
 import {CheckboxProps, Tooltip} from '@mantine/core';
-import {ChangeEventHandler} from 'react';
 import {Checkbox} from '../../Checkbox/Checkbox.js';
 import {useTableContext} from '../TableContext.js';
+import {isRowBulkSelectable} from '../tableSelectionUtils.js';
 
 export interface TableSelectAllCheckboxProps extends Omit<CheckboxProps, 'checked' | 'indeterminate' | 'onChange'> {}
 
@@ -10,23 +10,24 @@ export interface TableSelectAllCheckboxProps extends Omit<CheckboxProps, 'checke
  * Shared between the RowLayout column header and the CardLayout header.
  */
 export const TableSelectAllCheckbox = (props: TableSelectAllCheckboxProps) => {
-    const {table, store, selectionCheckboxesVisible} = useTableContext();
+    const {table, store, selectionCheckboxesVisible, handlePageSelection} = useTableContext();
 
     if (!selectionCheckboxesVisible) {
         return null;
     }
 
-    const readOnly = !store.rowSelectionEnabled;
-    const isAllSelected = table.getIsAllPageRowsSelected();
-    const isSomeSelected = table.getIsSomePageRowsSelected();
+    const bulkSelectableRows = table.getRowModel().rows.filter(isRowBulkSelectable);
+    const readOnly = !store.rowSelectionEnabled || bulkSelectableRows.length === 0;
+    const selectedRowsCount = bulkSelectableRows.filter((row) => row.getIsSelected()).length;
+    const isAllSelected = bulkSelectableRows.length > 0 && selectedRowsCount === bulkSelectableRows.length;
+    const isSomeSelected = selectedRowsCount > 0 && !isAllSelected;
     const label = isAllSelected ? 'Unselect all from this page' : 'Select all from this page';
-    const toggleAllPageRowsSelected = table.getToggleAllPageRowsSelectedHandler();
 
-    const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
+    const handleChange = () => {
         if (readOnly) {
             return;
         }
-        toggleAllPageRowsSelected(event);
+        handlePageSelection(bulkSelectableRows, !isAllSelected);
     };
 
     return (

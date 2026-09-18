@@ -1,11 +1,11 @@
 import {ColumnDef, createColumnHelper} from '@tanstack/table-core';
-import {render, screen, userEvent, within} from '@test-utils';
+import {createEvent, fireEvent, render, screen, userEvent, within} from '@test-utils';
 import {Table} from '../../Table.js';
 import {useTable} from '../../use-table.js';
 import {CardLayout} from '../card-layout/CardLayout.js';
 
 describe('CardLayout', () => {
-    type RowData = {id: string; firstName: string; lastName?: string};
+    type RowData = {id: string; firstName: string; lastName?: string; disabled?: boolean};
 
     const columnHelper = createColumnHelper<RowData>();
     const columns: Array<ColumnDef<RowData>> = [
@@ -123,6 +123,30 @@ describe('CardLayout', () => {
         );
     });
 
+    it('does not call onRowDoubleClick for a card rejected by the selection predicate', async () => {
+        const user = userEvent.setup();
+        const doubleClickSpy = vi.fn();
+        const data: RowData[] = [{id: '1', firstName: 'John', lastName: 'Doe', disabled: true}];
+        const Fixture = () => {
+            const store = useTable<RowData>({enableRowSelection: (row) => !row.original.disabled});
+            return (
+                <Table
+                    store={store}
+                    getRowId={({id}) => id}
+                    data={data}
+                    columns={columns}
+                    layouts={[CardLayout]}
+                    layoutProps={{onRowDoubleClick: doubleClickSpy}}
+                />
+            );
+        };
+        render(<Fixture />);
+
+        await user.dblClick(screen.getByTestId('1'));
+
+        expect(doubleClickSpy).not.toHaveBeenCalled();
+    });
+
     describe('multi-row selection', () => {
         it('renders a checkbox in each card', () => {
             const data: RowData[] = [
@@ -141,6 +165,70 @@ describe('CardLayout', () => {
             const card2 = screen.getByTestId('2');
             expect(within(card1).getByRole('checkbox', {name: /select row/i})).toBeVisible();
             expect(within(card2).getByRole('checkbox', {name: /select row/i})).toBeVisible();
+        });
+
+        it('selects only cards allowed by the row selection predicate', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '1', firstName: 'Selectable'},
+                {id: '2', firstName: 'Disabled', disabled: true},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({
+                    enableMultiRowSelection: true,
+                    enableRowSelection: (row) => !row.original.disabled,
+                });
+                return (
+                    <Table store={store} getRowId={({id}) => id} data={data} columns={columns} layouts={[CardLayout]} />
+                );
+            };
+            render(<Fixture />);
+
+            const selectableCard = screen.getByTestId('1');
+            const disabledCard = screen.getByTestId('2');
+            expect(selectableCard).toHaveAttribute('data-selectable', 'true');
+            expect(disabledCard).toHaveAttribute('data-selectable', 'false');
+            expect(within(selectableCard).getByRole('checkbox', {name: /select row/i})).toBeVisible();
+            expect(within(disabledCard).queryByRole('checkbox', {name: /select row/i})).not.toBeInTheDocument();
+
+            await user.click(disabledCard);
+            expect(disabledCard).toHaveAttribute('aria-selected', 'false');
+
+            await user.click(selectableCard);
+            expect(selectableCard).toHaveAttribute('aria-selected', 'true');
+        });
+
+        it('excludes cards rejected by the multi-row selection predicate from bulk selection', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '1', firstName: 'Bulk selectable'},
+                {id: '2', firstName: 'Single selectable', disabled: true},
+                {id: '3', firstName: 'Also bulk selectable'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: (row) => !row.original.disabled});
+                return (
+                    <Table store={store} getRowId={({id}) => id} data={data} columns={columns} layouts={[CardLayout]} />
+                );
+            };
+            render(<Fixture />);
+
+            const singleSelectableCard = screen.getByTestId('2');
+            expect(singleSelectableCard).toHaveAttribute('data-selectable', 'true');
+            expect(singleSelectableCard).not.toHaveAttribute('data-selection-disabled');
+            expect(within(singleSelectableCard).queryByRole('checkbox', {name: /select row/i})).not.toBeInTheDocument();
+
+            await user.click(screen.getByRole('checkbox', {name: /select all from this page/i}));
+
+            expect(screen.getByTestId('1')).toHaveAttribute('aria-selected', 'true');
+            expect(singleSelectableCard).toHaveAttribute('aria-selected', 'false');
+            expect(screen.getByTestId('3')).toHaveAttribute('aria-selected', 'true');
+
+            await user.click(singleSelectableCard);
+
+            expect(screen.getByTestId('1')).toHaveAttribute('aria-selected', 'false');
+            expect(singleSelectableCard).toHaveAttribute('aria-selected', 'true');
+            expect(screen.getByTestId('3')).toHaveAttribute('aria-selected', 'false');
         });
 
         it('does not render selection checkboxes when row selection is disabled and the selection is empty', () => {
@@ -180,6 +268,31 @@ describe('CardLayout', () => {
             expect(rowCheckboxes).toHaveLength(2);
             expect(screen.getByTestId('1')).toHaveAttribute('aria-selected', 'false');
             expect(screen.getByTestId('2')).toHaveAttribute('aria-selected', 'true');
+            expect(screen.getByTestId('1')).not.toHaveAttribute('data-selection-disabled');
+            expect(screen.getByTestId('2')).not.toHaveAttribute('data-selection-disabled');
+        });
+
+        it('does not mark cards as selection disabled while loading', () => {
+            const data: RowData[] = [{id: '1', firstName: 'Selectable'}];
+            const Fixture = () => {
+                const store = useTable<RowData>({
+                    enableMultiRowSelection: true,
+                    enableRowSelection: (row) => !row.original.disabled,
+                });
+                return (
+                    <Table
+                        store={store}
+                        getRowId={({id}) => id}
+                        data={data}
+                        columns={columns}
+                        layouts={[CardLayout]}
+                        loading
+                    />
+                );
+            };
+            render(<Fixture />);
+
+            expect(screen.getByTestId('1')).not.toHaveAttribute('data-selection-disabled');
         });
 
         it('selects a card when clicking its checkbox', async () => {
@@ -200,6 +313,109 @@ describe('CardLayout', () => {
             await user.click(within(card1).getByRole('checkbox', {name: /select row/i}));
             expect(screen.getByTestId('1')).toHaveAttribute('aria-selected', 'true');
             expect(screen.getByTestId('2')).toHaveAttribute('aria-selected', 'false');
+        });
+
+        it('selects a range of cards with Shift-click', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '1', firstName: 'One'},
+                {id: '2', firstName: 'Two'},
+                {id: '3', firstName: 'Three'},
+                {id: '4', firstName: 'Four'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: true});
+                return (
+                    <Table store={store} getRowId={({id}) => id} data={data} columns={columns} layouts={[CardLayout]} />
+                );
+            };
+            render(<Fixture />);
+
+            await user.click(within(screen.getByTestId('4')).getByRole('checkbox', {name: /select row/i}));
+            await user.keyboard('{Shift>}');
+            await user.click(within(screen.getByTestId('2')).getByRole('checkbox', {name: /select row/i}));
+            await user.keyboard('{/Shift}');
+
+            expect(screen.getByTestId('1')).toHaveAttribute('aria-selected', 'false');
+            for (const id of ['2', '3', '4']) {
+                expect(screen.getByTestId(id)).toHaveAttribute('aria-selected', 'true');
+            }
+        });
+
+        it('selects a range by Shift-clicking card surfaces', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '1', firstName: 'One'},
+                {id: '2', firstName: 'Two'},
+                {id: '3', firstName: 'Three'},
+                {id: '4', firstName: 'Four'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: true});
+                return (
+                    <Table store={store} getRowId={({id}) => id} data={data} columns={columns} layouts={[CardLayout]} />
+                );
+            };
+            render(<Fixture />);
+
+            await user.click(screen.getByTestId('1'));
+            await user.keyboard('{Shift>}');
+            await user.click(screen.getByTestId('3'));
+            await user.keyboard('{/Shift}');
+
+            for (const id of ['1', '2', '3']) {
+                expect(screen.getByTestId(id)).toHaveAttribute('aria-selected', 'true');
+            }
+            expect(screen.getByTestId('4')).toHaveAttribute('aria-selected', 'false');
+        });
+
+        it('prevents text selection when Shift-clicking a selectable card', () => {
+            const data: RowData[] = [{id: '1', firstName: 'One'}];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: true});
+                return (
+                    <Table store={store} getRowId={({id}) => id} data={data} columns={columns} layouts={[CardLayout]} />
+                );
+            };
+            render(<Fixture />);
+
+            const card = screen.getByTestId('1');
+            const shiftMouseDown = createEvent.mouseDown(card, {shiftKey: true});
+            fireEvent(card, shiftMouseDown);
+
+            expect(shiftMouseDown.defaultPrevented).toBe(true);
+        });
+
+        it('shares the range anchor between card surfaces and checkboxes', async () => {
+            const user = userEvent.setup();
+            const data: RowData[] = [
+                {id: '1', firstName: 'One'},
+                {id: '2', firstName: 'Two'},
+                {id: '3', firstName: 'Three'},
+                {id: '4', firstName: 'Four'},
+                {id: '5', firstName: 'Five'},
+            ];
+            const Fixture = () => {
+                const store = useTable<RowData>({enableMultiRowSelection: true});
+                return (
+                    <Table store={store} getRowId={({id}) => id} data={data} columns={columns} layouts={[CardLayout]} />
+                );
+            };
+            render(<Fixture />);
+
+            await user.click(screen.getByTestId('1'));
+            await user.keyboard('{Shift>}');
+            await user.click(within(screen.getByTestId('3')).getByRole('checkbox', {name: /select row/i}));
+            await user.keyboard('{/Shift}');
+
+            await user.click(within(screen.getByTestId('5')).getByRole('checkbox', {name: /select row/i}));
+            await user.keyboard('{Shift>}');
+            await user.click(screen.getByTestId('4'));
+            await user.keyboard('{/Shift}');
+
+            for (const id of ['1', '2', '3', '4', '5']) {
+                expect(screen.getByTestId(id)).toHaveAttribute('aria-selected', 'true');
+            }
         });
 
         it('keeps selected cards selected through their checkboxes when row selection is forced', async () => {

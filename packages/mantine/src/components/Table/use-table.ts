@@ -1,6 +1,6 @@
 import type {DatesRangeValue, DateStringValue} from '@mantine/dates';
 import {useDidUpdate} from '@mantine/hooks';
-import {type ExpandedState, type SortingState} from '@tanstack/table-core';
+import {type ExpandedState, type Row, type SortingState} from '@tanstack/table-core';
 import defaultsDeep from 'lodash.defaultsdeep';
 import {Dispatch, SetStateAction, useCallback, useMemo, useState} from 'react';
 import {useUrlSyncedState, UseUrlSyncedStateOptions} from '../../hooks/use-url-synced-state.js';
@@ -21,6 +21,16 @@ export interface PaginationState {
      */
     perPage: number;
 }
+
+/**
+ * Enables or disables row selection globally, or determines whether each row can be selected.
+ */
+export type EnableRowSelection<TData> = boolean | ((row: Row<TData>) => boolean);
+
+/**
+ * Enables or disables multi-row selection globally, or determines whether each row can be bulk selected.
+ */
+export type EnableMultiRowSelection<TData> = boolean | ((row: Row<TData>) => boolean);
 
 export interface TableState<TData = unknown> {
     /**
@@ -160,13 +170,15 @@ export interface TableStore<TData = unknown> {
      */
     getSelectedRow: () => TData | null;
     /**
-     * Whether the user can select multiple rows at the same time.
+     * The multi-row selection configuration currently used by the table.
      */
-    multiRowSelectionEnabled: boolean;
+    multiRowSelectionEnabled: EnableMultiRowSelection<TData>;
     /**
-     * Whether rows can be selected.
+     * The row selection configuration currently used by the table.
+     *
+     * Reflects the `enableRowSelection` option passed to `useTable`, defaulting to `true` when omitted.
      */
-    rowSelectionEnabled: boolean;
+    rowSelectionEnabled: EnableRowSelection<TData>;
     /**
      * Whether row selection is forced.
      */
@@ -179,19 +191,25 @@ export interface UseTableOptions<TData = unknown> {
      */
     initialState?: DeepPartial<TableState<TData>>;
     /**
-     * Whether rows can be selected.
+     * Configures which rows users can select.
+     *
+     * Set to `true` to allow selecting every row, `false` to disable row selection, or provide a predicate to determine
+     * whether each row can be selected.
+     * Rows rejected by the predicate are displayed with reduced opacity and do not render a selection checkbox.
      *
      * @default true
      */
-    enableRowSelection?: boolean;
+    enableRowSelection?: EnableRowSelection<TData>;
     /**
-     * Whether multiple rows can be selected at the same time.
+     * Configures which rows can be selected as part of a multi-row selection.
      *
-     * Only applies when `enableRowSelection` is `true`.
+     * Set to `true` to allow bulk-selecting every row, `false` to disable multi-row selection, or provide a predicate
+     * to determine whether each row can be bulk selected. Rows rejected by the predicate remain single-selectable,
+     * but are displayed with reduced opacity and excluded from checkboxes, select-all, and range selection.
      *
      * @default false
      */
-    enableMultiRowSelection?: boolean;
+    enableMultiRowSelection?: EnableMultiRowSelection<TData>;
     /**
      * Forces the user to always have one row selected.
      * When activating that setting, a good practice is to have a row already selected in the initial state.
@@ -504,8 +522,8 @@ export const useTable = <TData>(userOptions: UseTableOptions<TData> = {}): Table
         clearRowSelection,
         getSelectedRows,
         getSelectedRow,
-        rowSelectionEnabled: !!options.enableRowSelection,
+        rowSelectionEnabled: options.enableRowSelection ?? true,
         rowSelectionForced: !!options.forceSelection,
-        multiRowSelectionEnabled: !!options.enableMultiRowSelection,
+        multiRowSelectionEnabled: options.enableMultiRowSelection ?? false,
     };
 };

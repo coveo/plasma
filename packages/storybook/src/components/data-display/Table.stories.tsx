@@ -39,7 +39,10 @@ type StoryArgs = TableProps<Person> & {
     withData: boolean;
     withLayoutSelector: boolean;
     withRowActions: boolean;
-    withRowMultiSelection: boolean;
+    enableRowSelection: boolean;
+    withUnselectableRows: boolean;
+    enableMultiRowSelection: boolean;
+    withSingleSelectRows: boolean;
     withLastUpdated: boolean;
     withCollapsibleRows: boolean;
     collapsibleBehavior: 'collapse' | 'accordion';
@@ -51,12 +54,6 @@ const meta: Meta<StoryArgs> = {
     component: Table,
     parameters: {
         layout: 'fullscreen',
-        docs: {
-            description: {
-                component:
-                    'When row selection is enabled, press Escape to clear the selection. Escape does not clear forced selections.',
-            },
-        },
     },
 };
 export default meta;
@@ -70,6 +67,7 @@ type Person = {
     bio: string;
     pic: string;
     lastActivity: Date;
+    selectable: boolean;
 };
 
 const columnHelper = createColumnHelper<Person>();
@@ -77,7 +75,7 @@ const columnHelper = createColumnHelper<Person>();
 const makeData = (len: number): Person[] =>
     Array(len)
         .fill(0)
-        .map(() => ({
+        .map((_, index) => ({
             id: faker.string.uuid(),
             pic: faker.image.avatar(),
             firstName: faker.person.firstName(),
@@ -85,6 +83,7 @@ const makeData = (len: number): Person[] =>
             age: faker.number.int(40),
             bio: faker.lorem.sentences({min: 1, max: 5}),
             lastActivity: faker.date.recent({days: 7}),
+            selectable: index % 3 !== 0,
         }));
 
 const options: TableProps<Person>['options'] = {
@@ -114,7 +113,10 @@ export const Demo: Story = {
         withData: true,
         withLayoutSelector: false,
         withRowActions: false,
-        withRowMultiSelection: false,
+        enableRowSelection: true,
+        withUnselectableRows: false,
+        enableMultiRowSelection: false,
+        withSingleSelectRows: false,
         withLastUpdated: false,
         withCollapsibleRows: false,
         collapsibleBehavior: 'collapse',
@@ -130,6 +132,12 @@ export const Demo: Story = {
             control: 'radio',
             options: ['header', 'toolbar'],
         },
+        withUnselectableRows: {
+            if: {arg: 'enableRowSelection', truthy: true},
+        },
+        withSingleSelectRows: {
+            if: {arg: 'enableMultiRowSelection', truthy: true},
+        },
     },
     render: ({
         loading,
@@ -142,7 +150,10 @@ export const Demo: Story = {
         withData,
         withLayoutSelector,
         withRowActions,
-        withRowMultiSelection,
+        enableRowSelection,
+        withUnselectableRows,
+        enableMultiRowSelection,
+        withSingleSelectRows,
         withLastUpdated,
         withCollapsibleRows,
         collapsibleBehavior,
@@ -196,8 +207,9 @@ export const Demo: Story = {
                 dateRange: withDateRangePicker ? [previousWeek, today] : undefined,
                 predicates: withPredicateFilter ? {age: 'ANY'} : undefined,
             },
-            enableRowSelection: withRowActions,
-            enableMultiRowSelection: withRowMultiSelection,
+            enableRowSelection: enableRowSelection && (withUnselectableRows ? (row) => row.original.selectable : true),
+            enableMultiRowSelection:
+                enableMultiRowSelection && (withSingleSelectRows ? (row) => row.original.selectable : true),
         });
 
         const filteredData = useMemo(

@@ -3,6 +3,7 @@ import {ForwardedRef} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../../../utils/createFactoryComponent.js';
 import {TableLayoutProps} from '../../Table.types.js';
 import {useTableContext} from '../../TableContext.js';
+import {isRowBulkSelectable} from '../../tableSelectionUtils.js';
 import {Th} from '../../table-header/Th.js';
 import {RowLayoutBodyFactory} from './RowLayoutBody.js';
 import {useRowLayout} from './RowLayoutContext.js';
@@ -36,12 +37,13 @@ export const RowLayoutHeader = <T,>(props: RowLayoutHeaderProps<T> & {ref?: Forw
         ...others
     } = useProps('RowLayoutHeader', defaultProps, props);
     const {table, store} = useTableContext<T>();
+    const hasSelectableRows = table.getRowModel().rows.some(isRowBulkSelectable);
 
     const headers = table.getHeaderGroups().map((headerGroup) => (
         <tr
             key={headerGroup.id}
-            data-selectable={store.rowSelectionEnabled}
-            data-multi-selection={store.multiRowSelectionEnabled}
+            data-selectable={hasSelectableRows}
+            data-multi-selection={!!store.multiRowSelectionEnabled}
             {...ctx.getStyles('headerRow', {className, classNames, styles, style})}
             {...others}
         >

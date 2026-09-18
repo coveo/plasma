@@ -84,6 +84,7 @@ export interface TableProps<TData> extends BoxProps, StylesApiProps<PlasmaTableF
     layoutProps?: {
         /**
          * Called by the table layout when a row is double clicked.
+         * Rows rejected by the `enableRowSelection` predicate do not trigger this callback.
          * @param selectedRow The data of the row that was double clicked
          * @param index The index of the row that was double clicked
          * @param row The row object that was double clicked

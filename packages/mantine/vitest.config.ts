@@ -16,6 +16,8 @@ export default defineConfig({
         dir: './src',
         include: [`**/*.spec.{ts,tsx}`],
         exclude: ['dist', 'node_modules'],
+        pool: 'vmThreads',
+        clearMocks: false,
         globals: true,
         environment: 'jsdom',
         setupFiles: './src/__tests__/VitestSetup.ts',
