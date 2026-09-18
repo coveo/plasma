@@ -20,8 +20,6 @@ peerDependencyRules:
 overrides:
   '@babel/traverse': ^7.23.2
   nwsapi: 2.2.27
-  react: 19.3.0
-  react-dom: 19.3.0
 strictPeerDependencies: false
 saveExact: true
 autoInstallPeers: false
