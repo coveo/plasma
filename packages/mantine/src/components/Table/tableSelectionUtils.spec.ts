@@ -2,15 +2,17 @@ import {
     areSelectionCheckboxesVisible,
     getRangeSelection,
     getSelectableRowsInRange,
+    hasActiveBulkSelection,
     preventRangeSelectionTextSelection,
     selectRange,
 } from './tableSelectionUtils.js';
 
 describe('tableSelectionUtils', () => {
-    const makeRow = (id: string, canSelect = true, isSelected = false) => ({
+    const makeRow = (id: string, canSelect = true, canMultiSelect = true, isSelected = false) => ({
         id,
         original: {id},
         getCanSelect: () => canSelect,
+        getCanMultiSelect: () => canMultiSelect,
         getIsSelected: () => isSelected,
     });
 
@@ -42,6 +44,27 @@ describe('tableSelectionUtils', () => {
         });
     });
 
+    describe('hasActiveBulkSelection', () => {
+        const makeTable = (selectedRows: ReturnType<typeof makeRow>[]) =>
+            ({getSelectedRowModel: () => ({rows: selectedRows})}) as never;
+
+        it('returns false when no row is selected', () => {
+            expect(hasActiveBulkSelection(makeTable([]))).toBe(false);
+        });
+
+        it('returns true when a selected row is bulk-eligible', () => {
+            expect(hasActiveBulkSelection(makeTable([makeRow('1', true, true, true)]))).toBe(true);
+        });
+
+        it('returns false when the only selected row cannot be multi-selected', () => {
+            expect(hasActiveBulkSelection(makeTable([makeRow('1', true, false, true)]))).toBe(false);
+        });
+
+        it('returns false when the only selected row cannot be selected', () => {
+            expect(hasActiveBulkSelection(makeTable([makeRow('1', false, true, true)]))).toBe(false);
+        });
+    });
+
     describe('getSelectableRowsInRange', () => {
         it('returns selectable rows between the anchor and target in displayed order', () => {
             const rows = [makeRow('1'), makeRow('2'), makeRow('3'), makeRow('4')];
@@ -52,6 +75,12 @@ describe('tableSelectionUtils', () => {
 
         it('skips rows that cannot be selected', () => {
             const rows = [makeRow('1'), makeRow('2', false), makeRow('3')];
+
+            expect(getSelectableRowsInRange(rows, '1', '3')).toEqual([rows[0], rows[2]]);
+        });
+
+        it('skips rows that cannot be multi-selected', () => {
+            const rows = [makeRow('1'), makeRow('2', true, false), makeRow('3')];
 
             expect(getSelectableRowsInRange(rows, '1', '3')).toEqual([rows[0], rows[2]]);
         });

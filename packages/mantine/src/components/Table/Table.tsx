@@ -1,16 +1,14 @@
 import {Box, Center, Factory, Loader, type SkeletonProps, useProps, useStyles} from '@mantine/core';
-import {useClickOutside, useMergedRef} from '@mantine/hooks';
+import {useMergedRef} from '@mantine/hooks';
 import {
     ColumnDef,
     defaultColumnSizing,
     getCoreRowModel,
     type PaginationState as TanStackPaginationState,
     Row,
-    RowSelectionState,
     useReactTable,
 } from '@tanstack/react-table';
-import isEqual from 'fast-deep-equal';
-import {Children, ForwardedRef, ReactElement, useEffect, useRef} from 'react';
+import {Children, ForwardedRef, ReactElement} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../utils/createFactoryComponent.js';
 import {TableLayouts} from './layouts/TableLayouts.js';
 import {
@@ -82,8 +80,8 @@ import {
 import classes from './Table.module.css';
 import {type TableLayout, type TableProps} from './Table.types.js';
 import {TableProvider} from './TableContext.js';
-import {areSelectionCheckboxesVisible, getRangeSelection, selectRange} from './tableSelectionUtils.js';
-import {TableState} from './use-table.js';
+import {areSelectionCheckboxesVisible, hasActiveBulkSelection} from './tableSelectionUtils.js';
+import {useTableSelection} from './use-table-selection.js';
 
 export type TableStylesNames =
     | 'root'
@@ -184,13 +182,6 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
     const noData = convertedChildren.find((child) => child.type === TableNoData);
 
     const selectionCheckboxesVisible = areSelectionCheckboxesVisible(store);
-    const rangeSelectionAnchorRef = useRef<string | null>(null);
-
-    useEffect(() => {
-        if (Object.keys(store.state.rowSelection).length === 0) {
-            rangeSelectionAnchorRef.current = null;
-        }
-    }, [store.state.rowSelection]);
 
     const table = useReactTable({
         data: data || [],
@@ -215,7 +206,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
         columns: selectionCheckboxesVisible ? [TableSelectableColumn as ColumnDef<T>].concat(columns) : columns,
         getCoreRowModel: getCoreRowModel(),
         manualPagination: options.getPaginationRowModel === undefined,
-        enableMultiRowSelection: !!store.multiRowSelectionEnabled,
+        enableMultiRowSelection: store.multiRowSelectionEnabled,
         getRowId,
         getRowCanExpand: (row: Row<T>) => !!getRowExpandedContent?.(row.original, row.index, row),
         enableRowSelection: loading ? false : store.rowSelectionEnabled,
@@ -228,100 +219,15 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
         ...options,
     });
 
-    table.setOptions((prev) => ({
-        ...prev,
-        state: {
-            ...prev.state,
-            rowSelection: store.state.rowSelection as RowSelectionState,
-        },
-        onRowSelectionChange: (rowSelectionUpdater) => {
-            store.setRowSelection((old) => {
-                const newRowSelection = (
-                    rowSelectionUpdater instanceof Function
-                        ? rowSelectionUpdater(old as RowSelectionState)
-                        : rowSelectionUpdater
-                ) as TableState<T>['rowSelection'];
-
-                if (isEqual(old, newRowSelection)) {
-                    return old;
-                }
-
-                const rows = table.getRowModel().rowsById;
-
-                Object.keys(newRowSelection).forEach((rowId) => {
-                    if (newRowSelection[rowId] === true) {
-                        if (!rows[rowId]) {
-                            console.error(
-                                'The table was not initialized properly, the rowSelection state should contain an object of type Record<string, TData>.',
-                            );
-                        }
-                        newRowSelection[rowId] = rows[rowId]?.original ?? (true as T);
-                    }
-                });
-
-                return newRowSelection;
-            });
-        },
-    }));
-
-    const handleRowSelection = (row: Row<T>, rangeRequested: boolean) => {
-        if (store.rowSelectionEnabled && row.getCanSelect()) {
-            if (rangeRequested && store.multiRowSelectionEnabled) {
-                const rangeSelection = getRangeSelection<T, Row<T>>({
-                    row,
-                    rows: table.getRowModel().rows,
-                    anchorId: rangeSelectionAnchorRef.current,
-                });
-                store.setRowSelection((currentSelection) =>
-                    selectRange<T, Row<T>>(currentSelection, rangeSelection.rows),
-                );
-                rangeSelectionAnchorRef.current = rangeSelection.nextAnchorId;
-            } else {
-                if (!store.rowSelectionForced || !row.getIsSelected()) {
-                    row.toggleSelected();
-                }
-                rangeSelectionAnchorRef.current = row.id;
-            }
-        }
-    };
-
-    useEffect(() => {
-        // Update the selected rows data when the data prop changes
-        if (store.getSelectedRows().length > 0) {
-            store.setRowSelection((old) => {
-                const rowsById = table.getRowModel().rowsById;
-                const newSelection = {...old};
-                Object.keys(old).forEach((rowId) => {
-                    if (rowsById[rowId]) {
-                        newSelection[rowId] = rowsById[rowId].original;
-                    }
-                });
-                return isEqual(newSelection, old) ? old : newSelection;
-            });
-        }
-    }, [data]);
-
-    const containerRef = useRef<HTMLDivElement>(null);
-    useClickOutside(
-        () => {
-            if (!store.multiRowSelectionEnabled && store.getSelectedRows().length > 0) {
-                store.clearRowSelection();
-            }
-        },
-        null,
-        [containerRef.current, ...additionalRootNodes],
-    );
-    useEffect(() => {
-        const clearRowSelection = (event: KeyboardEvent) => {
-            if (event.key === 'Escape' && store.rowSelectionEnabled && !store.rowSelectionForced) {
-                store.clearRowSelection();
-            }
-        };
-
-        document.addEventListener('keydown', clearRowSelection, true);
-        return () => document.removeEventListener('keydown', clearRowSelection, true);
-    }, [store.clearRowSelection, store.rowSelectionEnabled, store.rowSelectionForced]);
+    const {containerRef, rangeSelectionAnchorRef, handleRowSelection, handlePageSelection} = useTableSelection({
+        additionalRootNodes,
+        data,
+        table,
+        store,
+    });
     const mergedRef = useMergedRef(containerRef, ref);
+
+    const bulkSelectionActive = hasActiveBulkSelection(table);
 
     if (!data) {
         return (
@@ -350,6 +256,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
                     selectionCheckboxesVisible,
                     rangeSelectionAnchorRef,
                     handleRowSelection,
+                    handlePageSelection,
                 }}
             >
                 <>
@@ -359,7 +266,11 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
                             noData
                         ) : (
                             <>
-                                <Box component="table" {...getStyles('table')} mod={{loading}}>
+                                <Box
+                                    component="table"
+                                    {...getStyles('table')}
+                                    mod={{loading, 'bulk-selection-active': bulkSelectionActive}}
+                                >
                                     <thead {...getStyles('header')}>
                                         {header ? (
                                             <tr>

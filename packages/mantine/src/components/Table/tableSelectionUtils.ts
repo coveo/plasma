@@ -1,9 +1,10 @@
-import type {Row} from '@tanstack/table-core';
+import type {Row, Table} from '@tanstack/table-core';
 import type {TableState, TableStore} from './use-table.js';
 
 interface SelectableRow {
     id: string;
     getCanSelect: () => boolean;
+    getCanMultiSelect: () => boolean;
 }
 
 interface SelectionRow<T> extends SelectableRow {
@@ -35,10 +36,25 @@ interface RangeSelectionMouseEvent {
 }
 
 export const areSelectionCheckboxesVisible = <T>(store: SelectionVisibilityStore<T>): boolean =>
-    store.multiRowSelectionEnabled && (!!store.rowSelectionEnabled || store.getSelectedRows().length > 0);
+    !!store.multiRowSelectionEnabled && (!!store.rowSelectionEnabled || store.getSelectedRows().length > 0);
 
 export const isRowSelectionPredicateRejected = <T>(row: Row<T>, store: TableStore<T>): boolean =>
     typeof store.rowSelectionEnabled === 'function' && !store.rowSelectionEnabled(row);
+
+export const isRowMultiSelectionPredicateRejected = <T>(row: Row<T>, store: TableStore<T>): boolean =>
+    typeof store.multiRowSelectionEnabled === 'function' && !row.getCanMultiSelect();
+
+export const isRowBulkSelectable = (row: SelectableRow): boolean => row.getCanSelect() && row.getCanMultiSelect();
+
+/**
+ * Whether a bulk-eligible row is currently selected.
+ *
+ * Used to reveal the selection checkboxes and the header selected-count control only once a row that participates in
+ * bulk selection has been selected. Rows rejected by the multi-row selection predicate are selected exclusively and
+ * therefore do not activate bulk selection.
+ */
+export const hasActiveBulkSelection = <T>(table: Pick<Table<T>, 'getSelectedRowModel'>): boolean =>
+    table.getSelectedRowModel().rows.some(isRowBulkSelectable);
 
 export const getSelectableRowsInRange = <TRow extends SelectableRow>(
     rows: TRow[],
@@ -54,7 +70,7 @@ export const getSelectableRowsInRange = <TRow extends SelectableRow>(
 
     const startIndex = Math.min(anchorIndex, targetIndex);
     const endIndex = Math.max(anchorIndex, targetIndex);
-    return rows.slice(startIndex, endIndex + 1).filter((row) => row.getCanSelect());
+    return rows.slice(startIndex, endIndex + 1).filter(isRowBulkSelectable);
 };
 
 export const getRangeSelection = <T, TRow extends SelectionRow<T>>({
@@ -88,7 +104,7 @@ export const preventRangeSelectionTextSelection = <T>(
     row: SelectableRow,
     store: RowSelectionStore<T>,
 ) => {
-    if (event.shiftKey && store.multiRowSelectionEnabled && store.rowSelectionEnabled && row.getCanSelect()) {
+    if (event.shiftKey && store.multiRowSelectionEnabled && store.rowSelectionEnabled && isRowBulkSelectable(row)) {
         event.preventDefault();
         const {ownerDocument} = event.currentTarget;
         const clearTextSelection = () => ownerDocument.getSelection()?.removeAllRanges();

@@ -43,7 +43,7 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
     const rows = table.getRowModel()?.rows.map((row) => {
         const rowChildren = getRowExpandedContent?.(row.original, row.index, row) ?? null;
         const isSelected = !!row.getIsSelected();
-        const isSelectionDisabled = isRowSelectionPredicateRejected(row, store);
+        const isRowSelectionRejected = isRowSelectionPredicateRejected(row, store);
         const onClick = (event: MouseEvent<HTMLTableRowElement>) => {
             preventRangeSelectionTextSelection(event, row, store);
             handleRowSelection(row, event.shiftKey);
@@ -58,14 +58,13 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
                     onClick={onClick}
                     onMouseDown={onMouseDown}
                     onDoubleClick={() => {
-                        if (!isSelectionDisabled) {
+                        if (!isRowSelectionRejected) {
                             onRowDoubleClick?.(row.original, row.index, row);
                         }
                     }}
                     data-selectable={row.getCanSelect()}
                     data-selected={isSelected}
-                    data-multi-selection={store.multiRowSelectionEnabled}
-                    data-selection-disabled={isSelectionDisabled || undefined}
+                    data-multi-selection={!!store.multiRowSelectionEnabled}
                     aria-selected={isSelected}
                     data-testid={row.id}
                     {...ctx.getStyles('row', {classNames, className, styles, style})}

@@ -54,6 +54,8 @@ Important states include:
 - Expandable row content SHOULD add detail without replacing the row's core scannable information.
 - When row selection is enabled, pressing Escape clears the selection unless `forceSelection` is enabled.
 - `enableRowSelection` MAY be a predicate when only some rows should be selectable. Rows rejected by the predicate are displayed at 50% opacity, do not render a selection checkbox, cannot be selected through their surface, do not trigger `onRowDoubleClick`, and are skipped by select-all and range selection.
+- `enableMultiRowSelection` MAY be a predicate when some rows should only support single selection. Rows rejected by the predicate do not render a selection checkbox and are skipped by select-all and range selection, but remain selectable through their surface and continue to trigger `onRowDoubleClick`. Selecting one clears the current selection, and selecting another row afterward clears the single-select-only row.
+- When multi-row selection is enabled, the selection checkboxes stay hidden until a bulk-eligible row is selected; selecting one reveals every checkbox. Selecting a row rejected by the `enableMultiRowSelection` predicate selects it exclusively (like single selection) without revealing the checkboxes, and the `Table.Header` selected-count control stays hidden while only such rows are selected.
 - When multi-row selection is enabled, users MAY click a row, card, or its checkbox and then Shift-click another selection target to select all selectable rows between them on the displayed page. Existing selections outside the range are preserved.
 
 ## Content guidance
@@ -93,7 +95,7 @@ Important states include:
 ## `useTable` row selection options
 
 **`enableRowSelection`** `boolean | ((row: Row<TData>) => boolean)` · optional · default: `true`: Whether rows can be selected, or a predicate that determines whether each row can be selected. Rows rejected by the predicate are displayed at 50% opacity and do not render a selection checkbox. Selection is temporarily disabled while `Table` is loading.
-**`enableMultiRowSelection`** `boolean` · optional · default: `false`: Whether multiple rows can be selected at the same time. Only applies when row selection is enabled.
+**`enableMultiRowSelection`** `boolean | ((row: Row<TData>) => boolean)` · optional · default: `false`: Whether multiple rows can be selected at the same time, or a predicate that determines whether each row can be bulk selected. Rows rejected by the predicate remain single-selectable and are excluded from selection checkboxes, select-all, and range selection. Selection checkboxes stay hidden until a bulk-eligible row is selected; selecting a rejected row selects it exclusively without revealing them.
 **`forceSelection`** `boolean` · optional · default: `false`: Forces the user to always have one row selected. When activating that setting, a good practice is to have a row already selected in the initial state.
 
 ## Sub-components
@@ -191,7 +193,7 @@ export function Example() {
             totalEntries: data.length,
             pagination: {page: 0, perPage: 10},
         },
-        enableRowSelection: (row) => row.original.type !== 'System',
+        enableMultiRowSelection: (row) => row.original.type !== 'System',
     });
 
     return <Table<TData> store={store} columns={columns} data={data} getRowId={({id}) => id} />;

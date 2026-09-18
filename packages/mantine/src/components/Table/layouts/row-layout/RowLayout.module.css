@@ -19,9 +19,15 @@
     }
 
     &[data-selectable='true'] {
+        cursor: pointer;
+
         @mixin hover {
             background-color: var(--mantine-color-gray-light-hover);
         }
+    }
+
+    &[data-selectable='false'] {
+        opacity: 0.5;
     }
 
     &[data-selectable='false'] input[type='checkbox'] {
@@ -36,17 +42,7 @@
     }
 
     &[data-selected='true'] {
-        &[data-multi-selection='false'] {
-            background-color: var(--mantine-color-gray-light-hover);
-        }
-
-        &[data-multi-selection='true'] {
-            background-color: transparent;
-        }
-    }
-
-    &[data-selection-disabled='true'] {
-        opacity: 0.5;
+        background-color: var(--mantine-color-gray-light-hover);
     }
 
     &[data-collapsible-cell='true'] {

@@ -58,7 +58,7 @@ export const CardLayoutBody = <T,>(props: CardLayoutBodyProps<T> & {ref?: Forwar
 
     const cards = table.getRowModel().rows.map((row) => {
         const isSelected = !!row.getIsSelected();
-        const isSelectionDisabled = isRowSelectionPredicateRejected(row, store);
+        const isRowSelectionRejected = isRowSelectionPredicateRejected(row, store);
         const onClick = (event: MouseEvent<HTMLDivElement>) => {
             preventRangeSelectionTextSelection(event, row, store);
             handleRowSelection(row, event.shiftKey);
@@ -72,14 +72,13 @@ export const CardLayoutBody = <T,>(props: CardLayoutBodyProps<T> & {ref?: Forwar
                 key={row.id}
                 mod={{selected: isSelected}}
                 variant={row.getCanSelect() ? 'hover' : undefined}
-                data-selectable={row.getCanSelect() || undefined}
-                data-selection-disabled={isSelectionDisabled || undefined}
+                data-selectable={row.getCanSelect()}
                 aria-selected={isSelected}
                 data-testid={row.id}
                 onClick={onClick}
                 onMouseDown={onMouseDown}
                 onDoubleClick={() => {
-                    if (!isSelectionDisabled) {
+                    if (!isRowSelectionRejected) {
                         onRowDoubleClick?.(row.original, row.index, row);
                     }
                 }}

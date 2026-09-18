@@ -42,6 +42,7 @@ type StoryArgs = TableProps<Person> & {
     enableRowSelection: boolean;
     withUnselectableRows: boolean;
     enableMultiRowSelection: boolean;
+    withSingleSelectRows: boolean;
     withLastUpdated: boolean;
     withCollapsibleRows: boolean;
     collapsibleBehavior: 'collapse' | 'accordion';
@@ -115,6 +116,7 @@ export const Demo: Story = {
         enableRowSelection: true,
         withUnselectableRows: false,
         enableMultiRowSelection: false,
+        withSingleSelectRows: false,
         withLastUpdated: false,
         withCollapsibleRows: false,
         collapsibleBehavior: 'collapse',
@@ -133,6 +135,9 @@ export const Demo: Story = {
         withUnselectableRows: {
             if: {arg: 'enableRowSelection', truthy: true},
         },
+        withSingleSelectRows: {
+            if: {arg: 'enableMultiRowSelection', truthy: true},
+        },
     },
     render: ({
         loading,
@@ -148,6 +153,7 @@ export const Demo: Story = {
         enableRowSelection,
         withUnselectableRows,
         enableMultiRowSelection,
+        withSingleSelectRows,
         withLastUpdated,
         withCollapsibleRows,
         collapsibleBehavior,
@@ -202,7 +208,8 @@ export const Demo: Story = {
                 predicates: withPredicateFilter ? {age: 'ANY'} : undefined,
             },
             enableRowSelection: enableRowSelection && (withUnselectableRows ? (row) => row.original.selectable : true),
-            enableMultiRowSelection,
+            enableMultiRowSelection:
+                enableMultiRowSelection && (withSingleSelectRows ? (row) => row.original.selectable : true),
         });
 
         const filteredData = useMemo(

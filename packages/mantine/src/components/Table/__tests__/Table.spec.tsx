@@ -462,5 +462,35 @@ describe('Table', () => {
 
             expect(screen.queryByRole('button', {name: /1 selected/i})).not.toBeInTheDocument();
         });
+
+        it('does not display the selected count when only single-select-only rows are selected', async () => {
+            const user = userEvent.setup();
+            const Fixture = () => {
+                const store = useTable<RowData>({
+                    enableMultiRowSelection: (row) => row.id !== '🆔-2',
+                });
+                return (
+                    <Table
+                        store={store}
+                        getRowId={({id}) => id}
+                        data={[
+                            {id: '🆔-1', firstName: 'John', lastName: 'Smith'},
+                            {id: '🆔-2', firstName: 'Jane', lastName: 'Doe'},
+                        ]}
+                        columns={columns}
+                    >
+                        <Table.Header />
+                    </Table>
+                );
+            };
+            render(<Fixture />);
+
+            await user.click(screen.getByRole('row', {name: /jane doe/i}));
+            expect(screen.getByRole('row', {name: /jane doe/i, selected: true})).toBeInTheDocument();
+            expect(screen.queryByRole('button', {name: /1 selected/i})).not.toBeInTheDocument();
+
+            await user.click(screen.getByRole('row', {name: /john smith/i}));
+            expect(screen.getByRole('button', {name: /1 selected/i})).toBeInTheDocument();
+        });
     });
 });
