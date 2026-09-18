@@ -2,4 +2,4 @@
 '@coveord/plasma-mantine': patch
 ---
 
-Fix `CodeEditor` find widget buttons being unclickable due to tooltip flickering
+Fix `CodeEditor` find widget buttons being unclickable by upgrading `monaco-editor` to 0.56.0

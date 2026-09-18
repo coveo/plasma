@@ -1,0 +1,15 @@
+diff --git a/package.json b/package.json
+index d6741bfa2327ba28d178e8064512af29c4e0c49b..772f1094232d5897749c047ab12c92983cb7af09 100644
+--- a/package.json
++++ b/package.json
+@@ -42,8 +42,8 @@
+       "import": "./esm/vs/index.js",
+       "require": "./min/vs/index.js"
+     },
+-    "./*.js": "./esm/vs/*.js",
+-    "./*": "./esm/vs/*.js"
++    "./*.js": "./*.js",
++    "./*": "./*"
+   },
+   "repository": {
+     "type": "git",

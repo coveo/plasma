@@ -17,21 +17,6 @@
     }
 }
 
-/*
- * Monaco renders the hover tooltips for its widgets (including the find widget's close and
- * "Find in Selection" buttons) in a `.workbench-hover-container` appended to `document.body`.
- * A monaco bug (microsoft/monaco-editor#5208, #5139) makes that tooltip trigger a mouseout on the
- * button it describes, then reappear, in a rapid show/hide loop. The flicker swallows the click,
- * so the find widget's X button becomes unclickable. Hiding the hover container stops the loop;
- * the buttons keep their aria-label/title, so functionality and accessibility are preserved.
- * The container lives outside the component subtree, so this rule must be global.
- */
-:global {
-    .workbench-hover-container {
-        display: none !important;
-    }
-}
-
 .error {
     --ce-border-color: var(--mantine-color-error);
 }
