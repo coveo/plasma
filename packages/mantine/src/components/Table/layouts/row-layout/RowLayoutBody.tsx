@@ -63,6 +63,7 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
                         }
                     }}
                     data-selectable={row.getCanSelect()}
+                    data-selection-rejected={isRowSelectionRejected}
                     data-selected={isSelected}
                     data-multi-selection={!!store.multiRowSelectionEnabled}
                     aria-selected={isSelected}

@@ -73,6 +73,7 @@ export const CardLayoutBody = <T,>(props: CardLayoutBodyProps<T> & {ref?: Forwar
                 mod={{selected: isSelected}}
                 variant={row.getCanSelect() ? 'hover' : undefined}
                 data-selectable={row.getCanSelect()}
+                data-selection-rejected={isRowSelectionRejected}
                 aria-selected={isSelected}
                 data-testid={row.id}
                 onClick={onClick}
