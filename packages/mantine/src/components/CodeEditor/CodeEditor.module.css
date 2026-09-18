@@ -18,16 +18,20 @@
 }
 
 /*
- * Monaco renders the hover tooltips for its widgets (including the find widget's close and
- * "Find in Selection" buttons) in a `.workbench-hover-container` appended to `document.body`.
- * A monaco bug (microsoft/monaco-editor#5208, #5139) makes that tooltip trigger a mouseout on the
- * button it describes, then reappear, in a rapid show/hide loop. The flicker swallows the click,
- * so the find widget's X button becomes unclickable. Hiding the hover container stops the loop;
- * the buttons keep their aria-label/title, so functionality and accessibility are preserved.
- * The container lives outside the component subtree, so this rule must be global.
+ * The find widget's buttons (close, "Find in Selection", etc.) show a pointer-style hover tooltip.
+ * A monaco bug (microsoft/monaco-editor#5208, #5139) makes that tooltip reposition on layout, which
+ * fires a mouseout on the button, disposes the tooltip, then re-triggers it, in a rapid add/remove
+ * loop (confirmed via DOM MutationObserver: ~12 add/remove cycles while hovering the X button). The
+ * flicker swallows the click, so the button becomes unclickable. Reproduced on monaco 0.55.1 and
+ * 0.56.0, with both the CDN and local loaders, so it is not fixed by upgrading monaco.
+ *
+ * Hiding only the pointer-style hover container stops the loop while leaving normal editor content
+ * hovers (code symbols, markers) working. The container is appended to `document.body`, outside the
+ * component subtree, so this rule must be global; the buttons keep their aria-label/title, so
+ * functionality and accessibility are preserved.
  */
 :global {
-    .workbench-hover-container {
+    .workbench-hover-container:has(.workbench-hover-pointer) {
         display: none !important;
     }
 }
