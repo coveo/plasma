@@ -19,7 +19,7 @@ peerDependencyRules:
     - react-native
 overrides:
   '@babel/traverse': ^7.23.2
-  nwsapi: 2.2.24
+  nwsapi: 2.2.27
 strictPeerDependencies: false
 saveExact: true
 autoInstallPeers: false
