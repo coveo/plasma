@@ -25,4 +25,3 @@ saveExact: true
 autoInstallPeers: false
 patchedDependencies:
   '@monaco-editor/react@4.7.0': patches/@monaco-editor__react@4.7.0.patch
-  monaco-editor@0.56.0: patches/monaco-editor@0.56.0.patch
