@@ -1,4 +1,4 @@
-import {CloseButton} from '@coveord/plasma-mantine/components/CloseButton';
+import {CloseButton} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
 interface CloseButtonStoryArgs {
@@ -18,7 +18,11 @@ const meta: Meta<CloseButtonStoryArgs> = {
         size: {
             control: 'select',
             options: ['sm', 'md'],
-            description: 'Size of the CloseButton',
+            description: 'Sets the width and height of the close button.',
+            table: {
+                type: {summary: "'sm' | 'md'"},
+                defaultValue: {summary: "'md'"},
+            },
         },
     },
 };
@@ -26,5 +30,5 @@ export default meta;
 type Story = StoryObj<CloseButtonStoryArgs>;
 
 export const Demo: Story = {
-    render: (args) => <CloseButton size={args.size} />,
+    render: (args) => <CloseButton aria-label="Close" size={args.size} />,
 };

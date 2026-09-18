@@ -1,0 +1,50 @@
+import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import * as TableStories from './Table.stories';
+
+<Meta of={TableStories} />
+
+# Table
+
+Structured data view with optional filtering, pagination, selection, row actions, and alternate layouts.
+
+## Overview
+
+`Table` helps users scan and compare records across consistent columns, then narrow or act on those records.
+
+Its store coordinates table state with filters, sorting, pagination, selection, expansion, and layout controls.
+
+## Usage
+
+<Canvas of={TableStories.Demo} />
+<Controls of={TableStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- Users need to compare several fields across many records.
+- Users need filtering, pagination, selection, row actions, or expandable details.
+- A view needs coordinated empty, loading, and pagination states.
+
+### When not to use
+
+- For a progression over time, use a chart.
+- For editable repeated form items, use `Collection`.
+- For a few simple items that do not need column comparison, use text or cards.
+- Do not use a table only to arrange page content.
+
+### Best practices
+
+- Provide a stable `getRowId` when rows can be selected or reordered.
+- Pass `data={null}` for the initial load, then use `loading` for later refreshes.
+- Keep essential record identity in visible columns and use expansion for supporting detail.
+- Place item-specific actions on rows and table-wide actions in the header or footer.
+- Place filters inside `Table.Header` or `Table.Toolbar`.
+- When selection is enabled, users can press Escape to clear it unless selection is forced.
+
+### Content guidelines
+
+- Keep column headers short and specific.
+- Distinguish between no available data and no matching results in empty states.
+- Label row actions with clear verbs and state destructive consequences.
+- Use familiar terms for filter labels and values.

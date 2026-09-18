@@ -1,7 +1,11 @@
-import {Pill} from '@coveord/plasma-mantine/components/Pill';
+import {Pill, type PillProps} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
-const meta: Meta<typeof Pill> = {
+type PillStoryArgs = Omit<PillProps, 'children'> & {
+    label: string;
+};
+
+const meta: Meta<PillStoryArgs> = {
     title: '@components/Data display/Pill',
     id: 'Pill',
     component: Pill,
@@ -9,33 +13,58 @@ const meta: Meta<typeof Pill> = {
         layout: 'centered',
     },
     argTypes: {
-        children: {
+        label: {
             control: 'text',
-            description: 'Pill value',
+            description: 'Sets the value displayed inside the pill in this example.',
+            table: {
+                type: {summary: 'string'},
+                defaultValue: {summary: "'React'"},
+            },
         },
         withRemoveButton: {
             control: 'boolean',
-            description: 'Controls visibility of the remove button',
+            description: 'Shows a button that removes the value.',
+            table: {
+                type: {summary: 'boolean'},
+                defaultValue: {summary: 'false'},
+            },
+        },
+        onRemove: {
+            action: 'removed',
+            description: 'Runs when the user selects the remove button.',
+            table: {
+                type: {summary: '() => void'},
+                defaultValue: {summary: 'undefined'},
+            },
         },
         size: {
             control: 'select',
             options: ['sm', 'md'],
-            description: 'Pill size',
+            description: 'Sets the size of the pill.',
+            table: {
+                type: {summary: 'MantineSize'},
+                defaultValue: {summary: "'sm'"},
+            },
         },
     },
     args: {
         size: 'sm',
         withRemoveButton: false,
-        children: 'Item',
+        label: 'React',
     },
 };
 export default meta;
-type Story = StoryObj<typeof Pill>;
+type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
-    render: ({size, withRemoveButton, children}) => (
-        <Pill size={size} withRemoveButton={withRemoveButton}>
-            {children}
+    render: ({size, withRemoveButton, label, onRemove}) => (
+        <Pill
+            size={size}
+            withRemoveButton={withRemoveButton}
+            onRemove={onRemove}
+            removeButtonProps={{'aria-label': `Remove ${label}`}}
+        >
+            {label}
         </Pill>
     ),
 };

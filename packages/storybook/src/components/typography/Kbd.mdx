@@ -1,0 +1,41 @@
+import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import * as KbdStories from './Kbd.stories';
+
+<Meta of={KbdStories} />
+
+# Kbd
+
+Represents keyboard keys and shortcuts with the appearance and semantics of a physical key.
+
+## Overview
+
+`Kbd` makes keyboard instructions easier to find and understand within help text, menus, and command interfaces.
+
+## Usage
+
+<Canvas of={KbdStories.Demo} />
+<Controls of={KbdStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- Instructions identify a key that users need to press.
+- A menu or command interface shows an available keyboard shortcut.
+
+### When not to use
+
+- The content is code, a command, or a file path. Use `Code` instead.
+- The keyboard styling adds no meaning to the surrounding content.
+
+### Best practices
+
+- Use a separate `Kbd` for each key in a shortcut.
+- Separate keys with a plain-text plus sign.
+- Include surrounding text that explains what the shortcut does.
+
+### Content guidelines
+
+- Use short key names or symbols.
+- Use platform-native symbols for platform-specific instructions.
+- Use labels such as **Ctrl** and **Shift** for cross-platform instructions.

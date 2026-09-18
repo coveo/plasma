@@ -1,0 +1,46 @@
+import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import * as SegmentedControlStories from './SegmentedControl.stories';
+
+<Meta of={SegmentedControlStories} />
+
+# SegmentedControl
+
+Compact control for switching immediately between a small set of mutually exclusive views or modes.
+
+## Overview
+
+`SegmentedControl` keeps every option visible in a compact bar and always maintains one active selection.
+
+It works best for quick view, mode, or filter changes that do not require a separate submit action.
+
+## Usage
+
+<Canvas of={SegmentedControlStories.Demo} />
+<Controls of={SegmentedControlStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- Users switch between two to five views, modes, or filters.
+- Every option should remain visible and one must always be active.
+- A selection takes effect immediately.
+
+### When not to use
+
+- Use `Tabs` when each option navigates to a distinct content panel.
+- Use `Radio.Group` for a value submitted as part of a form.
+- Use another pattern when no selection is a valid state.
+- Avoid more than five options or labels that need to wrap.
+
+### Best practices
+
+- Use the control for mode changes, not navigation between content sections.
+- Keep the option set stable so users can build familiarity.
+- Disable an individual segment when its mode is temporarily unavailable.
+- Give the control an accessible name when surrounding context does not provide one.
+
+### Content guidelines
+
+- Keep labels short and meaningful on their own.
+- Use parallel labels with the same grammatical form.

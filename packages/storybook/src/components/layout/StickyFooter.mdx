@@ -1,0 +1,42 @@
+import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import * as StickyFooterStories from './StickyFooter.stories';
+
+<Meta of={StickyFooterStories} />
+
+# StickyFooter
+
+Persistent page-level action footer for editing and creation flows.
+
+## Overview
+
+The `StickyFooter` keeps actions such as save and cancel available while users work through long page content. It prevents page-level commitments from scrolling out of view.
+
+## Usage
+
+<Canvas of={StickyFooterStories.Default} />
+
+## Guidelines
+
+### When to use
+
+- Users need persistent actions while editing or creating an item.
+- Long page content would otherwise move page-level actions out of view.
+- The actions confirm or discard changes to the whole page.
+
+### When not to use
+
+- The page is not in an editing or creation state.
+- Actions apply only to a local section, row, or card.
+- Actions are inside a modal. Use `Modal.Footer` instead.
+
+### Best practices
+
+- Keep the main commitment visually prominent and supporting actions secondary.
+- Offer a safe way to leave the editing flow without applying changes.
+- Keep action order consistent across similar workflows.
+- Avoid unrelated utility actions in the footer.
+
+### Content guidelines
+
+- Label the primary action with the result, such as **Save changes** or **Create project**.
+- Use a clear exit label such as **Cancel** for the safe alternative.

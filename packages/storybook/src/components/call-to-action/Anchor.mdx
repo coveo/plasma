@@ -1,0 +1,43 @@
+import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import * as AnchorStories from './Anchor.stories';
+
+<Meta of={AnchorStories} />
+
+# Anchor
+
+Inline text link that takes users to another page, section, or resource.
+
+## Overview
+
+The `Anchor` adds navigation within text without giving the link the visual weight of a button.
+
+## Usage
+
+<Canvas of={AnchorStories.Demo} />
+<Controls of={AnchorStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- To link to another route, section, or external resource.
+- To place a navigation action within a sentence or paragraph.
+- To offer secondary navigation beside descriptive text.
+
+### When not to use
+
+- For an action that changes data or advances a workflow, use a `Button`.
+- For prominent standalone actions, use the appropriate button hierarchy.
+- For hierarchical navigation, use breadcrumbs.
+
+### Best practices
+
+- Use `inherit` when the link belongs inside another text component.
+- Open a new tab only when leaving the current page would interrupt the user's task.
+- Use `xs` in compact contexts and `sm` with body text.
+
+### Content guidelines
+
+- Use short link text that describes the destination.
+- Avoid vague labels such as **Click here** or **Read more**.
+- Include punctuation only when the link is part of a sentence.

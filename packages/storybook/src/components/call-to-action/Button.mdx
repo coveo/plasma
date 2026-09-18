@@ -1,0 +1,48 @@
+import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import * as ButtonStories from './Button.stories';
+
+<Meta of={ButtonStories} />
+
+# Button
+
+Action button that triggers tasks and provides async loading and disabled-tooltip feedback.
+
+## Overview
+
+The `Button` lets users intentionally trigger an action, submit a decision, or move a workflow forward.
+
+It provides clear visual hierarchy for actions and supports async loading and disabled-state explanations.
+
+## Usage
+
+<Canvas of={ButtonStories.Demo} />
+<Controls of={ButtonStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- Users need to trigger an explicit command.
+- The action needs a visible text label.
+- The action belongs to a form, modal, footer, toolbar, or page-level command area.
+
+### When not to use
+
+- For a compact, familiar action that doesn't need visible text, use an `ActionIcon`.
+- For a persistent setting that takes effect immediately, use a selection or boolean control.
+- For navigation to another destination, use a link.
+- If many buttons compete for attention, simplify or regroup the available actions.
+
+### Best practices
+
+- Give one action the strongest emphasis within each decision area.
+- Give supporting actions less emphasis than the main action.
+- Reserve destructive emphasis for actions that delete, revoke, archive, or negatively affect data.
+- Group related actions and make their hierarchy visually clear.
+
+### Content guidelines
+
+- Start labels with a specific verb that describes the result, such as **Save changes** or **Publish**.
+- Keep labels to three words or fewer.
+- Make destructive consequences explicit.
+- Use specific labels such as **Delete project**, not vague labels such as **OK**.

@@ -1,0 +1,48 @@
+import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import * as TextInputStories from './TextInput.stories';
+
+<Meta of={TextInputStories} />
+
+# TextInput
+
+Single-line field for names, email addresses, search queries, URLs, and other short text values.
+
+## Overview
+
+`TextInput` is the standard control for collecting one line of free-form text in a form or focused search experience.
+
+It supports labels, descriptions, validation feedback, and optional content on either side of the value.
+
+## Usage
+
+<Canvas of={TextInputStories.Demo} />
+<Controls of={TextInputStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- Users enter a short, free-form string.
+- The value belongs to a form and may need inline guidance or validation.
+- A compact search or filter needs a single-line field.
+
+### When not to use
+
+- Use `Textarea` for text that can span multiple lines.
+- Use `NumberInput` for numeric values.
+- Use `Select` or `Autocomplete` when values come from a known list.
+- Use a date or time input for temporal values.
+
+### Best practices
+
+- Provide a visible label unless nearby context gives the field a clear accessible name.
+- Match the HTML input type to the expected value.
+- Use descriptions for guidance users need before entering a value.
+- Keep interactive section content keyboard accessible.
+- Show validation feedback inline after users interact with the field.
+
+### Content guidelines
+
+- Use a noun or short noun phrase for the label.
+- Use placeholder text for an example or format hint, not as the label.
+- Explain what is wrong and how to fix it in error messages.

@@ -1,0 +1,43 @@
+import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import * as MenuStories from './Menu.stories';
+
+<Meta of={MenuStories} />
+
+# Menu
+
+Groups contextual commands in a compact dropdown near their trigger.
+
+## Overview
+
+`Menu` keeps secondary and overflow actions available without giving each action permanent space in the layout.
+
+## Usage
+
+<Canvas of={MenuStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- Actions relate to a nearby trigger, selected item, or group of records.
+- Secondary commands would compete with more important visible actions.
+- Users need a compact list of related commands.
+
+### When not to use
+
+- The action is primary or used frequently. Keep it visible with a `Button` or `ActionIcon`.
+- Users need to compare complex options or enter information.
+- The choices navigate between major sections.
+
+### Best practices
+
+- Give the trigger a clear label or accessible name.
+- Group related actions with labels and dividers.
+- Keep important and frequent actions visible outside the menu.
+- Explain a disabled item when its requirement or permission isn't obvious.
+
+### Content guidelines
+
+- Start item labels with a specific verb, such as **Archive selected**.
+- Keep labels concise and make destructive consequences explicit.
+- Write disabled tooltips that explain how to make the action available.

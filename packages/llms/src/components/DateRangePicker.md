@@ -1,7 +1,11 @@
 ---
 name: DateRangePicker
-description: Date range picker with an input trigger, inline calendar, presets, and optional URL synchronization.
+description: Deprecated date range picker with an input trigger, inline calendar, presets, and optional URL synchronization; do not use it in new implementations.
 ---
+
+## Deprecation
+
+`DateRangePicker` is deprecated and MUST NOT be used in new implementations. Existing usages SHOULD be migrated away from it.
 
 # Usage guidance
 

@@ -1,0 +1,43 @@
+import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import * as HeaderStories from './Header.stories';
+
+<Meta of={HeaderStories} />
+
+# Header
+
+Page-level title area with optional breadcrumbs, description, documentation link, and actions.
+
+## Overview
+
+The `Header` establishes the purpose and hierarchy of a page or major section. It gives related context and page-level actions a consistent location around the title.
+
+## Usage
+
+<Canvas of={HeaderStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- A page or major section needs a clear title and supporting context.
+- Breadcrumbs or external documentation help users understand the view.
+- Actions apply to the page or section as a whole.
+
+### When not to use
+
+- A card or small form group only needs a local heading.
+- The surrounding page already provides its title structure.
+- Actions belong near a form, in a modal footer, or in a sticky footer.
+
+### Best practices
+
+- Use the primary variant for page headers and the secondary variant for lower-level sections.
+- Place only page-level actions in `Header.Right` and limit competing choices.
+- Use breadcrumbs to show hierarchy, with the current location rendered as non-linked text.
+- Link to relevant external help through `Header.DocAnchor`.
+
+### Content guidelines
+
+- Write specific, scannable titles.
+- Use the description to explain the page purpose rather than repeat the title.
+- Keep breadcrumb labels aligned with the application's hierarchy.

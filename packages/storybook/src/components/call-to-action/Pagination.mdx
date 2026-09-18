@@ -1,0 +1,40 @@
+import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import * as PaginationStories from './Pagination.stories';
+
+<Meta of={PaginationStories} />
+
+# Pagination
+
+Page navigation control for moving through a multi-page dataset.
+
+## Overview
+
+The `Pagination` shows the current page and lets users move to another numbered page without displaying every page at once.
+
+## Usage
+
+<Canvas of={PaginationStories.Demo} />
+<Controls of={PaginationStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- A list, table, or grid spans multiple pages.
+- The total number of pages is known.
+- Users benefit from jumping directly to a numbered page.
+
+### When not to use
+
+- For one page of results or a dataset that fits comfortably on one page.
+- When the experience uses infinite scrolling or a load-more pattern.
+- Inside a dropdown or menu.
+
+### Best practices
+
+- Keep the active page in application state and update it after selection.
+- Show edge controls when users often jump to the first or last page.
+- Increase siblings only when users need to jump across nearby pages.
+- Disable controls while new page data loads.
+- Hide pagination when no results or only one page exists.
+- Move focus to the updated content after the page changes.

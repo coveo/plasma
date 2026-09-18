@@ -1,0 +1,39 @@
+import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import * as BreadcrumbsStories from './Breadcrumbs.stories';
+
+<Meta of={BreadcrumbsStories} />
+
+# Breadcrumbs
+
+Navigation trail that shows a page's ancestors within a hierarchy.
+
+## Overview
+
+The `Breadcrumbs` helps users understand their location and return directly to an ancestor page.
+
+## Usage
+
+<Canvas of={BreadcrumbsStories.Demo} />
+<Controls of={BreadcrumbsStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- The page sits two or more levels deep in a navigation hierarchy.
+- Users may need to return directly to an ancestor page.
+- A drill-down workflow moves from a list to item details.
+
+### When not to use
+
+- For a flat application without a meaningful hierarchy.
+- Inside a modal or drawer that users should close instead of navigating away.
+- When the page header already provides breadcrumbs.
+
+### Best practices
+
+- Use `Header.Breadcrumbs` inside a page header and standalone `Breadcrumbs` elsewhere.
+- Show no more than three ancestor links.
+- Omit the current page because the page header already identifies it.
+- Use `Anchor` with `inherit` for every item, and let the component add separators.
+- Give each link text that matches or summarizes its destination.

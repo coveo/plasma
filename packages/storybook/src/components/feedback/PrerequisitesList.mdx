@@ -1,0 +1,42 @@
+import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import * as PrerequisitesListStories from './PrerequisitesList.stories';
+
+<Meta of={PrerequisitesListStories} />
+
+# PrerequisitesList
+
+List of required conditions with complete or incomplete status indicators.
+
+## Overview
+
+The `PrerequisitesList` groups prerequisite items in a semantic list.
+
+Each `PrerequisitesList.Item` pairs a label with a status icon and can include a short description.
+
+## Usage
+
+<Canvas of={PrerequisitesListStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- Users need to see a set of prerequisites and whether each one is complete.
+- A prerequisite needs a short label and optional supporting detail.
+
+### When not to use
+
+- When statuses require more detail than complete or incomplete.
+- When the content isn't a set of prerequisites.
+
+### Best practices
+
+- Render each condition as a `PrerequisitesList.Item`.
+- Set `status` to `complete` or `incomplete` based on the current condition.
+- Add a description only when the label doesn't provide enough context.
+- Keep status meaning available through each item's label, not only its icon.
+
+### Content guidelines
+
+- Write labels as concise conditions users can recognize quickly.
+- Use descriptions for necessary context, not to repeat the label.

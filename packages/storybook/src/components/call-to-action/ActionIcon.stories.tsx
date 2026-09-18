@@ -1,11 +1,23 @@
-import {ActionIcon, type ActionIconProps} from '@coveord/plasma-mantine/components/ActionIcon';
+import {ActionIcon, type ActionIconProps} from '@coveord/plasma-mantine';
 import {IconX} from '@coveord/plasma-react-icons';
 import type {Meta, StoryObj} from '@storybook/react-vite';
+import type {ComponentType} from 'react';
 
-type ActionIconVariants = keyof typeof ActionIcon;
+const actionIconVariants = [
+    'Primary',
+    'Secondary',
+    'Tertiary',
+    'Quaternary',
+    'DestructivePrimary',
+    'DestructiveSecondary',
+    'DestructiveTertiary',
+    'DestructiveQuaternary',
+] as const;
 
-type ActionIconStoryArgs = ActionIconProps & {
-    variant: ActionIconVariants;
+type ActionIconVariant = (typeof actionIconVariants)[number];
+type ActionIconStoryArgs = Omit<ActionIconProps, 'size' | 'variant'> & {
+    actionIconVariant: ActionIconVariant;
+    size: 'sm' | 'md' | 'lg';
 };
 
 const meta: Meta<ActionIconStoryArgs> = {
@@ -15,30 +27,28 @@ const meta: Meta<ActionIconStoryArgs> = {
         layout: 'centered',
     },
     argTypes: {
-        variant: {
+        actionIconVariant: {
             control: 'select',
-            options: [
-                'Primary',
-                'Secondary',
-                'Tertiary',
-                'Quaternary',
-                'DestructivePrimary',
-                'DestructiveSecondary',
-                'DestructiveTertiary',
-                'DestructiveQuaternary',
-            ] as ActionIconVariants[],
-            description: 'ActionIcon variant',
+            options: actionIconVariants,
+            description: 'Selects the Plasma action icon sub-component used by this example.',
+            table: {
+                type: {
+                    summary:
+                        "'Primary' | 'Secondary' | 'Tertiary' | 'Quaternary' | 'DestructivePrimary' | 'DestructiveSecondary' | 'DestructiveTertiary' | 'DestructiveQuaternary'",
+                },
+                defaultValue: {summary: "'Primary'"},
+            },
         },
         size: {
             control: 'select',
             options: ['sm', 'md', 'lg'],
-            description: 'Size of the ActionIcon',
-            table: {defaultValue: {summary: 'md'}, type: {summary: 'sm | md | lg'}},
+            description: 'Sets the width and height of the action icon.',
+            table: {defaultValue: {summary: "'md'"}, type: {summary: "'sm' | 'md' | 'lg'"}},
         },
     },
     args: {
         size: 'md',
-        variant: 'Primary',
+        actionIconVariant: 'Primary',
     },
 };
 export default meta;
@@ -46,9 +56,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
     render: (props) => {
-        const ActionIconComponent = ActionIcon[props.variant];
+        const ActionIconComponent = ActionIcon[props.actionIconVariant] as ComponentType<ActionIconProps>;
         return (
-            <ActionIconComponent size={props.size}>
+            <ActionIconComponent aria-label="Close" size={props.size}>
                 <IconX />
             </ActionIconComponent>
         );

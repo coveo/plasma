@@ -1,0 +1,46 @@
+import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import * as NotificationStories from './Notification.stories';
+
+<Meta of={NotificationStories} />
+
+# Notification
+
+Transient toast that communicates the outcome or status of an action without interrupting the user's flow.
+
+## Overview
+
+The `Notification` provides timely, non-blocking feedback that users can understand at a glance.
+
+Use the notification system API to manage placement, timing, and multiple messages consistently.
+
+## Usage
+
+<Canvas of={NotificationStories.NotificationSystem} />
+
+## Guidelines
+
+### When to use
+
+- Confirm an action completed successfully.
+- Report that a background task finished or failed.
+- Share a non-blocking warning or an asynchronous loading state.
+
+### When not to use
+
+- For critical feedback that users can't miss, use a `Prompt` or persistent `Alert`.
+- For an error that blocks progress, show the error near the affected content.
+- For field-specific feedback, use inline validation.
+- If many similar events occur together, summarize them in one notification.
+
+### Best practices
+
+- Prefer the `notifications` system API for transient toasts.
+- Pair severity color with a matching icon so meaning doesn't depend on color alone.
+- Transition loading notifications to success or error when the operation finishes.
+- Keep recovery guidance visible elsewhere when users may need it after the toast closes.
+
+### Content guidelines
+
+- Write a short title that states the outcome.
+- Keep the message brief and easy to scan.
+- For errors and warnings, explain what users can do next.

@@ -1,0 +1,47 @@
+import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import * as RadioStories from './Radio.stories';
+
+<Meta of={RadioStories} />
+
+# Radio
+
+Single-selection control for choosing exactly one option from a small, visible set.
+
+## Overview
+
+`Radio` keeps mutually exclusive options visible so users can compare them before choosing.
+
+Use `Radio.Group` to provide shared labeling, validation, value management, and keyboard navigation.
+
+## Usage
+
+<Canvas of={RadioStories.RadioGroup} />
+<Controls of={RadioStories.RadioGroup} />
+
+## Guidelines
+
+### When to use
+
+- Users choose one value from a small, fixed set.
+- Every option should remain visible for comparison.
+- Options are simple enough to describe with short labels.
+
+### When not to use
+
+- Use `Checkbox` when users can choose multiple options.
+- Use `Select` for a longer list that does not need to remain visible.
+- Use `RadioCard` when each option needs a description or stronger emphasis.
+- Use `Switch` or `Checkbox` for one setting that turns on or off.
+
+### Best practices
+
+- Put radio items inside `Radio.Group` for group semantics and keyboard navigation.
+- Label both the group decision and every option.
+- Use a horizontal layout for a few short labels and a vertical layout for longer labels.
+- Apply required state and validation to the group, not individual items.
+
+### Content guidelines
+
+- Name the decision in the group label.
+- Keep option labels short, parallel, and in sentence case.
+- Avoid double negatives and technical jargon.

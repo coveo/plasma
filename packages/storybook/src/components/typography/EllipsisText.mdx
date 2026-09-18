@@ -1,0 +1,42 @@
+import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import * as EllipsisTextStories from './EllipsisText.stories';
+
+<Meta of={EllipsisTextStories} />
+
+# EllipsisText
+
+Truncates overflowing text and reveals the full value in a tooltip when needed.
+
+## Overview
+
+`EllipsisText` keeps long labels and names from disrupting constrained layouts. It supports single-line and multi-line truncation.
+
+## Usage
+
+<Canvas of={EllipsisTextStories.EllipsisTextDefaultLong} />
+
+## Guidelines
+
+### When to use
+
+- Text appears in a constrained area such as a table cell, card, or compact panel.
+- The full value is useful, but doesn't need to remain visible.
+- Truncation prevents wrapping or overflow from disrupting the layout.
+
+### When not to use
+
+- The full text is essential for the primary task.
+- Truncation would hide errors, warnings, or required decisions.
+- The tooltip would contain long-form guidance.
+
+### Best practices
+
+- Keep enough visible text to distinguish similar items.
+- Use `lineClamp` when a fixed number of lines provides useful context.
+- Change the layout when the full content is central to the task.
+- Don't rely on the tooltip as the only source of critical information.
+
+### Content guidelines
+
+- Put the most distinctive information first so it remains visible before truncation.
+- Keep the full value concise enough to scan in a tooltip.

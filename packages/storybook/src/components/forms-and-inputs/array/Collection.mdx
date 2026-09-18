@@ -1,0 +1,48 @@
+import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import * as CollectionStories from './Collection.stories';
+
+<Meta of={CollectionStories} />
+
+# Collection
+
+Dynamic form field for adding, editing, removing, and reordering repeated items.
+
+## Overview
+
+The `Collection` manages repeated structured values as one field, such as contacts, rules, mappings, or recipients.
+
+Its column-based layouts organize fields consistently while preserving form state and validation.
+
+## Usage
+
+<Canvas of={CollectionStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- Users need to create and manage a repeatable set of structured items.
+- Each item contains one or more editable fields.
+- Adding, removing, or reordering items belongs in the same form.
+
+### When not to use
+
+- For read-only or data-heavy content, use a `Table`, cards, or a list.
+- For selecting existing options, use a `MultiSelect` or another selection control.
+- For an item that needs a dedicated workflow, use a separate page or editor.
+
+### Best practices
+
+- Prefer the column-based pattern for repeated fields with a consistent structure.
+- Give each item a stable identifier, especially when users can reorder items.
+- Provide a valid starting value through `newItem`.
+- Pass disabled and read-only states to the fields inside each item.
+- Use `required` when at least one item must remain.
+- Explain why users cannot add another item with `addDisabledTooltip`.
+
+### Content guidelines
+
+- Label the collection with the type of item it contains.
+- Name the item in the add action, such as **Add contact**.
+- Keep column headers short and specific.
+- Write validation messages that explain how to fix the item.

@@ -1,0 +1,42 @@
+import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import * as SliderStories from './Slider.stories';
+
+<Meta of={SliderStories} />
+
+# Slider
+
+Range control for choosing a numeric value by moving a thumb along a track.
+
+## Overview
+
+The `Slider` makes a value's position within a bounded range visible and directly adjustable.
+
+It supports stepped values, reference marks, hover labels, and keyboard interaction.
+
+## Usage
+
+<Canvas of={SliderStories.Demo} />
+<Controls of={SliderStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- Users choose within a clear minimum and maximum.
+- Relative position matters as much as the exact value.
+- A few meaningful points can be shown as marks.
+
+### When not to use
+
+- For exact values or fine decimal precision, use a `NumberInput`.
+- For an unbounded or very large range, use a `NumberInput`.
+- For an on or off choice, use a `Switch`.
+
+### Best practices
+
+- Set `min`, `max`, and `step` to match the real domain.
+- Add marks only at meaningful reference points.
+- Keep the hover label available unless the current value is already clear nearby.
+- Use `labelAlwaysOn` only when the exact value needs continuous emphasis.
+- Provide `thumbLabel` so assistive technology can identify the control.
+- Provide `thumbValueText` when the displayed value uses units, currency, or a transformed scale.

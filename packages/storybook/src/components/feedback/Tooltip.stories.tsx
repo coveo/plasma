@@ -1,4 +1,4 @@
-import {Tooltip} from '@coveord/plasma-mantine/components/Tooltip';
+import {Tooltip} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import {forwardRef, type ComponentPropsWithoutRef} from 'react';
 
@@ -48,6 +48,7 @@ const Content = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'>>((pro
     <div
         ref={ref}
         {...props}
+        tabIndex={0}
         style={{
             width: 100,
             height: 100,

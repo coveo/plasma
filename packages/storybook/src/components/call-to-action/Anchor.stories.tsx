@@ -1,4 +1,4 @@
-import {Anchor} from '@coveord/plasma-mantine/components/Anchor';
+import {Anchor} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof Anchor> = {
@@ -12,33 +12,35 @@ const meta: Meta<typeof Anchor> = {
         size: {
             control: 'select',
             options: ['xs', 'sm'],
-            description: 'Size of the Anchor',
+            description: 'Sets the font size and line height of the link.',
             table: {
-                defaultValue: {summary: 'sm'},
-                type: {summary: 'xs | sm'},
+                defaultValue: {summary: "'md'"},
+                type: {summary: 'MantineSize | (string & {})'},
             },
         },
         href: {
             control: 'text',
-            description: 'Link URL',
+            description: 'Sets the link destination.',
             table: {
                 type: {summary: 'string'},
+                defaultValue: {summary: 'undefined'},
             },
         },
         children: {
             control: 'text',
-            description: 'Link text content',
+            description: 'Content rendered inside the link.',
             table: {
                 type: {summary: 'ReactNode'},
+                defaultValue: {summary: 'undefined'},
             },
         },
         target: {
             control: 'select',
             options: ['_self', '_blank', '_parent', '_top'],
-            description: 'Link target attribute',
+            description: 'Sets where the linked destination opens.',
             table: {
-                defaultValue: {summary: '_self'},
-                type: {summary: 'string'},
+                defaultValue: {summary: 'undefined'},
+                type: {summary: 'HTMLAttributeAnchorTarget'},
             },
         },
     },

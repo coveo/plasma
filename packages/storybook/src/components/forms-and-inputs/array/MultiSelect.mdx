@@ -1,0 +1,45 @@
+import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import * as MultiSelectStories from './MultiSelect.stories';
+
+<Meta of={MultiSelectStories} />
+
+# MultiSelect
+
+Compact dropdown field for selecting multiple values from a predefined list.
+
+## Overview
+
+The `MultiSelect` combines a searchable option list with removable pills for selected values.
+
+It keeps larger multi-selection sets compact while supporting standard form labels, guidance, and validation.
+
+## Usage
+
+<Canvas of={MultiSelectStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- Users choose multiple values from a known list.
+- The option list is too long for a scannable checkbox or chip group.
+- Search helps users find options quickly.
+
+### When not to use
+
+- For one selected value, use a `Select`.
+- For a small visible set, use `Checkbox.Group` or `Chip.Group`.
+- For creating repeated free-form items, use a `Collection`.
+
+### Best practices
+
+- Turn on search for longer lists.
+- Make optional fields clearable so users can reset all selections at once.
+- Set a useful width within layouts where the field would otherwise become too wide.
+- Keep option labels short enough to work as pills.
+
+### Content guidelines
+
+- Use a noun phrase for the label, such as **Assigned labels**.
+- Use an action-oriented placeholder, such as **Select categories**.
+- Write specific errors, such as **Select at least one category**.

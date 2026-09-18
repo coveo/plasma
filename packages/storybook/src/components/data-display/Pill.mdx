@@ -1,0 +1,44 @@
+import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import * as PillStories from './Pill.stories';
+
+<Meta of={PillStories} />
+
+# Pill
+
+Compact token that represents a selected value and can include a remove action.
+
+## Overview
+
+`Pill` makes individual values distinct inside a multi-value input or tag list.
+
+It can show a remove button when users are allowed to remove that value.
+
+## Usage
+
+<Canvas of={PillStories.Demo} />
+<Controls of={PillStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- Show selected values inside a `PillsInput` or multi-value field.
+- Represent removable tags or tokens in a custom input.
+
+### When not to use
+
+- For read-only status or category metadata, use a `Badge`.
+- For choosing between options, use a `Chip` or `Select`.
+- For a single selected value, use a simpler input control.
+
+### Best practices
+
+- Prefer `MultiSelect` when users choose values from a known list.
+- Show the remove button only when users can remove the value.
+- Connect `onRemove` whenever `withRemoveButton` is enabled.
+- Give each remove button a label that identifies its value, such as **Remove Python**.
+
+### Content guidelines
+
+- Use the selected value as the label.
+- Keep labels short and avoid sentences.
