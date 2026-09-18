@@ -1,0 +1,33 @@
+diff --git adist/types/index.d.mts b/dist/types/index.d.mts
+new file mode 100644
+index 0000000000000000000000000000000000000000..3539f4b68127327222c90780272d0e1a52a23e5a
+--- /dev/null
++++ b/dist/types/index.d.mts
+@@ -0,0 +1,6 @@
++export { PointerEventsCheckLevel, type Options } from './options.js';
++export { userEvent as default, userEvent } from './setup/index.js';
++export type { UserEvent } from './setup/setup.js';
++export type { keyboardKey } from './system/keyboard.js';
++export type { pointerKey } from './system/pointer.js';
++
+diff --git a/package.json b/package.json
+index 7cb3d6a76fb8ab2ce70cdbc1aced19eb9efcfcb4..6a8e503fcfba3d880502f483758b9bf85f9ce99a 100644
+--- a/package.json
++++ b/package.json
+@@ -78,10 +78,14 @@
+   "types": "./dist/types/index.d.ts",
+   "exports": {
+     ".": {
+-      "types": "./dist/types/index.d.ts",
++      "types": {
++        "import": "./dist/types/index.d.mts",
++        "default": "./dist/types/index.d.ts"
++      },
++      "import": "./dist/esm/index.js",
+       "require": "./dist/cjs/index.js",
+       "default": "./dist/esm/index.js"
+-    },
++     },
+     "./dist/cjs/*.js": {
+       "types": "./dist/types/*.d.ts",
+       "import": "./dist/esm/*.js",
