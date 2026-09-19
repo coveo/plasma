@@ -51,8 +51,15 @@ Even when Mantine supplies the API reference, import the component from `@coveor
 Plasma provides content guidelines for writing UX copy in Coveo products. Always follow these when writing user-facing text such as labels, errors, tooltips, and descriptions.
 
 - Use `list_content_guidelines` to discover the available guidelines.
-- Use `get_content_guideline` to retrieve `Voice`, `WritingMechanics`, `ProductVocabulary`, or `TargetAudience`.
+- Use `get_content_guideline` to retrieve `Voice`, `Writing Mechanics`, `Product Vocabulary`, or `Target Audience`.
 - Use `search_docs` to find relevant component or content guidance by topic.
+
+## Foundations
+
+Plasma exposes design foundations (color, typography, spacing, radii, shadows, and iconography) as theme tokens. Reference these tokens instead of hardcoding raw values.
+
+- Use `get_foundations` to retrieve the foundations documentation and its token reference.
+- Use `search_docs` to find a specific token or foundation by topic.
 
 ## Fallback When MCP Is Unavailable
 
@@ -64,6 +71,7 @@ Start with the Plasma index, then fetch only the component or content guideline 
 {{BASE_URL}}/llms.txt
 {{BASE_URL}}/llms/components/ComponentName.md
 {{BASE_URL}}/llms/content/GuidelineName.md
+{{BASE_URL}}/llms/foundations/Foundations.md
 ```
 
 Use the full documentation only when a task genuinely requires bulk context:

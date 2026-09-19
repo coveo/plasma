@@ -9,13 +9,17 @@ For a single consolidated file with all component documentation, use:
 
 - [{{BASE_URL}}/llms-full.txt]({{BASE_URL}}/llms-full.txt)
 
-## Components
+## Foundations
 
-{{COMPONENT_LIST}}
+{{FOUNDATION_LIST}}
 
 ## Content Guidelines
 
 {{CONTENT_LIST}}
+
+## Components
+
+{{COMPONENT_LIST}}
 
 ## Optional
 

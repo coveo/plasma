@@ -1,5 +1,5 @@
 ---
-name: Content Guidelines — Voice
+name: Voice
 description: Coveo's required voice qualities (clear, human, helpful) and how to apply tone by context.
 ---
 

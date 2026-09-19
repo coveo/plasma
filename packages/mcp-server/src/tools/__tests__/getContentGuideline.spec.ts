@@ -5,7 +5,7 @@ import {VOICE_GUIDELINE, WRITING_MECHANICS_GUIDELINE} from './fixtures.js';
 describe('getContentGuideline', () => {
     const guidelineMap = buildGuidelineMap([VOICE_GUIDELINE, WRITING_MECHANICS_GUIDELINE]);
 
-    it('returns the content for a known guideline by slug', () => {
+    it('returns the content for a known guideline by name', () => {
         const result = getContentGuideline(guidelineMap, 'Voice');
         expect(result.isError).toBeFalsy();
         expect(result.text).toMatchInlineSnapshot(`
@@ -27,19 +27,13 @@ describe('getContentGuideline', () => {
         `);
     });
 
-    it('returns the content for a known guideline by full name', () => {
-        const result = getContentGuideline(guidelineMap, 'Content Guidelines — Voice');
-        expect(result.isError).toBeFalsy();
-        expect(result.text).toBe(VOICE_GUIDELINE.content);
-    });
-
     it('is case-insensitive', () => {
         expect(getContentGuideline(guidelineMap, 'voice').text).toBe(VOICE_GUIDELINE.content);
         expect(getContentGuideline(guidelineMap, 'VOICE').text).toBe(VOICE_GUIDELINE.content);
     });
 
-    it('finds WritingMechanics by slug', () => {
-        const result = getContentGuideline(guidelineMap, 'WritingMechanics');
+    it('finds Writing Mechanics by name', () => {
+        const result = getContentGuideline(guidelineMap, 'Writing Mechanics');
         expect(result.isError).toBeFalsy();
         expect(result.text).toMatchInlineSnapshot(`
           "## Capitalization

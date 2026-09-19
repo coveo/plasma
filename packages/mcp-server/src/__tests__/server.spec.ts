@@ -1,7 +1,7 @@
 import type {McpServer} from 'tmcp';
 import {beforeEach, describe, expect, it} from 'vitest';
 import {createServer} from '../createServer.js';
-import {BUTTON, VOICE_GUIDELINE, makeData} from '../tools/__tests__/fixtures.js';
+import {BUTTON, FOUNDATIONS, VOICE_GUIDELINE, makeData} from '../tools/__tests__/fixtures.js';
 
 // Minimal JSON-RPC helpers
 const req = (id: number, method: string, params: Record<string, unknown> = {}) => ({
@@ -45,7 +45,7 @@ describe('plasma-mcp-server integration', () => {
     });
 
     describe('tools/list', () => {
-        it('registers all six tools', async () => {
+        it('registers all seven tools', async () => {
             const response = await server.receive(req(1, 'tools/list'));
             const tools = (response as {result: {tools: Array<{name: string}>}}).result.tools;
             const names = tools.map((t) => t.name);
@@ -55,7 +55,8 @@ describe('plasma-mcp-server integration', () => {
             expect(names).toContain('search_docs');
             expect(names).toContain('list_content_guidelines');
             expect(names).toContain('get_content_guideline');
-            expect(tools).toHaveLength(6);
+            expect(names).toContain('get_foundations');
+            expect(tools).toHaveLength(7);
         });
 
         it('includes inputSchema for tools that require arguments', async () => {
@@ -68,12 +69,12 @@ describe('plasma-mcp-server integration', () => {
             });
         });
 
-        it('describes search across components and content guidelines', async () => {
+        it('describes search across components, content guidelines, and foundations', async () => {
             const response = await server.receive(req(1, 'tools/list'));
             const tools = (response as {result: {tools: Array<{name: string; description: string}>}}).result.tools;
             const searchTool = tools.find((t) => t.name === 'search_docs');
             expect(searchTool?.description).toBe(
-                'Search across all Plasma component documentation and content guidelines',
+                'Search across all Plasma component documentation, content guidelines, and foundations',
             );
         });
     });
@@ -206,7 +207,7 @@ describe('plasma-mcp-server integration', () => {
                 req(1, 'tools/call', {name: 'search_docs', arguments: {query: 'capitalization'}}),
             );
             const text = firstText(response);
-            expect(text).toContain('Content Guidelines — Writing Mechanics');
+            expect(text).toContain('Writing Mechanics');
             expect(text).toContain('(Content Guideline)');
         });
 
@@ -228,13 +229,13 @@ describe('plasma-mcp-server integration', () => {
             );
             const text = firstText(response);
             expect(text).toContain('# Plasma Content Guidelines');
-            expect(text).toContain('**Content Guidelines — Voice**');
-            expect(text).toContain('**Content Guidelines — Writing Mechanics**');
+            expect(text).toContain('**Voice**');
+            expect(text).toContain('**Writing Mechanics**');
         });
     });
 
     describe('get_content_guideline tool', () => {
-        it('returns full guideline content for a known guideline by slug', async () => {
+        it('returns full guideline content for a known guideline by name', async () => {
             const response = await server.receive(
                 req(1, 'tools/call', {name: 'get_content_guideline', arguments: {guideline: 'Voice'}}),
             );
@@ -245,16 +246,6 @@ describe('plasma-mcp-server integration', () => {
         it('is case-insensitive', async () => {
             const response = await server.receive(
                 req(1, 'tools/call', {name: 'get_content_guideline', arguments: {guideline: 'voice'}}),
-            );
-            expect(firstText(response)).toBe(VOICE_GUIDELINE.content);
-        });
-
-        it('allows lookup by full name', async () => {
-            const response = await server.receive(
-                req(1, 'tools/call', {
-                    name: 'get_content_guideline',
-                    arguments: {guideline: 'Content Guidelines — Voice'},
-                }),
             );
             expect(firstText(response)).toBe(VOICE_GUIDELINE.content);
         });
@@ -272,6 +263,14 @@ describe('plasma-mcp-server integration', () => {
         it('returns a schema validation error when guideline argument is missing', async () => {
             const response = await server.receive(req(1, 'tools/call', {name: 'get_content_guideline', arguments: {}}));
             expect(isError(response)).toBe(true);
+        });
+    });
+
+    describe('get_foundations tool', () => {
+        it('returns the foundations documentation', async () => {
+            const response = await server.receive(req(1, 'tools/call', {name: 'get_foundations', arguments: {}}));
+            expect(isError(response)).toBe(false);
+            expect(firstText(response)).toBe(FOUNDATIONS.content);
         });
     });
 });

@@ -1,6 +1,6 @@
-import type {ComponentData, ToolResult} from './types.js';
+import type {DocData, ToolResult} from './types.js';
 
-export const getComponentDoc = (componentMap: Map<string, ComponentData>, component: string): ToolResult => {
+export const getComponentDoc = (componentMap: Map<string, DocData>, component: string): ToolResult => {
     const doc = componentMap.get(component.toLowerCase());
     if (!doc) {
         return {

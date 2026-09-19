@@ -1,5 +1,5 @@
 ---
-name: Content Guidelines — Target Audience
+name: Target Audience
 description: Who UX content in the Administration Console is written for, and how to write for them.
 ---
 

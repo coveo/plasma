@@ -10,6 +10,7 @@ import {getComponentProps} from './tools/getComponentProps.js';
 import {searchDocs} from './tools/searchDocs.js';
 import {listContentGuidelines} from './tools/listContentGuidelines.js';
 import {buildGuidelineMap, getContentGuideline} from './tools/getContentGuideline.js';
+import {getFoundations} from './tools/getFoundations.js';
 import type {LlmsData} from './tools/types.js';
 
 const componentSchema = v.object({
@@ -20,7 +21,7 @@ const guidelineSchema = v.object({
     guideline: v.pipe(
         v.string(),
         v.description(
-            'The content guideline name or slug (e.g., "Voice", "WritingMechanics", "ProductVocabulary", "TargetAudience")',
+            'The content guideline name (e.g., "Voice", "Writing Mechanics", "Product Vocabulary", "Target Audience")',
         ),
     ),
 });
@@ -89,7 +90,7 @@ export const createServer = (data: LlmsData): McpServer => {
     server.tool(
         {
             name: 'search_docs',
-            description: 'Search across all Plasma component documentation and content guidelines',
+            description: 'Search across all Plasma component documentation, content guidelines, and foundations',
             schema: querySchema,
         },
         async ({query}) => tool.text(searchDocs(data, query)),
@@ -112,6 +113,21 @@ export const createServer = (data: LlmsData): McpServer => {
         },
         async ({guideline}) => {
             const result = getContentGuideline(guidelineMap, guideline);
+            if (result.isError) {
+                return {content: [{type: 'text' as const, text: result.text}], isError: true};
+            }
+            return tool.text(result.text);
+        },
+    );
+
+    server.tool(
+        {
+            name: 'get_foundations',
+            description:
+                'Get the Plasma design foundations documentation (color, typography, spacing, radii, shadows, and iconography tokens)',
+        },
+        async () => {
+            const result = getFoundations(data);
             if (result.isError) {
                 return {content: [{type: 'text' as const, text: result.text}], isError: true};
             }
