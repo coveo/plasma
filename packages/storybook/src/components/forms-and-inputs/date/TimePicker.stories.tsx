@@ -1,4 +1,4 @@
-import {TimePicker} from '@coveord/plasma-mantine/components/TimePicker';
+import {TimePicker} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import type {ComponentProps} from 'react';
 import {Args} from '../../../Args.js';
@@ -18,29 +18,83 @@ const meta = {
     component: TimePicker,
     parameters: {
         layout: 'centered',
+        controls: {
+            include: [
+                'label',
+                'description',
+                'error',
+                'required',
+                'disabled',
+                'readOnly',
+                'format',
+                'withDropdown',
+                'withSeconds',
+                'clearable',
+            ],
+        },
     },
     args: {
         ...InputWrapperArgs.Args,
         ...BaseInputArgs.Args,
         format: '12h',
+        withDropdown: true,
         clearable: Args.clearable.initialValue,
     },
     argTypes: {
         ...InputWrapperArgs.ArgsTypes,
         ...BaseInputArgs.ArgsTypes,
+        label: {
+            control: 'text',
+            description: 'Content displayed as the field label.',
+            table: {type: {summary: 'ReactNode'}, defaultValue: {summary: 'undefined'}},
+        },
+        description: {
+            control: 'text',
+            description: 'Helper content displayed below the label.',
+            table: {type: {summary: 'ReactNode'}, defaultValue: {summary: 'undefined'}},
+        },
+        error: {
+            control: 'text',
+            description: 'Validation feedback displayed below the input.',
+            table: {type: {summary: 'ReactNode'}, defaultValue: {summary: 'undefined'}},
+        },
+        required: {
+            control: 'boolean',
+            description: 'Marks the field as required and displays a required indicator.',
+            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
+        },
+        disabled: {
+            control: 'boolean',
+            description: 'Disables the input.',
+            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
+        },
+        readOnly: {
+            control: 'boolean',
+            description: 'Prevents users from changing the time.',
+            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
+        },
         format: {
             control: 'radio',
             options: ['12h', '24h'],
-            description: 'Time format (12-hour or 24-hour)',
+            description: 'Sets 12-hour or 24-hour time entry.',
             table: {
-                defaultValue: {summary: '12h'},
+                defaultValue: {summary: "'12h'"},
                 type: {summary: "'12h' | '24h'"},
             },
         },
-        clearable: Args.clearable.type,
+        withDropdown: {
+            control: 'boolean',
+            description: 'Displays selectable time values when the input receives focus.',
+            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'true'}},
+        },
+        clearable: {
+            ...Args.clearable.type,
+            description: 'Displays a clear button when any time segment has a value.',
+            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
+        },
         withSeconds: {
             control: 'boolean',
-            description: 'Include seconds in the time picker',
+            description: 'Adds a seconds segment to the time input.',
             table: {
                 defaultValue: {summary: 'false'},
                 type: {summary: 'boolean'},

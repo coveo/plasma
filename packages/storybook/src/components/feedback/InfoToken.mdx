@@ -1,0 +1,40 @@
+import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import * as InfoTokenStories from './InfoToken.stories';
+
+<Meta of={InfoTokenStories} />
+
+# InfoToken
+
+Compact semantic icon that reinforces the meaning of nearby text.
+
+## Overview
+
+The `InfoToken` helps users recognize information, advice, warnings, errors, questions, or success at a glance.
+
+It supports surrounding content and doesn't replace a visible message or label.
+
+## Usage
+
+<Canvas of={InfoTokenStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- A small semantic cue helps users scan nearby text.
+- The surrounding content already explains the meaning.
+- Space is limited but a semantic icon adds useful context.
+
+### When not to use
+
+- For a visible status label, use a `Badge`.
+- For a standalone object status, use a `StatusToken`.
+- For a message with explanatory text or actions, use an `Alert`.
+- If the icon would be the only way to understand the meaning, add visible text.
+
+### Best practices
+
+- Choose intent with the matching semantic sub-component.
+- Use `outline` for the default compact treatment and `light` for a filled background.
+- Pair the token with text that names the state or message.
+- Apply each semantic type consistently within the same interface.

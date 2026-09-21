@@ -1,12 +1,12 @@
-import {Badge, type BadgeOverloadFactory, type SemanticBadge} from '@coveord/plasma-mantine/components/Badge';
+import {Badge, type BadgeOverloadFactory, type SemanticBadge} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import type {ComponentProps} from 'react';
 
 type BadgeVariants = BadgeOverloadFactory['staticComponents'];
 
 type BadgeStoryArgs = Omit<ComponentProps<SemanticBadge>, 'children'> & {
-    variant: keyof BadgeVariants;
-    text: string;
+    semanticVariant: keyof BadgeVariants;
+    label: string;
 };
 
 const meta = {
@@ -17,31 +17,37 @@ const meta = {
         layout: 'centered',
     },
     args: {
-        variant: 'Primary',
-        text: 'Badge',
+        semanticVariant: 'Primary',
+        label: 'Active',
+        size: 'small',
     },
     argTypes: {
-        variant: {
+        semanticVariant: {
             control: 'select',
             options: ['Primary', 'Secondary', 'Success', 'Warning', 'Critical', 'Disabled'] as Array<
                 keyof BadgeVariants
             >,
+            description: 'Selects the semantic Badge sub-component used by this example.',
             table: {
-                defaultValue: {summary: 'Badge.Primary'},
+                type: {summary: "'Primary' | 'Secondary' | 'Success' | 'Warning' | 'Critical' | 'Disabled'"},
+                defaultValue: {summary: "'Primary'"},
             },
         },
-        text: {
+        label: {
             control: 'text',
+            description: 'Sets the text displayed by the badge in this example.',
             table: {
-                defaultValue: {summary: ''},
+                type: {summary: 'string'},
+                defaultValue: {summary: "'Active'"},
             },
         },
         size: {
             control: 'select',
             options: ['small', 'large'],
+            description: 'Sets the badge height and text size.',
             table: {
-                defaultValue: {summary: 'small'},
-                type: {summary: 'small | large'},
+                defaultValue: {summary: "'small'"},
+                type: {summary: "'small' | 'large'"},
             },
         },
     },
@@ -50,8 +56,8 @@ export default meta;
 type Story = StoryObj<BadgeStoryArgs>;
 
 export const Demo: Story = {
-    render: ({text, variant, ...props}) => {
-        const BadgeComponent = Badge[variant];
-        return <BadgeComponent {...props}>{text}</BadgeComponent>;
+    render: ({label, semanticVariant, ...props}) => {
+        const BadgeComponent = Badge[semanticVariant];
+        return <BadgeComponent {...props}>{label}</BadgeComponent>;
     },
 };

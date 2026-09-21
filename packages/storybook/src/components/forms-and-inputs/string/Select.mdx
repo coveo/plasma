@@ -1,0 +1,47 @@
+import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import * as SelectStories from './Select.stories';
+
+<Meta of={SelectStories} />
+
+# Select
+
+Compact input for choosing one value from a predefined list.
+
+## Overview
+
+`Select` presents mutually exclusive options in a dropdown when they do not all need to remain visible.
+
+It supports searchable and clearable experiences while preserving familiar form-field structure.
+
+## Usage
+
+<Canvas of={SelectStories.Demo} />
+<Controls of={SelectStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- Users choose exactly one value from a predefined list.
+- The list is too long or secondary to show as visible radio options.
+- A selected value needs a read-only field presentation.
+
+### When not to use
+
+- Use `MultiSelect` or checkboxes when users can choose multiple values.
+- Use `Radio` when a small, important option set should remain visible.
+- Use `RadioCard` when options need descriptions or stronger comparison.
+- Use plain text when the value is informational and does not need a field affordance.
+
+### Best practices
+
+- Turn on search when users would otherwise scan a long list.
+- Use `readOnly` when users should review the selected value without editing it.
+- Use `disabled` only when the field is unavailable.
+- Order options predictably and keep their labels easy to distinguish.
+
+### Content guidelines
+
+- Label the decision users are making.
+- Use placeholder text to prompt a choice, not repeat the label.
+- Keep option labels concise and parallel.

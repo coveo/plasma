@@ -1,0 +1,40 @@
+import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import * as LoaderStories from './Loader.stories';
+
+<Meta of={LoaderStories} />
+
+# Loader
+
+Animated spinner that indicates an asynchronous operation is in progress.
+
+## Overview
+
+The `Loader` reassures users that the application is working when progress can't be measured or the final layout is unknown.
+
+Use it for inline, section-level, or page-level loading states.
+
+## Usage
+
+<Canvas of={LoaderStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- Content is loading and its shape isn't known.
+- A section or view is waiting for an asynchronous operation.
+- A compact interface needs an inline loading indicator.
+
+### When not to use
+
+- When completion can be measured, use `Progress`.
+- When the shape of incoming content is known, use `Skeleton`.
+- Inside a button, use the `Button` loading state.
+- Avoid showing a loader for near-instant operations that would make it flash.
+
+### Best practices
+
+- Use a size that fits the surrounding interface and center section-level loaders.
+- Add `aria-busy="true"` to the loading region or provide an accessible live announcement.
+- Replace the loader with an error state if the operation fails.
+- Remove the loader as soon as the operation finishes.

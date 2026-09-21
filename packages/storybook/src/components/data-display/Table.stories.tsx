@@ -122,15 +122,85 @@ export const Demo: Story = {
         collapsibleBehavior: 'collapse',
     },
     argTypes: {
-        collapsibleBehavior: {
-            if: {arg: 'withCollapsibleRows'},
-            control: 'radio',
-            options: ['collapse', 'accordion'],
-            defaultValue: 'collapse',
+        loading: {
+            control: 'boolean',
+            description: 'Shows loading placeholders and prevents row selection.',
+            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
+        },
+        withFilter: {
+            control: 'boolean',
+            description: 'Adds a text filter to this example.',
+            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
+        },
+        withPredicateFilter: {
+            control: 'boolean',
+            description: 'Adds an age predicate filter to this example.',
+            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
         },
         controlPlacement: {
             control: 'radio',
             options: ['header', 'toolbar'],
+            description: 'Places the example filters in the table header or in a toolbar.',
+            table: {
+                type: {summary: "'header' | 'toolbar'"},
+                defaultValue: {summary: "'header'"},
+            },
+        },
+        withPagination: {
+            control: 'boolean',
+            description: 'Adds pagination and results-per-page controls to this example.',
+            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
+        },
+        withSorting: {
+            control: 'boolean',
+            description: 'Enables sorting for supported columns in this example.',
+            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
+        },
+        withDateRangePicker: {
+            control: 'boolean',
+            description: 'Adds a date range filter to this example.',
+            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
+        },
+        withData: {
+            control: 'boolean',
+            description: 'Toggles between populated and empty states in this example.',
+            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'true'}},
+        },
+        withLayoutSelector: {
+            control: 'boolean',
+            description: 'Lets users switch between row and card layouts in this example.',
+            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
+        },
+        withRowActions: {
+            control: 'boolean',
+            description: 'Enables row selection and contextual actions in this example.',
+            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
+        },
+        withRowMultiSelection: {
+            if: {arg: 'withRowActions'},
+            control: 'boolean',
+            description: 'Allows multiple rows to be selected in this example.',
+            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
+        },
+        withLastUpdated: {
+            control: 'boolean',
+            description: 'Shows when the table data was last updated in this example.',
+            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
+        },
+        withCollapsibleRows: {
+            control: 'boolean',
+            description: 'Adds expandable details to each row in this example.',
+            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
+        },
+        collapsibleBehavior: {
+            if: {arg: 'withCollapsibleRows'},
+            control: 'radio',
+            options: ['collapse', 'accordion'],
+            description: 'Allows independent expansion or limits expansion to one row in this example.',
+            table: {
+                type: {summary: "'collapse' | 'accordion'"},
+                defaultValue: {summary: "'collapse'"},
+            },
         },
         withUnselectableRows: {
             if: {arg: 'enableRowSelection', truthy: true},
@@ -186,7 +256,7 @@ export const Demo: Story = {
                     size: 200,
                     cell: ({row}) => (
                         <Table.Cell expandable lineClamp={2}>
-                            {row.original.bio} — {dayjs(row.original.lastActivity).format('LLL')}
+                            {row.original.bio}, {dayjs(row.original.lastActivity).format('LLL')}
                         </Table.Cell>
                     ),
                 }),

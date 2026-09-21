@@ -1,0 +1,47 @@
+import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import * as DatePickerInputStories from './DatePickerInput.stories';
+
+<Meta of={DatePickerInputStories} />
+
+# DatePickerInput
+
+Calendar input for selecting one date, multiple dates, or a continuous date range.
+
+## Overview
+
+The `DatePickerInput` lets users select calendar dates without entering a date format manually.
+
+It supports common date shortcuts, constrained date ranges, and different selection modes in the same familiar input pattern.
+
+## Usage
+
+<Canvas of={DatePickerInputStories.Demo} />
+<Controls of={DatePickerInputStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- Users need to select a specific calendar date.
+- Users need several individual dates or a continuous date range.
+- Common date or range presets can make repeated selections faster.
+
+### When not to use
+
+- For month-level selection, use a `MonthPickerInput`.
+- For year-level selection, use a `YearPickerInput`.
+- For a small set of relative periods that never requires exact dates, use a `Select` with predefined options.
+
+### Best practices
+
+- Match `type` to the task: `default` for one date, `multiple` for separate dates, and `range` for an interval.
+- Show two months in range mode when comparing adjacent dates helps users complete the selection.
+- Limit selectable dates with `minDate` and `maxDate` when the domain has clear boundaries.
+- Enable `clearable` for optional fields so users can remove a selection.
+- Offer presets only for frequently used dates or ranges.
+
+### Content guidelines
+
+- Use a short noun phrase for the label, such as **Due date** or **Report period**.
+- Use placeholder text that reflects the selection mode, such as **Pick a date** or **Pick a date range**.
+- Explain how to correct an invalid selection, such as **End date must be after start date**.

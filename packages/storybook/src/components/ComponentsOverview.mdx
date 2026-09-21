@@ -1,6 +1,406 @@
 import {Meta, Unstyled} from '@storybook/addon-docs/blocks';
-import {Alert, Header} from '@coveord/plasma-mantine';
-import {Table} from '@mantine/core';
+import {Alert, Header, MantineTable as Table} from '@coveord/plasma-mantine';
+
+export const categories = [
+    {
+        name: 'Call to action',
+        description: 'Components used to trigger actions or navigate between views.',
+        components: [
+            {
+                name: 'ActionIcon',
+                id: 'actionicon',
+                description: 'Icon-only button for executing actions.',
+                origin: 'Mantine',
+            },
+            {name: 'Anchor', id: 'anchor', description: 'Inline text link for navigation.', origin: 'Mantine'},
+            {
+                name: 'Breadcrumbs',
+                id: 'breadcrumbs',
+                description: 'Navigation trail showing the current page location.',
+                origin: 'Mantine',
+            },
+            {name: 'Button', id: 'button', description: 'Button for triggering actions and tasks.', origin: 'Mantine'},
+            {
+                name: 'CloseButton',
+                id: 'closebutton',
+                description: 'Icon-only button for dismissing or closing content.',
+                origin: 'Mantine',
+            },
+            {
+                name: 'CopyToClipboard',
+                id: 'copytoclipboard',
+                description: 'Action icon that copies a value and shows feedback.',
+                origin: 'Plasma',
+            },
+            {
+                name: 'NavLink',
+                id: 'navlink',
+                description: 'Navigation link for sidebars and menus.',
+                origin: 'Plasma',
+            },
+            {
+                name: 'Pagination',
+                id: 'pagination',
+                description: 'Navigation control for multi-page datasets.',
+                origin: 'Mantine',
+            },
+        ],
+    },
+    {
+        name: 'Forms and inputs',
+        description: 'Components used for data entry and user selections.',
+        components: [
+            {
+                name: 'Checkbox',
+                id: 'checkbox',
+                description: 'Control for selecting zero, one, or many visible options.',
+                origin: 'Mantine',
+            },
+            {
+                name: 'Chip',
+                id: 'chip',
+                description: 'Selectable pill-shaped control for compact options.',
+                origin: 'Mantine',
+            },
+            {
+                name: 'CodeEditor',
+                id: 'codeeditor',
+                description: 'Code editor with syntax highlighting and validation.',
+                origin: 'Plasma',
+            },
+            {
+                name: 'Collection',
+                id: 'collection',
+                description: 'Dynamic list input with configurable item layouts.',
+                origin: 'Plasma',
+            },
+            {
+                name: 'DatePickerInput',
+                id: 'datepickerinput',
+                description: 'Calendar input for selecting dates.',
+                origin: 'Mantine',
+            },
+            {
+                name: 'Facet',
+                id: 'facet',
+                description: 'Searchable list of selectable filter options.',
+                origin: 'Plasma',
+            },
+            {
+                name: 'MonthPickerInput',
+                id: 'monthpickerinput',
+                description: 'Calendar input for selecting months.',
+                origin: 'Mantine',
+            },
+            {
+                name: 'MultiSelect',
+                id: 'multiselect',
+                description: 'Dropdown input for selecting multiple values.',
+                origin: 'Mantine',
+            },
+            {
+                name: 'NumberInput',
+                id: 'numberinput',
+                description: 'Numeric input with formatting and range constraints.',
+                origin: 'Mantine',
+            },
+            {
+                name: 'PasswordInput',
+                id: 'passwordinput',
+                description: 'Password input with a read-only visual state.',
+                origin: 'Mantine',
+            },
+            {
+                name: 'Radio',
+                id: 'radio',
+                description: 'Control for selecting one option from a visible set.',
+                origin: 'Mantine',
+            },
+            {
+                name: 'RadioCard',
+                id: 'radiocard',
+                description: 'Radio option presented as a selectable card.',
+                origin: 'Plasma',
+            },
+            {
+                name: 'SegmentedControl',
+                id: 'segmentedcontrol',
+                description: 'Toggle bar for mutually exclusive views or modes.',
+                origin: 'Mantine',
+            },
+            {
+                name: 'Select',
+                id: 'select',
+                description: 'Dropdown input for selecting one option.',
+                origin: 'Mantine',
+            },
+            {
+                name: 'Slider',
+                id: 'slider',
+                description: 'Range input for selecting a numeric value.',
+                origin: 'Mantine',
+            },
+            {name: 'Switch', id: 'switch', description: 'Toggle control for a binary setting.', origin: 'Mantine'},
+            {
+                name: 'Textarea',
+                id: 'textarea',
+                description: 'Multi-line input for longer free-text content.',
+                origin: 'Mantine',
+            },
+            {
+                name: 'TextInput',
+                id: 'textinput',
+                description: 'Single-line input for free-form text.',
+                origin: 'Mantine',
+            },
+            {
+                name: 'TimePicker',
+                id: 'timepicker',
+                description: 'Input for selecting a specific time of day.',
+                origin: 'Mantine',
+            },
+            {
+                name: 'YearPickerInput',
+                id: 'yearpickerinput',
+                description: 'Calendar input for selecting years.',
+                origin: 'Mantine',
+            },
+        ],
+    },
+    {
+        name: 'Feedback',
+        description: 'Components that communicate system state, progress, or the outcome of an interaction.',
+        components: [
+            {
+                name: 'Alert',
+                id: 'alert',
+                description: 'Callout for contextual information and status messages.',
+                origin: 'Mantine',
+            },
+            {
+                name: 'InfoToken',
+                id: 'infotoken',
+                description: 'Inline token for semantic metadata.',
+                origin: 'Plasma',
+            },
+            {
+                name: 'LastUpdated',
+                id: 'lastupdated',
+                description: 'Human-readable timestamp showing data freshness.',
+                origin: 'Plasma',
+            },
+            {
+                name: 'Loader',
+                id: 'loader',
+                description: 'Animated indicator for an ongoing operation.',
+                origin: 'Mantine',
+            },
+            {
+                name: 'Notification',
+                id: 'notification',
+                description: 'Toast message communicating the outcome of an action.',
+                origin: 'Mantine',
+            },
+            {
+                name: 'PrerequisitesList',
+                id: 'prerequisiteslist',
+                description: 'List of prerequisites with completion indicators.',
+                origin: 'Plasma',
+            },
+            {
+                name: 'Progress',
+                id: 'progress',
+                description: 'Bar showing how far a task has advanced.',
+                origin: 'Mantine',
+            },
+            {
+                name: 'Skeleton',
+                id: 'skeleton',
+                description: 'Placeholder representing content that is loading.',
+                origin: 'Mantine',
+            },
+            {
+                name: 'StatusToken',
+                id: 'statustoken',
+                description: 'Status indicator with semantic color coding.',
+                origin: 'Plasma',
+            },
+            {
+                name: 'Stepper',
+                id: 'stepper',
+                description: 'Progress indicator for a linear multi-step flow.',
+                origin: 'Mantine',
+            },
+            {
+                name: 'Tooltip',
+                id: 'tooltip',
+                description: 'Supplementary text shown on hover or focus.',
+                origin: 'Mantine',
+            },
+        ],
+    },
+    {
+        name: 'Layout',
+        description: 'Components used to arrange and structure page content.',
+        components: [
+            {
+                name: 'Accordion',
+                id: 'accordion',
+                description: 'Collapsible group for progressively revealing sections.',
+                origin: 'Mantine',
+            },
+            {
+                name: 'AppShell',
+                id: 'appshell',
+                description: 'Application frame with persistent layout regions.',
+                origin: 'Mantine',
+            },
+            {
+                name: 'BrowserPreview',
+                id: 'browserpreview',
+                description: 'Simulated browser frame around preview content.',
+                origin: 'Plasma',
+            },
+            {
+                name: 'ChildForm',
+                id: 'childform',
+                description: 'Expandable nested sub-form within a parent form.',
+                origin: 'Plasma',
+            },
+            {
+                name: 'Header',
+                id: 'header',
+                description: 'Page header with optional breadcrumbs and actions.',
+                origin: 'Plasma',
+            },
+            {
+                name: 'Modal',
+                id: 'modal',
+                description: 'Overlay dialog that focuses user attention.',
+                origin: 'Mantine',
+            },
+            {
+                name: 'Navigation',
+                id: 'navigation',
+                description: 'Sidebar navigation with collapsible sections.',
+                origin: 'Plasma',
+            },
+            {
+                name: 'Prompt',
+                id: 'prompt',
+                description: 'Confirmation modal with semantic variants.',
+                origin: 'Plasma',
+            },
+            {
+                name: 'ScrollArea',
+                id: 'scrollarea',
+                description: 'Overflow container with styled scrollbars.',
+                origin: 'Mantine',
+            },
+            {
+                name: 'StickyFooter',
+                id: 'stickyfooter',
+                description: 'Action footer fixed to the bottom of the viewport.',
+                origin: 'Plasma',
+            },
+            {
+                name: 'Tabs',
+                id: 'tabs',
+                description: 'Navigation between related content panels.',
+                origin: 'Mantine',
+            },
+        ],
+    },
+    {
+        name: 'Data display',
+        description: 'Components used to present and organize information.',
+        components: [
+            {
+                name: 'Badge',
+                id: 'badge',
+                description: 'Compact label for status, counts, or metadata.',
+                origin: 'Mantine',
+            },
+            {
+                name: 'Card',
+                id: 'card',
+                description: 'Surface that groups related content.',
+                origin: 'Mantine',
+            },
+            {
+                name: 'Image',
+                id: 'image',
+                description: 'Responsive image inside a sized container.',
+                origin: 'Mantine',
+            },
+            {
+                name: 'Pill',
+                id: 'pill',
+                description: 'Compact tag for a selected value or token.',
+                origin: 'Mantine',
+            },
+            {
+                name: 'Table',
+                id: 'table',
+                description: 'Tabular data with optional filtering and pagination.',
+                origin: 'Plasma',
+            },
+        ],
+    },
+    {
+        name: 'Typography',
+        description: 'Components used to display specialized text content.',
+        components: [
+            {
+                name: 'EllipsisText',
+                id: 'ellipsistext',
+                description: 'Overflowing text truncated with an optional tooltip.',
+                origin: 'Plasma',
+            },
+            {
+                name: 'Kbd',
+                id: 'kbd',
+                description: 'Visual representation of keyboard keys or shortcuts.',
+                origin: 'Mantine',
+            },
+        ],
+    },
+    {
+        name: 'Miscellaneous',
+        description: 'Components that do not fit the other functional categories.',
+        components: [
+            {
+                name: 'Menu',
+                id: 'menu',
+                description: 'Dropdown list of contextual commands.',
+                origin: 'Mantine',
+            },
+        ],
+    },
+];
+
+export const ComponentTable = ({components}) => (
+    <Table withTableBorder withColumnBorders>
+        <Table.Thead>
+            <Table.Tr>
+                <Table.Th>Component</Table.Th>
+                <Table.Th>Description</Table.Th>
+                <Table.Th>Library origin</Table.Th>
+            </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>
+            {components.map((component) => (
+                <Table.Tr key={component.name}>
+                    <Table.Td>
+                        <a href={`?path=/docs/${component.id}--docs`}>{component.name}</a>
+                    </Table.Td>
+                    <Table.Td>{component.description}</Table.Td>
+                    <Table.Td>{component.origin}</Table.Td>
+                </Table.Tr>
+            ))}
+        </Table.Tbody>
+    </Table>
+);
 
 <Meta title="@components/Overview" id="components-overview" />
 
@@ -8,8 +408,10 @@ import {Table} from '@mantine/core';
     Components
 </Header>
 
-Most components in the Plasma design system are based on the [Mantine library](https://mantine.dev/core/package/) and some are Plasma-specific, added over time.
-The components are sorted into groups by function:
+Most Plasma components are based on the [Mantine library](https://mantine.dev/core/package/). Others are
+Plasma-specific. All components are imported from `@coveord/plasma-mantine`.
+
+The components are grouped by function:
 
 - [Call to action](#call-to-action)
 - [Forms and inputs](#forms-and-inputs)
@@ -23,496 +425,49 @@ The components are sorted into groups by function:
     <Alert.Information title="Related resources" mb="md">
         View the components in the [Figma
         library](https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components?node-id=3156-526&p=f&t=LgsAqJbTOuPL7eGh-0),
-        or for additional details and links, the [Confluence
-        Database](https://coveord.atlassian.net/wiki/spaces/dsys/database/5936873512).
+        or browse additional details and links in the [Confluence
+        database](https://coveord.atlassian.net/wiki/spaces/dsys/database/5936873512).
     </Alert.Information>
 </Unstyled>
 
 ## Call to action
 
-Components used to trigger actions or navigate between views.
+{categories[0].description}
 
-<Table withTableBorder withColumnBorders>
-    <Table.Thead>
-        <Table.Tr>
-            <Table.Th>Component</Table.Th>
-            <Table.Th>Description</Table.Th>
-            <Table.Th>Library origin</Table.Th>
-        </Table.Tr>
-    </Table.Thead>
-    <Table.Tbody>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/actionicon--demo">ActionIcon</a>
-            </Table.Td>
-            <Table.Td>Icon-based button for executing actions.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/anchor--demo">Anchor</a>
-            </Table.Td>
-            <Table.Td>Hyperlink component for navigation.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/breadcrumbs--demo">Breadcrumbs</a>
-            </Table.Td>
-            <Table.Td>Navigation trail indicating the current page location.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/button--demo">Button</a>
-            </Table.Td>
-            <Table.Td>Standard interactive button, including destructive variants.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/closebutton--demo">CloseButton</a>
-            </Table.Td>
-            <Table.Td>Button used to dismiss content like modals and alerts.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/copytoclipboard--demo">CopyToClipboard</a>
-            </Table.Td>
-            <Table.Td>Action component to copy content to the system clipboard.</Table.Td>
-            <Table.Td>Plasma</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/navlink--demo">NavLink</a>
-            </Table.Td>
-            <Table.Td>Navigation link for sidebars or menus, including sections.</Table.Td>
-            <Table.Td>Plasma</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/pagination--demo">Pagination</a>
-            </Table.Td>
-            <Table.Td>Navigation for splitting large datasets into pages.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-    </Table.Tbody>
-</Table>
+<ComponentTable components={categories[0].components} />
 
 ## Forms and inputs
 
-Components used for data entry and user selections.
+{categories[1].description}
 
-<Table withTableBorder withColumnBorders>
-    <Table.Thead>
-        <Table.Tr>
-            <Table.Th>Component</Table.Th>
-            <Table.Th>Description</Table.Th>
-            <Table.Th>Library origin</Table.Th>
-        </Table.Tr>
-    </Table.Thead>
-    <Table.Tbody>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/textinput--demo">TextInput</a>
-            </Table.Td>
-            <Table.Td>Single-line text input field.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/textarea--demo">Textarea</a>
-            </Table.Td>
-            <Table.Td>Multiline text input field.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/numberinput--demo">NumberInput</a>
-            </Table.Td>
-            <Table.Td>Input field optimized for numerical values.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/select--demo">Select</a>
-            </Table.Td>
-            <Table.Td>Dropdown menu for single option selection.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/multiselect--demo">MultiSelect</a>
-            </Table.Td>
-            <Table.Td>Dropdown for selecting multiple options.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>PillsInput</Table.Td>
-            <Table.Td>Input that shows selected values as pill tags.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/checkbox--checkbox-item">Checkbox</a>
-            </Table.Td>
-            <Table.Td>Selection control for single or multiple items.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/radio--radio-item">Radio</a>
-            </Table.Td>
-            <Table.Td>Selection control for mutually exclusive options.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/radiocard--demo">RadioCard</a>
-            </Table.Td>
-            <Table.Td>Enhanced radio selection presented as cards.</Table.Td>
-            <Table.Td>Plasma</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/switch--default">Switch</a>
-            </Table.Td>
-            <Table.Td>Toggle control for switching between two states.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/segmentedcontrol--demo">SegmentedControl</a>
-            </Table.Td>
-            <Table.Td>Linear set of two or more segments for exclusive choice.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/slider--demo">Slider</a>
-            </Table.Td>
-            <Table.Td>Input for selecting a value from a range.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/datepickerinput--demo">DatePickerInput</a>
-            </Table.Td>
-            <Table.Td>Input field with a dropdown calendar.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/monthpickerinput--demo">MonthPickerInput</a>
-            </Table.Td>
-            <Table.Td>Input field for selecting specific months.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/yearpickerinput--demo">YearPickerInput</a>
-            </Table.Td>
-            <Table.Td>Input field for selecting specific years.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/timepicker--demo">TimePicker</a>
-            </Table.Td>
-            <Table.Td>Input component for time selection.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/codeeditor--demo">CodeEditor</a>
-            </Table.Td>
-            <Table.Td>Specialized input for editing code snippets.</Table.Td>
-            <Table.Td>Plasma</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/collection--demo">Collection</a>
-            </Table.Td>
-            <Table.Td>Pattern for managing lists or groups of items.</Table.Td>
-            <Table.Td>Plasma</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/facet--demo">Facet</a>
-            </Table.Td>
-            <Table.Td>Filtering pattern for search interfaces.</Table.Td>
-            <Table.Td>Plasma</Table.Td>
-        </Table.Tr>
-    </Table.Tbody>
-</Table>
+<ComponentTable components={categories[1].components} />
 
 ## Feedback
 
-Components that provide visual feedback on system state or user interactions.
+{categories[2].description}
 
-<Table withTableBorder withColumnBorders>
-    <Table.Thead>
-        <Table.Tr>
-            <Table.Th>Component</Table.Th>
-            <Table.Th>Description</Table.Th>
-            <Table.Th>Library origin</Table.Th>
-        </Table.Tr>
-    </Table.Thead>
-    <Table.Tbody>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/alert--demo">Alert</a>
-            </Table.Td>
-            <Table.Td>Shows prominent messages: info, warning, or critical.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/notification--demo">Notification</a>
-            </Table.Td>
-            <Table.Td>Toast-style messages for updates or errors.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/loader--demo">Loader</a>
-            </Table.Td>
-            <Table.Td>Animated indicator for loading states.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/skeleton--demo">Skeleton</a>
-            </Table.Td>
-            <Table.Td>Placeholder preview for content while loading.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/progress--demo">Progress</a>
-            </Table.Td>
-            <Table.Td>Visual bar indicating completion percentage.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/stepper--default">Stepper</a>
-            </Table.Td>
-            <Table.Td>Progress indicator for multi-step workflows.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/tooltip--demo">Tooltip</a>
-            </Table.Td>
-            <Table.Td>Text label shown on hover.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/infotoken--demo">InfoToken</a>
-            </Table.Td>
-            <Table.Td>Small visual indicator for contextual information.</Table.Td>
-            <Table.Td>Plasma</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/statustoken--demo">StatusToken</a>
-            </Table.Td>
-            <Table.Td>Visual indicator for object status.</Table.Td>
-            <Table.Td>Plasma</Table.Td>
-        </Table.Tr>
-    </Table.Tbody>
-</Table>
+<ComponentTable components={categories[2].components} />
 
 ## Layout
 
-Components used to arrange and structure the page content.
+{categories[3].description}
 
-<Table withTableBorder withColumnBorders>
-    <Table.Thead>
-        <Table.Tr>
-            <Table.Th>Component</Table.Th>
-            <Table.Th>Description</Table.Th>
-            <Table.Th>Library origin</Table.Th>
-        </Table.Tr>
-    </Table.Thead>
-    <Table.Tbody>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/appshell--demo">AppShell</a>
-            </Table.Td>
-            <Table.Td>Main layout wrapper, including header and navbar.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/header--demo">Header</a>
-            </Table.Td>
-            <Table.Td>Top navigation bar pattern.</Table.Td>
-            <Table.Td>Plasma</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/navigation--demo">Navigation</a>
-            </Table.Td>
-            <Table.Td>Main side navigation pattern.</Table.Td>
-            <Table.Td>Plasma</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/tabs--demo">Tabs</a>
-            </Table.Td>
-            <Table.Td>Interface for switching between different views.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/accordion--demo">Accordion</a>
-            </Table.Td>
-            <Table.Td>Vertically stacked headers that reveal content.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/scrollarea--demo">ScrollArea</a>
-            </Table.Td>
-            <Table.Td>Container that manages custom scrollbars.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/childform--demo">ChildForm</a>
-            </Table.Td>
-            <Table.Td>Layout pattern for nesting forms.</Table.Td>
-            <Table.Td>Plasma</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/stickyfooter--default">StickyFooter</a>
-            </Table.Td>
-            <Table.Td>Sticky footer pattern for page bottoms.</Table.Td>
-            <Table.Td>Plasma</Table.Td>
-        </Table.Tr>
-    </Table.Tbody>
-</Table>
+<ComponentTable components={categories[3].components} />
 
 ## Data display
 
-Components designed to present information to the user.
+{categories[4].description}
 
-<Table withTableBorder withColumnBorders>
-    <Table.Thead>
-        <Table.Tr>
-            <Table.Th>Component</Table.Th>
-            <Table.Th>Description</Table.Th>
-            <Table.Th>Library origin</Table.Th>
-        </Table.Tr>
-    </Table.Thead>
-    <Table.Tbody>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/badge--demo">Badge</a>
-            </Table.Td>
-            <Table.Td>Small label for status, counts, or categories.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/card--demo">Card</a>
-            </Table.Td>
-            <Table.Td>Container for grouping related information.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/image--demo">Image</a>
-            </Table.Td>
-            <Table.Td>Wrapper for displaying images with support.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/pill--demo">Pill</a>
-            </Table.Td>
-            <Table.Td>Rounded visual indicator, often used in inputs.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/table--demo">Table</a>
-            </Table.Td>
-            <Table.Td>Rows and columns for structured data.</Table.Td>
-            <Table.Td>Plasma</Table.Td>
-        </Table.Tr>
-    </Table.Tbody>
-</Table>
+<ComponentTable components={categories[4].components} />
 
 ## Typography
 
-Components for text content.
+{categories[5].description}
 
-<Table withTableBorder withColumnBorders>
-    <Table.Thead>
-        <Table.Tr>
-            <Table.Th>Component</Table.Th>
-            <Table.Th>Description</Table.Th>
-            <Table.Th>Library origin</Table.Th>
-        </Table.Tr>
-    </Table.Thead>
-    <Table.Tbody>
-        <Table.Tr>
-            <Table.Td>Code</Table.Td>
-            <Table.Td>Inline or block display for code snippets.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/kbd--demo">Kbd</a>
-            </Table.Td>
-            <Table.Td>Visual representation of keyboard inputs.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-    </Table.Tbody>
-</Table>
+<ComponentTable components={categories[5].components} />
 
 ## Miscellaneous
 
-Components and patterns not yet assigned to a specific category.
+{categories[6].description}
 
-<Table withTableBorder withColumnBorders>
-    <Table.Thead>
-        <Table.Tr>
-            <Table.Th>Component</Table.Th>
-            <Table.Th>Description</Table.Th>
-            <Table.Th>Library origin</Table.Th>
-        </Table.Tr>
-    </Table.Thead>
-    <Table.Tbody>
-        <Table.Tr>
-            <Table.Td>Carousel</Table.Td>
-            <Table.Td>Slideshow component for cycling content.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/chip--demo">Chip</a>
-            </Table.Td>
-            <Table.Td>Compact interactive element for filtering or selection.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>
-                <a href="?path=/story/modal--demo">Modal</a>
-            </Table.Td>
-            <Table.Td>Overlay dialog that requires user attention.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-            <Table.Td>Popover</Table.Td>
-            <Table.Td>Floating content shown near a target element.</Table.Td>
-            <Table.Td>Mantine</Table.Td>
-        </Table.Tr>
-    </Table.Tbody>
-</Table>
+<ComponentTable components={categories[6].components} />

@@ -1,0 +1,43 @@
+import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import * as CopyToClipboardStories from './CopyToClipboard.stories';
+
+<Meta of={CopyToClipboardStories} />
+
+# CopyToClipboard
+
+Action icon that copies an exact string and confirms the result in a tooltip.
+
+## Overview
+
+The `CopyToClipboard` helps users copy read-only values that are difficult or error-prone to select manually.
+
+## Usage
+
+<Canvas of={CopyToClipboardStories.Demo} />
+<Controls of={CopyToClipboardStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- Users need to copy an exact identifier, key, token, URL, or generated value.
+- The value is read-only and used elsewhere.
+- Copying is a secondary utility action attached to a visible value.
+
+### When not to use
+
+- If users need to edit the value before using it.
+- If copying the value is not a meaningful task.
+- If a sensitive value should require confirmation before exposure.
+
+### Best practices
+
+- Place the action in the right section of a read-only input when possible.
+- Keep the copied value clear through its field label or nearby context.
+- Use a full text button when copying is the main page action.
+- Avoid placing several ambiguous copy actions close together.
+
+### Content guidelines
+
+- Keep copy and confirmation tooltips concise.
+- Name the value in nearby content when the destination is not obvious.

@@ -1,0 +1,43 @@
+import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import * as ModalStories from './Modal.stories';
+
+<Meta of={ModalStories} />
+
+# Modal
+
+Overlay dialog that focuses attention on a contained task or information surface.
+
+## Overview
+
+The `Modal` lets users complete, review, or inspect something without navigating away from the current page. It provides focused context, a clear close action, and an optional footer for decisions.
+
+## Usage
+
+<Canvas of={ModalStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- A contained task needs temporary prominence over the current page.
+- Users need focused content and actions without losing page context.
+- The task is related to the current view and can be completed in one overlay.
+
+### When not to use
+
+- A complex or multi-step task needs its own page.
+- Users must compare the overlay content with the underlying page.
+- The interaction is a simple confirmation. Use `Prompt` instead.
+
+### Best practices
+
+- Give the modal a clear title and an intentional close behavior.
+- Put modal actions in `Modal.Footer`.
+- Avoid stacking modals. Resolve the current task before opening another.
+- Preserve or discard entered data according to the workflow, not as an accidental effect of closing.
+
+### Content guidelines
+
+- Name the task in the title.
+- Use the description to clarify impact when the task is risky or complex.
+- Label footer actions with the result they produce.

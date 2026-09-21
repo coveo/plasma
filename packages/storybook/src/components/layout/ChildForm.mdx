@@ -1,0 +1,42 @@
+import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import * as ChildFormStories from './ChildForm.stories';
+
+<Meta of={ChildFormStories} />
+
+# ChildForm
+
+Expandable nested form section for optional or conditional fields.
+
+## Overview
+
+The `ChildForm` reveals related fields inside a parent form while keeping them visually grouped. It supports configurations that apply only after users opt into an additional setting.
+
+## Usage
+
+<Canvas of={ChildFormStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- A parent form contains optional or conditional fields.
+- Nested fields configure the same parent entity.
+- A title and description help explain why the fields appear.
+
+### When not to use
+
+- The fields are required and should remain visible.
+- The nested task is complex enough to need a separate page or step.
+- Collapsing the section would hide validation errors from users.
+
+### Best practices
+
+- Pair the child form with a control that clearly explains what it reveals.
+- Preserve entered values when the section collapses unless the workflow explicitly confirms their removal.
+- Keep the hierarchy shallow and avoid nesting several child forms.
+- Make validation errors discoverable even when the section is collapsed.
+
+### Content guidelines
+
+- Name the nested object or configuration in the title.
+- Use the description to explain why the additional fields are needed.

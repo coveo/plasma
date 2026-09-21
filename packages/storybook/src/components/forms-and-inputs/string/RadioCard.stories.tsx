@@ -1,27 +1,72 @@
-import {RadioCard} from '@coveord/plasma-mantine/components/RadioCard';
-import {Box} from '@coveord/plasma-mantine';
+import {Box, RadioCard} from '@coveord/plasma-mantine';
 import {Meta, StoryObj} from '@storybook/react-vite';
 import type {ComponentProps} from 'react';
 import {useArgs} from 'storybook/preview-api';
 import {InlineInputArgs, type InlineInputStoryArgs} from '../InputWrapperArgs.js';
 import {withLabelInfoProps} from '../LabelInfoArgs.js';
 
-const meta: Meta<typeof RadioCard> = {
+type RadioCardStoryArgs = ComponentProps<typeof RadioCard> & InlineInputStoryArgs;
+
+const meta = {
     title: '@components/Forms and inputs/string/RadioCard',
     id: 'RadioCard',
     component: RadioCard,
     parameters: {
         layout: 'centered',
+        controls: {
+            include: [
+                'label',
+                'labelInfo',
+                'description',
+                'error',
+                'checked',
+                'disabled',
+                'readOnly',
+                'disabledTooltip',
+            ],
+        },
     },
     argTypes: {
         ...InlineInputArgs.ArgsTypes,
+        label: {
+            control: 'text',
+            description: 'Content displayed as the card label.',
+            table: {type: {summary: 'ReactNode'}, defaultValue: {summary: 'undefined'}},
+        },
+        labelInfo: {
+            control: 'text',
+            description: 'Sets the Input.LabelInfo tooltip content in this example.',
+            table: {type: {summary: 'string'}, defaultValue: {summary: "'Additional information'"}},
+        },
+        description: {
+            control: 'text',
+            description: 'Supporting content displayed below the card label.',
+            table: {type: {summary: 'ReactNode'}, defaultValue: {summary: 'undefined'}},
+        },
+        error: {
+            control: 'text',
+            description: 'Validation feedback displayed below the card content.',
+            table: {type: {summary: 'ReactNode'}, defaultValue: {summary: 'undefined'}},
+        },
         checked: {
             control: 'boolean',
-            description: 'Checked state',
+            description: 'Sets the selected state of the card.',
+            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
+        },
+        disabled: {
+            control: 'boolean',
+            description: 'Disables card selection.',
+            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
+        },
+        readOnly: {
+            control: 'boolean',
+            description: 'Marks the card as read-only.',
+            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'undefined'}},
         },
         disabledTooltip: {
             control: 'text',
-            description: 'The tooltip message to display when disabled',
+            description: 'Explains why the card is unavailable when disabled.',
+            table: {type: {summary: 'string'}, defaultValue: {summary: 'undefined'}},
         },
     },
     args: {
@@ -29,9 +74,8 @@ const meta: Meta<typeof RadioCard> = {
         checked: false,
         disabledTooltip: 'Disabled tooltip example',
     },
-};
+} satisfies Meta<RadioCardStoryArgs>;
 export default meta;
-type RadioCardStoryArgs = ComponentProps<typeof RadioCard> & InlineInputStoryArgs;
 
 type Story = StoryObj<RadioCardStoryArgs>;
 export const Demo: Story = {

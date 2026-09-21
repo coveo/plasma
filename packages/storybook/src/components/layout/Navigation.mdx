@@ -1,0 +1,43 @@
+import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import * as NavigationStories from './Navigation.stories';
+
+<Meta of={NavigationStories} />
+
+# Navigation
+
+Collapsible application sidebar with top-level links, nested sections, and active destination states.
+
+## Overview
+
+The `Navigation` provider coordinates a sidebar's collapsed state with an `AppShell`. Its links and expandable sections organize primary destinations while keeping the current destination visible.
+
+## Usage
+
+<Canvas of={NavigationStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- An application needs persistent navigation across primary destinations.
+- Related destinations benefit from collapsible groups.
+- The sidebar must collapse while the main application shell adapts.
+
+### When not to use
+
+- A small set of links belongs within page content or a local component.
+- Users are switching between peer panels in one view. Use `Tabs` instead.
+- The hierarchy requires more than the supported top-level and nested link levels.
+
+### Best practices
+
+- Wrap the shell with `Navigation`, then use `useNavigation` to pass the collapsed state to the `AppShell` navbar.
+- Use level 1 for top-level links and level 2 for links inside a section.
+- Mark the current destination as active and provide a router component when navigation changes routes.
+- Let `Navigation.SideBar` provide its collapse toggle. Sections with no children are omitted automatically.
+
+### Content guidelines
+
+- Use short, distinct labels that describe destinations.
+- Keep section labels broad enough to describe all links they contain.
+- Use badges only for the supported status meanings: beta, work in progress, or new.

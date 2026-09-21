@@ -1,0 +1,37 @@
+import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import * as AppShellStories from './AppShell.stories';
+
+<Meta of={AppShellStories} />
+
+# AppShell
+
+Application frame with persistent regions and an independently scrollable main content area.
+
+## Overview
+
+The `AppShell` structures an application around regions such as a header, navigation, main content, aside, and footer. Plasma keeps the main area scrollable while the surrounding shell remains stable.
+
+## Usage
+
+<Canvas of={AppShellStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- A full application or product area needs a consistent page frame.
+- Navigation, headers, or other regions must remain stable around scrolling content.
+- The shell needs responsive behavior around its main content.
+
+### When not to use
+
+- A card, form section, or local panel only needs simple layout primitives.
+- A temporary task belongs in a `Modal`.
+- Content is being shown as a simulated browser output. Use `BrowserPreview` instead.
+
+### Best practices
+
+- Use one shell as the application-level frame rather than nesting shells.
+- Keep page-level titles and actions in a `Header` within the shell.
+- Preserve logical landmarks and keep the main content reachable by keyboard.
+- Avoid competing scroll containers that can hide content or actions.

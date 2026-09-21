@@ -1,0 +1,44 @@
+import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import * as BadgeStories from './Badge.stories';
+
+<Meta of={BadgeStories} />
+
+# Badge
+
+Compact label that communicates status, category, count, or other metadata near an item.
+
+## Overview
+
+`Badge` makes short metadata easy to scan without interrupting the surrounding content.
+
+Its semantic sub-components provide consistent emphasis for neutral, success, warning, critical, and disabled states.
+
+## Usage
+
+<Canvas of={BadgeStories.Demo} />
+<Controls of={BadgeStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- Add a short status, category, count, or metadata label to a list item, card, or heading.
+- Show a textual state that needs more context than an icon alone.
+
+### When not to use
+
+- For a message that needs explanation or action, use an `Alert` or inline text.
+- For a small semantic marker without text, use a `StatusToken`.
+- For an interactive value, use a button, link, or selection control.
+
+### Best practices
+
+- Choose the semantic sub-component by meaning, not visual preference.
+- Use `Badge.Success`, `Badge.Warning`, and `Badge.Critical` consistently for matching states.
+- Use the small size in dense lists and the large size for a standalone status indicator.
+
+### Content guidelines
+
+- Keep labels to one to three words.
+- Use concise nouns or state labels instead of sentences.
+- Use consistent wording for badges in the same set.

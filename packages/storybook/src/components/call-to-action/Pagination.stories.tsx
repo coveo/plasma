@@ -1,4 +1,4 @@
-import {Pagination} from '@coveord/plasma-mantine/components/Pagination';
+import {Pagination} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import {useState} from 'react';
 
@@ -14,23 +14,24 @@ const meta: Meta<typeof Pagination> = {
     },
     argTypes: {
         total: {
-            control: 'number',
-            description: 'Total number of pages',
+            control: {type: 'number', min: 2},
+            description: 'Sets the total number of pages.',
             table: {
                 type: {summary: 'number'},
+                defaultValue: {summary: 'undefined'},
             },
         },
         siblings: {
-            control: 'number',
-            description: 'Number of siblings on each side of the current page',
+            control: {type: 'number', min: 0},
+            description: 'Sets the pages shown on each side of the active page.',
             table: {
                 defaultValue: {summary: '1'},
                 type: {summary: 'number'},
             },
         },
         boundaries: {
-            control: 'number',
-            description: 'Number of elements visible on each side of the pagination',
+            control: {type: 'number', min: 0},
+            description: 'Sets the pages always shown at the start and end.',
             table: {
                 defaultValue: {summary: '1'},
                 type: {summary: 'number'},
@@ -38,7 +39,7 @@ const meta: Meta<typeof Pagination> = {
         },
         withEdges: {
             control: 'boolean',
-            description: 'Show first/last page buttons',
+            description: 'Shows first-page and last-page controls.',
             table: {
                 defaultValue: {summary: 'false'},
                 type: {summary: 'boolean'},
@@ -46,20 +47,22 @@ const meta: Meta<typeof Pagination> = {
         },
         disabled: {
             control: 'boolean',
-            description: 'Disable all controls',
+            description: 'Disables all pagination controls.',
             table: {
                 defaultValue: {summary: 'false'},
                 type: {summary: 'boolean'},
             },
         },
+        value: {table: {disable: true}},
+        onChange: {table: {disable: true}},
     },
 };
 export default meta;
 type Story = StoryObj<typeof Pagination>;
 
 export const Demo: Story = {
-    render: (props: any) => {
+    render: (props) => {
         const [activePage, setActivePage] = useState(1);
-        return <Pagination value={activePage} onChange={setActivePage} {...props} />;
+        return <Pagination {...props} value={activePage} onChange={setActivePage} />;
     },
 };

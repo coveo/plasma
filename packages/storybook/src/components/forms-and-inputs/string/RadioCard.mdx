@@ -1,0 +1,47 @@
+import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import * as RadioCardStories from './RadioCard.stories';
+
+<Meta of={RadioCardStories} />
+
+# RadioCard
+
+Selectable card for a single-choice option that needs supporting context or a larger target.
+
+## Overview
+
+`RadioCard` gives an option more visual weight than a standard radio and leaves room to explain its impact.
+
+It preserves radio semantics while making the full card available for selection.
+
+## Usage
+
+<Canvas of={RadioCardStories.Demo} />
+<Controls of={RadioCardStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- Users choose one option from a small set.
+- Each option benefits from a description or a larger selection target.
+- The consequences or eligibility of each choice need explanation.
+
+### When not to use
+
+- Use `Checkbox` when users can choose multiple options.
+- Use `Radio` or `Select` for short, simple choices.
+- Avoid cards when a long option set would become difficult to scan.
+- Do not use selectable cards for passive information.
+
+### Best practices
+
+- Present related radio cards as one clearly labeled single-choice group.
+- Keep descriptions comparable in length and level of detail.
+- Use `disabledTooltip` to explain why a disabled option is unavailable.
+- Show validation feedback close to the affected card or group.
+
+### Content guidelines
+
+- Name each option directly in its label.
+- Explain impact, eligibility, or key differences in the description.
+- Tell users how to fix the issue in error messages.

@@ -1,6 +1,5 @@
 import type {StoryObj, Meta} from '@storybook/react-vite';
-import {EllipsisText} from '@coveord/plasma-mantine/components/EllipsisText';
-import {Chip} from '@mantine/core';
+import {Chip, EllipsisText} from '@coveord/plasma-mantine';
 
 const meta: Meta<typeof EllipsisText> = {
     title: '@components/Typography/EllipsisText',
@@ -9,7 +8,6 @@ const meta: Meta<typeof EllipsisText> = {
     parameters: {
         layout: 'centered',
     },
-    tags: ['autodocs'],
 };
 export default meta;
 type Story = StoryObj<typeof EllipsisText>;

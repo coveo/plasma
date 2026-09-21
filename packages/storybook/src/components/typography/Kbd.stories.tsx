@@ -1,4 +1,4 @@
-import {Kbd} from '@coveord/plasma-mantine/components/Kbd';
+import {Kbd} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof Kbd> = {
@@ -14,8 +14,10 @@ const meta: Meta<typeof Kbd> = {
     argTypes: {
         children: {
             control: 'text',
+            description: 'Sets the key name or symbol.',
             table: {
-                defaultValue: {summary: ''},
+                type: {summary: 'ReactNode'},
+                defaultValue: {summary: 'undefined'},
             },
         },
     },

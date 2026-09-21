@@ -1,0 +1,43 @@
+import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import * as AccordionStories from './Accordion.stories';
+
+<Meta of={AccordionStories} />
+
+# Accordion
+
+Collapsible content group that reveals related sections without leaving the current page.
+
+## Overview
+
+The `Accordion` helps users scan section headings and open only the details they need. It keeps secondary content available without showing every section at once.
+
+## Usage
+
+<Canvas of={AccordionStories.Demo} />
+<Controls of={AccordionStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- Related content can be grouped under short, meaningful headings.
+- Users benefit from scanning the available sections before reading details.
+- The content belongs on the current page but does not need to remain visible.
+
+### When not to use
+
+- Required fields, errors, warnings, or decisions must remain visible.
+- Sections represent destinations or peer views. Use navigation or `Tabs` instead.
+- Users need to compare substantial amounts of content at the same time.
+
+### Best practices
+
+- Enable multiple open items when users need to compare sections or refer between them.
+- Keep each panel focused on the topic named by its control.
+- Use icons only as supporting cues. Labels must remain clear on their own.
+- Avoid nesting accordions unless the relationship between levels is unmistakable.
+
+### Content guidelines
+
+- Use short, specific labels that describe the panel content.
+- Avoid vague labels such as **Details** or **More information**.

@@ -1,0 +1,47 @@
+import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import * as TextareaStories from './Textarea.stories';
+
+<Meta of={TextareaStories} />
+
+# Textarea
+
+Multi-line field for descriptions, comments, notes, and other longer free-form text.
+
+## Overview
+
+`Textarea` gives users enough room to enter and review text that does not fit on one line.
+
+It can keep a fixed height or grow with content while remaining within layout limits.
+
+## Usage
+
+<Canvas of={TextareaStories.Demo} />
+<Controls of={TextareaStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- Users enter descriptions, comments, notes, or message bodies.
+- The expected response can span several lines.
+- Showing the rough expected length helps users understand the task.
+
+### When not to use
+
+- Use `TextInput` when the value fits on one line.
+- Use a collection control for tags, lists, or other structured values.
+- Use `CodeEditor` for syntax-sensitive or tab-indented technical content.
+
+### Best practices
+
+- Use `autosize` when content length is unpredictable, with minimum and maximum row limits.
+- Use a fixed size when the surrounding layout must remain stable.
+- Provide a visible label and associate validation feedback with the field.
+- Use `readOnly` for visible values users cannot edit and `disabled` for unavailable fields.
+
+### Content guidelines
+
+- Use a short noun phrase for the label.
+- Make placeholder text an example or hint, not a copy of the label.
+- Put character limits in the description and enforce them in the field.
+- Make validation messages specific and actionable.

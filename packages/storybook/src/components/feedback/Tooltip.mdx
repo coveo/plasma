@@ -1,0 +1,46 @@
+import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import * as TooltipStories from './Tooltip.stories';
+
+<Meta of={TooltipStories} />
+
+# Tooltip
+
+Non-interactive popover that reveals brief supplementary text on hover or focus.
+
+## Overview
+
+The `Tooltip` provides optional context without adding persistent text to a compact interface.
+
+It is available to pointer and keyboard users when its trigger can receive focus.
+
+## Usage
+
+<Canvas of={TooltipStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- Label an icon-only action while keeping an accessible name on the trigger.
+- Add brief context to a UI element.
+- Show the full value of truncated text or explain an abbreviation.
+
+### When not to use
+
+- For information users need to complete a task, show visible text.
+- For links, buttons, or other interactive content, use a `Popover`.
+- For content longer than two short sentences, use a more suitable surface.
+- Avoid nested tooltips.
+
+### Best practices
+
+- Use a focusable trigger so keyboard users can open the tooltip.
+- Give icon-only triggers an accessible name independent of the tooltip.
+- Make custom triggers forward their ref for positioning.
+- Let placement adjust automatically unless a specific position solves clipping or overlap.
+
+### Content guidelines
+
+- Write one short phrase or sentence.
+- Add context instead of repeating visible text.
+- Keep essential instructions visible outside the tooltip.

@@ -1,0 +1,37 @@
+import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import * as ScrollAreaStories from './ScrollArea.stories';
+
+<Meta of={ScrollAreaStories} />
+
+# ScrollArea
+
+Bounded container that clips overflowing content and provides a themed scrollbar.
+
+## Overview
+
+The `ScrollArea` keeps a panel, sidebar, list, or log within a stable region while its content grows. It provides scrolling inside the component instead of expanding the surrounding layout.
+
+## Usage
+
+<Canvas of={ScrollAreaStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- Variable content must stay within a fixed-height or fixed-width region.
+- A panel, sidebar, list, or log needs its own scrolling boundary.
+- A consistent themed scrollbar supports the surrounding interface.
+
+### When not to use
+
+- The full page should scroll through normal document flow.
+- Content always fits within the available region.
+- A single line only needs truncation. Use `EllipsisText` instead.
+
+### Best practices
+
+- Set an explicit height or width so overflow has a defined boundary.
+- Use `ScrollArea.Autosize` when the region should grow to a maximum before scrolling.
+- Keep interactive content keyboard reachable and avoid trapping focus.
+- Add an appropriate label or landmark when the scrolling boundary has a distinct meaning.

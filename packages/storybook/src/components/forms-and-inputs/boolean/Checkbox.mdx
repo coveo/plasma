@@ -1,0 +1,45 @@
+import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import * as CheckboxStories from './Checkbox.stories';
+
+<Meta of={CheckboxStories} />
+
+# Checkbox
+
+Boolean selection control for choosing any number of visible options or confirming an optional commitment.
+
+## Overview
+
+The `Checkbox` keeps choices visible so users can compare and select none, one, or many options.
+
+Use `Checkbox.Group` when related checkboxes form one field or choice set.
+
+## Usage
+
+<Canvas of={CheckboxStories.CheckboxItem} />
+
+## Guidelines
+
+### When to use
+
+- Users can choose any number of options from a visible set.
+- A short list benefits from direct comparison.
+- Users need to accept or request an optional commitment.
+
+### When not to use
+
+- For mutually exclusive choices, use a `Radio` or `SegmentedControl`.
+- For a persistent binary setting, use a `Switch`.
+- For a long searchable list, use a `MultiSelect`.
+
+### Best practices
+
+- Group related choices with `Checkbox.Group` and provide a group label.
+- Give every checkbox a clear, programmatically associated label.
+- Use the indeterminate state only for a real partial selection, such as a partially selected parent group.
+- Stack longer labels vertically to make the set easier to scan.
+
+### Content guidelines
+
+- Keep option labels short, distinct, and parallel.
+- Describe the selected outcome in a stand-alone checkbox label.
+- Name the option category in a group label instead of repeating an instruction.

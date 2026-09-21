@@ -1,0 +1,38 @@
+import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import * as CloseButtonStories from './CloseButton.stories';
+
+<Meta of={CloseButtonStories} />
+
+# CloseButton
+
+Icon-only button for closing or dismissing an interface element.
+
+## Overview
+
+The `CloseButton` provides a consistent, lightweight close action for overlays and removable items.
+
+## Usage
+
+<Canvas of={CloseButtonStories.Demo} />
+<Controls of={CloseButtonStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- To dismiss a modal, drawer, popover, notification, alert, or banner.
+- To remove a tag, chip, or filter from a selection.
+- To provide a compact close action within a dismissible element.
+
+### When not to use
+
+- If the action needs a visible label, use a `Button` labeled **Close** or **Dismiss**.
+- For deleting data or triggering another destructive action.
+- For a prominent cancel action in a form footer, use a `Button` labeled **Cancel**.
+
+### Best practices
+
+- Use `md` for overlays and `sm` for compact items.
+- Provide a specific accessible label when **Close** does not identify the target clearly.
+- Pair modal close buttons with another keyboard-accessible way to dismiss the modal.
+- Return focus to the element that opened an overlay after it closes.

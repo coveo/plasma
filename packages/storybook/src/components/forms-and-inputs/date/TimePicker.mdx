@@ -1,0 +1,47 @@
+import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import * as TimePickerStories from './TimePicker.stories';
+
+<Meta of={TimePickerStories} />
+
+# TimePicker
+
+Structured input for entering a time in 12-hour or 24-hour format, with optional seconds.
+
+## Overview
+
+The `TimePicker` separates a time into editable segments and provides a dropdown for selecting valid values.
+
+It keeps time entry consistent while supporting keyboard input, constrained time ranges, and minute or second precision.
+
+## Usage
+
+<Canvas of={TimePickerStories.Demo} />
+<Controls of={TimePickerStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- Users know the specific time they want to enter.
+- A form collects date and time in separate fields.
+- The workflow needs a consistent time format or bounded time range.
+
+### When not to use
+
+- For a time range, use two labeled `TimePicker` fields and validate their order.
+- For broad relative periods such as morning or evening, use a `Select` with predefined options.
+- When seconds have no practical meaning, leave them out.
+
+### Best practices
+
+- Use the Plasma default 12-hour format when it matches the product context.
+- Use 24-hour format for technical or international contexts that require it.
+- Add seconds only when the workflow needs that precision.
+- Set `min` and `max` when only part of the day is valid.
+- Enable `clearable` for optional fields.
+
+### Content guidelines
+
+- Use a short noun phrase for the label, such as **Start time** or **Scheduled time**.
+- Use the description to clarify format, time zone, or constraints when the surrounding context does not.
+- State the valid time range in validation feedback.

@@ -1,4 +1,4 @@
-import {Image} from '@coveord/plasma-mantine/components/Image';
+import {Image} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof Image> = {
@@ -9,11 +9,11 @@ const meta: Meta<typeof Image> = {
         layout: 'centered',
     },
     decorators: [
-        (Story: any) => (
+        (Story) => (
             <div
                 style={{
-                    width: 500,
-                    height: 500,
+                    width: 400,
+                    height: 300,
                     border: '2px dashed #ccc',
                     display: 'flex',
                     alignItems: 'center',
@@ -27,24 +27,33 @@ const meta: Meta<typeof Image> = {
     argTypes: {
         src: {
             control: 'text',
-            description: 'Image source URL',
+            description: 'Sets the image source URL.',
+            table: {
+                type: {summary: 'string | null'},
+                defaultValue: {summary: 'undefined'},
+            },
+        },
+        alt: {
+            control: 'text',
+            description: 'Provides a text alternative for the image.',
             table: {
                 type: {summary: 'string'},
-                defaultValue: {summary: ''},
+                defaultValue: {summary: 'undefined'},
             },
         },
         fit: {
             control: 'select',
             options: ['fill', 'contain', 'cover', 'none', 'scale-down'],
-            description: 'How the image should fit within its container',
+            description: 'Controls how the image fits within its dimensions.',
             table: {
-                type: {summary: 'string'},
-                defaultValue: {summary: 'cover'},
+                type: {summary: "'fill' | 'contain' | 'cover' | 'none' | 'scale-down'"},
+                defaultValue: {summary: "'cover'"},
             },
         },
     },
     args: {
         src: 'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-9.png',
+        alt: 'Rocky coast beside the ocean',
         fit: 'cover',
     },
 };
@@ -52,5 +61,5 @@ export default meta;
 type Story = StoryObj<typeof Image>;
 
 export const Demo: Story = {
-    render: (props: any) => <Image {...props} w={500} h={500} />,
+    render: (props) => <Image {...props} w={400} h={300} />,
 };

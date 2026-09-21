@@ -1,7 +1,11 @@
 ---
 name: BlankSlate
-description: Empty state container for views with no content to display.
+description: Deprecated empty state container for views with no content to display; do not use it in new implementations.
 ---
+
+## Deprecation
+
+`BlankSlate` is deprecated and MUST NOT be used in new implementations. Existing usages SHOULD be migrated away from it.
 
 ## Props
 

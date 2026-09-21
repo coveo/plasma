@@ -1,0 +1,42 @@
+import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import * as TabsStories from './Tabs.stories';
+
+<Meta of={TabsStories} />
+
+# Tabs
+
+Navigation pattern that organizes related peer content into labeled panels.
+
+## Overview
+
+The `Tabs` let users switch between categories of the same view without leaving the page. One panel appears at a time while the rest of the page keeps its context and scroll position.
+
+## Usage
+
+<Canvas of={TabsStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- Content belongs to parallel categories of similar importance.
+- Every panel describes the same entity or view.
+- A small set of categories can be understood at a glance.
+
+### When not to use
+
+- Categories are sequential steps. Use `Stepper` instead.
+- Destinations are separate pages. Use application navigation instead.
+- One panel or a large number of categories would make the tab list unnecessary or difficult to scan.
+
+### Best practices
+
+- Use uncontrolled tabs unless routing or external state must determine the active panel.
+- Use vertical orientation when the tab list and panels belong side by side.
+- Keep every panel useful. Show a loading or empty state rather than an empty panel.
+- Avoid nesting tab sets with the same orientation.
+
+### Content guidelines
+
+- Keep labels short, distinct, and unique within the tab list.
+- Use text labels. Add icons only when the text remains visible.

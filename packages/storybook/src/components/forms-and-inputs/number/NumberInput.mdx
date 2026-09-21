@@ -1,0 +1,47 @@
+import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import * as NumberInputStories from './NumberInput.stories';
+
+<Meta of={NumberInputStories} />
+
+# NumberInput
+
+Numeric input with increment and decrement controls, range constraints, and value formatting.
+
+## Overview
+
+The `NumberInput` lets users type or step through numeric values while preserving intermediate input states.
+
+It supports limits, decimal and negative values, grouping separators, and unit or currency affixes.
+
+## Usage
+
+<Canvas of={NumberInputStories.Demo} />
+<Controls of={NumberInputStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- Users need to enter an exact quantity, threshold, percentage, or amount.
+- The value has a minimum, maximum, or increment.
+- The value needs numeric formatting or an attached unit.
+
+### When not to use
+
+- For identifiers such as phone numbers or postal codes, use a `TextInput` with an appropriate input mode.
+- For a small set of discrete values, use a `Select`.
+- When relative position matters more than exact entry, use a `Slider`.
+
+### Best practices
+
+- Set `min` and `max` when the domain has hard boundaries. Values are clamped on blur by default.
+- Disable negative or decimal values when they are not valid for the field.
+- Use `prefix` or `suffix` to keep currencies and units visually connected to the value.
+- Add a thousands separator when it improves scanning of large values.
+- Keep stepper controls when users benefit from small incremental changes.
+
+### Content guidelines
+
+- Use a label that names the value and include the unit when needed, such as **Monthly budget** or **Threshold (%)**.
+- Put constraints in the description instead of relying on placeholder text.
+- State the valid range and correction in error messages.

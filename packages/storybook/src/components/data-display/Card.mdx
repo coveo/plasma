@@ -1,0 +1,47 @@
+import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import * as CardStories from './Card.stories';
+
+<Meta of={CardStories} />
+
+# Card
+
+Container that groups related content in a distinct surface and can represent an interactive item.
+
+## Overview
+
+`Card` gives one subject a clear visual boundary so users can scan related items or focus on a self-contained section.
+
+The default card is static. The hover variant signals that the entire surface is interactive.
+
+## Usage
+
+<Canvas of={CardStories.Demo} />
+<Controls of={CardStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- Group related content about one subject in a distinct surface.
+- Present independent items that users need to browse or compare.
+- Make an entire tile interactive with the hover variant.
+
+### When not to use
+
+- For large structured datasets, use a `Table`.
+- For alerts or status messages, use an `Alert`.
+- For selection with form semantics, use a `RadioCard` or `Checkbox`.
+- When content does not need a visual boundary, use layout primitives.
+
+### Best practices
+
+- Use the default variant for static content and `variant="hover"` only when the entire card is interactive.
+- Manage selected and disabled states through `mod` when using the hover variant.
+- Give interactive cards keyboard support, an appropriate role, and an accessible state.
+- Avoid nested interactive controls when selecting the card also triggers an action.
+
+### Content guidelines
+
+- Keep each card focused on one subject.
+- Use the same content structure across cards in a collection.
+- Keep content concise enough to identify the item at a glance.

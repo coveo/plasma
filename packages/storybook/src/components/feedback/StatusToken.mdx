@@ -1,0 +1,40 @@
+import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import * as StatusTokenStories from './StatusToken.stories';
+
+<Meta of={StatusTokenStories} />
+
+# StatusToken
+
+Compact icon that communicates an object's semantic status.
+
+## Overview
+
+The `StatusToken` helps users scan state, health, progress, or recency in dense interfaces such as tables and lists.
+
+Its color and shape support nearby status text rather than replacing it.
+
+## Usage
+
+<Canvas of={StatusTokenStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- A compact marker supports a nearby status label.
+- Space is constrained in a table, list, or similar dense layout.
+- The status maps to a supported semantic variant.
+
+### When not to use
+
+- When the status text needs to be visible, use a `Badge`.
+- When users need an explanation or recovery action, use an `Alert`.
+- When the token would appear without adjacent context.
+- Don't use a status token as an interactive control.
+
+### Best practices
+
+- Match the variant to the state it represents.
+- Use the same variant consistently for the same meaning.
+- Provide nearby text, a table heading, or another clear source of context.
+- Don't rely on color or icon shape alone for critical meaning.

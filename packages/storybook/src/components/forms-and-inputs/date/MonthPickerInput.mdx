@@ -1,0 +1,46 @@
+import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import * as MonthPickerInputStories from './MonthPickerInput.stories';
+
+<Meta of={MonthPickerInputStories} />
+
+# MonthPickerInput
+
+Calendar input for selecting one month, multiple months, or a continuous month range.
+
+## Overview
+
+The `MonthPickerInput` collects month-level values without requiring users to choose an unnecessary day or type a date format.
+
+It supports single, multiple, and range selection for reporting periods, billing cycles, and other month-based workflows.
+
+## Usage
+
+<Canvas of={MonthPickerInputStories.Demo} />
+<Controls of={MonthPickerInputStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- Users need a reporting, billing, or planning month.
+- Users need a continuous range of months.
+- Users need several specific, nonconsecutive months.
+
+### When not to use
+
+- For day-level precision, use a `DatePickerInput`.
+- For year-level precision, use a `YearPickerInput`.
+- For a small fixed set of months, use a `Select` or `MultiSelect`.
+
+### Best practices
+
+- Use `default` for one month and `range` for a continuous period.
+- Use `multiple` only when users genuinely need nonconsecutive months.
+- Limit the available period with `minDate` and `maxDate` when the workflow has known boundaries.
+- Enable `clearable` for optional fields.
+
+### Content guidelines
+
+- Use a short noun phrase for the label, such as **Report month** or **Billing period**.
+- Match the placeholder to the mode, such as **Pick a month** or **Pick a month range**.
+- Explain how to correct an invalid range instead of using a generic error.
