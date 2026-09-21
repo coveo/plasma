@@ -22,7 +22,7 @@
         "dayjs": "1.11.23",
         "react": "19.3.0",
         "react-dom": "19.3.0",
-        "react-hook-form": "7.87.0"
+        "react-hook-form": "7.88.0"
     },
     "devDependencies": {
         "@storybook/addon-docs": "10.6.0",
