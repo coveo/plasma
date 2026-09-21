@@ -1,5 +1,5 @@
 ---
-name: Content Guidelines — Product Vocabulary
+name: Product Vocabulary
 description: Required spelling and capitalization for product terminology in the UI. Includes banned terms and approved replacements.
 ---
 

@@ -1,12 +1,5 @@
-export interface ComponentData {
+export interface DocData {
     name: string;
-    description: string;
-    content: string;
-}
-
-export interface ContentGuidelineData {
-    name: string;
-    slug: string;
     description: string;
     content: string;
 }
@@ -15,8 +8,9 @@ export interface LlmsData {
     index: string;
     full: string;
     skill: string;
-    components: ComponentData[];
-    contentGuidelines: ContentGuidelineData[];
+    components: DocData[];
+    contentGuidelines: DocData[];
+    foundations: DocData[];
 }
 
 export interface ToolError {

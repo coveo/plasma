@@ -8,14 +8,15 @@ For installation, client configuration, and guidance on using the Plasma skill w
 
 ## Tools
 
-| Tool                      | Description                                                                                    |
-| ------------------------- | ---------------------------------------------------------------------------------------------- |
-| `list_components`         | Returns all documented Plasma component names                                                  |
-| `get_component_doc`       | Returns the full Markdown doc for a component (props, sub-components, design guidelines)       |
-| `get_component_props`     | Returns just the props table for a component                                                   |
-| `search_docs`             | Searches component docs and content guidelines; returns the top matching excerpts              |
-| `list_content_guidelines` | Returns all documented content guidelines                                                      |
-| `get_content_guideline`   | Returns the full Markdown doc for a content guideline (voice, mechanics, vocabulary, audience) |
+| Tool                      | Description                                                                                     |
+| ------------------------- | ----------------------------------------------------------------------------------------------- |
+| `list_components`         | Returns all documented Plasma component names                                                   |
+| `get_component_doc`       | Returns the full Markdown doc for a component (props, sub-components, design guidelines)        |
+| `get_component_props`     | Returns just the props table for a component                                                    |
+| `search_docs`             | Searches component docs, content guidelines, and foundations; returns the top matching excerpts |
+| `list_content_guidelines` | Returns all documented content guidelines                                                       |
+| `get_content_guideline`   | Returns the full Markdown doc for a content guideline (voice, mechanics, vocabulary, audience)  |
+| `get_foundations`         | Returns the design foundations doc (color, typography, spacing, radii, shadows, iconography)    |
 
 ## Example prompts
 
@@ -28,6 +29,8 @@ Once the MCP server is connected, you can ask your AI agent:
 > "What props does the Modal component accept?"
 
 > "Search the Plasma docs for 'form validation'."
+
+> "What are the Plasma spacing and radius tokens?"
 
 ---
 

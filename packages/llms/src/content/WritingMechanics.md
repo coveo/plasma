@@ -1,5 +1,5 @@
 ---
-name: Content Guidelines — Writing Mechanics
+name: Writing Mechanics
 description: Required rules for grammar, punctuation, capitalization, structure, and length in Coveo UX copy.
 ---
 

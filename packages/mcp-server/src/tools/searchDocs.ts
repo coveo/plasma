@@ -1,6 +1,6 @@
 import type {LlmsData} from './types.js';
 
-type ResultKind = 'component' | 'content_guideline';
+type ResultKind = 'component' | 'content_guideline' | 'foundation';
 
 interface SearchResult {
     name: string;
@@ -9,6 +9,12 @@ interface SearchResult {
     score: number;
     kind: ResultKind;
 }
+
+const kindLabels: Record<ResultKind, string> = {
+    component: ' (Component)',
+    content_guideline: ' (Content Guideline)',
+    foundation: '',
+};
 
 export const searchDocs = (data: LlmsData, query: string): string => {
     const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
@@ -21,6 +27,7 @@ export const searchDocs = (data: LlmsData, query: string): string => {
     const results: SearchResult[] = [
         ...data.components.map((c) => ({...c, kind: 'component' as const})),
         ...(data.contentGuidelines ?? []).map((g) => ({...g, kind: 'content_guideline' as const})),
+        ...(data.foundations ?? []).map((f) => ({...f, kind: 'foundation' as const})),
     ]
         .map((item) => ({...item, score: score(`${item.name} ${item.description} ${item.content}`.toLowerCase())}))
         .filter((item) => item.score > 0)
@@ -32,10 +39,7 @@ export const searchDocs = (data: LlmsData, query: string): string => {
     }
 
     const output = results
-        .map(({name, description, content, kind}) => {
-            const kindLabel = kind === 'content_guideline' ? ' (Content Guideline)' : '';
-            return `## ${name}${kindLabel}\n\n${description}\n\n${content}`;
-        })
+        .map(({name, description, content, kind}) => `## ${name}${kindLabels[kind]}\n\n${description}\n\n${content}`)
         .join('\n\n---\n\n');
 
     return `# Search Results for "${query}"\n\nFound ${results.length} result(s):\n\n${output}`;
