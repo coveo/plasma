@@ -1,5 +1,15 @@
 # @coveord/plasma-llms
 
+## 60.3.0
+
+### Minor Changes
+
+- Document Plasma foundations for AI agents [#4610](https://github.com/coveo/plasma/pull/4610)
+
+  Added a `Foundations` documentation page to `@coveord/plasma-llms` covering the design tokens components build on: color, typography, spacing, radii, shadows, and iconography. It is available as `llms/foundations/Foundations.md`, listed in `llms.txt`, and inlined in `llms-full.txt`.
+
+  The `@coveord/plasma-mcp-server` now exposes a `get_foundations` tool that returns this documentation, and `search_docs` includes foundations in its results.
+
 ## 60.2.2
 
 ### Patch Changes

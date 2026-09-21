@@ -1,5 +1,11 @@
 # @coveord/plasma-mantine
 
+## 61.3.2
+
+### Patch Changes
+
+- Fix `CodeEditor` find widget buttons being unclickable due to tooltip flickering [#4611](https://github.com/coveo/plasma/pull/4611)
+
 ## 61.3.1
 
 ### Patch Changes
