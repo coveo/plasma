@@ -11,13 +11,13 @@ Import all components from `@coveord/plasma-mantine`. Do not import from `@manti
 
 ## Colors
 
-The theme exposes these palettes, each with 10 shades indexed `0` (lightest) to `9` (darkest). The primary shade is `5`.
+The theme exposes these palettes, each with 10 shades indexed `0` (lightest) to `9` (darkest). The default primary shade is `5` (configurable via the theme's `primaryShade`).
 
 | Palette                                                                                                         | CSS variable pattern               |
 | --------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
 | `red`, `orange`, `yellow`, `green`, `teal`, `cyan`, `blue`, `indigo`, `navy`, `violet`, `grape`, `gray`, `dark` | `--mantine-color-{palette}-{0..9}` |
 
-- `blue` is the primary palette; the primary color resolves to `--mantine-color-blue-5`.
+- `blue` is the default primary palette; the primary color resolves to `--mantine-color-blue-5`. The primary shade is configurable through the theme, so the primary color is not always blue. Reference it via `var(--mantine-primary-color-{0..9})` (or the `primary` color name) rather than assuming `blue`.
 - Reference a color through props (`c="blue.6"`, `color="red"`) or CSS (`var(--mantine-color-teal-8)`).
 - For text over an arbitrary background, use `getContrastColor({color, theme, autoContrast: true})` from `@coveord/plasma-mantine` to pick a legible foreground.
 
