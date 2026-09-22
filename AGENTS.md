@@ -75,6 +75,7 @@ Formatting is enforced by **oxfmt** (see `.oxfmtrc.json`): print width 120, tab 
 - Do **not** prefix test names with "should"; use present tense: `it('returns true when value is valid')`, not `it('should return …')`.
 - Cover new components/utilities and their edge cases, including accessibility.
 - Add or update tests for every behavior change and confirm `pnpm test` passes before opening a PR.
+- Do not test implementation details (e.g. classes & props presence), but functionality and edge cases.
 
 ## Internal skills
 

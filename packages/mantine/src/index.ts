@@ -172,8 +172,8 @@ export * from './components/Dialog/Dialog.js';
 // Divider
 export * from './components/Divider/Divider.js';
 
-// Drawer
-export * from './components/Drawer/Drawer.js';
+// Drawer - override Mantine Drawer
+export {Drawer, type DrawerFactory, type DrawerProps} from './components/Drawer/Drawer.js';
 
 // Ellipsis Text
 export * from './components/EllipsisText/EllipsisText.js';

@@ -1,0 +1,27 @@
+.header {
+    padding: 0 var(--mantine-spacing-md);
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--mantine-spacing-md);
+    overflow: hidden;
+    padding-top: var(--mantine-spacing-md);
+}
+
+.body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    overflow: hidden auto;
+    padding: 0;
+}
+
+.scroll-area {
+    flex: 1;
+    min-height: 0;
+    min-width: 0;
+    overflow: hidden auto;
+    padding: 0 var(--mantine-spacing-md) var(--mantine-spacing-md);
+}

@@ -89,5 +89,6 @@ Resources:
 
 - Carousel [Mantine] — Slideshow for cycling content
 - Chip [Mantine] — Compact element for filtering or selection
+- Drawer [Mantine] — Side panel for contextual content and tasks
 - Modal [Mantine] — Overlay dialog requiring user attention
 - Popover [Mantine] — Floating content near a target element
