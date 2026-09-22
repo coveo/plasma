@@ -374,6 +374,9 @@ export * from './components/Skeleton/Skeleton.js';
 // Slider
 export * from './components/Slider/Slider.js';
 
+// Slider Input
+export * from './components/SliderInput/SliderInput.js';
+
 // Space
 export * from './components/Space/Space.js';
 
