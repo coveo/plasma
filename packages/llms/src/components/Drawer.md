@@ -51,8 +51,10 @@ Do not use `Drawer` when:
 
 > Extends: `MantineDrawerProps`. Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
 
-**`description`** `HeaderProps['description']` · optional · default: `undefined` — Description of the drawer, displayed below the title.
-**`help`** `HeaderDocAnchorProps` · optional · default: `undefined` — Help link for the drawer, displayed in the header. Usually provides a link to external documentation or help resources.
+**`description`** `HeaderProps['description']` · optional · default: `undefined` — Description of the drawer, displayed below the title when `title` is a string.
+**`help`** `HeaderDocAnchorProps` · optional · default: `undefined` — Help link for the drawer, displayed in the header when `title` is a string. Usually provides a link to external documentation or help resources.
+
+String titles are rendered with Plasma's secondary `Header`. React node titles are rendered as provided, without applying `description` or `help`.
 
 ## Sub-components
 

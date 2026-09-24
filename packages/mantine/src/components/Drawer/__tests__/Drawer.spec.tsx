@@ -28,4 +28,20 @@ describe('Drawer', () => {
         expect(screen.getByText('Drawer description')).toBeInTheDocument();
         expect(screen.getByRole('link', {name: 'external'})).toHaveAttribute('href', 'https://example.com/help');
     });
+
+    it('renders a React node title as provided', () => {
+        render(
+            <Drawer
+                opened
+                onClose={vi.fn()}
+                title={<span>Custom title</span>}
+                description="Drawer description"
+                help={{href: 'https://example.com/help'}}
+            />,
+        );
+
+        expect(screen.getByText('Custom title')).toBeInTheDocument();
+        expect(screen.queryByText('Drawer description')).not.toBeInTheDocument();
+        expect(screen.queryByRole('link', {name: 'external'})).not.toBeInTheDocument();
+    });
 });

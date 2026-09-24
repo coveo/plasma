@@ -18,15 +18,11 @@ import {
 
 export interface DrawerProps extends MantineDrawerProps {
     /**
-     * Title of the drawer, displayed in the header.
-     */
-    title?: string;
-    /**
-     * Description of the drawer, displayed below the title.
+     * Description of the drawer, displayed below the title when `title` is a string.
      */
     description?: HeaderProps['description'];
     /**
-     * Help link for the drawer, displayed in the header.
+     * Help link for the drawer, displayed in the header when `title` is a string.
      * Usually provides a link to external documentation or help resources.
      */
     help?: HeaderDocAnchorProps;
@@ -45,12 +41,15 @@ const PlasmaDrawer = factory<PlasmaDrawerFactory>(({children, description, help,
     const drawerChildren = Children.toArray(children);
     const content = drawerChildren.filter((child) => !isDrawerFooter(child));
     const footer = drawerChildren.filter(isDrawerFooter);
-    const header = (
-        <Header titleComponent="div" variant="secondary" description={description}>
-            {title}
-            {help && <Header.DocAnchor {...help} />}
-        </Header>
-    );
+    const header =
+        typeof title === 'string' ? (
+            <Header titleComponent="div" variant="secondary" description={description}>
+                {title}
+                {help && <Header.DocAnchor {...help} />}
+            </Header>
+        ) : (
+            title
+        );
 
     return (
         <MantineDrawer ref={ref} title={header} {...props}>
