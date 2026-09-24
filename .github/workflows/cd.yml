@@ -88,7 +88,7 @@ jobs:
             - name: Copy LLM files into Storybook output
               run: cp -r ./packages/llms/dist/. ./packages/storybook/storybook-static/
             - name: Deploy Storybook to Chromatic
-              uses: chromaui/action@259eda5f0e44c0c1eab38b672f1c4c967cc969b7 # v18.8.1
+              uses: chromaui/action@bb3b582719a93c1828c5e520e62992b2937d7889 # v18.9.4
               with:
                   projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
                   storybookBuildDir: storybook-static
