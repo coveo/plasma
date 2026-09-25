@@ -1,5 +1,10 @@
 import {SliderInput} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
+import type {ComponentProps} from 'react';
+import {withLabelInfoProps} from '../LabelInfoArgs.js';
+import {BaseInputArgs, InputWrapperArgs, type InputWrapperStoryArgs} from '../InputWrapperArgs.js';
+
+type SliderInputStoryArgs = ComponentProps<typeof SliderInput> & Pick<InputWrapperStoryArgs, 'labelInfo'>;
 
 const meta = {
     title: '@components/Forms and inputs/number/SliderInput',
@@ -17,8 +22,10 @@ const meta = {
         controls: {
             include: [
                 'inputLabel',
+                'labelInfo',
                 'inputDescription',
                 'inputError',
+                'required',
                 'min',
                 'max',
                 'step',
@@ -32,13 +39,15 @@ const meta = {
     },
     args: {
         defaultValue: 40,
-        inputLabel: 'Slider label',
-        inputDescription: 'Select a percentage.',
-        inputError: undefined,
+        inputLabel: InputWrapperArgs.Args.label,
+        labelInfo: InputWrapperArgs.Args.labelInfo,
+        inputDescription: InputWrapperArgs.Args.description,
+        inputError: InputWrapperArgs.Args.error,
+        required: InputWrapperArgs.Args.required,
+        disabled: BaseInputArgs.Args.disabled,
         min: 0,
         max: 100,
         step: 1,
-        disabled: false,
         showLabelOnHover: true,
         labelAlwaysOn: false,
         thumbLabel: 'Percentage',
@@ -49,21 +58,12 @@ const meta = {
         ],
     },
     argTypes: {
-        inputLabel: {
-            control: 'text',
-            description: 'Displays a label above the slider.',
-            table: {type: {summary: 'string'}, defaultValue: {summary: 'undefined'}},
-        },
-        inputDescription: {
-            control: 'text',
-            description: 'Displays supporting text below the slider label.',
-            table: {type: {summary: 'string'}, defaultValue: {summary: 'undefined'}},
-        },
-        inputError: {
-            control: 'text',
-            description: 'Displays validation feedback below the slider.',
-            table: {type: {summary: 'string'}, defaultValue: {summary: 'undefined'}},
-        },
+        inputLabel: InputWrapperArgs.ArgsTypes.label,
+        labelInfo: InputWrapperArgs.ArgsTypes.labelInfo,
+        inputDescription: InputWrapperArgs.ArgsTypes.description,
+        inputError: InputWrapperArgs.ArgsTypes.error,
+        required: InputWrapperArgs.ArgsTypes.required,
+        disabled: BaseInputArgs.ArgsTypes.disabled,
         min: {
             control: 'number',
             description: 'Sets the minimum selectable value.',
@@ -82,34 +82,43 @@ const meta = {
         marks: {
             control: 'object',
             description: 'Displays labeled reference points along the track.',
-            table: {type: {summary: 'SliderMark[]'}, defaultValue: {summary: 'undefined'}},
-        },
-        disabled: {
-            control: 'boolean',
-            description: 'Disables the slider.',
-            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
+            table: {
+                type: {summary: 'SliderMark[]'},
+                defaultValue: {summary: 'undefined'},
+            },
         },
         showLabelOnHover: {
             control: 'boolean',
             description: 'Displays the current value label while the slider is hovered.',
-            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'true'}},
+            table: {
+                type: {summary: 'boolean'},
+                defaultValue: {summary: 'true'},
+            },
         },
         labelAlwaysOn: {
             control: 'boolean',
             description: 'Keeps the current value label visible.',
-            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
+            table: {
+                type: {summary: 'boolean'},
+                defaultValue: {summary: 'false'},
+            },
         },
         thumbLabel: {
             control: 'text',
             description: 'Provides an accessible name for the slider thumb.',
-            table: {type: {summary: 'string'}, defaultValue: {summary: 'undefined'}},
+            table: {
+                type: {summary: 'string'},
+                defaultValue: {summary: 'undefined'},
+            },
         },
     },
-} satisfies Meta<typeof SliderInput>;
+} satisfies Meta<SliderInputStoryArgs>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
-    render: (props) => <SliderInput {...props} />,
+    render: ({inputLabel, labelInfo, ...props}) => (
+        <SliderInput {...props} inputLabel={withLabelInfoProps({label: inputLabel, labelInfo}).label} />
+    ),
 };
