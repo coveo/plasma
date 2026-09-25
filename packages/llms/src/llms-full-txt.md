@@ -18,10 +18,14 @@ function App() {
 }
 ```
 
-## Components
+## Foundations
 
-{{COMPONENT_DOCS}}
+{{FOUNDATION_DOCS}}
 
 ## Content Guidelines
 
 {{CONTENT_DOCS}}
+
+## Components
+
+{{COMPONENT_DOCS}}

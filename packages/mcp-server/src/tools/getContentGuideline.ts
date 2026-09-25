@@ -1,15 +1,14 @@
-import type {ContentGuidelineData, ToolResult} from './types.js';
+import type {DocData, ToolResult} from './types.js';
 
-export const buildGuidelineMap = (guidelines: ContentGuidelineData[]): Map<string, ContentGuidelineData> => {
-    const map = new Map<string, ContentGuidelineData>();
+export const buildGuidelineMap = (guidelines: DocData[]): Map<string, DocData> => {
+    const map = new Map<string, DocData>();
     for (const g of guidelines) {
         map.set(g.name.toLowerCase(), g);
-        map.set(g.slug.toLowerCase(), g);
     }
     return map;
 };
 
-export const getContentGuideline = (guidelineMap: Map<string, ContentGuidelineData>, guideline: string): ToolResult => {
+export const getContentGuideline = (guidelineMap: Map<string, DocData>, guideline: string): ToolResult => {
     const match = guidelineMap.get(guideline.toLowerCase());
     if (!match) {
         return {

@@ -15,7 +15,7 @@ describe('searchDocs', () => {
 
           Found 1 result(s):
 
-          ## Button
+          ## Button (Component)
 
           A clickable button component
 
@@ -54,7 +54,7 @@ describe('searchDocs', () => {
         const manyComponents = Array.from({length: 10}, (_, i) => ({
             name: `Comp${i}`,
             description: 'common description text',
-            content: `# Comp${i}\n\ncommon description text`,
+            content: `# Comp${i}\\n\\ncommon description text`,
         }));
         const result = searchDocs(makeData(manyComponents, []), 'common');
         const matches = result.match(/^## Comp\d/gm);
@@ -68,7 +68,7 @@ describe('searchDocs', () => {
 
           Found 1 result(s):
 
-          ## Button
+          ## Button (Component)
 
           A clickable button component
 
@@ -95,7 +95,7 @@ describe('searchDocs', () => {
 
           Found 1 result(s):
 
-          ## Modal
+          ## Modal (Component)
 
           A dialog overlay component
 
@@ -115,7 +115,7 @@ describe('searchDocs', () => {
 
           Found 1 result(s):
 
-          ## Content Guidelines — Writing Mechanics (Content Guideline)
+          ## Writing Mechanics (Content Guideline)
 
           Required rules for grammar, punctuation, capitalization, structure, and length in Coveo UX copy.
 
@@ -135,7 +135,7 @@ describe('searchDocs', () => {
 
           Found 1 result(s):
 
-          ## Content Guidelines — Voice (Content Guideline)
+          ## Voice (Content Guideline)
 
           Coveo's required voice qualities (clear, human, helpful) and how to apply tone by context.
 
@@ -155,5 +155,15 @@ describe('searchDocs', () => {
 
           Explain what the user can do, not what the system did."
         `);
+    });
+
+    it('searches foundations as well', () => {
+        const result = searchDocs(makeData(), 'radii');
+        expect(result).toContain('## Foundations');
+        expect(result).toContain('Border-radius tokens drive the radius prop.');
+    });
+
+    it('does not append a kind label to foundation results', () => {
+        expect(searchDocs(makeData(), 'radii')).not.toContain('## Foundations (');
     });
 });
