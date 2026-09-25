@@ -78,7 +78,7 @@ Formatting is enforced by **oxfmt** (see `.oxfmtrc.json`): print width 120, tab 
 
 ## Internal skills
 
-This repo ships agent **skills** in `.github/skills/`. Use them when the task matches — they encode the exact expected format and workflow:
+This repo ships agent **skills** in `.claude/skills/` (symlinked from `.agents/skills/`, `.kiro/skills/` and `.github/skills/` so every supported harness loads them). Edit them in `.claude/skills/`. Use them when the task matches — they encode the exact expected format and workflow:
 
 - **`plasma-component-docs`** — write/update the LLM component specs in `packages/llms/src/components/`. Use when adding a component, updating a spec after an API change, or auditing docs.
 - **`storybook-component-docs`** — create or update human-facing component pages in `packages/storybook`. Use the specs in `packages/llms/src/components/` as read-only source material, preserve useful demos and controls, and write concise guidelines for UX designers and developers.
