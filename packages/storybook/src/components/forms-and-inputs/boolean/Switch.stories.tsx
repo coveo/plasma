@@ -26,7 +26,8 @@ export default meta;
 type SwitchStoryArgs = ComponentProps<typeof Switch> & InlineInputStoryArgs;
 type SwitchGroupStoryArgs = ComponentProps<typeof Switch.Group> & BaseInputStoryArgs & InputWrapperStoryArgs;
 
-export const Default: StoryObj<SwitchStoryArgs> = {
+export const Demo: StoryObj<SwitchStoryArgs> = {
+    name: 'Switch',
     argTypes: {
         ...InlineInputArgs.ArgsTypes,
         checked: {
@@ -45,6 +46,7 @@ export const Default: StoryObj<SwitchStoryArgs> = {
 };
 
 export const SwitchGroup: StoryObj<SwitchGroupStoryArgs> = {
+    name: 'Switch.Group',
     argTypes: {
         ...InputWrapperArgs.ArgsTypes,
         ...BaseInputArgs.ArgsTypes,
