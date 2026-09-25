@@ -1,5 +1,17 @@
 # @coveord/plasma-mantine
 
+## 61.4.0
+
+### Minor Changes
+
+- Add `SliderInput` for labeled slider fields [#4618](https://github.com/coveo/plasma/pull/4618)
+
+  Use `SliderInput` to display a slider with an input label, supporting description, and validation feedback. The existing `Slider` API remains unchanged.
+
+- Add Plasma headers and sticky actions to `Drawer` [#4619](https://github.com/coveo/plasma/pull/4619)
+
+  String titles render with a secondary `Header`. Use `description` and `help` for supporting text and documentation links. `Drawer.Footer` keeps actions at the bottom of the drawer.
+
 ## 61.3.2
 
 ### Patch Changes
