@@ -1,3 +1,7 @@
+.root[data-slider-input]:not([data-orientation='vertical']):has(.markLabel) {
+    margin-bottom: var(--mantine-spacing-sm);
+}
+
 .track:not([data-inverted]) {
     &::before {
         background-color: var(--mantine-color-gray-light);

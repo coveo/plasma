@@ -75,10 +75,11 @@ Formatting is enforced by **oxfmt** (see `.oxfmtrc.json`): print width 120, tab 
 - Do **not** prefix test names with "should"; use present tense: `it('returns true when value is valid')`, not `it('should return …')`.
 - Cover new components/utilities and their edge cases, including accessibility.
 - Add or update tests for every behavior change and confirm `pnpm test` passes before opening a PR.
+- Do not test implementation details (e.g. classes & props presence), but functionality and edge cases.
 
 ## Internal skills
 
-This repo ships agent **skills** in `.github/skills/`. Use them when the task matches — they encode the exact expected format and workflow:
+This repo ships agent **skills** in `.claude/skills/` (symlinked from `.agents/skills/`, `.kiro/skills/` and `.github/skills/` so every supported harness loads them). Edit them in `.claude/skills/`. Use them when the task matches — they encode the exact expected format and workflow:
 
 - **`plasma-component-docs`** — write/update the LLM component specs in `packages/llms/src/components/`. Use when adding a component, updating a spec after an API change, or auditing docs.
 - **`storybook-component-docs`** — create or update human-facing component pages in `packages/storybook`. Use the specs in `packages/llms/src/components/` as read-only source material, preserve useful demos and controls, and write concise guidelines for UX designers and developers.
@@ -102,7 +103,7 @@ When you change a component's public API:
 3. `pnpm test`, `pnpm lint`, and `pnpm fmt:check` must all pass.
 4. **Add a changeset** if you touched a releasable package. Load the `changesets-author` skill — it walks through bump selection, the changelog template, and the `pnpm changeset:new` / `pnpm changeset:validate` workflow. Commit the generated `.changeset/*.md` file with your change. CI runs `pnpm changeset:validate` and fails on non-conforming changesets. Releases are driven by Changesets, **not** inferred from commit messages.
 5. **Commit** with a concise, descriptive message. Mention the affected subject/package when it helps: `Add new Button variant`, `Fix primary color token value`.
-6. **Push** the branch and open a draft PR (`gh pr create --draft`); do not push to `master`. Fill in the PR template (`.github/PULL_REQUEST_TEMPLATE/pull_request_template.md`): proposed changes, potential breaking changes, and the acceptance-criteria checklist.
+6. **Push** the branch and open a draft PR (`gh pr create --draft`); do not push to `master`. Fill in the PR template (`.github/pull_request_template.md`): proposed changes, potential breaking changes, and the acceptance-criteria checklist.
 
 Pre-commit hooks (Husky + lint-staged) auto-run oxfmt and stylelint on staged files. Do not skip hooks (`--no-verify`) unless explicitly asked.
 

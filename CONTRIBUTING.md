@@ -82,7 +82,7 @@ Run all tests from the root with `pnpm test`. From within `packages/{name}` you 
 
 ### Internal skills
 
-`.github/skills/` contains agent skills that encode our documentation workflows:
+`.claude/skills/` contains agent skills that encode our documentation workflows. It is symlinked from `.agents/skills/`, `.kiro/skills/` and `.github/skills/` so Claude Code, Codex, OpenCode, Kiro and GitHub Copilot load them automatically:
 
 - **`plasma-component-docs`** — write or update the per-component LLM specs in `packages/llms/src/components/`.
 - **`storybook-component-docs`** — create or update human-facing Storybook component pages using the LLM specs as read-only source material.
@@ -214,7 +214,7 @@ Fix table header inner grid min height
 4. Add a changeset if you touched a releasable package.
 5. Commit your changes with a clear message.
 6. Push your branch and open a PR — do not push directly to `master`.
-7. Fill in the [PR template](.github/PULL_REQUEST_TEMPLATE/pull_request_template.md): proposed changes, potential breaking changes, and the acceptance-criteria checklist.
+7. Fill in the [PR template](.github/pull_request_template.md): proposed changes, potential breaking changes, and the acceptance-criteria checklist.
 
 CI will then run lint and format checks, the test suite, a release preview, and a Chromatic demo build that gets linked as a PR comment. Address any failures before requesting review.
 

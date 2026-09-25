@@ -32,6 +32,8 @@ Resources:
 - TextInput [Mantine] — Single-line text input
 - Textarea [Mantine] — Multiline text input
 - NumberInput [Mantine] — Input for numerical values
+- Slider [Mantine] — Range control for selecting a numeric value
+- SliderInput [Plasma] — Labeled range control with supporting and validation content
 - Select [Mantine] — Dropdown for single option selection
 - MultiSelect [Mantine] — Dropdown for selecting multiple options
 - PillsInput [Mantine] — Input displaying selected values as pill tags
@@ -89,5 +91,6 @@ Resources:
 
 - Carousel [Mantine] — Slideshow for cycling content
 - Chip [Mantine] — Compact element for filtering or selection
+- Drawer [Mantine] — Side panel for contextual content and tasks
 - Modal [Mantine] — Overlay dialog requiring user attention
 - Popover [Mantine] — Floating content near a target element

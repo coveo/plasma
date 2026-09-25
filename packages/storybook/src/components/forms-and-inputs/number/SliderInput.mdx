@@ -1,0 +1,45 @@
+import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import * as SliderInputStories from './SliderInput.stories';
+
+<Meta of={SliderInputStories} />
+
+# SliderInput
+
+Labeled range control for choosing a numeric value and displaying supporting or validation content.
+
+## Overview
+
+The `SliderInput` combines Plasma's `Slider` with an input label, description, and error message. Use it when the slider needs the same context and validation treatment as other form fields.
+
+## Usage
+
+<Canvas of={SliderInputStories.Demo} />
+<Controls of={SliderInputStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- The slider needs a visible field label.
+- Supporting text helps users understand the range or its effect.
+- Validation feedback needs to appear with the slider.
+
+### When not to use
+
+- The surrounding interface already provides an accessible label and context. Use `Slider` instead.
+- Users need to enter an exact value. Use `NumberInput` instead.
+- The value is an on or off choice. Use `Switch` instead.
+
+### Best practices
+
+- Set `min`, `max`, and `step` to match the real domain.
+- Provide a concise `inputLabel` that names the value being changed.
+- Use `description` for guidance that applies before interaction.
+- Use `error` for actionable validation feedback.
+- Provide `thumbLabel` so assistive technology can identify the control.
+
+### Content guidelines
+
+- Keep labels short and specific.
+- Explain constraints in the description before users encounter an error.
+- State how to fix the value in the error message.

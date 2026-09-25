@@ -29,6 +29,7 @@ import {
     createTheme,
     deepMerge,
     Divider,
+    Drawer,
     Image,
     Input,
     InputWrapper,
@@ -72,6 +73,7 @@ import clsx from 'clsx';
 import {CheckboxIcon} from '../components/CheckboxIcon/CheckboxIcon.js';
 import {CircleLoader} from '../components/CircleLoader/CircleLoader.js';
 import {PlasmaComboboxChevron} from '../components/Combobox/PlasmaComboboxChevron.js';
+import DrawerClasses from '../components/Drawer/Drawer.module.css';
 import {InfoToken} from '../components/InfoToken/InfoToken.js';
 
 import placeholderSvg from '../images/placeholder.svg';
@@ -321,6 +323,21 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         Divider: Divider.extend({
             defaultProps: {
                 color: 'var(--mantine-color-default-border)',
+            },
+        }),
+        Drawer: Drawer.extend({
+            classNames: DrawerClasses,
+        }),
+        DrawerOverlay: Drawer.Overlay.extend({
+            defaultProps: {
+                color: PlasmaColors.indigo[8],
+                backgroundOpacity: 0.7,
+                blur: 2,
+            },
+        }),
+        DrawerRoot: Drawer.Root.extend({
+            defaultProps: {
+                padding: 'md',
             },
         }),
         Image: Image.extend({
