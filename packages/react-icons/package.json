@@ -53,7 +53,7 @@
         "test:watch": "vitest"
     },
     "dependencies": {
-        "@tabler/icons-react": "3.46.0",
+        "@tabler/icons-react": "3.47.0",
         "tslib": "2.8.1"
     },
     "devDependencies": {
