@@ -82,7 +82,7 @@ Run all tests from the root with `pnpm test`. From within `packages/{name}` you 
 
 ### Internal skills
 
-`.github/skills/` contains agent skills that encode our documentation workflows:
+`.claude/skills/` contains agent skills that encode our documentation workflows. It is symlinked from `.agents/skills/`, `.kiro/skills/` and `.github/skills/` so Claude Code, Codex, OpenCode, Kiro and GitHub Copilot load them automatically:
 
 - **`plasma-component-docs`** — write or update the per-component LLM specs in `packages/llms/src/components/`.
 - **`storybook-component-docs`** — create or update human-facing Storybook component pages using the LLM specs as read-only source material.
