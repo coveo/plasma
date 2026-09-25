@@ -1,0 +1,46 @@
+import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import * as DrawerStories from './Drawer.stories';
+
+<Meta of={DrawerStories} />
+
+# Drawer
+
+Side panel that presents contextual content or a task without navigating away from the current page.
+
+## Overview
+
+The `Drawer` opens from an edge of the viewport and keeps the current page in context. String titles use a secondary header that can include a description and help link.
+
+## Usage
+
+<Canvas of={DrawerStories.Demo} />
+
+<Controls of={DrawerStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- Users need to review or edit contextual information without leaving the current page.
+- A focused task needs more space than a popover.
+- Supporting content needs to remain available until users dismiss it.
+
+### When not to use
+
+- A complex or multi-step workflow needs its own page.
+- A short, interruptive task needs centered attention. Use `Modal` instead.
+- A simple confirmation needs a clear decision. Use `Prompt` instead.
+
+### Best practices
+
+- Use a clear title so users and assistive technologies can identify the drawer.
+- Open related drawers from the same side to create a predictable experience.
+- Place drawer-wide actions in `Drawer.Footer` to keep them available at the bottom of the drawer.
+- Keep focus trapping, Escape handling, and focus return enabled unless you provide an accessible alternative.
+- Use `Drawer.Stack` when a workflow requires multiple drawers so focus and layering remain coordinated.
+
+### Content guidelines
+
+- Name the task or content in the title.
+- Keep supporting text concise and place the most important information first.
+- Label footer actions with the result they produce.
