@@ -27,7 +27,8 @@ export default meta;
 type CheckboxItemStoryArgs = ComponentProps<typeof Checkbox> & InlineInputStoryArgs;
 type CheckboxGroupStoryArgs = ComponentProps<typeof Checkbox.Group> & BaseInputStoryArgs & InputWrapperStoryArgs;
 
-export const CheckboxItem: StoryObj<CheckboxItemStoryArgs> = {
+export const Demo: StoryObj<CheckboxItemStoryArgs> = {
+    name: 'Checkbox',
     argTypes: {
         ...InlineInputArgs.ArgsTypes,
         checked: {
@@ -52,6 +53,7 @@ export const CheckboxItem: StoryObj<CheckboxItemStoryArgs> = {
 };
 
 export const CheckboxGroup: StoryObj<CheckboxGroupStoryArgs> = {
+    name: 'Checkbox.Group',
     argTypes: {
         ...InputWrapperArgs.ArgsTypes,
         ...BaseInputArgs.ArgsTypes,

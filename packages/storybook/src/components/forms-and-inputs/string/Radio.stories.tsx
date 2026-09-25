@@ -24,7 +24,8 @@ export default meta;
 type RadioItemStoryArgs = ComponentProps<typeof Radio> & InlineInputStoryArgs;
 type RadioGroupStoryArgs = ComponentProps<typeof Radio.Group> & BaseInputStoryArgs & InputWrapperStoryArgs;
 
-export const RadioItem: StoryObj<RadioItemStoryArgs> = {
+export const Demo: StoryObj<RadioItemStoryArgs> = {
+    name: 'Radio',
     argTypes: {
         ...InlineInputArgs.ArgsTypes,
     },
@@ -36,6 +37,7 @@ export const RadioItem: StoryObj<RadioItemStoryArgs> = {
 };
 
 export const RadioGroup: StoryObj<RadioGroupStoryArgs> = {
+    name: 'Radio.Group',
     parameters: {
         controls: {
             include: ['label', 'labelInfo', 'description', 'error', 'required', 'disabled', 'readOnly'],
