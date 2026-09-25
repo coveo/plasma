@@ -23,8 +23,8 @@ const meta = {
             include: [
                 'inputLabel',
                 'labelInfo',
-                'inputDescription',
-                'inputError',
+                'description',
+                'error',
                 'required',
                 'min',
                 'max',
@@ -41,8 +41,8 @@ const meta = {
         defaultValue: 40,
         inputLabel: InputWrapperArgs.Args.label,
         labelInfo: InputWrapperArgs.Args.labelInfo,
-        inputDescription: InputWrapperArgs.Args.description,
-        inputError: InputWrapperArgs.Args.error,
+        description: InputWrapperArgs.Args.description,
+        error: InputWrapperArgs.Args.error,
         required: InputWrapperArgs.Args.required,
         disabled: BaseInputArgs.Args.disabled,
         min: 0,
@@ -60,8 +60,8 @@ const meta = {
     argTypes: {
         inputLabel: InputWrapperArgs.ArgsTypes.label,
         labelInfo: InputWrapperArgs.ArgsTypes.labelInfo,
-        inputDescription: InputWrapperArgs.ArgsTypes.description,
-        inputError: InputWrapperArgs.ArgsTypes.error,
+        description: InputWrapperArgs.ArgsTypes.description,
+        error: InputWrapperArgs.ArgsTypes.error,
         required: InputWrapperArgs.ArgsTypes.required,
         disabled: BaseInputArgs.ArgsTypes.disabled,
         min: {

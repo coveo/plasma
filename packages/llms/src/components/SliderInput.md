@@ -24,18 +24,16 @@ description: Labeled slider that displays supporting descriptions and validation
 ## Decision-making guidance
 
 - Use `inputLabel` to name the value being changed.
-- Use `inputDescription` for guidance that applies before interaction.
-- Use `inputError` for actionable validation feedback.
+- Use `description` for guidance that applies before interaction.
+- Use `error` for actionable validation feedback.
 
 # API reference
 
 ## Props
 
-> Extends: `MantineSliderProps`. Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
+> Extends: `MantineSliderProps` and selected `InputWrapperProps` (`description`, `error`, and `required`). Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
 
-**`inputLabel`** `string` · optional · default: `undefined` — Label displayed above the slider.
-**`inputDescription`** `string` · optional · default: `undefined` — Supporting description displayed below the label.
-**`inputError`** `string` · optional · default: `undefined` — Validation feedback displayed below the slider.
+**`inputLabel`** `ReactNode` · optional · default: `undefined` — Label displayed above the slider.
 
 ## TypeScript namespace aliases
 
@@ -55,7 +53,7 @@ function Example() {
     return (
         <SliderInput
             inputLabel="Percentage"
-            inputDescription="Select a value between 0 and 100."
+            description="Select a value between 0 and 100."
             min={0}
             max={100}
             thumbLabel="Percentage"

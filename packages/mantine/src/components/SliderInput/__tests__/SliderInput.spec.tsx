@@ -7,8 +7,8 @@ describe('SliderInput', () => {
         render(
             <SliderInput
                 inputLabel="Percentage"
-                inputDescription="Select a percentage."
-                inputError="Select a valid percentage."
+                description="Select a percentage."
+                error="Select a valid percentage."
             />,
         );
 
