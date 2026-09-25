@@ -1,8 +1,8 @@
 import {SliderInput} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import type {ComponentProps} from 'react';
-import {withLabelInfoProps} from '../LabelInfoArgs.js';
 import {BaseInputArgs, InputWrapperArgs, type InputWrapperStoryArgs} from '../InputWrapperArgs.js';
+import {withLabelInfoProps} from '../LabelInfoArgs.js';
 
 type SliderInputStoryArgs = ComponentProps<typeof SliderInput> & Pick<InputWrapperStoryArgs, 'labelInfo'>;
 
@@ -25,7 +25,6 @@ const meta = {
                 'labelInfo',
                 'description',
                 'error',
-                'required',
                 'min',
                 'max',
                 'step',
@@ -43,7 +42,6 @@ const meta = {
         labelInfo: InputWrapperArgs.Args.labelInfo,
         description: InputWrapperArgs.Args.description,
         error: InputWrapperArgs.Args.error,
-        required: InputWrapperArgs.Args.required,
         disabled: BaseInputArgs.Args.disabled,
         min: 0,
         max: 100,
@@ -62,7 +60,6 @@ const meta = {
         labelInfo: InputWrapperArgs.ArgsTypes.labelInfo,
         description: InputWrapperArgs.ArgsTypes.description,
         error: InputWrapperArgs.ArgsTypes.error,
-        required: InputWrapperArgs.ArgsTypes.required,
         disabled: BaseInputArgs.ArgsTypes.disabled,
         min: {
             control: 'number',

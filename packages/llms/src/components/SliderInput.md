@@ -31,7 +31,7 @@ description: Labeled slider that displays supporting descriptions and validation
 
 ## Props
 
-> Extends: `MantineSliderProps` and selected `InputWrapperProps` (`description`, `error`, and `required`). Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
+> Extends: `MantineSliderProps` and selected `InputWrapperProps` (`description`, `error`, and `withAsterisk`). Only Plasma-specific props are listed below; refer to Mantine documentation for inherited props.
 
 **`inputLabel`** `ReactNode` · optional · default: `undefined` — Label displayed above the slider.
 

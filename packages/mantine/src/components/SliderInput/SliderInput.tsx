@@ -1,15 +1,15 @@
 import {
+    factory,
     Input,
     Slider as MantineSlider,
     type InputWrapperProps,
-    type SliderCssVariables,
     type SliderFactory as MantineSliderFactory,
     type SliderProps as MantineSliderProps,
+    type SliderCssVariables,
     type SliderStylesNames,
-    factory,
 } from '@mantine/core';
 
-type SliderInputWrapperProps = Pick<InputWrapperProps, 'description' | 'error' | 'required'>;
+type SliderInputWrapperProps = Pick<InputWrapperProps, 'description' | 'error' | 'withAsterisk'>;
 
 export interface SliderInputProps extends MantineSliderProps, SliderInputWrapperProps {
     /**
@@ -25,11 +25,13 @@ export type SliderInputFactory = Omit<MantineSliderFactory, 'props'> & {
     props: SliderInputProps;
 };
 
-export const SliderInput = factory<SliderInputFactory>(({description, error, inputLabel, required, ref, ...props}) => (
-    <Input.Wrapper label={inputLabel} description={description} error={error} required={required}>
-        <MantineSlider ref={ref} {...props} data-slider-input />
-    </Input.Wrapper>
-));
+export const SliderInput = factory<SliderInputFactory>(
+    ({description, error, inputLabel, withAsterisk, ref, ...props}) => (
+        <Input.Wrapper label={inputLabel} description={description} error={error} withAsterisk={withAsterisk}>
+            <MantineSlider ref={ref} {...props} data-slider-input />
+        </Input.Wrapper>
+    ),
+);
 
 SliderInput.displayName = 'SliderInput';
 
