@@ -1,6 +1,7 @@
 import {
     factory,
     Drawer as MantineDrawer,
+    ScrollArea,
     type DrawerCssVariables,
     type DrawerStylesNames,
     type DrawerFactory as MantineDrawerFactory,
@@ -53,7 +54,14 @@ const PlasmaDrawer = factory<PlasmaDrawerFactory>(({children, description, help,
 
     return (
         <MantineDrawer ref={ref} title={header} {...props}>
-            <div className={classes['scroll-area']}>{content}</div>
+            <ScrollArea
+                classNames={{
+                    root: classes['scroll-area'],
+                    content: classes['scroll-area-content'],
+                }}
+            >
+                {content}
+            </ScrollArea>
             {footer}
         </MantineDrawer>
     );

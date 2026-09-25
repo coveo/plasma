@@ -14,7 +14,7 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-    overflow: hidden auto;
+    overflow: hidden;
     padding: 0;
 }
 
@@ -22,6 +22,10 @@
     flex: 1;
     min-height: 0;
     min-width: 0;
-    overflow: hidden auto;
-    padding: 0 var(--mantine-spacing-md) var(--mantine-spacing-md);
+    overflow: hidden;
+    padding: 0 var(--mantine-spacing-md);
+}
+
+.scroll-area-content {
+    padding-bottom: var(--mantine-spacing-md);
 }
