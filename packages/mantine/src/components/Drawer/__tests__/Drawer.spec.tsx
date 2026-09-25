@@ -44,4 +44,15 @@ describe('Drawer', () => {
         expect(screen.queryByText('Drawer description')).not.toBeInTheDocument();
         expect(screen.queryByRole('link', {name: 'external'})).not.toBeInTheDocument();
     });
+
+    it('renders its footer when used', () => {
+        render(
+            <Drawer opened onClose={vi.fn()}>
+                Drawer content
+                <Drawer.Footer>Drawer footer</Drawer.Footer>
+            </Drawer>,
+        );
+
+        expect(screen.getByText('Drawer footer')).toBeInTheDocument();
+    });
 });
