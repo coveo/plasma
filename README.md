@@ -165,15 +165,9 @@ The CLI also reads shared workspace MCP configuration from `.mcp.json`.
 <details>
 <summary><strong>Kiro</strong></summary>
 
-**Step 1: Install the Plasma skill as steering.** Create `.kiro/steering/plasma.md`, paste the contents of [`https://plasma.coveo.com/plasma-skill.md`](https://plasma.coveo.com/plasma-skill.md), and replace its frontmatter with:
+**Step 1: Install the Plasma skill.** Save the [Plasma skill](https://plasma.coveo.com/plasma-skill.md) as `~/.kiro/skills/plasma/SKILL.md` so it is available in all your projects. Alternatively, save it as `.kiro/skills/plasma/SKILL.md` in your project to share it with your team.
 
-```markdown
----
-inclusion: always
----
-```
-
-**Step 2: Configure the MCP servers.** Create `.kiro/settings/mcp.json` in your project:
+**Step 2: Configure the MCP servers.** Add both servers to `~/.kiro/settings/mcp.json` so they are available in all your projects. Alternatively, to share the setup with your team, add them to `.kiro/settings/mcp.json` in your project and commit it:
 
 ```json
 {
