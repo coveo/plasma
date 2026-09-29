@@ -59,9 +59,16 @@ Use both the skill and MCP servers when the client supports them. The skill uses
 <details>
 <summary><strong>Claude Code</strong></summary>
 
-**Step 1: Install the Plasma skill.** Save the [Plasma skill](https://plasma.coveo.com/plasma-skill.md) as `.claude/skills/plasma/SKILL.md` in your project.
+**Step 1: Install the Plasma skill.** Save the [Plasma skill](https://plasma.coveo.com/plasma-skill.md) as `~/.claude/skills/plasma/SKILL.md` so it is available in all your projects. Alternatively, save it as `.claude/skills/plasma/SKILL.md` in your project to share it with your team.
 
-**Step 2: Configure the MCP servers.** Add both servers to a project-scoped `.mcp.json` at your repository root (commit it to share the setup with your team):
+**Step 2: Configure the MCP servers.** Add both servers at the user scope so they are available in all your projects:
+
+```bash
+claude mcp add --scope user plasma -- npx -y @coveord/plasma-mcp-server
+claude mcp add --scope user mantine -- npx -y @mantine/mcp-server
+```
+
+Alternatively, to share the setup with your team, add both servers to a project-scoped `.mcp.json` at your repository root and commit it:
 
 ```json
 {
@@ -76,13 +83,6 @@ Use both the skill and MCP servers when the client supports them. The skill uses
         }
     }
 }
-```
-
-Or add them from the CLI:
-
-```bash
-claude mcp add plasma -- npx -y @coveord/plasma-mcp-server
-claude mcp add mantine -- npx -y @mantine/mcp-server
 ```
 
 Run `/mcp` inside Claude Code to verify both servers are connected.
@@ -165,15 +165,9 @@ The CLI also reads shared workspace MCP configuration from `.mcp.json`.
 <details>
 <summary><strong>Kiro</strong></summary>
 
-**Step 1: Install the Plasma skill as steering.** Create `.kiro/steering/plasma.md`, paste the contents of [`https://plasma.coveo.com/plasma-skill.md`](https://plasma.coveo.com/plasma-skill.md), and replace its frontmatter with:
+**Step 1: Install the Plasma skill.** Save the [Plasma skill](https://plasma.coveo.com/plasma-skill.md) as `~/.kiro/skills/plasma/SKILL.md` so it is available in all your projects. Alternatively, save it as `.kiro/skills/plasma/SKILL.md` in your project to share it with your team.
 
-```markdown
----
-inclusion: always
----
-```
-
-**Step 2: Configure the MCP servers.** Create `.kiro/settings/mcp.json` in your project:
+**Step 2: Configure the MCP servers.** Add both servers to `~/.kiro/settings/mcp.json` so they are available in all your projects. Alternatively, to share the setup with your team, add them to `.kiro/settings/mcp.json` in your project and commit it:
 
 ```json
 {
