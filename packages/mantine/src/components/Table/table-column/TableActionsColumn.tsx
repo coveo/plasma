@@ -23,7 +23,7 @@ export interface TableActionsColumnMeta {
 
 /**
  * Generic column rendering the row actions in a menu.
- * Automatically appended at the end of the columns when `getRowActions` is provided to the Table,
+ * Automatically added at the end of the columns (before the collapsible column, if any) when `getRowActions` is provided to the Table,
  * add it to your columns explicitly to control its position.
  */
 export const TableActionsColumn: ColumnDef<unknown> = {
@@ -41,7 +41,9 @@ export const TableActionsColumn: ColumnDef<unknown> = {
         const options = typeof rowConfigurable === 'boolean' ? {} : rowConfigurable;
         return <TableColumnsSelector table={table} options={options} />;
     },
-    size: 84, // 16px padding left + 28px ActionIcon + 40px padding right
+    // Shrinks the column to the width of its content (the actions menu target)
+    size: 1,
+    minSize: 1,
     cell: (info) => <ActionsMenu info={info} />,
 };
 

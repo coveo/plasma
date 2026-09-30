@@ -1,4 +1,4 @@
-import {MoreSize16Px} from '@coveord/plasma-react-icons';
+import {IconDots} from '@coveord/plasma-react-icons';
 import {
     Box,
     CompoundStylesApiProps,
@@ -45,7 +45,7 @@ export interface TableActionsListProps
     primaryGroupLabel?: string;
     /**
      * Icon of the menu target
-     * @default <MoreSize16Px />
+     * @default <IconDots size={16} />
      */
     icon?: ReactNode;
     /**
@@ -75,7 +75,7 @@ type TableActionsListFactory = Factory<{
 const defaultProps = {
     label: 'Actions',
     primaryGroupLabel: '',
-    icon: <MoreSize16Px height={16} />,
+    icon: <IconDots size={16} />,
     searchThreshold: 7,
     searchPlaceholder: 'Search actions',
     nothingFoundLabel: 'No actions found',

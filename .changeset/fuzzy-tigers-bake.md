@@ -4,7 +4,7 @@
 
 Render `Table` row actions in a column and bulk actions in an `ActionBar`
 
-When `getRowActions` is provided, `Table` now appends `Table.ActionsColumn` automatically and renders the actions of each row in a menu at the end of the row (top-right corner of each card in the card layout). With multi-row selection, the actions for the selected rows are rendered in a new `Table.BulkActions` bar at the bottom of the screen, along with the selection count and a button that clears the selection.
+When `getRowActions` is provided, `Table` now adds `Table.ActionsColumn` automatically (at the end, before the collapsible column if any) and renders the actions of each row in a menu (top-right corner of each card in the card layout). With multi-row selection, the actions for the selected rows are rendered in a new `Table.BulkActions` bar at the bottom of the screen, along with the selection count and a button that clears the selection.
 
 All actions are now menu items behind a 3-dots `ActionIcon`. `$$primary` actions are rendered first. Menus with more than 7 actions display a search input that matches the action label, or the new `searchValue` prop of `Table.ActionItem`.
 

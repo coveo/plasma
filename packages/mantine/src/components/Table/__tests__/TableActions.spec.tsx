@@ -56,6 +56,29 @@ describe('Table actions', () => {
             });
         });
 
+        it('renders the actions menu before the collapsible toggle', () => {
+            const CollapsibleFixture = () => {
+                const store = useTable<RowData>();
+                return (
+                    <Table<RowData>
+                        store={store}
+                        data={data}
+                        getRowId={(row) => row.name}
+                        columns={[...columns, Table.CollapsibleColumn as ColumnDef<RowData>]}
+                        getRowExpandedContent={(row) => `Details of ${row.name}`}
+                        getRowActions={() => [
+                            {group: '$$primary', component: <Table.ActionItem>Eat</Table.ActionItem>},
+                        ]}
+                    />
+                );
+            };
+            render(<CollapsibleFixture />);
+
+            const cells = within(getRow('fruit')).getAllByRole('cell');
+            expect(within(cells[cells.length - 2]).getByRole('button', {name: 'Actions'})).toBeInTheDocument();
+            expect(within(cells[cells.length - 1]).queryByRole('button', {name: 'Actions'})).not.toBeInTheDocument();
+        });
+
         it('does not render the actions column when getRowActions is not provided', () => {
             render(<Fixture />);
 

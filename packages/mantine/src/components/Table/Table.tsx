@@ -142,6 +142,12 @@ const defaultProps = {
     getRowActions: () => [],
 } satisfies Partial<TableProps<unknown>>;
 
+const insertActionsColumn = <T,>(columns: Array<ColumnDef<T>>): Array<ColumnDef<T>> => {
+    const collapsibleIndex = columns.findIndex((column) => column.id === TableCollapsibleColumn.id);
+    const index = collapsibleIndex === -1 ? columns.length : collapsibleIndex;
+    return [...columns.slice(0, index), TableActionsColumn as ColumnDef<T>, ...columns.slice(index)];
+};
+
 export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElement>}) => {
     const {
         store,
@@ -194,7 +200,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
     const allColumns = useMemo(() => {
         const withActionsColumn =
             withRowActions && !columns.some((column) => column.id === TableActionsColumn.id)
-                ? columns.concat(TableActionsColumn as ColumnDef<T>)
+                ? insertActionsColumn(columns)
                 : columns;
         return selectionCheckboxesVisible
             ? [TableSelectableColumn as ColumnDef<T>].concat(withActionsColumn)
