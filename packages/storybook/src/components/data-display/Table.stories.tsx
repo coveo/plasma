@@ -39,6 +39,7 @@ type StoryArgs = TableProps<Person> & {
     withData: boolean;
     withLayoutSelector: boolean;
     withRowActions: boolean;
+    withManyActions: boolean;
     enableRowSelection: boolean;
     withUnselectableRows: boolean;
     enableMultiRowSelection: boolean;
@@ -101,6 +102,50 @@ const datePickerPresets: Record<string, DateRangePickerPreset> = {
     lastWeek: {label: 'Last week', range: [previousWeek, today]},
 };
 
+const extraActions = ['Duplicate', 'Share', 'Export', 'Archive', 'Move to folder', 'Rename', 'Add tag'];
+
+const getActions = (selected: Person[], withManyActions: boolean): TableAction[] => {
+    const target =
+        selected.length === 1 ? `${selected[0].firstName} ${selected[0].lastName}` : `${selected.length} people`;
+    return [
+        {
+            group: '$$primary',
+            component: (
+                <Table.ActionItem
+                    key="edit"
+                    leftSection={<IconEdit height={16} />}
+                    onClick={() => alert(`Edit ${target}`)}
+                >
+                    Edit
+                </Table.ActionItem>
+            ),
+        },
+        ...(withManyActions
+            ? extraActions.map((action): TableAction => ({
+                  group: 'More',
+                  component: (
+                      <Table.ActionItem key={action} onClick={() => alert(`${action} ${target}`)}>
+                          {action}
+                      </Table.ActionItem>
+                  ),
+              }))
+            : []),
+        {
+            group: 'Danger zone',
+            component: (
+                <Table.ActionItem
+                    key="delete"
+                    color="red"
+                    leftSection={<IconTrash height={16} />}
+                    onClick={() => alert(`Delete ${target}`)}
+                >
+                    Delete
+                </Table.ActionItem>
+            ),
+        },
+    ];
+};
+
 export const Demo: Story = {
     args: {
         loading: false,
@@ -113,6 +158,7 @@ export const Demo: Story = {
         withData: true,
         withLayoutSelector: false,
         withRowActions: false,
+        withManyActions: false,
         enableRowSelection: true,
         withUnselectableRows: false,
         enableMultiRowSelection: false,
@@ -173,13 +219,14 @@ export const Demo: Story = {
         },
         withRowActions: {
             control: 'boolean',
-            description: 'Enables row selection and contextual actions in this example.',
+            description:
+                'Adds an actions menu at the end of each row. Enable multi row selection to show bulk actions in an action bar.',
             table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
         },
-        withRowMultiSelection: {
+        withManyActions: {
             if: {arg: 'withRowActions'},
             control: 'boolean',
-            description: 'Allows multiple rows to be selected in this example.',
+            description: 'Adds more than 7 actions so the actions menu shows a search input.',
             table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
         },
         withLastUpdated: {
@@ -220,6 +267,7 @@ export const Demo: Story = {
         withData,
         withLayoutSelector,
         withRowActions,
+        withManyActions,
         enableRowSelection,
         withUnselectableRows,
         enableMultiRowSelection,
@@ -315,46 +363,7 @@ export const Demo: Story = {
                         ? {onRowDoubleClick: (row) => alert(`Row double clicked: ${row.firstName} ${row.lastName}`)}
                         : undefined
                 }
-                getRowActions={
-                    withRowActions
-                        ? (selected: Person[]): TableAction[] =>
-                              selected.length === 1
-                                  ? [
-                                        {
-                                            group: '$$primary',
-                                            component: (
-                                                <Table.ActionItem
-                                                    onClick={() =>
-                                                        alert(`Action triggered on a single row: ${selected[0].id}`)
-                                                    }
-                                                    leftSection={<IconEdit height={16} />}
-                                                    key="single"
-                                                >
-                                                    Single row action
-                                                </Table.ActionItem>
-                                            ),
-                                        },
-                                    ]
-                                  : [
-                                        {
-                                            group: '$$primary',
-                                            component: (
-                                                <Table.ActionItem
-                                                    onClick={() =>
-                                                        alert(
-                                                            `Bulk action triggered on multiple rows: ${selected.map(({id}) => id).join(', ')}`,
-                                                        )
-                                                    }
-                                                    leftSection={<IconTrash height={16} />}
-                                                    key="bulk"
-                                                >
-                                                    Bulk action
-                                                </Table.ActionItem>
-                                            ),
-                                        },
-                                    ]
-                        : undefined
-                }
+                getRowActions={withRowActions ? (selected) => getActions(selected, withManyActions) : undefined}
             >
                 {controlPlacement === 'toolbar' && (
                     <Table.Toolbar renderRoot={(props) => <Group w="100%" mb="xl" {...props} />}>

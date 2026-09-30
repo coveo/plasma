@@ -58,11 +58,13 @@ export interface TableProps<TData> extends BoxProps, StylesApiProps<PlasmaTableF
      */
     getRowExpandedContent?: (datum: TData, index: number, row: Row<TData>) => ReactNode;
     /**
-     * Function that generates the actions for the selected rows
-     * If the table doesn't support multi selection, access the data[0]
+     * Function that generates the actions of rows.
+     * Called with a single row to render the actions menu at the end of that row,
+     * and with the selected rows to render the bulk actions bar when multi row selection is enabled.
+     * Providing it automatically appends `Table.ActionsColumn` to the columns.
      * Return an empty array for rows that don't have actions
      *
-     * @param datum the row for which the children should be generated.
+     * @param data the rows for which the actions should be generated.
      * @default []
      */
     getRowActions?: (data: TData[]) => TableAction[];
@@ -138,13 +140,13 @@ export interface TableProps<TData> extends BoxProps, StylesApiProps<PlasmaTableF
 export interface TableAction {
     /**
      * Group to which the action belongs
-     * $$primary is reserved for primary actions
+     * $$primary is reserved for primary actions, rendered first in the actions menu
      * $$confirmPrompt is reserved for InlineConfirm.Prompt, it will hide other actions when prompt is opened
      * other string will be considered secondary custom group
      */
     group: '$$primary' | '$$confirmPrompt' | (string & {});
     /**
-     * Component to render, should be either `Table.PrimaryAction` or `Table.SecondaryAction`
+     * Component to render, should be a `Table.ActionItem`
      */
     component: ReactNode;
 }

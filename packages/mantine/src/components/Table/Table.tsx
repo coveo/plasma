@@ -8,7 +8,7 @@ import {
     Row,
     useReactTable,
 } from '@tanstack/react-table';
-import {Children, ForwardedRef, ReactElement} from 'react';
+import {Children, ForwardedRef, ReactElement, useMemo} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../utils/createFactoryComponent.js';
 import {TableLayouts} from './layouts/TableLayouts.js';
 import {
@@ -18,7 +18,11 @@ import {
     type TableActionItemStylesNames,
 } from './table-actions/TableActionItem.js';
 import {type TableActionsListStylesNames} from './table-actions/TableActionsList.js';
-import {type TableHeaderActionsStylesNames} from './table-actions/TableHeaderActions.js';
+import {
+    TableBulkActions,
+    type TableBulkActionsProps,
+    type TableBulkActionsStylesNames,
+} from './table-actions/TableBulkActions.js';
 import {
     TableCell,
     type TableCellFactory,
@@ -88,7 +92,7 @@ export type TableStylesNames =
     | 'table'
     | 'header'
     | 'body'
-    | TableHeaderActionsStylesNames
+    | TableBulkActionsStylesNames
     | TableActionsListStylesNames
     | TableActionItemStylesNames
     | TableCollapsibleColumnStylesNames
@@ -109,6 +113,7 @@ export type PlasmaTableFactory = Factory<{
         AccordionColumn: typeof TableAccordionColumn;
         ActionsColumn: typeof TableActionsColumn;
         ActionItem: typeof TableActionItem;
+        BulkActions: typeof TableBulkActions;
         Cell: typeof TableCell;
         CollapsibleColumn: typeof TableCollapsibleColumn;
         DateRangePicker: typeof TableDateRangePicker;
@@ -181,7 +186,20 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
     const lastUpdated = convertedChildren.find((child) => child.type === TableLastUpdated);
     const noData = convertedChildren.find((child) => child.type === TableNoData);
 
+    const bulkActions = convertedChildren.find((child) => child.type === TableBulkActions);
+
     const selectionCheckboxesVisible = areSelectionCheckboxesVisible(store);
+
+    const withRowActions = props.getRowActions !== undefined;
+    const allColumns = useMemo(() => {
+        const withActionsColumn =
+            withRowActions && !columns.some((column) => column.id === TableActionsColumn.id)
+                ? columns.concat(TableActionsColumn as ColumnDef<T>)
+                : columns;
+        return selectionCheckboxesVisible
+            ? [TableSelectableColumn as ColumnDef<T>].concat(withActionsColumn)
+            : withActionsColumn;
+    }, [columns, withRowActions, selectionCheckboxesVisible]);
 
     const table = useReactTable({
         data: data || [],
@@ -203,7 +221,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
             });
         },
         onColumnVisibilityChange: store.setColumnVisibility,
-        columns: selectionCheckboxesVisible ? [TableSelectableColumn as ColumnDef<T>].concat(columns) : columns,
+        columns: allColumns,
         getCoreRowModel: getCoreRowModel(),
         manualPagination: options.getPaginationRowModel === undefined,
         enableMultiRowSelection: store.multiRowSelectionEnabled,
@@ -312,6 +330,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
                             </>
                         )}
                     </Layout>
+                    {store.multiRowSelectionEnabled ? (bulkActions ?? <TableBulkActions />) : null}
                 </>
             </TableProvider>
         </Box>
@@ -319,8 +338,6 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
 };
 
 export const TableComponentsOrder = {
-    MultiSelectInfo: 7,
-    Actions: 6,
     Predicate: 5,
     Filter: 4,
     DateRangePicker: 3,
@@ -340,9 +357,14 @@ Table.ActionsColumn = TableActionsColumn;
  */
 Table.Cell = TableCell;
 /**
- * An action to display when a row is selected in the table. Can be displayed as a primary action or menu item.
+ * An action rendered as a menu item in the row actions column and in the bulk actions bar.
  */
 Table.ActionItem = TableActionItem;
+/**
+ * ActionBar displayed when rows are bulk selected, showing the selection count and the bulk actions.
+ * Rendered automatically when multi row selection is enabled, add it as a child of the Table to customize it.
+ */
+Table.BulkActions = TableBulkActions;
 /**
  * Generic column to use when your table needs collapsible rows
  */
@@ -405,6 +427,11 @@ export namespace Table {
         export type Props = TableActionItemProps;
         export type StylesNames = TableActionItemStylesNames;
         export type Factory = TableActionItemFactory;
+    }
+
+    export namespace BulkActions {
+        export type Props = TableBulkActionsProps;
+        export type StylesNames = TableBulkActionsStylesNames;
     }
 
     export namespace Cell {

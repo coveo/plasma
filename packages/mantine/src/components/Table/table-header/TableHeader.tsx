@@ -1,28 +1,15 @@
-import {CrossSize16Px} from '@coveord/plasma-react-icons';
-import {Box, BoxProps, CompoundStylesApiProps, factory, Factory, Grid, Tooltip, useProps} from '@mantine/core';
+import {Box, BoxProps, CompoundStylesApiProps, factory, Factory, Grid, useProps} from '@mantine/core';
 import {ReactNode} from 'react';
 
-import {Button} from '../../Button/Button.js';
 import {TableLayoutControl} from '../layouts/TableLayoutControl.js';
-import {TableHeaderActions} from '../table-actions/TableHeaderActions.js';
-import {TableComponentsOrder} from '../Table.js';
 import {useTableContext} from '../TableContext.js';
-import {hasActiveBulkSelection} from '../tableSelectionUtils.js';
 
 export type TableHeaderStylesNames = 'headerRoot' | 'headerGrid' | 'headerGridInner' | 'headerCol';
 
 export interface TableHeaderProps
     extends Omit<BoxProps, 'classNames' | 'styles' | 'vars'>, CompoundStylesApiProps<TableHeaderFactory> {
-    /* Children of header (ie: actions, datepicker, etc.) */
+    /* Children of header (ie: filter, datepicker, etc.) */
     children?: ReactNode;
-    unselectAllLabel?: string;
-    selectedCountLabel?: (count: number) => string;
-    /**
-     * Whether to show actions when rows are selected
-     *
-     * default true
-     */
-    showActions?: boolean;
 }
 
 export type TableHeaderFactory = Factory<{
@@ -32,18 +19,11 @@ export type TableHeaderFactory = Factory<{
     compound: true;
 }>;
 
-const defaultProps = {
-    unselectAllLabel: 'Unselect all',
-    selectedCountLabel: (count) => `${count} selected`,
-    showActions: true,
-} satisfies Partial<TableHeaderProps>;
+const defaultProps = {} satisfies Partial<TableHeaderProps>;
 
 export const TableHeader = factory<TableHeaderFactory>((props) => {
-    const {store, table, getStyles} = useTableContext();
+    const {getStyles} = useTableContext();
     const {
-        showActions,
-        unselectAllLabel,
-        selectedCountLabel,
         children,
         classNames,
         className,
@@ -53,8 +33,6 @@ export const TableHeader = factory<TableHeaderFactory>((props) => {
         ref,
         ...others
     } = useProps('PlasmaTableHeader', defaultProps, props);
-    const selectedRows = store.getSelectedRows();
-    const bulkSelectionActive = hasActiveBulkSelection(table);
 
     const stylesApiProps = {classNames, styles};
     const innerStyles = getStyles('headerGridInner', stylesApiProps);
@@ -68,25 +46,7 @@ export const TableHeader = factory<TableHeaderFactory>((props) => {
                 classNames={{inner: innerStyles.className, root: gridStyles.className}}
                 styles={{inner: innerStyles.style, root: gridStyles.style}}
             >
-                {bulkSelectionActive && selectedRows.length > 0 ? (
-                    <Grid.Col
-                        span="auto"
-                        {...getStyles('headerCol', stylesApiProps)}
-                        order={TableComponentsOrder.MultiSelectInfo}
-                    >
-                        <Tooltip label={unselectAllLabel}>
-                            <Button.Quaternary
-                                onClick={store.clearRowSelection}
-                                disabled={!store.rowSelectionEnabled}
-                                leftSection={<CrossSize16Px height={16} />}
-                            >
-                                {selectedCountLabel(selectedRows.length)}
-                            </Button.Quaternary>
-                        </Tooltip>
-                    </Grid.Col>
-                ) : null}
                 {children}
-                {showActions ? <TableHeaderActions /> : null}
                 <TableLayoutControl />
             </Grid>
         </Box>

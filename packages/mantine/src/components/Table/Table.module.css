@@ -51,15 +51,6 @@
 
 /* Table.Actions */
 
-/* Hide empty menus */
-.actionsTarget {
-    display: none;
-
-    &:has(+ .actionsDropdown :global(.mantine-Menu-item)) {
-        display: block;
-    }
-}
-
 .actionsDropdown {
     text-align: left;
 }

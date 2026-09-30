@@ -406,6 +406,10 @@ export {
     type TableActionItemProps,
     type TableActionItemStylesNames,
 } from './components/Table/table-actions/TableActionItem.js';
+export {
+    type TableBulkActionsProps,
+    type TableBulkActionsStylesNames,
+} from './components/Table/table-actions/TableBulkActions.js';
 export {TableActionsColumn} from './components/Table/table-column/TableActionsColumn.js';
 export {type TableActionsColumnMeta} from './components/Table/table-column/TableActionsColumn.js';
 export {
