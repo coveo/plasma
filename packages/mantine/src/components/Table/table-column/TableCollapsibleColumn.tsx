@@ -15,7 +15,6 @@ const sharedProps: ColumnDef<unknown> = {
         controlColumn: true,
     },
     header: '',
-    // Shrinks the column to the width of its content (the actions menu target)
     size: 1,
     minSize: 1,
 };

@@ -17,7 +17,6 @@ import {InlineConfirm} from '../../InlineConfirm/InlineConfirm.js';
 import {TableAction} from '../Table.types.js';
 import {useTableContext} from '../TableContext.js';
 import {TableActionProvider} from './TableActionContext.js';
-import classes from './TableActionsList.module.css';
 
 export type TableActionsListStylesNames =
     | 'actionsTarget'
@@ -201,7 +200,7 @@ export function TableActionsList(props: TableActionsListProps) {
         <InlineConfirm>
             {confirmPrompts}
             {actionsCount > 0 ? (
-                <Menu opened={menuOpened} onChange={onChange} classNames={{item: classes.item}} {...others}>
+                <Menu opened={menuOpened} onChange={onChange} {...others}>
                     <Menu.Target>
                         <Tooltip
                             label={label}

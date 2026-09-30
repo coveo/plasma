@@ -1,3 +1,4 @@
 .item {
     padding: var(--mantine-spacing-xs);
+    min-width: 180px;
 }

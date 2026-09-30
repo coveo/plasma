@@ -55,7 +55,7 @@ export const TableActionItem = polymorphicFactory<TableActionItemFactory>((allPr
     return (
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         <Menu.Item
-            // component={component as any}
+            component={component as any}
             ref={ref}
             {...others}
             color={destructive ? 'var(--mantine-color-error)' : color}

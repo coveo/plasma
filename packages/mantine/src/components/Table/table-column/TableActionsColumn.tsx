@@ -41,7 +41,6 @@ export const TableActionsColumn: ColumnDef<unknown> = {
         const options = typeof rowConfigurable === 'boolean' ? {} : rowConfigurable;
         return <TableColumnsSelector table={table} options={options} />;
     },
-    // Shrinks the column to the width of its content (the actions menu target)
     size: 1,
     minSize: 1,
     cell: (info) => <ActionsMenu info={info} />,
