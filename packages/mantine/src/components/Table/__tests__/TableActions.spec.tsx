@@ -17,7 +17,9 @@ const Fixture = ({
     storeOptions,
     loading,
     layouts,
+    onRowDoubleClick,
 }: {
+    onRowDoubleClick?: (row: RowData) => void;
     getRowActions?: (selected: RowData[]) => TableAction[];
     storeOptions?: UseTableOptions<RowData>;
     loading?: boolean;
@@ -33,6 +35,7 @@ const Fixture = ({
             getRowActions={getRowActions}
             loading={loading}
             layouts={layouts}
+            layoutProps={onRowDoubleClick ? {onRowDoubleClick} : undefined}
         />
     );
 };
@@ -154,6 +157,67 @@ describe('Table actions', () => {
                     .map((item) => item.textContent),
             ).toEqual(['Eat', 'Throw away']);
             expect(within(menu).getByText('Danger zone')).toBeVisible();
+        });
+
+        it('renders destructive actions last', async () => {
+            const user = userEvent.setup();
+            render(
+                <Fixture
+                    getRowActions={() => [
+                        {
+                            group: '$$destructive',
+                            component: <Table.ActionItem key="trash">Throw away</Table.ActionItem>,
+                        },
+                        {group: 'Cooking', component: <Table.ActionItem key="cook">Cook</Table.ActionItem>},
+                        {group: '$$primary', component: <Table.ActionItem key="eat">Eat</Table.ActionItem>},
+                    ]}
+                />,
+            );
+
+            await openRowMenu(user, 'fruit');
+            const menu = await screen.findByRole('menu');
+
+            expect(
+                within(menu)
+                    .getAllByRole('menuitem')
+                    .map((item) => item.textContent),
+            ).toEqual(['Eat', 'Cook', 'Throw away']);
+        });
+
+        it('does not render the icon of the actions', async () => {
+            const user = userEvent.setup();
+            render(
+                <Fixture
+                    getRowActions={() => [
+                        {
+                            group: '$$primary',
+                            component: (
+                                <Table.ActionItem leftSection={<span data-testid="eat-icon" />}>Eat</Table.ActionItem>
+                            ),
+                        },
+                    ]}
+                />,
+            );
+
+            await openRowMenu(user, 'fruit');
+            await screen.findByRole('menuitem', {name: 'Eat'});
+
+            expect(screen.queryByTestId('eat-icon')).not.toBeInTheDocument();
+        });
+
+        it('does not trigger the row double click when double clicking the actions menu', async () => {
+            const user = userEvent.setup();
+            const onRowDoubleClick = vi.fn();
+            render(
+                <Fixture
+                    onRowDoubleClick={onRowDoubleClick}
+                    getRowActions={() => [{group: '$$primary', component: <Table.ActionItem>Eat</Table.ActionItem>}]}
+                />,
+            );
+
+            await user.dblClick(within(getRow('fruit')).getByRole('button', {name: 'Actions'}));
+
+            expect(onRowDoubleClick).not.toHaveBeenCalled();
         });
 
         it('replaces the actions menu with the confirm prompt when a confirm action is clicked', async () => {

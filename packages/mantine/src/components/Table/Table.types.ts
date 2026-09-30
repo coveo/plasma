@@ -141,10 +141,11 @@ export interface TableAction {
     /**
      * Group to which the action belongs
      * $$primary is reserved for primary actions, rendered first in the actions menu
+     * $$destructive is reserved for destructive actions, rendered last in the actions menu in red
      * $$confirmPrompt is reserved for InlineConfirm.Prompt, it will hide other actions when prompt is opened
      * other string will be considered secondary custom group
      */
-    group: '$$primary' | '$$confirmPrompt' | (string & {});
+    group: '$$primary' | '$$destructive' | '$$confirmPrompt' | (string & {});
     /**
      * Component to render, should be a `Table.ActionItem`
      */

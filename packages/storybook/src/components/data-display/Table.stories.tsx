@@ -14,7 +14,6 @@ import {
     TableProps,
     useTable,
 } from '@coveord/plasma-mantine';
-import {IconEdit, IconTrash} from '@coveord/plasma-react-icons';
 import {faker} from '@faker-js/faker';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import dayjs from 'dayjs';
@@ -111,11 +110,7 @@ const getActions = (selected: Person[], withManyActions: boolean): TableAction[]
         {
             group: '$$primary',
             component: (
-                <Table.ActionItem
-                    key="edit"
-                    leftSection={<IconEdit height={16} />}
-                    onClick={() => alert(`Edit ${target}`)}
-                >
+                <Table.ActionItem key="edit" onClick={() => alert(`Edit ${target}`)}>
                     Edit
                 </Table.ActionItem>
             ),
@@ -131,14 +126,9 @@ const getActions = (selected: Person[], withManyActions: boolean): TableAction[]
               }))
             : []),
         {
-            group: 'Danger zone',
+            group: '$$destructive',
             component: (
-                <Table.ActionItem
-                    key="delete"
-                    color="red"
-                    leftSection={<IconTrash height={16} />}
-                    onClick={() => alert(`Delete ${target}`)}
-                >
+                <Table.ActionItem key="delete" onClick={() => alert(`Delete ${target}`)}>
                     Delete
                 </Table.ActionItem>
             ),

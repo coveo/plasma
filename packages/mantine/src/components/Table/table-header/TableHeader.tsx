@@ -43,8 +43,12 @@ export const TableHeader = factory<TableHeaderFactory>((props) => {
             <Grid
                 justify="flex-start"
                 align="center"
-                classNames={{inner: innerStyles.className, root: gridStyles.className}}
+                classNames={{
+                    inner: innerStyles.className,
+                    root: gridStyles.className,
+                }}
                 styles={{inner: innerStyles.style, root: gridStyles.style}}
+                gap="xs"
             >
                 {children}
                 <TableLayoutControl />

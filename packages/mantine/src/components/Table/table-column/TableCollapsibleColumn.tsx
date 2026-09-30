@@ -15,7 +15,9 @@ const sharedProps: ColumnDef<unknown> = {
         controlColumn: true,
     },
     header: '',
-    size: 84, // 16px padding left + 28px ActionIcon + 40px padding right
+    // Shrinks the column to the width of its content (the actions menu target)
+    size: 1,
+    minSize: 1,
 };
 
 /**
@@ -58,8 +60,8 @@ type TableCollapsibleColumnFactory = Factory<{
 }>;
 
 const defaultProps = {
-    iconExpanded: <IconChevronUp aria-label="Collapse" size={16} />,
-    iconCollapsed: <IconChevronDown aria-label="Expand" size={16} />,
+    iconExpanded: <IconChevronUp aria-label="Collapse" />,
+    iconCollapsed: <IconChevronDown aria-label="Expand" />,
 } satisfies Partial<CollapsibleIconProps>;
 
 const CollapsibleIcon = factory<TableCollapsibleColumnFactory>((props) => {
@@ -74,8 +76,6 @@ const CollapsibleIcon = factory<TableCollapsibleColumnFactory>((props) => {
         style,
         styles,
         onClick: onActionClick,
-        color,
-        radius,
         ref,
         ...others
     } = useProps('PlasmaTableCollapsibleColumn', defaultProps, props);
@@ -89,10 +89,14 @@ const CollapsibleIcon = factory<TableCollapsibleColumnFactory>((props) => {
     return info.row.getCanExpand() ? (
         <ActionIcon.Quaternary
             ref={ref}
+            size="lg"
             onClick={onClick}
-            color={color ?? 'gray'}
-            radius={radius ?? 'sm'}
-            {...getStyles('collapsibleIcon', {className, classNames, styles, style})}
+            {...getStyles('collapsibleIcon', {
+                className,
+                classNames,
+                styles,
+                style,
+            })}
             {...others}
         >
             {info.row.getIsExpanded() ? iconExpanded : iconCollapsed}

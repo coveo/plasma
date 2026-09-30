@@ -16,6 +16,8 @@ import {ActionIcon} from '../../ActionIcon/ActionIcon.js';
 import {InlineConfirm} from '../../InlineConfirm/InlineConfirm.js';
 import {TableAction} from '../Table.types.js';
 import {useTableContext} from '../TableContext.js';
+import {TableActionProvider} from './TableActionContext.js';
+import classes from './TableActionsList.module.css';
 
 export type TableActionsListStylesNames =
     | 'actionsTarget'
@@ -82,8 +84,10 @@ const defaultProps = {
 } satisfies Partial<TableActionsListProps>;
 
 interface ActionGroup {
-    name: string;
+    id: string;
+    label: string;
     actions: ReactNode[];
+    destructive?: boolean;
 }
 
 const getActionSearchValue = (component: ReactNode): string => {
@@ -106,6 +110,7 @@ const getActionSearchValue = (component: ReactNode): string => {
 const groupActions = (actions: TableAction[], primaryGroupLabel: string) => {
     const confirmPrompts: ReactNode[] = [];
     const primary: ReactNode[] = [];
+    const destructive: ReactNode[] = [];
     const secondary: Record<string, ReactNode[]> = {};
 
     actions.forEach(({group, component}) => {
@@ -116,17 +121,23 @@ const groupActions = (actions: TableAction[], primaryGroupLabel: string) => {
             confirmPrompts.push(component);
         } else if (group === '$$primary') {
             primary.push(component);
+        } else if (group === '$$destructive') {
+            destructive.push(component);
         } else {
             secondary[group] = [...(secondary[group] ?? []), component];
         }
     });
 
     const groups: ActionGroup[] = Object.entries(secondary).map(([name, groupActions]) => ({
-        name,
+        id: name,
+        label: name,
         actions: groupActions,
     }));
     if (primary.length > 0) {
-        groups.unshift({name: primaryGroupLabel, actions: primary});
+        groups.unshift({id: '$$primary', label: primaryGroupLabel, actions: primary});
+    }
+    if (destructive.length > 0) {
+        groups.push({id: '$$destructive', label: '', actions: destructive, destructive: true});
     }
     return {confirmPrompts, groups};
 };
@@ -178,6 +189,7 @@ export function TableActionsList(props: TableActionsListProps) {
         e.stopPropagation();
         setOpened((prevState) => !prevState);
     };
+    const stopPropagation: MouseEventHandler = (e) => e.stopPropagation();
     const onChange = (newOpened: boolean) => {
         if (!newOpened) {
             setOpened(false);
@@ -189,7 +201,7 @@ export function TableActionsList(props: TableActionsListProps) {
         <InlineConfirm>
             {confirmPrompts}
             {actionsCount > 0 ? (
-                <Menu opened={menuOpened} onChange={onChange} {...others}>
+                <Menu opened={menuOpened} onChange={onChange} classNames={{item: classes.item}} {...others}>
                     <Menu.Target>
                         <Tooltip
                             label={label}
@@ -197,9 +209,11 @@ export function TableActionsList(props: TableActionsListProps) {
                             {...getStyles('actionsTooltip', {styles, classNames})}
                         >
                             <ActionIcon.Quaternary
+                                size="lg"
                                 aria-label={label}
                                 {...getStyles('actionsTarget', {styles, classNames})}
                                 onClick={onClick}
+                                onDoubleClick={stopPropagation}
                             >
                                 {icon}
                             </ActionIcon.Quaternary>
@@ -207,7 +221,8 @@ export function TableActionsList(props: TableActionsListProps) {
                     </Menu.Target>
                     <Menu.Dropdown
                         {...getStyles('actionsDropdown', {styles, classNames})}
-                        onClick={(e) => e.stopPropagation()}
+                        onClick={stopPropagation}
+                        onDoubleClick={stopPropagation}
                     >
                         {searchable ? (
                             <Menu.Search
@@ -244,12 +259,14 @@ interface ActionsGroupsMenuItemsProps {
 
 const ActionsGroupsMenuItems = ({styles = {}, classNames = {}, actionGroups}: ActionsGroupsMenuItemsProps) => {
     const {getStyles} = useTableContext();
-    return actionGroups.map(({name, actions}, index) => (
-        <Box key={name} {...getStyles('actionsGroup', {styles, classNames})}>
-            {actionGroups.length > 1 && name ? (
-                <Menu.Label {...getStyles('actionsGroupLabel', {styles, classNames})}>{name}</Menu.Label>
+    return actionGroups.map(({id, label, actions, destructive = false}, index) => (
+        <Box key={id} {...getStyles('actionsGroup', {styles, classNames})}>
+            {actionGroups.length > 1 && label ? (
+                <Menu.Label {...getStyles('actionsGroupLabel', {styles, classNames})}>{label}</Menu.Label>
             ) : null}
-            <Box {...getStyles('actionsGroupItems', {styles, classNames})}>{actions}</Box>
+            <TableActionProvider value={{destructive}}>
+                <Box {...getStyles('actionsGroupItems', {styles, classNames})}>{actions}</Box>
+            </TableActionProvider>
             {index < actionGroups.length - 1 ? (
                 <Menu.Divider {...getStyles('actionsGroupDivider', {styles, classNames})} />
             ) : null}

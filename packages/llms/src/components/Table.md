@@ -59,7 +59,8 @@ Important states include:
 - When multi-row selection is enabled, the selection checkboxes stay hidden until a bulk-eligible row is selected; selecting one reveals every checkbox. Selecting a row rejected by the `enableMultiRowSelection` predicate selects it exclusively (like single selection) without revealing the checkboxes, and the bulk actions bar stays hidden while only such rows are selected.
 - When `getRowActions` is provided, an actions menu (3-dots `ActionIcon`) is rendered in a column at the end of each row (before the collapsible toggle column, if any), or in the top-right corner of each card in the card layout. `getRowActions` is called with `[row]` for each row. Rows without actions render no menu.
 - When multi-row selection is enabled and bulk-eligible rows are selected, a `Table.BulkActions` bar (Mantine `ActionBar`) appears at the bottom of the screen with the selected count, a menu of the actions returned by `getRowActions(selectedRows)`, and a close button that clears the selection. The close button is hidden when selection is disabled or forced.
-- All actions are menu items. `$$primary` actions are rendered first, custom groups follow with their name as label, and `$$confirmPrompt` actions (`InlineConfirm.Prompt`) replace the menu target while confirming.
+- All actions are menu items and their icons (`leftSection`) are not rendered. `$$primary` actions are rendered first, custom groups follow with their name as label, and `$$destructive` actions are rendered last in red. `$$confirmPrompt` actions (`InlineConfirm.Prompt`) replace the menu target while confirming.
+- Clicking or double clicking the actions menu does not select the row nor trigger `onRowDoubleClick`.
 - When a menu has more than 7 actions, it displays a search input that filters actions by their string `children`, or by `searchValue` when set on `Table.ActionItem`.
 - When multi-row selection is enabled, users MAY click a row, card, or its checkbox and then Shift-click another selection target to select all selectable rows between them on the displayed page. Existing selections outside the range are preserved.
 
@@ -88,7 +89,7 @@ Important states include:
 **`getRowId`** `CoreOptions<TData>['getRowId']` · optional · default: `undefined` — Defines how each row is uniquely identified. You SHOULD specify this prop with an ID that makes sense.
 **`getRowAttributes`** `(datum: TData, index: number, row: Row<TData>) => Record<string, unknown>` · optional · default: `undefined` — HTML attributes MAY be defined for each row with this prop.
 **`getRowExpandedContent`** `(datum: TData, index: number, row: Row<TData>) => ReactNode` · optional · default: `undefined` — Function that generates the expandable content of a row. You MUST return `null` for rows that do not need to be expandable.
-**`getRowActions`** `(data: TData[]) => TableAction[]` · optional · default: `() => []` — Function that generates the actions of rows. It is called with a single row for the row actions column and with the selected rows for the bulk actions bar. Providing it automatically adds `Table.ActionsColumn` at the end of the columns, before the collapsible column if any, unless a column with id `actions` already exists. You MUST return an empty array for rows that do not have actions. Each action is `{group: '$$primary' | '$$confirmPrompt' | string, component: <Table.ActionItem />}`.
+**`getRowActions`** `(data: TData[]) => TableAction[]` · optional · default: `() => []` — Function that generates the actions of rows. It is called with a single row for the row actions column and with the selected rows for the bulk actions bar. Providing it automatically adds `Table.ActionsColumn` at the end of the columns, before the collapsible column if any, unless a column with id `actions` already exists. You MUST return an empty array for rows that do not have actions. Each action is `{group: '$$primary' | '$$destructive' | '$$confirmPrompt' | string, component: <Table.ActionItem />}`. Destructive actions MUST use the `$$destructive` group.
 **`columns`** `Array<ColumnDef<TData>>` · required · default: `undefined` — Columns to display in the table. This prop MUST define the rendered columns.
 **`layouts`** `TableLayout[]` · optional · default: `[Table.Layouts.Rows]` — Available layouts. This prop MAY be used to expose layout switching.
 **`layoutProps`** `{onRowDoubleClick?: (selectedRow: TData, index: number, row: Row<TData>) => void} & Record<string, unknown>` · optional · default: `{}` — Props passed down to the active layout Header and Body components.
@@ -127,7 +128,7 @@ Plasma provides pre-configured sub-components as convenience wrappers. You SHOUL
 
 ### Table.ActionItem
 
-Menu item rendered in the row actions menu and the bulk actions menu. Accepts `Menu.Item` props (`leftSection`, `color`, `disabled`, `disabledTooltip`, ...) and an optional `searchValue` used by the menu search when `children` is not a string.
+Menu item rendered in the row actions menu and the bulk actions menu. Accepts `Menu.Item` props (`color`, `disabled`, `disabledTooltip`, ...). `leftSection` is deprecated and ignored and an optional `searchValue` used by the menu search when `children` is not a string.
 
 ### Table.BulkActions
 

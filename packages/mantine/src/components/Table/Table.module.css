@@ -85,13 +85,12 @@
 .headerRoot {
     border-bottom: 1px solid var(--mantine-color-default-border);
     background-color: var(--coveo-app-background);
-    padding: var(--mantine-spacing-sm) var(--mantine-spacing-xl);
+    padding: var(--mantine-spacing-xs);
     position: relative;
-    min-height: 70px;
 }
 
 .headerGridInner {
-    flex-direction: row-reverse;
+    flex-direction: row;
 }
 
 .headerCol {
@@ -99,7 +98,7 @@
 }
 
 .th {
-    padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
+    padding: var(--mantine-spacing-xs);
     vertical-align: middle;
     white-space: nowrap;
     text-align: left;
@@ -107,15 +106,6 @@
     height: var(--mantine-spacing-xl);
     font-weight: var(--coveo-fw-bold);
     font-size: var(--mantine-font-size-sm);
-
-    &:first-of-type {
-        padding-left: var(--mantine-spacing-xl);
-    }
-
-    &:last-of-type {
-        padding-right: var(--mantine-spacing-xl);
-    }
-
     background-color: var(--coveo-app-background);
 
     &[data-control='true'] {
