@@ -45,4 +45,20 @@ describe('Plasmantine', () => {
         expect(theme!.components?.Combobox?.defaultProps?.middlewares).toBeUndefined();
         expect(theme!.components?.Popover?.defaultProps?.middlewares).toBeUndefined();
     });
+
+    it('respects reduced motion', () => {
+        let theme: ReturnType<typeof useMantineTheme> | undefined;
+        const Fixture = () => {
+            theme = useMantineTheme();
+            return null;
+        };
+
+        render(
+            <Plasmantine withCssVariables={false} env="test">
+                <Fixture />
+            </Plasmantine>,
+        );
+
+        expect(theme!.respectReducedMotion).toBe(true);
+    });
 });
