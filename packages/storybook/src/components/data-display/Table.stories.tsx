@@ -107,14 +107,18 @@ const getActions = (selected: Person[], withManyActions: boolean): TableAction[]
     const target =
         selected.length === 1 ? `${selected[0].firstName} ${selected[0].lastName}` : `${selected.length} people`;
     return [
-        {
-            group: '$$primary',
-            component: (
-                <Table.ActionItem key="edit" onClick={() => alert(`Edit ${target}`)}>
-                    Edit
-                </Table.ActionItem>
-            ),
-        },
+        ...(selected.length === 1
+            ? [
+                  {
+                      group: '$$primary',
+                      component: (
+                          <Table.ActionItem key="edit" onClick={() => alert(`Edit ${target}`)}>
+                              Edit
+                          </Table.ActionItem>
+                      ),
+                  },
+              ]
+            : []),
         ...(withManyActions
             ? extraActions.map((action): TableAction => ({
                   group: 'More',
