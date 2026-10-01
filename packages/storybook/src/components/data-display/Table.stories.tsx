@@ -100,13 +100,11 @@ const datePickerPresets: Record<string, DateRangePickerPreset> = {
     lastWeek: {label: 'Last week', range: [previousWeek, today]},
 };
 
-const extraActions = ['Duplicate', 'Share', 'Export', 'Archive', 'Move to folder', 'Rename', 'Add tag'];
-
 const getActions = (selected: Person[]): TableAction[] => {
-    const target =
-        selected.length === 1 ? `${selected[0].firstName} ${selected[0].lastName}` : `${selected.length} people`;
+    const isSingleRow = selected.length === 1;
+    const target = isSingleRow ? `${selected[0].firstName} ${selected[0].lastName}` : `${selected.length} people`;
     return [
-        ...(selected.length === 1
+        ...(isSingleRow
             ? [
                   {
                       group: '$$primary',
@@ -126,14 +124,66 @@ const getActions = (selected: Person[]): TableAction[] => {
                 </Table.ActionItem>
             ),
         },
-        ...extraActions.map((action): TableAction => ({
+        {
             group: '',
             component: (
-                <Table.ActionItem key={action} onClick={() => alert(`${action} ${target}`)}>
-                    {action}
+                <Table.ActionItem key="duplicate" onClick={() => alert(`Duplicate ${target}`)}>
+                    Duplicate
                 </Table.ActionItem>
             ),
-        })),
+        },
+        {
+            group: '',
+            component: (
+                <Table.ActionItem key="share" onClick={() => alert(`Share ${target}`)}>
+                    Share
+                </Table.ActionItem>
+            ),
+        },
+        {
+            group: '',
+            component: (
+                <Table.ActionItem key="export" onClick={() => alert(`Export ${target}`)}>
+                    Export
+                </Table.ActionItem>
+            ),
+        },
+        {
+            group: '',
+            component: (
+                <Table.ActionItem key="archive" onClick={() => alert(`Archive ${target}`)}>
+                    Archive
+                </Table.ActionItem>
+            ),
+        },
+        {
+            group: '',
+            component: (
+                <Table.ActionItem key="move" onClick={() => alert(`Move to folder ${target}`)}>
+                    Move to folder
+                </Table.ActionItem>
+            ),
+        },
+        ...(isSingleRow
+            ? [
+                  {
+                      group: '',
+                      component: (
+                          <Table.ActionItem key="rename" onClick={() => alert(`Rename ${target}`)}>
+                              Rename
+                          </Table.ActionItem>
+                      ),
+                  },
+              ]
+            : []),
+        {
+            group: '',
+            component: (
+                <Table.ActionItem key="tag" onClick={() => alert(`Add tag ${target}`)}>
+                    Add tag
+                </Table.ActionItem>
+            ),
+        },
         {
             group: '$$destructive',
             component: (
