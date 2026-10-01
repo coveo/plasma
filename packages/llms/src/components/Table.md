@@ -58,7 +58,7 @@ Important states include:
 - `enableMultiRowSelection` MAY be a predicate when some rows should only support single selection. Rows rejected by the predicate do not render a selection checkbox and are skipped by select-all and range selection, but remain selectable through their surface and continue to trigger `onRowDoubleClick`. Selecting one clears the current selection, and selecting another row afterward clears the single-select-only row.
 - When multi-row selection is enabled, the selection checkboxes stay hidden until a bulk-eligible row is selected; selecting one reveals every checkbox. Selecting a row rejected by the `enableMultiRowSelection` predicate selects it exclusively (like single selection) without revealing the checkboxes, and the bulk actions bar stays hidden while only such rows are selected.
 - When `getRowActions` is provided, an actions menu (3-dots `ActionIcon`) is rendered in a column at the end of each row (before the collapsible toggle column, if any), or in the top-right corner of each card in the card layout. `getRowActions` is called with `[row]` for each row. Rows without actions render no menu.
-- When multi-row selection is enabled and bulk-eligible rows are selected, a `Table.BulkActions` bar (Mantine `ActionBar`) appears at the bottom of the screen with the selected count, a menu of the actions returned by `getRowActions(selectedRows)`, and a close button that clears the selection. The close button is hidden when selection is disabled or forced.
+- When multi-row selection is enabled and bulk-eligible rows are selected, a `Table.BulkActions` bar (Mantine `ActionBar`) appears at the bottom of the screen with the selected count, the actions returned by `getRowActions(selectedRows)`, and a close button that clears the selection. In the bar, `$$primary` actions render as tertiary buttons, `$$destructive` actions as destructive tertiary buttons, and custom groups in a "More actions" menu. The close button is hidden when selection is disabled or forced.
 - All actions are menu items and their icons (`leftSection`) are not rendered. `$$primary` actions are rendered first, custom groups follow with their name as label, and `$$destructive` actions are rendered last in red. `$$confirmPrompt` actions (`InlineConfirm.Prompt`) replace the menu target while confirming.
 - Clicking or double clicking the actions menu does not select the row nor trigger `onRowDoubleClick`.
 - When a menu has more than 7 actions, it displays a search input that filters actions by their string `children`, or by `searchValue` when set on `Table.ActionItem`.
@@ -132,7 +132,7 @@ Menu item rendered in the row actions menu and the bulk actions menu. Accepts `M
 
 ### Table.BulkActions
 
-Rendered automatically when multi-row selection is enabled. You MAY render it as a child of `Table` to customize it: `selectedCountLabel` (default `` (count) => `${count} selected` ``), `actionsLabel` (default `'Bulk actions'`), `unselectAllLabel` (default `'Unselect all'`), and Mantine `ActionBar` props such as `position` or `zIndex`.
+Rendered automatically when multi-row selection is enabled. You MAY render it as a child of `Table` to customize it: `selectedCountLabel` (default `` (count) => `${count} selected` ``), `actionsLabel` (label of the custom groups menu, default `'More actions'`), `unselectAllLabel` (default `'Unselect all'`), and Mantine `ActionBar` props such as `position` or `zIndex`.
 
 ```tsx
 <Table store={store} columns={columns} data={data} getRowActions={getRowActions}>

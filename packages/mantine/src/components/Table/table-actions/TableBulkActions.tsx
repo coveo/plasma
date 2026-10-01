@@ -1,9 +1,11 @@
-import {ActionBar, type ActionBarProps, Text, Tooltip, useProps} from '@mantine/core';
+import {ActionBar, type ActionBarProps, Group, Text, Tooltip, useProps} from '@mantine/core';
+import {InlineConfirm} from '../../InlineConfirm/InlineConfirm.js';
 import {useTableContext} from '../TableContext.js';
 import {hasActiveBulkSelection} from '../tableSelectionUtils.js';
-import {TableActionsList} from './TableActionsList.js';
+import {TableActionProvider} from './TableActionContext.js';
+import {groupActions, TableActionsList} from './TableActionsList.js';
 
-export type TableBulkActionsStylesNames = 'bulkActionsRoot' | 'bulkActionsCount';
+export type TableBulkActionsStylesNames = 'bulkActionsRoot' | 'bulkActionsCount' | 'bulkActionsGroup';
 
 export interface TableBulkActionsProps extends Omit<
     ActionBarProps,
@@ -15,8 +17,8 @@ export interface TableBulkActionsProps extends Omit<
      */
     selectedCountLabel?: (count: number) => string;
     /**
-     * Label of the bulk actions menu target
-     * @default 'Bulk actions'
+     * Label of the menu containing the actions of custom groups
+     * @default 'More actions'
      */
     actionsLabel?: string;
     /**
@@ -28,7 +30,7 @@ export interface TableBulkActionsProps extends Omit<
 
 const defaultProps = {
     selectedCountLabel: (count) => `${count} selected`,
-    actionsLabel: 'Bulk actions',
+    actionsLabel: 'More actions',
     unselectAllLabel: 'Unselect all',
     'aria-label': 'Bulk actions',
     shadow: 'md',
@@ -36,6 +38,7 @@ const defaultProps = {
 
 /**
  * Displays the number of selected rows and the actions available for them in an ActionBar.
+ * `$$primary` and `$$destructive` actions are rendered as buttons, actions of custom groups are rendered in a menu.
  * Only visible when rows are bulk selected (multi row selection).
  * Pressing Escape clears the selection (handled by the table).
  */
@@ -50,6 +53,13 @@ export const TableBulkActions = (props: TableBulkActionsProps) => {
     const opened = hasActiveBulkSelection(table) && selectedRows.length > 0;
     const clearable = !!store.rowSelectionEnabled && !store.rowSelectionForced;
     const actions = opened ? getRowActions(selectedRows).filter(({component}) => !!component) : [];
+    const {confirmPrompts, groups} = groupActions(actions, '');
+    const getGroupActions = (id: string) => groups.find((group) => group.id === id)?.actions ?? [];
+    const primaryActions = getGroupActions('$$primary');
+    const destructiveActions = getGroupActions('$$destructive');
+    const menuActions = actions.filter(
+        ({group}) => group !== '$$primary' && group !== '$$destructive' && group !== '$$confirmPrompt',
+    );
 
     return (
         <ActionBar
@@ -64,7 +74,18 @@ export const TableBulkActions = (props: TableBulkActionsProps) => {
             {actions.length > 0 ? (
                 <>
                     <ActionBar.Divider />
-                    <TableActionsList actions={actions} label={actionsLabel} />
+                    <InlineConfirm>
+                        {confirmPrompts}
+                        <Group gap="xs" wrap="nowrap" {...getStyles('bulkActionsGroup')}>
+                            <TableActionProvider value={{variant: 'button', destructive: false}}>
+                                {primaryActions}
+                            </TableActionProvider>
+                            <TableActionProvider value={{variant: 'button', destructive: true}}>
+                                {destructiveActions}
+                            </TableActionProvider>
+                            <TableActionsList actions={menuActions} label={actionsLabel} withinInlineConfirm />
+                        </Group>
+                    </InlineConfirm>
                 </>
             ) : null}
             {clearable ? (

@@ -64,6 +64,11 @@ export interface TableActionsListProps
      * @default 'No actions found'
      */
     nothingFoundLabel?: string;
+    /**
+     * Set when the list is already rendered inside an `InlineConfirm`, so confirm targets use that one
+     * @internal
+     */
+    withinInlineConfirm?: boolean;
 }
 
 type TableActionsListFactory = Factory<{
@@ -106,7 +111,7 @@ const getActionSearchValue = (component: ReactNode): string => {
     return '';
 };
 
-const groupActions = (actions: TableAction[], primaryGroupLabel: string) => {
+export const groupActions = (actions: TableAction[], primaryGroupLabel: string) => {
     const confirmPrompts: ReactNode[] = [];
     const primary: ReactNode[] = [];
     const destructive: ReactNode[] = [];
@@ -151,6 +156,7 @@ export function TableActionsList(props: TableActionsListProps) {
         searchThreshold,
         searchPlaceholder,
         nothingFoundLabel,
+        withinInlineConfirm,
         classNames,
         styles,
         vars: _vars,
@@ -196,56 +202,55 @@ export function TableActionsList(props: TableActionsListProps) {
         onMenuChange?.(newOpened);
     };
 
+    const menu =
+        actionsCount > 0 ? (
+            <Menu opened={menuOpened} onChange={onChange} {...others}>
+                <Menu.Target>
+                    <Tooltip label={label} disabled={menuOpened} {...getStyles('actionsTooltip', {styles, classNames})}>
+                        <ActionIcon.Quaternary
+                            size="lg"
+                            aria-label={label}
+                            {...getStyles('actionsTarget', {styles, classNames})}
+                            onClick={onClick}
+                            onDoubleClick={stopPropagation}
+                        >
+                            {icon}
+                        </ActionIcon.Quaternary>
+                    </Tooltip>
+                </Menu.Target>
+                <Menu.Dropdown
+                    {...getStyles('actionsDropdown', {styles, classNames})}
+                    onClick={stopPropagation}
+                    onDoubleClick={stopPropagation}
+                >
+                    {searchable ? (
+                        <Menu.Search
+                            aria-label={searchPlaceholder}
+                            placeholder={searchPlaceholder}
+                            value={search}
+                            onChange={(event) => setSearch(event.currentTarget.value)}
+                            {...getStyles('actionsSearch', {styles, classNames})}
+                        />
+                    ) : null}
+                    {filteredGroups.length > 0 ? (
+                        <ActionsGroupsMenuItems classNames={classNames} styles={styles} actionGroups={filteredGroups} />
+                    ) : (
+                        <Menu.Label {...getStyles('actionsEmpty', {styles, classNames})}>
+                            {nothingFoundLabel}
+                        </Menu.Label>
+                    )}
+                </Menu.Dropdown>
+            </Menu>
+        ) : null;
+
+    if (withinInlineConfirm) {
+        return menu;
+    }
+
     return (
         <InlineConfirm>
             {confirmPrompts}
-            {actionsCount > 0 ? (
-                <Menu opened={menuOpened} onChange={onChange} {...others}>
-                    <Menu.Target>
-                        <Tooltip
-                            label={label}
-                            disabled={menuOpened}
-                            {...getStyles('actionsTooltip', {styles, classNames})}
-                        >
-                            <ActionIcon.Quaternary
-                                size="lg"
-                                aria-label={label}
-                                {...getStyles('actionsTarget', {styles, classNames})}
-                                onClick={onClick}
-                                onDoubleClick={stopPropagation}
-                            >
-                                {icon}
-                            </ActionIcon.Quaternary>
-                        </Tooltip>
-                    </Menu.Target>
-                    <Menu.Dropdown
-                        {...getStyles('actionsDropdown', {styles, classNames})}
-                        onClick={stopPropagation}
-                        onDoubleClick={stopPropagation}
-                    >
-                        {searchable ? (
-                            <Menu.Search
-                                aria-label={searchPlaceholder}
-                                placeholder={searchPlaceholder}
-                                value={search}
-                                onChange={(event) => setSearch(event.currentTarget.value)}
-                                {...getStyles('actionsSearch', {styles, classNames})}
-                            />
-                        ) : null}
-                        {filteredGroups.length > 0 ? (
-                            <ActionsGroupsMenuItems
-                                classNames={classNames}
-                                styles={styles}
-                                actionGroups={filteredGroups}
-                            />
-                        ) : (
-                            <Menu.Label {...getStyles('actionsEmpty', {styles, classNames})}>
-                                {nothingFoundLabel}
-                            </Menu.Label>
-                        )}
-                    </Menu.Dropdown>
-                </Menu>
-            ) : null}
+            {menu}
         </InlineConfirm>
     );
 }
@@ -263,7 +268,7 @@ const ActionsGroupsMenuItems = ({styles = {}, classNames = {}, actionGroups}: Ac
             {actionGroups.length > 1 && label ? (
                 <Menu.Label {...getStyles('actionsGroupLabel', {styles, classNames})}>{label}</Menu.Label>
             ) : null}
-            <TableActionProvider value={{destructive}}>
+            <TableActionProvider value={{variant: 'menuItem', destructive}}>
                 <Box {...getStyles('actionsGroupItems', {styles, classNames})}>{actions}</Box>
             </TableActionProvider>
             {index < actionGroups.length - 1 ? (

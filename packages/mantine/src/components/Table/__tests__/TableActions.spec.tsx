@@ -417,7 +417,7 @@ describe('Table actions', () => {
             expect(within(actionBar).getByText('2 selected')).toBeVisible();
         });
 
-        it('renders the action bar without menu when there are no bulk actions', async () => {
+        it('renders the action bar without actions when there are no bulk actions', async () => {
             const user = userEvent.setup();
             render(<Fixture storeOptions={{enableMultiRowSelection: true}} />);
 
@@ -425,7 +425,11 @@ describe('Table actions', () => {
 
             const actionBar = await screen.findByRole('group', {name: 'Bulk actions'});
             expect(within(actionBar).getByText('1 selected')).toBeVisible();
-            expect(within(actionBar).queryByRole('button', {name: 'Bulk actions'})).not.toBeInTheDocument();
+            expect(
+                within(actionBar)
+                    .getAllByRole('button')
+                    .map((button) => button.getAttribute('aria-label')),
+            ).toEqual(['Unselect all']);
         });
 
         it('calls the bulk action with all the selected rows', async () => {
@@ -436,10 +440,87 @@ describe('Table actions', () => {
             await selectRow(user, 'fruit');
             await selectRow(user, 'vegetable');
             const actionBar = await screen.findByRole('group', {name: 'Bulk actions'});
-            await user.click(within(actionBar).getByRole('button', {name: 'Bulk actions'}));
-            await user.click(await screen.findByRole('menuitem', {name: 'Eat all'}));
+            await user.click(within(actionBar).getByRole('button', {name: 'Eat all'}));
 
             expect(onEat).toHaveBeenCalledWith([{name: 'fruit'}, {name: 'vegetable'}]);
+        });
+
+        it('renders primary and destructive actions as buttons and custom groups in a menu', async () => {
+            const user = userEvent.setup();
+            render(
+                <Fixture
+                    storeOptions={{enableMultiRowSelection: true}}
+                    getRowActions={() => [
+                        {group: 'Cooking', component: <Table.ActionItem key="cook">Cook all</Table.ActionItem>},
+                        {
+                            group: '$$destructive',
+                            component: <Table.ActionItem key="trash">Throw away</Table.ActionItem>,
+                        },
+                        {group: '$$primary', component: <Table.ActionItem key="eat">Eat all</Table.ActionItem>},
+                    ]}
+                />,
+            );
+
+            await selectRow(user, 'fruit');
+            const actionBar = await screen.findByRole('group', {name: 'Bulk actions'});
+
+            expect(within(actionBar).getByRole('button', {name: 'Eat all'})).toBeVisible();
+            expect(within(actionBar).getByRole('button', {name: 'Throw away'})).toBeVisible();
+            expect(within(actionBar).queryByRole('button', {name: 'Cook all'})).not.toBeInTheDocument();
+
+            await user.click(within(actionBar).getByRole('button', {name: 'More actions'}));
+            expect(await screen.findByRole('menuitem', {name: 'Cook all'})).toBeVisible();
+        });
+
+        it('replaces the bulk actions with the confirm prompt when a confirm action is clicked', async () => {
+            const user = userEvent.setup();
+            render(
+                <Fixture
+                    storeOptions={{enableMultiRowSelection: true}}
+                    getRowActions={() => [
+                        {
+                            group: '$$destructive',
+                            component: (
+                                <InlineConfirm.Target
+                                    component={Table.ActionItem}
+                                    inlineConfirmId="delete"
+                                    key="delete"
+                                >
+                                    Delete all
+                                </InlineConfirm.Target>
+                            ),
+                        },
+                        {
+                            group: '$$confirmPrompt',
+                            component: (
+                                <InlineConfirm.Prompt
+                                    inlineConfirmId="delete"
+                                    key="delete-prompt"
+                                    label="Delete everything?"
+                                    onConfirm={vi.fn()}
+                                />
+                            ),
+                        },
+                    ]}
+                />,
+            );
+
+            await selectRow(user, 'fruit');
+            const actionBar = await screen.findByRole('group', {name: 'Bulk actions'});
+            await user.click(within(actionBar).getByRole('button', {name: 'Delete all'}));
+
+            expect(within(actionBar).getByText('Delete everything?')).toBeVisible();
+            expect(within(actionBar).queryByRole('button', {name: 'Delete all'})).not.toBeInTheDocument();
+        });
+
+        it('does not render the more actions menu when there are only primary and destructive actions', async () => {
+            const user = userEvent.setup();
+            render(<Fixture storeOptions={{enableMultiRowSelection: true}} getRowActions={bulkActions()} />);
+
+            await selectRow(user, 'fruit');
+            const actionBar = await screen.findByRole('group', {name: 'Bulk actions'});
+
+            expect(within(actionBar).queryByRole('button', {name: 'More actions'})).not.toBeInTheDocument();
         });
 
         it('clears the selection when clicking the close button', async () => {
