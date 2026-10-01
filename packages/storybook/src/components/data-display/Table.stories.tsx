@@ -38,7 +38,6 @@ type StoryArgs = TableProps<Person> & {
     withData: boolean;
     withLayoutSelector: boolean;
     withRowActions: boolean;
-    withManyActions: boolean;
     enableRowSelection: boolean;
     withUnselectableRows: boolean;
     enableMultiRowSelection: boolean;
@@ -103,7 +102,7 @@ const datePickerPresets: Record<string, DateRangePickerPreset> = {
 
 const extraActions = ['Duplicate', 'Share', 'Export', 'Archive', 'Move to folder', 'Rename', 'Add tag'];
 
-const getActions = (selected: Person[], withManyActions: boolean): TableAction[] => {
+const getActions = (selected: Person[]): TableAction[] => {
     const target =
         selected.length === 1 ? `${selected[0].firstName} ${selected[0].lastName}` : `${selected.length} people`;
     return [
@@ -119,16 +118,22 @@ const getActions = (selected: Person[], withManyActions: boolean): TableAction[]
                   },
               ]
             : []),
-        ...(withManyActions
-            ? extraActions.map((action): TableAction => ({
-                  group: 'More',
-                  component: (
-                      <Table.ActionItem key={action} onClick={() => alert(`${action} ${target}`)}>
-                          {action}
-                      </Table.ActionItem>
-                  ),
-              }))
-            : []),
+        {
+            group: '$$primary',
+            component: (
+                <Table.ActionItem key="download" onClick={() => alert(`Download ${target}`)}>
+                    Download
+                </Table.ActionItem>
+            ),
+        },
+        ...extraActions.map((action): TableAction => ({
+            group: '',
+            component: (
+                <Table.ActionItem key={action} onClick={() => alert(`${action} ${target}`)}>
+                    {action}
+                </Table.ActionItem>
+            ),
+        })),
         {
             group: '$$destructive',
             component: (
@@ -152,7 +157,6 @@ export const Demo: Story = {
         withData: true,
         withLayoutSelector: false,
         withRowActions: false,
-        withManyActions: false,
         enableRowSelection: true,
         withUnselectableRows: false,
         enableMultiRowSelection: false,
@@ -217,12 +221,6 @@ export const Demo: Story = {
                 'Adds an actions menu at the end of each row. Enable multi row selection to show bulk actions in an action bar.',
             table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
         },
-        withManyActions: {
-            if: {arg: 'withRowActions'},
-            control: 'boolean',
-            description: 'Adds more than 7 actions so the actions menu shows a search input.',
-            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
-        },
         withLastUpdated: {
             control: 'boolean',
             description: 'Shows when the table data was last updated in this example.',
@@ -261,7 +259,6 @@ export const Demo: Story = {
         withData,
         withLayoutSelector,
         withRowActions,
-        withManyActions,
         enableRowSelection,
         withUnselectableRows,
         enableMultiRowSelection,
@@ -357,7 +354,7 @@ export const Demo: Story = {
                         ? {onRowDoubleClick: (row) => alert(`Row double clicked: ${row.firstName} ${row.lastName}`)}
                         : undefined
                 }
-                getRowActions={withRowActions ? (selected) => getActions(selected, withManyActions) : undefined}
+                getRowActions={withRowActions ? getActions : undefined}
             >
                 {controlPlacement === 'toolbar' && (
                     <Table.Toolbar renderRoot={(props) => <Group w="100%" mb="xl" {...props} />}>
