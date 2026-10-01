@@ -124,6 +124,7 @@ Plasma provides pre-configured sub-components as convenience wrappers. You SHOUL
 - `Table.Pagination`
 - `Table.PerPage`
 - `Table.Predicate`
+- `Table.Summary`
 - `Table.Toolbar`
 
 ### Table.ActionItem
@@ -139,6 +140,26 @@ Rendered automatically when multi-row selection is enabled. You MAY render it as
     <Table.BulkActions selectedCountLabel={(count) => `${count} users selected`} />
 </Table>
 ```
+
+### Table.Footer
+
+`Table.Footer` lays its content out in a grid with fixed areas, regardless of the order of its children: `Table.Summary` on the left, `Table.Pagination` in the center and `Table.PerPage` on the right. The pagination stays centered even when the other areas are empty. Styles names: `footerRoot`, `footerStart`, `footerCenter`, `footerEnd`.
+
+### Table.Summary
+
+Displays the range of rows displayed and the time of the last data update. Props: `rangeLabel` (default `` ({from, to, total}) => `Showing ${from}-${to} out of ${total}` ``), `withLastUpdated` (default `true`), `lastUpdatedLabel` (default `'Last update:'`), `lastUpdatedFormatter`. `total` is `totalEntries` from the store, or the row count for client-side tables. You SHOULD use `Table.Summary` instead of `Table.LastUpdated` inside `Table.Footer`.
+
+```tsx
+<Table.Footer>
+    <Table.Summary />
+    <Table.Pagination />
+    <Table.PerPage />
+</Table.Footer>
+```
+
+### Table.PerPage
+
+`label` (default `'Results per page'`) is the accessible name of the control, it is not displayed.
 
 ### Table.Toolbar
 
@@ -169,7 +190,7 @@ These type-only aliases are available for annotations and do not add runtime sta
 - `Table.Cell.{Props, StylesNames, Factory}`
 - `Table.DateRangePicker.{Props, StylesNames, Factory}`
 - `Table.Filter.{Props, StylesNames, Factory}`
-- `Table.Footer.Props`
+- `Table.Footer.{Props, StylesNames, Factory}`
 - `Table.Header.{Props, StylesNames, Factory}`
 - `Table.LastUpdated.{Props, StylesNames, Factory}`
 - `Table.Loading.Props`
@@ -177,6 +198,7 @@ These type-only aliases are available for annotations and do not add runtime sta
 - `Table.Pagination.Props`
 - `Table.PerPage.Props`
 - `Table.Predicate.{Props, StylesNames, Factory}`
+- `Table.Summary.{Props, StylesNames, Factory}`
 - `Table.Toolbar.{Props, StylesNames, Factory}`
 
 ## Usage

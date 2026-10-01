@@ -18,7 +18,7 @@
         cursor: pointer;
 
         @mixin hover {
-            background-color: var(--mantine-primary-color-light-hover);
+            background-color: var(--mantine-color-gray-light-hover);
         }
     }
 
@@ -38,7 +38,7 @@
     }
 
     &[data-selected='true'] {
-        background-color: var(--mantine-primary-color-light);
+        background-color: var(--mantine-color-gray-light);
     }
 
     &[data-collapsible-cell='true'] {

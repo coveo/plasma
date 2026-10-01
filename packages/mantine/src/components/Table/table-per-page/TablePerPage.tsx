@@ -1,6 +1,7 @@
-import {Group, SegmentedControl, Text} from '@mantine/core';
+import {Group, SegmentedControl} from '@mantine/core';
 import {FunctionComponent, useMemo} from 'react';
 
+import {TableFooterSlot} from '../table-footer/TableFooterSlot.js';
 import {useTableContext} from '../TableContext.js';
 import {TablePerPageProps} from './TablePerPage.types.js';
 
@@ -25,15 +26,17 @@ export const TablePerPage: FunctionComponent<TablePerPageProps> & {DEFAULT_SIZE:
     }
 
     return (
-        <Group gap="sm">
-            <Text fw={500}>{label}</Text>
-            <SegmentedControl
-                value={store.state.pagination.perPage.toString() ?? choices[1] ?? choices[0]}
-                onChange={updatePerPage}
-                data={choices}
-                size="sm"
-            />
-        </Group>
+        <TableFooterSlot position="end">
+            <Group gap="sm">
+                <SegmentedControl
+                    aria-label={label}
+                    value={store.state.pagination.perPage.toString() ?? choices[1] ?? choices[0]}
+                    onChange={updatePerPage}
+                    data={choices}
+                    size="sm"
+                />
+            </Group>
+        </TableFooterSlot>
     );
 };
 

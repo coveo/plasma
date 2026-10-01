@@ -1,5 +1,9 @@
 .root {
     width: 100%;
+    border-radius: var(--mantine-radius-default);
+    overflow: clip;
+    border: 1px solid var(--mantine-color-default-border);
+    background-color: var(--mantine-color-body);
 }
 
 .table {
@@ -81,12 +85,37 @@
     color: var(--mantine-color-dimmed);
 }
 
+/* Table.Footer */
+.footerRoot {
+    display: grid;
+    grid-template-areas: 'start center end';
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: var(--mantine-spacing-sm);
+    padding: var(--mantine-spacing-sm);
+    background-color: var(--mantine-color-gray-0);
+}
+
+.footerStart {
+    grid-area: start;
+    justify-self: start;
+}
+
+.footerCenter {
+    grid-area: center;
+}
+
+.footerEnd {
+    grid-area: end;
+    justify-self: end;
+}
+
 /* Table.Header */
 .headerRoot {
-    border-bottom: 1px solid var(--mantine-color-default-border);
     background-color: var(--coveo-app-background);
-    padding: var(--mantine-spacing-xs);
+    border-bottom: 1px solid var(--mantine-color-default-border);
     position: relative;
+    padding: var(--mantine-spacing-sm);
 }
 
 .headerGridInner {

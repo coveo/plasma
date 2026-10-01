@@ -49,7 +49,12 @@ import {
     type TableFilterProps,
     type TableFilterStylesNames,
 } from './table-filter/TableFilter.js';
-import {TableFooter, type TableFooterProps} from './table-footer/TableFooter.js';
+import {
+    TableFooter,
+    type TableFooterFactory,
+    type TableFooterProps,
+    type TableFooterStylesNames,
+} from './table-footer/TableFooter.js';
 import {
     TableHeader,
     type TableHeaderFactory,
@@ -76,6 +81,12 @@ import {
     type TablePredicateStylesNames,
 } from './table-predicate/TablePredicate.js';
 import {
+    TableSummary,
+    type TableSummaryFactory,
+    type TableSummaryProps,
+    type TableSummaryStylesNames,
+} from './table-summary/TableSummary.js';
+import {
     TableToolbar,
     type TableToolbarFactory,
     type TableToolbarProps,
@@ -99,10 +110,12 @@ export type TableStylesNames =
     | TableSelectRowCheckboxStylesNames
     | TableDateRangePickerStylesNames
     | TableFilterStylesNames
+    | TableFooterStylesNames
     | TableHeaderStylesNames
     | TableThStylesNames
     | TableLastUpdatedStylesNames
     | TablePredicateStylesNames
+    | TableSummaryStylesNames
     | TableToolbarStylesNames;
 
 export type PlasmaTableFactory = Factory<{
@@ -127,6 +140,7 @@ export type PlasmaTableFactory = Factory<{
         Pagination: typeof TablePagination;
         PerPage: typeof TablePerPage;
         Predicate: typeof TablePredicate;
+        Summary: typeof TableSummary;
         Toolbar: typeof TableToolbar;
     };
 }>;
@@ -420,6 +434,10 @@ Table.PerPage = TablePerPage;
  * A dropdown that filters table data by a predefined set of values and resets pagination on change.
  */
 Table.Predicate = TablePredicate;
+/**
+ * Displays the range of rows displayed and the time of the last data update, on the left of `Table.Footer`.
+ */
+Table.Summary = TableSummary;
 Table.Toolbar = TableToolbar;
 
 Table.extend = identity as CustomComponentThemeExtend<PlasmaTableFactory>;
@@ -460,6 +478,8 @@ export namespace Table {
 
     export namespace Footer {
         export type Props = TableFooterProps;
+        export type StylesNames = TableFooterStylesNames;
+        export type Factory = TableFooterFactory;
     }
 
     export namespace Header {
@@ -494,6 +514,12 @@ export namespace Table {
         export type Props = TablePredicateProps;
         export type StylesNames = TablePredicateStylesNames;
         export type Factory = TablePredicateFactory;
+    }
+
+    export namespace Summary {
+        export type Props = TableSummaryProps;
+        export type StylesNames = TableSummaryStylesNames;
+        export type Factory = TableSummaryFactory;
     }
 
     export namespace Toolbar {

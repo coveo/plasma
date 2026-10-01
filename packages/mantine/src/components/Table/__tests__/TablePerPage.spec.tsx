@@ -10,7 +10,7 @@ const columnHelper = createColumnHelper<RowData>();
 const columns: Array<ColumnDef<RowData>> = [columnHelper.accessor('name', {enableSorting: false})];
 
 describe('Table.PerPage', () => {
-    it('displays the label', () => {
+    it('labels the control', () => {
         const data = [{name: 'fruit'}, {name: 'vegetable'}];
         const Fixture = () => {
             const store = useTable<RowData>({initialState: {totalEntries: 30}});
@@ -24,7 +24,7 @@ describe('Table.PerPage', () => {
         };
         render(<Fixture />);
 
-        expect(screen.getByText('Per page')).toBeVisible();
+        expect(screen.getByRole('radiogroup', {name: 'Per page'})).toBeVisible();
     });
 
     it('displays the values', () => {
@@ -162,7 +162,7 @@ describe('Table.PerPage', () => {
             );
         };
         render(<Fixture />);
-        expect(screen.getByText('Results per page')).toBeVisible();
+        expect(screen.getByRole('radiogroup', {name: 'Results per page'})).toBeVisible();
     });
 
     describe('when url sync is activated', () => {

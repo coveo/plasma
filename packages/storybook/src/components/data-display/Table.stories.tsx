@@ -51,9 +51,6 @@ const meta: Meta<StoryArgs> = {
     title: '@components/Data display/Table',
     id: 'Table',
     component: Table,
-    parameters: {
-        layout: 'fullscreen',
-    },
 };
 export default meta;
 type Story = StoryObj<StoryArgs>;
@@ -357,7 +354,7 @@ export const Demo: Story = {
             }
             return baseColumns;
         }, [withSorting, withCollapsibleRows, collapsibleBehavior]);
-        const data = useMemo(() => (withData ? makeData(10) : []), [withData]);
+        const data = useMemo(() => (withData ? makeData(25) : []), [withData]);
 
         const table = useTable<Person>({
             initialState: {
@@ -468,13 +465,13 @@ export const Demo: Story = {
                     )}
                 </Table.NoData>
                 <Table.Footer>
+                    <Table.Summary withLastUpdated={withLastUpdated} />
                     {withPagination && (
                         <>
-                            <Table.PerPage values={[5, 10, 25]} />
                             <Table.Pagination />
+                            <Table.PerPage values={[5, 10, 25]} />
                         </>
                     )}
-                    {withLastUpdated && <Table.LastUpdated />}
                 </Table.Footer>
             </Table>
         );

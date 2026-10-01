@@ -68,14 +68,13 @@ export const TableFilter = factory<TableFilterFactory>((props) => {
             {...getStyles('filterWrapper', stylesApiProps)}
             placeholder={placeholder}
             autoComplete="off"
+            leftSection={<IconSearch size={16} />}
             rightSection={
                 filter ? (
                     <ActionIcon.Quaternary onClick={handleClear}>
                         <IconX aria-label="clear" size={16} />
                     </ActionIcon.Quaternary>
-                ) : (
-                    <IconSearch size={16} {...getStyles('filterEmpty', stylesApiProps)} />
-                )
+                ) : null
             }
             value={filter}
             onChange={handleChange}
