@@ -406,6 +406,10 @@ export {
     type TableActionItemProps,
     type TableActionItemStylesNames,
 } from './components/Table/table-actions/TableActionItem.js';
+export {
+    type TableBulkActionsProps,
+    type TableBulkActionsStylesNames,
+} from './components/Table/table-actions/TableBulkActions.js';
 export {TableActionsColumn} from './components/Table/table-column/TableActionsColumn.js';
 export {type TableActionsColumnMeta} from './components/Table/table-column/TableActionsColumn.js';
 export {
@@ -423,7 +427,11 @@ export {
     type TableFilterProps,
     type TableFilterStylesNames,
 } from './components/Table/table-filter/TableFilter.js';
-export {type TableFooterProps} from './components/Table/table-footer/TableFooter.js';
+export {
+    type TableFooterFactory,
+    type TableFooterProps,
+    type TableFooterStylesNames,
+} from './components/Table/table-footer/TableFooter.js';
 export {
     type TableHeaderFactory,
     type TableHeaderProps,
@@ -442,6 +450,12 @@ export {
     type TablePredicateProps,
     type TablePredicateStylesNames,
 } from './components/Table/table-predicate/TablePredicate.js';
+export {
+    type TableSummaryFactory,
+    type TableSummaryProps,
+    type TableSummaryRange,
+    type TableSummaryStylesNames,
+} from './components/Table/table-summary/TableSummary.js';
 export {
     type TableToolbarFactory,
     type TableToolbarProps,

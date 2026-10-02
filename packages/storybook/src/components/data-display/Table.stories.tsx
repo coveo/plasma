@@ -14,7 +14,6 @@ import {
     TableProps,
     useTable,
 } from '@coveord/plasma-mantine';
-import {IconEdit, IconTrash} from '@coveord/plasma-react-icons';
 import {faker} from '@faker-js/faker';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import dayjs from 'dayjs';
@@ -52,9 +51,6 @@ const meta: Meta<StoryArgs> = {
     title: '@components/Data display/Table',
     id: 'Table',
     component: Table,
-    parameters: {
-        layout: 'fullscreen',
-    },
 };
 export default meta;
 type Story = StoryObj<StoryArgs>;
@@ -99,6 +95,101 @@ const previousWeek = dayjs(SEEDED_DATE).subtract(1, 'week').startOf('day').toISO
 const datePickerPresets: Record<string, DateRangePickerPreset> = {
     lastDay: {label: 'Last 24 hours', range: [previousDay, today]},
     lastWeek: {label: 'Last week', range: [previousWeek, today]},
+};
+
+const getActions = (selected: Person[]): TableAction[] => {
+    const isSingleRow = selected.length === 1;
+    const target = isSingleRow ? `${selected[0].firstName} ${selected[0].lastName}` : `${selected.length} people`;
+    return [
+        ...(isSingleRow
+            ? [
+                  {
+                      group: '$$primary',
+                      component: (
+                          <Table.ActionItem key="edit" onClick={() => alert(`Edit ${target}`)}>
+                              Edit
+                          </Table.ActionItem>
+                      ),
+                  },
+              ]
+            : []),
+        {
+            group: '$$primary',
+            component: (
+                <Table.ActionItem key="download" onClick={() => alert(`Download ${target}`)}>
+                    Download
+                </Table.ActionItem>
+            ),
+        },
+        {
+            group: '',
+            component: (
+                <Table.ActionItem key="duplicate" onClick={() => alert(`Duplicate ${target}`)}>
+                    Duplicate
+                </Table.ActionItem>
+            ),
+        },
+        {
+            group: '',
+            component: (
+                <Table.ActionItem key="share" onClick={() => alert(`Share ${target}`)}>
+                    Share
+                </Table.ActionItem>
+            ),
+        },
+        {
+            group: '',
+            component: (
+                <Table.ActionItem key="export" onClick={() => alert(`Export ${target}`)}>
+                    Export
+                </Table.ActionItem>
+            ),
+        },
+        {
+            group: '',
+            component: (
+                <Table.ActionItem key="archive" onClick={() => alert(`Archive ${target}`)}>
+                    Archive
+                </Table.ActionItem>
+            ),
+        },
+        {
+            group: '',
+            component: (
+                <Table.ActionItem key="move" onClick={() => alert(`Move to folder ${target}`)}>
+                    Move to folder
+                </Table.ActionItem>
+            ),
+        },
+        ...(isSingleRow
+            ? [
+                  {
+                      group: '',
+                      component: (
+                          <Table.ActionItem key="rename" onClick={() => alert(`Rename ${target}`)}>
+                              Rename
+                          </Table.ActionItem>
+                      ),
+                  },
+              ]
+            : []),
+        {
+            group: '',
+            component: (
+                <Table.ActionItem key="tag" onClick={() => alert(`Add tag ${target}`)}>
+                    Add tag
+                </Table.ActionItem>
+            ),
+        },
+        {
+            group: '$$destructive',
+            component: (
+                <Table.ActionItem key="delete" onClick={() => alert(`Delete ${target}`)}>
+                    Delete
+                </Table.ActionItem>
+            ),
+        },
+    ];
 };
 
 export const Demo: Story = {
@@ -173,13 +264,8 @@ export const Demo: Story = {
         },
         withRowActions: {
             control: 'boolean',
-            description: 'Enables row selection and contextual actions in this example.',
-            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
-        },
-        withRowMultiSelection: {
-            if: {arg: 'withRowActions'},
-            control: 'boolean',
-            description: 'Allows multiple rows to be selected in this example.',
+            description:
+                'Adds an actions menu at the end of each row. Enable multi row selection to show bulk actions in an action bar.',
             table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
         },
         withLastUpdated: {
@@ -268,7 +354,7 @@ export const Demo: Story = {
             }
             return baseColumns;
         }, [withSorting, withCollapsibleRows, collapsibleBehavior]);
-        const data = useMemo(() => (withData ? makeData(10) : []), [withData]);
+        const data = useMemo(() => (withData ? makeData(25) : []), [withData]);
 
         const table = useTable<Person>({
             initialState: {
@@ -315,46 +401,7 @@ export const Demo: Story = {
                         ? {onRowDoubleClick: (row) => alert(`Row double clicked: ${row.firstName} ${row.lastName}`)}
                         : undefined
                 }
-                getRowActions={
-                    withRowActions
-                        ? (selected: Person[]): TableAction[] =>
-                              selected.length === 1
-                                  ? [
-                                        {
-                                            group: '$$primary',
-                                            component: (
-                                                <Table.ActionItem
-                                                    onClick={() =>
-                                                        alert(`Action triggered on a single row: ${selected[0].id}`)
-                                                    }
-                                                    leftSection={<IconEdit height={16} />}
-                                                    key="single"
-                                                >
-                                                    Single row action
-                                                </Table.ActionItem>
-                                            ),
-                                        },
-                                    ]
-                                  : [
-                                        {
-                                            group: '$$primary',
-                                            component: (
-                                                <Table.ActionItem
-                                                    onClick={() =>
-                                                        alert(
-                                                            `Bulk action triggered on multiple rows: ${selected.map(({id}) => id).join(', ')}`,
-                                                        )
-                                                    }
-                                                    leftSection={<IconTrash height={16} />}
-                                                    key="bulk"
-                                                >
-                                                    Bulk action
-                                                </Table.ActionItem>
-                                            ),
-                                        },
-                                    ]
-                        : undefined
-                }
+                getRowActions={withRowActions ? getActions : undefined}
             >
                 {controlPlacement === 'toolbar' && (
                     <Table.Toolbar renderRoot={(props) => <Group w="100%" mb="xl" {...props} />}>
@@ -418,13 +465,13 @@ export const Demo: Story = {
                     )}
                 </Table.NoData>
                 <Table.Footer>
+                    <Table.Summary withLastUpdated={withLastUpdated} />
                     {withPagination && (
                         <>
-                            <Table.PerPage values={[5, 10, 25]} />
                             <Table.Pagination />
+                            <Table.PerPage values={[5, 10, 25]} />
                         </>
                     )}
-                    {withLastUpdated && <Table.LastUpdated />}
                 </Table.Footer>
             </Table>
         );

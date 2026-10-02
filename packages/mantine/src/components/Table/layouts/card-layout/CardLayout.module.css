@@ -8,7 +8,7 @@
     }
 }
 
-.cardCheckbox {
+.cardControls {
     position: absolute;
     top: var(--mantine-spacing-sm);
     right: var(--mantine-spacing-sm);

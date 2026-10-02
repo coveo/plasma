@@ -1,25 +1,29 @@
 import {CompoundStylesApiProps, PolymorphicFactory, polymorphicFactory, useProps} from '@mantine/core';
 import {type ElementType, type ReactNode} from 'react';
-import {Button, type ButtonProps} from '../../Button/Button.js';
+import {Button} from '../../Button/Button.js';
+import {Menu, type MenuItemProps} from '../../Menu/Menu.js';
 import {useTableContext} from '../TableContext.js';
 import {useTableActionContext} from './TableActionContext.js';
-import {Menu, type MenuItemProps} from '../../Menu/Menu.js';
 
 export type TableActionItemStylesNames = 'actionItemRoot';
 
 export interface TableActionItemProps
     extends
-        Omit<ButtonProps, 'classNames' | 'styles' | 'vars' | 'variant' | 'leftSection' | 'rightSection'>,
-        Omit<MenuItemProps, 'classNames' | 'styles' | 'vars' | 'variant' | 'leftSection' | 'disabled'>,
+        Omit<MenuItemProps, 'classNames' | 'styles' | 'vars' | 'variant'>,
         CompoundStylesApiProps<TableActionItemFactory> {
     /**
      * Action label
      */
     children: ReactNode;
     /**
-     * Content to put on the left of the label
+     * @deprecated Icons are not rendered in table actions menus, this prop is ignored.
      */
     leftSection?: ReactNode;
+    /**
+     * Value used to match the action when searching in the actions menu.
+     * Defaults to `children` when it is a string.
+     */
+    searchValue?: string;
 }
 
 export type TableActionItemFactory = PolymorphicFactory<{
@@ -35,28 +39,34 @@ const defaultProps = {} satisfies Partial<TableActionItemProps>;
 export const TableActionItem = polymorphicFactory<TableActionItemFactory>((allProps) => {
     const {ref, component, ...restProps} = allProps as typeof allProps & {component?: ElementType};
     const {getStyles} = useTableContext();
-    const {primary} = useTableActionContext();
+    const {variant, destructive} = useTableActionContext();
     const {
         classNames,
         className,
         style,
         styles,
         vars: _vars,
+        searchValue: _searchValue,
+        leftSection: _leftSection,
+        color,
+        closeMenuOnClick: _closeMenuOnClick,
         children,
         ...others
     } = useProps('PlasmaTableActionItem', defaultProps, restProps);
 
-    if (primary) {
+    if (variant === 'button') {
+        const ActionButton = destructive ? Button.DestructiveTertiary : Button.Tertiary;
         return (
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            <Button.Quaternary
+            <ActionButton
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 component={component as any}
                 ref={ref}
                 {...others}
+                color={destructive ? undefined : color}
                 {...getStyles('actionItemRoot', {className, style, classNames, styles})}
             >
                 {children}
-            </Button.Quaternary>
+            </ActionButton>
         );
     }
 
@@ -66,6 +76,7 @@ export const TableActionItem = polymorphicFactory<TableActionItemFactory>((allPr
             component={component as any}
             ref={ref}
             {...others}
+            color={destructive ? 'var(--mantine-color-error)' : color}
             {...getStyles('actionItemRoot', {className, style, classNames, styles})}
         >
             {children}

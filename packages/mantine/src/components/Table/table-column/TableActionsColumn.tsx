@@ -1,4 +1,3 @@
-import {MoreSize16Px} from '@coveord/plasma-react-icons';
 import {useProps} from '@mantine/core';
 import {CellContext, ColumnDef} from '@tanstack/table-core';
 import {FunctionComponent} from 'react';
@@ -23,7 +22,9 @@ export interface TableActionsColumnMeta {
 }
 
 /**
- * Generic column to use when your table needs actions on rows
+ * Generic column rendering the row actions in a menu.
+ * Automatically added at the end of the columns (before the collapsible column, if any) when `getRowActions` is provided to the Table,
+ * add it to your columns explicitly to control its position.
  */
 export const TableActionsColumn: ColumnDef<unknown> = {
     id: 'actions',
@@ -40,7 +41,8 @@ export const TableActionsColumn: ColumnDef<unknown> = {
         const options = typeof rowConfigurable === 'boolean' ? {} : rowConfigurable;
         return <TableColumnsSelector table={table} options={options} />;
     },
-    size: 84, // 16px padding left + 28px ActionIcon + 40px padding right
+    size: 1,
+    minSize: 1,
     cell: (info) => <ActionsMenu info={info} />,
 };
 
@@ -48,16 +50,11 @@ interface TableActionsColumnProps extends Omit<TableActionsListProps, 'actions'>
     info: CellContext<unknown, unknown>;
 }
 
-const defaultProps = {
-    label: 'Actions',
-    icon: <MoreSize16Px height={16} />,
-} satisfies Partial<TableActionsColumnProps>;
+const defaultProps = {} satisfies Partial<TableActionsColumnProps>;
 
 const ActionsMenu: FunctionComponent<TableActionsColumnProps> = (props) => {
     const {getRowActions} = useTableContext();
+    const {info, ...others} = useProps('PlasmaTableActionsColumn', defaultProps, props);
 
-    const {info, variant, ...others} = useProps('PlasmaTableActionsColumn', defaultProps, props);
-
-    const actionsElements = getRowActions([info.row.original]);
-    return <TableActionsList actions={actionsElements} variant={variant ?? 'combined'} {...others} />;
+    return <TableActionsList actions={getRowActions([info.row.original])} {...others} />;
 };

@@ -36,6 +36,7 @@ Do not use `Table` when:
 - Use `Collection` for editable repeated form items.
 - Use `Facet` or table filter sub-components when users need to narrow data.
 - Use row actions for item-specific commands and header/footer actions for table-level commands.
+- `getRowActions` serves both single-row and bulk actions: return only the actions that make sense for the number of rows received.
 
 ## States
 
@@ -55,7 +56,12 @@ Important states include:
 - When row selection is enabled, pressing Escape clears the selection unless `forceSelection` is enabled.
 - `enableRowSelection` MAY be a predicate when only some rows should be selectable. Rows rejected by the predicate are displayed at 50% opacity, do not render a selection checkbox, cannot be selected through their surface, do not trigger `onRowDoubleClick`, and are skipped by select-all and range selection.
 - `enableMultiRowSelection` MAY be a predicate when some rows should only support single selection. Rows rejected by the predicate do not render a selection checkbox and are skipped by select-all and range selection, but remain selectable through their surface and continue to trigger `onRowDoubleClick`. Selecting one clears the current selection, and selecting another row afterward clears the single-select-only row.
-- When multi-row selection is enabled, the selection checkboxes stay hidden until a bulk-eligible row is selected; selecting one reveals every checkbox. Selecting a row rejected by the `enableMultiRowSelection` predicate selects it exclusively (like single selection) without revealing the checkboxes, and the `Table.Header` selected-count control stays hidden while only such rows are selected.
+- When multi-row selection is enabled, the selection checkboxes stay hidden until a bulk-eligible row is selected; selecting one reveals every checkbox. Selecting a row rejected by the `enableMultiRowSelection` predicate selects it exclusively (like single selection) without revealing the checkboxes, and the bulk actions bar stays hidden while only such rows are selected.
+- When `getRowActions` is provided, an actions menu (3-dots `ActionIcon`) is rendered in a column at the end of each row (before the collapsible toggle column, if any), or in the top-right corner of each card in the card layout. `getRowActions` is called with `[row]` for each row. Rows without actions render no menu.
+- When multi-row selection is enabled and bulk-eligible rows are selected, a `Table.BulkActions` bar (Mantine `ActionBar`) appears at the bottom of the screen with the selected count, the actions returned by `getRowActions(selectedRows)`, and a close button that clears the selection. In the bar, `$$primary` actions render as tertiary buttons, `$$destructive` actions as destructive tertiary buttons, and custom groups in a "More actions" menu. The close button is hidden when selection is disabled or forced.
+- All actions are menu items and their icons (`leftSection`) are not rendered. `$$primary` actions are rendered first, custom groups follow with their name as label, and `$$destructive` actions are rendered last in red. `$$confirmPrompt` actions (`InlineConfirm.Prompt`) replace the menu target while confirming.
+- Clicking or double clicking the actions menu does not select the row nor trigger `onRowDoubleClick`.
+- When a menu has more than 7 actions, it displays a search input that filters actions by their string `children`, or by `searchValue` when set on `Table.ActionItem`.
 - When multi-row selection is enabled, users MAY click a row, card, or its checkbox and then Shift-click another selection target to select all selectable rows between them on the displayed page. Existing selections outside the range are preserved.
 
 ## Content guidance
@@ -83,7 +89,7 @@ Important states include:
 **`getRowId`** `CoreOptions<TData>['getRowId']` · optional · default: `undefined` — Defines how each row is uniquely identified. You SHOULD specify this prop with an ID that makes sense.
 **`getRowAttributes`** `(datum: TData, index: number, row: Row<TData>) => Record<string, unknown>` · optional · default: `undefined` — HTML attributes MAY be defined for each row with this prop.
 **`getRowExpandedContent`** `(datum: TData, index: number, row: Row<TData>) => ReactNode` · optional · default: `undefined` — Function that generates the expandable content of a row. You MUST return `null` for rows that do not need to be expandable.
-**`getRowActions`** `(data: TData[]) => TableAction[]` · optional · default: `() => []` — Function that generates the actions for the selected rows. If the table does not support multi selection, you MUST access `data[0]`. You MUST return an empty array for rows that do not have actions.
+**`getRowActions`** `(data: TData[]) => TableAction[]` · optional · default: `() => []` — Function that generates the actions of rows. It is called with a single row for the row actions column and with the selected rows for the bulk actions bar. Providing it automatically adds `Table.ActionsColumn` at the end of the columns, before the collapsible column if any, unless a column with id `actions` already exists. You MUST return an empty array for rows that do not have actions. Each action is `{group: '$$primary' | '$$destructive' | '$$confirmPrompt' | string, component: <Table.ActionItem />}`. Destructive actions MUST use the `$$destructive` group.
 **`columns`** `Array<ColumnDef<TData>>` · required · default: `undefined` — Columns to display in the table. This prop MUST define the rendered columns.
 **`layouts`** `TableLayout[]` · optional · default: `[Table.Layouts.Rows]` — Available layouts. This prop MAY be used to expose layout switching.
 **`layoutProps`** `{onRowDoubleClick?: (selectedRow: TData, index: number, row: Row<TData>) => void} & Record<string, unknown>` · optional · default: `{}` — Props passed down to the active layout Header and Body components.
@@ -105,6 +111,7 @@ Plasma provides pre-configured sub-components as convenience wrappers. You SHOUL
 - `Table.AccordionColumn`
 - `Table.ActionsColumn`
 - `Table.ActionItem`
+- `Table.BulkActions`
 - `Table.CollapsibleColumn`
 - `Table.DateRangePicker`
 - `Table.Filter`
@@ -117,7 +124,42 @@ Plasma provides pre-configured sub-components as convenience wrappers. You SHOUL
 - `Table.Pagination`
 - `Table.PerPage`
 - `Table.Predicate`
+- `Table.Summary`
 - `Table.Toolbar`
+
+### Table.ActionItem
+
+Menu item rendered in the row actions menu and the bulk actions menu. Accepts `Menu.Item` props (`color`, `disabled`, `disabledTooltip`, ...). `leftSection` is deprecated and ignored and an optional `searchValue` used by the menu search when `children` is not a string.
+
+### Table.BulkActions
+
+Rendered automatically when multi-row selection is enabled. You MAY render it as a child of `Table` to customize it: `selectedCountLabel` (default `` (count) => `${count} selected` ``), `actionsLabel` (label of the custom groups menu, default `'More actions'`), `unselectAllLabel` (default `'Unselect all'`), and Mantine `ActionBar` props such as `position` or `zIndex`.
+
+```tsx
+<Table store={store} columns={columns} data={data} getRowActions={getRowActions}>
+    <Table.BulkActions selectedCountLabel={(count) => `${count} users selected`} />
+</Table>
+```
+
+### Table.Footer
+
+`Table.Footer` lays its content out in a grid with fixed areas, regardless of the order of its children: `Table.Summary` on the left, `Table.Pagination` in the center and `Table.PerPage` on the right. The pagination stays centered even when the other areas are empty. Styles names: `footerRoot`, `footerStart`, `footerCenter`, `footerEnd`.
+
+### Table.Summary
+
+Displays the range of rows displayed and the time of the last data update. Props: `rangeLabel` (default `` ({from, to, total}) => `Showing ${from}-${to} out of ${total}` ``), `withLastUpdated` (default `true`), `lastUpdatedLabel` (default `'Last update:'`), `lastUpdatedFormatter`. `total` is `totalEntries` from the store, or the row count for client-side tables. You SHOULD use `Table.Summary` instead of `Table.LastUpdated` inside `Table.Footer`.
+
+```tsx
+<Table.Footer>
+    <Table.Summary />
+    <Table.Pagination />
+    <Table.PerPage />
+</Table.Footer>
+```
+
+### Table.PerPage
+
+`label` (default `'Results per page'`) is the accessible name of the control, it is not displayed.
 
 ### Table.Toolbar
 
@@ -130,7 +172,7 @@ Use `Table.Toolbar` to render `Table.Filter`, `Table.Predicate`, and `Table.Date
         <Table.Predicate id="status" data={[...]} label="Status" />
         <Table.DateRangePicker />
     </Table.Toolbar>
-    {/* Table.Header can still be used for layout controls and row selection actions */}
+    {/* Table.Header can still be used for layout controls */}
 </Table>
 ```
 
@@ -144,10 +186,11 @@ These type-only aliases are available for annotations and do not add runtime sta
 - `Table.StylesNames`
 - `Table.Factory`
 - `Table.ActionItem.{Props, StylesNames, Factory}`
+- `Table.BulkActions.{Props, StylesNames}`
 - `Table.Cell.{Props, StylesNames, Factory}`
 - `Table.DateRangePicker.{Props, StylesNames, Factory}`
 - `Table.Filter.{Props, StylesNames, Factory}`
-- `Table.Footer.Props`
+- `Table.Footer.{Props, StylesNames, Factory}`
 - `Table.Header.{Props, StylesNames, Factory}`
 - `Table.LastUpdated.{Props, StylesNames, Factory}`
 - `Table.Loading.Props`
@@ -155,6 +198,7 @@ These type-only aliases are available for annotations and do not add runtime sta
 - `Table.Pagination.Props`
 - `Table.PerPage.Props`
 - `Table.Predicate.{Props, StylesNames, Factory}`
+- `Table.Summary.{Props, StylesNames, Factory}`
 - `Table.Toolbar.{Props, StylesNames, Factory}`
 
 ## Usage

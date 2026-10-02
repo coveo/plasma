@@ -1,9 +1,17 @@
-import {createSafeContext} from '@mantine/core';
+import {createContext, useContext} from 'react';
 
 export interface TableActionContextValue {
-    primary: boolean;
+    /**
+     * How the action is rendered: as a menu item (row actions menu) or as a button (bulk actions bar)
+     */
+    variant: 'menuItem' | 'button';
+    /**
+     * Whether the action belongs to the `$$destructive` group
+     */
+    destructive: boolean;
 }
 
-export const [TableActionProvider, useTableActionContext] = createSafeContext<TableActionContextValue>(
-    'TableActionProvider component was not found in the tree',
-);
+const TableActionContext = createContext<TableActionContextValue>({variant: 'menuItem', destructive: false});
+
+export const TableActionProvider = TableActionContext.Provider;
+export const useTableActionContext = () => useContext(TableActionContext);
