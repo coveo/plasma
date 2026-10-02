@@ -119,7 +119,7 @@ interface BaseCollectionProps<T> extends __InputWrapperProps, BoxProps, StylesAp
     /**
      * The gap between the collection items
      *
-     * @default 'md'
+     * @default 'sm'
      */
     gap?: MantineSpacing;
     /**
