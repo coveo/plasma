@@ -42,11 +42,11 @@
         "lint-staged": "17.5.1",
         "oxfmt": "0.70.0",
         "oxlint": "1.85.0",
-        "oxlint-tsgolint": "7.0.2002",
+        "oxlint-tsgolint": "7.0.2003",
         "postcss": "8.5.28",
         "stylelint": "17.15.0",
         "stylelint-config-standard-scss": "17.0.0",
-        "turbo": "2.11.3"
+        "turbo": "2.11.4"
     },
     "lint-staged": {
         "**/*.{js,jsx,ts,tsx,mjs,json,md,yml,html}": [
@@ -63,5 +63,5 @@
         "IE 11",
         "not dead"
     ],
-    "packageManager": "pnpm@12.6.0"
+    "packageManager": "pnpm@12.7.0"
 }
