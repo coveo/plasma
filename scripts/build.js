@@ -71,8 +71,10 @@ export const build = async ({watch = false}) => {
             tsgoArgs.push('--watch');
         }
 
-        const tsgoBin = path.resolve(__dirname, '..', 'node_modules', '.bin', 'tsgo');
-        const tsgo = spawn(tsgoBin, tsgoArgs, {stdio: 'inherit'});
+        const tsgoBinName = process.platform === 'win32' ? 'tsgo.CMD' : 'tsgo';
+        const tsgoBin = path.resolve(__dirname, '..', 'node_modules', '.bin', tsgoBinName);
+        const [cmd, args] = process.platform === 'win32' ? ['cmd', ['/c', tsgoBin, ...tsgoArgs]] : [tsgoBin, tsgoArgs];
+        const tsgo = spawn(cmd, args, {stdio: 'inherit'});
 
         if (watch) {
             copyNonTsFiles();
