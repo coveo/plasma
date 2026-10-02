@@ -17,12 +17,12 @@ export const RemoveButton: FunctionComponent<RemoveButtonProps> = ({removable, o
     const {getStyles} = useCollectionContext();
 
     if (!removable || !onRemove) {
-        return <div style={{width: 28}} />;
+        return <div style={{width: 36}} />;
     }
 
     return (
         <Box {...getStyles('removeButton')}>
-            <ActionIcon.Quaternary onClick={onRemove}>
+            <ActionIcon.Quaternary onClick={onRemove} size={36}>
                 <IconTrash aria-label="Remove" size={16} />
             </ActionIcon.Quaternary>
         </Box>
