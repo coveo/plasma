@@ -193,7 +193,7 @@ const defaultProps = {
     addDisabledTooltip: 'There is already an empty item',
     disabled: false,
     readOnly: false,
-    gap: 'md',
+    gap: 'sm',
     required: false,
     getItemId: ({id}: any) => id,
 } satisfies Partial<CollectionProps<unknown>>;
