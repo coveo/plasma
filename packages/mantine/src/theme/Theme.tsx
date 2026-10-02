@@ -187,6 +187,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
     },
     primaryShade: 5,
     colors: PlasmaColors,
+    respectReducedMotion: true,
     components: {
         Accordion: MantineAccordion.extend({
             classNames: AccordionClasses,
