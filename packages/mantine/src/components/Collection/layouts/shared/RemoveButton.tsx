@@ -22,7 +22,7 @@ export const RemoveButton: FunctionComponent<RemoveButtonProps> = ({removable, o
 
     return (
         <Box {...getStyles('removeButton')}>
-            <ActionIcon.Quaternary onClick={onRemove} size={36}>
+            <ActionIcon.Quaternary onClick={onRemove} size="lg">
                 <IconTrash aria-label="Remove" size={16} />
             </ActionIcon.Quaternary>
         </Box>

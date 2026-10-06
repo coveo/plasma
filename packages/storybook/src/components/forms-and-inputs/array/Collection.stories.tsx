@@ -93,6 +93,7 @@ export const Demo: StoryObj<DemoStoryProps> = {
                 ...enhanceWithCollectionProps(payload, 'contacts'),
                 readOnly: props.readOnly,
                 disabled: props.disabled,
+                error: 'test123',
             }),
         });
 
