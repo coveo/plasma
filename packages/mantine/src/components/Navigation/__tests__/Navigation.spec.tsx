@@ -23,6 +23,98 @@ describe('Navigation', () => {
             await user.click(screen.getByRole('button', {name: 'Expand'}));
             expect(navigation).not.toHaveAttribute('data-collapsed');
         });
+
+        it('toggles the Navigation.SideBar with the keyboard', async () => {
+            const user = userEvent.setup();
+            render(
+                <AppShell>
+                    <Navigation>
+                        <Navigation.SideBar />
+                    </Navigation>
+                </AppShell>,
+            );
+            const navigation = screen.getByRole('navigation');
+
+            screen.getByRole('button', {name: 'Collapse'}).focus();
+            await user.keyboard('{Enter}');
+            expect(navigation).toHaveAttribute('data-collapsed', 'true');
+
+            await user.keyboard('{Enter}');
+            expect(navigation).not.toHaveAttribute('data-collapsed');
+        });
+
+        it('does not toggle the Navigation.SideBar when disabled', async () => {
+            const user = userEvent.setup();
+            render(
+                <AppShell>
+                    <Navigation>
+                        <Navigation.SideBar toggleProps={{disabled: true}} />
+                    </Navigation>
+                </AppShell>,
+            );
+
+            const toggle = screen.getByRole('button', {name: 'Collapse'});
+            expect(toggle).toBeDisabled();
+
+            await user.click(toggle);
+            expect(screen.getByRole('navigation')).not.toHaveAttribute('data-collapsed');
+        });
+
+        it('uses the labels passed through toggleProps', () => {
+            render(
+                <AppShell>
+                    <Navigation defaultCollapsed>
+                        <Navigation.SideBar toggleProps={{expandLabel: 'Show menu', collapseLabel: 'Hide menu'}} />
+                    </Navigation>
+                </AppShell>,
+            );
+
+            expect(screen.getByRole('button', {name: 'Show menu'})).toBeInTheDocument();
+        });
+    });
+
+    describe('NavigationSideBar', () => {
+        it('renders the collapse toggle by default', () => {
+            render(
+                <AppShell>
+                    <Navigation>
+                        <Navigation.SideBar />
+                    </Navigation>
+                </AppShell>,
+            );
+
+            expect(screen.getByRole('button', {name: 'Collapse'})).toBeInTheDocument();
+        });
+
+        it('does not render the collapse toggle when withToggle is false', () => {
+            render(
+                <AppShell>
+                    <Navigation>
+                        <Navigation.SideBar withToggle={false} />
+                    </Navigation>
+                </AppShell>,
+            );
+
+            expect(screen.queryByRole('button', {name: 'Collapse'})).not.toBeInTheDocument();
+        });
+
+        it('renders the header, the links and the footer in order', () => {
+            render(
+                <AppShell>
+                    <Navigation>
+                        <Navigation.SideBar header={<div>Header</div>} footer={<div>Footer</div>}>
+                            <Navigation.Link level={1} label="Home" />
+                        </Navigation.SideBar>
+                    </Navigation>
+                </AppShell>,
+            );
+
+            const header = screen.getByText('Header');
+            const link = screen.getByText('Home');
+            const footer = screen.getByText('Footer');
+            expect(header.compareDocumentPosition(link) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+            expect(link.compareDocumentPosition(footer) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+        });
     });
 
     describe('NavigationSection', () => {

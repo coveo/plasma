@@ -17,24 +17,37 @@ export interface NavigationToggleProps {
      * @default 'Collapse'
      */
     collapseLabel?: string;
+    /**
+     * Whether the toggle is disabled. A disabled toggle stays visible but does not change the collapsed state.
+     * @default false
+     */
+    disabled?: boolean;
 }
 
 export const NavigationToggle: FunctionComponent<NavigationToggleProps> = ({
     className,
     expandLabel = 'Expand',
     collapseLabel = 'Collapse',
+    disabled = false,
 }) => {
     const {toggleCollapsed, collapsed} = useNavigation();
     const Icon = collapsed ? IconChevronRight : IconChevronLeft;
 
+    // The click is handled on the container so the whole strip next to the navbar edge toggles, not only the button.
+    const onClick = () => {
+        if (!disabled) {
+            toggleCollapsed();
+        }
+    };
+
     return (
-        <Box className={clsx(className, classes.toggleContainer)} mod={{collapsed}}>
+        <Box className={clsx(className, classes.toggleContainer)} mod={{collapsed, disabled}} onClick={onClick}>
             <ActionIcon
                 size="sm"
                 className={classes.toggle}
                 variant="filled"
                 aria-label={collapsed ? expandLabel : collapseLabel}
-                onClick={() => toggleCollapsed()}
+                disabled={disabled}
             >
                 <Icon />
             </ActionIcon>
