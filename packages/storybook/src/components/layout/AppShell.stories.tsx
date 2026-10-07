@@ -1,5 +1,4 @@
-import {Center, MantineColor} from '@coveord/plasma-mantine';
-import {AppShell} from '@coveord/plasma-mantine/components/AppShell';
+import {AppShell, Center, type MantineColor} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import {ComponentProps, ReactNode} from 'react';
 
