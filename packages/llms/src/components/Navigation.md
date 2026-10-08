@@ -29,11 +29,15 @@ description: Sidebar navigation component with collapsible sections, active link
 > Extends: `AppShellNavbarProps` (excluding `hidden`).
 
 **`header`** `ReactNode` · optional — Content rendered at the top of the sidebar (e.g., a logo or app switcher slot).
+**`footer`** `ReactNode` · optional — Content pinned at the bottom of the sidebar, below the scrollable links.
+**`withToggle`** `boolean` · optional · default: `true` — Whether the collapse toggle is rendered. Set it to `false` when users must not collapse the sidebar.
+**`toggleProps`** `Omit<NavigationToggleProps, 'className'>` · optional — Props passed down to the collapse toggle (labels, disabled state).
 
 ### Navigation.Toggle
 
 **`expandLabel`** `string` · optional · default: `'Expand'` — Accessible label for the expand button.
 **`collapseLabel`** `string` · optional · default: `'Collapse'` — Accessible label for the collapse button.
+**`disabled`** `boolean` · optional · default: `false` — Whether the toggle is disabled. A disabled toggle stays visible but does not change the collapsed state.
 
 ## Sub-components
 
@@ -128,7 +132,8 @@ function Example() {
 
 - Use `level={1}` for top-level items (standalone links or sections) and `level={2}` for nested links within a section.
 - Pass a `component` prop to `Navigation.Link` to integrate with your router (e.g., React Router's `Link`).
-- The `Navigation.Toggle` is automatically included at the bottom of `Navigation.SideBar`.
+- The `Navigation.Toggle` is automatically included in `Navigation.SideBar`. Use `withToggle={false}` to remove it, or `toggleProps={{disabled: true}}` to keep it visible but inactive.
+- Use the `footer` prop for content that must stay visible below the links, such as a call-to-action link. It does not scroll with the links.
 
 ---
 
