@@ -4,13 +4,13 @@
 
 .items {
     background-color: var(--mantine-color-gray-light);
-    padding: var(--mantine-spacing-md);
+    padding: var(--mantine-spacing-sm);
     border: 1px solid var(--mantine-color-default-border);
     border-radius: var(--mantine-radius-default);
 }
 
 .item {
-    align-items: baseline;
+    align-items: flex-start;
     flex-wrap: nowrap;
 
     &[data-isdragging='true'] {
@@ -23,6 +23,7 @@
     cursor: grab;
     display: flex;
     align-items: center;
+    height: 36px;
 
     &:active {
         cursor: grabbing;

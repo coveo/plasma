@@ -24,7 +24,7 @@
 .row {
     display: flex;
     gap: var(--mantine-spacing-sm);
-    align-items: center;
+    align-items: flex-start;
 }
 
 .row[data-isdragging='true'] {
