@@ -10,6 +10,8 @@
 }
 
 .item {
+    --collection-control-offset: 3px;
+
     align-items: baseline;
     flex-wrap: nowrap;
 
@@ -17,6 +19,13 @@
         box-shadow: var(--mantine-shadow-md);
         z-index: 2;
     }
+}
+
+/* Baseline-aligned rows put the icon's bottom edge on the text baseline; the offset centers it on the input instead */
+.dragHandle,
+.removeButton {
+    position: relative;
+    top: var(--collection-control-offset, 0);
 }
 
 .dragHandle {

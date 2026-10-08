@@ -22,6 +22,8 @@
 }
 
 .row {
+    --collection-control-offset: 3px;
+
     display: flex;
     gap: var(--mantine-spacing-sm);
     align-items: baseline;

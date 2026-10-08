@@ -1,4 +1,6 @@
 .item {
+    --collection-control-offset: 0;
+
     border: 1px solid var(--mantine-color-gray-3);
     border-radius: var(--mantine-radius-default);
     padding: var(--mantine-spacing-md);
