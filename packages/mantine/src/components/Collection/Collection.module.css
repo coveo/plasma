@@ -1,5 +1,10 @@
 .root {
     position: relative;
+
+    /* Column layouts only: in the legacy layout, the add button is inside .items and spaced by its gap */
+    > .addButtonContainer {
+        margin-top: var(--mantine-spacing-sm);
+    }
 }
 
 .items {
