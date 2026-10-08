@@ -89,11 +89,17 @@ export const Demo: StoryObj<DemoStoryProps> = {
                     {name: 'Bob Johnson', email: 'bob@example.com'},
                 ],
             },
+            validate: {
+                contacts: {
+                    name: (value) => (value ? null : 'Name is required'),
+                    email: (value) => (/^\S+@\S+\.\S+$/.test(value) ? null : 'Invalid email'),
+                },
+            },
+            validateInputOnBlur: true,
             enhanceGetInputProps: (payload) => ({
                 ...enhanceWithCollectionProps(payload, 'contacts'),
                 readOnly: props.readOnly,
                 disabled: props.disabled,
-                error: 'test123',
             }),
         });
 
@@ -135,6 +141,47 @@ export const Demo: StoryObj<DemoStoryProps> = {
                                 {...form.getInputProps(`contacts.${index}.email`)}
                             />
                         ),
+                    },
+                ]}
+            />
+        );
+    },
+};
+
+export const CollectionValidationErrors: Story = {
+    tags: ['!dev'],
+    render: () => {
+        const form = useForm({
+            initialValues: {
+                contacts: [
+                    {name: 'Alice Smith', email: 'alice@'},
+                    {name: '', email: 'bob@example.com'},
+                ],
+            },
+            initialErrors: {
+                'contacts.0.email': 'Invalid email',
+                'contacts.1.name': 'Name is required',
+            },
+            enhanceGetInputProps: (payload) => enhanceWithCollectionProps(payload, 'contacts'),
+        });
+
+        return (
+            <Collection<ContactItem>
+                {...form.getInputProps('contacts')}
+                w={600}
+                label="Rows stay aligned when a cell shows an error"
+                draggable
+                newItem={{name: '', email: ''}}
+                layout={Collection.Layouts.Horizontal}
+                columns={[
+                    {
+                        header: 'Name',
+                        cell: (item, index) => <TextInput {...form.getInputProps(`contacts.${index}.name`)} />,
+                        maxSize: 150,
+                    },
+                    {
+                        header: 'Email',
+                        cell: (item, index) => <TextInput {...form.getInputProps(`contacts.${index}.email`)} />,
                     },
                 ]}
             />
