@@ -1,5 +1,29 @@
 # @coveord/plasma-mantine
 
+## 61.4.0
+
+### Minor Changes
+
+- Add `SliderInput` for labeled slider fields [#4618](https://github.com/coveo/plasma/pull/4618)
+
+  Use `SliderInput` to display a slider with an input label, supporting description, and validation feedback. The existing `Slider` API remains unchanged.
+
+- Add Plasma headers and sticky actions to `Drawer` [#4619](https://github.com/coveo/plasma/pull/4619)
+
+  String titles render with a secondary `Header`. Use `description` and `help` for supporting text and documentation links. `Drawer.Footer` keeps actions at the bottom of the drawer.
+
+### Patch Changes
+
+- Refine `Collection` spacing and alignment of the drag handle and remove button [#4631](https://github.com/coveo/plasma/pull/4631)
+
+  Drag handles and remove buttons are now 36px tall and aligned with the top of the item inputs, so they stay in place when a field displays an error message. Items that can't be removed reserve the same 36px so their fields stay aligned with removable ones. The default `gap` between items is reduced from `md` to `sm`, and the legacy children pattern uses a tighter padding around its items. Pass `gap="md"` to keep the previous spacing.
+
+- Respect reduced motion [#4628](https://github.com/coveo/plasma/pull/4628)
+
+  `Plasmantine` now sets `respectReducedMotion: true`. When the user prefers reduced motion, `Collapse`, `Accordion`, and `Transition` can take Mantine's synchronous, animation-free path instead of running their `requestAnimationFrame`-driven timers. For this to take effect in your test environment, your `matchMedia` mock needs to return `true` for the `(prefers-reduced-motion: reduce)` query; setting that up removes a common source of animation-timing flakiness in tests.
+
+- Fix `Checkbox` label spacing to use the default inline input offset [#4622](https://github.com/coveo/plasma/pull/4622)
+
 ## 61.3.2
 
 ### Patch Changes
