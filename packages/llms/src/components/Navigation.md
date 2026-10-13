@@ -28,10 +28,10 @@ description: Sidebar navigation component with collapsible sections, active link
 
 > Extends: `AppShellNavbarProps` (excluding `hidden`).
 
-**`header`** `ReactNode` · optional — Content rendered at the top of the sidebar (e.g., a logo or app switcher slot).
-**`footer`** `ReactNode` · optional — Content pinned at the bottom of the sidebar, below the scrollable links.
+**`header`** `ReactNode` · optional · default: `undefined` — Content rendered at the top of the sidebar (e.g., a logo or app switcher slot).
+**`footer`** `ReactNode` · optional · default: `undefined` — Content pinned at the bottom of the sidebar, below the scrollable links.
 **`withToggle`** `boolean` · optional · default: `true` — Whether the collapse toggle is rendered. Set it to `false` when users must not collapse the sidebar.
-**`toggleProps`** `Omit<NavigationToggleProps, 'className'>` · optional — Props passed down to the collapse toggle (labels, disabled state).
+**`toggleProps`** `Omit<NavigationToggleProps, 'className'>` · optional · default: `undefined` — Props passed down to the collapse toggle (labels, disabled state).
 
 ### Navigation.Toggle
 

@@ -24,6 +24,38 @@ describe('Navigation', () => {
             expect(navigation).not.toHaveAttribute('data-collapsed');
         });
 
+        it('toggles the Navigation.SideBar when clicking the strip around the toggle', async () => {
+            const user = userEvent.setup();
+            render(
+                <AppShell>
+                    <Navigation>
+                        <Navigation.SideBar />
+                    </Navigation>
+                </AppShell>,
+            );
+            const navigation = screen.getByRole('navigation');
+
+            await user.click(screen.getByRole('button', {name: 'Collapse'}).parentElement as HTMLElement);
+            expect(navigation).toHaveAttribute('data-collapsed', 'true');
+
+            await user.click(screen.getByRole('button', {name: 'Expand'}).parentElement as HTMLElement);
+            expect(navigation).not.toHaveAttribute('data-collapsed');
+        });
+
+        it('does not toggle the Navigation.SideBar when clicking the strip of a disabled toggle', async () => {
+            const user = userEvent.setup();
+            render(
+                <AppShell>
+                    <Navigation>
+                        <Navigation.SideBar toggleProps={{disabled: true}} />
+                    </Navigation>
+                </AppShell>,
+            );
+
+            await user.click(screen.getByRole('button', {name: 'Collapse'}).parentElement as HTMLElement);
+            expect(screen.getByRole('navigation')).not.toHaveAttribute('data-collapsed');
+        });
+
         it('toggles the Navigation.SideBar with the keyboard', async () => {
             const user = userEvent.setup();
             render(

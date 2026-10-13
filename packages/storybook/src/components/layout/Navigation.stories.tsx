@@ -92,14 +92,26 @@ export const Demo: Story = {
         withToggle: {
             control: 'boolean',
             description: 'Whether the collapse toggle is rendered.',
+            table: {
+                type: {summary: 'boolean'},
+                defaultValue: {summary: 'true'},
+            },
         },
         toggleDisabled: {
             control: 'boolean',
-            description: 'Whether the collapse toggle is disabled (passed through `toggleProps`).',
+            description: 'Controls whether the example disables the collapse toggle, through `toggleProps.disabled`.',
+            table: {
+                type: {summary: 'boolean'},
+                defaultValue: {summary: 'false'},
+            },
         },
         withFooter: {
             control: 'boolean',
-            description: 'Whether to render content in the `footer` slot.',
+            description: 'Controls whether the example renders a Settings link in the `footer` slot.',
+            table: {
+                type: {summary: 'boolean'},
+                defaultValue: {summary: 'true'},
+            },
         },
     },
     args: {
