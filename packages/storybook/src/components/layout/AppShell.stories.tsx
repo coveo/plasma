@@ -1,14 +1,15 @@
-import {AppShell} from '@coveord/plasma-mantine/components/AppShell';
-import {Center, MantineColor} from '@mantine/core';
+import {AppShell, Center, type MantineColor} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import {ComponentProps, ReactNode} from 'react';
 
 type AppShellArgs = {
     layout: ComponentProps<typeof AppShell>['layout'];
     navBarWidth: number;
+    asideWidth: number;
     headerHeight: number;
     withBorder: boolean;
-    collapsed: boolean;
+    navbarCollapsed: boolean;
+    asideCollapsed: boolean;
     showContentOverflow: boolean;
 };
 
@@ -21,8 +22,10 @@ const meta: Meta<AppShellArgs> = {
     args: {
         headerHeight: 60,
         navBarWidth: 240,
+        asideWidth: 300,
         withBorder: false,
-        collapsed: false,
+        navbarCollapsed: false,
+        asideCollapsed: false,
         layout: 'alt',
         showContentOverflow: false,
     },
@@ -30,6 +33,14 @@ const meta: Meta<AppShellArgs> = {
         layout: {
             control: 'select',
             options: ['alt', 'default'],
+        },
+        navbarCollapsed: {
+            control: 'boolean',
+            description: 'Collapse the navbar',
+        },
+        asideCollapsed: {
+            control: 'boolean',
+            description: 'Collapse the aside',
         },
     },
 };
@@ -51,7 +62,16 @@ export const Demo: Story = {
     render: (props) => (
         <AppShell
             layout={props.layout}
-            navbar={{breakpoint: 0, width: props.navBarWidth, collapsed: {desktop: props.collapsed}}}
+            navbar={{
+                breakpoint: 0,
+                width: props.navBarWidth,
+                collapsed: {desktop: props.navbarCollapsed, mobile: props.navbarCollapsed},
+            }}
+            aside={{
+                breakpoint: 0,
+                width: props.asideWidth,
+                collapsed: {desktop: props.asideCollapsed, mobile: props.asideCollapsed},
+            }}
             header={{height: props.headerHeight}}
             withBorder={props.withBorder}
         >
@@ -62,6 +82,9 @@ export const Demo: Story = {
             <AppShell.Navbar>
                 <Placeholder color="primary">Navbar</Placeholder>
             </AppShell.Navbar>
+            <AppShell.Aside>
+                <Placeholder color="teal">Aside</Placeholder>
+            </AppShell.Aside>
         </AppShell>
     ),
 };
