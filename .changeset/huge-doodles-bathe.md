@@ -2,6 +2,6 @@
 '@coveord/plasma-mantine': patch
 ---
 
-Updated CodeEditor visual
+Update the `CodeEditor` layout and colors
 
-Changed the label and actions placement. Minor color changes
+Place the label above the editor and move the editor actions into a dedicated toolbar.
