@@ -1,20 +1,30 @@
 .root {
-    --ce-bg: var(--mantine-color-gray-0);
+    --ce-bg: var(--mantine-color-white);
     --ce-border-color: var(--mantine-color-default-border);
 
     border: 1px solid var(--ce-border-color);
     border-radius: var(--mantine-radius-lg);
     z-index: 1;
-    height: 100%;
     background-color: var(--ce-bg);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 
     @mixin light {
-        --ce-bg: var(--mantine-color-gray-0);
+        --ce-bg: var(--mantine-color-white);
     }
 
     @mixin dark {
         --ce-bg: var(--mantine-color-black);
     }
+}
+
+.actions {
+    border-bottom: 1px solid var(--ce-border-color);
+}
+
+.editor {
+    flex: 1;
 }
 
 /*
@@ -43,7 +53,7 @@
 .disabled {
     @mixin light {
         --ce-bg: var(--mantine-color-gray-1);
-        --ce-border-color: var(--mantine-color-gray-1);
+        --ce-border-color: var(--mantine-color-default-border);
 
         :global {
             .monaco-editor {

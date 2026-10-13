@@ -83,6 +83,7 @@ describe('CodeEditor', () => {
         const user = userEvent.setup();
         const onCopySpy = vi.fn();
         render(<CodeEditor onCopy={onCopySpy} />);
+        await waitForElementToBeRemoved(screen.queryByRole('presentation'));
         await user.click(screen.getByRole('button', {name: /copy/i}));
 
         expect(onCopySpy).toHaveBeenCalledTimes(1);

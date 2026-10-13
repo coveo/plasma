@@ -85,9 +85,9 @@ const defaultProps = {
     language: 'plaintext',
     monacoLoader: 'local',
     defaultValue: '',
-    minHeight: 300,
+    minHeight: 350,
     justify: 'flex-start',
-    gap: 'sm',
+    gap: 'xxs',
 } satisfies Partial<CodeEditorProps>;
 
 export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
@@ -151,7 +151,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
             inherit: true,
             rules: [],
             colors: {
-                'editor.background': theme.colors.gray[0],
+                'editor.background': '#ffffff', // mantine color white is #fff and monaco only accepts 6 digits
             },
         });
     };
@@ -206,7 +206,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         ) : null;
 
     const _buttons = (
-        <Group justify="right" gap="xs">
+        <Group justify="right" gap="xs" p="xs" className={CodeEditorClasses.actions}>
             <Search handleSearch={handleSearch} />
             <CopyToClipboard value={_value} onCopy={() => onCopy?.()} />
         </Group>
@@ -218,8 +218,6 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
 
     const _editor = loaded ? (
         <Box
-            p="md"
-            pl="xs"
             className={cx(
                 CodeEditorClasses.root,
                 {[CodeEditorClasses.error]: hasError},
@@ -227,49 +225,52 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
             )}
             data-testid="editor-wrapper"
         >
-            <Editor
-                key={editorKey}
-                onValidate={handleValidate}
-                defaultLanguage={language}
-                theme={editorTheme}
-                options={{
-                    minimap: {enabled: false},
-                    wordWrap: 'on',
-                    scrollBeyondLastLine: false,
-                    formatOnPaste: true,
-                    fontSize: px(theme.fontSizes.xs) as number,
-                    readOnly: disabled || readOnly,
-                    stickyScroll: {enabled: false},
-                    tabSize,
-                }}
-                value={_value}
-                onChange={(nextValue) => handleChange(nextValue ?? '')}
-                beforeMount={(monaco) => {
-                    registerLanguages(monaco);
-                    registerThemes(monaco);
-                }}
-                onMount={(editor) => {
-                    editorRef.current = editor;
-                    if (editorHandle) {
-                        editorHandle.current = editor;
-                    }
-                    editor.onDidFocusEditorText(() => onFocus?.());
-                    editor.onDidDispose(() => {
-                        // If the editor is disposed while the component is still mounted (e.g. React's
-                        // `<Activity>` tore down the effects to hide the panel), force a fresh instance so we
-                        // never render against a disposed editor when the panel becomes visible again.
-                        setEditorKey((key) => key + 1);
-                    });
-                    editor.onDidBlurEditorText(async () => {
-                        // monaco editor has a timeout of 500ms populating errors, we want to ensure that checking errors happen after that
-                        setTimeout(async () => {
-                            if (!hasMonacoErrorRef.current) {
-                                await editor?.getAction('editor.action.formatDocument')?.run();
-                            }
-                        }, 550);
-                    });
-                }}
-            />
+            {_buttons}
+            <Box p="md" pl="xs" className={CodeEditorClasses.editor}>
+                <Editor
+                    key={editorKey}
+                    onValidate={handleValidate}
+                    defaultLanguage={language}
+                    theme={editorTheme}
+                    options={{
+                        minimap: {enabled: false},
+                        wordWrap: 'on',
+                        scrollBeyondLastLine: false,
+                        formatOnPaste: true,
+                        fontSize: px(theme.fontSizes.xs) as number,
+                        readOnly: disabled || readOnly,
+                        stickyScroll: {enabled: false},
+                        tabSize,
+                    }}
+                    value={_value}
+                    onChange={(nextValue) => handleChange(nextValue ?? '')}
+                    beforeMount={(monaco) => {
+                        registerLanguages(monaco);
+                        registerThemes(monaco);
+                    }}
+                    onMount={(editor) => {
+                        editorRef.current = editor;
+                        if (editorHandle) {
+                            editorHandle.current = editor;
+                        }
+                        editor.onDidFocusEditorText(() => onFocus?.());
+                        editor.onDidDispose(() => {
+                            // If the editor is disposed while the component is still mounted (e.g. React's
+                            // `<Activity>` tore down the effects to hide the panel), force a fresh instance so we
+                            // never render against a disposed editor when the panel becomes visible again.
+                            setEditorKey((key) => key + 1);
+                        });
+                        editor.onDidBlurEditorText(async () => {
+                            // monaco editor has a timeout of 500ms populating errors, we want to ensure that checking errors happen after that
+                            setTimeout(async () => {
+                                if (!hasMonacoErrorRef.current) {
+                                    await editor?.getAction('editor.action.formatDocument')?.run();
+                                }
+                            }, 550);
+                        });
+                    }}
+                />
+            </Box>
         </Box>
     ) : (
         <Center className={CodeEditorClasses.editor}>
@@ -278,12 +279,10 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
     );
 
     const height = Math.max(Number.isNaN(parentHeight) ? 0 : parentHeight, minHeight);
+
     return (
         <Stack ref={ref} {...others} h={h ?? height} mah={mah ?? maxHeight}>
-            <Group justify="space-between">
-                {_header}
-                {_buttons}
-            </Group>
+            {_header}
             {_editor}
             {_error}
         </Stack>
