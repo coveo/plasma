@@ -86,7 +86,7 @@ Important states include:
 **`allowAdd`** `boolean | ((values: T[]) => boolean)` · optional · default: `undefined` — MAY determine if the add item button SHOULD be enabled given the current items of the collection. The button remains enabled if this prop is undefined.
 **`addLabel`** `ReactNode` · optional · default: `"Add item"` — MAY define the label of the add item button.
 **`addDisabledTooltip`** `string` · optional · default: `'There is already an empty item'` — MAY define the tooltip text displayed when hovering over the disabled add item button.
-**`gap`** `MantineSpacing` · optional · default: `'md'` — MAY define the gap between the collection items.
+**`gap`** `MantineSpacing` · optional · default: `'sm'` — MAY define the gap between the collection items.
 **`required`** `boolean` · optional · default: `false` — MAY mark the collection as required. When true, the collection hides the remove button if there is only one item.
 
 ## Sub-components
