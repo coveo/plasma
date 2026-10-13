@@ -97,4 +97,6 @@ jobs:
                   onlyChanged: true
                   exitZeroOnChanges: true
                   autoAcceptChanges: true
-                  branchName: ${{ github.ref_name }}
+                  # Master releases are labeled "release" so plasma.coveo.com (which targets that Chromatic branch)
+                  # only shows released docs, while the "master" Chromatic branch is built on every push.
+                  branchName: ${{ github.ref_name == 'master' && 'release' || github.ref_name }}
