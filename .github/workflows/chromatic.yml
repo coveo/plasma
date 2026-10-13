@@ -1,0 +1,42 @@
+name: Chromatic
+
+# Builds every master commit so PRs compare against an up-to-date baseline.
+# With the Chromatic GitHub App linked, building the squash commit carries over the baselines accepted on the PR.
+on:
+    push:
+        branches:
+            - master
+
+env:
+    TURBO_TOKEN: '${{ secrets.TURBO_TOKEN }}'
+
+permissions:
+    contents: read
+
+jobs:
+    chromatic:
+        name: Chromatic Baselines
+        runs-on: ubuntu-latest
+        steps:
+            - name: Harden Runner
+              uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
+              with:
+                  egress-policy: audit
+
+            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+              with:
+                  fetch-depth: 0
+            - uses: ./.github/actions/setup
+            - uses: ./.github/actions/build
+              env:
+                  PLASMA_BASE_URL: https://master--69e1126f9e24a5e560359ac2.chromatic.com
+            - name: Copy LLM files into Storybook output
+              run: cp -r ./packages/llms/dist/. ./packages/storybook/storybook-static/
+            - name: Deploy Storybook to Chromatic
+              uses: chromaui/action@6b3c2820222d23bad770d57a4ad5e2d1c91f92e9 # v18.9.5
+              with:
+                  projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+                  storybookBuildDir: storybook-static
+                  workingDir: packages/storybook
+                  exitOnceUploaded: true
+                  onlyChanged: true
