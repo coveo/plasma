@@ -1,5 +1,7 @@
 name: CD
 
+# Also dispatched automatically on master by the trigger-cd job in release-pr.yml when the release PR is merged.
+# Keep this file name and avoid adding required inputs, or that dispatch will fail.
 on: workflow_dispatch
 
 concurrency:
