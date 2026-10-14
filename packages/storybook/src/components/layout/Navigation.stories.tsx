@@ -34,26 +34,29 @@ const meta: Meta<typeof Navigation> = {
     },
     argTypes: {
         defaultCollapsed: {
-            control: 'boolean',
-            description: 'Whether the navigation starts collapsed.',
+            control: false,
+            description:
+                'Whether the navigation starts collapsed. Only read on mount; use the `collapsed` control to change it live.',
         },
-    },
-    args: {
-        defaultCollapsed: false,
     },
 };
 export default meta;
 type Story = StoryObj<DemoArgs>;
 
-const Shell: FunctionComponent<PropsWithChildren<{onCollapsedChange?: (collapsed: boolean) => void}>> = ({
-    children,
-    onCollapsedChange,
-}) => {
-    const {collapsed} = useNavigation();
+const Shell: FunctionComponent<
+    PropsWithChildren<{collapsedArg: boolean; onCollapsedChange: (collapsed: boolean) => void}>
+> = ({children, collapsedArg, onCollapsedChange}) => {
+    const {collapsed, toggleCollapsed} = useNavigation();
 
+    // Sync the toggle back to the `collapsed` control.
     useEffect(() => {
-        onCollapsedChange?.(collapsed);
+        onCollapsedChange(collapsed);
     }, [collapsed]);
+
+    // Sync the `collapsed` control into the navigation.
+    useEffect(() => {
+        toggleCollapsed(collapsedArg);
+    }, [collapsedArg]);
 
     return (
         <AppShell
@@ -72,7 +75,6 @@ const links = ['Home', 'Sources', 'Catalogs', 'Fields', 'Settings'] as const;
 interface DemoArgs {
     collapsed: boolean;
     activeLink: string;
-    defaultCollapsed: boolean;
     withToggle: boolean;
     toggleDisabled: boolean;
     withFooter: boolean;
@@ -87,7 +89,7 @@ export const Demo: Story = {
         },
         collapsed: {
             control: 'boolean',
-            description: 'Current collapsed state (read-only, synced from toggle).',
+            description: 'Whether the navigation is collapsed. Stays in sync with the toggle.',
         },
         withToggle: {
             control: 'boolean',
@@ -128,8 +130,11 @@ export const Demo: Story = {
         const setActive = (link: string) => updateArgs({activeLink: link});
 
         return (
-            <Navigation defaultCollapsed={args.defaultCollapsed}>
-                <Shell onCollapsedChange={(newCollapsed) => updateArgs({collapsed: newCollapsed})}>
+            <Navigation defaultCollapsed={args.collapsed}>
+                <Shell
+                    collapsedArg={args.collapsed}
+                    onCollapsedChange={(newCollapsed) => updateArgs({collapsed: newCollapsed})}
+                >
                     <Navigation.SideBar
                         header={<Logo />}
                         footer={
