@@ -1,5 +1,49 @@
 # @coveord/plasma-mantine
 
+## 61.4.0
+
+### Minor Changes
+
+- Add `footer` and toggle options to `Navigation.SideBar`, and `disabled` to `Navigation.Toggle` [#4634](https://github.com/coveo/plasma/pull/4634)
+
+  `Navigation.SideBar` accepts a `footer` that stays pinned below the scrollable links, `withToggle={false}` to remove the collapse toggle, and `toggleProps` to customize it, for example `toggleProps={{disabled: true}}` to keep it visible while preventing the sidebar from being collapsed or expanded.
+
+  `Navigation.Toggle` now also responds to clicks anywhere in its strip along the sidebar edge, not only on the chevron button.
+
+  ```tsx
+  <Navigation.SideBar
+    header={<Logo />}
+    footer={<SettingsLink />}
+    toggleProps={{ disabled: isLocked }}
+  >
+    {links}
+  </Navigation.SideBar>
+  ```
+
+- Add `SliderInput` for labeled slider fields [#4618](https://github.com/coveo/plasma/pull/4618)
+
+  Use `SliderInput` to display a slider with an input label, supporting description, and validation feedback. The existing `Slider` API remains unchanged.
+
+- Add Plasma headers and sticky actions to `Drawer` [#4619](https://github.com/coveo/plasma/pull/4619)
+
+  String titles render with a secondary `Header`. Use `description` and `help` for supporting text and documentation links. `Drawer.Footer` keeps actions at the bottom of the drawer.
+
+### Patch Changes
+
+- Refine `Collection` spacing and alignment of the drag handle and remove button [#4631](https://github.com/coveo/plasma/pull/4631)
+
+  Drag handles and remove buttons are now 36px tall and aligned with the top of the item inputs, so they stay in place when a field displays an error message. Items that can't be removed reserve the same 36px so their fields stay aligned with removable ones. The default `gap` between items is reduced from `md` to `sm`, and the legacy children pattern uses a tighter padding around its items. Pass `gap="md"` to keep the previous spacing.
+
+- Respect reduced motion [#4628](https://github.com/coveo/plasma/pull/4628)
+
+  `Plasmantine` now sets `respectReducedMotion: true`. When the user prefers reduced motion, `Collapse`, `Accordion`, and `Transition` can take Mantine's synchronous, animation-free path instead of running their `requestAnimationFrame`-driven timers. For this to take effect in your test environment, your `matchMedia` mock needs to return `true` for the `(prefers-reduced-motion: reduce)` query; setting that up removes a common source of animation-timing flakiness in tests.
+
+- Update the `CodeEditor` layout and colors [#4638](https://github.com/coveo/plasma/pull/4638)
+
+  Place the label above the editor and move the editor actions into a dedicated toolbar.
+
+- Fix `Checkbox` label spacing to use the default inline input offset [#4622](https://github.com/coveo/plasma/pull/4622)
+
 ## 61.3.2
 
 ### Patch Changes
