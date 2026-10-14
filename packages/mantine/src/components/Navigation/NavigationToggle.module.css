@@ -9,6 +9,10 @@
     height: var(--app-shell-header-height, 60px);
     cursor: pointer;
 
+    &[data-disabled] {
+        cursor: not-allowed;
+    }
+
     &[data-collapsed] {
         &:hover {
             .toggle {

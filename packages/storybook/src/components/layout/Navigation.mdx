@@ -34,7 +34,9 @@ The `Navigation` provider coordinates a sidebar's collapsed state with an `AppSh
 - Wrap the shell with `Navigation`, then use `useNavigation` to pass the collapsed state to the `AppShell` navbar.
 - Use level 1 for top-level links and level 2 for links inside a section.
 - Mark the current destination as active and provide a router component when navigation changes routes.
-- Let `Navigation.SideBar` provide its collapse toggle. Sections with no children are omitted automatically.
+- Let `Navigation.SideBar` provide its collapse toggle. Hide it with `withToggle={false}` only when collapsing must not be possible, and disable it with `toggleProps` when collapsing is temporarily unavailable.
+- Use `footer` for a destination that must stay visible below the links. Keep it to one or two items.
+- Sections with no children are omitted automatically.
 
 ### Content guidelines
 

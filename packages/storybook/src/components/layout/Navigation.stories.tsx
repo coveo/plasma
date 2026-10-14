@@ -2,7 +2,7 @@ import {AppShell} from '@coveord/plasma-mantine/components/AppShell';
 import {Center} from '@coveord/plasma-mantine/components/Center';
 import {Navigation, useNavigation} from '@coveord/plasma-mantine/components/Navigation';
 import {Text} from '@coveord/plasma-mantine/components/Text';
-import {IconDatabase, IconHome} from '@coveord/plasma-react-icons';
+import {IconDatabase, IconHome, IconSettings} from '@coveord/plasma-react-icons';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import {CSSProperties, FunctionComponent, PropsWithChildren, useEffect} from 'react';
 import {useArgs, useGlobals} from 'storybook/preview-api';
@@ -34,26 +34,29 @@ const meta: Meta<typeof Navigation> = {
     },
     argTypes: {
         defaultCollapsed: {
-            control: 'boolean',
-            description: 'Whether the navigation starts collapsed.',
+            control: false,
+            description:
+                'Whether the navigation starts collapsed. Only read on mount; use the `collapsed` control to change it live.',
         },
-    },
-    args: {
-        defaultCollapsed: false,
     },
 };
 export default meta;
 type Story = StoryObj<DemoArgs>;
 
-const Shell: FunctionComponent<PropsWithChildren<{onCollapsedChange?: (collapsed: boolean) => void}>> = ({
-    children,
-    onCollapsedChange,
-}) => {
-    const {collapsed} = useNavigation();
+const Shell: FunctionComponent<
+    PropsWithChildren<{collapsedArg: boolean; onCollapsedChange: (collapsed: boolean) => void}>
+> = ({children, collapsedArg, onCollapsedChange}) => {
+    const {collapsed, toggleCollapsed} = useNavigation();
 
+    // Sync the toggle back to the `collapsed` control.
     useEffect(() => {
-        onCollapsedChange?.(collapsed);
+        onCollapsedChange(collapsed);
     }, [collapsed]);
+
+    // Sync the `collapsed` control into the navigation.
+    useEffect(() => {
+        toggleCollapsed(collapsedArg);
+    }, [collapsedArg]);
 
     return (
         <AppShell
@@ -67,12 +70,14 @@ const Shell: FunctionComponent<PropsWithChildren<{onCollapsedChange?: (collapsed
     );
 };
 
-const links = ['Home', 'Sources', 'Catalogs', 'Fields'] as const;
+const links = ['Home', 'Sources', 'Catalogs', 'Fields', 'Settings'] as const;
 
 interface DemoArgs {
     collapsed: boolean;
     activeLink: string;
-    defaultCollapsed: boolean;
+    withToggle: boolean;
+    toggleDisabled: boolean;
+    withFooter: boolean;
 }
 
 export const Demo: Story = {
@@ -84,12 +89,39 @@ export const Demo: Story = {
         },
         collapsed: {
             control: 'boolean',
-            description: 'Current collapsed state (read-only, synced from toggle).',
+            description: 'Whether the navigation is collapsed. Stays in sync with the toggle.',
+        },
+        withToggle: {
+            control: 'boolean',
+            description: 'Whether the collapse toggle is rendered.',
+            table: {
+                type: {summary: 'boolean'},
+                defaultValue: {summary: 'true'},
+            },
+        },
+        toggleDisabled: {
+            control: 'boolean',
+            description: 'Controls whether the example disables the collapse toggle, through `toggleProps.disabled`.',
+            table: {
+                type: {summary: 'boolean'},
+                defaultValue: {summary: 'false'},
+            },
+        },
+        withFooter: {
+            control: 'boolean',
+            description: 'Controls whether the example renders a Settings link in the `footer` slot.',
+            table: {
+                type: {summary: 'boolean'},
+                defaultValue: {summary: 'true'},
+            },
         },
     },
     args: {
         activeLink: 'Home',
         collapsed: false,
+        withToggle: true,
+        toggleDisabled: false,
+        withFooter: true,
     },
     render: (args) => {
         const [{activeLink}, updateArgs] = useArgs<DemoArgs>();
@@ -98,9 +130,30 @@ export const Demo: Story = {
         const setActive = (link: string) => updateArgs({activeLink: link});
 
         return (
-            <Navigation defaultCollapsed={args.defaultCollapsed}>
-                <Shell onCollapsedChange={(newCollapsed) => updateArgs({collapsed: newCollapsed})}>
-                    <Navigation.SideBar header={<Logo />} style={navigationColors[primaryColor]}>
+            <Navigation defaultCollapsed={args.collapsed}>
+                <Shell
+                    collapsedArg={args.collapsed}
+                    onCollapsedChange={(newCollapsed) => updateArgs({collapsed: newCollapsed})}
+                >
+                    <Navigation.SideBar
+                        header={<Logo />}
+                        footer={
+                            args.withFooter ? (
+                                <Navigation.Link
+                                    level={1}
+                                    label="Settings"
+                                    leftSection={<IconSettings size={20} />}
+                                    active={activeLink === 'Settings'}
+                                    onClick={() => setActive('Settings')}
+                                    mx="xs"
+                                    w="auto"
+                                />
+                            ) : undefined
+                        }
+                        withToggle={args.withToggle}
+                        toggleProps={{disabled: args.toggleDisabled}}
+                        style={navigationColors[primaryColor]}
+                    >
                         <Navigation.Link
                             level={1}
                             label="Home"
