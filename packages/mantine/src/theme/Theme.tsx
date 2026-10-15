@@ -506,7 +506,8 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         Select: Select.extend({
             defaultProps: {allowDeselect: false, withCheckIcon: false},
-            classNames: SelectClasses,
+            // Select renders its Combobox under the "Select" selector, so the Combobox theme classes don't reach its options
+            classNames: {...SelectClasses, option: ComboboxClasses.option},
         }),
         Skeleton: Skeleton.extend({
             classNames: SkeletonClasses,
