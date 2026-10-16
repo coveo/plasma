@@ -90,20 +90,12 @@ import {Alert, Anchor} from '@coveord/plasma-mantine';
 
 // Standalone link within the application
 function InternalLink() {
-    return (
-        <Anchor href="/settings" size="sm">
-            Organization settings
-        </Anchor>
-    );
+    return <Anchor href="/settings">Organization settings</Anchor>;
 }
 
 // Link outside the application — opens in a new tab with an external icon
 function ExternalLink() {
-    return (
-        <Anchor.External href="https://docs.coveo.com" size="sm">
-            Coveo documentation
-        </Anchor.External>
-    );
+    return <Anchor.External href="https://docs.coveo.com">Coveo documentation</Anchor.External>;
 }
 
 // Inside an Alert description — inherit the parent font size and weight
