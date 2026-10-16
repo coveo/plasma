@@ -1,5 +1,11 @@
 # @coveord/plasma-llms
 
+## 60.3.2
+
+### Patch Changes
+
+- Require `Table.Filter` placeholders to name the fields users can filter by [#4644](https://github.com/coveo/plasma/pull/4644)
+
 ## 60.3.1
 
 ### Patch Changes
