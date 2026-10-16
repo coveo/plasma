@@ -95,14 +95,8 @@ export const External: ExternalStory = {
     args: {
         href: 'https://docs.coveo.com',
         children: 'Coveo documentation',
-        target: '_blank',
-        size: 'sm',
         showIcon: true,
         newTabLabel: '(opens in a new tab)',
     },
-    render: ({href, children, target, size, showIcon, newTabLabel}: any) => (
-        <Anchor.External size={size} href={href} target={target} showIcon={showIcon} newTabLabel={newTabLabel}>
-            {children}
-        </Anchor.External>
-    ),
+    render: (args) => <Anchor.External {...args} />,
 };
