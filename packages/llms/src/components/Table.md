@@ -64,6 +64,7 @@ Important states include:
 - Empty states SHOULD explain whether there is no data or no matching data.
 - Row actions SHOULD use clear verbs and destructive labels when appropriate.
 - Filter labels SHOULD match the terms users use to understand the data.
+- The `Table.Filter` placeholder MUST indicate which fields can be filtered (e.g., "Filter by name or email"). Do not rely on the generic default "Search by any field".
 
 ## Common anti-patterns
 
