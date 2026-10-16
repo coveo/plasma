@@ -64,6 +64,8 @@ const preview: Preview = {
                         'Typography',
                         'Miscellaneous',
                     ],
+                    '@patterns',
+                    ['Overview', 'Navigate with links'],
                     '*',
                     'changelogs',
                 ],

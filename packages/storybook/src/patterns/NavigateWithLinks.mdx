@@ -1,0 +1,226 @@
+import {Meta, Unstyled} from '@storybook/addon-docs/blocks';
+import {Alert, Anchor, Button, Header, MantineTable as Table, Text} from '@coveord/plasma-mantine';
+import {IconExternalLink} from '@coveord/plasma-react-icons';
+
+export const ExternalLink = ({href = 'https://docs.coveo.com', children}) => (
+    <Anchor
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        size="sm"
+        style={{display: 'inline-flex', alignItems: 'center', gap: 4}}
+    >
+        {children}
+        <IconExternalLink size={14} aria-hidden />
+    </Anchor>
+);
+
+export const decisions = [
+    {
+        situation: 'The destination is in the current product, and the link stands on its own',
+        approach: 'Standalone Anchor',
+        why: 'Easy to scan, outside the reading flow',
+        example: <Anchor href="#" size="sm">View query pipelines</Anchor>,
+    },
+    {
+        situation: 'The destination is mentioned within a sentence',
+        approach: 'Inline Anchor with inherit, no icon, even when the destination is external',
+        why: 'Keeps the reading flow; icons inside text add visual noise',
+        example: (
+            <Text size="sm">
+                {'Each pipeline can include '}
+                <Anchor href="#" inherit>
+                    {'ranking rules'}
+                </Anchor>
+                {'.'}
+            </Text>
+        ),
+    },
+    {
+        situation: 'The destination is in another Coveo app, such as the Administration Console or the Merchandising Hub',
+        approach: 'Anchor, no ↗ icon',
+        why: 'Other Coveo apps are not external destinations',
+        example: <Anchor href="#" size="sm">View query pipelines in the Administration Console</Anchor>,
+    },
+    {
+        situation: 'The destination is outside the Coveo apps, such as the documentation site',
+        approach: 'ExternalAnchor (until it ships: Anchor, target="_blank", trailing IconExternalLink)',
+        why: 'Users keep their place; the ↗ icon confirms they are leaving',
+        example: <ExternalLink>View ranking documentation</ExternalLink>,
+    },
+    {
+        situation: 'Documentation for the current panel or page',
+        approach: 'Header.DocAnchor, the documentation action icon in the Header',
+        why: 'Documentation is always in the same place, next to the title',
+        example: (
+            <Header p={0} variant="secondary">
+                Query pipelines
+                <Header.DocAnchor label="Learn about query pipelines" href="https://docs.coveo.com" />
+            </Header>
+        ),
+    },
+    {
+        situation: 'The link would drop users into another app with no context, such as an empty list',
+        approach: "Link to the feature's documentation instead",
+        why: 'Users learn what the feature is before they land on it',
+        example: <ExternalLink>Learn how query pipelines work</ExternalLink>,
+    },
+    {
+        situation: 'The control performs an action',
+        approach: 'Button',
+        why: 'Links are for navigation only',
+        example: <Button.Primary size="xs">Save changes</Button.Primary>,
+    },
+];
+
+export const DecisionGuide = () => (
+    <Table withTableBorder withColumnBorders layout="auto" my="sm">
+        <Table.Thead>
+            <Table.Tr>
+                <Table.Th>Situation</Table.Th>
+                <Table.Th>Approach</Table.Th>
+                <Table.Th>Why</Table.Th>
+                <Table.Th>Example</Table.Th>
+            </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>
+            {decisions.map(({situation, approach, why, example}) => (
+                <Table.Tr key={situation}>
+                    <Table.Td>
+                        <Text size="sm">{situation}</Text>
+                    </Table.Td>
+                    <Table.Td>
+                        <Text size="sm">{approach}</Text>
+                    </Table.Td>
+                    <Table.Td>
+                        <Text size="sm">{why}</Text>
+                    </Table.Td>
+                    <Table.Td>{example}</Table.Td>
+                </Table.Tr>
+            ))}
+        </Table.Tbody>
+    </Table>
+);
+
+<Meta title="@patterns/Navigate with links" id="patterns-navigate-with-links" />
+
+<Header p={0} description="Move users to another place without performing an action.">
+    Navigate with links
+</Header>
+
+## Summary
+
+Users need to move to another page, section, or resource, such as the documentation site, without losing track of
+where they are or whether they're leaving the product. Links handle navigation only; they never perform an action.
+
+## When to use
+
+- Moving users to another page, section, or external resource, such as another Coveo app or the documentation site.
+- Showing a URL.
+
+## When not to use
+
+- For any action, use a `Button`.
+- To show the user's location in a hierarchy, use `Breadcrumbs`.
+- To send users into another app where they would land with no context, such as an empty list or the first step of a
+  creation flow, link to the feature's documentation instead.
+
+## Decision guide
+
+<Unstyled>
+    <DecisionGuide />
+</Unstyled>
+
+## How it works
+
+1. **Link text** describes the destination.
+2. **External icon (↗)** trails the text, on external links only. A link is external when its destination is outside
+   the Coveo apps, such as the documentation site; links to another Coveo app aren't external. Icon-only controls with
+   this icon, such as `Header.DocAnchor`, are action icons, not links.
+3. **Target**: destinations in the product open in the same tab; external destinations open in a new tab.
+   Links to another Coveo app may open in either, depending on the user's task.
+
+Activating a link navigates to its destination. The pattern has no loading, error, or disabled state. Because external
+links open in a new tab, the current page stays where the user left it.
+
+<Unstyled>
+    <Alert.Information title="ExternalAnchor is coming soon" mb="md">
+        `ExternalAnchor` will render the ↗ icon and open a new tab by itself, and that behavior will be documented in
+        the component. Until it ships, build external links with `Anchor`, `target="_blank"`, and a trailing
+        `IconExternalLink`.
+    </Alert.Information>
+</Unstyled>
+
+## Rules
+
+- **MUST** use a `Button`, not a link, for any action.
+- **MUST** open external links in a new tab.
+- **MUST** include a trailing ↗ icon on standalone external links. Inline links never include it.
+- **MUST NOT** include the ↗ icon on links to another Coveo app.
+- **MUST NOT** add any other icon to a link.
+- **SHOULD** link to the feature's documentation instead of sending users to an empty state or the first step of a
+  creation flow in another app.
+
+## Content
+
+- Make link text describe what users will find at the destination.
+- Make inline links read naturally within the sentence.
+- Don't use **Read more** when the label is already descriptive. Use labels like **View ranking documentation**,
+  **View operator definitions**, or **Read implementation guidelines**.
+- Keep standalone link text short; don't use a full sentence as link text.
+
+## Accessibility
+
+- Link text must make sense out of context, since screen reader users often browse a list of links.
+- The ↗ icon is decorative and hidden from screen readers. Tell screen reader users that the link opens in a new tab.
+- Links are activated with Enter, not Space. Using a link for an action breaks keyboard users' expectations.
+
+## Examples
+
+<Unstyled>
+    <Table withTableBorder withColumnBorders layout="auto" my="sm">
+        <Table.Tbody>
+            {[
+                ['Standalone link', <Anchor href="#" size="sm">View query pipelines</Anchor>],
+                [
+                    'Inline link',
+                    <Text size="sm">
+                        {'Each pipeline can include '}
+                        <Anchor href="#" inherit>
+                            {'ranking rules'}
+                        </Anchor>
+                        {' that change the order of results.'}
+                    </Text>,
+                ],
+                [
+                    'Link to another Coveo app',
+                    <Anchor href="#" size="sm">View query pipelines in the Administration Console</Anchor>,
+                ],
+                ['External link', <ExternalLink>View ranking documentation</ExternalLink>],
+                [
+                    'Documentation for the current panel',
+                    <Header p={0} variant="secondary">
+                        Query pipelines
+                        <Header.DocAnchor label="Learn about query pipelines" href="https://docs.coveo.com" />
+                    </Header>,
+                ],
+            ].map(([type, example]) => (
+                <Table.Tr key={type}>
+                    <Table.Td>
+                        <Text size="sm" fw={500}>
+                            {type}
+                        </Text>
+                    </Table.Td>
+                    <Table.Td>{example}</Table.Td>
+                </Table.Tr>
+            ))}
+        </Table.Tbody>
+    </Table>
+</Unstyled>
+
+## Related
+
+Components: `Anchor`, `ExternalAnchor` (coming soon), `Header.DocAnchor`, `Button`, `Breadcrumbs`.
+
+Source: [Anchors - usage guidelines](https://coveord.atlassian.net/wiki/spaces/UX/pages/6350307358/Anchors+-+usage+guidelines)
+on Confluence.
