@@ -1,5 +1,11 @@
 # @coveord/plasma-mantine
 
+## 61.4.1
+
+### Patch Changes
+
+- Style hover, active, highlighted and disabled states on every `Combobox.Option`, not only `Select` [#4643](https://github.com/coveo/plasma/pull/4643)
+
 ## 61.4.0
 
 ### Minor Changes
