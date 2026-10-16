@@ -34,23 +34,12 @@ describe('Anchor', () => {
             expect(screen.getByRole('link', {name: /^Plasma\s\(ouvre un nouvel onglet\)$/})).toBeVisible();
         });
 
-        it('renders a decorative external icon by default', () => {
+        it('renders a decorative external icon', () => {
             render(<Anchor.External href="https://plasma.coveo.com">Plasma</Anchor.External>);
 
             const icon = screen.getByRole('link').querySelector('svg');
             expect(icon).toBeInTheDocument();
             expect(icon).toHaveAttribute('aria-hidden', 'true');
-        });
-
-        it('does not render the icon when showIcon is false', () => {
-            render(
-                <Anchor.External href="https://plasma.coveo.com" showIcon={false}>
-                    Plasma
-                </Anchor.External>,
-            );
-
-            expect(screen.getByRole('link', {name: /^Plasma\s\(opens in a new tab\)$/})).toBeVisible();
-            expect(screen.getByRole('link').querySelector('svg')).not.toBeInTheDocument();
         });
 
         it('does not announce a new tab when the target is overridden', () => {

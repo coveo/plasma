@@ -22,12 +22,6 @@ export interface AnchorExternalProps
      */
     children?: ReactNode;
     /**
-     * Whether to display the external link icon after the link content.
-     *
-     * @default true
-     */
-    showIcon?: boolean;
-    /**
      * Text announced to screen readers when the link opens in a new tab.
      *
      * @default '(opens in a new tab)'
@@ -44,26 +38,13 @@ export type AnchorExternalFactory = PolymorphicFactory<{
 }>;
 
 const defaultProps = {
-    showIcon: true,
     newTabLabel: '(opens in a new tab)',
 } satisfies Partial<AnchorExternalProps>;
 
 export const AnchorExternal = polymorphicFactory<AnchorExternalFactory>((_props) => {
     const props = useProps('AnchorExternal', defaultProps, _props);
-    const {
-        classNames,
-        className,
-        style,
-        styles,
-        unstyled,
-        vars,
-        attributes,
-        children,
-        showIcon,
-        newTabLabel,
-        ref,
-        ...others
-    } = props;
+    const {classNames, className, style, styles, unstyled, vars, attributes, children, newTabLabel, ref, ...others} =
+        props;
     const getStyles = useStyles<AnchorExternalFactory>({
         name: 'AnchorExternal',
         classes,
@@ -90,9 +71,9 @@ export const AnchorExternal = polymorphicFactory<AnchorExternalFactory>((_props)
         >
             {children}
             {/* Non-breaking space keeps the icon on the same line as the last word */}
-            {showIcon || announcesNewTab ? '\u00A0' : null}
+            {'\u00A0'}
             {announcesNewTab ? <VisuallyHidden>{newTabLabel}</VisuallyHidden> : null}
-            {showIcon ? <IconExternalLink size="1em" aria-hidden {...getStyles('icon')} /> : null}
+            <IconExternalLink size="1em" aria-hidden {...getStyles('icon')} />
         </MantineAnchor>
     );
 });

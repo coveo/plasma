@@ -69,7 +69,6 @@ Plasma provides pre-configured sub-components as convenience wrappers. You SHOUL
 
 > Extends: `AnchorProps` from `@mantine/core`. Only Plasma-specific props are listed below. Styles API selectors: `root`, `icon`.
 
-**`showIcon`** `boolean` · optional · default: `true` — Whether to display the external link icon after the link content.
 **`newTabLabel`** `string` · optional · default: `'(opens in a new tab)'` — Text announced to screen readers when the link opens in a new tab.
 
 ## TypeScript namespace aliases
