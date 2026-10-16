@@ -75,14 +75,6 @@ export const External: ExternalStory = {
                 type: {summary: 'HTMLAttributeAnchorTarget'},
             },
         },
-        showIcon: {
-            control: 'boolean',
-            description: 'Displays the external link icon after the link content.',
-            table: {
-                defaultValue: {summary: 'true'},
-                type: {summary: 'boolean'},
-            },
-        },
         newTabLabel: {
             control: 'text',
             description: 'Sets the text announced to screen readers when the link opens in a new tab.',
@@ -95,7 +87,6 @@ export const External: ExternalStory = {
     args: {
         href: 'https://docs.coveo.com',
         children: 'Coveo documentation',
-        showIcon: true,
         newTabLabel: '(opens in a new tab)',
     },
     render: (args) => <Anchor.External {...args} />,
