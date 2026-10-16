@@ -11,14 +11,15 @@
         &[data-combobox-disabled] {
             opacity: 1;
             color: var(--mantine-color-disabled-color);
+            background-color: transparent;
         }
 
-        &[data-combobox-active='true'] {
+        &[data-combobox-active='true']:where(:not([data-combobox-disabled])) {
             background-color: var(--mantine-primary-color-light);
             color: var(--mantine-primary-color-filled);
         }
 
-        &[data-combobox-selected] {
+        &[data-combobox-selected]:where(:not([data-combobox-disabled])) {
             background-color: var(--mantine-primary-color-filled);
             color: white;
         }
