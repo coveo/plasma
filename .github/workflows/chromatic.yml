@@ -19,7 +19,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Harden Runner
-              uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
+              uses: step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25 # v2.22.1
               with:
                   egress-policy: audit
 
@@ -33,7 +33,7 @@ jobs:
             - name: Copy LLM files into Storybook output
               run: cp -r ./packages/llms/dist/. ./packages/storybook/storybook-static/
             - name: Deploy Storybook to Chromatic
-              uses: chromaui/action@6b3c2820222d23bad770d57a4ad5e2d1c91f92e9 # v18.9.5
+              uses: chromaui/action@38afd264ef2241136f12d039093c2724748bec08 # v18.11.0
               with:
                   projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
                   storybookBuildDir: storybook-static
