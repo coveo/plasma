@@ -61,3 +61,48 @@ export const Demo: Story = {
         </Anchor>
     ),
 };
+
+type ExternalStory = StoryObj<typeof Anchor.External>;
+
+export const External: ExternalStory = {
+    argTypes: {
+        target: {
+            control: 'select',
+            options: ['_self', '_blank', '_parent', '_top'],
+            description: 'Sets where the linked destination opens.',
+            table: {
+                defaultValue: {summary: "'_blank'"},
+                type: {summary: 'HTMLAttributeAnchorTarget'},
+            },
+        },
+        showIcon: {
+            control: 'boolean',
+            description: 'Displays the external link icon after the link content.',
+            table: {
+                defaultValue: {summary: 'true'},
+                type: {summary: 'boolean'},
+            },
+        },
+        newTabLabel: {
+            control: 'text',
+            description: 'Sets the text announced to screen readers when the link opens in a new tab.',
+            table: {
+                defaultValue: {summary: "'(opens in a new tab)'"},
+                type: {summary: 'string'},
+            },
+        },
+    },
+    args: {
+        href: 'https://docs.coveo.com',
+        children: 'Coveo documentation',
+        target: '_blank',
+        size: 'sm',
+        showIcon: true,
+        newTabLabel: '(opens in a new tab)',
+    },
+    render: ({href, children, target, size, showIcon, newTabLabel}: any) => (
+        <Anchor.External size={size} href={href} target={target} showIcon={showIcon} newTabLabel={newTabLabel}>
+            {children}
+        </Anchor.External>
+    ),
+};
