@@ -1,3 +1,31 @@
+.option {
+    padding: var(--mantine-spacing-xs);
+
+    @mixin light {
+        @mixin hover {
+            &:not([data-combobox-disabled], [data-combobox-active='true'], [data-combobox-selected]) {
+                background-color: var(--mantine-color-default-hover);
+            }
+        }
+
+        &[data-combobox-disabled] {
+            opacity: 1;
+            color: var(--mantine-color-disabled-color);
+            background-color: transparent;
+        }
+
+        &[data-combobox-active='true']:where(:not([data-combobox-disabled])) {
+            background-color: var(--mantine-primary-color-light);
+            color: var(--mantine-primary-color-filled);
+        }
+
+        &[data-combobox-selected]:where(:not([data-combobox-disabled])) {
+            background-color: var(--mantine-primary-color-filled);
+            color: white;
+        }
+    }
+}
+
 /* TODO: Plasma Reset, validate if we need the custom style for the search */
 .search {
     margin: 0 0 var(--mantine-spacing-xs);

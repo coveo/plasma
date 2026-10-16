@@ -1,34 +1,3 @@
-.option {
-    padding: var(--mantine-spacing-xs);
-
-    @mixin light {
-        @mixin hover {
-            &:not([data-combobox-disabled], [data-checked], [data-combobox-selected]) {
-                background-color: var(--mantine-color-default-hover);
-            }
-        }
-
-        &[data-combobox-disabled] {
-            opacity: 1;
-            color: var(--mantine-color-disabled-color);
-        }
-
-        &[data-combobox-active='true'] {
-            background-color: var(--mantine-primary-color-light);
-            color: var(--mantine-primary-color-filled);
-
-            + svg {
-                opacity: 1;
-            }
-        }
-
-        &[data-combobox-selected] {
-            background-color: var(--mantine-primary-color-filled);
-            color: white;
-        }
-    }
-}
-
 .groupLabel {
     @mixin light {
         color: var(--mantine-color-placeholder);
