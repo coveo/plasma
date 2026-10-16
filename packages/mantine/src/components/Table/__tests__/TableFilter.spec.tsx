@@ -99,7 +99,9 @@ describe('Table.Filter', () => {
                 within(screen.getByRole('row', {name: /fruit/i})).getByRole('checkbox', {name: /select row/i}),
             );
             await user.type(screen.getByRole('textbox'), 'veg');
-            expect(screen.getByRole('button', {name: /1 selected/i})).toBeInTheDocument();
+            expect(
+                within(await screen.findByRole('group', {name: 'Bulk actions'})).getByText('1 selected'),
+            ).toBeInTheDocument();
         });
     });
 

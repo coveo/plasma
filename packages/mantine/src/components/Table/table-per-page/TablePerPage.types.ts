@@ -1,6 +1,6 @@
 export interface TablePerPageProps {
     /**
-     * The label displayed before the control
+     * Accessible label of the control
      *
      * @default Results per page
      */

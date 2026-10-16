@@ -2,6 +2,7 @@ import {Pagination} from '@mantine/core';
 import {useDidUpdate} from '@mantine/hooks';
 import {FunctionComponent} from 'react';
 
+import {TableFooterSlot} from '../table-footer/TableFooterSlot.js';
 import {useTableContext} from '../TableContext.js';
 import {TablePaginationProps} from './TablePagination.types.js';
 
@@ -27,27 +28,29 @@ export const TablePagination: FunctionComponent<TablePaginationProps> = ({onPage
     }
 
     return (
-        <Pagination
-            value={store.state.pagination.page + 1}
-            onChange={updatePage}
-            total={total}
-            boundaries={1}
-            size="md"
-            gap="xs"
-            getControlProps={(control) => {
-                switch (control) {
-                    case 'previous':
-                        return {
-                            component: 'button',
-                            'aria-label': 'previous page',
-                        };
-                    case 'next':
-                        return {component: 'button', 'aria-label': 'next page'};
-                    default:
-                        return {};
-                }
-            }}
-        />
+        <TableFooterSlot position="center">
+            <Pagination
+                value={store.state.pagination.page + 1}
+                onChange={updatePage}
+                total={total}
+                boundaries={1}
+                size="md"
+                gap="xs"
+                getControlProps={(control) => {
+                    switch (control) {
+                        case 'previous':
+                            return {
+                                component: 'button',
+                                'aria-label': 'previous page',
+                            };
+                        case 'next':
+                            return {component: 'button', 'aria-label': 'next page'};
+                        default:
+                            return {};
+                    }
+                }}
+            />
+        </TableFooterSlot>
     );
 };
 

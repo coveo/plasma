@@ -39,6 +39,8 @@ Its store coordinates table state with filters, sorting, pagination, selection, 
 - Pass `data={null}` for the initial load, then use `loading` for later refreshes.
 - Keep essential record identity in visible columns and use expansion for supporting detail.
 - Place item-specific actions on rows and table-wide actions in the header or footer.
+- `getRowActions` adds an actions menu at the end of each row. With multi-row selection, the same actions for the selected rows appear in an action bar at the bottom of the screen.
+- Menus with more than 7 actions show a search input; group related actions and keep primary ones first.
 - Place filters inside `Table.Header` or `Table.Toolbar`.
 - When selection is enabled, users can press Escape to clear it unless selection is forced.
 

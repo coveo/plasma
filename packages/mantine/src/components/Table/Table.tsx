@@ -8,7 +8,7 @@ import {
     Row,
     useReactTable,
 } from '@tanstack/react-table';
-import {Children, ForwardedRef, ReactElement} from 'react';
+import {Children, ForwardedRef, ReactElement, useMemo} from 'react';
 import {CustomComponentThemeExtend, identity} from '../../utils/createFactoryComponent.js';
 import {TableLayouts} from './layouts/TableLayouts.js';
 import {
@@ -18,7 +18,11 @@ import {
     type TableActionItemStylesNames,
 } from './table-actions/TableActionItem.js';
 import {type TableActionsListStylesNames} from './table-actions/TableActionsList.js';
-import {type TableHeaderActionsStylesNames} from './table-actions/TableHeaderActions.js';
+import {
+    TableBulkActions,
+    type TableBulkActionsProps,
+    type TableBulkActionsStylesNames,
+} from './table-actions/TableBulkActions.js';
 import {
     TableCell,
     type TableCellFactory,
@@ -45,7 +49,12 @@ import {
     type TableFilterProps,
     type TableFilterStylesNames,
 } from './table-filter/TableFilter.js';
-import {TableFooter, type TableFooterProps} from './table-footer/TableFooter.js';
+import {
+    TableFooter,
+    type TableFooterFactory,
+    type TableFooterProps,
+    type TableFooterStylesNames,
+} from './table-footer/TableFooter.js';
 import {
     TableHeader,
     type TableHeaderFactory,
@@ -72,6 +81,12 @@ import {
     type TablePredicateStylesNames,
 } from './table-predicate/TablePredicate.js';
 import {
+    TableSummary,
+    type TableSummaryFactory,
+    type TableSummaryProps,
+    type TableSummaryStylesNames,
+} from './table-summary/TableSummary.js';
+import {
     TableToolbar,
     type TableToolbarFactory,
     type TableToolbarProps,
@@ -88,17 +103,19 @@ export type TableStylesNames =
     | 'table'
     | 'header'
     | 'body'
-    | TableHeaderActionsStylesNames
+    | TableBulkActionsStylesNames
     | TableActionsListStylesNames
     | TableActionItemStylesNames
     | TableCollapsibleColumnStylesNames
     | TableSelectRowCheckboxStylesNames
     | TableDateRangePickerStylesNames
     | TableFilterStylesNames
+    | TableFooterStylesNames
     | TableHeaderStylesNames
     | TableThStylesNames
     | TableLastUpdatedStylesNames
     | TablePredicateStylesNames
+    | TableSummaryStylesNames
     | TableToolbarStylesNames;
 
 export type PlasmaTableFactory = Factory<{
@@ -109,6 +126,7 @@ export type PlasmaTableFactory = Factory<{
         AccordionColumn: typeof TableAccordionColumn;
         ActionsColumn: typeof TableActionsColumn;
         ActionItem: typeof TableActionItem;
+        BulkActions: typeof TableBulkActions;
         Cell: typeof TableCell;
         CollapsibleColumn: typeof TableCollapsibleColumn;
         DateRangePicker: typeof TableDateRangePicker;
@@ -122,6 +140,7 @@ export type PlasmaTableFactory = Factory<{
         Pagination: typeof TablePagination;
         PerPage: typeof TablePerPage;
         Predicate: typeof TablePredicate;
+        Summary: typeof TableSummary;
         Toolbar: typeof TableToolbar;
     };
 }>;
@@ -136,6 +155,12 @@ const defaultProps = {
     options: {},
     getRowActions: () => [],
 } satisfies Partial<TableProps<unknown>>;
+
+const insertActionsColumn = <T,>(columns: Array<ColumnDef<T>>): Array<ColumnDef<T>> => {
+    const collapsibleIndex = columns.findIndex((column) => column.id === TableCollapsibleColumn.id);
+    const index = collapsibleIndex === -1 ? columns.length : collapsibleIndex;
+    return [...columns.slice(0, index), TableActionsColumn as ColumnDef<T>, ...columns.slice(index)];
+};
 
 export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElement>}) => {
     const {
@@ -181,7 +206,20 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
     const lastUpdated = convertedChildren.find((child) => child.type === TableLastUpdated);
     const noData = convertedChildren.find((child) => child.type === TableNoData);
 
+    const bulkActions = convertedChildren.find((child) => child.type === TableBulkActions);
+
     const selectionCheckboxesVisible = areSelectionCheckboxesVisible(store);
+
+    const withRowActions = props.getRowActions !== undefined;
+    const allColumns = useMemo(() => {
+        const withActionsColumn =
+            withRowActions && !columns.some((column) => column.id === TableActionsColumn.id)
+                ? insertActionsColumn(columns)
+                : columns;
+        return selectionCheckboxesVisible
+            ? [TableSelectableColumn as ColumnDef<T>].concat(withActionsColumn)
+            : withActionsColumn;
+    }, [columns, withRowActions, selectionCheckboxesVisible]);
 
     const table = useReactTable({
         data: data || [],
@@ -203,7 +241,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
             });
         },
         onColumnVisibilityChange: store.setColumnVisibility,
-        columns: selectionCheckboxesVisible ? [TableSelectableColumn as ColumnDef<T>].concat(columns) : columns,
+        columns: allColumns,
         getCoreRowModel: getCoreRowModel(),
         manualPagination: options.getPaginationRowModel === undefined,
         enableMultiRowSelection: store.multiRowSelectionEnabled,
@@ -312,6 +350,7 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
                             </>
                         )}
                     </Layout>
+                    {store.multiRowSelectionEnabled ? (bulkActions ?? <TableBulkActions />) : null}
                 </>
             </TableProvider>
         </Box>
@@ -319,8 +358,6 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
 };
 
 export const TableComponentsOrder = {
-    MultiSelectInfo: 7,
-    Actions: 6,
     Predicate: 5,
     Filter: 4,
     DateRangePicker: 3,
@@ -340,9 +377,14 @@ Table.ActionsColumn = TableActionsColumn;
  */
 Table.Cell = TableCell;
 /**
- * An action to display when a row is selected in the table. Can be displayed as a primary action or menu item.
+ * An action rendered as a menu item in the row actions column and in the bulk actions bar.
  */
 Table.ActionItem = TableActionItem;
+/**
+ * ActionBar displayed when rows are bulk selected, showing the selection count and the bulk actions.
+ * Rendered automatically when multi row selection is enabled, add it as a child of the Table to customize it.
+ */
+Table.BulkActions = TableBulkActions;
 /**
  * Generic column to use when your table needs collapsible rows
  */
@@ -392,6 +434,10 @@ Table.PerPage = TablePerPage;
  * A dropdown that filters table data by a predefined set of values and resets pagination on change.
  */
 Table.Predicate = TablePredicate;
+/**
+ * Displays the range of rows displayed and the time of the last data update, on the left of `Table.Footer`.
+ */
+Table.Summary = TableSummary;
 Table.Toolbar = TableToolbar;
 
 Table.extend = identity as CustomComponentThemeExtend<PlasmaTableFactory>;
@@ -405,6 +451,11 @@ export namespace Table {
         export type Props = TableActionItemProps;
         export type StylesNames = TableActionItemStylesNames;
         export type Factory = TableActionItemFactory;
+    }
+
+    export namespace BulkActions {
+        export type Props = TableBulkActionsProps;
+        export type StylesNames = TableBulkActionsStylesNames;
     }
 
     export namespace Cell {
@@ -427,6 +478,8 @@ export namespace Table {
 
     export namespace Footer {
         export type Props = TableFooterProps;
+        export type StylesNames = TableFooterStylesNames;
+        export type Factory = TableFooterFactory;
     }
 
     export namespace Header {
@@ -461,6 +514,12 @@ export namespace Table {
         export type Props = TablePredicateProps;
         export type StylesNames = TablePredicateStylesNames;
         export type Factory = TablePredicateFactory;
+    }
+
+    export namespace Summary {
+        export type Props = TableSummaryProps;
+        export type StylesNames = TableSummaryStylesNames;
+        export type Factory = TableSummaryFactory;
     }
 
     export namespace Toolbar {
