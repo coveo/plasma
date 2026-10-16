@@ -32,7 +32,8 @@ Do not use `Header` when:
 - Use the `primary` variant for page headers.
 - Use the `secondary` variant for lower-level sections when the component is still appropriate.
 - Use `Header.Right` for actions that apply to the page or section as a whole.
-- Use `Header.Breadcrumbs` for hierarchy: `Header.BreadcrumbAnchor` for linked ancestor levels and `Header.BreadcrumbText` for the current, non-linked location.
+- Use `Header.Breadcrumbs` for hierarchy, with a `Header.BreadcrumbAnchor` for each ancestor page. The trail MUST NOT include the current page, which the header title already shows. You MUST NOT use `Header.BreadcrumbText`.
+- With a single ancestor, you MUST set `single` on the `Header.BreadcrumbAnchor` to show the back arrow.
 - Use `Header.DocAnchor` on the `primary` variant whenever relevant external documentation exists — it opens the docs/help, it is not a link to the current page.
 
 ## Content guidance
@@ -91,7 +92,7 @@ function SearchPageHeader() {
         <Header description="Review search performance, analytics, and recent query trends." borderBottom>
             <Header.Breadcrumbs>
                 <Header.BreadcrumbAnchor href="/admin">Administration</Header.BreadcrumbAnchor>
-                <Header.BreadcrumbText>Search</Header.BreadcrumbText>
+                <Header.BreadcrumbAnchor href="/admin/search">Search</Header.BreadcrumbAnchor>
             </Header.Breadcrumbs>
             Query dashboard
             <Header.Right>
