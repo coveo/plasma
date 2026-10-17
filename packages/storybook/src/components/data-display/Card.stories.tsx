@@ -5,6 +5,7 @@ import {useArgs} from 'storybook/preview-api';
 type CardStoryArgs = Omit<CardProps, 'children' | 'mod'> & {
     disabled: boolean;
     selected: boolean;
+    section: boolean;
 };
 
 const meta: Meta<CardStoryArgs> = {
@@ -18,6 +19,7 @@ const meta: Meta<CardStoryArgs> = {
         variant: undefined,
         disabled: false,
         selected: false,
+        section: false,
     },
     argTypes: {
         variant: {
@@ -47,13 +49,21 @@ const meta: Meta<CardStoryArgs> = {
                 defaultValue: {summary: 'false'},
             },
         },
+        section: {
+            control: 'boolean',
+            description: 'Adds a card section with a level-three heading in this example.',
+            table: {
+                type: {summary: 'boolean'},
+                defaultValue: {summary: 'false'},
+            },
+        },
     },
 };
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
-    render: ({disabled, selected, variant, ...props}) => {
+    render: ({disabled, selected, section, variant, ...props}) => {
         const [, updateArgs] = useArgs<CardStoryArgs>();
         const interactive = variant === 'hover';
         const activate = () => {
@@ -84,6 +94,11 @@ export const Demo: Story = {
                 aria-disabled={interactive ? disabled : undefined}
                 w={280}
             >
+                {section && (
+                    <Card.Section withBorder>
+                        <Title order={3}>Search analytics</Title>
+                    </Card.Section>
+                )}
                 <Stack gap="xxs">
                     <Title order={4}>Search analytics</Title>
                     <Text c="dimmed">Review usage trends and identify opportunities to improve search relevance.</Text>
