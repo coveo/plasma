@@ -3,6 +3,8 @@ import {
     ArrowHeadRightSize16Px,
     CrossSize16Px,
     FilterSize16Px,
+    IconArrowLeft,
+    IconArrowRight,
     IconCalendarWeek,
     IconCheck,
     IconClock,
@@ -11,7 +13,6 @@ import {
 } from '@coveord/plasma-react-icons';
 import {color} from '@coveord/plasma-tokens';
 import {
-    Accordion as MantineAccordion,
     ActionIcon,
     Alert,
     AppShell,
@@ -35,6 +36,7 @@ import {
     InputWrapper,
     List,
     Loader,
+    Accordion as MantineAccordion,
     MantineThemeOverride,
     Modal,
     MultiSelect,
@@ -76,6 +78,7 @@ import {PlasmaComboboxChevron} from '../components/Combobox/PlasmaComboboxChevro
 import DrawerClasses from '../components/Drawer/Drawer.module.css';
 import {InfoToken} from '../components/InfoToken/InfoToken.js';
 
+import {Carousel} from '@mantine/carousel';
 import placeholderSvg from '../images/placeholder.svg';
 import AccordionClasses from '../styles/Accordion.module.css';
 import ActionIconClasses from '../styles/ActionIcon.module.css';
@@ -85,6 +88,7 @@ import BadgeClasses from '../styles/Badge.module.css';
 import BreadcrumbsClasses from '../styles/Breadcrumbs.module.css';
 import ButtonClasses from '../styles/Button.module.css';
 import CardClasses from '../styles/Card.module.css';
+import CarouselClasses from '../styles/Carousel.module.css';
 import CheckboxClasses from '../styles/Checkbox.module.css';
 import CheckboxIndicatorClasses from '../styles/CheckboxIndicator.module.css';
 import ChipClasses from '../styles/Chip.module.css';
@@ -251,6 +255,13 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 withBorder: true,
             },
             classNames: CardClasses,
+        }),
+        Carousel: Carousel.extend({
+            classNames: CarouselClasses,
+            defaultProps: {
+                nextControlIcon: <IconArrowRight size={16} />,
+                previousControlIcon: <IconArrowLeft size={16} />,
+            },
         }),
         Checkbox: Checkbox.extend({
             defaultProps: {

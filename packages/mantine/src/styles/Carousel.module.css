@@ -1,0 +1,11 @@
+.indicator {
+    background-color: var(--mantine-color-dark-light);
+
+    &[aria-selected='true'] {
+        background-color: var(--mantine-primary-color-filled);
+    }
+}
+
+.control {
+    border-radius: var(--mantine-radius-md);
+}

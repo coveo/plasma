@@ -80,6 +80,9 @@ export {type ClickHandler} from './hooks/useClickWithLoading.js';
 // Card
 export * from './components/Card/Card.js';
 
+// Carousel
+export {Carousel, type CarouselFactory, type CarouselProps} from './components/Carousel/Carousel.js';
+
 // Center
 export * from './components/Center/Center.js';
 
@@ -400,19 +403,19 @@ export * from './components/StickyFooter/StickyFooter.js';
 export * from './components/Switch/Switch.js';
 
 // Table - override Mantine Table
+export {Table as MantineTable} from '@mantine/core';
 export {flexRender as renderTableCell} from '@tanstack/react-table';
 export {
     type TableActionItemFactory,
     type TableActionItemProps,
     type TableActionItemStylesNames,
 } from './components/Table/table-actions/TableActionItem.js';
-export {TableActionsColumn} from './components/Table/table-column/TableActionsColumn.js';
-export {type TableActionsColumnMeta} from './components/Table/table-column/TableActionsColumn.js';
 export {
-    type TableCellProps,
     type TableCellFactory,
+    type TableCellProps,
     type TableCellStylesNames,
 } from './components/Table/table-cell/TableCell.js';
+export {TableActionsColumn, type TableActionsColumnMeta} from './components/Table/table-column/TableActionsColumn.js';
 export {
     type TableDateRangePickerFactory,
     type TableDateRangePickerProps,
@@ -462,16 +465,15 @@ export {
 } from './components/Table/Table.types.js';
 export {useTableContext} from './components/Table/TableContext.js';
 export {
+    useTable,
     type EnableMultiRowSelection,
     type EnableRowSelection,
-    useTable,
     type PaginationState,
     type TableState,
     type TableStore,
     type UseTableOptions,
 } from './components/Table/use-table.js';
 export {useUrlSyncedState, type SearchParamEntry, type UseUrlSyncedStateOptions} from './hooks/use-url-synced-state.js';
-export {Table as MantineTable} from '@mantine/core';
 
 // Table of Contents
 export * from './components/TableOfContents/TableOfContents.js';

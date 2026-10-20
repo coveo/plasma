@@ -13,6 +13,7 @@
         "@coveord/plasma-mantine": "workspace:*",
         "@coveord/plasma-react-icons": "workspace:*",
         "@faker-js/faker": "10.6.0",
+        "@mantine/carousel": "9.6.2",
         "@mantine/core": "9.6.2",
         "@mantine/dates": "9.6.2",
         "@mantine/form": "9.6.2",
@@ -20,6 +21,8 @@
         "@mantine/modals": "9.6.2",
         "@mantine/notifications": "9.6.2",
         "dayjs": "1.11.23",
+        "embla-carousel": "8.6.0",
+        "embla-carousel-react": "8.6.0",
         "react": "19.3.0",
         "react-dom": "19.3.0",
         "react-hook-form": "7.88.0"
