@@ -412,7 +412,7 @@ describe('Table', () => {
             expect(screen.getByRole('row', {name: /patate king/i, selected: true})).toBeInTheDocument();
         });
 
-        it('unselects all the selected rows when clicking on the the unselect button from the table header', async () => {
+        it('unselects all the selected rows when clicking on the unselect button of the bulk actions bar', async () => {
             const user = userEvent.setup();
             const Fixture = () => {
                 const store = useTable<RowData>({enableMultiRowSelection: true});
@@ -433,11 +433,11 @@ describe('Table', () => {
             render(<Fixture />);
 
             await user.click(screen.getByRole('checkbox', {name: /select all/i}));
-            await user.click(screen.getByRole('button', {name: /2 selected/i}));
+            await user.click(await screen.findByRole('button', {name: 'Unselect all'}));
             expect(screen.queryAllByRole('row', {selected: true})).toEqual([]);
         });
 
-        it('does not display number of selected rows if disableRowSelection is true', () => {
+        it('does not display the bulk actions bar if disableRowSelection is true', () => {
             const Fixture = () => {
                 const store = useTable<RowData>({
                     enableMultiRowSelection: true,
@@ -460,7 +460,7 @@ describe('Table', () => {
             };
             render(<Fixture />);
 
-            expect(screen.queryByRole('button', {name: /1 selected/i})).not.toBeInTheDocument();
+            expect(screen.queryByRole('group', {name: 'Bulk actions'})).not.toBeInTheDocument();
         });
 
         it('does not display the selected count when only single-select-only rows are selected', async () => {
@@ -487,10 +487,12 @@ describe('Table', () => {
 
             await user.click(screen.getByRole('row', {name: /jane doe/i}));
             expect(screen.getByRole('row', {name: /jane doe/i, selected: true})).toBeInTheDocument();
-            expect(screen.queryByRole('button', {name: /1 selected/i})).not.toBeInTheDocument();
+            expect(screen.queryByRole('group', {name: 'Bulk actions'})).not.toBeInTheDocument();
 
             await user.click(screen.getByRole('row', {name: /john smith/i}));
-            expect(screen.getByRole('button', {name: /1 selected/i})).toBeInTheDocument();
+            expect(
+                within(await screen.findByRole('group', {name: 'Bulk actions'})).getByText('1 selected'),
+            ).toBeInTheDocument();
         });
     });
 });
