@@ -51,8 +51,6 @@ const preview: Preview = {
                     ['Getting Started', 'Using LLMs'],
                     '@foundation',
                     ['Overview', 'Colors', 'Iconography', 'Radii', 'Shadows', 'Spacings', 'Typography'],
-                    '@content',
-                    ['About Content', 'Audience', 'Voice', 'Writing mechanics', 'Product vocabulary', 'Glossary'],
                     '@components',
                     [
                         'Overview',
@@ -66,6 +64,8 @@ const preview: Preview = {
                     ],
                     '@patterns',
                     ['Overview', 'Navigate with links'],
+                    '@content',
+                    ['About Content', 'Audience', 'Voice', 'Writing mechanics', 'Product vocabulary', 'Glossary'],
                     '*',
                     'changelogs',
                 ],
