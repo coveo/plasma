@@ -1,9 +1,10 @@
 import {useForm} from '@mantine/form';
 import {loader} from '@monaco-editor/react';
-import {render, screen, userEvent, waitForElementToBeRemoved} from '@test-utils';
+import {act, render, screen, userEvent, waitForElementToBeRemoved} from '@test-utils';
 import type {editor} from 'monaco-editor';
 import {useRef} from 'react';
 import {CodeEditor} from '../CodeEditor.js';
+import CodeEditorClasses from '../CodeEditor.module.css';
 import {XML} from '../languages/xml.js';
 
 let mockedParentHeight = 600;
@@ -49,6 +50,36 @@ describe('CodeEditor', () => {
 
         expect(screen.getByText(/invalid configuration/i)).toBeInTheDocument();
         expect(screen.getByTestId('editor-wrapper')).toHaveStyle('border-color: #cd2113');
+    });
+
+    describe('validation markers', () => {
+        const renderAndValidate = async (...markerLists: Array<Array<{severity: number}>>) => {
+            const {validate} =
+                await vi.importMock<typeof import('../../../../__mocks__/@monaco-editor/react.js')>(
+                    '@monaco-editor/react',
+                );
+            render(<CodeEditor />);
+            await waitForElementToBeRemoved(screen.queryByRole('presentation'));
+            markerLists.forEach((markers) => act(() => validate(markers)));
+        };
+
+        it('shows the error state when monaco reports an error marker', async () => {
+            await renderAndValidate([{severity: 4}, {severity: 8}]);
+
+            expect(screen.getByTestId('editor-wrapper')).toHaveClass(CodeEditorClasses.error);
+        });
+
+        it('does not show the error state when monaco only reports warning markers', async () => {
+            await renderAndValidate([{severity: 4}]);
+
+            expect(screen.getByTestId('editor-wrapper')).not.toHaveClass(CodeEditorClasses.error);
+        });
+
+        it('clears the error state when monaco no longer reports markers', async () => {
+            await renderAndValidate([{severity: 8}], []);
+
+            expect(screen.getByTestId('editor-wrapper')).not.toHaveClass(CodeEditorClasses.error);
+        });
     });
 
     it('loads the monaco editor files from node_modules when monacoLoader prop is "local"', async () => {
