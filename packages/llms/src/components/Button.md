@@ -32,6 +32,7 @@ Do not use `Button` when:
 
 - Use one primary button per decision area when possible.
 - Use `Button.Secondary` for important supporting actions; use `Button.Tertiary` or `Button.Quaternary` for low-emphasis actions such as preview or back.
+- Cancel buttons MUST use `Button.Tertiary`, in every context: forms, modals, drawers, sticky footers, and inline confirmations.
 - Use destructive variants only when the action can delete, revoke, archive, or otherwise negatively affect data.
 
 ## Variants
@@ -64,6 +65,7 @@ Important states include:
 - Using a button for navigation.
 - Disabling a button without explaining how the user can enable it.
 - Hiding destructive consequences behind vague labels such as "OK".
+- Styling a Cancel button as `Button.Secondary` or any variant other than `Button.Tertiary`.
 
 # API reference
 
@@ -109,7 +111,7 @@ import {Button} from '@coveord/plasma-mantine';
 function Example() {
     return (
         <Button.Group>
-            <Button.Secondary>Cancel</Button.Secondary>
+            <Button.Tertiary>Cancel</Button.Tertiary>
             <Button.Primary>Save</Button.Primary>
         </Button.Group>
     );
