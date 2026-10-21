@@ -70,10 +70,12 @@ export const AnchorExternal = polymorphicFactory<AnchorExternalFactory>((_props)
             {...others}
         >
             {children}
-            {/* Non-breaking space keeps the icon on the same line as the last word */}
-            {'\u00A0'}
-            {announcesNewTab ? <VisuallyHidden>{newTabLabel}</VisuallyHidden> : null}
-            <IconExternalLink size="1em" aria-hidden {...getStyles('icon')} />
+            {/* The word joiner and nowrap keep the icon on the same line as the last word */}
+            <span className={classes.iconWrapper}>
+                {'\u2060'}
+                <IconExternalLink size="1em" aria-hidden {...getStyles('icon')} />
+            </span>
+            {announcesNewTab ? <VisuallyHidden>{`\u00A0${newTabLabel}`}</VisuallyHidden> : null}
         </MantineAnchor>
     );
 });
