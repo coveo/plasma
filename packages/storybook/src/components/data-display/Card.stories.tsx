@@ -1,4 +1,4 @@
-import {Card, type CardProps, Stack, Text, Title} from '@coveord/plasma-mantine';
+import {Box, Card, type CardProps} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import {useArgs} from 'storybook/preview-api';
 
@@ -6,6 +6,8 @@ type CardStoryArgs = Omit<CardProps, 'children' | 'mod'> & {
     disabled: boolean;
     selected: boolean;
     section: boolean;
+    sectionInheritPadding: boolean;
+    sectionWithBorder: boolean;
 };
 
 const meta: Meta<CardStoryArgs> = {
@@ -20,6 +22,8 @@ const meta: Meta<CardStoryArgs> = {
         disabled: false,
         selected: false,
         section: false,
+        sectionInheritPadding: false,
+        sectionWithBorder: true,
     },
     argTypes: {
         variant: {
@@ -27,6 +31,7 @@ const meta: Meta<CardStoryArgs> = {
             options: [undefined, 'hover'],
             description: 'Adds hover styling when the entire card is interactive.',
             table: {
+                category: 'Card',
                 type: {summary: "'hover' | undefined"},
                 defaultValue: {summary: 'undefined'},
             },
@@ -36,6 +41,7 @@ const meta: Meta<CardStoryArgs> = {
             if: {arg: 'variant', eq: 'hover'},
             description: 'Disables interaction for the hover card in this example.',
             table: {
+                category: 'Card',
                 type: {summary: 'boolean'},
                 defaultValue: {summary: 'false'},
             },
@@ -45,14 +51,38 @@ const meta: Meta<CardStoryArgs> = {
             if: {arg: 'variant', eq: 'hover'},
             description: 'Sets the selected state of the hover card in this example.',
             table: {
+                category: 'Card',
                 type: {summary: 'boolean'},
                 defaultValue: {summary: 'false'},
             },
         },
         section: {
             control: 'boolean',
-            description: 'Adds a card section with a level-three heading in this example.',
+            description: 'Adds a `Card.Section` with placeholder content in this example.',
             table: {
+                category: 'Card.Section',
+                type: {summary: 'boolean'},
+                defaultValue: {summary: 'false'},
+            },
+        },
+        sectionInheritPadding: {
+            name: 'inheritPadding',
+            control: 'boolean',
+            if: {arg: 'section'},
+            description: 'Applies the parent card horizontal padding to the section.',
+            table: {
+                category: 'Card.Section',
+                type: {summary: 'boolean'},
+                defaultValue: {summary: 'false'},
+            },
+        },
+        sectionWithBorder: {
+            name: 'withBorder',
+            control: 'boolean',
+            if: {arg: 'section'},
+            description: 'Adds top and bottom borders to the section, except on the first and last sections.',
+            table: {
+                category: 'Card.Section',
                 type: {summary: 'boolean'},
                 defaultValue: {summary: 'false'},
             },
@@ -63,7 +93,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
-    render: ({disabled, selected, section, variant, ...props}) => {
+    render: ({disabled, selected, section, sectionInheritPadding, sectionWithBorder, variant, ...props}) => {
         const [, updateArgs] = useArgs<CardStoryArgs>();
         const interactive = variant === 'hover';
         const activate = () => {
@@ -95,14 +125,11 @@ export const Demo: Story = {
                 w={280}
             >
                 {section && (
-                    <Card.Section withBorder>
-                        <Title order={3}>Search analytics</Title>
+                    <Card.Section inheritPadding={sectionInheritPadding} withBorder={sectionWithBorder}>
+                        <Box bg="blue.2" h={80} />
                     </Card.Section>
                 )}
-                <Stack gap="xxs">
-                    <Title order={4}>Search analytics</Title>
-                    <Text c="dimmed">Review usage trends and identify opportunities to improve search relevance.</Text>
-                </Stack>
+                <Box bg="blue.2" h={80} />
             </Card>
         );
     },
