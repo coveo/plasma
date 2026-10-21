@@ -87,6 +87,21 @@ These type-only aliases are available for annotations and do not add runtime sta
 ```tsx
 import {Button, Header} from '@coveord/plasma-mantine';
 
+// One ancestor: a single breadcrumb with a back arrow
+function SourceDetailHeader() {
+    return (
+        <Header>
+            <Header.Breadcrumbs>
+                <Header.BreadcrumbAnchor href="/sources" single>
+                    Sources
+                </Header.BreadcrumbAnchor>
+            </Header.Breadcrumbs>
+            Product catalog
+        </Header>
+    );
+}
+
+// Two or more ancestors: a breadcrumb trail
 function SearchPageHeader() {
     return (
         <Header description="Review search performance, analytics, and recent query trends." borderBottom>

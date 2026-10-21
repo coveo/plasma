@@ -30,7 +30,7 @@ description: Horizontal trail of navigation links showing the user's position wi
 - Do not include the current page in the trail — the page header already shows the current page name.
 - All items MUST be `Anchor` elements so they are keyboard-focusable and screen-reader navigable. Every item is a link; you MUST NOT use `Header.BreadcrumbText`.
 - Each link MUST point to a fixed parent route, never to the browser history (`history.back()`).
-- When the parent page has tabs, the link MUST open the parent page on the tab the user came from. For example, `< Product listing` opens Product listing on the Ranking rules tab.
+- When the parent page has tabs, the link MUST open the parent page on the tab the item belongs to, regardless of how the user reached the item. For example, `< Product listing` on a ranking rule opens Product listing on the Ranking rules tab. If the item doesn't belong to a specific tab, the link MUST open the parent page's default tab.
 - Pass `inherit` on each `Anchor` child so its font size matches the `Breadcrumbs` container styling.
 
 ## Interaction notes

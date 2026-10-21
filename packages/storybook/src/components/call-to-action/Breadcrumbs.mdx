@@ -37,8 +37,9 @@ The `Breadcrumbs` helps users understand their location and return directly to a
   `Header.BreadcrumbAnchor`; the arrow isn't added automatically.
 - Show no more than three ancestor links.
 - Don't include tabs in breadcrumbs, since tabs aren't pages. Link to the page that contains the tabs instead.
-- Return users to the tab they came from. For example, a user edits a ranking rule from the Ranking rules tab of
-  Product listing. The breadcrumb reads **< Product listing** and opens Product listing on the Ranking rules tab.
+- Return users to the tab the item belongs to, however they reached it. For example, on a ranking rule, the breadcrumb
+  reads **< Product listing** and opens Product listing on the Ranking rules tab. If the item doesn't belong to a
+  specific tab, open the parent page's default tab.
 - Link every item to a fixed parent page, never to the browser's previous page.
 - Omit the current page because the page header already identifies it.
 - Use `Anchor` with `inherit` for every item, and let the component add separators.
