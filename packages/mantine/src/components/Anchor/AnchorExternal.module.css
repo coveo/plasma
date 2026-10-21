@@ -1,3 +1,14 @@
+.iconWrapper {
+    white-space: nowrap;
+}
+
 .icon {
+    margin-inline-start: var(--mantine-spacing-xxs);
     vertical-align: -0.125em;
+}
+
+.root:where([data-size='sm']:not([data-inherit])) .icon {
+    width: 16px;
+    height: 16px;
+    vertical-align: -3px;
 }

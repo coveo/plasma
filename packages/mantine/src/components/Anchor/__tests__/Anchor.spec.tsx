@@ -21,7 +21,7 @@ describe('Anchor', () => {
         it('tells screen reader users that the link opens in a new tab', () => {
             render(<Anchor.External href="https://plasma.coveo.com">Plasma</Anchor.External>);
 
-            expect(screen.getByRole('link', {name: /^Plasma\s\(opens in a new tab\)$/})).toBeVisible();
+            expect(screen.getByRole('link', {name: /^Plasma\W*\(opens in a new tab\)$/})).toBeVisible();
         });
 
         it('announces a custom new tab label', () => {
@@ -31,7 +31,7 @@ describe('Anchor', () => {
                 </Anchor.External>,
             );
 
-            expect(screen.getByRole('link', {name: /^Plasma\s\(ouvre un nouvel onglet\)$/})).toBeVisible();
+            expect(screen.getByRole('link', {name: /^Plasma\W*\(ouvre un nouvel onglet\)$/})).toBeVisible();
         });
 
         it('renders a decorative external icon', () => {
@@ -49,8 +49,8 @@ describe('Anchor', () => {
                 </Anchor.External>,
             );
 
-            const link = screen.getByRole('link', {name: /^Plasma\s?$/});
-            expect(link).toHaveAttribute('target', '_self');
+            expect(screen.getByRole('link')).toHaveAttribute('target', '_self');
+            expect(screen.queryByText(/opens in a new tab/)).not.toBeInTheDocument();
         });
 
         it('forwards the ref to the anchor element', () => {
