@@ -1,6 +1,7 @@
-import {Box, Card, type CardProps} from '@coveord/plasma-mantine';
+import {Card, type CardProps} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import {useArgs} from 'storybook/preview-api';
+import {Placeholder} from '../../Placeholder.js';
 
 type CardStoryArgs = Omit<CardProps, 'children' | 'mod'> & {
     disabled: boolean;
@@ -126,10 +127,10 @@ export const Demo: Story = {
             >
                 {section && (
                     <Card.Section inheritPadding={sectionInheritPadding} withBorder={sectionWithBorder}>
-                        <Box bg="blue.2" h={80} />
+                        <Placeholder h={80}>Card.Section</Placeholder>
                     </Card.Section>
                 )}
-                <Box bg="blue.2" h={80} />
+                <Placeholder h={80}>Card Content</Placeholder>
             </Card>
         );
     },
