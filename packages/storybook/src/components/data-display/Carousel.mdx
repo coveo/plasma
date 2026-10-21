@@ -1,0 +1,48 @@
+import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import * as CarouselStories from './Carousel.stories';
+
+<Meta of={CarouselStories} />
+
+# Carousel
+
+Set of slides that users browse one view at a time.
+
+## Overview
+
+`Carousel` presents related, equally weighted items in limited space. Users move between slides with the previous and next buttons, the indicators, a drag or swipe gesture, or the arrow keys.
+
+It suits visual items that support the main task, where keeping some of them out of view doesn't hide anything users need.
+
+## Usage
+
+<Canvas of={CarouselStories.Demo} />
+<Controls of={CarouselStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- Users browse a small set of visual items, such as screenshots, illustrations, or feature highlights, and the space fits only one or a few at a time.
+- The items are independent, and users can view them in any order.
+- Showing part of the next slide helps users see that more content is available.
+
+### When not to use
+
+- If users need the content to complete their task, show it in a visible layout such as `Stack`, `SimpleGrid`, or a group of `Card` components.
+- If users need to compare items side by side, use a `Table` or a grid of `Card` components.
+- For ordered steps with tracked progress, use `Stepper`.
+- For peer views of the same context, use `Tabs`.
+- For a large or open-ended set, use a list, a grid, or a `Table` with pagination.
+
+### Best practices
+
+- Keep the set short enough that users can reasonably view every slide.
+- Make the first slide stand on its own, because many users never move past it.
+- Give every slide one self-contained item with the same structure as the other slides.
+- Add a gap between slides when more than one slide is visible.
+- Set a height on the carousel or its slide content so every slide renders at the same size. Vertical carousels require a height.
+- Keep the previous and next buttons visible unless you show indicators instead.
+- Give the carousel an `aria-label` that describes its content, such as **Product screenshots**. It renders as a landmark region with no name by default.
+- Don't advance slides automatically. If you add autoplay, provide a visible control that lets users pause it.
+- When the interface is localized, translate the built-in **Previous slide**, **Next slide**, and **Go to slide** labels.
+- Install the optional `@mantine/carousel` and `embla-carousel-react` packages, and import `@mantine/carousel/styles.layer.css` with your other Mantine styles. Without the stylesheet, slides stack vertically.
