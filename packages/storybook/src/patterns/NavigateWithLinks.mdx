@@ -1,5 +1,5 @@
 import {Meta, Unstyled} from '@storybook/addon-docs/blocks';
-import {Alert, Anchor, Button, Header, MantineTable as Table, Text} from '@coveord/plasma-mantine';
+import {Alert, Anchor, Button, Header, MantineTable as Table, Text, VisuallyHidden} from '@coveord/plasma-mantine';
 import {IconExternalLink} from '@coveord/plasma-react-icons';
 
 export const ExternalLink = ({href = 'https://docs.coveo.com', children}) => (
@@ -12,6 +12,7 @@ export const ExternalLink = ({href = 'https://docs.coveo.com', children}) => (
     >
         {children}
         <IconExternalLink size={14} aria-hidden />
+        <VisuallyHidden> (opens in a new tab)</VisuallyHidden>
     </Anchor>
 );
 
@@ -20,7 +21,11 @@ export const decisions = [
         situation: 'The destination is in the current product, and the link stands on its own',
         approach: 'Standalone Anchor',
         why: 'Easy to scan, outside the reading flow',
-        example: <Anchor href="#" size="sm">View query pipelines</Anchor>,
+        example: (
+            <Anchor href="#" size="sm">
+                View query pipelines
+            </Anchor>
+        ),
     },
     {
         situation: 'The destination is mentioned within a sentence',
@@ -37,10 +42,15 @@ export const decisions = [
         ),
     },
     {
-        situation: 'The destination is in another Coveo app, such as the Administration Console or the Merchandising Hub',
+        situation:
+            'The destination is in another Coveo app, such as the Administration Console or the Merchandising Hub',
         approach: 'Anchor, no ↗ icon',
         why: 'Other Coveo apps are not external destinations',
-        example: <Anchor href="#" size="sm">View query pipelines in the Administration Console</Anchor>,
+        example: (
+            <Anchor href="#" size="sm">
+                View query pipelines in the Administration Console
+            </Anchor>
+        ),
     },
     {
         situation: 'The destination is outside the Coveo apps, such as the documentation site',
@@ -55,7 +65,11 @@ export const decisions = [
         example: (
             <Header p={0} variant="secondary">
                 Query pipelines
-                <Header.DocAnchor label="Learn about query pipelines" href="https://docs.coveo.com" />
+                <Header.DocAnchor
+                    label="Learn about query pipelines"
+                    aria-label="Learn about query pipelines (opens in a new tab)"
+                    href="https://docs.coveo.com"
+                />
             </Header>
         ),
     },
@@ -135,8 +149,8 @@ where they are or whether they're leaving the product. Links handle navigation o
 
 1. **Link text** describes the destination.
 2. **External icon (↗)** trails the text, on external links only. A link is external when its destination is outside
-   the Coveo apps, such as the documentation site; links to another Coveo app aren't external. Icon-only controls with
-   this icon, such as `Header.DocAnchor`, are action icons, not links.
+   the Coveo apps, such as the documentation site; links to another Coveo app aren't external. Icon-only links with
+   this icon, such as `Header.DocAnchor`, are styled as action icons and follow their own component guidance.
 3. **Target**: destinations in the product open in the same tab; external destinations open in a new tab.
    Links to another Coveo app may open in either, depending on the user's task.
 
@@ -172,7 +186,8 @@ links open in a new tab, the current page stays where the user left it.
 ## Accessibility
 
 - Link text must make sense out of context, since screen reader users often browse a list of links.
-- The ↗ icon is decorative and hidden from screen readers. Tell screen reader users that the link opens in a new tab.
+- The ↗ icon is decorative and hidden from screen readers. Tell screen reader users that the link opens in a new tab, for example with visually hidden text such as
+  "(opens in a new tab)".
 - Links are activated with Enter, not Space. Using a link for an action breaks keyboard users' expectations.
 
 ## Examples
@@ -181,7 +196,12 @@ links open in a new tab, the current page stays where the user left it.
     <Table withTableBorder withColumnBorders layout="auto" my="sm">
         <Table.Tbody>
             {[
-                ['Standalone link', <Anchor href="#" size="sm">View query pipelines</Anchor>],
+                [
+                    'Standalone link',
+                    <Anchor href="#" size="sm">
+                        View query pipelines
+                    </Anchor>,
+                ],
                 [
                     'Inline link',
                     <Text size="sm">
@@ -194,14 +214,20 @@ links open in a new tab, the current page stays where the user left it.
                 ],
                 [
                     'Link to another Coveo app',
-                    <Anchor href="#" size="sm">View query pipelines in the Administration Console</Anchor>,
+                    <Anchor href="#" size="sm">
+                        View query pipelines in the Administration Console
+                    </Anchor>,
                 ],
                 ['External link', <ExternalLink>View ranking documentation</ExternalLink>],
                 [
                     'Documentation for the current panel',
                     <Header p={0} variant="secondary">
                         Query pipelines
-                        <Header.DocAnchor label="Learn about query pipelines" href="https://docs.coveo.com" />
+                        <Header.DocAnchor
+                            label="Learn about query pipelines"
+                            aria-label="Learn about query pipelines (opens in a new tab)"
+                            href="https://docs.coveo.com"
+                        />
                     </Header>,
                 ],
             ].map(([type, example]) => (
