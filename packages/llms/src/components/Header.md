@@ -32,7 +32,9 @@ Do not use `Header` when:
 - Use the `primary` variant for page headers.
 - Use the `secondary` variant for lower-level sections when the component is still appropriate.
 - Use `Header.Right` for actions that apply to the page or section as a whole.
-- Use `Header.Breadcrumbs` for hierarchy: `Header.BreadcrumbAnchor` for linked ancestor levels and `Header.BreadcrumbText` for the current, non-linked location.
+- Use `Header.Breadcrumbs` for hierarchy, with a `Header.BreadcrumbAnchor` for each ancestor page. The trail MUST NOT include the current page, which the header title already shows. You MUST NOT use `Header.BreadcrumbText`, which is deprecated.
+- With a single ancestor, you MUST set `single` on the `Header.BreadcrumbAnchor` to show the back arrow; the arrow is not added automatically.
+- You MUST NOT add a click handler (`onClick`) to the `Header.Breadcrumbs` container; only the anchors are clickable.
 - Use `Header.DocAnchor` on the `primary` variant whenever relevant external documentation exists — it opens the docs/help, it is not a link to the current page.
 
 ## Content guidance
@@ -66,7 +68,7 @@ Plasma provides pre-configured sub-components as convenience wrappers. You SHOUL
 
 - `Header.Breadcrumbs`
 - `Header.BreadcrumbAnchor`
-- `Header.BreadcrumbText`
+- `Header.BreadcrumbText` (deprecated: use `Header.BreadcrumbAnchor`)
 - `Header.Right`
 - `Header.DocAnchor`
 
@@ -86,12 +88,27 @@ These type-only aliases are available for annotations and do not add runtime sta
 ```tsx
 import {Button, Header} from '@coveord/plasma-mantine';
 
+// One ancestor: a single breadcrumb with a back arrow
+function SourceDetailHeader() {
+    return (
+        <Header>
+            <Header.Breadcrumbs>
+                <Header.BreadcrumbAnchor href="/sources" single>
+                    Sources
+                </Header.BreadcrumbAnchor>
+            </Header.Breadcrumbs>
+            Product catalog
+        </Header>
+    );
+}
+
+// Two or more ancestors: a breadcrumb trail
 function SearchPageHeader() {
     return (
         <Header description="Review search performance, analytics, and recent query trends." borderBottom>
             <Header.Breadcrumbs>
                 <Header.BreadcrumbAnchor href="/admin">Administration</Header.BreadcrumbAnchor>
-                <Header.BreadcrumbText>Search</Header.BreadcrumbText>
+                <Header.BreadcrumbAnchor href="/admin/search">Search</Header.BreadcrumbAnchor>
             </Header.Breadcrumbs>
             Query dashboard
             <Header.Right>
