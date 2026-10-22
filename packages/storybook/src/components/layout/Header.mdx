@@ -35,6 +35,8 @@ The `Header` establishes the purpose and hierarchy of a page or major section. I
 - Place only page-level actions in `Header.Right` and limit competing choices.
 - Use breadcrumbs to show hierarchy, with a link for each ancestor page. Leave the current page out of the trail; the
   header title already shows it.
+- With one ancestor, set `single` on `Header.BreadcrumbAnchor` to show the back arrow; it isn't added automatically.
+- Make every breadcrumb item a `Header.BreadcrumbAnchor`; don't use `Header.BreadcrumbText`.
 - Link to relevant external help through `Header.DocAnchor`.
 
 ### Content guidelines

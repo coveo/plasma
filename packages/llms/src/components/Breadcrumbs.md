@@ -24,11 +24,11 @@ description: Horizontal trail of navigation links showing the user's position wi
 
 - In Plasma products, breadcrumbs are normally placed inside a page `Header` via `Header.Breadcrumbs` / `Header.BreadcrumbAnchor`; use standalone `Breadcrumbs` only outside a `Header` context.
 - Tabs are not pages. A tab MUST NOT be a level in the breadcrumb trail. A page opened from a tab points to the page that contains the tab. For example, editing a ranking rule opened from the Ranking rules tab of Product listing shows `< Product listing`, not `< Ranking rules`.
-- When there is one ancestor, show a single breadcrumb with a back arrow. Inside a `Header`, you MUST set `single` on the `Header.BreadcrumbAnchor`; the arrow is not added automatically.
+- When there is one ancestor, show a single breadcrumb with a back arrow.
 - When there are two ancestors, use two `Anchor` links.
 - When there are three or more ancestors, show up to three `Anchor` links — avoid going deeper as it becomes unreadable.
 - Do not include the current page in the trail — the page header already shows the current page name.
-- All items MUST be `Anchor` elements so they are keyboard-focusable and screen-reader navigable. Every item is a link; you MUST NOT use `Header.BreadcrumbText`.
+- All items MUST be `Anchor` elements so they are keyboard-focusable and screen-reader navigable. Every item is a link.
 - Each link MUST point to a fixed parent route, never to the browser history (`history.back()`).
 - When the parent page has tabs, the link MUST open the parent page on the tab the item belongs to, regardless of how the user reached the item. For example, `< Product listing` on a ranking rule opens Product listing on the Ranking rules tab. If the item doesn't belong to a specific tab, the link MUST open the parent page's default tab.
 - Pass `inherit` on each `Anchor` child so its font size matches the `Breadcrumbs` container styling.
@@ -37,7 +37,7 @@ description: Horizontal trail of navigation links showing the user's position wi
 
 The separator between items is rendered automatically by the component. Do not place separator characters manually between children.
 
-Only the links are clickable. You MUST NOT add a click handler (`onClick`) to the `Breadcrumbs` or `Header.Breadcrumbs` container.
+Only the links are clickable. You MUST NOT add a click handler (`onClick`) to the `Breadcrumbs` container.
 
 ## Accessibility expectations
 

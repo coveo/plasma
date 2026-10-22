@@ -33,8 +33,7 @@ The `Breadcrumbs` helps users understand their location and return directly to a
 ### Best practices
 
 - Use `Header.Breadcrumbs` inside a page header and standalone `Breadcrumbs` elsewhere.
-- With one ancestor, show a single breadcrumb with a back arrow. In a page header, set `single` on
-  `Header.BreadcrumbAnchor`; the arrow isn't added automatically.
+- With one ancestor, show a single breadcrumb anchor with a back arrow.
 - Show no more than three ancestor links.
 - Don't include tabs in breadcrumbs, since tabs aren't pages. Link to the page that contains the tabs instead.
 - Return users to the tab the item belongs to, however they reached it. For example, on a ranking rule, the breadcrumb
@@ -43,7 +42,6 @@ The `Breadcrumbs` helps users understand their location and return directly to a
 - Link every item to a fixed parent page, never to the browser's previous page.
 - Omit the current page because the page header already identifies it.
 - Use `Anchor` with `inherit` for every item, and let the component add separators.
-- Make every item a link; don't use `Header.BreadcrumbText`.
 
 ### Content guidelines
 
