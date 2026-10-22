@@ -1,5 +1,6 @@
-import {Carousel, Flex, type CarouselProps} from '@coveord/plasma-mantine';
+import {Carousel, type CarouselProps} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
+import {Placeholder} from '../../Placeholder.js';
 
 type CarouselStoryArgs = Pick<
     CarouselProps,
@@ -79,13 +80,7 @@ export const Demo: Story = {
     render: ({loop, ...props}) => (
         <Carousel {...props} emblaOptions={{loop}} w={500}>
             {slides.map(({value}) => (
-                <Carousel.Slide key={value}>
-                    {
-                        <Flex justify="center" align="center" h="100%">
-                            {value}
-                        </Flex>
-                    }
-                </Carousel.Slide>
+                <Carousel.Slide key={value}>{<Placeholder h="100%">{value}</Placeholder>}</Carousel.Slide>
             ))}
         </Carousel>
     ),

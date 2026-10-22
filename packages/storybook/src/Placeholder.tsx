@@ -6,7 +6,7 @@ interface PlaceholderProps extends CenterProps {
 }
 
 export const Placeholder = ({children, ...props}: PlaceholderProps) => (
-    <Center bg="blue.1" {...props}>
+    <Center bg="blue.1" {...props} bd="1px solid blue.3">
         {children}
     </Center>
 );
