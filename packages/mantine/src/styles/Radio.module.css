@@ -1,3 +1,8 @@
+.root {
+    padding-top: var(--mantine-spacing-xs);
+    padding-bottom: var(--mantine-spacing-xs);
+}
+
 .labelWrapper {
     display: flex;
     align-items: flex-start;
@@ -34,9 +39,4 @@
             color: var(--coveo-color-text-readonly);
         }
     }
-}
-
-div[role='radiogroup'] {
-    padding-top: var(--mantine-spacing-xs);
-    padding-bottom: var(--mantine-spacing-xs);
 }
