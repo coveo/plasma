@@ -54,6 +54,9 @@ export {
     type SemanticBadgeProps,
 } from './components/Badge/Badge.js';
 
+// BadgeList
+export * from './components/BadgeList/BadgeList.js';
+
 // Blockquote
 export * from './components/Blockquote/Blockquote.js';
 
