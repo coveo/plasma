@@ -3,8 +3,6 @@ import {
     ArrowHeadRightSize16Px,
     CrossSize16Px,
     FilterSize16Px,
-    IconArrowLeft,
-    IconArrowRight,
     IconCalendarWeek,
     IconCheck,
     IconClock,
@@ -78,7 +76,6 @@ import {PlasmaComboboxChevron} from '../components/Combobox/PlasmaComboboxChevro
 import DrawerClasses from '../components/Drawer/Drawer.module.css';
 import {InfoToken} from '../components/InfoToken/InfoToken.js';
 
-import {Carousel} from '@mantine/carousel';
 import placeholderSvg from '../images/placeholder.svg';
 import AccordionClasses from '../styles/Accordion.module.css';
 import ActionIconClasses from '../styles/ActionIcon.module.css';
@@ -256,13 +253,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             },
             classNames: CardClasses,
         }),
-        Carousel: Carousel.extend({
+        Carousel: {
             classNames: CarouselClasses,
-            defaultProps: {
-                nextControlIcon: <IconArrowRight size={16} />,
-                previousControlIcon: <IconArrowLeft size={16} />,
-            },
-        }),
+        },
         Checkbox: Checkbox.extend({
             defaultProps: {
                 radius: 'sm',

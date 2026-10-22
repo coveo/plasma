@@ -2,10 +2,7 @@ import {Carousel, type CarouselProps} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import {Placeholder} from '../../Placeholder.js';
 
-type CarouselStoryArgs = Pick<
-    CarouselProps,
-    'slideSize' | 'slideGap' | 'withControls' | 'withIndicators' | 'height'
-> & {
+type CarouselStoryArgs = CarouselProps & {
     loop: boolean;
 };
 
@@ -77,7 +74,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
-    render: ({loop, ...props}) => (
+    render: ({loop, ...props}: CarouselStoryArgs) => (
         <Carousel {...props} emblaOptions={{loop}} w={500}>
             {slides.map(({value}) => (
                 <Carousel.Slide key={value}>{<Placeholder h="100%">{value}</Placeholder>}</Carousel.Slide>
