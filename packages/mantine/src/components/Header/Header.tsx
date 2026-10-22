@@ -87,6 +87,9 @@ export type HeaderFactory = Factory<{
     staticComponents: {
         Breadcrumbs: typeof HeaderBreadcrumbs;
         BreadcrumbAnchor: typeof HeaderBreadcrumbAnchor;
+        /**
+         * @deprecated Every breadcrumb item must be a link: use `Header.BreadcrumbAnchor` for each ancestor page, and leave the current page out of the trail since the header title already shows it. Will be removed in the next major version.
+         */
         BreadcrumbText: typeof HeaderBreadcrumbText;
         Right: typeof HeaderRight;
         DocAnchor: typeof HeaderDocAnchor;
