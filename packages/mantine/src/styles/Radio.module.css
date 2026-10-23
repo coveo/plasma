@@ -35,8 +35,3 @@
         }
     }
 }
-
-div[role='radiogroup'] {
-    padding-top: var(--mantine-spacing-xs);
-    padding-bottom: var(--mantine-spacing-xs);
-}

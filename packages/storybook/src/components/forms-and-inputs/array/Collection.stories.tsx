@@ -189,6 +189,47 @@ export const CollectionValidationErrors: Story = {
     },
 };
 
+export const CollectionReadOnly: Story = {
+    tags: ['!dev'],
+    render: () => {
+        const form = useForm({
+            initialValues: {
+                contacts: [
+                    {name: 'Alice Smith', email: 'alice@example.com'},
+                    {name: 'Bob Johnson', email: 'bob@example.com'},
+                ],
+            },
+            enhanceGetInputProps: (payload) => ({
+                ...enhanceWithCollectionProps(payload, 'contacts'),
+                readOnly: true,
+            }),
+        });
+
+        return (
+            <Collection<ContactItem>
+                {...form.getInputProps('contacts')}
+                w={600}
+                label="Rows stay aligned with headers when read-only"
+                draggable
+                readOnly
+                newItem={{name: '', email: ''}}
+                layout={Collection.Layouts.Horizontal}
+                columns={[
+                    {
+                        header: 'Name',
+                        cell: (item, index) => <TextInput {...form.getInputProps(`contacts.${index}.name`)} />,
+                        maxSize: 150,
+                    },
+                    {
+                        header: 'Email',
+                        cell: (item, index) => <TextInput {...form.getInputProps(`contacts.${index}.email`)} />,
+                    },
+                ]}
+            />
+        );
+    },
+};
+
 /**
  * Legacy children render prop pattern.
  *

@@ -11,7 +11,6 @@ import {
 } from '@coveord/plasma-react-icons';
 import {color} from '@coveord/plasma-tokens';
 import {
-    Accordion as MantineAccordion,
     ActionIcon,
     Alert,
     AppShell,
@@ -35,6 +34,7 @@ import {
     InputWrapper,
     List,
     Loader,
+    Accordion as MantineAccordion,
     MantineThemeOverride,
     Modal,
     MultiSelect,
@@ -85,6 +85,7 @@ import BadgeClasses from '../styles/Badge.module.css';
 import BreadcrumbsClasses from '../styles/Breadcrumbs.module.css';
 import ButtonClasses from '../styles/Button.module.css';
 import CardClasses from '../styles/Card.module.css';
+import CarouselClasses from '../styles/Carousel.module.css';
 import CheckboxClasses from '../styles/Checkbox.module.css';
 import CheckboxIndicatorClasses from '../styles/CheckboxIndicator.module.css';
 import ChipClasses from '../styles/Chip.module.css';
@@ -106,6 +107,7 @@ import PillClasses from '../styles/Pill.module.css';
 import PopoverClasses from '../styles/Popover.module.css';
 import RadioClasses from '../styles/Radio.module.css';
 import RadioCardClasses from '../styles/RadioCard.module.css';
+import RadioGroupClasses from '../styles/RadioGroup.module.css';
 import ReadOnlyInputClasses from '../styles/ReadOnlyInput.module.css';
 import ReadOnlyStateClasses from '../styles/ReadOnlyState.module.css';
 import ScrollAreaClasses from '../styles/ScrollArea.module.css';
@@ -252,6 +254,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             },
             classNames: CardClasses,
         }),
+        Carousel: {
+            classNames: CarouselClasses,
+        },
         Checkbox: Checkbox.extend({
             defaultProps: {
                 radius: 'sm',
@@ -494,6 +499,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         RadioCard: Radio.Card.extend({
             classNames: RadioCardClasses,
+        }),
+        RadioGroup: Radio.Group.extend({
+            classNames: RadioGroupClasses,
         }),
         ScrollArea: ScrollArea.extend({
             classNames: ScrollAreaClasses,

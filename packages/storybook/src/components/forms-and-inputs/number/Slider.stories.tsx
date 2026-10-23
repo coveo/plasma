@@ -1,5 +1,6 @@
 import {Slider} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
+import {Args} from '../../../Args.js';
 
 const meta: Meta<typeof Slider> = {
     title: '@components/Forms and inputs/number/Slider',
@@ -54,14 +55,7 @@ const meta: Meta<typeof Slider> = {
             description: 'Displays labeled reference points along the track.',
             table: {type: {summary: 'SliderMark[]'}, defaultValue: {summary: 'undefined'}},
         },
-        disabled: {
-            control: 'boolean',
-            description: 'Disables the slider.',
-            table: {
-                defaultValue: {summary: 'false'},
-                type: {summary: 'boolean'},
-            },
-        },
+        disabled: Args.disabled.type,
         showLabelOnHover: {
             control: 'boolean',
             description: 'Displays the current value label while the slider is hovered.',

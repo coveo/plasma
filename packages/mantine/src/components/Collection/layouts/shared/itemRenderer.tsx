@@ -170,7 +170,7 @@ export const createItemRenderers = <T,>() => {
     };
 
     /**
-     * Disabled item/row renderer (no drag, no remove)
+     * Disabled or read-only item/row renderer (no drag, no remove)
      */
     const DisabledItem = (props: ItemProps<T>) => {
         const {item, index, id, columns, disabled, readOnly, classes, config} = props;
@@ -229,7 +229,7 @@ export const mapItemsToComponents = <T,>(
             config,
         };
 
-        if (disabled) {
+        if (disabled || readOnly) {
             return <DisabledItem key={id} {...itemProps} />;
         }
 

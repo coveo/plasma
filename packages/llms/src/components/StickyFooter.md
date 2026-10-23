@@ -35,7 +35,7 @@ Do not use `StickyFooter` when:
 ## Content guidance
 
 - The primary action should represent the main commitment — typically Save or Create.
-- Always pair a primary action with a Cancel option so users can exit without consequences.
+- Always pair a primary action with a Cancel option so users can exit without consequences. Cancel MUST use `Button.Tertiary`.
 - Avoid adding unrelated utility actions to the sticky footer.
 
 ## Common anti-patterns
@@ -72,7 +72,7 @@ export const SettingsPage = () => (
         <main>{/* Form fields and page content */}</main>
 
         <StickyFooter borderTop>
-            <Button.Secondary>Cancel</Button.Secondary>
+            <Button.Tertiary>Cancel</Button.Tertiary>
             <Button.Secondary>Preview</Button.Secondary>
             <Button.Primary>Save changes</Button.Primary>
         </StickyFooter>

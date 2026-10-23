@@ -1,13 +1,14 @@
 import './styles/reset.css';
 
 import '@mantine/core/styles.layer.css';
+import '@mantine/carousel/styles.layer.css';
 import '@mantine/dates/styles.layer.css';
 import '@mantine/notifications/styles.layer.css';
 
 import './styles/headings.css';
 
 import type {Preview} from '@storybook/react-vite';
-import {backgroundOptions, prefersDark} from './backgroundOptions.js';
+import {backgroundOptions, getPreferredColorScheme} from './backgroundOptions.js';
 import {useColorScheme} from './decorators/useColorScheme.js';
 import {themes, withTheme} from './decorators/withTheme.js';
 import {ThemedDocsContainer} from './ThemedDocsContainer.js';
@@ -27,7 +28,7 @@ const preview: Preview = {
     },
     initialGlobals: {
         primaryColor: 'teal',
-        backgrounds: {value: prefersDark ? 'dark' : 'light'},
+        backgrounds: {value: getPreferredColorScheme()},
     },
     parameters: {
         backgrounds: {
