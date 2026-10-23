@@ -15,7 +15,11 @@ export const ThemedDocsContainer = ({children, context, ...props}: PropsWithChil
         if (stories.length > 0) {
             return context.getStoryContext(stories[0]).globals?.backgrounds?.value === 'dark';
         }
-        return mantineColorSchemePreferrence === 'dark' || prefersDark;
+        // Docs pages without stories have no globals, so reuse the last selected color scheme and only fall back to the OS preference when none was saved
+        if (mantineColorSchemePreferrence === 'dark' || mantineColorSchemePreferrence === 'light') {
+            return mantineColorSchemePreferrence === 'dark';
+        }
+        return prefersDark;
     });
 
     useEffect(() => {
