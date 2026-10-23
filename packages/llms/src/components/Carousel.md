@@ -100,9 +100,9 @@ Key props relevant to Plasma usage patterns:
 
 **`onSlideChange`** `(index: number) => void` · optional · default: `undefined` — Called with slide index when slide changes.
 
-**`nextControlIcon`** `React.ReactNode` · optional · default: `<IconArrowRight size={16} />` (Plasma theme) — Icon of the next control.
+**`nextControlIcon`** `React.ReactNode` · optional · default: `<IconArrowRight size={16} />`, or `<IconArrowDown size={16} />` when vertical — Icon of the next control.
 
-**`previousControlIcon`** `React.ReactNode` · optional · default: `<IconArrowLeft size={16} />` (Plasma theme) — Icon of the previous control.
+**`previousControlIcon`** `React.ReactNode` · optional · default: `<IconArrowLeft size={16} />`, or `<IconArrowUp size={16} />` when vertical — Icon of the previous control.
 
 ## Sub-components
 
@@ -119,6 +119,7 @@ These type-only aliases are available for annotations and do not add runtime sta
 - `Carousel.CssVariables`
 - `Carousel.Factory`
 - `Carousel.ContextValue`
+- `Carousel.Slide.Props`
 
 ## Usage
 
