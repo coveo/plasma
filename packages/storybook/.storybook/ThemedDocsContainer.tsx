@@ -4,18 +4,18 @@ import {DocsContainer, type DocsContainerProps} from '@storybook/addon-docs/bloc
 import {type PropsWithChildren, useEffect, useMemo, useState} from 'react';
 import {GLOBALS_UPDATED} from 'storybook/internal/core-events';
 import {create} from 'storybook/theming';
-import {backgroundOptions, prefersDark} from './backgroundOptions.js';
+import {backgroundOptions, getPreferredColorScheme} from './backgroundOptions.js';
 import {DocsTheme} from './styles/docsTheme.js';
 
 export const ThemedDocsContainer = ({children, context, ...props}: PropsWithChildren<DocsContainerProps>) => {
     const [isDark, setIsDark] = useState(() => {
-        const mantineColorSchemePreferrence = localStorage.getItem('mantine-color-scheme-value');
         const stories = context.componentStories();
 
         if (stories.length > 0) {
             return context.getStoryContext(stories[0]).globals?.backgrounds?.value === 'dark';
         }
-        return mantineColorSchemePreferrence === 'dark' || prefersDark;
+        // Unattached docs remount on globals change, so an explicit choice must win over the OS preference
+        return getPreferredColorScheme() === 'dark';
     });
 
     useEffect(() => {
