@@ -15,7 +15,11 @@ export const ThemedDocsContainer = ({children, context, ...props}: PropsWithChil
         if (stories.length > 0) {
             return context.getStoryContext(stories[0]).globals?.backgrounds?.value === 'dark';
         }
-        return mantineColorSchemePreferrence === 'dark' || prefersDark;
+        // Unattached docs remount on globals change, so an explicit choice must win over the OS preference
+        if (mantineColorSchemePreferrence === 'dark' || mantineColorSchemePreferrence === 'light') {
+            return mantineColorSchemePreferrence === 'dark';
+        }
+        return prefersDark;
     });
 
     useEffect(() => {
