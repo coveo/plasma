@@ -9,7 +9,8 @@ import {
     type InlineInputStoryArgs,
     type InputWrapperStoryArgs,
 } from '../InputWrapperArgs.js';
-import {withLabelInfoProps} from '../LabelInfoArgs.js';
+import {Args} from '../../../Args.js';
+import {withLabelContextualHelpProps} from '../ContextualHelpArgs.js';
 
 const meta: Meta<typeof Radio> = {
     title: '@components/Forms and inputs/string/Radio',
@@ -33,24 +34,20 @@ export const Demo: StoryObj<RadioItemStoryArgs> = {
         checked: false,
         ...InlineInputArgs.Args,
     },
-    render: (props) => <Radio {...withLabelInfoProps(props)} />,
+    render: (props) => <Radio {...withLabelContextualHelpProps(props)} />,
 };
 
 export const RadioGroup: StoryObj<RadioGroupStoryArgs> = {
     name: 'Radio.Group',
     parameters: {
         controls: {
-            include: ['label', 'labelInfo', 'description', 'error', 'required', 'disabled', 'readOnly'],
+            include: ['label', 'contextualHelp', 'description', 'error', 'required', 'disabled', 'readOnly'],
         },
     },
     argTypes: {
         ...InputWrapperArgs.ArgsTypes,
         ...BaseInputArgs.ArgsTypes,
-        labelInfo: {
-            control: 'text',
-            description: 'Sets the Input.LabelInfo tooltip content in this example.',
-            table: {type: {summary: 'string'}, defaultValue: {summary: "'You can change this later.'"}},
-        },
+        contextualHelp: Args.contextualHelp.type,
         disabled: {
             control: 'boolean',
             description: 'Disables every radio item in this example.',
@@ -66,11 +63,11 @@ export const RadioGroup: StoryObj<RadioGroupStoryArgs> = {
         ...InputWrapperArgs.Args,
         ...BaseInputArgs.Args,
         label: 'Notification frequency',
-        labelInfo: 'You can change this later.',
+        contextualHelp: 'You can change this later.',
         description: 'Choose how often to receive account alerts.',
     },
     render: (props) => (
-        <Radio.Group {...withLabelInfoProps(props)}>
+        <Radio.Group {...withLabelContextualHelpProps(props)}>
             <Group>
                 <Radio value="immediately" label="Immediately" disabled={props.disabled} readOnly={props.readOnly} />
                 <Radio value="daily" label="Daily digest" disabled={props.disabled} readOnly={props.readOnly} />

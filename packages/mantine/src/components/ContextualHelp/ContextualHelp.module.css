@@ -1,0 +1,17 @@
+.root {
+    /* Required to make it work within a Switch label */
+    position: relative;
+
+    /* Keeps the help reachable inside read-only inputs, which disable pointer events */
+    pointer-events: auto;
+    display: inline-flex;
+    vertical-align: text-bottom;
+    margin: 0;
+    font: inherit;
+    cursor: default;
+    border-radius: var(--mantine-radius-xl);
+}
+
+.dropdown {
+    max-width: 280px;
+}

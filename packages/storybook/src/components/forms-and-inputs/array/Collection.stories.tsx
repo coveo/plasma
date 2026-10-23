@@ -7,7 +7,7 @@ import {
     type BaseInputStoryArgs,
     type InputWrapperStoryArgs,
 } from '../InputWrapperArgs.js';
-import {withLabelInfoProps} from '../LabelInfoArgs.js';
+import {withLabelContextualHelpProps} from '../ContextualHelpArgs.js';
 
 interface ContactItem {
     name: string;
@@ -81,7 +81,7 @@ export const Demo: StoryObj<DemoStoryProps> = {
         },
     },
     render: (_props) => {
-        const props = withLabelInfoProps(_props);
+        const props = withLabelContextualHelpProps(_props);
         const form = useForm({
             initialValues: {
                 contacts: [
@@ -242,7 +242,7 @@ export const CollectionReadOnly: Story = {
 export const Legacy: Story = {
     args: {},
     render: (_props) => {
-        const props = withLabelInfoProps(_props);
+        const props = withLabelContextualHelpProps(_props);
         const form = useForm({
             initialValues: {
                 contacts: ['Alice Smith', 'Bob Johnson'],

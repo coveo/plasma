@@ -139,6 +139,9 @@ export * from './components/Combobox/Combobox.js';
 // Container
 export * from './components/Container/Container.js';
 
+// Contextual Help
+export * from './components/ContextualHelp/ContextualHelp.js';
+
 // Copy Button
 export * from './components/CopyButton/CopyButton.js';
 

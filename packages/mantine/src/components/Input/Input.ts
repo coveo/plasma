@@ -8,11 +8,17 @@ import {
 
 type PlasmaInputFactory = Omit<MantineInputFactory, 'staticComponents'> & {
     staticComponents: MantineInputFactory['staticComponents'] & {
+        /**
+         * @deprecated Use `ContextualHelp` instead, with `ml="xxs"` when placed next to a label.
+         */
         LabelInfo: typeof InputLabelInfo;
     };
 };
 
 const Input = MantineInput as typeof MantineInput & {
+    /**
+     * @deprecated Use `ContextualHelp` instead, with `ml="xxs"` when placed next to a label.
+     */
     LabelInfo: typeof InputLabelInfo;
 };
 
@@ -30,6 +36,9 @@ export namespace Input {
     export type Props = InputProps;
     export type Factory = InputFactory;
 
+    /**
+     * @deprecated Use `ContextualHelp` instead, with `ml="xxs"` when placed next to a label.
+     */
     export namespace LabelInfo {
         export type Props = InputLabelInfoProps;
         export type StylesNames = InputLabelInfoStylesNames;
