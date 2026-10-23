@@ -25,12 +25,13 @@ description: Inline text link that navigates the user to another page or section
 
 - Prefer `Anchor` over a plain `<a>` element so that Plasma theming, focus styles, and size tokens are applied consistently.
 - Open links in a new tab only when leaving the current context would interrupt the user's task.
+- Links that leave the application (documentation, third-party services) SHOULD use `Anchor.External` rather than an `Anchor` with `target="_blank"`, so the new tab behavior is signalled visually and to screen readers.
 - Use `size="xs"` for compact contexts such as table cells or captions; use `size="sm"` for body text.
 - Pass `inherit` when the anchor sits inside a `Text` or other typographic container so its font size and font-weight inherit from the parent rather than resetting.
 
 ## Variants
 
-`Anchor` is a straight re-export of Mantine's `Anchor`, so the full Mantine `size` scale (`xs`–`xl`) is available. In practice, prefer:
+`Anchor` wraps Mantine's `Anchor`, so the full Mantine `size` scale (`xs`–`xl`) is available. In practice, prefer:
 
 - `sm` — standard body-text links.
 - `xs` — compact areas such as table cells or captions.
@@ -38,7 +39,7 @@ description: Inline text link that navigates the user to another page or section
 ## Accessibility expectations
 
 - Link text MUST describe the destination or action, not just "click here" or "read more".
-- When opening a new tab, the link SHOULD signal this to screen-reader users, either through visible text or an `aria-label`.
+- When opening a new tab, the link SHOULD signal this to screen-reader users. `Anchor.External` does this with visually hidden text; `newTabLabel` MUST be translated in non-English interfaces.
 
 ## Content guidance
 
@@ -50,6 +51,7 @@ description: Inline text link that navigates the user to another page or section
 - Using `Anchor` to trigger an `onClick` action with no `href` — use `Button.Tertiary` or an `ActionIcon` instead.
 - Wrapping large blocks of content in an `Anchor`; links SHOULD target meaningful, concise labels.
 - Omitting `inherit` when placing an `Anchor` inside a typographic component, causing a size mismatch.
+- Setting `target="_blank"` on a plain `Anchor` for external destinations; use `Anchor.External` instead.
 
 # API reference
 
@@ -57,18 +59,42 @@ description: Inline text link that navigates the user to another page or section
 
 > Extends: `AnchorProps` from `@mantine/core`. No additional Plasma-specific props beyond the Mantine base component.
 
+## Sub-components
+
+Plasma provides pre-configured sub-components as convenience wrappers. You SHOULD use these over setting props manually.
+
+- `Anchor.External` — link to a destination outside the application. Opens in a new tab with `rel="noopener noreferrer"`, renders an external link icon after the content, and appends visually hidden text announcing the new tab. `target` and `rel` MAY be overridden; the announcement is only rendered when `target` is `_blank`.
+
+### `Anchor.External` props
+
+> Extends: `AnchorProps` from `@mantine/core`. Only Plasma-specific props are listed below. Styles API selectors: `root`, `icon`.
+
+**`newTabLabel`** `string` · optional · default: `'(opens in a new tab)'` — Text announced to screen readers when the link opens in a new tab.
+
+## TypeScript namespace aliases
+
+These type-only aliases are available for annotations and do not add runtime static properties.
+
+- `Anchor.Props`
+- `Anchor.StylesNames`
+- `Anchor.CssVariables`
+- `Anchor.Factory`
+- `Anchor.External.Props`
+- `Anchor.External.StylesNames`
+
 ## Usage
 
 ```tsx
 import {Alert, Anchor} from '@coveord/plasma-mantine';
 
-// Standalone link
+// Standalone link within the application
+function InternalLink() {
+    return <Anchor href="/settings">Organization settings</Anchor>;
+}
+
+// Link outside the application — opens in a new tab with an external icon
 function ExternalLink() {
-    return (
-        <Anchor href="https://plasma.coveo.com" target="_blank" rel="noopener noreferrer" size="sm">
-            Plasma Design System
-        </Anchor>
-    );
+    return <Anchor.External href="https://docs.coveo.com">Coveo documentation</Anchor.External>;
 }
 
 // Inside an Alert description — inherit the parent font size and weight

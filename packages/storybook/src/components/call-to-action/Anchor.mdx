@@ -16,6 +16,14 @@ The `Anchor` adds navigation within text without giving the link the visual weig
 <Canvas of={AnchorStories.Demo} />
 <Controls of={AnchorStories.Demo} />
 
+## External links
+
+Use `Anchor.External` for links that lead outside the application, such as documentation or a third-party service.
+It opens the destination in a new tab, adds an external link icon, and tells screen reader users that a new tab opens.
+
+<Canvas of={AnchorStories.External} />
+<Controls of={AnchorStories.External} />
+
 ## Guidelines
 
 ### When to use
@@ -34,6 +42,8 @@ The `Anchor` adds navigation within text without giving the link the visual weig
 
 - Use `inherit` when the link belongs inside another text component.
 - Open a new tab only when leaving the current page would interrupt the user's task.
+- Use `Anchor.External` instead of setting `target` on an `Anchor` when the link leaves the application, so users can tell before they select it.
+- Translate the new tab announcement with `newTabLabel` when the interface isn't in English.
 - Use `xs` in compact contexts and `sm` with body text.
 
 ### Content guidelines
