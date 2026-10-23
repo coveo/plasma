@@ -1,8 +1,3 @@
-.root {
-    padding-top: var(--mantine-spacing-xs);
-    padding-bottom: var(--mantine-spacing-xs);
-}
-
 .labelWrapper {
     display: flex;
     align-items: flex-start;
