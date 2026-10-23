@@ -15,10 +15,12 @@ const defaultProps = {
 } satisfies Partial<CarouselProps>;
 
 const PlasmaCarousel = factory<CarouselFactory>((props: CarouselProps) => {
-    const {orientation} = useProps('Carousel', defaultProps, props);
-    const nextControlIcon = orientation === 'horizontal' ? <IconArrowRight size={16} /> : <IconArrowDown size={16} />;
-    const previousControlIcon = orientation === 'horizontal' ? <IconArrowLeft size={16} /> : <IconArrowUp size={16} />;
-    return <MantineCarousel nextControlIcon={nextControlIcon} previousControlIcon={previousControlIcon} {...props} />;
+    const {orientation, nextControlIcon, previousControlIcon} = useProps('Carousel', defaultProps, props);
+    const nextIcon =
+        nextControlIcon ?? (orientation === 'horizontal' ? <IconArrowRight size={16} /> : <IconArrowDown size={16} />);
+    const previousIcon =
+        previousControlIcon ?? (orientation === 'horizontal' ? <IconArrowLeft size={16} /> : <IconArrowUp size={16} />);
+    return <MantineCarousel nextControlIcon={nextIcon} previousControlIcon={previousIcon} {...props} />;
 });
 
 PlasmaCarousel.displayName = 'Carousel';
