@@ -106,6 +106,7 @@ import PillClasses from '../styles/Pill.module.css';
 import PopoverClasses from '../styles/Popover.module.css';
 import RadioClasses from '../styles/Radio.module.css';
 import RadioCardClasses from '../styles/RadioCard.module.css';
+import RadioGroupClasses from '../styles/RadioGroup.module.css';
 import ReadOnlyInputClasses from '../styles/ReadOnlyInput.module.css';
 import ReadOnlyStateClasses from '../styles/ReadOnlyState.module.css';
 import ScrollAreaClasses from '../styles/ScrollArea.module.css';
@@ -494,6 +495,9 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
         }),
         RadioCard: Radio.Card.extend({
             classNames: RadioCardClasses,
+        }),
+        RadioGroup: Radio.Group.extend({
+            classNames: RadioGroupClasses,
         }),
         ScrollArea: ScrollArea.extend({
             classNames: ScrollAreaClasses,
