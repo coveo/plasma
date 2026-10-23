@@ -1,5 +1,44 @@
 # @coveord/plasma-mantine
 
+## 61.5.0
+
+### Minor Changes
+
+- Add the `Carousel` component [#4654](https://github.com/coveo/plasma/pull/4654)
+
+  `Carousel` and `Carousel.Slide` are now exported from `@coveord/plasma-mantine` with Plasma styling for the indicators and controls. The controls use Plasma arrow icons that point left and right, or up and down when `orientation` is `vertical`, including when the orientation is set through the theme. Pass `nextControlIcon` or `previousControlIcon` to replace them.
+
+  The `Carousel.Props`, `Carousel.StylesNames`, `Carousel.CssVariables`, `Carousel.Factory`, `Carousel.ContextValue`, and `Carousel.Slide.Props` type aliases are available, matching the Mantine API.
+
+  To use it, install the optional peer dependencies `@mantine/carousel` and `embla-carousel-react`, and import `@mantine/carousel/styles.layer.css` alongside the other Mantine styles.
+
+  ```tsx
+  import { Carousel } from "@coveord/plasma-mantine";
+
+  <Carousel withIndicators>
+    <Carousel.Slide>First slide</Carousel.Slide>
+    <Carousel.Slide>Second slide</Carousel.Slide>
+  </Carousel>;
+  ```
+
+- Deprecate `Header.BreadcrumbText` [#4648](https://github.com/coveo/plasma/pull/4648)
+
+  Every breadcrumb item should be a link. Use `Header.BreadcrumbAnchor` for each ancestor page, and leave the current page out of the trail, since the header title already shows it. `Header.BreadcrumbText` still works and will be removed in the next major version.
+
+### Patch Changes
+
+- Remove the extra vertical padding around `SegmentedControl` and other `radiogroup` elements [#4655](https://github.com/coveo/plasma/pull/4655)
+
+- Stop `CodeEditor` from pulling `monaco-editor` into the initial bundle of consuming apps [#4649](https://github.com/coveo/plasma/pull/4649)
+
+- Use the default border color on `Card.Section` when `withBorder` is set [#4652](https://github.com/coveo/plasma/pull/4652)
+
+- Style hover, active, highlighted and disabled states on every `Combobox.Option`, not only `Select` [#4643](https://github.com/coveo/plasma/pull/4643)
+
+- Stop read-only `Collection` rows with `columns` from reserving space for the remove button, [#4656](https://github.com/coveo/plasma/pull/4656)
+
+  so they line up with the header
+
 ## 61.4.0
 
 ### Minor Changes
