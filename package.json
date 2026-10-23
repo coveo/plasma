@@ -35,7 +35,7 @@
         "@types/node": "24.19.2",
         "@typescript/native-preview": "7.0.0-dev.20260707.2",
         "aws-sdk": "2.1693.0",
-        "eslint": "10.12.0",
+        "eslint": "10.13.0",
         "eslint-plugin-storybook": "10.6.2",
         "eslint-plugin-testing-library": "7.16.2",
         "husky": "9.1.7",
@@ -46,7 +46,7 @@
         "postcss": "8.5.30",
         "stylelint": "17.16.0",
         "stylelint-config-standard-scss": "17.0.0",
-        "turbo": "2.11.8"
+        "turbo": "2.11.9"
     },
     "lint-staged": {
         "**/*.{js,jsx,ts,tsx,mjs,json,md,yml,html}": [
@@ -63,5 +63,5 @@
         "IE 11",
         "not dead"
     ],
-    "packageManager": "pnpm@12.13.0"
+    "packageManager": "pnpm@12.14.0"
 }
