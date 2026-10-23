@@ -39,14 +39,7 @@ const meta = {
                 type: {summary: 'boolean'},
             },
         },
-        clearable: {
-            control: 'boolean',
-            description: 'Allow clearing all selected values',
-            table: {
-                defaultValue: {summary: 'false'},
-                type: {summary: 'boolean'},
-            },
-        },
+        clearable: Args.clearable.type,
     },
 } satisfies Meta<MultiSelectStoryArgs>;
 export default meta;

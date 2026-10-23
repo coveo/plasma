@@ -28,40 +28,15 @@ const meta = {
     },
     argTypes: {
         ...InlineInputArgs.ArgsTypes,
-        label: {
-            control: 'text',
-            description: 'Content displayed as the card label.',
-            table: {type: {summary: 'ReactNode'}, defaultValue: {summary: 'undefined'}},
-        },
         labelInfo: {
             control: 'text',
             description: 'Sets the Input.LabelInfo tooltip content in this example.',
             table: {type: {summary: 'string'}, defaultValue: {summary: "'Additional information'"}},
         },
-        description: {
-            control: 'text',
-            description: 'Supporting content displayed below the card label.',
-            table: {type: {summary: 'ReactNode'}, defaultValue: {summary: 'undefined'}},
-        },
-        error: {
-            control: 'text',
-            description: 'Validation feedback displayed below the card content.',
-            table: {type: {summary: 'ReactNode'}, defaultValue: {summary: 'undefined'}},
-        },
         checked: {
             control: 'boolean',
             description: 'Sets the selected state of the card.',
             table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
-        },
-        disabled: {
-            control: 'boolean',
-            description: 'Disables card selection.',
-            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
-        },
-        readOnly: {
-            control: 'boolean',
-            description: 'Marks the card as read-only.',
-            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'undefined'}},
         },
         disabledTooltip: {
             control: 'text',

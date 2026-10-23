@@ -20,9 +20,10 @@ export interface WithLabelInfoArgs {
 const label: Arg<string> = {
     type: {
         control: 'text',
-        description: 'Input label',
+        description: 'Content displayed as the field label.',
         table: {
-            type: {summary: 'string'},
+            defaultValue: {summary: 'undefined'},
+            type: {summary: 'ReactNode'},
         },
     },
     initialValue: 'Label',
@@ -31,9 +32,10 @@ const label: Arg<string> = {
 const description: Arg<string> = {
     type: {
         control: 'text',
-        description: 'Input description',
+        description: 'Helper content displayed below the label.',
         table: {
-            type: {summary: 'string'},
+            defaultValue: {summary: 'undefined'},
+            type: {summary: 'ReactNode'},
         },
     },
     initialValue: 'Description',
@@ -42,9 +44,10 @@ const description: Arg<string> = {
 const error: Arg<string | undefined> = {
     type: {
         control: 'text',
-        description: 'Error message',
+        description: 'Validation feedback displayed below the input.',
         table: {
-            type: {summary: 'string'},
+            defaultValue: {summary: 'undefined'},
+            type: {summary: 'ReactNode'},
         },
     },
     initialValue: undefined,
@@ -53,7 +56,7 @@ const error: Arg<string | undefined> = {
 const required: Arg<boolean> = {
     type: {
         control: 'boolean',
-        description: 'Required field indicator',
+        description: 'Marks the field as required and displays a required indicator.',
         table: {
             defaultValue: {summary: 'false'},
             type: {summary: 'boolean'},
@@ -65,7 +68,7 @@ const required: Arg<boolean> = {
 const disabled: Arg<boolean> = {
     type: {
         control: 'boolean',
-        description: 'Disabled state',
+        description: 'Disables the input.',
         table: {
             defaultValue: {summary: 'false'},
             type: {summary: 'boolean'},
@@ -77,7 +80,7 @@ const disabled: Arg<boolean> = {
 const readOnly: Arg<boolean> = {
     type: {
         control: 'boolean',
-        description: 'Read-only state',
+        description: 'Prevents users from changing the value.',
         table: {
             defaultValue: {summary: 'false'},
             type: {summary: 'boolean'},
@@ -89,8 +92,9 @@ const readOnly: Arg<boolean> = {
 const placeholder: Arg<string> = {
     type: {
         control: 'text',
-        description: 'Placeholder',
+        description: 'Text displayed when the field is empty.',
         table: {
+            defaultValue: {summary: 'undefined'},
             type: {summary: 'string'},
         },
     },
@@ -100,7 +104,7 @@ const placeholder: Arg<string> = {
 const clearable: Arg<boolean | undefined> = {
     type: {
         control: 'boolean',
-        description: 'Display clear button when value is present',
+        description: 'Displays a clear button when the input has a value.',
         table: {
             defaultValue: {summary: 'false'},
             type: {summary: 'boolean'},
@@ -127,9 +131,9 @@ const type: Arg<'default' | 'multiple' | 'range'> = {
     type: {
         control: 'radio',
         options: ['default', 'multiple', 'range'],
-        description: 'Picker type',
+        description: 'Selects single, multiple, or range selection mode.',
         table: {
-            defaultValue: {summary: 'default'},
+            defaultValue: {summary: "'default'"},
             type: {summary: "'default' | 'multiple' | 'range'"},
         },
     },

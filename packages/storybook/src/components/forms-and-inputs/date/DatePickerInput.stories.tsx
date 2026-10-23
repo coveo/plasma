@@ -65,49 +65,8 @@ const meta = {
     argTypes: {
         ...InputWrapperArgs.ArgsTypes,
         ...BaseInputArgs.ArgsTypes,
-        label: {
-            control: 'text',
-            description: 'Content displayed as the field label.',
-            table: {type: {summary: 'ReactNode'}, defaultValue: {summary: 'undefined'}},
-        },
-        description: {
-            control: 'text',
-            description: 'Helper content displayed below the label.',
-            table: {type: {summary: 'ReactNode'}, defaultValue: {summary: 'undefined'}},
-        },
-        error: {
-            control: 'text',
-            description: 'Validation feedback displayed below the input.',
-            table: {type: {summary: 'ReactNode'}, defaultValue: {summary: 'undefined'}},
-        },
-        required: {
-            control: 'boolean',
-            description: 'Marks the field as required and displays a required indicator.',
-            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
-        },
-        disabled: {
-            control: 'boolean',
-            description: 'Disables the input.',
-            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
-        },
-        readOnly: {
-            control: 'boolean',
-            description: 'Prevents users from changing the selected value.',
-            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
-        },
-        placeholder: {
-            control: 'text',
-            description: 'Text displayed when no date is selected.',
-            table: {type: {summary: 'string'}, defaultValue: {summary: 'undefined'}},
-        },
-        type: {
-            ...Args.type.type,
-            description: 'Selects single-date, multiple-date, or date-range mode.',
-            table: {
-                type: {summary: "'default' | 'multiple' | 'range'"},
-                defaultValue: {summary: "'default'"},
-            },
-        },
+        placeholder: Args.placeholder.type,
+        type: Args.type.type,
         presets: {
             if: {arg: 'type', eq: 'range'},
             control: 'object',
@@ -135,11 +94,7 @@ const meta = {
                 type: {summary: 'number'},
             },
         },
-        clearable: {
-            ...Args.clearable.type,
-            description: 'Displays a clear button when the input has a value.',
-            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
-        },
+        clearable: Args.clearable.type,
     },
 } satisfies Meta<DatePickerInputStoryArgs>;
 export default meta;

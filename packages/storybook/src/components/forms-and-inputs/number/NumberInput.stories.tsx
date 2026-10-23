@@ -2,6 +2,7 @@ import {NumberInput} from '@coveord/plasma-mantine';
 import {IconCoins} from '@coveord/plasma-react-icons';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import type {ComponentProps} from 'react';
+import {Args} from '../../../Args.js';
 import {withLabelInfoProps} from '../LabelInfoArgs.js';
 import {
     BaseInputArgs,
@@ -51,36 +52,7 @@ const meta = {
     argTypes: {
         ...InputWrapperArgs.ArgsTypes,
         ...BaseInputArgs.ArgsTypes,
-        label: {
-            control: 'text',
-            description: 'Content displayed as the field label.',
-            table: {type: {summary: 'ReactNode'}, defaultValue: {summary: 'undefined'}},
-        },
-        description: {
-            control: 'text',
-            description: 'Helper content displayed below the label.',
-            table: {type: {summary: 'ReactNode'}, defaultValue: {summary: 'undefined'}},
-        },
-        error: {
-            control: 'text',
-            description: 'Validation feedback displayed below the input.',
-            table: {type: {summary: 'ReactNode'}, defaultValue: {summary: 'undefined'}},
-        },
-        required: {
-            control: 'boolean',
-            description: 'Marks the field as required and displays a required indicator.',
-            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
-        },
-        disabled: {
-            control: 'boolean',
-            description: 'Disables the input and its increment and decrement controls.',
-            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
-        },
-        readOnly: {
-            control: 'boolean',
-            description: 'Prevents users from changing the value.',
-            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
-        },
+        disabled: {...Args.disabled.type, description: 'Disables the input and its increment and decrement controls.'},
         leftSection: {
             control: 'boolean',
             description: 'Toggles a representative icon before the value in this example.',
