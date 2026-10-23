@@ -1,4 +1,4 @@
-import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks';
 import * as CarouselStories from './Carousel.stories';
 
 <Meta of={CarouselStories} />
@@ -14,6 +14,8 @@ Set of slides that users browse one view at a time.
 It suits visual items that support the main task, where keeping some of them out of view doesn't hide anything users need.
 
 ## Usage
+
+Install the optional `@mantine/carousel` and `embla-carousel-react` packages, and import `@mantine/carousel/styles.layer.css` with your other Mantine styles. Without the stylesheet, slides stack vertically.
 
 <Canvas of={CarouselStories.Demo} />
 <Controls of={CarouselStories.Demo} />
@@ -45,4 +47,3 @@ It suits visual items that support the main task, where keeping some of them out
 - Give the carousel an `aria-label` that describes its content, such as **Product screenshots**. It renders as a landmark region with no name by default.
 - Don't advance slides automatically. If you add autoplay, provide a visible control that lets users pause it.
 - When the interface is localized, translate the built-in **Previous slide**, **Next slide**, and **Go to slide** labels.
-- Install the optional `@mantine/carousel` and `embla-carousel-react` packages, and import `@mantine/carousel/styles.layer.css` with your other Mantine styles. Without the stylesheet, slides stack vertically.
