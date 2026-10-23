@@ -11,7 +11,7 @@ import {
     type InlineInputStoryArgs,
     type InputWrapperStoryArgs,
 } from '../InputWrapperArgs.js';
-import {withLabelInfoProps} from '../LabelInfoArgs.js';
+import {withLabelContextualHelpProps} from '../ContextualHelpArgs.js';
 
 const meta: Meta<typeof Switch> = {
     title: '@components/Forms and inputs/boolean/Switch',
@@ -41,7 +41,7 @@ export const Demo: StoryObj<SwitchStoryArgs> = {
     },
     render: (props) => {
         const [{checked}, updateArgs] = useArgs<SwitchStoryArgs>();
-        return <Switch {...withLabelInfoProps(props)} onChange={() => updateArgs({checked: !checked})} />;
+        return <Switch {...withLabelContextualHelpProps(props)} onChange={() => updateArgs({checked: !checked})} />;
     },
 };
 
@@ -56,7 +56,7 @@ export const SwitchGroup: StoryObj<SwitchGroupStoryArgs> = {
         ...BaseInputArgs.Args,
     },
     render: (props) => (
-        <Switch.Group {...withLabelInfoProps(props)}>
+        <Switch.Group {...withLabelContextualHelpProps(props)}>
             <Group>
                 <Switch value="option1" label="Option 1" />
                 <Switch value="option2" label="Option 2" />

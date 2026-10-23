@@ -2,7 +2,7 @@ import {YearPickerInput} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import type {ComponentProps} from 'react';
 import {Args} from '../../../Args.js';
-import {withLabelInfoProps} from '../LabelInfoArgs.js';
+import {withLabelContextualHelpProps} from '../ContextualHelpArgs.js';
 import {
     BaseInputArgs,
     InputWrapperArgs,
@@ -51,5 +51,5 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
-    render: (props) => <YearPickerInput {...withLabelInfoProps(props)} />,
+    render: (props) => <YearPickerInput {...withLabelContextualHelpProps(props)} />,
 };

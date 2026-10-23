@@ -3,7 +3,7 @@ import {IconSearch, IconX} from '@coveord/plasma-react-icons';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import type {ComponentProps} from 'react';
 import {Args} from '../../../Args.js';
-import {withLabelInfoProps} from '../LabelInfoArgs.js';
+import {withLabelContextualHelpProps} from '../ContextualHelpArgs.js';
 import {
     BaseInputArgs,
     InputWrapperArgs,
@@ -27,7 +27,7 @@ const meta = {
         controls: {
             include: [
                 'label',
-                'labelInfo',
+                'contextualHelp',
                 'description',
                 'error',
                 'required',
@@ -49,11 +49,7 @@ const meta = {
     argTypes: {
         ...InputWrapperArgs.ArgsTypes,
         ...BaseInputArgs.ArgsTypes,
-        labelInfo: {
-            control: 'text',
-            description: 'Sets the Input.LabelInfo tooltip content in this example.',
-            table: {type: {summary: 'string'}, defaultValue: {summary: "'Additional information'"}},
-        },
+        contextualHelp: Args.contextualHelp.type,
         placeholder: Args.placeholder.type,
         leftSection: {
             control: 'boolean',
@@ -81,7 +77,7 @@ export const Demo: Story = {
         <TextInput
             rightSection={rightSection ? <IconX size={16} /> : undefined}
             leftSection={leftSection ? <IconSearch size={16} /> : undefined}
-            {...withLabelInfoProps(props)}
+            {...withLabelContextualHelpProps(props)}
         />
     ),
 };

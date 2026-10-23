@@ -2,7 +2,7 @@ import {Select} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import type {ComponentProps} from 'react';
 import {Args} from '../../../Args.js';
-import {withLabelInfoProps} from '../LabelInfoArgs.js';
+import {withLabelContextualHelpProps} from '../ContextualHelpArgs.js';
 import {
     BaseInputArgs,
     InputWrapperArgs,
@@ -21,7 +21,7 @@ const meta = {
         controls: {
             include: [
                 'label',
-                'labelInfo',
+                'contextualHelp',
                 'description',
                 'error',
                 'required',
@@ -46,11 +46,7 @@ const meta = {
     argTypes: {
         ...InputWrapperArgs.ArgsTypes,
         ...BaseInputArgs.ArgsTypes,
-        labelInfo: {
-            control: 'text',
-            description: 'Sets the Input.LabelInfo tooltip content in this example.',
-            table: {type: {summary: 'string'}, defaultValue: {summary: "'Additional information'"}},
-        },
+        contextualHelp: Args.contextualHelp.type,
         placeholder: Args.placeholder.type,
         searchable: {
             control: 'boolean',
@@ -75,5 +71,5 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
-    render: (props) => <Select {...withLabelInfoProps(props)} />,
+    render: (props) => <Select {...withLabelContextualHelpProps(props)} />,
 };

@@ -2,9 +2,9 @@ import {SliderInput} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import type {ComponentProps} from 'react';
 import {BaseInputArgs, InputWrapperArgs, type InputWrapperStoryArgs} from '../InputWrapperArgs.js';
-import {withLabelInfoProps} from '../LabelInfoArgs.js';
+import {withLabelContextualHelpProps} from '../ContextualHelpArgs.js';
 
-type SliderInputStoryArgs = ComponentProps<typeof SliderInput> & Pick<InputWrapperStoryArgs, 'labelInfo'>;
+type SliderInputStoryArgs = ComponentProps<typeof SliderInput> & Pick<InputWrapperStoryArgs, 'contextualHelp'>;
 
 const meta = {
     title: '@components/Forms and inputs/number/SliderInput',
@@ -22,7 +22,7 @@ const meta = {
         controls: {
             include: [
                 'inputLabel',
-                'labelInfo',
+                'contextualHelp',
                 'description',
                 'error',
                 'min',
@@ -39,7 +39,7 @@ const meta = {
     args: {
         defaultValue: 40,
         inputLabel: InputWrapperArgs.Args.label,
-        labelInfo: InputWrapperArgs.Args.labelInfo,
+        contextualHelp: InputWrapperArgs.Args.contextualHelp,
         description: InputWrapperArgs.Args.description,
         error: InputWrapperArgs.Args.error,
         disabled: BaseInputArgs.Args.disabled,
@@ -57,7 +57,7 @@ const meta = {
     },
     argTypes: {
         inputLabel: InputWrapperArgs.ArgsTypes.label,
-        labelInfo: InputWrapperArgs.ArgsTypes.labelInfo,
+        contextualHelp: InputWrapperArgs.ArgsTypes.contextualHelp,
         description: InputWrapperArgs.ArgsTypes.description,
         error: InputWrapperArgs.ArgsTypes.error,
         disabled: BaseInputArgs.ArgsTypes.disabled,
@@ -115,7 +115,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
-    render: ({inputLabel, labelInfo, ...props}) => (
-        <SliderInput {...props} inputLabel={withLabelInfoProps({label: inputLabel, labelInfo}).label} />
+    render: ({inputLabel, contextualHelp, ...props}) => (
+        <SliderInput {...props} inputLabel={withLabelContextualHelpProps({label: inputLabel, contextualHelp}).label} />
     ),
 };

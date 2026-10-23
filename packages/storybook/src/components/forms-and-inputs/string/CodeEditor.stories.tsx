@@ -6,7 +6,8 @@ import {
     type BaseInputStoryArgs,
     type InputWrapperStoryArgs,
 } from '../InputWrapperArgs.js';
-import {withLabelInfoProps} from '../LabelInfoArgs.js';
+import {Args} from '../../../Args.js';
+import {withLabelContextualHelpProps} from '../ContextualHelpArgs.js';
 
 interface CodeEditorStoryArgs extends InputWrapperStoryArgs, BaseInputStoryArgs {
     language: 'plaintext' | 'json' | 'markdown' | 'python' | 'xml';
@@ -21,7 +22,7 @@ const meta = {
         controls: {
             include: [
                 'label',
-                'labelInfo',
+                'contextualHelp',
                 'description',
                 'error',
                 'required',
@@ -41,11 +42,7 @@ const meta = {
     argTypes: {
         ...InputWrapperArgs.ArgsTypes,
         ...BaseInputArgs.ArgsTypes,
-        labelInfo: {
-            control: 'text',
-            description: 'Sets the Input.LabelInfo tooltip content in this example.',
-            table: {type: {summary: 'string'}, defaultValue: {summary: "'Additional information'"}},
-        },
+        contextualHelp: Args.contextualHelp.type,
         language: {
             control: 'select',
             options: ['plaintext', 'json', 'markdown', 'python', 'xml'],
@@ -66,5 +63,5 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
-    render: (props) => <CodeEditor {...withLabelInfoProps(props)} w={400} monacoLoader="cdn" />,
+    render: (props) => <CodeEditor {...withLabelContextualHelpProps(props)} w={400} monacoLoader="cdn" />,
 };

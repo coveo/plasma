@@ -1,0 +1,45 @@
+import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import * as ContextualHelpStories from './ContextualHelp.stories';
+
+<Meta of={ContextualHelpStories} />
+
+# ContextualHelp
+
+Question icon that reveals extra explanation about nearby content.
+
+## Overview
+
+The `ContextualHelp` lets users get optional details about a metric, column, title, or value without adding text to the page.
+
+The help opens on hover or keyboard focus. Use the `text` variant for plain text, shown in a tooltip, and the `interactive` variant when it contains a link, shown in a hover card that users can move into.
+
+## Usage
+
+<Canvas of={ContextualHelpStories.Demo} />
+<Controls of={ContextualHelpStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- A term, metric, or column needs a short definition.
+- The explanation is optional and supplements what is already visible.
+- The explanation points to documentation.
+
+### When not to use
+
+- For information users need to complete a task, show visible text instead.
+- For warnings or errors, use an `Alert` or error text.
+
+### Best practices
+
+- Inside a clickable container, such as a card rendered as a button, set `focusable={false}`. The help then opens on hover only, so keep essential information in the container's own description. `RadioCard` labels do this for you.
+- Next to a form field label, place it inside the `label` prop with `ml="xxs"`. It replaces `Input.LabelInfo`, which is deprecated.
+- Use the `text` variant for plain text and the `interactive` variant for links. Users can't interact with the content of the `text` variant.
+- When several help icons appear on the same page, give each one an `aria-label` that names its subject, such as "About clickthrough rate".
+- Use `ContextualHelp` instead of combining `Tooltip` and `InfoToken` yourself, so icons stay consistent.
+
+### Content guidelines
+
+- Keep the help short. One or two sentences is usually enough.
+- Define the term or explain how the value is calculated. Don't repeat the label.
