@@ -33,11 +33,18 @@ The help opens on hover or keyboard focus. Use the `text` variant for plain text
 
 ### Best practices
 
-- Inside a clickable container, such as a card rendered as a button, set `focusable={false}`. The help then opens on hover only, so keep essential information in the container's own description. `RadioCard` labels do this for you.
-- Next to a form field label, place it inside the `label` prop with `ml="xxs"`. It replaces `Input.LabelInfo`, which is deprecated.
+- Inside a clickable container, such as a card rendered as a button, set `focusable={false}`. The help then opens on hover only, so keep essential information in the container's own description. You don't need to set it in a `RadioCard` label: `RadioCard` does it automatically.
+- Place it right after the term it explains, with `xxs` spacing: `ml="xxs"` inside the `label` prop of a form field, or a `Group` with `gap="xxs"` next to a table header, card title, or value. It replaces `Input.LabelInfo`, which is deprecated.
 - Use the `text` variant for plain text and the `interactive` variant for links. Users can't interact with the content of the `text` variant.
+- In the `interactive` variant, open documentation links in a new tab.
 - When several help icons appear on the same page, give each one an `aria-label` that names its subject, such as "About clickthrough rate".
 - Use `ContextualHelp` instead of combining `Tooltip` and `InfoToken` yourself, so icons stay consistent.
+
+### Accessibility
+
+- Don't hide required information in `ContextualHelp`; some users never open it.
+- Screen readers announce the icon as "More information" unless you set an `aria-label`.
+- Tell screen reader users when a link opens in a new tab, for example with visually hidden text such as "(opens in a new tab)".
 
 ### Content guidelines
 

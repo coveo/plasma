@@ -26,10 +26,11 @@ Do not use `ContextualHelp` when:
 
 ## Decision-making guidance
 
-- Inside an interactive container (e.g. a card rendered as a button), you MUST set `focusable={false}` and SHOULD repeat essential information in the container's own description, since keyboard users can't reach the help. `RadioCard` labels do this automatically.
-- Next to a form field label, place it inside the `label` prop with `ml="xxs"`. It replaces the deprecated `Input.LabelInfo`.
+- Inside an interactive container (e.g. a card rendered as a button), you MUST set `focusable={false}` and SHOULD repeat essential information in the container's own description, since keyboard users can't reach the help. `RadioCard` sets it automatically in its label.
+- Place it right after the term it explains, with `xxs` spacing: `ml="xxs"` inside the `label` prop of a form field, or a `Group` with `gap="xxs"` next to a table header, card title, or value. It replaces the deprecated `Input.LabelInfo`.
 - Use `variant="text"` (default) for plain text.
 - Use `variant="interactive"` when the content contains links or other interactive elements. Tooltips cannot be interacted with.
+- Documentation links in the `interactive` variant MUST open in a new tab and SHOULD tell screen reader users so.
 
 ## Accessibility expectations
 
@@ -67,7 +68,7 @@ These type-only aliases are available for annotations and do not add runtime sta
 ## Usage
 
 ```tsx
-import {Anchor, ContextualHelp, Group, Text} from '@coveord/plasma-mantine';
+import {Anchor, ContextualHelp, Group, Text, VisuallyHidden} from '@coveord/plasma-mantine';
 
 // Short definition next to a table header
 <Group gap="xxs">
@@ -82,8 +83,9 @@ import {Anchor, ContextualHelp, Group, Text} from '@coveord/plasma-mantine';
     <Text fw={500}>Attributed revenue</Text>
     <ContextualHelp variant="interactive" aria-label="About attributed revenue">
         Total gross revenue attributed to Coveo. Based on{' '}
-        <Anchor href="https://docs.coveo.com" target="_blank">
+        <Anchor href="https://docs.coveo.com" target="_blank" rel="noopener noreferrer">
             Coveo's attribution model
+            <VisuallyHidden> (opens in a new tab)</VisuallyHidden>
         </Anchor>
         .
     </ContextualHelp>

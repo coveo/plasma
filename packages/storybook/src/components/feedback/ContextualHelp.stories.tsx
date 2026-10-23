@@ -1,4 +1,4 @@
-import {Anchor, ContextualHelp, type ContextualHelpProps} from '@coveord/plasma-mantine';
+import {Anchor, ContextualHelp, VisuallyHidden, type ContextualHelpProps} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<ContextualHelpProps> = {
@@ -74,8 +74,9 @@ export const Demo: Story = {
             {props.variant === 'interactive' && (
                 <>
                     {' '}
-                    <Anchor href="https://docs.coveo.com" target="_blank">
+                    <Anchor href="https://docs.coveo.com" target="_blank" rel="noopener noreferrer">
                         Learn more
+                        <VisuallyHidden> (opens in a new tab)</VisuallyHidden>
                     </Anchor>
                 </>
             )}
