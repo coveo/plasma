@@ -1,15 +1,17 @@
 {
-    extends: ['github>coveo/renovate-presets', 'group:allNonMajor'],
-    timezone: 'America/Montreal',
-    schedule: ['at any time'],
+    extends: ['github>coveo/renovate-presets', 'github>coveo/renovate-presets//auto-merge.json'],
     semanticCommitScope: 'deps',
     commitBody: 'UITOOL-284',
     packageRules: [
         {
-            description: 'Automatically merge minor and patch-level updates',
+            description: 'Use the chore commit type for minor and patch-level updates',
             matchUpdateTypes: ['minor', 'patch'],
             semanticCommitType: 'chore',
-            internalChecksFilter: 'strict',
+        },
+        {
+            description: 'Major updates can contain breaking changes, so a human reviews and merges them',
+            matchUpdateTypes: ['major'],
+            automerge: false,
         },
         {
             groupName: '@tanstack table',

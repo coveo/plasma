@@ -15,7 +15,7 @@ runs:
           shell: bash
           run: |
               echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
-        - uses: actions/cache@v6
+        - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
           name: Setup pnpm cache
           # inspired from https://github.com/pnpm/action-setup/tree/master#use-cache-to-reduce-installation-time
           with:
@@ -27,7 +27,7 @@ runs:
           shell: bash
           run: pnpm install --frozen-lockfile
         - name: Setup turbo cache
-          uses: actions/cache@v6
+          uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
           with:
               path: node_modules/.cache/turbo
               key: turbo-${{ github.job }}-${{ github.ref_name }}-${{ github.sha }}
