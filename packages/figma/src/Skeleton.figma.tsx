@@ -2,10 +2,10 @@ import {Skeleton} from '@coveord/plasma-mantine';
 import {figma} from '@figma/code-connect';
 
 const props = {
-    variant: figma.enum('Variant', {
-        Default: 'default',
-        Circle: 'circle',
-        Content: 'content',
+    variant: figma.enum('variant', {
+        default: 'default',
+        circle: 'circle',
+        content: 'content',
     }),
 };
 
@@ -23,7 +23,7 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2640-127&m=dev',
     {
         props,
-        variant: {Variant: 'Circle'},
+        variant: {variant: 'circle'},
         example: () => <Skeleton circle height={16} />,
     },
 );

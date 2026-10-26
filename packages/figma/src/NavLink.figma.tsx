@@ -7,18 +7,18 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2611-1674',
     {
         props: {
-            label: figma.string('Label'),
-            disabled: figma.enum('State', {
-                Disabled: true,
+            label: figma.string('label'),
+            disabled: figma.enum('state', {
+                disabled: true,
             }),
-            rightSection: figma.boolean<ReactElement, undefined>('Right Section', {
-                true: figma.instance<ReactElement>('Swap Right'),
+            rightSection: figma.boolean<ReactElement, undefined>('rightSection', {
+                true: figma.instance<ReactElement>('swapRight'),
             }),
-            leftSection: figma.boolean<ReactElement, undefined>('Left Section', {
-                true: figma.instance<ReactElement>('Swap Left'),
+            leftSection: figma.boolean<ReactElement, undefined>('leftSection', {
+                true: figma.instance<ReactElement>('swapLeft'),
             }),
-            active: figma.enum('State', {
-                Active: true,
+            active: figma.enum('state', {
+                active: true,
             }),
         },
         example: ({label, disabled, rightSection, leftSection, active}) => (

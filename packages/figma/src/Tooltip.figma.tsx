@@ -6,14 +6,14 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-51555&m=dev',
     {
         props: {
-            label: figma.string('Tooltip'),
-            position: figma.enum('Arrow Position', {
-                Top: 'bottom',
-                Bottom: 'top',
-                Left: 'right',
-                Right: 'left',
+            label: figma.string('tooltip'),
+            position: figma.enum('arrowPosition', {
+                top: 'bottom',
+                bottom: 'top',
+                left: 'right',
+                right: 'left',
             }),
-            withArrow: figma.boolean('With Arrow'),
+            withArrow: figma.boolean('withArrow'),
         },
         example: (props) => <Tooltip {...props} />,
     },

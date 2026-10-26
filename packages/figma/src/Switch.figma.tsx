@@ -3,27 +3,27 @@ import {figma} from '@figma/code-connect';
 
 figma.connect(Switch, 'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2250-5136', {
     props: {
-        checked: figma.boolean('Checked'),
-        disabled: figma.enum('State', {
-            Disabled: true,
+        checked: figma.enum('checked', {true: true}),
+        disabled: figma.enum('state', {
+            disabled: true,
         }),
-        readOnly: figma.enum('State', {
-            'Read-Only': true,
+        readOnly: figma.enum('state', {
+            'read-only': true,
         }),
         labelProps: figma.nestedProps('.Input.Label', {
-            required: figma.boolean('Asterisk'),
-            label: figma.string('Label'),
+            required: figma.boolean('withAsterisk'),
+            label: figma.string('label'),
         }),
 
-        descriptionProps: figma.boolean('Description', {
+        descriptionProps: figma.boolean('description', {
             true: figma.nestedProps('.Input.Description', {
-                description: figma.string('Description'),
+                description: figma.string('description'),
             }),
             false: {description: undefined},
         }),
-        errorProps: figma.boolean('Error', {
+        errorProps: figma.boolean('error', {
             true: figma.nestedProps('.Input.Error', {
-                error: figma.string('Error'),
+                error: figma.string('error'),
             }),
             false: {error: undefined},
         }),
@@ -46,23 +46,23 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2557-11353',
     {
         props: {
-            wrapperProps: figma.nestedProps('Input.Wrapper', {
-                descriptionProps: figma.boolean('Description', {
+            wrapperProps: figma.nestedProps('.Input.Wrapper', {
+                descriptionProps: figma.boolean('description', {
                     true: figma.nestedProps('.Input.Description', {
-                        description: figma.string('Description'),
+                        description: figma.string('description'),
                     }),
                     false: {description: undefined},
                 }),
-                errorProps: figma.boolean('Error', {
+                errorProps: figma.boolean('error', {
                     true: figma.nestedProps('.Input.Error', {
-                        error: figma.string('Error'),
+                        error: figma.string('error'),
                     }),
                     false: {error: undefined},
                 }),
             }),
             labelProps: figma.nestedProps('.Input.Label', {
-                required: figma.boolean('Asterisk'),
-                label: figma.string('Label'),
+                required: figma.boolean('withAsterisk'),
+                label: figma.string('label'),
             }),
         },
         example: (props) => (
