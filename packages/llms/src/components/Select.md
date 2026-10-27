@@ -51,6 +51,7 @@ Important states include:
 - Labels SHOULD describe the decision being made.
 - Placeholder text SHOULD explain what to choose, not repeat the label.
 - Option labels SHOULD be concise and parallel.
+- Error messages SHOULD start with what to select and name the choice ("Select a language." not "This field is required.").
 
 ## Common anti-patterns
 
