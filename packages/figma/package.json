@@ -13,7 +13,7 @@
         "@coveord/plasma-mantine": "workspace:*",
         "@coveord/plasma-react-icons": "workspace:*",
         "@figma/code-connect": "1.5.3",
-        "react": "19.3.0"
+        "react": "19.3.1"
     },
     "devDependencies": {
         "@types/react": "19.3.0",
