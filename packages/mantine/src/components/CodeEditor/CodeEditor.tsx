@@ -238,6 +238,8 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
                         fontSize: px(theme.fontSizes.xs) as number,
                         readOnly: disabled || readOnly,
                         stickyScroll: {enabled: false},
+                        // Monaco draws the cursor's position next to the scrollbar in a near-black mark
+                        hideCursorInOverviewRuler: true,
                         tabSize,
                     }}
                     value={_value}

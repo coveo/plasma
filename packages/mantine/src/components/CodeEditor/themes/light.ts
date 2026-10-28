@@ -180,9 +180,9 @@ export const getLightTheme = (theme: MantineTheme): editor.IStandaloneThemeData 
 
             // Scrollbar
             'scrollbar.shadow': border,
-            'scrollbarSlider.background': alpha(dimmed, 0.4),
-            'scrollbarSlider.hoverBackground': alpha(dimmed, 0.7),
-            'scrollbarSlider.activeBackground': dimmed,
+            'scrollbarSlider.background': alpha(dimmed, 0.25),
+            'scrollbarSlider.hoverBackground': alpha(dimmed, 0.4),
+            'scrollbarSlider.activeBackground': alpha(dimmed, 0.55),
 
             // Validation errors, warnings and infos
             'editorError.foreground': error,
