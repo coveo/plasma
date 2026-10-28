@@ -253,6 +253,19 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
                             editorHandle.current = editor;
                         }
                         editor.onDidFocusEditorText(() => onFocus?.());
+                        // Monaco only recolors selected text in high contrast themes, so the selection is marked
+                        // with a class to show it light on dark (see CodeEditor.module.css).
+                        const selectedText = editor.createDecorationsCollection();
+                        editor.onDidChangeCursorSelection(() => {
+                            selectedText.set(
+                                (editor.getSelections() ?? [])
+                                    .filter((selection) => !selection.isEmpty())
+                                    .map((range) => ({
+                                        range,
+                                        options: {inlineClassName: CodeEditorClasses.selectedText},
+                                    })),
+                            );
+                        });
                         editor.onDidDispose(() => {
                             // If the editor is disposed while the component is still mounted (e.g. React's
                             // `<Activity>` tore down the effects to hide the panel), force a fresh instance so we

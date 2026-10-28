@@ -143,9 +143,10 @@ export const getLightTheme = (theme: MantineTheme): editor.IStandaloneThemeData 
             'editorBracketHighlight.foreground6': text,
             'editorBracketHighlight.unexpectedBracket.foreground': error,
 
-            // Selection and occurrences, tinted with the primary color like Plasma's own text selection
-            'editor.selectionBackground': alpha(primary, 0.2),
-            'editor.inactiveSelectionBackground': selected,
+            // Dark selection like Vercel's code blocks, the selected text turns white (see CodeEditor.module.css)
+            'editor.selectionBackground': text,
+            'editor.inactiveSelectionBackground': text,
+            // Occurrences of the selection are tinted with the primary color, like Plasma's selected states
             'editor.selectionHighlightBackground': selected,
             // Kept light, since the word under the cursor is also part of the selection when double-clicked
             'editor.wordHighlightBackground': alpha(dimmed, 0.1),

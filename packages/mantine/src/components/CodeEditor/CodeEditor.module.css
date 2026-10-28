@@ -50,6 +50,16 @@
     --ce-border-color: var(--mantine-color-error);
 }
 
+/*
+ * Selected text is light on the dark selection from the theme, like Vercel's code blocks.
+ * The current search match is painted solid yellow over the selection, so it keeps its syntax colors.
+ */
+.editor :global(.view-line) .selectedText:not(:global(.currentFindMatchInline)) {
+    @mixin light {
+        color: var(--mantine-color-white);
+    }
+}
+
 .disabled {
     @mixin light {
         --ce-bg: var(--mantine-color-gray-1);
