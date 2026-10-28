@@ -8,6 +8,66 @@ describe('Anchor', () => {
         expect(screen.getByRole('link', {name: 'Somewhere'})).toHaveAttribute('href', '/somewhere');
     });
 
+    it('opens links to another origin in a new tab without exposing the opener', () => {
+        render(<Anchor href="https://docs.coveo.com/en/3361">Docs</Anchor>);
+
+        const link = screen.getByRole('link', {name: 'Docs'});
+        expect(link).toHaveAttribute('target', '_blank');
+        expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+    });
+
+    it.each([
+        ['a relative path', '/settings'],
+        ['a path relative to the current page', 'settings/general'],
+        ['a hash', '#details'],
+        ['an absolute URL on the current origin', `${window.location.origin}/settings`],
+    ])('opens %s in the same tab', (_description, href) => {
+        render(<Anchor href={href}>Settings</Anchor>);
+
+        const link = screen.getByRole('link', {name: 'Settings'});
+        expect(link).not.toHaveAttribute('target');
+        expect(link).not.toHaveAttribute('rel');
+    });
+
+    it('treats another port on the same host as another origin', () => {
+        const otherPort = window.location.port === '1234' ? '4321' : '1234';
+        render(<Anchor href={`${window.location.protocol}//${window.location.hostname}:${otherPort}/`}>App</Anchor>);
+
+        expect(screen.getByRole('link', {name: 'App'})).toHaveAttribute('target', '_blank');
+    });
+
+    it('keeps an explicit target and rel on a link to another origin', () => {
+        render(
+            <Anchor href="https://docs.coveo.com" target="_self" rel="nofollow">
+                Docs
+            </Anchor>,
+        );
+
+        const link = screen.getByRole('link', {name: 'Docs'});
+        expect(link).toHaveAttribute('target', '_self');
+        expect(link).toHaveAttribute('rel', 'nofollow');
+    });
+
+    it('updates the target when the href changes', () => {
+        const {rerender} = render(<Anchor href="/settings">Link</Anchor>);
+        expect(screen.getByRole('link')).not.toHaveAttribute('target');
+
+        rerender(<Anchor href="https://docs.coveo.com">Link</Anchor>);
+        expect(screen.getByRole('link')).toHaveAttribute('target', '_blank');
+    });
+
+    it('does not set a target when the href cannot be parsed', () => {
+        render(<Anchor href="http://[invalid">Broken</Anchor>);
+
+        expect(screen.getByRole('link', {name: 'Broken'})).not.toHaveAttribute('target');
+    });
+
+    it('does not set a target without an href', () => {
+        render(<Anchor component="button">Action</Anchor>);
+
+        expect(screen.getByRole('button', {name: 'Action'})).not.toHaveAttribute('target');
+    });
+
     describe('Anchor.External', () => {
         it('opens the destination in a new tab without exposing the opener', () => {
             render(<Anchor.External href="https://plasma.coveo.com">Plasma</Anchor.External>);

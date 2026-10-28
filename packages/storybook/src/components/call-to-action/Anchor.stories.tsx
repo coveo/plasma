@@ -39,7 +39,7 @@ const meta: Meta<typeof Anchor> = {
             options: ['_self', '_blank', '_parent', '_top'],
             description: 'Sets where the linked destination opens.',
             table: {
-                defaultValue: {summary: 'undefined'},
+                defaultValue: {summary: "'_blank' for another origin, otherwise undefined"},
                 type: {summary: 'HTMLAttributeAnchorTarget'},
             },
         },

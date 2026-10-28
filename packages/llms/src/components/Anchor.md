@@ -24,7 +24,7 @@ description: Inline text link that navigates the user to another page or section
 ## Decision-making guidance
 
 - Prefer `Anchor` over a plain `<a>` element so that Plasma theming, focus styles, and size tokens are applied consistently.
-- Open links in a new tab only when leaving the current context would interrupt the user's task.
+- `Anchor` opens links to another origin in a new tab with `rel="noopener noreferrer"`. Relative and same-origin links open in the same tab. An explicit `target` or `rel` MAY be passed to override this.
 - Links that leave the application (documentation, third-party services) SHOULD use `Anchor.External` rather than an `Anchor` with `target="_blank"`, so the new tab behavior is signalled visually and to screen readers.
 - Use `size="xs"` for compact contexts such as table cells or captions; use `size="sm"` for body text.
 - Pass `inherit` when the anchor sits inside a `Text` or other typographic container so its font size and font-weight inherit from the parent rather than resetting.
@@ -51,13 +51,15 @@ description: Inline text link that navigates the user to another page or section
 - Using `Anchor` to trigger an `onClick` action with no `href` — use `Button.Tertiary` or an `ActionIcon` instead.
 - Wrapping large blocks of content in an `Anchor`; links SHOULD target meaningful, concise labels.
 - Omitting `inherit` when placing an `Anchor` inside a typographic component, causing a size mismatch.
-- Setting `target="_blank"` on a plain `Anchor` for external destinations; use `Anchor.External` instead.
+- Setting `target="_blank"` manually on a plain `Anchor`; links to another origin already open in a new tab, and standalone external links SHOULD use `Anchor.External`.
 
 # API reference
 
 ## Props
 
 > Extends: `AnchorProps` from `@mantine/core`. No additional Plasma-specific props beyond the Mantine base component.
+
+When `href` points to another origin than `window.location.origin`, `target` defaults to `_blank` and `rel` to `noopener noreferrer`.
 
 ## Sub-components
 
