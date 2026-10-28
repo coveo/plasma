@@ -34,6 +34,55 @@ describe('Anchor', () => {
             expect(screen.getByRole('link', {name: /^Plasma\W*\(ouvre un nouvel onglet\)$/})).toBeVisible();
         });
 
+        it('describes the new tab on a link labelled with aria-label', () => {
+            render(
+                <Anchor.External href="https://plasma.coveo.com" aria-label="Plasma design system">
+                    Plasma
+                </Anchor.External>,
+            );
+
+            expect(
+                screen.getByRole('link', {name: 'Plasma design system', description: /opens in a new tab/}),
+            ).toBeVisible();
+        });
+
+        it('describes the new tab on a link labelled with aria-labelledby', () => {
+            render(
+                <>
+                    <span id="plasma-label">Plasma design system</span>
+                    <Anchor.External href="https://plasma.coveo.com" aria-labelledby="plasma-label">
+                        Plasma
+                    </Anchor.External>
+                </>,
+            );
+
+            expect(
+                screen.getByRole('link', {name: 'Plasma design system', description: /opens in a new tab/}),
+            ).toBeVisible();
+        });
+
+        it('keeps the existing description of a labelled link', () => {
+            render(
+                <>
+                    <span id="plasma-hint">Public site</span>
+                    <Anchor.External
+                        href="https://plasma.coveo.com"
+                        aria-label="Plasma design system"
+                        aria-describedby="plasma-hint"
+                    >
+                        Plasma
+                    </Anchor.External>
+                </>,
+            );
+
+            expect(
+                screen.getByRole('link', {
+                    name: 'Plasma design system',
+                    description: /^Public site\W*\(opens in a new tab\)$/,
+                }),
+            ).toBeVisible();
+        });
+
         it('renders a decorative external icon', () => {
             render(<Anchor.External href="https://plasma.coveo.com">Plasma</Anchor.External>);
 

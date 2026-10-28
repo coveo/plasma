@@ -63,7 +63,7 @@ description: Inline text link that navigates the user to another page or section
 
 Plasma provides pre-configured sub-components as convenience wrappers. You SHOULD use these over setting props manually.
 
-- `Anchor.External` — link to a destination outside the application. Opens in a new tab with `rel="noopener noreferrer"`, renders an external link icon after the content, and appends visually hidden text announcing the new tab. `target` and `rel` MAY be overridden; the announcement is only rendered when `target` is `_blank`.
+- `Anchor.External` — link to a destination outside the application. Opens in a new tab with `rel="noopener noreferrer"`, renders an external link icon after the content, and appends visually hidden text announcing the new tab. `target` and `rel` MAY be overridden; the announcement is only rendered when `target` is `_blank`. When `aria-label` or `aria-labelledby` is set, the announcement is exposed through `aria-describedby` instead.
 
 ### `Anchor.External` props
 

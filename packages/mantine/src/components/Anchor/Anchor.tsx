@@ -40,4 +40,5 @@ export namespace Anchor {
     }
 }
 
+export type {AnchorCssVariables, AnchorFactory, AnchorProps, AnchorStylesNames, AnchorVariant} from '@mantine/core';
 export type {AnchorExternalFactory, AnchorExternalProps, AnchorExternalStylesNames} from './AnchorExternal.js';

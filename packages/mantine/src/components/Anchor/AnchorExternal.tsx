@@ -10,7 +10,7 @@ import {
     useStyles,
     VisuallyHidden,
 } from '@mantine/core';
-import {ReactNode} from 'react';
+import {ReactNode, useId} from 'react';
 import classes from './AnchorExternal.module.css';
 
 export type AnchorExternalStylesNames = 'root' | 'icon';
@@ -57,8 +57,21 @@ export const AnchorExternal = polymorphicFactory<AnchorExternalFactory>((_props)
         vars,
         attributes,
     });
-    const target = (others as {target?: string}).target ?? '_blank';
+    const announcementId = useId();
+    const {
+        target = '_blank',
+        'aria-label': ariaLabel,
+        'aria-labelledby': ariaLabelledBy,
+        'aria-describedby': ariaDescribedBy,
+    } = others as {
+        target?: string;
+        'aria-label'?: string;
+        'aria-labelledby'?: string;
+        'aria-describedby'?: string;
+    };
     const announcesNewTab = target === '_blank' && !!newTabLabel;
+    // An explicit label replaces the link content as its accessible name, so the announcement becomes a description
+    const describesNewTab = announcesNewTab && !!(ariaLabel || ariaLabelledBy);
 
     return (
         <MantineAnchor
@@ -68,6 +81,9 @@ export const AnchorExternal = polymorphicFactory<AnchorExternalFactory>((_props)
             rel="noopener noreferrer"
             {...getStyles('root')}
             {...others}
+            aria-describedby={
+                describesNewTab ? [ariaDescribedBy, announcementId].filter(Boolean).join(' ') : ariaDescribedBy
+            }
         >
             {children}
             {/* The word joiner and nowrap keep the icon on the same line as the last word */}
@@ -75,7 +91,7 @@ export const AnchorExternal = polymorphicFactory<AnchorExternalFactory>((_props)
                 {'\u2060'}
                 <IconExternalLink size="1em" aria-hidden {...getStyles('icon')} />
             </span>
-            {announcesNewTab ? <VisuallyHidden>{`\u00A0${newTabLabel}`}</VisuallyHidden> : null}
+            {announcesNewTab ? <VisuallyHidden id={announcementId}>{`\u00A0${newTabLabel}`}</VisuallyHidden> : null}
         </MantineAnchor>
     );
 });
