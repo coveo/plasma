@@ -2,7 +2,7 @@ import {MultiSelect} from '@coveord/plasma-mantine/components/MultiSelect';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import type {ComponentProps} from 'react';
 import {Args} from '../../../Args.js';
-import {withLabelInfoProps} from '../LabelInfoArgs.js';
+import {withLabelContextualHelpProps} from '../ContextualHelpArgs.js';
 import {
     BaseInputArgs,
     InputWrapperArgs,
@@ -46,5 +46,5 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
-    render: (props) => <MultiSelect {...withLabelInfoProps(props)} w={300} />,
+    render: (props) => <MultiSelect {...withLabelContextualHelpProps(props)} w={300} />,
 };

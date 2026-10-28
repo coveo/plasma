@@ -12,7 +12,7 @@ import {
     InputWrapperArgs,
     type InputWrapperStoryArgs,
 } from '../InputWrapperArgs.js';
-import {withLabelInfoProps} from '../LabelInfoArgs.js';
+import {withLabelContextualHelpProps} from '../ContextualHelpArgs.js';
 
 const meta: Meta<typeof Checkbox> = {
     title: '@components/Forms and inputs/boolean/Checkbox',
@@ -48,7 +48,7 @@ export const Demo: StoryObj<CheckboxItemStoryArgs> = {
     render: (props) => {
         const [{checked}, updateArgs] = useArgs<CheckboxItemStoryArgs>();
         const onClick = () => updateArgs({checked: !checked});
-        return <Checkbox {...withLabelInfoProps(props)} onClick={onClick} />;
+        return <Checkbox {...withLabelContextualHelpProps(props)} onClick={onClick} />;
     },
 };
 
@@ -63,7 +63,7 @@ export const CheckboxGroup: StoryObj<CheckboxGroupStoryArgs> = {
         ...BaseInputArgs.Args,
     },
     render: (props) => (
-        <Checkbox.Group {...withLabelInfoProps(props)}>
+        <Checkbox.Group {...withLabelContextualHelpProps(props)}>
             <Group mt="xs">
                 <Checkbox value="1" label="Option 1" readOnly={props.readOnly} />
                 <Checkbox value="2" label="Option 2" readOnly={props.readOnly} />
