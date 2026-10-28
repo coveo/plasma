@@ -24,6 +24,7 @@ import {CopyToClipboard} from '../CopyToClipboard/CopyToClipboard.js';
 import CodeEditorClasses from './CodeEditor.module.css';
 import {XML} from './languages/xml.js';
 import {Search} from './search/Search.js';
+import {getLightTheme} from './themes/light.js';
 interface CodeEditorProps
     extends
         Omit<InputWrapperProps, 'inputContainer' | 'inputWrapperOrder' | 'classNames' | 'styles' | 'vars' | 'onChange'>,
@@ -147,14 +148,10 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
     };
 
     const registerThemes = (monaco: Monaco) => {
-        monaco.editor.defineTheme('light', {
-            base: 'vs',
-            inherit: true,
-            rules: [],
-            colors: {
-                'editor.background': '#ffffff', // mantine color white is #fff and monaco only accepts 6 digits
-            },
-        });
+        const lightTheme = getLightTheme(theme);
+        monaco.editor.defineTheme('light', lightTheme);
+        // Read-only and disabled editors share the syntax colors, their gray background comes from CodeEditor.module.css
+        monaco.editor.defineTheme('light-disabled', lightTheme);
     };
 
     const handleSearch = () => {
