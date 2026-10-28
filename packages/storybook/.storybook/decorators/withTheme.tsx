@@ -17,7 +17,7 @@ export const withTheme: Decorator = (Story, context) => {
 
     return (
         <Plasmantine theme={selectedTheme}>
-            <Notifications />
+            <Notifications position="top-right" />
             <Story />
         </Plasmantine>
     );
