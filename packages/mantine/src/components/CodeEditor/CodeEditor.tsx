@@ -244,6 +244,8 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
                         hideCursorInOverviewRuler: true,
                         // Without a divider, the scrollbar sits on the code like the rest of the card
                         overviewRulerBorder: false,
+                        // Line numbers are right-aligned, so this keeps room on their left up to 3 digits
+                        lineNumbersMinChars: 7,
                         tabSize,
                     }}
                     value={_value}
