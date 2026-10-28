@@ -25,6 +25,12 @@
 
 .editor {
     flex: 1;
+
+    /* The editor reaches the card's edges, so its content follows the card's rounded bottom corners */
+    :global(.monaco-editor),
+    :global(.monaco-editor .overflow-guard) {
+        border-radius: 0 0 calc(var(--mantine-radius-lg) - 1px) calc(var(--mantine-radius-lg) - 1px);
+    }
 }
 
 /*

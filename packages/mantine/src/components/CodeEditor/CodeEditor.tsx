@@ -224,7 +224,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
             data-testid="editor-wrapper"
         >
             {_buttons}
-            <Box p="md" pl="xs" className={CodeEditorClasses.editor}>
+            <Box className={CodeEditorClasses.editor}>
                 <Editor
                     key={editorKey}
                     onValidate={handleValidate}
@@ -236,10 +236,14 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
                         scrollBeyondLastLine: false,
                         formatOnPaste: true,
                         fontSize: px(theme.fontSizes.xs) as number,
+                        // The editor fills the card, so the spacing is inside the scrollable area instead of around it
+                        padding: {top: px(theme.spacing.md) as number, bottom: px(theme.spacing.md) as number},
                         readOnly: disabled || readOnly,
                         stickyScroll: {enabled: false},
                         // Monaco draws the cursor's position next to the scrollbar in a near-black mark
                         hideCursorInOverviewRuler: true,
+                        // Without a divider, the scrollbar sits on the code like the rest of the card
+                        overviewRulerBorder: false,
                         tabSize,
                     }}
                     value={_value}

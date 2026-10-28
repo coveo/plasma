@@ -8,4 +8,6 @@ In light mode, `CodeEditor` now uses Plasma colors instead of Visual Studio Code
 
 The rest of the editor follows Plasma too. Selected text turns white on a dark selection, search results are highlighted in yellow like `Highlight`, and validation errors and warnings use Plasma's red and yellow. The scrollbar and indent guides use Plasma grays. The find box, hovers, suggestions, right-click menu and command palette use white surfaces with Plasma borders, focus color and hover states.
 
-Read-only and disabled editors now use the same colors as editable ones, on their gray background. They previously fell back to Monaco's default theme. Dark mode is unchanged.
+Read-only and disabled editors now use the same colors as editable ones, on their gray background. They previously fell back to Monaco's default theme. Dark mode colors are unchanged.
+
+The code area now fills the card, in both color schemes, so code scrolls all the way to the card's edges and the scrollbar sits on its right edge. The spacing above the first line and below the last line moved inside the scrollable area.
