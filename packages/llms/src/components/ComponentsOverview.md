@@ -60,6 +60,7 @@ Resources:
 - Progress [Mantine] — Bar indicating completion percentage
 - Stepper [Mantine] — Progress indicator for multi-step workflows
 - Tooltip [Mantine] — Text label shown on hover
+- InlineMessage [Plasma] — Short text-level message with an optional semantic icon
 - InfoToken [Plasma] — Small visual indicator for contextual information
 - StatusToken [Plasma] — Visual indicator for object status
 
