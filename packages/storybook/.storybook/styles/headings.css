@@ -19,3 +19,16 @@
 p:not([class*='mantine-'] p) {
     margin-block: var(--mantine-spacing-xs);
 }
+
+/*
+ * Docs prose reads better with a taller line height than Plasma's component metrics.
+ * The docs container wraps every MDX page in `.sb-unstyled`; live examples sit in a nested
+ * `<Unstyled>` block and get the component metrics back, so they render as they do in a story.
+ */
+.sb-unstyled {
+    line-height: 1.5;
+}
+
+.sb-unstyled .sb-unstyled {
+    line-height: var(--mantine-line-height);
+}

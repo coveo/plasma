@@ -39,6 +39,8 @@ const preview: Preview = {
             container: ThemedDocsContainer,
             toc: {
                 headingSelector: 'h2',
+                // Headings rendered by live examples (a Prompt title, a Header) are not page sections.
+                ignoreSelector: '.docs-story h2, .sb-unstyled .sb-unstyled h2',
             },
             components: plasmaDocsComponents,
         },
@@ -64,7 +66,7 @@ const preview: Preview = {
                         'Miscellaneous',
                     ],
                     '@patterns',
-                    ['Overview', 'Navigate with links'],
+                    ['Overview', 'Communicate feedback', 'Navigate with links'],
                     '@content',
                     ['About Content', 'Audience', 'Voice', 'Writing mechanics', 'Product vocabulary', 'Glossary'],
                     '*',
