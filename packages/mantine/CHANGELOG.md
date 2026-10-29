@@ -1,5 +1,53 @@
 # @coveord/plasma-mantine
 
+## 61.6.0
+
+### Minor Changes
+
+- Open `Anchor` links to another origin in a new tab [#4673](https://github.com/coveo/plasma/pull/4673)
+
+  When its `href` points to another origin than the current page, `Anchor` now opens it in a new tab with `rel="noopener noreferrer"`. Relative and same-origin links still open in the same tab. Pass `target` or `rel` explicitly to override this behavior.
+
+- Add `ContextualHelp` component to explain nearby content behind a question icon [#4660](https://github.com/coveo/plasma/pull/4660)
+
+  `ContextualHelp` renders a question icon that reveals help content on hover or keyboard focus. Use `variant="text"` (default) for plain text and `variant="interactive"` when the content contains links.
+
+  ```tsx
+  <ContextualHelp aria-label="About clickthrough rate">
+    The percentage of times a View is followed by a click.
+  </ContextualHelp>
+  ```
+
+  `Input.LabelInfo` is deprecated in favor of `ContextualHelp`. It now renders a `ContextualHelp`, so it can be reached with the keyboard, and existing queries for the image named "question" keep working. Its `ref` now points to the button, and `Tooltip` props other than `position` are still accepted but ignored.
+
+  To migrate, replace `Input.LabelInfo` with `ContextualHelp`, keep the label spacing with `ml="xxs"`, and query the icon as a button.
+
+  ```diff
+  - <Input.LabelInfo>Helpful tooltip</Input.LabelInfo>
+  + <ContextualHelp ml="xxs">Helpful tooltip</ContextualHelp>
+  ```
+
+  ```diff
+  - screen.getByRole('img', {name: 'question'});
+  + screen.getByRole('button', {name: 'More information'});
+  ```
+
+- Add `Anchor.External` for links that leave the application [#4645](https://github.com/coveo/plasma/pull/4645)
+
+  `Anchor.External` opens its destination in a new tab with `rel="noopener noreferrer"`, renders an external link icon after the content, and tells screen reader users that the link opens in a new tab. Translate the announcement with `newTabLabel`.
+
+  ```tsx
+  <Anchor.External href="https://docs.coveo.com">
+    Coveo documentation
+  </Anchor.External>
+  ```
+
+### Patch Changes
+
+- Vertically center `Collection` item content [#4671](https://github.com/coveo/plasma/pull/4671)
+
+- `Notification` title no longer shows a hover background, so it no longer looks interactive [#4675](https://github.com/coveo/plasma/pull/4675)
+
 ## 61.5.0
 
 ### Minor Changes
