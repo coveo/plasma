@@ -25,6 +25,12 @@ export interface CollectionLayoutBodyProps<T = unknown> {
     /** Whether items are removable */
     removable?: boolean;
 
+    /** Whether a specific item can be removed */
+    isItemRemovable?: (item: T, index: number) => boolean;
+
+    /** Tooltip explaining why a specific item cannot be removed */
+    getRemoveDisabledTooltip?: (item: T, index: number) => string | undefined;
+
     /** Whether drag and drop is enabled */
     draggable?: boolean;
 

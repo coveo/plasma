@@ -1,5 +1,6 @@
 ---
 '@coveord/plasma-mantine': minor
+'@coveord/plasma-llms': patch
 ---
 
 Add `allowRemove`, `removeDisabledTooltip` and `removeLabel` props to `Collection`
