@@ -42,6 +42,7 @@ Important states include:
 - one or more items
 - disabled or read-only collection
 - add disabled because the current state does not allow insertion
+- specific items that cannot be removed, with their remove button hidden or disabled
 - draggable reorder mode
 
 ## Interaction notes
@@ -49,6 +50,7 @@ Important states include:
 - `newItem` MUST create a valid starting item.
 - `required` SHOULD be used when at least one item must remain.
 - `addDisabledTooltip` SHOULD explain why adding is currently unavailable.
+- `allowRemove` SHOULD be used to prevent the removal of specific items, and `removeDisabledTooltip` SHOULD explain why they cannot be removed.
 - Reordering SHOULD preserve item values and validation state.
 
 ## Content guidance
@@ -86,6 +88,9 @@ Important states include:
 **`allowAdd`** `boolean | ((values: T[]) => boolean)` · optional · default: `undefined` — MAY determine if the add item button SHOULD be enabled given the current items of the collection. The button remains enabled if this prop is undefined.
 **`addLabel`** `ReactNode` · optional · default: `"Add item"` — MAY define the label of the add item button.
 **`addDisabledTooltip`** `string` · optional · default: `'There is already an empty item'` — MAY define the tooltip text displayed when hovering over the disabled add item button.
+**`allowRemove`** `boolean | ((item: T, index: number) => boolean)` · optional · default: `undefined` — MAY determine if the items can be removed, or if a specific item can be removed. The remove button of an item that cannot be removed is hidden, unless a `removeDisabledTooltip` is given for it. Items remain removable if this prop is undefined.
+**`removeDisabledTooltip`** `string | ((item: T, index: number) => string | undefined)` · optional · default: `undefined` — MAY define the tooltip text displayed when hovering over the disabled remove button of an item that cannot be removed. When given, a disabled remove button is displayed instead of hiding it.
+**`removeLabel`** `string` · optional · default: `"Remove"` — MAY define the accessible label of the remove item buttons.
 **`gap`** `MantineSpacing` · optional · default: `'sm'` — MAY define the gap between the collection items.
 **`required`** `boolean` · optional · default: `false` — MAY mark the collection as required. When true, the collection hides the remove button if there is only one item.
 
