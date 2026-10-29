@@ -252,6 +252,16 @@ export const Legacy: Story = {
                 readOnly: props.readOnly,
                 disabled: props.disabled,
             }),
+            validate: (values) => {
+                const errors: Record<string, string> = {};
+                values.contacts.forEach((name, index) => {
+                    if (!name.trim()) {
+                        errors[`contacts.${index}`] = 'Name is required';
+                    }
+                });
+                return errors;
+            },
+            validateInputOnBlur: true,
         });
 
         return (
