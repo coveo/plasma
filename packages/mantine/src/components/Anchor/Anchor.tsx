@@ -7,7 +7,6 @@ import {
     polymorphicFactory,
     PolymorphicFactory,
 } from '@mantine/core';
-import {useMemo} from 'react';
 import {AnchorExternal, AnchorExternalProps, AnchorExternalStylesNames} from './AnchorExternal.js';
 
 export type AnchorOverloadFactory = PolymorphicFactory<{
@@ -34,13 +33,18 @@ const isExternalHref = (href: string | undefined): boolean => {
 };
 
 export const Anchor = polymorphicFactory<AnchorOverloadFactory>(({ref, ...props}) => {
-    const {href} = props as {href?: string};
-    const isExternal = useMemo(() => isExternalHref(href), [href]);
+    const {href, target, rel} = props as {href?: string; target?: string; rel?: string};
+    const isExternal = isExternalHref(href);
 
-    // Explicit target and rel props take precedence over the external defaults
-    const externalProps = isExternal ? {target: '_blank', rel: 'noopener noreferrer'} : {};
-
-    return <MantineAnchor ref={ref} {...externalProps} {...props} />;
+    // Explicit target and rel props take precedence over the external defaults, undefined ones don't
+    return (
+        <MantineAnchor
+            ref={ref}
+            {...props}
+            target={target ?? (isExternal ? '_blank' : undefined)}
+            rel={rel ?? (isExternal ? 'noopener noreferrer' : undefined)}
+        />
+    );
 });
 
 Anchor.External = AnchorExternal;

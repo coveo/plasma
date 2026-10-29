@@ -48,6 +48,18 @@ describe('Anchor', () => {
         expect(link).toHaveAttribute('rel', 'nofollow');
     });
 
+    it('keeps the new tab defaults on a link to another origin when target and rel are undefined', () => {
+        render(
+            <Anchor href="https://docs.coveo.com" target={undefined} rel={undefined}>
+                Docs
+            </Anchor>,
+        );
+
+        const link = screen.getByRole('link', {name: 'Docs'});
+        expect(link).toHaveAttribute('target', '_blank');
+        expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+    });
+
     it('updates the target when the href changes', () => {
         const {rerender} = render(<Anchor href="/settings">Link</Anchor>);
         expect(screen.getByRole('link')).not.toHaveAttribute('target');
