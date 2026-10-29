@@ -102,6 +102,18 @@ describe('Anchor', () => {
             expect(screen.queryByText(/opens in a new tab/)).not.toBeInTheDocument();
         });
 
+        it('keeps the new tab defaults when target and rel are undefined', () => {
+            render(
+                <Anchor.External href="https://plasma.coveo.com" target={undefined} rel={undefined}>
+                    Plasma
+                </Anchor.External>,
+            );
+
+            const link = screen.getByRole('link', {name: /^Plasma\W*\(opens in a new tab\)$/});
+            expect(link).toHaveAttribute('target', '_blank');
+            expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+        });
+
         it('forwards the ref to the anchor element', () => {
             const ref = {current: null as HTMLAnchorElement | null};
             render(

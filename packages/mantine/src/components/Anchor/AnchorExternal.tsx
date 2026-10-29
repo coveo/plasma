@@ -59,17 +59,21 @@ export const AnchorExternal = polymorphicFactory<AnchorExternalFactory>((_props)
     });
     const announcementId = useId();
     const {
-        target = '_blank',
+        target,
+        rel,
         'aria-label': ariaLabel,
         'aria-labelledby': ariaLabelledBy,
         'aria-describedby': ariaDescribedBy,
     } = others as {
         target?: string;
+        rel?: string;
         'aria-label'?: string;
         'aria-labelledby'?: string;
         'aria-describedby'?: string;
     };
-    const announcesNewTab = target === '_blank' && !!newTabLabel;
+    // An undefined target or rel, e.g. forwarded by a wrapper, keeps the new tab defaults
+    const resolvedTarget = target ?? '_blank';
+    const announcesNewTab = resolvedTarget === '_blank' && !!newTabLabel;
     // An explicit label replaces the link content as its accessible name, so the announcement becomes a description
     const describesNewTab = announcesNewTab && !!(ariaLabel || ariaLabelledBy);
 
@@ -77,10 +81,10 @@ export const AnchorExternal = polymorphicFactory<AnchorExternalFactory>((_props)
         <MantineAnchor
             ref={ref}
             unstyled={unstyled}
-            target="_blank"
-            rel="noopener noreferrer"
             {...getStyles('root')}
             {...others}
+            target={resolvedTarget}
+            rel={rel ?? 'noopener noreferrer'}
             aria-describedby={
                 describesNewTab ? [ariaDescribedBy, announcementId].filter(Boolean).join(' ') : ariaDescribedBy
             }
