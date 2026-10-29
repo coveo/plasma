@@ -80,7 +80,7 @@ export const getLightTheme = (theme: MantineTheme): editor.IStandaloneThemeData 
         // Monaco matches token names by prefix (`string` covers `string.value.json`), so these cover every language
         rules: [
             {token: '', foreground: hex(text)},
-            // Keys and names: JSON keys, XML tags and attributes, types
+            // Keys and names: JSON keys, tags and attribute names, types
             {token: 'string.key', foreground: hex(text)},
             {token: 'tag', foreground: hex(text)},
             {token: 'metatag', foreground: hex(text)},
@@ -93,6 +93,10 @@ export const getLightTheme = (theme: MantineTheme): editor.IStandaloneThemeData 
             {token: 'attribute.value', foreground: hex(green[5])},
             {token: 'number', foreground: hex(green[5])},
             {token: 'keyword', foreground: hex(blue[5])},
+            // XML markup is structure, like keywords. Brackets match tags, since Monaco tokenizes the `/` of `/>` as a tag
+            {token: 'tag.xml', foreground: hex(blue[5])},
+            {token: 'metatag.xml', foreground: hex(blue[5])},
+            {token: 'delimiter.xml', foreground: hex(blue[5])},
             // Markdown's own **bold** and _italic_
             {token: 'strong', fontStyle: 'bold'},
             {token: 'emphasis', fontStyle: 'italic'},
