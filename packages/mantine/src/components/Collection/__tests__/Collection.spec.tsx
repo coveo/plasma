@@ -424,6 +424,126 @@ describe('Collection', () => {
         });
     });
 
+    it('labels the remove buttons with removeLabel', () => {
+        const Fixture = () => {
+            const form = useForm({
+                initialValues: {fruits: ['banana', 'orange']},
+                enhanceGetInputProps: (payload) => ({...enhanceWithCollectionProps(payload, 'fruits')}),
+            });
+            return (
+                <Collection<string> {...form.getInputProps('fruits')} newItem="" removeLabel="Remove fruit">
+                    {(name) => <span>{name}</span>}
+                </Collection>
+            );
+        };
+
+        render(<Fixture />);
+
+        expect(screen.getAllByRole('button', {name: 'Remove fruit'})).toHaveLength(2);
+    });
+
+    describe('when allowRemove is set', () => {
+        it('hides the remove button of the items that are not removable', () => {
+            const Fixture = () => {
+                const form = useForm({
+                    initialValues: {fruits: ['banana', 'orange']},
+                    enhanceGetInputProps: (payload) => ({...enhanceWithCollectionProps(payload, 'fruits')}),
+                });
+                return (
+                    <Collection<string>
+                        {...form.getInputProps('fruits')}
+                        newItem=""
+                        allowRemove={(fruit) => fruit !== 'banana'}
+                    >
+                        {(name) => <span>{name}</span>}
+                    </Collection>
+                );
+            };
+
+            render(<Fixture />);
+
+            expect(
+                within(screen.getByTestId('item-0')).queryByRole('button', {name: /remove/i}),
+            ).not.toBeInTheDocument();
+            expect(within(screen.getByTestId('item-1')).getByRole('button', {name: /remove/i})).toBeEnabled();
+        });
+
+        it('renders a disabled remove button with a tooltip when removeDisabledTooltip returns a message', async () => {
+            const user = userEvent.setup();
+            const onRemoveItem = vi.fn();
+            const Fixture = () => {
+                const form = useForm({
+                    initialValues: {fruits: ['banana', 'orange']},
+                    enhanceGetInputProps: (payload) => ({...enhanceWithCollectionProps(payload, 'fruits')}),
+                });
+                return (
+                    <Collection<string>
+                        {...form.getInputProps('fruits')}
+                        onRemoveItem={onRemoveItem}
+                        newItem=""
+                        allowRemove={(fruit) => fruit !== 'banana'}
+                        removeDisabledTooltip={(fruit) => `${fruit} cannot be removed`}
+                    >
+                        {(name) => <span>{name}</span>}
+                    </Collection>
+                );
+            };
+
+            render(<Fixture />);
+
+            const removeBanana = within(screen.getByTestId('item-0')).getByRole('button', {name: /remove/i});
+            expect(removeBanana).toBeDisabled();
+
+            await user.hover(removeBanana.parentElement!);
+            expect(await screen.findByRole('tooltip', {name: 'banana cannot be removed'})).toBeInTheDocument();
+
+            await user.click(removeBanana);
+            expect(onRemoveItem).not.toHaveBeenCalled();
+        });
+
+        it('hides every remove button when allowRemove is false', () => {
+            const Fixture = () => {
+                const form = useForm({
+                    initialValues: {fruits: ['banana', 'orange']},
+                    enhanceGetInputProps: (payload) => ({...enhanceWithCollectionProps(payload, 'fruits')}),
+                });
+                return (
+                    <Collection<string> {...form.getInputProps('fruits')} newItem="" allowRemove={false}>
+                        {(name) => <span>{name}</span>}
+                    </Collection>
+                );
+            };
+
+            render(<Fixture />);
+
+            expect(screen.queryByRole('button', {name: /remove/i})).not.toBeInTheDocument();
+        });
+
+        it('does not render the remove buttons when disabled', () => {
+            const Fixture = () => {
+                const form = useForm({
+                    initialValues: {fruits: ['banana', 'orange']},
+                    enhanceGetInputProps: (payload) => ({...enhanceWithCollectionProps(payload, 'fruits')}),
+                });
+                return (
+                    <Collection<string>
+                        {...form.getInputProps('fruits')}
+                        newItem=""
+                        disabled
+                        allowRemove={(fruit) => fruit !== 'banana'}
+                        removeDisabledTooltip={(fruit) => `${fruit} cannot be removed`}
+                    >
+                        {(name) => <span>{name}</span>}
+                    </Collection>
+                );
+            };
+
+            render(<Fixture />);
+
+            expect(screen.queryByRole('button', {name: /remove/i})).not.toBeInTheDocument();
+        });
+    });
+
     describe('when the Collection is draggable', () => {
         it('renders drag n drop icons for each item', async () => {
             const Fixture = () => {

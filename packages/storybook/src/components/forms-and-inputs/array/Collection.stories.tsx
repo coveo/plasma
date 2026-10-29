@@ -230,6 +230,44 @@ export const CollectionReadOnly: Story = {
     },
 };
 
+export const CollectionItemRemovability: Story = {
+    tags: ['!dev'],
+    render: () => {
+        const form = useForm({
+            initialValues: {
+                contacts: [
+                    {name: 'Alice Smith', email: 'alice@example.com'},
+                    {name: 'Bob Johnson', email: 'bob@example.com'},
+                    {name: 'Carol White', email: 'carol@example.com'},
+                ],
+            },
+            enhanceGetInputProps: (payload) => ({...enhanceWithCollectionProps(payload, 'contacts')}),
+        });
+
+        return (
+            <Collection<ContactItem>
+                {...form.getInputProps('contacts')}
+                w={600}
+                label="Contacts"
+                newItem={{name: '', email: ''}}
+                allowRemove={(_item, index) => index !== 0}
+                removeDisabledTooltip="The account owner cannot be removed"
+                columns={[
+                    {
+                        header: 'Name',
+                        cell: (item, index) => <TextInput {...form.getInputProps(`contacts.${index}.name`)} />,
+                        maxSize: 150,
+                    },
+                    {
+                        header: 'Email',
+                        cell: (item, index) => <TextInput {...form.getInputProps(`contacts.${index}.email`)} />,
+                    },
+                ]}
+            />
+        );
+    },
+};
+
 /**
  * Legacy children render prop pattern.
  *
