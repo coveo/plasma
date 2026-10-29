@@ -19,7 +19,7 @@ Resources:
 ## Call to action
 
 - ActionIcon [Mantine] — Icon-based button for executing actions
-- Anchor [Mantine] — Hyperlink for navigation
+- Anchor [Mantine] — Hyperlink for navigation; includes external link variant
 - Breadcrumbs [Mantine] — Navigation trail showing current page location
 - Button [Mantine] — Standard interactive button; includes destructive variants
 - CloseButton [Mantine] — Dismiss button for modals and alerts
