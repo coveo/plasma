@@ -4,23 +4,29 @@ import {figma} from '@figma/code-connect';
 figma.connect(Radio, 'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2208-496', {
     props: {
         labelProps: figma.nestedProps('.Input.Label', {
-            label: figma.string('Label'),
-            required: figma.boolean('Asterisk'),
+            label: figma.string('label'),
+            required: figma.boolean('withAsterisk'),
         }),
-        descriptionProps: figma.nestedProps('.Input.Description', {
-            description: figma.string('Description'),
+        descriptionProps: figma.boolean('description', {
+            true: figma.nestedProps('.Input.Description', {
+                description: figma.string('description'),
+            }),
+            false: {description: undefined},
         }),
-        errorProps: figma.nestedProps('.Input.Error', {
-            error: figma.string('Error'),
+        errorProps: figma.boolean('error', {
+            true: figma.nestedProps('.Input.Error', {
+                error: figma.string('error'),
+            }),
+            false: {error: undefined},
         }),
-        disabled: figma.enum('State', {
-            Disabled: true,
+        disabled: figma.enum('state', {
+            disabled: true,
         }),
-        readOnly: figma.enum('State', {
-            'Read-only': true,
+        readOnly: figma.enum('state', {
+            'read-only': true,
         }),
-        checked: figma.enum('Checked', {
-            True: true,
+        checked: figma.enum('checked', {
+            true: true,
         }),
     },
     example: ({labelProps, descriptionProps, errorProps, disabled, readOnly, checked}) => (
@@ -42,20 +48,20 @@ figma.connect(
     {
         props: {
             labelProps: figma.nestedProps('.Input.Label', {
-                label: figma.string('Label'),
-                required: figma.boolean('Asterisk'),
+                label: figma.string('label'),
+                required: figma.boolean('withAsterisk'),
             }),
             descriptionProps: figma.nestedProps('.Input.Description', {
-                description: figma.string('Description'),
+                description: figma.string('description'),
             }),
-            disabled: figma.enum('State', {
-                Disabled: true,
+            disabled: figma.enum('state', {
+                disabled: true,
             }),
-            readOnly: figma.enum('State', {
-                'Read-only': true,
+            readOnly: figma.enum('state', {
+                'read-only': true,
             }),
-            checked: figma.enum('Checked', {
-                True: true,
+            checked: figma.enum('checked', {
+                true: true,
             }),
         },
         example: ({labelProps, descriptionProps, disabled, readOnly, checked}) => (
@@ -74,7 +80,7 @@ figma.connect(
     Radio.Group,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-47863',
     {
-        variant: {Type: 'Card'},
+        variant: {type: 'card'},
         example: () => (
             <Stack>
                 <RadioCard label="Label" description="Description" />
@@ -90,7 +96,7 @@ figma.connect(
     Radio.Group,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-47863',
     {
-        variant: {Align: 'Default'},
+        variant: {type: 'radio', align: 'default'},
         example: () => (
             <Group>
                 <Radio label="Label" />
@@ -106,7 +112,7 @@ figma.connect(
     Radio.Group,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-47863',
     {
-        variant: {Align: 'Vertical'},
+        variant: {type: 'radio', align: 'vertical'},
         example: () => (
             <Stack>
                 <Radio label="Label" />
@@ -123,31 +129,28 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2484-10754',
     {
         props: {
-            inputWrapperProps: figma.nestedProps('Input.Wrapper', {
-                descriptionProps: figma.boolean('Description', {
+            inputWrapperProps: figma.nestedProps('.Input.Wrapper', {
+                descriptionProps: figma.boolean('description', {
                     true: figma.nestedProps('.Input.Description', {
-                        description: figma.string('Description'),
+                        description: figma.string('description'),
                     }),
                     false: {description: undefined},
                 }),
-                errorProps: figma.boolean('Error', {
+                errorProps: figma.boolean('error', {
                     true: figma.nestedProps('.Input.Error', {
-                        error: figma.string('Error'),
+                        error: figma.string('error'),
                     }),
                     false: {error: undefined},
                 }),
-                groupChildren: figma.children('Radio.Group'),
+                groupChildren: figma.children('.Radio.Group.Root'),
             }),
             labelProps: figma.nestedProps('.Input.Label', {
-                required: figma.boolean('Asterisk'),
-                label: figma.string('Label'),
+                required: figma.boolean('withAsterisk'),
+                label: figma.string('label'),
             }),
-            radioGroupProps: figma.nestedProps('Radio.Group', {
-                disabled: figma.enum('State', {
-                    Disabled: true,
-                }),
-                readOnly: figma.enum('State', {
-                    'Read-only': true,
+            radioGroupProps: figma.nestedProps('.Radio.Group.Root', {
+                disabled: figma.enum('state', {
+                    disabled: true,
                 }),
             }),
         },
@@ -158,7 +161,6 @@ figma.connect(
                 required={labelProps.required}
                 error={inputWrapperProps.errorProps.error}
                 disabled={radioGroupProps.disabled}
-                readOnly={radioGroupProps.readOnly}
             >
                 {inputWrapperProps.groupChildren}
             </Radio.Group>

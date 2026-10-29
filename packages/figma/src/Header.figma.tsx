@@ -2,15 +2,12 @@ import {Button, Header} from '@coveord/plasma-mantine';
 import {figma} from '@figma/code-connect';
 
 const headerProps = {
-    title: figma.string('Title'),
-    description: figma.string('Description'),
-    withDocAnchor: figma.boolean('Show InfoToken'),
-    withBreadcrumbs: figma.boolean('Show Breadcrumbs'),
-    withActions: figma.boolean('Show Actions'),
-    withBorder: figma.enum('Property', {
-        Default: true,
-        Borderless: false,
-    }),
+    title: figma.string('title'),
+    description: figma.string('description'),
+    withDocAnchor: figma.boolean('withInfoToken'),
+    withBreadcrumbs: figma.boolean('withBreadcrumbs'),
+    withActions: figma.boolean('withActions'),
+    withBorder: figma.boolean('withBorder'),
 };
 
 figma.connect(Header, 'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-51764', {

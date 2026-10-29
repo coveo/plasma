@@ -7,8 +7,8 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=2879-916',
     {
         props: {
-            value: figma.string('Label'),
-            control: figma.instance<ReactNode>('Swap Left'),
+            value: figma.string('label'),
+            control: figma.instance<ReactNode>('swapLeft'),
         },
         example: (props) => (
             <Accordion.Item value={props.value}>

@@ -7,21 +7,20 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-49714',
     {
         props: {
-            level: figma.enum('Levels', {
-                Single: 1,
+            level: figma.enum('count', {
+                '1': 1,
                 '2': 2,
                 '3': 3,
                 '4': 4,
-                '5': 5,
             }),
             crumb: figma.nestedProps('.Breadcrumbs.Breadcrumb', {
-                label: figma.string('Tabs'),
+                label: figma.string('label'),
             }),
             link: figma.nestedProps('Anchor', {
-                label: figma.string('Label'),
+                label: figma.string('label'),
             }),
         },
-        variant: {Levels: '2'},
+        variant: {count: '2'},
         example: (props) => (
             <Breadcrumbs>
                 <Anchor href="#" inherit>
@@ -42,15 +41,14 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-49714',
     {
         props: {
-            level: figma.enum('Levels', {
-                Single: 1,
+            level: figma.enum('count', {
+                '1': 1,
                 '2': 2,
                 '3': 3,
                 '4': 4,
-                '5': 5,
             }),
             crumb: figma.nestedProps('.Breadcrumbs.Breadcrumb', {
-                label: figma.string('Tabs'),
+                label: figma.string('label'),
             }),
         },
         example: () => (

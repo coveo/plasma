@@ -3,24 +3,24 @@ import {figma} from '@figma/code-connect';
 import type {ReactElement} from 'react';
 
 const badgeProps = {
-    size: figma.enum('Size', {
-        Small: 'small',
-        Large: 'large',
+    size: figma.enum('size', {
+        sm: 'small',
+        md: 'large',
     }),
-    leftSection: figma.boolean<ReactElement, undefined>('LeftSection', {
-        true: figma.instance<ReactElement>('Swap Left'),
+    leftSection: figma.boolean<ReactElement, undefined>('leftSection', {
+        true: figma.instance<ReactElement>('swapLeft'),
     }),
-    rightSection: figma.boolean<ReactElement, undefined>('RightSection', {
-        true: figma.instance<ReactElement>('Swap Right'),
+    rightSection: figma.boolean<ReactElement, undefined>('rightSection', {
+        true: figma.instance<ReactElement>('swapRight'),
     }),
-    placeholder: figma.string('Placeholder'),
+    placeholder: figma.string('placeholder'),
 };
 
 figma.connect(
     Badge.Primary,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7%3A50600',
     {
-        variant: {Type: 'Primary'},
+        variant: {type: 'primary'},
         props: badgeProps,
         example: ({size, leftSection, rightSection, placeholder}) => (
             <Badge.Primary size={size} leftSection={leftSection} rightSection={rightSection}>
@@ -34,7 +34,7 @@ figma.connect(
     Badge.Secondary,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7%3A50600',
     {
-        variant: {Type: 'Secondary'},
+        variant: {type: 'secondary'},
         props: badgeProps,
         example: ({size, leftSection, rightSection, placeholder}) => (
             <Badge.Secondary size={size} leftSection={leftSection} rightSection={rightSection}>
@@ -48,7 +48,7 @@ figma.connect(
     Badge.Success,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7%3A50600',
     {
-        variant: {Type: 'Success'},
+        variant: {type: 'success'},
         props: badgeProps,
         example: ({size, leftSection, rightSection, placeholder}) => (
             <Badge.Success size={size} leftSection={leftSection} rightSection={rightSection}>
@@ -62,7 +62,7 @@ figma.connect(
     Badge.Warning,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7%3A50600',
     {
-        variant: {Type: 'Warning'},
+        variant: {type: 'warning'},
         props: badgeProps,
         example: ({size, leftSection, rightSection, placeholder}) => (
             <Badge.Warning size={size} leftSection={leftSection} rightSection={rightSection}>
@@ -76,7 +76,7 @@ figma.connect(
     Badge.Critical,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7%3A50600',
     {
-        variant: {Type: 'Critical'},
+        variant: {type: 'critical'},
         props: badgeProps,
         example: ({size, leftSection, rightSection, placeholder}) => (
             <Badge.Critical size={size} leftSection={leftSection} rightSection={rightSection}>
@@ -90,7 +90,7 @@ figma.connect(
     Badge.Disabled,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7%3A50600',
     {
-        variant: {Type: 'Disabled'},
+        variant: {type: 'disabled'},
         props: badgeProps,
         example: ({size, leftSection, rightSection, placeholder}) => (
             <Badge.Disabled size={size} leftSection={leftSection} rightSection={rightSection}>

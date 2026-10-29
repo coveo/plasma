@@ -6,10 +6,7 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2906-4477',
     {
         props: {
-            borderTop: figma.enum('Variant', {
-                Default: true,
-                Borderless: false,
-            }),
+            borderTop: figma.boolean('withBorder'),
         },
         example: (props) => (
             <StickyFooter {...props}>
