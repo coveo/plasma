@@ -262,7 +262,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
                         }
                         editor.onDidFocusEditorText(() => onFocus?.());
                         // Monaco only recolors selected text in high contrast themes, so the selection is marked
-                        // with a class to show it light on dark (see CodeEditor.module.css).
+                        // with a class to show it white on the primary color (see CodeEditor.module.css).
                         const selectedText = editor.createDecorationsCollection();
                         editor.onDidChangeCursorSelection(() => {
                             selectedText.set(

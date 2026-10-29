@@ -57,7 +57,7 @@
 }
 
 /*
- * Selected text is light on the dark selection from the theme, like Vercel's code blocks.
+ * Selected text is white on the primary color from the theme, like all selected text in Plasma (see global.css).
  * The current search match is painted solid yellow over the selection, so it keeps its syntax colors.
  * Monaco colors code with single classes (.mtk1, .mtk2, …), so its root class is enough to override them.
  */
