@@ -21,9 +21,31 @@ export type AnchorOverloadFactory = PolymorphicFactory<{
     };
 }>;
 
-export const Anchor = polymorphicFactory<AnchorOverloadFactory>(({ref, ...props}) => (
-    <MantineAnchor ref={ref} {...props} />
-));
+const isExternalHref = (href: string | undefined): boolean => {
+    if (!href || typeof window === 'undefined') {
+        return false;
+    }
+    try {
+        return new URL(href, window.location.origin).origin !== window.location.origin;
+    } catch {
+        return false;
+    }
+};
+
+export const Anchor = polymorphicFactory<AnchorOverloadFactory>(({ref, ...props}) => {
+    const {href, target, rel} = props as {href?: string; target?: string; rel?: string};
+    const isExternal = isExternalHref(href);
+
+    // Explicit target and rel props take precedence over the external defaults, undefined ones don't
+    return (
+        <MantineAnchor
+            ref={ref}
+            {...props}
+            target={target ?? (isExternal ? '_blank' : undefined)}
+            rel={rel ?? (isExternal ? 'noopener noreferrer' : undefined)}
+        />
+    );
+});
 
 Anchor.External = AnchorExternal;
 Anchor.displayName = 'Anchor';

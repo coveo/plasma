@@ -41,7 +41,7 @@ It opens the destination in a new tab, adds an external link icon, and tells scr
 ### Best practices
 
 - Use `inherit` when the link belongs inside another text component.
-- Open a new tab only when leaving the current page would interrupt the user's task.
+- Links to another site open in a new tab automatically, and links within the application open in the same tab. Pass `target` only to change that.
 - Use `Anchor.External` instead of setting `target` on an `Anchor` when the link leaves the application, so users can tell before they select it.
 - Translate the new tab announcement with `newTabLabel` when the interface isn't in English.
 - Use `xs` in compact contexts and `sm` with body text.
