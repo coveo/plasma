@@ -1,6 +1,6 @@
 import {createTheme} from '@coveord/plasma-mantine/core';
-import {Plasmantine} from '@coveord/plasma-mantine/plasmantine';
 import {Notifications} from '@coveord/plasma-mantine/notifications';
+import {Plasmantine} from '@coveord/plasma-mantine/plasmantine';
 import type {Decorator} from '@storybook/react-vite';
 
 type Theme = 'teal' | 'blue' | 'violet';
@@ -17,7 +17,7 @@ export const withTheme: Decorator = (Story, context) => {
 
     return (
         <Plasmantine theme={selectedTheme}>
-            <Notifications position="top-right" />
+            <Notifications position="top-center" />
             <Story />
         </Plasmantine>
     );
