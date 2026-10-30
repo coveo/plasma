@@ -243,6 +243,9 @@ export * from './components/Image/Image.js';
 // Indicator
 export * from './components/Indicator/Indicator.js';
 
+// Inline Message
+export * from './components/InlineMessage/InlineMessage.js';
+
 // Info Token
 export * from './components/InfoToken/InfoToken.js';
 

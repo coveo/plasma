@@ -1,0 +1,102 @@
+import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import * as InlineMessageStories from './InlineMessage.stories';
+
+<Meta of={InlineMessageStories} />
+
+# InlineMessage
+
+Short, text-level message with an optional semantic icon, placed right next to the element it describes.
+
+## Overview
+
+The `InlineMessage` fills the gap between a tooltip and an alert. It is more visible than on-demand help, but lighter than a boxed callout: no background, no border, no close button.
+
+Use its semantic sub-components to give each message a consistent icon and color, the same way alerts do. Warning, critical, and success messages color their text so they aren't missed; subtle, information, and advice messages keep gray text and let the icon carry the intent.
+
+## Usage
+
+<Canvas of={InlineMessageStories.Demo} />
+
+### Variants
+
+<Canvas of={InlineMessageStories.Variants} />
+
+### With a link
+
+A link can follow the message to offer the next step. Keep it to one link, at the end. The link takes the message color and is underlined, so it reads as part of the message whatever the application's primary color; the underline disappears on hover.
+
+<Canvas of={InlineMessageStories.WithALink} />
+
+### Without an icon
+
+The icon is what makes the message scannable, so keep it whenever it adds meaning. Remove it only for a caption or a secondary hint whose icon would compete with the element it describes.
+
+<Canvas of={InlineMessageStories.WithoutIcon} />
+
+### Beside a button
+
+<Canvas of={InlineMessageStories.BesideAButton} />
+
+### With a status token
+
+When the text describes the state of an object rather than a message, swap the icon for a status token.
+
+<Canvas of={InlineMessageStories.WithStatusToken} />
+
+### As a caption
+
+On the Merchandising Hub overview page, each performance card shows a label, a large value, and a short line of context. That line is a subtle message with no icon. When the value comes with a caveat, the same line becomes a warning and keeps its icon, so the state is visible without reading the text. The visible message names the state; the explanation lives in the `tooltip` prop, revealed on hover or keyboard focus.
+
+<Canvas of={InlineMessageStories.AsACaption} />
+
+### Wrapping
+
+Long messages wrap under the text, with the icon staying on the first line.
+
+<Canvas of={InlineMessageStories.Wrapping} />
+
+## Guidelines
+
+### Choosing a feedback component
+
+Plasma has several ways to communicate feedback. They differ in how visible the message is and how long it stays.
+
+- `Tooltip`: the detail is optional and most users can skip it. Hidden until hover or focus.
+- `InlineMessage`: a short message is tied to one element, such as a control, a button, a value, or a row. Always visible, no box, sits in the flow of the page.
+- `Alert`: the message concerns a whole page, form, or section and must stay in view. Always visible, boxed, can be dismissed.
+- `Notification`: the message reports the outcome of an action the user just took. Appears briefly in a corner, then goes away.
+- `Prompt`: the user must acknowledge or decide before continuing. Blocks the page until answered.
+
+Two quick tests: if the message disappearing in a few seconds would be a problem, don't use a notification. If the message describes one element rather than the page, use an inline message rather than an alert.
+
+### When to use
+
+- A short contextual message stands on its own or sits next to a control, a value, a button, or inside a table cell.
+- The message is more important than a tooltip but doesn't justify an `Alert`.
+- A status line or a caption needs a consistent icon and color treatment.
+
+### When not to use
+
+- For help about another element, revealed on hover, use a `Tooltip` on that element.
+- For a hint or validation owned by a single field, use the input `description` or `error` props.
+- For a persistent callout about a page, form, or section, use an `Alert`.
+- For transient feedback after an action, use a `Notification`.
+- For a compact status label, use a `Badge` or `StatusToken`.
+
+### Best practices
+
+- Select intent with `InlineMessage.Subtle`, `Information`, `Advice`, `Warning`, `Critical`, or `Success`.
+- Keep the default icon. It carries the intent at a glance and makes the message easier to find when scanning. Remove it only for captions and secondary hints, and never on warning, critical, or success messages.
+- Use `Subtle` instead of `Information` when a blue icon would draw too much attention, such as captions and secondary hints.
+- Aim for one or two lines. A longer message is acceptable when it stays a single thought; several sentences, a list, or an action button belong in an `Alert`.
+- When the explanation is longer than the state itself, keep the visible message to the state and move the explanation to the `tooltip` prop.
+- Place it on its own line, or beside the element it describes with a `Group`.
+- Pass `role="alert"` only when a critical message appears dynamically and must be announced.
+- Don't rely on color alone: the icon and the text carry the meaning.
+
+### Content guidelines
+
+- Write one short sentence when you can, around 20 words.
+- Add a period after a full sentence, none after a fragment.
+- Put the consequence or state first, then the next step.
+- If a link follows the message, make it the next step and keep it to one.
