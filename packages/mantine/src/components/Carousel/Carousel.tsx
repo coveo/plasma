@@ -1,4 +1,4 @@
-import {IconArrowDown, IconArrowLeft, IconArrowRight, IconArrowUp} from '@coveord/plasma-react-icons';
+import {IconChevronDown, IconChevronLeft, IconChevronRight, IconChevronUp} from '@coveord/plasma-react-icons';
 import {
     type CarouselContextValue,
     type CarouselCssVariables,
@@ -17,9 +17,11 @@ const defaultProps = {
 const PlasmaCarousel = factory<CarouselFactory>((props: CarouselProps) => {
     const {orientation, nextControlIcon, previousControlIcon} = useProps('Carousel', defaultProps, props);
     const nextIcon =
-        nextControlIcon ?? (orientation === 'horizontal' ? <IconArrowRight size={16} /> : <IconArrowDown size={16} />);
+        nextControlIcon ??
+        (orientation === 'horizontal' ? <IconChevronRight size={16} /> : <IconChevronDown size={16} />);
     const previousIcon =
-        previousControlIcon ?? (orientation === 'horizontal' ? <IconArrowLeft size={16} /> : <IconArrowUp size={16} />);
+        previousControlIcon ??
+        (orientation === 'horizontal' ? <IconChevronLeft size={16} /> : <IconChevronUp size={16} />);
     return <MantineCarousel nextControlIcon={nextIcon} previousControlIcon={previousIcon} {...props} />;
 });
 
