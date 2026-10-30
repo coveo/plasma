@@ -21,6 +21,12 @@ For a single consolidated file with all component documentation, use:
 
 {{COMPONENT_LIST}}
 
+## Patterns
+
+Patterns combine components to solve a recurring user need. Check them before choosing components for that need.
+
+{{PATTERN_LIST}}
+
 ## Optional
 
 Plasma re-exports ~90 Mantine components unchanged. For components not listed above, refer to Mantine's documentation — but always import from `@coveord/plasma-mantine`, not from `@mantine/*` packages.

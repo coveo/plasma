@@ -166,4 +166,10 @@ describe('searchDocs', () => {
     it('does not append a kind label to foundation results', () => {
         expect(searchDocs(makeData(), 'radii')).not.toContain('## Foundations (');
     });
+
+    it('searches patterns as well', () => {
+        const result = searchDocs(makeData(), 'external');
+        expect(result).toContain('## Navigate with links (Pattern)');
+        expect(result).toContain('You MUST open external links in a new tab.');
+    });
 });
