@@ -24,6 +24,7 @@ import {CopyToClipboard} from '../CopyToClipboard/CopyToClipboard.js';
 import CodeEditorClasses from './CodeEditor.module.css';
 import {XML} from './languages/xml.js';
 import {Search} from './search/Search.js';
+import {getLightTheme} from './themes/light.js';
 interface CodeEditorProps
     extends
         Omit<InputWrapperProps, 'inputContainer' | 'inputWrapperOrder' | 'classNames' | 'styles' | 'vars' | 'onChange'>,
@@ -147,14 +148,10 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
     };
 
     const registerThemes = (monaco: Monaco) => {
-        monaco.editor.defineTheme('light', {
-            base: 'vs',
-            inherit: true,
-            rules: [],
-            colors: {
-                'editor.background': '#ffffff', // mantine color white is #fff and monaco only accepts 6 digits
-            },
-        });
+        const lightTheme = getLightTheme(theme);
+        monaco.editor.defineTheme('light', lightTheme);
+        // Read-only and disabled editors share the syntax colors, their gray background comes from CodeEditor.module.css
+        monaco.editor.defineTheme('light-disabled', lightTheme);
     };
 
     const handleSearch = () => {
@@ -227,7 +224,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
             data-testid="editor-wrapper"
         >
             {_buttons}
-            <Box p="md" pl="xs" className={CodeEditorClasses.editor}>
+            <Box className={CodeEditorClasses.editor}>
                 <Editor
                     key={editorKey}
                     onValidate={handleValidate}
@@ -239,8 +236,16 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
                         scrollBeyondLastLine: false,
                         formatOnPaste: true,
                         fontSize: px(theme.fontSizes.xs) as number,
+                        // The editor fills the card, so the spacing is inside the scrollable area instead of around it
+                        padding: {top: px(theme.spacing.md) as number, bottom: px(theme.spacing.md) as number},
                         readOnly: disabled || readOnly,
                         stickyScroll: {enabled: false},
+                        // Monaco draws the cursor's position next to the scrollbar in a near-black mark
+                        hideCursorInOverviewRuler: true,
+                        // Without a divider, the scrollbar sits on the code like the rest of the card
+                        overviewRulerBorder: false,
+                        // Line numbers are right-aligned, so this keeps room on their left up to 3 digits
+                        lineNumbersMinChars: 7,
                         tabSize,
                     }}
                     value={_value}
@@ -256,6 +261,19 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
                             editorHandle.current = editor;
                         }
                         editor.onDidFocusEditorText(() => onFocus?.());
+                        // Monaco only recolors selected text in high contrast themes, so the selection is marked
+                        // with a class to show it white on the primary color (see CodeEditor.module.css).
+                        const selectedText = editor.createDecorationsCollection();
+                        editor.onDidChangeCursorSelection(() => {
+                            selectedText.set(
+                                (editor.getSelections() ?? [])
+                                    .filter((selection) => !selection.isEmpty())
+                                    .map((range) => ({
+                                        range,
+                                        options: {inlineClassName: CodeEditorClasses.selectedText},
+                                    })),
+                            );
+                        });
                         editor.onDidDispose(() => {
                             // If the editor is disposed while the component is still mounted (e.g. React's
                             // `<Activity>` tore down the effects to hide the panel), force a fresh instance so we

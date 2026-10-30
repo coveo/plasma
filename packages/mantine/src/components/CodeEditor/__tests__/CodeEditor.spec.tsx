@@ -2,7 +2,7 @@ import {useForm} from '@mantine/form';
 import {loader} from '@monaco-editor/react';
 import {act, render, screen, userEvent, waitForElementToBeRemoved} from '@test-utils';
 import type {editor} from 'monaco-editor';
-import {useRef} from 'react';
+import {type ComponentProps, useRef} from 'react';
 import {CodeEditor} from '../CodeEditor.js';
 import CodeEditorClasses from '../CodeEditor.module.css';
 import {XML} from '../languages/xml.js';
@@ -80,6 +80,31 @@ describe('CodeEditor', () => {
 
             expect(screen.getByTestId('editor-wrapper')).not.toHaveClass(CodeEditorClasses.error);
         });
+    });
+
+    describe('syntax theme', () => {
+        const renderAndGetTheme = async (props: ComponentProps<typeof CodeEditor>) => {
+            const {getAppliedTheme} =
+                await vi.importMock<typeof import('../../../../__mocks__/@monaco-editor/react.js')>(
+                    '@monaco-editor/react',
+                );
+            const {unmount} = render(<CodeEditor {...props} />);
+            await waitForElementToBeRemoved(screen.queryByRole('presentation'));
+            const theme = getAppliedTheme();
+            unmount();
+            return theme;
+        };
+
+        it.each(['readOnly', 'disabled'] as const)(
+            'gives %s editors the same syntax colors as editable ones',
+            async (state) => {
+                const editableTheme = await renderAndGetTheme({});
+                const theme = await renderAndGetTheme({[state]: true});
+
+                expect(editableTheme).toBeDefined();
+                expect(theme).toEqual(editableTheme);
+            },
+        );
     });
 
     it('loads the monaco editor files from node_modules when monacoLoader prop is "local"', async () => {
