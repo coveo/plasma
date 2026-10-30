@@ -59,6 +59,12 @@ Important states include:
 - Disabled buttons SHOULD explain the missing requirement when the reason is not visible nearby.
 - Destructive buttons SHOULD use wording that makes the consequence clear.
 
+## Content guidance
+
+- Labels SHOULD start with a specific verb that describes the result.
+- Labels SHOULD be three words or fewer.
+- Labels SHOULD NOT include articles (a, an, the): "Add source", not "Add a source".
+
 ## Common anti-patterns
 
 - Using multiple primary buttons in one decision area.
@@ -66,6 +72,7 @@ Important states include:
 - Disabling a button without explaining how the user can enable it.
 - Hiding destructive consequences behind vague labels such as "OK".
 - Styling a Cancel button as `Button.Secondary` or any variant other than `Button.Tertiary`.
+- Using articles in labels, such as "Add a source".
 
 # API reference
 
