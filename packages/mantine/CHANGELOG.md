@@ -1,5 +1,11 @@
 # @coveord/plasma-mantine
 
+## 61.6.1
+
+### Patch Changes
+
+- `Carousel` default previous and next controls now use chevron icons instead of arrows [#4681](https://github.com/coveo/plasma/pull/4681)
+
 ## 61.6.0
 
 ### Minor Changes
