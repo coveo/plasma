@@ -1,0 +1,339 @@
+import {Meta, Unstyled} from '@storybook/addon-docs/blocks';
+import {
+    Alert,
+    Box,
+    Header,
+    InfoToken,
+    MantineTable as Table,
+    Notification,
+    Prompt,
+    Stack,
+    Switch,
+    Text,
+    TextInput,
+} from '@coveord/plasma-mantine';
+import {IconCircleCheckFilled} from '@coveord/plasma-react-icons';
+import {
+    PatternScene,
+    PatternSceneGrid,
+    SceneCenter,
+    SceneDetails,
+    SceneLine,
+    ScenePage,
+    ScenePageHeader,
+    SceneTable,
+} from './PatternScene';
+
+export const InlineMessagePreview = ({variant = 'subtle', children}) => {
+    const Token = {
+        subtle: InfoToken.Information,
+        information: InfoToken.Information,
+        warning: InfoToken.Warning,
+        critical: InfoToken.Error,
+        success: InfoToken.Success,
+    }[variant];
+    const color = {
+        subtle: 'dimmed',
+        information: 'dimmed',
+        warning: 'var(--mantine-color-yellow-text)',
+        critical: 'var(--mantine-color-error)',
+        success: 'var(--mantine-color-green-text)',
+    }[variant];
+    return (
+        <Text component="span" size="sm" c={color} style={{display: 'inline-flex', alignItems: 'center', gap: 8}}>
+            <Token component="span" />
+            {children}
+        </Text>
+    );
+};
+
+export const decisions = [
+    {
+        situation: 'The user must decide or acknowledge before anything else can happen.',
+        approach: 'Prompt',
+        why: 'Blocks the page until the user answers.',
+    },
+    {
+        situation: 'The message is the outcome of an action the user just took, and needs no follow-up.',
+        approach: 'Notification',
+        why: 'Confirms without interrupting, then disappears. Nothing the user needs later can live only there.',
+    },
+    {
+        situation: 'A condition affects a whole page, form, or section, and the message must stay visible.',
+        approach: 'Alert',
+        why: 'Sits in the page next to what it affects, and stays until the condition clears.',
+    },
+    {
+        situation: 'One field needs a hint before the user types.',
+        approach: "The input's description prop",
+        why: 'Prevents the mistake instead of reporting it.',
+    },
+    {
+        situation: 'One field holds an invalid value.',
+        approach: "The input's error prop",
+        why: 'Shows the problem where the user fixes it. Assistive technology reads it with the field.',
+    },
+    {
+        situation: 'The message concerns one control, and the user must read it without hovering.',
+        approach: 'InlineMessage',
+        why: 'No box or title, so it sits beside the control at the weight of the control.',
+    },
+];
+
+export const DecisionGuide = () => (
+    <Table withTableBorder withColumnBorders layout="auto" my="sm">
+        <Table.Thead>
+            <Table.Tr>
+                <Table.Th w={40}>#</Table.Th>
+                <Table.Th>Situation</Table.Th>
+                <Table.Th>Use</Table.Th>
+                <Table.Th>Why</Table.Th>
+            </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>
+            {decisions.map(({situation, approach, why}, index) => (
+                <Table.Tr key={situation}>
+                    <Table.Td>
+                        <Text size="sm" c="dimmed">
+                            {index + 1}
+                        </Text>
+                    </Table.Td>
+                    <Table.Td>
+                        <Text size="sm">{situation}</Text>
+                    </Table.Td>
+                    <Table.Td>
+                        <Text size="sm" fw={500}>
+                            {approach}
+                        </Text>
+                    </Table.Td>
+                    <Table.Td>
+                        <Text size="sm">{why}</Text>
+                    </Table.Td>
+                </Table.Tr>
+            ))}
+        </Table.Tbody>
+    </Table>
+);
+
+export const noop = () => {};
+
+export const Scenes = () => (
+    <PatternSceneGrid>
+        <PatternScene index={1} title="Prompt" caption="The user must confirm or cancel before anything else happens.">
+            <ScenePage placeholderLines={6} />
+            <Prompt.Critical
+                opened
+                centered
+                withinPortal={false}
+                trapFocus={false}
+                lockScroll={false}
+                returnFocus={false}
+                closeOnEscape={false}
+                closeOnClickOutside={false}
+                styles={{inner: {transform: 'scale(0.72)'}}}
+                onClose={noop}
+                title="Delete this source?"
+            >
+                <Stack gap="xs" mb="md">
+                    <SceneLine w="90%" />
+                    <SceneLine w="60%" />
+                </Stack>
+                <Prompt.Footer>
+                    <Prompt.CancelButton onClick={noop}>Cancel</Prompt.CancelButton>
+                    <Prompt.ConfirmButton onClick={noop}>Delete source</Prompt.ConfirmButton>
+                </Prompt.Footer>
+            </Prompt.Critical>
+        </PatternScene>
+        <PatternScene index={2} title="Notification" caption="Confirms the save in passing, then disappears.">
+            <ScenePage placeholderLines={6} />
+            <Box pos="absolute" right={12} bottom={12} w={240}>
+                <Notification
+                    title="Changes saved"
+                    icon={<IconCircleCheckFilled height={20} color="var(--mantine-color-green-2)" />}
+                    withCloseButton={false}
+                />
+            </Box>
+        </PatternScene>
+        <PatternScene
+            index={3}
+            title="Alert"
+            caption="Sits at the top of the page it concerns, until the source is rebuilt."
+        >
+            <ScenePage withTitle={false} placeholderLines={0}>
+                <ScenePageHeader breadcrumbs />
+                <Alert.Warning title="Source not rebuilt">Rebuild it to index the new fields.</Alert.Warning>
+                <SceneDetails />
+            </ScenePage>
+        </PatternScene>
+        <PatternScene
+            index={4}
+            title="Several events in one message"
+            caption="One Alert for three failed rebuilds, instead of three Alerts."
+        >
+            <ScenePage withTitle={false} placeholderLines={0}>
+                <ScenePageHeader />
+                <Alert.Critical title="3 sources failed to rebuild">Rebuild them to resume indexing.</Alert.Critical>
+                <SceneTable rows={['error', 'success', 'error', 'error']} />
+            </ScenePage>
+        </PatternScene>
+
+        <PatternScene
+            index={5}
+            title="Field description"
+            caption="The input's description prop, before the user types."
+        >
+            <SceneCenter>
+                <TextInput label="Name" description="Renaming triggers a full rebuild." w={320} />
+            </SceneCenter>
+        </PatternScene>
+        <PatternScene index={6} title="Field error" caption="The input's error prop, read together with the field.">
+            <SceneCenter>
+                <TextInput
+                    label="Name"
+                    description="Renaming triggers a full rebuild."
+                    defaultValue="My source (prod)"
+                    error="Use letters, numbers, hyphens, and underscores."
+                    w={320}
+                />
+            </SceneCenter>
+        </PatternScene>
+        <PatternScene
+            index={7}
+            title="Field errors with a form-level Alert"
+            caption="The Alert says the save failed and how many fields to fix. Each field keeps its own error."
+        >
+            <ScenePage withTitle={false} placeholderLines={0}>
+                <Alert.Critical title="Save failed. Fix the 2 fields below." />
+                <TextInput
+                    label="Name"
+                    defaultValue="My source (prod)"
+                    error="Use letters, numbers, hyphens, and underscores."
+                />
+                <TextInput label="Schedule" defaultValue="Every 0 hours" error="Enter 1 to 24 hours." />
+            </ScenePage>
+        </PatternScene>
+        <PatternScene index={8} title="InlineMessage" caption="Sits under the one control it concerns.">
+            <SceneCenter>
+                <Stack gap="xs">
+                    <Switch defaultChecked label="Refresh automatically" />
+                    <InlineMessagePreview variant="warning">
+                        Changing this pauses the current rebuild.
+                    </InlineMessagePreview>
+                </Stack>
+            </SceneCenter>
+        </PatternScene>    </PatternSceneGrid>
+
+);
+
+<Meta title="@patterns/Communicate feedback" id="patterns-communicate-feedback" />
+
+<Header
+    p={0}
+    description="Tell users what happened, what is wrong, or what to do next, at the right level and for the right length of time."
+>
+    Communicate feedback
+</Header>
+
+## Summary
+
+Plasma has three message components, `Prompt`, `Notification`, and `Alert`, plus the `description` and `error`
+props on every input. A fourth, `InlineMessage`, is only a proposal for messages under a single control. Two questions
+pick the right one: how much of the page does the message concern, and how long must it stay? Choose the one that
+matches, then combine levels without saying the same thing twice.
+
+## When to use
+
+- Reporting the outcome of an action, such as a save, a deletion, or a failed export.
+- Explaining a condition that affects a page, a section, a control, or a field.
+- Asking the user to confirm or acknowledge something before continuing.
+
+## When not to use
+
+- A state, such as a source being ready, is not a message. Use a `StatusToken` or a `Badge`.
+- An optional detail most users can skip, such as the label of an icon-only action, goes in a `Tooltip`.
+- A decision that needs more than yes or no goes in a `Modal` with a form, not a `Prompt`.
+- Progress goes in `Loader`, `Progress`, or `Skeleton`.
+
+## Decision guide
+
+Read top to bottom and stop at the first match. The examples below follow the same order.
+
+<Unstyled>
+    <DecisionGuide />
+</Unstyled>
+
+<Unstyled>
+    <Alert.Information title="InlineMessage is only a proposal" mt="md" mb="md">
+        Scene 8 imitates it with dimmed `Text` and a leading `InfoToken`, which is also how to build it today.
+    </Alert.Information>
+</Unstyled>
+
+## Examples
+
+Each scene is a miniature Administration Console page at the same size, in the order of the decision guide. Scene 4
+summarizes several events in one Alert. Scene 7 combines field errors with a form-level Alert.
+
+<Unstyled>
+    <Scenes />
+</Unstyled>
+
+## How it works
+
+1. **Level** sets the component. A page or section gets an `Alert`. A control gets an `InlineMessage`. A field gets
+   its `description` or `error`. A decision gets a `Prompt`. The moment after an action gets a `Notification`.
+2. **Lifetime** confirms the choice. A `Notification` lasts seconds. An `Alert` or `InlineMessage` lasts as long as
+   the condition. A field `error` lasts until the value is valid. A `Prompt` lasts until the user answers. If the
+   lifetime feels wrong, the level is wrong.
+3. **Severity** is the variant, and it means the same thing on every component: Information, Advice, Success,
+   Warning, Critical.
+
+## Combining messages
+
+One message per level, each about the thing at that level, and never the same sentence twice.
+
+- **Field errors and a form-level `Alert`** (scene 7). When a save fails as a whole, or when the form is long enough
+  that invalid fields can be off screen, add a critical `Alert` at the top that says the save failed and how many
+  fields need attention. Each field keeps its own `error`. On a short form, the field errors are enough.
+- **`Prompt`, then `Notification`.** The `Prompt` asks before a destructive action. The `Notification` confirms it
+  happened.
+- **`Notification`, then `Alert`.** A toast reports that a rebuild failed. The `Alert` on the source page stays
+  until the rebuild succeeds, because the toast is gone before the user comes back.
+- **Several events at once** (scene 4). Summarize them in one message at the level they share, instead of stacking
+  copies of the same component.
+
+## Rules
+
+- **MUST** keep each message at the level of the thing it describes.
+- **MUST NOT** rely on a `Notification` for anything the user needs after it disappears.
+- **MUST NOT** use an `Alert` for a message about a single field or control.
+- **MUST** use the input's `error` prop for field validation.
+- **MUST** use a `Prompt` only when the user has to answer before continuing.
+- **MUST NOT** repeat the same sentence at two levels.
+- **SHOULD** add a form-level `Alert` to field errors only when the form is long or the save failed as a whole.
+- **SHOULD** summarize several similar events in one message.
+
+## Content
+
+- Lead with what happened or what to do. The title names the event, the body names the fix.
+- Keep a `Notification` to one sentence, and an `InlineMessage` or field `error` under two lines.
+- Name the action on the `Prompt` confirm button, such as **Delete source**, never **OK** or **Yes**.
+- Follow [Voice](?path=/docs/content-voice--docs) and [Writing mechanics](?path=/docs/content-writing-mechanics--docs)
+  for tone and punctuation.
+
+## Accessibility
+
+- A `Notification` is announced once and then disappears. Anything a screen reader user needs to act on must also exist
+  in the page.
+- An `Alert` that appears after the page loads is inserted near the content it affects, so it is reached in context.
+- A field `error` is linked to its input by the component. Do not describe the same problem in an unlinked element.
+- A `Prompt` traps focus and returns it to the triggering control when it closes. Escape cancels; it never confirms.
+- Severity is never carried by color alone. Every variant pairs its color with an icon and with words.
+
+## Related
+
+Components: [Prompt](?path=/docs/prompt--docs), [Notification](?path=/docs/notification--docs),
+[Alert](?path=/docs/alert--docs), InlineMessage (only a proposal),
+[TextInput](?path=/docs/textinput--docs) for the `description` and `error` props.
+
+Not messages: [StatusToken](?path=/docs/statustoken--docs), [Badge](?path=/docs/badge--docs),
+[InfoToken](?path=/docs/infotoken--docs), [Tooltip](?path=/docs/tooltip--docs).

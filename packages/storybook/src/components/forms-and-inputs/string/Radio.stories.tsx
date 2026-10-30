@@ -46,30 +46,10 @@ export const RadioGroup: StoryObj<RadioGroupStoryArgs> = {
     argTypes: {
         ...InputWrapperArgs.ArgsTypes,
         ...BaseInputArgs.ArgsTypes,
-        label: {
-            control: 'text',
-            description: 'Content displayed as the group label.',
-            table: {type: {summary: 'ReactNode'}, defaultValue: {summary: 'undefined'}},
-        },
         labelInfo: {
             control: 'text',
             description: 'Sets the Input.LabelInfo tooltip content in this example.',
             table: {type: {summary: 'string'}, defaultValue: {summary: "'You can change this later.'"}},
-        },
-        description: {
-            control: 'text',
-            description: 'Helper content displayed below the group label.',
-            table: {type: {summary: 'ReactNode'}, defaultValue: {summary: 'undefined'}},
-        },
-        error: {
-            control: 'text',
-            description: 'Validation feedback displayed below the group.',
-            table: {type: {summary: 'ReactNode'}, defaultValue: {summary: 'undefined'}},
-        },
-        required: {
-            control: 'boolean',
-            description: 'Marks the group as required and displays a required indicator.',
-            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
         },
         disabled: {
             control: 'boolean',

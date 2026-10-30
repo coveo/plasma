@@ -1,7 +1,8 @@
 import {Anchor, Code, Divider, List, Text, Title} from '@coveord/plasma-mantine';
 import {Image, Table as MantineTable} from '@mantine/core';
-import {Source} from '@storybook/addon-docs/blocks';
-import type {ComponentType, MouseEvent, PropsWithChildren} from 'react';
+import {DocsContext, Source} from '@storybook/addon-docs/blocks';
+import {type ComponentType, type MouseEvent, type PropsWithChildren, useContext} from 'react';
+import {NAVIGATE_URL} from 'storybook/internal/core-events';
 
 import {IconLink} from '@coveord/plasma-react-icons';
 
@@ -87,6 +88,41 @@ const HeadingWithAnchor = ({
     );
 };
 
+interface DocsAnchorProps extends PropsWithChildren<Record<string, unknown>> {
+    href?: string;
+    target?: string;
+    onClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
+}
+
+/**
+ * Markdown link that keeps navigation inside the Storybook manager.
+ *
+ * Docs pages render inside the preview iframe, so a plain `<a href="?path=/docs/alert--docs">` would navigate that
+ * iframe (and end up on the bare `iframe.html` preview) instead of the manager. Storybook's own `AnchorMdx` avoids
+ * this by emitting `NAVIGATE_URL` on the docs channel; this component does the same for `?path=` links while keeping
+ * the Plasma `Anchor` styling. External links and in-page anchors are left untouched.
+ */
+const DocsAnchor = ({href, target, onClick, ...rest}: DocsAnchorProps) => {
+    const context = useContext(DocsContext);
+    const isStorybookPath = typeof href === 'string' && href.startsWith('?path=') && target !== '_blank';
+    return (
+        <Anchor
+            href={href}
+            target={target}
+            onClick={(event: MouseEvent<HTMLAnchorElement>) => {
+                onClick?.(event);
+                const plainLeftClick =
+                    event.button === 0 && !event.altKey && !event.ctrlKey && !event.metaKey && !event.shiftKey;
+                if (isStorybookPath && plainLeftClick && !event.defaultPrevented && context?.channel) {
+                    event.preventDefault();
+                    context.channel.emit(NAVIGATE_URL, href);
+                }
+            }}
+            {...rest}
+        />
+    );
+};
+
 /**
  * Shared component map that maps HTML elements to Plasma/Mantine components.
  * Used by both `parameters.docs.components` (MDX pages) and `<Markdown>` overrides (changelog pages).
@@ -99,17 +135,27 @@ export const plasmaDocsComponents: Record<string, ComponentType<any>> = {
     h5: (props) => <HeadingWithAnchor order={5} mt="md" mb="sm" {...props} />,
     h6: (props) => <HeadingWithAnchor order={6} mt="md" mb="sm" {...props} />,
     em: (props) => <Text span inherit fs="italic" {...props} />,
-    a: (props) => <Anchor {...props} />,
+    a: (props) => <DocsAnchor {...props} />,
     hr: () => <Divider />,
     code: ({className, children, ...props}) => {
         if (typeof className === 'string' && (className.startsWith('lang-') || className.startsWith('language-'))) {
             return <Source language={className.replace('lang-', '').replace('language-', '') as any} code={children} />;
         }
-        return <Code c="green.7" fz="inherit" className={className} children={children} {...props} />;
+        return (
+            <Code
+                c="light-dark(var(--mantine-color-green-7), var(--mantine-color-green-3))"
+                fz="inherit"
+                className={className}
+                children={children}
+                {...props}
+            />
+        );
     },
-    ul: (props) => <List my="xs" {...props} />,
-    ol: (props) => <List type="ordered" my="xs" {...props} />,
-    li: (props) => <List.Item {...props} />,
+    // Markdown lists read at the prose line height set on the docs wrapper; Mantine's List and List.Item each set
+    // their own line height, so both have to inherit.
+    ul: (props) => <List my="xs" lh="inherit" {...props} />,
+    ol: (props) => <List type="ordered" my="xs" lh="inherit" {...props} />,
+    li: (props) => <List.Item lh="inherit" {...props} />,
     table: (props) => <MantineTable my="sm" {...props} />,
     thead: (props) => <MantineTable.Thead {...props} />,
     tbody: (props) => <MantineTable.Tbody {...props} />,

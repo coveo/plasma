@@ -1,5 +1,6 @@
 import {PasswordInput} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
+import {Args} from '../../../Args.js';
 
 interface PasswordInputStoryArgs {
     label: string;
@@ -18,41 +19,13 @@ const meta: Meta<PasswordInputStoryArgs> = {
         layout: 'centered',
     },
     argTypes: {
-        label: {
-            control: 'text',
-            description: 'Content rendered as the field label.',
-            table: {type: {summary: 'ReactNode'}, defaultValue: {summary: 'undefined'}},
-        },
-        description: {
-            control: 'text',
-            description: 'Help text rendered below the label.',
-            table: {type: {summary: 'ReactNode'}, defaultValue: {summary: 'undefined'}},
-        },
-        placeholder: {
-            control: 'text',
-            description: 'Hint shown when the field is empty.',
-            table: {type: {summary: 'string'}, defaultValue: {summary: 'undefined'}},
-        },
-        error: {
-            control: 'text',
-            description: 'Validation feedback rendered below the field.',
-            table: {type: {summary: 'ReactNode'}, defaultValue: {summary: 'undefined'}},
-        },
-        required: {
-            control: 'boolean',
-            description: 'Marks the field as required.',
-            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
-        },
-        disabled: {
-            control: 'boolean',
-            description: 'Disables the field.',
-            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
-        },
-        readOnly: {
-            control: 'boolean',
-            description: 'Prevents edits while preserving the read-only field presentation.',
-            table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
-        },
+        label: Args.label.type,
+        description: Args.description.type,
+        placeholder: Args.placeholder.type,
+        error: Args.error.type,
+        required: Args.required.type,
+        disabled: Args.disabled.type,
+        readOnly: Args.readOnly.type,
     },
     args: {
         label: 'Database password',

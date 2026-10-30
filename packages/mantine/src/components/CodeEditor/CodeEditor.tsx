@@ -15,7 +15,7 @@ import {
 } from '@mantine/core';
 import {useUncontrolled} from '@mantine/hooks';
 import Editor, {Monaco, loader} from '@monaco-editor/react';
-import {MarkerSeverity, editor as monacoEditor} from 'monaco-editor';
+import type {editor as monacoEditor} from 'monaco-editor';
 import {FunctionComponent, useEffect, useRef, useState} from 'react';
 
 import cx from 'clsx';
@@ -132,6 +132,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
     // the editor and ends up operating on a disposed instance, which crashes. We detect the disposal and bump
     // this key to force a fresh `<Editor>` instance on the next render. The value is preserved via `_value`.
     const [editorKey, setEditorKey] = useState(0);
+    const monacoRef = useRef<Monaco | null>(null);
 
     const loadLocalMonaco = async () => {
         const monacoInstance = await import('monaco-editor');
@@ -182,7 +183,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
     }, []);
 
     const handleValidate = (markers: monacoEditor.IMarker[]) => {
-        setHasMonacoError(markers.some((marker) => marker.severity === MarkerSeverity.Error));
+        setHasMonacoError(markers.some((marker) => marker.severity === monacoRef?.current?.MarkerSeverity.Error));
     };
 
     const _label = label ? (
@@ -245,6 +246,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
                     value={_value}
                     onChange={(nextValue) => handleChange(nextValue ?? '')}
                     beforeMount={(monaco) => {
+                        monacoRef.current = monaco;
                         registerLanguages(monaco);
                         registerThemes(monaco);
                     }}

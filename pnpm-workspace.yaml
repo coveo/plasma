@@ -6,14 +6,6 @@ allowBuilds:
   esbuild: false
   unrs-resolver: false
 minimumReleaseAge: 10080 # 7 days in minutes
-minimumReleaseAgeExclude:
-  - '@mantine/*'
-  # Renovate security update: turbo@2.9.14
-  - turbo@2.9.14
-  # Renovate security update: vite@8.0.16
-  - vite@8.0.16
-  # Renovate security update: postcss@8.5.23
-  - postcss@8.5.23
 peerDependencyRules:
   ignoreMissing:
     - react-native
@@ -25,4 +17,4 @@ saveExact: true
 autoInstallPeers: false
 patchedDependencies:
   '@monaco-editor/react@4.7.0': patches/@monaco-editor__react@4.7.0.patch
-  '@testing-library/user-event@14.6.6': patches/@testing-library__user-event@14.6.6.patch
+  '@testing-library/user-event@14.6.8': patches/@testing-library__user-event@14.6.8.patch

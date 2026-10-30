@@ -379,12 +379,12 @@ export const Demo: Story = {
                             />
                         )}
                         <Box flex={1} />
-                        {withFilter && <Table.Filter />}
+                        {withFilter && <Table.Filter placeholder="Filter by name, bio, or age" />}
                     </Table.Toolbar>
                 )}
                 {controlPlacement === 'header' && (
                     <Table.Header>
-                        {withFilter && <Table.Filter />}
+                        {withFilter && <Table.Filter placeholder="Filter by name, bio, or age" />}
                         {withDateRangePicker && (
                             <Table.DateRangePicker
                                 startProps={{}}

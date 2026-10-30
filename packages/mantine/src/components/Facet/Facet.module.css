@@ -11,7 +11,8 @@
     }
 }
 
-.facetItem {
+.facet .facetItem {
+    /* Scoped under .facet to outrank the shared Combobox option styles */
     display: block;
     width: 100%;
     padding: calc(var(--mantine-spacing-sm) / 1.5);
@@ -21,15 +22,15 @@
 
     @mixin light {
         color: var(--mantine-color-gray-9);
-    }
 
-    &[aria-selected='true'],
-    &[data-combobox-selected='true'] {
-        background-color: var(--mantine-color-gray-light);
-
-        @mixin hover {
+        &[aria-selected='true'],
+        &[data-combobox-selected='true'] {
             color: var(--mantine-color-gray-9);
-            background-color: var(--mantine-color-gray-light-hover);
+            background-color: var(--mantine-color-gray-light);
+
+            @mixin hover {
+                background-color: var(--mantine-color-gray-light-hover);
+            }
         }
     }
 }
