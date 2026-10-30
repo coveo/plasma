@@ -55,7 +55,7 @@ description: Form input that opens a calendar popover for selecting a single dat
 
 - Use a `placeholder` that indicates the expected format (e.g. `"Pick a date"`) so users understand what the field expects before interacting.
 - Labels SHOULD use noun phrases rather than instructions (e.g. "Start date" not "Select a start date").
-- Error messages SHOULD be specific: "Start date must be before end date" rather than "Invalid date".
+- Error messages SHOULD start with what to select ("Select an end date after the start date." not "End date must be after start date.").
 
 ## Common anti-patterns
 

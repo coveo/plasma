@@ -39,11 +39,18 @@ Do not use `Input.LabelInfo`: it is deprecated. Use `ContextualHelp` with `ml="x
 ## Content guidance
 
 - Descriptions SHOULD explain expected input, constraints, or consequences.
-- Error text SHOULD explain what is wrong and how to fix it.
+- Error text SHOULD start with the verb that fixes the field, then name what's needed: "Enter a name for this source."
+- Error text SHOULD use "Enter" for typed values, "Select" for choices, and "Add" for list items.
+- When the format is wrong, error text SHOULD show the expected one: "Enter an email address in this format: name@example.com."
+- When there's a limit or a range, error text SHOULD state it: "Enter a name of up to 50 characters."
+- When the fix isn't obvious from the value, error text SHOULD say what happened, then what to do: "This name already exists. Enter a different one."
+- Error text SHOULD be a full sentence that ends with a period.
 
 ## Common anti-patterns
 
 - Composing custom fields when a dedicated input component exists.
+- Writing generic errors such as "This field is required." or "Invalid input."
+- Stating only the rule that was broken, such as "Name must be 50 characters or fewer.", instead of what to enter.
 
 # API reference
 
