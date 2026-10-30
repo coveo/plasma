@@ -9,6 +9,7 @@ const template = fs.readFileSync(path.resolve(currentDir, '../src/llms-txt.md'),
 /** Generates the llms.txt index file following the llmstxt.org standard. */
 export const generateLlmsTxt = (
     components: DocEntry[],
+    patterns: DocEntry[],
     contentGuidelines: DocEntry[],
     foundations: DocEntry[],
     baseUrl: string,
@@ -18,6 +19,10 @@ export const generateLlmsTxt = (
             (c) =>
                 `- [${c.name}](${baseUrl}/llms/components/${c.slug}.md): ${c.description || `${c.name} component from @coveord/plasma-mantine`}`,
         )
+        .join('\n');
+
+    const patternList = patterns
+        .map((p) => `- [${p.name}](${baseUrl}/llms/patterns/${p.slug}.md): ${p.description || p.name}`)
         .join('\n');
 
     const contentList = contentGuidelines
@@ -30,6 +35,7 @@ export const generateLlmsTxt = (
 
     return template
         .replace('{{COMPONENT_LIST}}', componentList)
+        .replace('{{PATTERN_LIST}}', patternList)
         .replace('{{CONTENT_LIST}}', contentList)
         .replace('{{FOUNDATION_LIST}}', foundationList);
 };
