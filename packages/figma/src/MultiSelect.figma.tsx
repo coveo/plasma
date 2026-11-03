@@ -22,8 +22,8 @@ figma.connect(
             error: figma.nestedProps('.Input.Error', {
                 message: figma.string('error'),
             }),
-            placeholder: figma.nestedProps('.Input.Input', {
-                text: figma.boolean('withPlaceholder', {true: figma.string('text'), false: undefined}),
+            placeholder: figma.nestedProps('.PillsInput.Input', {
+                text: figma.boolean('withPlaceholder', {true: figma.string('placeholder'), false: undefined}),
             }),
         },
         example: (props) => (
