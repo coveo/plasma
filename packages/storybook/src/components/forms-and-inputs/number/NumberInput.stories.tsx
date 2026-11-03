@@ -3,7 +3,7 @@ import {IconCoins} from '@coveord/plasma-react-icons';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import type {ComponentProps} from 'react';
 import {Args} from '../../../Args.js';
-import {withLabelInfoProps} from '../LabelInfoArgs.js';
+import {withLabelContextualHelpProps} from '../ContextualHelpArgs.js';
 import {
     BaseInputArgs,
     InputWrapperArgs,
@@ -132,6 +132,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
     render: ({leftSection, ...props}) => (
-        <NumberInput leftSection={leftSection ? <IconCoins size={16} /> : undefined} {...withLabelInfoProps(props)} />
+        <NumberInput
+            leftSection={leftSection ? <IconCoins size={16} /> : undefined}
+            {...withLabelContextualHelpProps(props)}
+        />
     ),
 };

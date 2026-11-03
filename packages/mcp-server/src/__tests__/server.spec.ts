@@ -1,7 +1,7 @@
 import type {McpServer} from 'tmcp';
 import {beforeEach, describe, expect, it} from 'vitest';
 import {createServer} from '../createServer.js';
-import {BUTTON, FOUNDATIONS, VOICE_GUIDELINE, makeData} from '../tools/__tests__/fixtures.js';
+import {BUTTON, FOUNDATIONS, NAVIGATE_WITH_LINKS, VOICE_GUIDELINE, makeData} from '../tools/__tests__/fixtures.js';
 
 // Minimal JSON-RPC helpers
 const req = (id: number, method: string, params: Record<string, unknown> = {}) => ({
@@ -45,7 +45,7 @@ describe('plasma-mcp-server integration', () => {
     });
 
     describe('tools/list', () => {
-        it('registers all seven tools', async () => {
+        it('registers all nine tools', async () => {
             const response = await server.receive(req(1, 'tools/list'));
             const tools = (response as {result: {tools: Array<{name: string}>}}).result.tools;
             const names = tools.map((t) => t.name);
@@ -56,7 +56,9 @@ describe('plasma-mcp-server integration', () => {
             expect(names).toContain('list_content_guidelines');
             expect(names).toContain('get_content_guideline');
             expect(names).toContain('get_foundations');
-            expect(tools).toHaveLength(7);
+            expect(names).toContain('list_patterns');
+            expect(names).toContain('get_pattern');
+            expect(tools).toHaveLength(9);
         });
 
         it('includes inputSchema for tools that require arguments', async () => {
@@ -69,12 +71,12 @@ describe('plasma-mcp-server integration', () => {
             });
         });
 
-        it('describes search across components, content guidelines, and foundations', async () => {
+        it('describes search across components, patterns, content guidelines, and foundations', async () => {
             const response = await server.receive(req(1, 'tools/list'));
             const tools = (response as {result: {tools: Array<{name: string; description: string}>}}).result.tools;
             const searchTool = tools.find((t) => t.name === 'search_docs');
             expect(searchTool?.description).toBe(
-                'Search across all Plasma component documentation, content guidelines, and foundations',
+                'Search across all Plasma component documentation, patterns, content guidelines, and foundations',
             );
         });
     });
@@ -271,6 +273,40 @@ describe('plasma-mcp-server integration', () => {
             const response = await server.receive(req(1, 'tools/call', {name: 'get_foundations', arguments: {}}));
             expect(isError(response)).toBe(false);
             expect(firstText(response)).toBe(FOUNDATIONS.content);
+        });
+    });
+
+    describe('list_patterns tool', () => {
+        it('returns a markdown list of all patterns', async () => {
+            const response = await server.receive(req(1, 'tools/call', {name: 'list_patterns', arguments: {}}));
+            const text = firstText(response);
+            expect(text).toContain('# Plasma Patterns');
+            expect(text).toContain('**Navigate with links**');
+        });
+    });
+
+    describe('get_pattern tool', () => {
+        it('returns full pattern content for a known pattern by name', async () => {
+            const response = await server.receive(
+                req(1, 'tools/call', {name: 'get_pattern', arguments: {pattern: 'Navigate with links'}}),
+            );
+            expect(isError(response)).toBe(false);
+            expect(firstText(response)).toBe(NAVIGATE_WITH_LINKS.content);
+        });
+
+        it('returns an error result for an unknown pattern', async () => {
+            const response = await server.receive(
+                req(1, 'tools/call', {name: 'get_pattern', arguments: {pattern: 'Nonexistent'}}),
+            );
+            expect(isError(response)).toBe(true);
+            expect(firstText(response)).toMatchInlineSnapshot(
+                `"Pattern "Nonexistent" not found. Use list_patterns to see available patterns."`,
+            );
+        });
+
+        it('returns a schema validation error when pattern argument is missing', async () => {
+            const response = await server.receive(req(1, 'tools/call', {name: 'get_pattern', arguments: {}}));
+            expect(isError(response)).toBe(true);
         });
     });
 });

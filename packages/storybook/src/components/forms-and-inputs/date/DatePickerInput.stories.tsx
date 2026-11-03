@@ -9,7 +9,7 @@ import {
     type BaseInputStoryArgs,
     type InputWrapperStoryArgs,
 } from '../InputWrapperArgs.js';
-import {withLabelInfoProps} from '../LabelInfoArgs.js';
+import {withLabelContextualHelpProps} from '../ContextualHelpArgs.js';
 
 type DatePickerInputStoryArgs = ComponentProps<typeof DatePickerInput> & BaseInputStoryArgs & InputWrapperStoryArgs;
 
@@ -101,5 +101,5 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
-    render: (props) => <DatePickerInput {...withLabelInfoProps(props)} />,
+    render: (props) => <DatePickerInput {...withLabelContextualHelpProps(props)} />,
 };

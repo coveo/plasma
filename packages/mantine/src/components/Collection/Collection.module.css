@@ -15,7 +15,7 @@
 }
 
 .item {
-    align-items: flex-start;
+    align-items: center;
     flex-wrap: nowrap;
 
     &[data-isdragging='true'] {

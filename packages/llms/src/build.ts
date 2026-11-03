@@ -80,25 +80,33 @@ const main = () => {
     const components = readDocs(path.resolve(currentDir, '../src/components'));
     const contentGuidelines = readDocs(path.resolve(currentDir, '../src/content'));
     const foundations = readDocs(path.resolve(currentDir, '../src/foundations'));
+    const patterns = readDocs(path.resolve(currentDir, '../src/patterns'));
 
     console.log(`📄 Writing output files…\n`);
 
     writeDocs(components, path.join(distDir, 'llms', 'components'));
     writeDocs(contentGuidelines, path.join(distDir, 'llms', 'content'));
     writeDocs(foundations, path.join(distDir, 'llms', 'foundations'));
+    writeDocs(patterns, path.join(distDir, 'llms', 'patterns'));
 
     // llms.txt index
-    write(path.join(distDir, 'llms.txt'), generateLlmsTxt(components, contentGuidelines, foundations, BASE_URL));
+    write(
+        path.join(distDir, 'llms.txt'),
+        generateLlmsTxt(components, patterns, contentGuidelines, foundations, BASE_URL),
+    );
 
     // llms-full.txt
-    write(path.join(distDir, 'llms-full.txt'), generateLlmsFullTxt(components, contentGuidelines, foundations));
+    write(
+        path.join(distDir, 'llms-full.txt'),
+        generateLlmsFullTxt(components, patterns, contentGuidelines, foundations),
+    );
 
     // Skill — read src/skill.md, replace {{BASE_URL}} placeholder
     const skillTemplate = fs.readFileSync(path.resolve(currentDir, '../src/skill.md'), 'utf-8');
     write(path.join(distDir, 'plasma-skill.md'), skillTemplate);
 
     console.log(
-        `\n✅ Done! Generated docs for ${components.length} components, ${contentGuidelines.length} content guidelines, and ${foundations.length} foundations.\n`,
+        `\n✅ Done! Generated docs for ${components.length} components, ${patterns.length} patterns, ${contentGuidelines.length} content guidelines, and ${foundations.length} foundations.\n`,
     );
 };
 

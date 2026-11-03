@@ -1,6 +1,6 @@
 import type {LlmsData} from './types.js';
 
-type ResultKind = 'component' | 'content_guideline' | 'foundation';
+type ResultKind = 'component' | 'pattern' | 'content_guideline' | 'foundation';
 
 interface SearchResult {
     name: string;
@@ -12,6 +12,7 @@ interface SearchResult {
 
 const kindLabels: Record<ResultKind, string> = {
     component: ' (Component)',
+    pattern: ' (Pattern)',
     content_guideline: ' (Content Guideline)',
     foundation: '',
 };
@@ -26,6 +27,7 @@ export const searchDocs = (data: LlmsData, query: string): string => {
 
     const results: SearchResult[] = [
         ...data.components.map((c) => ({...c, kind: 'component' as const})),
+        ...(data.patterns ?? []).map((p) => ({...p, kind: 'pattern' as const})),
         ...(data.contentGuidelines ?? []).map((g) => ({...g, kind: 'content_guideline' as const})),
         ...(data.foundations ?? []).map((f) => ({...f, kind: 'foundation' as const})),
     ]

@@ -11,6 +11,7 @@ export interface LlmsData {
     components: DocData[];
     contentGuidelines: DocData[];
     foundations: DocData[];
+    patterns: DocData[];
 }
 
 export interface ToolError {

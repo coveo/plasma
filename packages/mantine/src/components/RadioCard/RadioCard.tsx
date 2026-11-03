@@ -14,6 +14,7 @@ import {
 import {ReactNode} from 'react';
 import classes from '../../styles/RadioCard.module.css';
 import {Input} from '../Input/Input.js';
+import {ContextualHelpFocusableProvider} from '../ContextualHelp/ContextualHelp.context.js';
 
 export type RadioCardStylesNames = MantineRadioCardStylesNames | 'container' | 'indicator' | 'title' | 'description';
 export type RadioCardFactory = Factory<{
@@ -94,7 +95,10 @@ export const RadioCard = factory<RadioCardFactory>((_props) => {
                     {...getStyles('indicator', {classNames, styles})}
                 />
                 <Stack {...getStyles('container', {classNames, styles})}>
-                    <Input.Label {...getStyles('title', {classNames, styles})}>{label}</Input.Label>
+                    {/* The card is a button, so ContextualHelp in its label must not render another button */}
+                    <ContextualHelpFocusableProvider value={false}>
+                        <Input.Label {...getStyles('title', {classNames, styles})}>{label}</Input.Label>
+                    </ContextualHelpFocusableProvider>
                     {description && (
                         <Input.Description {...getStyles('description', {classNames, styles})}>
                             {description}

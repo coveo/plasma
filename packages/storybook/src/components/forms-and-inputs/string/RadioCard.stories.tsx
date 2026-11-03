@@ -3,7 +3,8 @@ import {Meta, StoryObj} from '@storybook/react-vite';
 import type {ComponentProps} from 'react';
 import {useArgs} from 'storybook/preview-api';
 import {InlineInputArgs, type InlineInputStoryArgs} from '../InputWrapperArgs.js';
-import {withLabelInfoProps} from '../LabelInfoArgs.js';
+import {Args} from '../../../Args.js';
+import {withLabelContextualHelpProps} from '../ContextualHelpArgs.js';
 
 type RadioCardStoryArgs = ComponentProps<typeof RadioCard> & InlineInputStoryArgs;
 
@@ -16,7 +17,7 @@ const meta = {
         controls: {
             include: [
                 'label',
-                'labelInfo',
+                'contextualHelp',
                 'description',
                 'error',
                 'checked',
@@ -28,11 +29,7 @@ const meta = {
     },
     argTypes: {
         ...InlineInputArgs.ArgsTypes,
-        labelInfo: {
-            control: 'text',
-            description: 'Sets the Input.LabelInfo tooltip content in this example.',
-            table: {type: {summary: 'string'}, defaultValue: {summary: "'Additional information'"}},
-        },
+        contextualHelp: Args.contextualHelp.type,
         checked: {
             control: 'boolean',
             description: 'Sets the selected state of the card.',
@@ -60,7 +57,7 @@ export const Demo: Story = {
 
         return (
             <Box w={280}>
-                <RadioCard {...withLabelInfoProps(props)} onClick={onClick} />
+                <RadioCard {...withLabelContextualHelpProps(props)} onClick={onClick} />
             </Box>
         );
     },

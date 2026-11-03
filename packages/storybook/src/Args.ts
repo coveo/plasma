@@ -13,8 +13,8 @@ export type SharedArgs<T> = {
     readonly Args: T;
 };
 
-export interface WithLabelInfoArgs {
-    labelInfo?: string;
+export interface WithContextualHelpArgs {
+    contextualHelp?: string;
 }
 
 const label: Arg<string> = {
@@ -113,10 +113,10 @@ const clearable: Arg<boolean | undefined> = {
     initialValue: undefined,
 };
 
-const labelInfo: Arg<string> = {
+const contextualHelp: Arg<string> = {
     type: {
         control: 'text',
-        description: 'Tooltip content displayed in Input.LabelInfo',
+        description: 'Content displayed in the ContextualHelp next to the label',
         table: {
             type: {summary: 'string'},
         },
@@ -149,6 +149,6 @@ export const Args = {
     readOnly,
     placeholder,
     clearable,
-    labelInfo,
+    contextualHelp,
     type,
 } as const;

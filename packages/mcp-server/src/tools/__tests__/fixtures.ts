@@ -36,10 +36,17 @@ export const FOUNDATIONS: DocData = {
     content: `# Foundations\n\n## Spacing\n\nSpacing tokens drive margin and padding.\n\n## Radii\n\nBorder-radius tokens drive the radius prop.`,
 };
 
+export const NAVIGATE_WITH_LINKS: DocData = {
+    name: 'Navigate with links',
+    description: 'How to move users to another page, section, or resource with links.',
+    content: `# Navigate with links\n\n## Rules\n\n- You MUST NOT use a link for an action.\n- You MUST open external links in a new tab.`,
+};
+
 export const makeData = (
     components: DocData[] = [BUTTON, MODAL, ALERT],
     contentGuidelines: DocData[] = [VOICE_GUIDELINE, WRITING_MECHANICS_GUIDELINE],
     foundations: DocData[] = [FOUNDATIONS],
+    patterns: DocData[] = [NAVIGATE_WITH_LINKS],
 ): LlmsData => ({
     index: 'index content',
     full: 'full content',
@@ -47,4 +54,5 @@ export const makeData = (
     components,
     contentGuidelines,
     foundations,
+    patterns,
 });

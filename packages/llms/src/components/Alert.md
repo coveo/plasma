@@ -23,7 +23,7 @@ Use `Alert` when:
 Do not use `Alert` when:
 
 - feedback is lightweight and transient; use `Notification`
-- information is optional clarification for one field; use helper text or `Input.LabelInfo`
+- information is optional clarification for one field; use helper text or `ContextualHelp`
 - the user must confirm a blocking decision; use `Prompt` or `Modal`
 - the message is only a compact status label; use `Badge` or `StatusToken`
 

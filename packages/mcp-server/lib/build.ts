@@ -38,6 +38,7 @@ const main = () => {
     const components: DocData[] = readDocs(path.join(llmsDistDir, 'llms', 'components'));
     const contentGuidelines: DocData[] = readDocs(path.join(llmsDistDir, 'llms', 'content'));
     const foundations: DocData[] = readDocs(path.join(llmsDistDir, 'llms', 'foundations'));
+    const patterns: DocData[] = readDocs(path.join(llmsDistDir, 'llms', 'patterns'));
 
     const data: LlmsData = {
         index: fs.readFileSync(path.join(llmsDistDir, 'llms.txt'), 'utf-8'),
@@ -46,12 +47,13 @@ const main = () => {
         components,
         contentGuidelines,
         foundations,
+        patterns,
     };
 
     fs.mkdirSync(distDir, {recursive: true});
     fs.writeFileSync(dataFile, JSON.stringify(data, null, 2), 'utf-8');
     console.error(
-        `✅ Bundled data for ${components.length} components, ${contentGuidelines.length} content guidelines, and ${foundations.length} foundations → dist/data.json`,
+        `✅ Bundled data for ${components.length} components, ${patterns.length} patterns, ${contentGuidelines.length} content guidelines, and ${foundations.length} foundations → dist/data.json`,
     );
 };
 

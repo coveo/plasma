@@ -1,5 +1,98 @@
 # @coveord/plasma-mantine
 
+## 61.6.1
+
+### Patch Changes
+
+- `Carousel` default previous and next controls now use chevron icons instead of arrows [#4681](https://github.com/coveo/plasma/pull/4681)
+
+## 61.6.0
+
+### Minor Changes
+
+- Open `Anchor` links to another origin in a new tab [#4673](https://github.com/coveo/plasma/pull/4673)
+
+  When its `href` points to another origin than the current page, `Anchor` now opens it in a new tab with `rel="noopener noreferrer"`. Relative and same-origin links still open in the same tab. Pass `target` or `rel` explicitly to override this behavior.
+
+- Add `ContextualHelp` component to explain nearby content behind a question icon [#4660](https://github.com/coveo/plasma/pull/4660)
+
+  `ContextualHelp` renders a question icon that reveals help content on hover or keyboard focus. Use `variant="text"` (default) for plain text and `variant="interactive"` when the content contains links.
+
+  ```tsx
+  <ContextualHelp aria-label="About clickthrough rate">
+    The percentage of times a View is followed by a click.
+  </ContextualHelp>
+  ```
+
+  `Input.LabelInfo` is deprecated in favor of `ContextualHelp`. It now renders a `ContextualHelp`, so it can be reached with the keyboard, and existing queries for the image named "question" keep working. Its `ref` now points to the button, and `Tooltip` props other than `position` are still accepted but ignored.
+
+  To migrate, replace `Input.LabelInfo` with `ContextualHelp`, keep the label spacing with `ml="xxs"`, and query the icon as a button.
+
+  ```diff
+  - <Input.LabelInfo>Helpful tooltip</Input.LabelInfo>
+  + <ContextualHelp ml="xxs">Helpful tooltip</ContextualHelp>
+  ```
+
+  ```diff
+  - screen.getByRole('img', {name: 'question'});
+  + screen.getByRole('button', {name: 'More information'});
+  ```
+
+- Add `Anchor.External` for links that leave the application [#4645](https://github.com/coveo/plasma/pull/4645)
+
+  `Anchor.External` opens its destination in a new tab with `rel="noopener noreferrer"`, renders an external link icon after the content, and tells screen reader users that the link opens in a new tab. Translate the announcement with `newTabLabel`.
+
+  ```tsx
+  <Anchor.External href="https://docs.coveo.com">
+    Coveo documentation
+  </Anchor.External>
+  ```
+
+### Patch Changes
+
+- Vertically center `Collection` item content [#4671](https://github.com/coveo/plasma/pull/4671)
+
+- `Notification` title no longer shows a hover background, so it no longer looks interactive [#4675](https://github.com/coveo/plasma/pull/4675)
+
+## 61.5.0
+
+### Minor Changes
+
+- Add the `Carousel` component [#4654](https://github.com/coveo/plasma/pull/4654)
+
+  `Carousel` and `Carousel.Slide` are now exported from `@coveord/plasma-mantine` with Plasma styling for the indicators and controls. The controls use Plasma arrow icons that point left and right, or up and down when `orientation` is `vertical`, including when the orientation is set through the theme. Pass `nextControlIcon` or `previousControlIcon` to replace them.
+
+  The `Carousel.Props`, `Carousel.StylesNames`, `Carousel.CssVariables`, `Carousel.Factory`, `Carousel.ContextValue`, and `Carousel.Slide.Props` type aliases are available, matching the Mantine API.
+
+  To use it, install the optional peer dependencies `@mantine/carousel` and `embla-carousel-react`, and import `@mantine/carousel/styles.layer.css` alongside the other Mantine styles.
+
+  ```tsx
+  import { Carousel } from "@coveord/plasma-mantine";
+
+  <Carousel withIndicators>
+    <Carousel.Slide>First slide</Carousel.Slide>
+    <Carousel.Slide>Second slide</Carousel.Slide>
+  </Carousel>;
+  ```
+
+- Deprecate `Header.BreadcrumbText` [#4648](https://github.com/coveo/plasma/pull/4648)
+
+  Every breadcrumb item should be a link. Use `Header.BreadcrumbAnchor` for each ancestor page, and leave the current page out of the trail, since the header title already shows it. `Header.BreadcrumbText` still works and will be removed in the next major version.
+
+### Patch Changes
+
+- Remove the extra vertical padding around `SegmentedControl` and other `radiogroup` elements [#4655](https://github.com/coveo/plasma/pull/4655)
+
+- Stop `CodeEditor` from pulling `monaco-editor` into the initial bundle of consuming apps [#4649](https://github.com/coveo/plasma/pull/4649)
+
+- Use the default border color on `Card.Section` when `withBorder` is set [#4652](https://github.com/coveo/plasma/pull/4652)
+
+- Style hover, active, highlighted and disabled states on every `Combobox.Option`, not only `Select` [#4643](https://github.com/coveo/plasma/pull/4643)
+
+- Stop read-only `Collection` rows with `columns` from reserving space for the remove button, [#4656](https://github.com/coveo/plasma/pull/4656)
+
+  so they line up with the header
+
 ## 61.4.0
 
 ### Minor Changes

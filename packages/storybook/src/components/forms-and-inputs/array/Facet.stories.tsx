@@ -4,13 +4,13 @@ import type {Meta, StoryObj} from '@storybook/react-vite';
 import {faker} from '@faker-js/faker';
 import type {ComponentProps} from 'react';
 import {Args} from '../../../Args.js';
-import {withTitleInfoProps} from '../LabelInfoArgs.js';
+import {withTitleContextualHelpProps} from '../ContextualHelpArgs.js';
 
 // Set the seed for faker to avoid mismatch in chromatic
 faker.seed(42);
 
 type FacetStoryArgs = ComponentProps<typeof Facet> & {
-    labelInfo?: string;
+    contextualHelp?: string;
 };
 
 const meta = {
@@ -26,7 +26,7 @@ type Story = StoryObj<FacetStoryArgs>;
 export const Demo: Story = {
     args: {
         title: 'Title',
-        labelInfo: Args.labelInfo.initialValue,
+        contextualHelp: Args.contextualHelp.initialValue,
         data: [
             {value: 'apple', label: 'Apple', count: faker.number.int({min: 1, max: 1000}), group: 'Fruits'},
             {value: 'banana', label: 'Banana', count: faker.number.int({min: 1, max: 1000}), group: 'Fruits'},
@@ -46,7 +46,7 @@ export const Demo: Story = {
         searchPlaceholder: 'Search',
     },
     argTypes: {
-        labelInfo: Args.labelInfo.type,
+        contextualHelp: Args.contextualHelp.type,
         nothingFound: {
             control: 'text',
             table: {
@@ -78,7 +78,7 @@ export const Demo: Story = {
     },
     render: (props) => (
         <Box w={280}>
-            <Facet {...withTitleInfoProps(props)} />
+            <Facet {...withTitleContextualHelpProps(props)} />
         </Box>
     ),
 };

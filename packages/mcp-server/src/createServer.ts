@@ -11,6 +11,8 @@ import {searchDocs} from './tools/searchDocs.js';
 import {listContentGuidelines} from './tools/listContentGuidelines.js';
 import {buildGuidelineMap, getContentGuideline} from './tools/getContentGuideline.js';
 import {getFoundations} from './tools/getFoundations.js';
+import {listPatterns} from './tools/listPatterns.js';
+import {buildPatternMap, getPattern} from './tools/getPattern.js';
 import type {LlmsData} from './tools/types.js';
 
 const componentSchema = v.object({
@@ -26,6 +28,10 @@ const guidelineSchema = v.object({
     ),
 });
 
+const patternSchema = v.object({
+    pattern: v.pipe(v.string(), v.description('The pattern name (e.g., "Navigate with links")')),
+});
+
 const querySchema = v.object({
     query: v.pipe(
         v.string(),
@@ -36,6 +42,7 @@ const querySchema = v.object({
 export const createServer = (data: LlmsData): McpServer => {
     const componentMap = buildComponentMap(data);
     const guidelineMap = buildGuidelineMap(data.contentGuidelines);
+    const patternMap = buildPatternMap(data.patterns ?? []);
 
     const adapter = new ValibotJsonSchemaAdapter();
     const server = new McpServer(
@@ -90,10 +97,35 @@ export const createServer = (data: LlmsData): McpServer => {
     server.tool(
         {
             name: 'search_docs',
-            description: 'Search across all Plasma component documentation, content guidelines, and foundations',
+            description:
+                'Search across all Plasma component documentation, patterns, content guidelines, and foundations',
             schema: querySchema,
         },
         async ({query}) => tool.text(searchDocs(data, query)),
+    );
+
+    server.tool(
+        {
+            name: 'list_patterns',
+            description:
+                'List all available Plasma patterns (how to combine components to solve a recurring user need, such as navigating with links)',
+        },
+        async () => tool.text(listPatterns(data)),
+    );
+
+    server.tool(
+        {
+            name: 'get_pattern',
+            description: 'Get full documentation for a specific Plasma pattern',
+            schema: patternSchema,
+        },
+        async ({pattern}) => {
+            const result = getPattern(patternMap, pattern);
+            if (result.isError) {
+                return {content: [{type: 'text' as const, text: result.text}], isError: true};
+            }
+            return tool.text(result.text);
+        },
     );
 
     server.tool(

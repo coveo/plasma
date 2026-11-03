@@ -9,7 +9,12 @@
     }
 }
 
-.title,
+.title {
+    @mixin light {
+        color: var(--mantine-color-white);
+    }
+}
+
 .closeButton {
     @mixin light {
         color: var(--mantine-color-white);
