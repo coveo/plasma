@@ -27,7 +27,7 @@ Packages live in `packages/*` (declared in `pnpm-workspace.yaml`):
 
 ## Tech stack
 
-- **Node.js 24** and **pnpm** (pinned via `packageManager`; enable with `corepack enable`). pnpm is enforced — npm/yarn are blocked by `only-allow`.
+- **Node.js 26** and **pnpm** (pinned via `packageManager`; install any pnpm and it switches to the pinned version). pnpm is enforced — npm/yarn are blocked by `only-allow`.
 - **React 19** with the **Mantine** UI library.
 - **TypeScript** (strict).
 - **Vitest** + **React Testing Library** for tests.
