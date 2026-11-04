@@ -1,28 +1,16 @@
 name: Setup
-description: Install Node, PNPM, and dependencies using cache
+description: Install Node, pnpm, and dependencies using cache
 runs:
     using: composite
     steps:
         - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
           with:
               registry-url: 'https://registry.npmjs.org'
-              node-version: 24
-        - name: Enable corepack
-          shell: bash
-          run: corepack enable
-        - name: Get pnpm store directory
-          id: pnpm-cache
-          shell: bash
-          run: |
-              echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
-        - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
-          name: Setup pnpm cache
-          # inspired from https://github.com/pnpm/action-setup/tree/master#use-cache-to-reduce-installation-time
+              node-version: 26
+        # Installs the pnpm version pinned in package.json#packageManager and caches the pnpm store
+        - uses: step-security/action-setup@8beec6731697ff7a074963eaa56f6d8e02e1c399 # v6.1.0
           with:
-              path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-              key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-              restore-keys: |
-                  ${{ runner.os }}-pnpm-store-
+              cache: true
         - name: Install dependencies
           shell: bash
           run: pnpm install --frozen-lockfile
