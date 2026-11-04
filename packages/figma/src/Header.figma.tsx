@@ -4,7 +4,7 @@ import {figma} from '@figma/code-connect';
 const headerProps = {
     title: figma.string('title'),
     description: figma.string('description'),
-    withDocAnchor: figma.boolean('withInfoToken'),
+    withDocAnchor: figma.boolean('withDocAnchor'),
     withBreadcrumbs: figma.boolean('withBreadcrumbs'),
     withActions: figma.boolean('withActions'),
     withBorder: figma.boolean('withBorder'),

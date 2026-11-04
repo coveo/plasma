@@ -8,22 +8,26 @@ figma.connect(
     {
         props: {
             label: figma.string('label'),
-            disabled: figma.enum('state', {
-                disabled: true,
+            disabled: figma.enum('disabled', {
+                true: true,
             }),
-            rightSection: figma.boolean<ReactElement, undefined>('rightSection', {
-                true: figma.instance<ReactElement>('swapRight'),
+            rightSection: figma.boolean<ReactElement, undefined>('_withRightSection', {
+                true: figma.instance<ReactElement>('rightSection'),
             }),
-            leftSection: figma.boolean<ReactElement, undefined>('leftSection', {
-                true: figma.instance<ReactElement>('swapLeft'),
+            leftSection: figma.boolean<ReactElement, undefined>('_withLeftSection', {
+                true: figma.instance<ReactElement>('leftSection'),
             }),
             active: figma.enum('state', {
                 active: true,
             }),
+            opened: figma.enum('opened', {
+                true: true,
+            }),
         },
-        example: ({label, disabled, rightSection, leftSection, active}) => (
+        example: ({label, disabled, rightSection, leftSection, active, opened}) => (
             <NavLink
                 active={active}
+                opened={opened}
                 label={label}
                 disabled={disabled}
                 rightSection={rightSection}

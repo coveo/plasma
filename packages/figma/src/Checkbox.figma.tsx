@@ -1,4 +1,4 @@
-import {Checkbox, Group, Stack} from '@coveord/plasma-mantine';
+import {Checkbox, Group, Stack, Text} from '@coveord/plasma-mantine';
 import {figma} from '@figma/code-connect';
 
 figma.connect(Checkbox, 'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-50069', {
@@ -45,6 +45,40 @@ figma.connect(Checkbox, 'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Pla
         />
     ),
 });
+
+figma.connect(
+    Checkbox.Card,
+    'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=9247-9089',
+    {
+        props: {
+            labelProps: figma.nestedProps('.Input.Label', {
+                label: figma.string('label'),
+            }),
+            descriptionProps: figma.nestedProps('.Input.Description', {
+                description: figma.string('description'),
+            }),
+            disabled: figma.enum('disabled', {
+                true: true,
+            }),
+            checked: figma.enum('checked', {
+                true: true,
+            }),
+        },
+        example: ({labelProps, descriptionProps, disabled, checked}) => (
+            <Checkbox.Card checked={checked} disabled={disabled}>
+                <Group wrap="nowrap" align="flex-start">
+                    <Checkbox.Indicator />
+                    <div>
+                        <Text>{labelProps.label}</Text>
+                        <Text size="sm" c="dimmed">
+                            {descriptionProps.description}
+                        </Text>
+                    </div>
+                </Group>
+            </Checkbox.Card>
+        ),
+    },
+);
 
 figma.connect(
     Checkbox.Group,

@@ -54,11 +54,11 @@ figma.connect(
             descriptionProps: figma.nestedProps('.Input.Description', {
                 description: figma.string('description'),
             }),
-            disabled: figma.enum('state', {
-                disabled: true,
+            disabled: figma.enum('disabled', {
+                true: true,
             }),
-            readOnly: figma.enum('state', {
-                'read-only': true,
+            readOnly: figma.enum('readOnly', {
+                true: true,
             }),
             checked: figma.enum('checked', {
                 true: true,
