@@ -1,4 +1,5 @@
 import {ActionIcon} from '@coveord/plasma-mantine';
+import {IconTrash} from '@coveord/plasma-react-icons';
 import {figma} from '@figma/code-connect';
 
 const actionIconProps = {
@@ -13,7 +14,7 @@ const actionIconProps = {
     }),
 };
 
-// ActionIcon_Destructive has no icon swap property in Figma yet, so the icon is not mapped
+// ActionIcon_Destructive has no icon swap property in Figma yet, so the examples use a static trash icon
 const actionIconDestructiveProps = {
     disabled: figma.enum('state', {
         disabled: true,
@@ -89,7 +90,11 @@ figma.connect(
     {
         variant: {variant: 'primary'},
         props: actionIconDestructiveProps,
-        example: ({disabled, size}) => <ActionIcon.DestructivePrimary disabled={disabled} size={size} />,
+        example: ({disabled, size}) => (
+            <ActionIcon.DestructivePrimary disabled={disabled} size={size}>
+                <IconTrash size={16} />
+            </ActionIcon.DestructivePrimary>
+        ),
     },
 );
 
@@ -99,7 +104,11 @@ figma.connect(
     {
         variant: {variant: 'secondary'},
         props: actionIconDestructiveProps,
-        example: ({disabled, size}) => <ActionIcon.DestructiveSecondary disabled={disabled} size={size} />,
+        example: ({disabled, size}) => (
+            <ActionIcon.DestructiveSecondary disabled={disabled} size={size}>
+                <IconTrash size={16} />
+            </ActionIcon.DestructiveSecondary>
+        ),
     },
 );
 
@@ -109,7 +118,11 @@ figma.connect(
     {
         variant: {variant: 'tertiary'},
         props: actionIconDestructiveProps,
-        example: ({disabled, size}) => <ActionIcon.DestructiveTertiary disabled={disabled} size={size} />,
+        example: ({disabled, size}) => (
+            <ActionIcon.DestructiveTertiary disabled={disabled} size={size}>
+                <IconTrash size={16} />
+            </ActionIcon.DestructiveTertiary>
+        ),
     },
 );
 
@@ -119,6 +132,10 @@ figma.connect(
     {
         variant: {variant: 'quaternary'},
         props: actionIconDestructiveProps,
-        example: ({disabled, size}) => <ActionIcon.DestructiveQuaternary disabled={disabled} size={size} />,
+        example: ({disabled, size}) => (
+            <ActionIcon.DestructiveQuaternary disabled={disabled} size={size}>
+                <IconTrash size={16} />
+            </ActionIcon.DestructiveQuaternary>
+        ),
     },
 );
