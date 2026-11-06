@@ -1,4 +1,4 @@
-import {IconClipboardCheck, IconClipboardText} from '@coveord/plasma-react-icons';
+import {IconCopy, IconCopyCheck} from '@coveord/plasma-react-icons';
 import {ActionIconProps, CopyButton, MantineColor, TextInput, Tooltip} from '@mantine/core';
 import {FunctionComponent, MouseEventHandler} from 'react';
 import {ActionIcon} from '../ActionIcon/ActionIcon.js';
@@ -59,7 +59,7 @@ const CopyToClipboardButton: FunctionComponent<Omit<CopyToClipboardProps, 'withL
                     }}
                     {...others}
                 >
-                    {copied ? <IconClipboardCheck size={16} /> : <IconClipboardText size={16} />}
+                    {copied ? <IconCopyCheck /> : <IconCopy />}
                 </ActionIcon.Quaternary>
             </Tooltip>
         )}

@@ -1,4 +1,4 @@
-import {CopyToClipboard, TextInput} from '@coveord/plasma-mantine';
+import {CopyToClipboard} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof CopyToClipboard> = {
@@ -33,7 +33,7 @@ const meta: Meta<typeof CopyToClipboard> = {
     },
     args: {
         size: 'md',
-        value: 'sk_live_1234567890abcdef',
+        value: 'value',
         tooltipLabelCopy: 'Copy to clipboard',
         tooltipLabelCopied: 'Copied',
     },
@@ -41,8 +41,4 @@ const meta: Meta<typeof CopyToClipboard> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Demo: Story = {
-    render: (args) => (
-        <TextInput label="API key" value={args.value} readOnly rightSection={<CopyToClipboard {...args} />} w={320} />
-    ),
-};
+export const Demo: Story = {};
