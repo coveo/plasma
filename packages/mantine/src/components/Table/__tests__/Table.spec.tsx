@@ -1,7 +1,9 @@
 import {ColumnDef, createColumnHelper} from '@tanstack/table-core';
 import {render, screen, userEvent, within} from '@test-utils';
 
+import {Select} from '@mantine/core';
 import {useState} from 'react';
+import {Modal} from '../../Modal/Modal.js';
 import {Table} from '../Table.js';
 import {TableLayout} from '../Table.types.js';
 import {useTable} from '../use-table.js';
@@ -246,6 +248,68 @@ describe('Table', () => {
         await user.keyboard('{Escape}');
 
         expect(row).toHaveAttribute('aria-selected', 'false');
+    });
+
+    describe('when pressing Escape from an overlay', () => {
+        const data = [{id: '🆔-1', firstName: 'John', lastName: 'Smith'}];
+
+        const OverlayFixture = ({tableInModal = false}: {tableInModal?: boolean}) => {
+            // Multi row selection so clicking outside the table to open the modal keeps the selection
+            const store = useTable<RowData>({enableMultiRowSelection: true});
+            const [opened, setOpened] = useState(false);
+            const table = <Table store={store} getRowId={({id}) => id} data={data} columns={columns} />;
+            return (
+                <>
+                    <button onClick={() => setOpened(true)}>open modal</button>
+                    {tableInModal ? null : table}
+                    <Modal opened={opened} onClose={() => setOpened(false)} closeOnEscape={!tableInModal} title="Edit">
+                        {tableInModal ? table : <Select label="Owner" placeholder="Pick owner" data={['a', 'b']} />}
+                    </Modal>
+                </>
+            );
+        };
+
+        it('keeps the selection when Escape closes a modal opened above the table', async () => {
+            const user = userEvent.setup();
+            render(<OverlayFixture />);
+
+            await user.click(screen.getByRole('row', {name: /John Smith/i}));
+            await user.click(screen.getByRole('button', {name: /open modal/i}));
+            await user.keyboard('{Escape}');
+
+            expect(screen.getByRole('row', {name: /John Smith/i, hidden: true})).toHaveAttribute(
+                'aria-selected',
+                'true',
+            );
+        });
+
+        it('keeps the selection when Escape closes a dropdown inside a modal opened above the table', async () => {
+            const user = userEvent.setup();
+            render(<OverlayFixture />);
+
+            await user.click(screen.getByRole('row', {name: /John Smith/i}));
+            await user.click(screen.getByRole('button', {name: /open modal/i}));
+            await user.click(screen.getByPlaceholderText('Pick owner'));
+            expect(screen.getByRole('listbox')).toBeInTheDocument();
+            await user.keyboard('{Escape}');
+
+            expect(screen.getByRole('row', {name: /John Smith/i, hidden: true})).toHaveAttribute(
+                'aria-selected',
+                'true',
+            );
+        });
+
+        it('clears the selection when the table itself is inside the modal', async () => {
+            const user = userEvent.setup();
+            render(<OverlayFixture tableInModal />);
+
+            await user.click(screen.getByRole('button', {name: /open modal/i}));
+            const row = screen.getByRole('row', {name: /John Smith/i});
+            await user.click(row);
+            await user.keyboard('{Escape}');
+
+            expect(row).toHaveAttribute('aria-selected', 'false');
+        });
     });
 
     describe('with multiple layouts', () => {
