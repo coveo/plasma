@@ -45,7 +45,7 @@ description: Dropdown input that allows users to select multiple values from a p
 
 - Use a `placeholder` that describes the expected action, such as `"Pick values"` or `"Select categories"`.
 - Labels SHOULD be noun phrases: "Assigned labels" rather than "Select labels to assign".
-- Error messages SHOULD be specific: "Select at least one category" rather than "Invalid selection".
+- Error messages SHOULD start with what to select ("Select at least one category." not "Invalid selection.").
 - Keep individual option labels concise — truncation inside the pill is visually jarring.
 
 ## Common anti-patterns

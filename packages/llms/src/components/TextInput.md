@@ -53,7 +53,8 @@ description: Single-line text field for free-form string input, with support for
 
 - Labels SHOULD be nouns or short noun phrases ("Email address", "First name").
 - Placeholders SHOULD show example input ("e.g. john@example.com") or format hints ("DD/MM/YYYY").
-- Error messages MUST be specific and actionable ("Email address must contain @" not "Invalid input").
+- Error messages MUST be specific and SHOULD start with what to enter ("Enter a username of at least 3 characters." not "Username must be at least 3 characters.").
+- When the format is wrong, error messages SHOULD show the expected one ("Enter an email address in this format: name@example.com." not "Invalid input.").
 
 ## Common anti-patterns
 
@@ -101,7 +102,7 @@ function SearchExample() {
 
 // Field with validation error
 function ErrorExample() {
-    return <TextInput label="Username" error="Username must be at least 3 characters." value="ab" />;
+    return <TextInput label="Username" error="Enter a username of at least 3 characters." value="ab" />;
 }
 ```
 

@@ -50,6 +50,7 @@ description: Form input for selecting a specific time of day in 12-hour or 24-ho
 
 - Labels SHOULD be noun phrases ("Start time", "Scheduled time") rather than instructions ("Choose a start time").
 - If both date and time are collected, place `DatePickerInput` before `TimePicker` and group them under a common fieldset label to make the relationship clear.
+- Error messages SHOULD start with what to enter and state the valid range ("Enter a start time between 9:00 AM and 5:00 PM." not "Invalid time.").
 
 # API reference
 
