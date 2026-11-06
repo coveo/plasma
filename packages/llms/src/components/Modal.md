@@ -41,11 +41,18 @@ Do not use `Modal` when:
 - Descriptions SHOULD explain impact when the task is risky or complex.
 - Closing behavior SHOULD preserve or intentionally discard user input according to the workflow.
 
+## Content guidance
+
+- Titles SHOULD name the task, starting with a verb and the object.
+- When a button opens the modal, the title SHOULD reuse that button's label, with the same verb and object.
+- If the button's label is only a verb, such as "Add", the title SHOULD add the object ("Add source").
+
 ## Common anti-patterns
 
 - Putting multi-page workflows inside a modal.
 - Opening a modal for information that could be inline.
 - Stacking multiple modals on top of each other — resolve one before opening the next.
+- Titling a modal with different wording than the button that opened it, such as "Create source" for an "Add source" button.
 
 # API reference
 

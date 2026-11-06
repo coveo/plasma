@@ -39,11 +39,18 @@ Do not use `Drawer` when:
 - Focus trapping, Escape handling, and focus return SHOULD remain enabled unless an accessible alternative is provided.
 - Closing behavior SHOULD preserve or intentionally discard user input according to the workflow.
 
+## Content guidance
+
+- Titles SHOULD name the task or content. A task title SHOULD start with a verb and the object.
+- When a button opens the drawer, the title SHOULD reuse that button's label, with the same verb and object.
+- If the button's label is only a verb, such as "Edit", the title SHOULD add the object ("Edit source").
+
 ## Common anti-patterns
 
 - Putting complex multi-page workflows inside a drawer.
 - Opening related drawers from inconsistent sides.
 - Placing drawer-wide actions in scrolling content instead of `Drawer.Footer`.
+- Titling a drawer with different wording than the button that opened it, such as "Modify source" for an "Edit source" button.
 
 # API reference
 

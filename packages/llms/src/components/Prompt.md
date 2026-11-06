@@ -39,15 +39,20 @@ Do not use `Prompt` when:
 
 ## Content guidance
 
-- Titles SHOULD name the decision.
+- Titles SHOULD name the decision, starting with a verb and the object. A question form is fine ("Delete source?").
+- When a button triggers the prompt, the title SHOULD reuse that button's verb and object, and the confirm button SHOULD repeat them.
+- If the button's label is only a verb, such as "Delete", the title SHOULD add the object ("Delete source?").
+- When nothing was pressed to trigger the prompt, the title SHOULD name the decision the same way, such as "Discard unsaved changes?".
+- Titles SHOULD NOT be vague, such as "Are you sure?" or "Confirm action".
 - Body text SHOULD explain consequences and reversibility.
-- Confirm button text SHOULD describe the action, not say "OK."
+- Confirm button text SHOULD describe the action, not say "OK" or "Yes."
 - Cancel button text SHOULD make the safe alternative clear.
 
 ## Common anti-patterns
 
 - Asking for confirmation on routine low-risk actions.
 - Using vague button labels for destructive actions.
+- Titling a prompt with a different verb than the button that triggered it, such as "Delete source?" for a "Remove source" button.
 - Putting complex forms inside a prompt.
 
 # API reference
@@ -94,7 +99,7 @@ import {Prompt} from '@coveord/plasma-mantine';
 
 function DeleteSourcePrompt({opened, onClose, onConfirm}) {
     return (
-        <Prompt.Warning opened={opened} onClose={onClose} title="Delete this source?">
+        <Prompt.Warning opened={opened} onClose={onClose} title="Delete source?">
             Deleting this source permanently removes its configuration and stops all scheduled crawls. This action
             cannot be undone.
             <Prompt.Footer>
