@@ -2,11 +2,11 @@ import {InfoToken} from '@coveord/plasma-mantine';
 import {figma} from '@figma/code-connect';
 
 const props = {
-    variant: figma.enum('Variant', {
-        Outline: 'outline',
-        Light: 'light',
+    variant: figma.enum('variant', {
+        outline: 'outline',
+        light: 'light',
     }),
-    size: figma.enum('Size', {xs: 'xs', sm: 'sm', md: 'md', lg: 'lg'}),
+    size: figma.enum('size', {xs: 'xs', sm: 'sm', md: 'md', lg: 'lg'}),
 };
 
 figma.connect(
@@ -14,7 +14,7 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components?node-id=7-50446',
     {
         props,
-        variant: {Type: 'Information'},
+        variant: {type: 'information'},
         example: (_props) => <InfoToken.Information {..._props} />,
     },
 );
@@ -24,7 +24,7 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components?node-id=7-50446',
     {
         props,
-        variant: {Type: 'Question'},
+        variant: {type: 'question'},
         example: (_props) => <InfoToken.Question {..._props} />,
     },
 );
@@ -34,7 +34,7 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components?node-id=7-50446',
     {
         props,
-        variant: {Type: 'Advice'},
+        variant: {type: 'advice'},
         example: (_props) => <InfoToken.Advice {..._props} />,
     },
 );
@@ -44,7 +44,7 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components?node-id=7-50446',
     {
         props,
-        variant: {Type: 'Success'},
+        variant: {type: 'success'},
         example: (_props) => <InfoToken.Success {..._props} />,
     },
 );
@@ -54,7 +54,7 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components?node-id=7-50446',
     {
         props,
-        variant: {Type: 'Warning'},
+        variant: {type: 'warning'},
         example: (_props) => <InfoToken.Warning {..._props} />,
     },
 );
@@ -64,7 +64,7 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components?node-id=7-50446',
     {
         props,
-        variant: {Type: 'Error'},
+        variant: {type: 'error'},
         example: (_props) => <InfoToken.Error {..._props} />,
     },
 );

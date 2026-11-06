@@ -3,15 +3,15 @@ import {figma} from '@figma/code-connect';
 import type {ReactElement} from 'react';
 
 const buttonProps = {
-    leftSection: figma.boolean<ReactElement, undefined>('Left Section', {
-        true: figma.instance<ReactElement>('Swap Left'),
+    leftSection: figma.boolean<ReactElement, undefined>('withLeftSection', {
+        true: figma.instance<ReactElement>('leftSection'),
     }),
-    rightSection: figma.boolean<ReactElement, undefined>('Right Section', {
-        true: figma.instance<ReactElement>('Swap Right'),
+    rightSection: figma.boolean<ReactElement, undefined>('withRightSection', {
+        true: figma.instance<ReactElement>('rightSection'),
     }),
-    placeholder: figma.string('Placeholder'),
-    disabled: figma.enum('State', {
-        Disabled: true,
+    placeholder: figma.string('label'),
+    disabled: figma.enum('state', {
+        disabled: true,
     }),
 };
 
@@ -19,7 +19,7 @@ figma.connect(
     Button.Primary,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7-49794',
     {
-        variant: {Variant: 'Primary'},
+        variant: {variant: 'primary'},
         props: buttonProps,
         example: ({placeholder, leftSection, rightSection, disabled}) => (
             <Button.Primary leftSection={leftSection} rightSection={rightSection} disabled={disabled}>
@@ -33,7 +33,7 @@ figma.connect(
     Button.Secondary,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7-49794',
     {
-        variant: {Variant: 'Secondary'},
+        variant: {variant: 'secondary'},
         props: buttonProps,
         example: ({leftSection, rightSection, placeholder, disabled}) => (
             <Button.Secondary leftSection={leftSection} rightSection={rightSection} disabled={disabled}>
@@ -47,7 +47,7 @@ figma.connect(
     Button.Tertiary,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7-49794',
     {
-        variant: {Variant: 'Tertiary'},
+        variant: {variant: 'tertiary'},
         props: buttonProps,
         example: ({leftSection, rightSection, placeholder, disabled}) => (
             <Button.Tertiary leftSection={leftSection} rightSection={rightSection} disabled={disabled}>
@@ -61,7 +61,7 @@ figma.connect(
     Button.Quaternary,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7-49794',
     {
-        variant: {Variant: 'Quaternary'},
+        variant: {variant: 'quaternary'},
         props: buttonProps,
         example: ({leftSection, rightSection, placeholder, disabled}) => (
             <Button.Quaternary leftSection={leftSection} rightSection={rightSection} disabled={disabled}>
@@ -77,7 +77,7 @@ figma.connect(
     Button.DestructivePrimary,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7-49737',
     {
-        variant: {Variant: 'Primary'},
+        variant: {variant: 'primary'},
         props: buttonProps,
         example: ({leftSection, rightSection, placeholder, disabled}) => (
             <Button.DestructivePrimary leftSection={leftSection} rightSection={rightSection} disabled={disabled}>
@@ -91,7 +91,7 @@ figma.connect(
     Button.DestructiveSecondary,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7-49737',
     {
-        variant: {Variant: 'Secondary'},
+        variant: {variant: 'secondary'},
         props: buttonProps,
         example: ({leftSection, rightSection, placeholder, disabled}) => (
             <Button.DestructiveSecondary leftSection={leftSection} rightSection={rightSection} disabled={disabled}>
@@ -104,7 +104,7 @@ figma.connect(
     Button.DestructiveTertiary,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7-49737',
     {
-        variant: {Variant: 'Tertiary'},
+        variant: {variant: 'tertiary'},
         props: buttonProps,
         example: ({leftSection, rightSection, placeholder, disabled}) => (
             <Button.DestructiveTertiary leftSection={leftSection} rightSection={rightSection} disabled={disabled}>
@@ -117,7 +117,7 @@ figma.connect(
     Button.DestructiveQuaternary,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components-Library?node-id=7-49737',
     {
-        variant: {Variant: 'Quaternary'},
+        variant: {variant: 'quaternary'},
         props: buttonProps,
         example: ({leftSection, rightSection, placeholder, disabled}) => (
             <Button.DestructiveQuaternary leftSection={leftSection} rightSection={rightSection} disabled={disabled}>

@@ -7,23 +7,23 @@ figma.connect(
     {
         props: {
             labelProps: figma.nestedProps('.Input.Label', {
-                label: figma.string('Label'),
-                required: figma.boolean('Asterisk'),
+                label: figma.string('label'),
+                required: figma.boolean('withAsterisk'),
             }),
             description: figma.nestedProps('.Input.Description', {
-                text: figma.string('Description'),
+                text: figma.string('description'),
             }),
-            disabled: figma.enum('State', {
-                Disabled: true,
+            disabled: figma.enum('state', {
+                disabled: true,
             }),
-            readOnly: figma.enum('State', {
-                'Read-only': true,
+            readOnly: figma.enum('state', {
+                'read-only': true,
             }),
             error: figma.nestedProps('.Input.Error', {
-                message: figma.string('Error'),
+                message: figma.string('error'),
             }),
             placeholder: figma.nestedProps('.Input.Input', {
-                text: figma.boolean('Placeholder', {true: figma.string('Text'), false: undefined}),
+                text: figma.boolean('withPlaceholder', {true: figma.string('text'), false: undefined}),
             }),
         },
         example: (props) => (

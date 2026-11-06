@@ -8,30 +8,29 @@ figma.connect(
     {
         props: {
             labelProps: figma.nestedProps('.Input.Label', {
-                required: figma.boolean('Asterisk'),
-                label: figma.string('Label'),
+                required: figma.boolean('withAsterisk'),
+                label: figma.string('label'),
             }),
-            wrapperProps: figma.nestedProps('Input.Wrapper', {
-                descriptionProps: figma.boolean('Description', {
+            wrapperProps: figma.nestedProps('.Input.Wrapper', {
+                descriptionProps: figma.boolean('description', {
                     true: figma.nestedProps('.Input.Description', {
-                        description: figma.string('Description'),
+                        description: figma.string('description'),
                     }),
                     false: {description: undefined},
                 }),
-                errorProps: figma.boolean('Error', {
+                errorProps: figma.boolean('error', {
                     true: figma.nestedProps('.Input.Error', {
-                        error: figma.string('Error'),
+                        error: figma.string('error'),
                     }),
                     false: {error: undefined},
                 }),
             }),
             inputProps: figma.nestedProps('.NumberInput.Input', {
-                placeholder: figma.boolean('Placeholder', {true: figma.textContent('0'), false: undefined}),
-                leftSection: figma.boolean<ReactElement, undefined>('Left Section', {
-                    true: figma.instance<ReactElement>('Swap Left'),
+                placeholder: figma.boolean('withPlaceholder', {true: figma.string('placeholder'), false: undefined}),
+                leftSection: figma.boolean<ReactElement, undefined>('leftSection', {
+                    true: figma.instance<ReactElement>('swapLeft'),
                 }),
-                disabled: figma.enum('State', {Disabled: true}),
-                readOnly: figma.enum('State', {'Read-only': true}),
+                disabled: figma.enum('state', {disabled: true}),
             }),
         },
         example: (props) => (
@@ -42,7 +41,6 @@ figma.connect(
                 leftSection={props.inputProps.leftSection}
                 required={props.labelProps.required}
                 disabled={props.inputProps.disabled}
-                readOnly={props.inputProps.readOnly}
                 error={props.wrapperProps.errorProps.error}
             />
         ),

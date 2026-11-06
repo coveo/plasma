@@ -6,7 +6,7 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2586-11355&m=dev',
     {
         props: {
-            orientation: figma.enum('Orientation', {Default: undefined, Vertical: 'vertical'}),
+            orientation: figma.enum('orientation', {horizontal: undefined, vertical: 'vertical'}),
         },
         example: (props) => (
             <Tabs defaultValue="tab1" {...props}>

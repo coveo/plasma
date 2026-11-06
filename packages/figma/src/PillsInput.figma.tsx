@@ -7,34 +7,34 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2845-3284',
     {
         props: {
-            wrapperProps: figma.nestedProps('Input.Wrapper', {
-                descriptionProps: figma.boolean('Description', {
+            wrapperProps: figma.nestedProps('.Input.Wrapper', {
+                descriptionProps: figma.boolean('description', {
                     true: figma.nestedProps('.Input.Description', {
-                        description: figma.string('Description'),
+                        description: figma.string('description'),
                     }),
                     false: {description: undefined},
                 }),
-                errorProps: figma.boolean('Error', {
+                errorProps: figma.boolean('error', {
                     true: figma.nestedProps('.Input.Error', {
-                        error: figma.string('Error'),
+                        error: figma.string('error'),
                     }),
                     false: {error: undefined},
                 }),
             }),
             labelProps: figma.nestedProps('.Input.Label', {
-                required: figma.boolean('Asterisk'),
-                label: figma.string('Label'),
+                required: figma.boolean('withAsterisk'),
+                label: figma.string('label'),
             }),
 
             inputProps: figma.nestedProps('.PillsInput.Input', {
-                leftSection: figma.boolean<ReactElement, undefined>('Left Section', {
-                    true: figma.instance<ReactElement>('Swap Left'),
+                leftSection: figma.boolean<ReactElement, undefined>('leftSection', {
+                    true: figma.instance<ReactElement>('swapLeft'),
                 }),
-                rightSection: figma.boolean<ReactElement, undefined>('Right Section', {
-                    true: figma.instance<ReactElement>('Swap Right'),
+                rightSection: figma.boolean<ReactElement, undefined>('rightSection', {
+                    true: figma.instance<ReactElement>('swapRight'),
                 }),
-                disabled: figma.enum('State', {Disabled: true}),
-                readOnly: figma.enum('State', {'Read-only': true}),
+                disabled: figma.enum('state', {disabled: true}),
+                readOnly: figma.enum('state', {'read-only': true}),
             }),
         },
         example: (props) => (

@@ -7,23 +7,27 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2611-1674',
     {
         props: {
-            label: figma.string('Label'),
-            disabled: figma.enum('State', {
-                Disabled: true,
+            label: figma.string('label'),
+            disabled: figma.enum('disabled', {
+                true: true,
             }),
-            rightSection: figma.boolean<ReactElement, undefined>('Right Section', {
-                true: figma.instance<ReactElement>('Swap Right'),
+            rightSection: figma.boolean<ReactElement, undefined>('_withRightSection', {
+                true: figma.instance<ReactElement>('rightSection'),
             }),
-            leftSection: figma.boolean<ReactElement, undefined>('Left Section', {
-                true: figma.instance<ReactElement>('Swap Left'),
+            leftSection: figma.boolean<ReactElement, undefined>('_withLeftSection', {
+                true: figma.instance<ReactElement>('leftSection'),
             }),
-            active: figma.enum('State', {
-                Active: true,
+            active: figma.enum('state', {
+                active: true,
+            }),
+            opened: figma.enum('opened', {
+                true: true,
             }),
         },
-        example: ({label, disabled, rightSection, leftSection, active}) => (
+        example: ({label, disabled, rightSection, leftSection, active, opened}) => (
             <NavLink
                 active={active}
+                opened={opened}
                 label={label}
                 disabled={disabled}
                 rightSection={rightSection}
