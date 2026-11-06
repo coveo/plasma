@@ -1,0 +1,36 @@
+.root {
+    --im-color: var(--mantine-color-dimmed);
+    --im-text-color: var(--mantine-color-dimmed);
+
+    display: inline-flex;
+    align-items: flex-start;
+    gap: var(--mantine-spacing-xs);
+    max-width: 100%;
+    color: var(--im-text-color);
+    font-size: var(--mantine-font-size-sm);
+    line-height: var(--mantine-line-height-sm);
+}
+
+.icon {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    height: calc(var(--mantine-font-size-sm) * var(--mantine-line-height-sm));
+    color: var(--im-color);
+}
+
+.label {
+    min-width: 0;
+}
+
+/* Links take the message color and rely on the underline to stand out */
+.root a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+@media (hover: hover) {
+    .root a:hover {
+        text-decoration: none;
+    }
+}
