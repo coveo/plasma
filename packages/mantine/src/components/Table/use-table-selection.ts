@@ -12,6 +12,22 @@ interface UseTableSelectionOptions<T> {
     store: TableStore<T>;
 }
 
+/**
+ * Whether an Escape keydown belongs to something other than the table, such as a dialog opened above it
+ * or an open dropdown (Mantine marks those targets with `data-mantine-stop-propagation`).
+ */
+const isEscapeHandledElsewhere = (event: KeyboardEvent, tableContainer: HTMLElement | null): boolean => {
+    const target = event.target instanceof Element ? event.target : null;
+    if (!target) {
+        return false;
+    }
+    if (target.closest('[data-mantine-stop-propagation="true"]')) {
+        return true;
+    }
+    const dialog = target.closest('[role="dialog"], [role="alertdialog"], [aria-modal="true"]');
+    return !!dialog && !dialog.contains(tableContainer);
+};
+
 type UseControlledTableSelectionOptions<T> = Pick<UseTableSelectionOptions<T>, 'data' | 'table' | 'store'>;
 
 const useControlledTableSelection = <T>({data, table, store}: UseControlledTableSelectionOptions<T>) => {
@@ -102,7 +118,12 @@ export const useTableSelection = <T>({additionalRootNodes, data, table, store}: 
 
     useEffect(() => {
         const clearRowSelection = (event: KeyboardEvent) => {
-            if (event.key === 'Escape' && store.rowSelectionEnabled && !store.rowSelectionForced) {
+            if (
+                event.key === 'Escape' &&
+                store.rowSelectionEnabled &&
+                !store.rowSelectionForced &&
+                !isEscapeHandledElsewhere(event, containerRef.current)
+            ) {
                 clearSelection();
             }
         };
