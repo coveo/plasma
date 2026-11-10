@@ -13,7 +13,8 @@ interface PasswordInputStoryArgs {
 }
 
 const meta: Meta<PasswordInputStoryArgs> = {
-    title: '@components/Forms and inputs/string/PasswordInput',
+    title: 'Components/Inputs/PasswordInput',
+    tags: ['!dev'],
     id: 'PasswordInput',
     parameters: {
         layout: 'centered',

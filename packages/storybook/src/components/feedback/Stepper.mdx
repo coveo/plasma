@@ -1,5 +1,6 @@
-import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as StepperStories from './Stepper.stories';
+import {PageFooter} from '../../doc-blocks/DocBlocks.js';
 
 <Meta of={StepperStories} />
 
@@ -7,17 +8,15 @@ import * as StepperStories from './Stepper.stories';
 
 Progress indicator that guides users through a linear, multi-step task.
 
-## Overview
-
 The `Stepper` breaks a complex flow into distinct stages and shows what is complete, active, and upcoming.
 
 Users can move forward with navigation controls and return to completed steps when they need to review earlier work.
 
-## Usage
+## Demo
 
 <Canvas of={StepperStories.WithNavigation} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -38,8 +37,12 @@ Users can move forward with navigation controls and return to completed steps wh
 - Use `Stepper.Completed` to confirm that the flow has finished.
 - Keep the logical and keyboard focus order aligned with the visual step order.
 
-### Content guidelines
+## Content and copy
 
 - Keep step labels to two or three words.
 - Use descriptions only for short supporting details.
 - Make navigation button labels describe the direction or result.
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/feedback/Stepper.mdx" />
+</Unstyled>

@@ -3,7 +3,7 @@ import type {Meta, StoryObj} from '@storybook/react-vite';
 import {FoundationWrapper} from '../FoundationWrapper.js';
 
 const meta: Meta = {
-    title: '@foundation/Typography',
+    title: 'Foundations/Typography',
     id: 'typography',
     tags: ['!dev'],
     parameters: {

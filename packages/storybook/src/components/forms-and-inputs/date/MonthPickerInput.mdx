@@ -1,5 +1,6 @@
-import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Controls, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as MonthPickerInputStories from './MonthPickerInput.stories';
+import {PageFooter} from '../../../doc-blocks/DocBlocks.js';
 
 <Meta of={MonthPickerInputStories} />
 
@@ -7,18 +8,15 @@ import * as MonthPickerInputStories from './MonthPickerInput.stories';
 
 Calendar input for selecting one month, multiple months, or a continuous month range.
 
-## Overview
-
 The `MonthPickerInput` collects month-level values without requiring users to choose an unnecessary day or type a date format.
 
 It supports single, multiple, and range selection for reporting periods, billing cycles, and other month-based workflows.
 
-## Usage
+## Demo
 
 <Canvas of={MonthPickerInputStories.Demo} />
-<Controls of={MonthPickerInputStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -39,8 +37,16 @@ It supports single, multiple, and range selection for reporting periods, billing
 - Limit the available period with `minDate` and `maxDate` when the workflow has known boundaries.
 - Enable `clearable` for optional fields.
 
-### Content guidelines
+## Content and copy
 
 - Use a short noun phrase for the label, such as **Report month** or **Billing period**.
 - Match the placeholder to the mode, such as **Pick a month** or **Pick a month range**.
 - Explain how to correct an invalid range instead of using a generic error.
+
+## Props
+
+<Controls of={MonthPickerInputStories.Demo} />
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/forms-and-inputs/date/MonthPickerInput.mdx" />
+</Unstyled>

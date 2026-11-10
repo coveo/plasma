@@ -1,5 +1,6 @@
-import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Controls, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as DatePickerInputStories from './DatePickerInput.stories';
+import {PageFooter} from '../../../doc-blocks/DocBlocks.js';
 
 <Meta of={DatePickerInputStories} />
 
@@ -7,18 +8,15 @@ import * as DatePickerInputStories from './DatePickerInput.stories';
 
 Calendar input for selecting one date, multiple dates, or a continuous date range.
 
-## Overview
-
 The `DatePickerInput` lets users select calendar dates without entering a date format manually.
 
 It supports common date shortcuts, constrained date ranges, and different selection modes in the same familiar input pattern.
 
-## Usage
+## Demo
 
 <Canvas of={DatePickerInputStories.Demo} />
-<Controls of={DatePickerInputStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -40,8 +38,16 @@ It supports common date shortcuts, constrained date ranges, and different select
 - Enable `clearable` for optional fields so users can remove a selection.
 - Offer presets only for frequently used dates or ranges.
 
-### Content guidelines
+## Content and copy
 
 - Use a short noun phrase for the label, such as **Due date** or **Report period**.
 - Use placeholder text that reflects the selection mode, such as **Pick a date** or **Pick a date range**.
 - Explain how to correct an invalid selection, such as **End date must be after start date**.
+
+## Props
+
+<Controls of={DatePickerInputStories.Demo} />
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/forms-and-inputs/date/DatePickerInput.mdx" />
+</Unstyled>

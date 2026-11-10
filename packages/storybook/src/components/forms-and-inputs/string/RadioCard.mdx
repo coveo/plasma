@@ -1,5 +1,6 @@
-import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Controls, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as RadioCardStories from './RadioCard.stories';
+import {PageFooter} from '../../../doc-blocks/DocBlocks.js';
 
 <Meta of={RadioCardStories} />
 
@@ -7,18 +8,15 @@ import * as RadioCardStories from './RadioCard.stories';
 
 Selectable card for a single-choice option that needs supporting context or a larger target.
 
-## Overview
-
 `RadioCard` gives an option more visual weight than a standard radio and leaves room to explain its impact.
 
 It preserves radio semantics while making the full card available for selection.
 
-## Usage
+## Demo
 
 <Canvas of={RadioCardStories.Demo} />
-<Controls of={RadioCardStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -40,8 +38,16 @@ It preserves radio semantics while making the full card available for selection.
 - Use `disabledTooltip` to explain why a disabled option is unavailable.
 - Show validation feedback close to the affected card or group.
 
-### Content guidelines
+## Content and copy
 
 - Name each option directly in its label.
 - Explain impact, eligibility, or key differences in the description.
 - Tell users how to fix the issue in error messages.
+
+## Props
+
+<Controls of={RadioCardStories.Demo} />
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/forms-and-inputs/string/RadioCard.mdx" />
+</Unstyled>

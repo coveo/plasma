@@ -1,6 +1,43 @@
-import {Meta, Story} from '@storybook/addon-docs/blocks';
+import {Meta, Story, Unstyled} from '@storybook/addon-docs/blocks';
+import {Note, PageFooter, Rule, Todo} from '../../../doc-blocks/DocBlocks.js';
 import * as IconographyStories from './Iconography.stories';
 
 <Meta of={IconographyStories} />
 
 <Story of={IconographyStories.Overview} />
+
+<Unstyled>
+    <Rule>
+        Prefer Tabler icons. Import from <code>@coveord/plasma-react-icons</code>, never from Tabler directly.
+    </Rule>
+    <Note>
+        The in-house set is deprecated in favour of Tabler. Use an in-house icon only when no Tabler icon fits the need.
+    </Note>
+    <Note>
+        <strong>The two sets do not share an API.</strong> Tabler takes <code>size</code>; in-house icons take{' '}
+        <code>height</code>, and the size is baked into the component name (<code>…Size24Px</code>). Copying a pattern
+        from one section to the other does not work.
+    </Note>
+    <Todo title="The column that is missing today">
+        All 398 in-house icons are deprecated, and not one says what to use instead. A{' '}
+        <strong>Tabler replacement</strong> column would turn that table into the migration guide, inline, at the only
+        moment anyone is looking. Where no Tabler icon fits, an empty cell is the answer — and the list of empty cells
+        is the case for keeping those few.
+    </Todo>
+    <Note>
+        <strong>Nothing in the code says so.</strong> The deprecation is stated on this page and nowhere else — no icon
+        carries a <code>@deprecated</code> annotation, so an editor gives no warning and a build gives no hint. Anyone
+        who does not read this page has no way to find out.
+    </Note>
+</Unstyled>
+
+## What not to do
+
+- Do not import from `@tabler/icons-react` directly. Everything comes through `@coveord/plasma-react-icons`.
+- Do not use an icon alone as the only label for an action. `ActionIcon` needs an `aria-label` matching its tooltip.
+- Do not recolour an icon outside the palette; an icon takes the colour of its text.
+- Do not reach for a custom icon out of habit. Search Tabler by keyword first — the names are not always the obvious ones.
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/foundation/iconography/Iconography.mdx" />
+</Unstyled>

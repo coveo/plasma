@@ -202,7 +202,7 @@ const TablerIconsTable = () => {
 };
 
 const meta: Meta = {
-    title: '@foundation/Iconography',
+    title: 'Foundations/Iconography',
     id: 'iconography',
     tags: ['!dev'],
     parameters: {

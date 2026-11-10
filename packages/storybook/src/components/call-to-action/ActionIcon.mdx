@@ -1,5 +1,6 @@
-import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Controls, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as ActionIconStories from './ActionIcon.stories';
+import {PageFooter} from '../../doc-blocks/DocBlocks.js';
 
 <Meta of={ActionIconStories} />
 
@@ -7,16 +8,13 @@ import * as ActionIconStories from './ActionIcon.stories';
 
 Icon-only button for compact, familiar actions.
 
-## Overview
-
 The `ActionIcon` triggers an action without adding a visible text label. It works best in dense layouts and repeated item controls.
 
-## Usage
+## Demo
 
 <Canvas of={ActionIconStories.Demo} />
-<Controls of={ActionIconStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -36,3 +34,11 @@ The `ActionIcon` triggers an action without adding a visible text label. It work
 - Select emphasis through the Plasma sub-components shown in Usage.
 - Reserve destructive emphasis for actions that negatively affect data.
 - Explain why a disabled action is unavailable with `disabledTooltip`.
+
+## Props
+
+<Controls of={ActionIconStories.Demo} />
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/call-to-action/ActionIcon.mdx" />
+</Unstyled>

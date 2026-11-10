@@ -1,10 +1,11 @@
 import {Meta, Unstyled} from '@storybook/addon-docs/blocks';
-import {Alert, Header, MantineTable as Table} from '@coveord/plasma-mantine';
+import {Header, MantineTable as Table} from '@coveord/plasma-mantine';
+import {Note, PageFooter, Tag} from '../doc-blocks/DocBlocks.js';
 
 export const categories = [
     {
-        name: 'Call to action',
-        description: 'Components used to trigger actions or navigate between views.',
+        name: 'Actions',
+        description: 'Components used to trigger actions.',
         components: [
             {
                 name: 'ActionIcon',
@@ -12,14 +13,12 @@ export const categories = [
                 description: 'Icon-only button for executing actions.',
                 origin: 'Mantine',
             },
-            {name: 'Anchor', id: 'anchor', description: 'Inline text link for navigation.', origin: 'Mantine'},
             {
-                name: 'Breadcrumbs',
-                id: 'breadcrumbs',
-                description: 'Navigation trail showing the current page location.',
+                name: 'Button',
+                id: 'button',
+                description: 'Button for triggering actions and tasks.',
                 origin: 'Mantine',
             },
-            {name: 'Button', id: 'button', description: 'Button for triggering actions and tasks.', origin: 'Mantine'},
             {
                 name: 'CloseButton',
                 id: 'closebutton',
@@ -33,15 +32,57 @@ export const categories = [
                 origin: 'Plasma',
             },
             {
+                name: 'Menu',
+                id: 'menu',
+                description: 'Dropdown list of contextual commands.',
+                origin: 'Mantine',
+            },
+        ],
+    },
+    {
+        name: 'Navigation',
+        description: 'Components used to move between views and locations.',
+        components: [
+            {
+                name: 'Anchor',
+                id: 'anchor',
+                description: 'Inline text link for navigation.',
+                origin: 'Mantine',
+            },
+            {
+                name: 'Breadcrumbs',
+                id: 'breadcrumbs',
+                description: 'Navigation trail showing the current page location.',
+                origin: 'Mantine',
+            },
+            {
                 name: 'NavLink',
                 id: 'navlink',
                 description: 'Navigation link for sidebars and menus.',
                 origin: 'Plasma',
             },
             {
+                name: 'Navigation',
+                id: 'navigation',
+                description: 'Sidebar navigation with collapsible sections.',
+                origin: 'Plasma',
+            },
+            {
                 name: 'Pagination',
                 id: 'pagination',
                 description: 'Navigation control for multi-page datasets.',
+                origin: 'Mantine',
+            },
+            {
+                name: 'Stepper',
+                id: 'stepper',
+                description: 'Progress indicator for a linear multi-step flow.',
+                origin: 'Mantine',
+            },
+            {
+                name: 'Tabs',
+                id: 'tabs',
+                description: 'Navigation between related content panels.',
                 origin: 'Mantine',
             },
         ],
@@ -55,6 +96,12 @@ export const categories = [
                 id: 'checkbox',
                 description: 'Control for selecting zero, one, or many visible options.',
                 origin: 'Mantine',
+            },
+            {
+                name: 'ChildForm',
+                id: 'childform',
+                description: 'Expandable nested sub-form within a parent form.',
+                origin: 'Plasma',
             },
             {
                 name: 'Chip',
@@ -140,17 +187,22 @@ export const categories = [
                 description: 'Range input for selecting a numeric value.',
                 origin: 'Mantine',
             },
-            {name: 'Switch', id: 'switch', description: 'Toggle control for a binary setting.', origin: 'Mantine'},
             {
-                name: 'Textarea',
-                id: 'textarea',
-                description: 'Multi-line input for longer free-text content.',
+                name: 'Switch',
+                id: 'switch',
+                description: 'Toggle control for a binary setting.',
                 origin: 'Mantine',
             },
             {
                 name: 'TextInput',
                 id: 'textinput',
                 description: 'Single-line input for free-form text.',
+                origin: 'Mantine',
+            },
+            {
+                name: 'Textarea',
+                id: 'textarea',
+                description: 'Multi-line input for longer free-text content.',
                 origin: 'Mantine',
             },
             {
@@ -168,7 +220,7 @@ export const categories = [
         ],
     },
     {
-        name: 'Feedback',
+        name: 'Feedback and status',
         description: 'Components that communicate system state, progress, or the outcome of an interaction.',
         components: [
             {
@@ -226,12 +278,6 @@ export const categories = [
                 origin: 'Plasma',
             },
             {
-                name: 'Stepper',
-                id: 'stepper',
-                description: 'Progress indicator for a linear multi-step flow.',
-                origin: 'Mantine',
-            },
-            {
                 name: 'Tooltip',
                 id: 'tooltip',
                 description: 'Supplementary text shown on hover or focus.',
@@ -240,7 +286,7 @@ export const categories = [
         ],
     },
     {
-        name: 'Layout',
+        name: 'Layout and structure',
         description: 'Components used to arrange and structure page content.',
         components: [
             {
@@ -256,39 +302,9 @@ export const categories = [
                 origin: 'Mantine',
             },
             {
-                name: 'BrowserPreview',
-                id: 'browserpreview',
-                description: 'Simulated browser frame around preview content.',
-                origin: 'Plasma',
-            },
-            {
-                name: 'ChildForm',
-                id: 'childform',
-                description: 'Expandable nested sub-form within a parent form.',
-                origin: 'Plasma',
-            },
-            {
                 name: 'Header',
                 id: 'header',
                 description: 'Page header with optional breadcrumbs and actions.',
-                origin: 'Plasma',
-            },
-            {
-                name: 'Modal',
-                id: 'modal',
-                description: 'Overlay dialog that focuses user attention.',
-                origin: 'Mantine',
-            },
-            {
-                name: 'Navigation',
-                id: 'navigation',
-                description: 'Sidebar navigation with collapsible sections.',
-                origin: 'Plasma',
-            },
-            {
-                name: 'Prompt',
-                id: 'prompt',
-                description: 'Confirmation modal with semantic variants.',
                 origin: 'Plasma',
             },
             {
@@ -303,11 +319,29 @@ export const categories = [
                 description: 'Action footer fixed to the bottom of the viewport.',
                 origin: 'Plasma',
             },
+        ],
+    },
+    {
+        name: 'Overlays',
+        description: 'Components that appear above the page and take focus.',
+        components: [
             {
-                name: 'Tabs',
-                id: 'tabs',
-                description: 'Navigation between related content panels.',
+                name: 'Drawer',
+                id: 'drawer',
+                description: 'Side panel for contextual content or a task without leaving the page.',
                 origin: 'Mantine',
+            },
+            {
+                name: 'Modal',
+                id: 'modal',
+                description: 'Overlay dialog that focuses user attention.',
+                origin: 'Mantine',
+            },
+            {
+                name: 'Prompt',
+                id: 'prompt',
+                description: 'Confirmation modal with semantic variants.',
+                origin: 'Plasma',
             },
         ],
     },
@@ -322,6 +356,12 @@ export const categories = [
                 origin: 'Mantine',
             },
             {
+                name: 'BrowserPreview',
+                id: 'browserpreview',
+                description: 'Simulated browser frame around preview content.',
+                origin: 'Plasma',
+            },
+            {
                 name: 'Card',
                 id: 'card',
                 description: 'Surface that groups related content.',
@@ -334,9 +374,21 @@ export const categories = [
                 origin: 'Mantine',
             },
             {
+                name: 'EllipsisText',
+                id: 'ellipsistext',
+                description: 'Overflowing text truncated with an optional tooltip.',
+                origin: 'Plasma',
+            },
+            {
                 name: 'Image',
                 id: 'image',
                 description: 'Responsive image inside a sized container.',
+                origin: 'Mantine',
+            },
+            {
+                name: 'Kbd',
+                id: 'kbd',
+                description: 'Visual representation of keyboard keys or shortcuts.',
                 origin: 'Mantine',
             },
             {
@@ -350,36 +402,6 @@ export const categories = [
                 id: 'table',
                 description: 'Tabular data with optional filtering and pagination.',
                 origin: 'Plasma',
-            },
-        ],
-    },
-    {
-        name: 'Typography',
-        description: 'Components used to display specialized text content.',
-        components: [
-            {
-                name: 'EllipsisText',
-                id: 'ellipsistext',
-                description: 'Overflowing text truncated with an optional tooltip.',
-                origin: 'Plasma',
-            },
-            {
-                name: 'Kbd',
-                id: 'kbd',
-                description: 'Visual representation of keyboard keys or shortcuts.',
-                origin: 'Mantine',
-            },
-        ],
-    },
-    {
-        name: 'Miscellaneous',
-        description: 'Components that do not fit the other functional categories.',
-        components: [
-            {
-                name: 'Menu',
-                id: 'menu',
-                description: 'Dropdown list of contextual commands.',
-                origin: 'Mantine',
             },
         ],
     },
@@ -401,79 +423,80 @@ export const ComponentTable = ({components}) => (
                         <a href={`?path=/docs/${component.id}--docs`}>{component.name}</a>
                     </Table.Td>
                     <Table.Td>{component.description}</Table.Td>
-                    <Table.Td>{component.origin}</Table.Td>
+                    <Table.Td>
+                        <Tag>{component.origin}</Tag>
+                    </Table.Td>
                 </Table.Tr>
             ))}
         </Table.Tbody>
     </Table>
 );
 
-<Meta title="@components/Overview" id="components-overview" />
+<Meta title="Components/Overview" id="components-overview" />
 
 <Header p={0} description="The building blocks used to create interfaces in the Coveo Administration Console.">
-    Components
+    About Components
 </Header>
 
 Most Plasma components are based on the [Mantine library](https://mantine.dev/core/package/). Others are
 Plasma-specific. All components are imported from `@coveord/plasma-mantine`.
 
-The components are grouped by function:
+## Related resources
 
-- [Call to action](#call-to-action)
-- [Forms and inputs](#forms-and-inputs)
-- [Feedback](#feedback)
-- [Layout](#layout)
-- [Data display](#data-display)
-- [Typography](#typography)
-- [Miscellaneous](#miscellaneous)
+View the components in the [Figma library](https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components?node-id=3156-526&p=f&t=LgsAqJbTOuPL7eGh-0),
+or browse additional details and links in the [Confluence database](https://coveord.atlassian.net/wiki/spaces/dsys/database/5936873512).
 
 <Unstyled>
-    <Alert.Information title="Related resources" mb="md">
-        View the components in the [Figma
-        library](https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components?node-id=3156-526&p=f&t=LgsAqJbTOuPL7eGh-0),
-        or browse additional details and links in the [Confluence
-        database](https://coveord.atlassian.net/wiki/spaces/dsys/database/5936873512).
-    </Alert.Information>
+    <Note>
+        <strong>No status column.</strong> The table below carries component, description and library origin, grouped
+        by function. Plasma does not publish a per-component maturity status today, so a column for it would be empty
+        for all of them. Library origin is the distinction that holds: a Mantine component re-exported unchanged
+        carries no Coveo guidance, and its page links straight out to Mantine.
+    </Note>
 </Unstyled>
 
-## Call to action
+## Actions
 
 {categories[0].description}
 
 <ComponentTable components={categories[0].components} />
 
-## Forms and inputs
+## Navigation
 
 {categories[1].description}
 
 <ComponentTable components={categories[1].components} />
 
-## Feedback
+## Forms and inputs
 
 {categories[2].description}
 
 <ComponentTable components={categories[2].components} />
 
-## Layout
+## Feedback and status
 
 {categories[3].description}
 
 <ComponentTable components={categories[3].components} />
 
-## Data display
+## Layout and structure
 
 {categories[4].description}
 
 <ComponentTable components={categories[4].components} />
 
-## Typography
+## Overlays
 
 {categories[5].description}
 
 <ComponentTable components={categories[5].components} />
 
-## Miscellaneous
+## Data display
 
 {categories[6].description}
 
 <ComponentTable components={categories[6].components} />
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/ComponentsOverview.mdx" />
+</Unstyled>

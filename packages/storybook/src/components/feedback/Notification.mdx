@@ -1,5 +1,6 @@
-import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as NotificationStories from './Notification.stories';
+import {PageFooter} from '../../doc-blocks/DocBlocks.js';
 
 <Meta of={NotificationStories} />
 
@@ -7,17 +8,15 @@ import * as NotificationStories from './Notification.stories';
 
 Transient toast that communicates the outcome or status of an action without interrupting the user's flow.
 
-## Overview
-
 The `Notification` provides timely, non-blocking feedback that users can understand at a glance.
 
 Use the notification system API to manage placement, timing, and multiple messages consistently.
 
-## Usage
+## Demo
 
 <Canvas of={NotificationStories.NotificationSystem} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -39,8 +38,12 @@ Use the notification system API to manage placement, timing, and multiple messag
 - Transition loading notifications to success or error when the operation finishes.
 - Keep recovery guidance visible elsewhere when users may need it after the toast closes.
 
-### Content guidelines
+## Content and copy
 
 - Write a short title that states the outcome.
 - Keep the message brief and easy to scan.
 - For errors and warnings, explain what users can do next.
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/feedback/Notification.mdx" />
+</Unstyled>

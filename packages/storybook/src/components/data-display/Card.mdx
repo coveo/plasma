@@ -1,5 +1,6 @@
-import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Controls, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as CardStories from './Card.stories';
+import {PageFooter} from '../../doc-blocks/DocBlocks.js';
 
 <Meta of={CardStories} />
 
@@ -7,18 +8,15 @@ import * as CardStories from './Card.stories';
 
 Container that groups related content in a distinct surface and can represent an interactive item.
 
-## Overview
-
 `Card` gives one subject a clear visual boundary so users can scan related items or focus on a self-contained section.
 
 The default card is static. The hover variant signals that the entire surface is interactive.
 
-## Usage
+## Demo
 
 <Canvas of={CardStories.Demo} />
-<Controls of={CardStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -40,8 +38,16 @@ The default card is static. The hover variant signals that the entire surface is
 - Give interactive cards keyboard support, an appropriate role, and an accessible state.
 - Avoid nested interactive controls when selecting the card also triggers an action.
 
-### Content guidelines
+## Content and copy
 
 - Keep each card focused on one subject.
 - Use the same content structure across cards in a collection.
 - Keep content concise enough to identify the item at a glance.
+
+## Props
+
+<Controls of={CardStories.Demo} />
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/data-display/Card.mdx" />
+</Unstyled>

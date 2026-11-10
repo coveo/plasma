@@ -1,5 +1,6 @@
-import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Controls, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as AccordionStories from './Accordion.stories';
+import {PageFooter} from '../../doc-blocks/DocBlocks.js';
 
 <Meta of={AccordionStories} />
 
@@ -7,16 +8,13 @@ import * as AccordionStories from './Accordion.stories';
 
 Collapsible content group that reveals related sections without leaving the current page.
 
-## Overview
-
 The `Accordion` helps users scan section headings and open only the details they need. It keeps secondary content available without showing every section at once.
 
-## Usage
+## Demo
 
 <Canvas of={AccordionStories.Demo} />
-<Controls of={AccordionStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -37,7 +35,15 @@ The `Accordion` helps users scan section headings and open only the details they
 - Use icons only as supporting cues. Labels must remain clear on their own.
 - Avoid nesting accordions unless the relationship between levels is unmistakable.
 
-### Content guidelines
+## Content and copy
 
 - Use short, specific labels that describe the panel content.
 - Avoid vague labels such as **Details** or **More information**.
+
+## Props
+
+<Controls of={AccordionStories.Demo} />
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/layout/Accordion.mdx" />
+</Unstyled>

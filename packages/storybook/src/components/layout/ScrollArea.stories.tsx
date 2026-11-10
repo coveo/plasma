@@ -6,7 +6,8 @@ import type {Meta, StoryObj} from '@storybook/react-vite';
 faker.seed(42);
 
 const meta: Meta<typeof ScrollArea> = {
-    title: '@components/Layout/ScrollArea',
+    title: 'Components/Layout/ScrollArea',
+    tags: ['!dev'],
     id: 'ScrollArea',
     component: ScrollArea,
     parameters: {

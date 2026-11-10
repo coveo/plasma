@@ -32,7 +32,7 @@ const colorSections = [
 const defaultShadeIndex = 5;
 
 const meta: Meta = {
-    title: '@foundation/Colors',
+    title: 'Foundations/Color',
     id: 'colors',
     tags: ['!dev'],
     parameters: {

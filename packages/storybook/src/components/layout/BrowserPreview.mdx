@@ -1,5 +1,6 @@
-import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as BrowserPreviewStories from './BrowserPreview.stories';
+import {PageFooter} from '../../doc-blocks/DocBlocks.js';
 
 <Meta of={BrowserPreviewStories} />
 
@@ -7,15 +8,13 @@ import * as BrowserPreviewStories from './BrowserPreview.stories';
 
 Simulated browser frame that places preview content in context.
 
-## Overview
-
 The `BrowserPreview` separates rendered output from the settings or authoring controls around it. Its browser-like header helps users understand that they are evaluating a preview rather than the current application page.
 
-## Usage
+## Demo
 
 <Canvas of={BrowserPreviewStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -35,7 +34,11 @@ The `BrowserPreview` separates rendered output from the settings or authoring co
 - Include interactive preview content only when it helps users validate behavior.
 - Use ordinary layout primitives for content that does not need browser context.
 
-### Content guidelines
+## Content and copy
 
 - Use a short title that identifies what is being previewed.
 - Keep the header tooltip focused on the preview, not the entire feature.
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/layout/BrowserPreview.mdx" />
+</Unstyled>

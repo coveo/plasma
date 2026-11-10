@@ -1,6 +1,33 @@
-import {Meta, Story} from '@storybook/addon-docs/blocks';
+import {Meta, Story, Unstyled} from '@storybook/addon-docs/blocks';
+import {Caption, Note, PageFooter} from '../../../doc-blocks/DocBlocks.js';
 import * as ShadowStories from './Shadows.stories';
 
 <Meta of={ShadowStories} />
 
 <Story of={ShadowStories.Shadows} />
+
+<Unstyled>
+    <Caption>
+        Which component sits at which elevation is not documented anywhere today, and deciding it is part of this work.
+        As a starting point: <code>xs</code> for resting surfaces, <code>sm</code> for cards and popovers,{' '}
+        <code>md</code> for menus and dropdowns, <code>lg</code> for modals, <code>xl</code> for the highest layer.
+    </Caption>
+</Unstyled>
+
+## How they are built
+
+Every step stacks three shadows: a wide soft one, a tighter darker one, and a 1px contact shadow.
+Elevation comes from the spread, not from opacity.
+
+```css
+--mantine-shadow-md:
+    0px 10px 10px -5px rgba(0, 0, 0, 0.04), 0px 20px 25px -5px rgba(0, 0, 0, 0.1), 0px 1px 3px 0px rgba(0, 0, 0, 0.05);
+```
+
+<Unstyled>
+    <Note>
+        All five are a black at low opacity, tuned for the light surfaces Plasma renders on. Separating two
+        surfaces that are both dark needs a border, not a shadow.
+    </Note>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/foundation/shadows/Shadows.mdx" />
+</Unstyled>

@@ -4,7 +4,7 @@ import {CSSVariableValue} from '../CSSVariableValue.js';
 import {FoundationWrapper} from '../FoundationWrapper.js';
 
 const meta: Meta = {
-    title: '@foundation/Radii',
+    title: 'Foundations/Radii',
     id: 'radii',
     tags: ['!dev'],
     parameters: {

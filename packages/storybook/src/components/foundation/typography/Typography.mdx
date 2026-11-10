@@ -1,6 +1,32 @@
-import {Meta, Story} from '@storybook/addon-docs/blocks';
+import {Meta, Story, Unstyled} from '@storybook/addon-docs/blocks';
+import {Caption, Note, PageFooter} from '../../../doc-blocks/DocBlocks.js';
 import * as TypographyStories from './Typography.stories';
 
 <Meta of={TypographyStories} />
 
 <Story of={TypographyStories.Typography} />
+
+## The family
+
+`canada-type-gibson, sans-serif` — headings and body alike.
+There is no second family, and no reason to introduce one.
+
+<Unstyled>
+    <Caption>
+        Weights: <code>--coveo-fw-light</code> 300 · <code>--coveo-fw-normal</code> 400 · <code>--coveo-fw-bold</code>{' '}
+        500.
+    </Caption>
+    <Note>
+        <strong>h2 is the only heading set in normal weight.</strong> Deliberate or not, it is the one exception on the
+        scale.
+    </Note>
+</Unstyled>
+
+## What not to do
+
+- Do not set a font size in pixels. Pick the step that is closest; if none fits, the layout is the problem.
+- Do not use a heading level for its size. The level is document structure, and screen readers navigate by it. Use `Text` with the size you want.
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/foundation/typography/Typography.mdx" />
+</Unstyled>

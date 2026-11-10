@@ -1,5 +1,6 @@
-import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as SkeletonStories from './Skeleton.stories';
+import {PageFooter} from '../../doc-blocks/DocBlocks.js';
 
 <Meta of={SkeletonStories} />
 
@@ -7,17 +8,15 @@ import * as SkeletonStories from './Skeleton.stories';
 
 Placeholder that reserves the shape of content while it loads.
 
-## Overview
-
 The `Skeleton` reduces layout shifts and perceived wait time by showing where incoming content will appear.
 
 It works best when the approximate size and shape of that content are known.
 
-## Usage
+## Demo
 
 <Canvas of={SkeletonStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -38,3 +37,7 @@ It works best when the approximate size and shape of that content are known.
 - Use `circle` for avatar or round icon placeholders.
 - Combine multiple skeletons to reflect the structure of a larger content region.
 - Set `aria-busy` on the surrounding region while content is pending, then clear it when content loads.
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/feedback/Skeleton.mdx" />
+</Unstyled>

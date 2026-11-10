@@ -3,7 +3,8 @@ import type {ComponentProps} from 'react';
 import {PrerequisitesList} from '@coveord/plasma-mantine/components/PrerequisitesList';
 
 const meta: Meta<typeof PrerequisitesList> = {
-    title: '@components/Feedback/PrerequisitesList',
+    title: 'Components/Feedback/PrerequisitesList',
+    tags: ['!dev'],
     id: 'PrerequisitesList',
     component: PrerequisitesList,
     parameters: {

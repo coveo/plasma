@@ -2,7 +2,8 @@ import {Loader} from '@coveord/plasma-mantine/components/Loader';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof Loader> = {
-    title: '@components/Feedback/Loader',
+    title: 'Components/Feedback/Loader',
+    tags: ['!dev'],
     id: 'Loader',
     component: Loader,
     parameters: {

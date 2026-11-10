@@ -1,6 +1,15 @@
-import {Meta, Story} from '@storybook/addon-docs/blocks';
+import {Meta, Story, Unstyled} from '@storybook/addon-docs/blocks';
+import {Caption, PageFooter} from '../../../doc-blocks/DocBlocks.js';
 import * as RadiiStories from './Radii.stories';
 
 <Meta of={RadiiStories} />
 
 <Story of={RadiiStories.Radii} />
+
+<Unstyled>
+    <Caption>
+        <code>default</code> is documented as a size and resolves to <code>md</code>. Components take the default unless
+        you pass <code>radius</code>, so most of the product should never set it.
+    </Caption>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/foundation/radii/Radii.mdx" />
+</Unstyled>

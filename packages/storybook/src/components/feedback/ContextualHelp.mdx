@@ -1,5 +1,6 @@
-import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Controls, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as ContextualHelpStories from './ContextualHelp.stories';
+import {PageFooter} from '../../doc-blocks/DocBlocks.js';
 
 <Meta of={ContextualHelpStories} />
 
@@ -7,18 +8,15 @@ import * as ContextualHelpStories from './ContextualHelp.stories';
 
 Question icon that reveals extra explanation about nearby content.
 
-## Overview
-
 The `ContextualHelp` lets users get optional details about a metric, column, title, or value without adding text to the page.
 
 The help opens on hover or keyboard focus. Use the `text` variant for plain text, shown in a tooltip, and the `interactive` variant when it contains a link, shown in a hover card that users can move into.
 
-## Usage
+## Demo
 
 <Canvas of={ContextualHelpStories.Demo} />
-<Controls of={ContextualHelpStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -40,13 +38,21 @@ The help opens on hover or keyboard focus. Use the `text` variant for plain text
 - When several help icons appear on the same page, give each one an `aria-label` that names its subject, such as "About clickthrough rate".
 - Use `ContextualHelp` instead of combining `Tooltip` and `InfoToken` yourself, so icons stay consistent.
 
-### Accessibility
+## Content and copy
+
+- Keep the help short. One or two sentences is usually enough.
+- Define the term or explain how the value is calculated. Don't repeat the label.
+
+## Accessibility
 
 - Don't hide required information in `ContextualHelp`; some users never open it.
 - Screen readers announce the icon as "More information" unless you set an `aria-label`.
 - Tell screen reader users when a link opens in a new tab, for example with visually hidden text such as "(opens in a new tab)".
 
-### Content guidelines
+## Props
 
-- Keep the help short. One or two sentences is usually enough.
-- Define the term or explain how the value is calculated. Don't repeat the label.
+<Controls of={ContextualHelpStories.Demo} />
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/feedback/ContextualHelp.mdx" />
+</Unstyled>

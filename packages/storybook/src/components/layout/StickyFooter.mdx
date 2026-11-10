@@ -1,5 +1,6 @@
-import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as StickyFooterStories from './StickyFooter.stories';
+import {PageFooter} from '../../doc-blocks/DocBlocks.js';
 
 <Meta of={StickyFooterStories} />
 
@@ -7,15 +8,13 @@ import * as StickyFooterStories from './StickyFooter.stories';
 
 Persistent page-level action footer for editing and creation flows.
 
-## Overview
-
 The `StickyFooter` keeps actions such as save and cancel available while users work through long page content. It prevents page-level commitments from scrolling out of view.
 
-## Usage
+## Demo
 
 <Canvas of={StickyFooterStories.Default} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -36,7 +35,11 @@ The `StickyFooter` keeps actions such as save and cancel available while users w
 - Keep action order consistent across similar workflows.
 - Avoid unrelated utility actions in the footer.
 
-### Content guidelines
+## Content and copy
 
 - Label the primary action with the result, such as **Save changes** or **Create project**.
 - Use a clear exit label such as **Cancel** for the safe alternative, as a tertiary button.
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/layout/StickyFooter.mdx" />
+</Unstyled>

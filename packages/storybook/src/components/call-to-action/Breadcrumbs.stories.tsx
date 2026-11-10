@@ -7,7 +7,8 @@ interface BreadcrumbsStoryArgs {
 }
 
 const meta: Meta<BreadcrumbsStoryArgs> = {
-    title: '@components/Call to action/Breadcrumbs',
+    title: 'Components/Navigation/Breadcrumbs',
+    tags: ['!dev'],
     id: 'Breadcrumbs',
     parameters: {
         layout: 'centered',

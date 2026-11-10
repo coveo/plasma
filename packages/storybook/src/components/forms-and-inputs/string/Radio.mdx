@@ -1,5 +1,6 @@
-import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Controls, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as RadioStories from './Radio.stories';
+import {PageFooter} from '../../../doc-blocks/DocBlocks.js';
 
 <Meta of={RadioStories} />
 
@@ -7,18 +8,15 @@ import * as RadioStories from './Radio.stories';
 
 Single-selection control for choosing exactly one option from a small, visible set.
 
-## Overview
-
 `Radio` keeps mutually exclusive options visible so users can compare them before choosing.
 
 Use `Radio.Group` to provide shared labeling, validation, value management, and keyboard navigation.
 
-## Usage
+## Demo
 
 <Canvas of={RadioStories.RadioGroup} />
-<Controls of={RadioStories.RadioGroup} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -40,8 +38,16 @@ Use `Radio.Group` to provide shared labeling, validation, value management, and 
 - Use a horizontal layout for a few short labels and a vertical layout for longer labels.
 - Apply required state and validation to the group, not individual items.
 
-### Content guidelines
+## Content and copy
 
 - Name the decision in the group label.
 - Keep option labels short, parallel, and in sentence case.
 - Avoid double negatives and technical jargon.
+
+## Props
+
+<Controls of={RadioStories.RadioGroup} />
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/forms-and-inputs/string/Radio.mdx" />
+</Unstyled>

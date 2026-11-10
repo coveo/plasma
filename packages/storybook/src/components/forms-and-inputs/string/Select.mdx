@@ -1,5 +1,6 @@
-import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Controls, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as SelectStories from './Select.stories';
+import {PageFooter} from '../../../doc-blocks/DocBlocks.js';
 
 <Meta of={SelectStories} />
 
@@ -7,18 +8,15 @@ import * as SelectStories from './Select.stories';
 
 Compact input for choosing one value from a predefined list.
 
-## Overview
-
 `Select` presents mutually exclusive options in a dropdown when they do not all need to remain visible.
 
 It supports searchable and clearable experiences while preserving familiar form-field structure.
 
-## Usage
+## Demo
 
 <Canvas of={SelectStories.Demo} />
-<Controls of={SelectStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -40,8 +38,16 @@ It supports searchable and clearable experiences while preserving familiar form-
 - Use `disabled` only when the field is unavailable.
 - Order options predictably and keep their labels easy to distinguish.
 
-### Content guidelines
+## Content and copy
 
 - Label the decision users are making.
 - Use placeholder text to prompt a choice, not repeat the label.
 - Keep option labels concise and parallel.
+
+## Props
+
+<Controls of={SelectStories.Demo} />
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/forms-and-inputs/string/Select.mdx" />
+</Unstyled>

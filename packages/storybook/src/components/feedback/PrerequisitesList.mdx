@@ -1,5 +1,6 @@
-import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as PrerequisitesListStories from './PrerequisitesList.stories';
+import {PageFooter} from '../../doc-blocks/DocBlocks.js';
 
 <Meta of={PrerequisitesListStories} />
 
@@ -7,17 +8,15 @@ import * as PrerequisitesListStories from './PrerequisitesList.stories';
 
 List of required conditions with complete or incomplete status indicators.
 
-## Overview
-
 The `PrerequisitesList` groups prerequisite items in a semantic list.
 
 Each `PrerequisitesList.Item` pairs a label with a status icon and can include a short description.
 
-## Usage
+## Demo
 
 <Canvas of={PrerequisitesListStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -36,7 +35,11 @@ Each `PrerequisitesList.Item` pairs a label with a status icon and can include a
 - Add a description only when the label doesn't provide enough context.
 - Keep status meaning available through each item's label, not only its icon.
 
-### Content guidelines
+## Content and copy
 
 - Write labels as concise conditions users can recognize quickly.
 - Use descriptions for necessary context, not to repeat the label.
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/feedback/PrerequisitesList.mdx" />
+</Unstyled>

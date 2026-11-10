@@ -1,5 +1,6 @@
-import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Controls, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as SegmentedControlStories from './SegmentedControl.stories';
+import {PageFooter} from '../../../doc-blocks/DocBlocks.js';
 
 <Meta of={SegmentedControlStories} />
 
@@ -7,18 +8,15 @@ import * as SegmentedControlStories from './SegmentedControl.stories';
 
 Compact control for switching immediately between a small set of mutually exclusive views or modes.
 
-## Overview
-
 `SegmentedControl` keeps every option visible in a compact bar and always maintains one active selection.
 
 It works best for quick view, mode, or filter changes that do not require a separate submit action.
 
-## Usage
+## Demo
 
 <Canvas of={SegmentedControlStories.Demo} />
-<Controls of={SegmentedControlStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -40,7 +38,15 @@ It works best for quick view, mode, or filter changes that do not require a sepa
 - Disable an individual segment when its mode is temporarily unavailable.
 - Give the control an accessible name when surrounding context does not provide one.
 
-### Content guidelines
+## Content and copy
 
 - Keep labels short and meaningful on their own.
 - Use parallel labels with the same grammatical form.
+
+## Props
+
+<Controls of={SegmentedControlStories.Demo} />
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/forms-and-inputs/string/SegmentedControl.mdx" />
+</Unstyled>

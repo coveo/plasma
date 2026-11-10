@@ -2,7 +2,8 @@ import {Combobox, type ComboboxOptionProps} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta = {
-    title: '@components/Forms and inputs/string/Combobox',
+    title: 'Components/Combobox/Combobox',
+    tags: ['!dev'],
     id: 'Combobox',
     component: Combobox.Option,
     parameters: {

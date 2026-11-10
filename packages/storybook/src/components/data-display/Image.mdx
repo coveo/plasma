@@ -1,5 +1,6 @@
-import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Controls, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as ImageStories from './Image.stories';
+import {PageFooter} from '../../doc-blocks/DocBlocks.js';
 
 <Meta of={ImageStories} />
 
@@ -7,18 +8,15 @@ import * as ImageStories from './Image.stories';
 
 Responsive image that controls how visual content fits within defined dimensions.
 
-## Overview
-
 `Image` renders an image with predictable sizing, cropping, and fallback behavior.
 
 Use it for meaningful or decorative images inside cards, panels, and other bounded layouts.
 
-## Usage
+## Demo
 
 <Canvas of={ImageStories.Demo} />
-<Controls of={ImageStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -37,7 +35,15 @@ Use it for meaningful or decorative images inside cards, panels, and other bound
 - Use `contain` when the entire image needs to remain visible.
 - Rely on the Plasma fallback or provide a context-specific `fallbackSrc` for failed sources.
 
-### Content guidelines
+## Content and copy
 
 - Describe meaningful image content with concise `alt` text.
 - Use `alt=""` when an image is purely decorative.
+
+## Props
+
+<Controls of={ImageStories.Demo} />
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/data-display/Image.mdx" />
+</Unstyled>

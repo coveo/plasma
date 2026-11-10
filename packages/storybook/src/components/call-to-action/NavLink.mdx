@@ -1,5 +1,6 @@
-import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Controls, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as NavLinkStories from './NavLink.stories';
+import {PageFooter} from '../../doc-blocks/DocBlocks.js';
 
 <Meta of={NavLinkStories} />
 
@@ -7,16 +8,13 @@ import * as NavLinkStories from './NavLink.stories';
 
 Navigation item for sidebars and vertical menus.
 
-## Overview
-
 The `NavLink` communicates the current location and supports icons, badges, disabled states, and one level of nested links.
 
-## Usage
+## Demo
 
 <Canvas of={NavLinkStories.Demo} />
-<Controls of={NavLinkStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -39,8 +37,16 @@ The `NavLink` communicates the current location and supports icons, badges, disa
 - Keep nested navigation to one level.
 - Remove unavailable destinations instead of relying on disabled links alone.
 
-### Content guidelines
+## Content and copy
 
 - Give each item a short, specific navigation label.
 - Use title case for navigation menu items.
 - Keep labels distinct enough to scan quickly.
+
+## Props
+
+<Controls of={NavLinkStories.Demo} />
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/call-to-action/NavLink.mdx" />
+</Unstyled>

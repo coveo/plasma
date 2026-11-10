@@ -1,5 +1,6 @@
-import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as CollectionStories from './Collection.stories';
+import {PageFooter} from '../../../doc-blocks/DocBlocks.js';
 
 <Meta of={CollectionStories} />
 
@@ -7,17 +8,15 @@ import * as CollectionStories from './Collection.stories';
 
 Dynamic form field for adding, editing, removing, and reordering repeated items.
 
-## Overview
-
 The `Collection` manages repeated structured values as one field, such as contacts, rules, mappings, or recipients.
 
 Its column-based layouts organize fields consistently while preserving form state and validation.
 
-## Usage
+## Demo
 
 <Canvas of={CollectionStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -40,9 +39,13 @@ Its column-based layouts organize fields consistently while preserving form stat
 - Use `required` when at least one item must remain.
 - Explain why users cannot add another item with `addDisabledTooltip`.
 
-### Content guidelines
+## Content and copy
 
 - Label the collection with the type of item it contains.
 - Name the item in the add action, such as **Add contact**.
 - Keep column headers short and specific.
 - Write validation messages that explain how to fix the item.
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/forms-and-inputs/array/Collection.mdx" />
+</Unstyled>

@@ -1,5 +1,6 @@
-import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Controls, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as SliderStories from './Slider.stories';
+import {PageFooter} from '../../../doc-blocks/DocBlocks.js';
 
 <Meta of={SliderStories} />
 
@@ -7,18 +8,15 @@ import * as SliderStories from './Slider.stories';
 
 Range control for choosing a numeric value by moving a thumb along a track.
 
-## Overview
-
 The `Slider` makes a value's position within a bounded range visible and directly adjustable.
 
 It supports stepped values, reference marks, hover labels, and keyboard interaction.
 
-## Usage
+## Demo
 
 <Canvas of={SliderStories.Demo} />
-<Controls of={SliderStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -40,3 +38,11 @@ It supports stepped values, reference marks, hover labels, and keyboard interact
 - Use `labelAlwaysOn` only when the exact value needs continuous emphasis.
 - Provide `thumbLabel` so assistive technology can identify the control.
 - Provide `thumbValueText` when the displayed value uses units, currency, or a transformed scale.
+
+## Props
+
+<Controls of={SliderStories.Demo} />
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/forms-and-inputs/number/Slider.mdx" />
+</Unstyled>

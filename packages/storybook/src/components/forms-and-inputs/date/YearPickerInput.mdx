@@ -1,5 +1,6 @@
-import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Controls, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as YearPickerInputStories from './YearPickerInput.stories';
+import {PageFooter} from '../../../doc-blocks/DocBlocks.js';
 
 <Meta of={YearPickerInputStories} />
 
@@ -7,18 +8,15 @@ import * as YearPickerInputStories from './YearPickerInput.stories';
 
 Year-grid input for selecting one year, multiple years, or a continuous year range.
 
-## Overview
-
 The `YearPickerInput` collects year-level values without asking users for unnecessary month or day details.
 
 It provides a structured grid for report years, milestones, and comparison periods.
 
-## Usage
+## Demo
 
 <Canvas of={YearPickerInputStories.Demo} />
-<Controls of={YearPickerInputStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -39,8 +37,16 @@ It provides a structured grid for report years, milestones, and comparison perio
 - Set `minDate` and `maxDate` when the domain limits valid years.
 - Enable `clearable` for optional fields.
 
-### Content guidelines
+## Content and copy
 
 - Use a short noun phrase for the label, such as **Report year** or **Founding year**.
 - Match the placeholder to the mode, such as **Pick a year** or **Pick a year range**.
 - Explain the valid year or order in validation feedback.
+
+## Props
+
+<Controls of={YearPickerInputStories.Demo} />
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/forms-and-inputs/date/YearPickerInput.mdx" />
+</Unstyled>

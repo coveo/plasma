@@ -1,5 +1,6 @@
-import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Controls, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as ButtonStories from './Button.stories';
+import {PageFooter} from '../../doc-blocks/DocBlocks.js';
 
 <Meta of={ButtonStories} />
 
@@ -7,18 +8,15 @@ import * as ButtonStories from './Button.stories';
 
 Action button that triggers tasks and provides async loading and disabled-tooltip feedback.
 
-## Overview
-
 The `Button` lets users intentionally trigger an action, submit a decision, or move a workflow forward.
 
 It provides clear visual hierarchy for actions and supports async loading and disabled-state explanations.
 
-## Usage
+## Demo
 
 <Canvas of={ButtonStories.Demo} />
-<Controls of={ButtonStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -41,9 +39,17 @@ It provides clear visual hierarchy for actions and supports async loading and di
 - Reserve destructive emphasis for actions that delete, revoke, archive, or negatively affect data.
 - Group related actions and make their hierarchy visually clear.
 
-### Content guidelines
+## Content and copy
 
 - Start labels with a specific verb that describes the result, such as **Save changes** or **Publish**.
 - Keep labels to three words or fewer.
 - Make destructive consequences explicit.
 - Use specific labels such as **Delete project**, not vague labels such as **OK**.
+
+## Props
+
+<Controls of={ButtonStories.Demo} />
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/call-to-action/Button.mdx" />
+</Unstyled>

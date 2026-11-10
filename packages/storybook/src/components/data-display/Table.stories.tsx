@@ -49,7 +49,8 @@ type StoryArgs = TableProps<Person> & {
 };
 
 const meta: Meta<StoryArgs> = {
-    title: '@components/Data display/Table',
+    title: 'Components/Data display/Table',
+    tags: ['!dev'],
     id: 'Table',
     component: Table,
     parameters: {

@@ -1,5 +1,6 @@
-import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Controls, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as PaginationStories from './Pagination.stories';
+import {PageFooter} from '../../doc-blocks/DocBlocks.js';
 
 <Meta of={PaginationStories} />
 
@@ -7,16 +8,13 @@ import * as PaginationStories from './Pagination.stories';
 
 Page navigation control for moving through a multi-page dataset.
 
-## Overview
-
 The `Pagination` shows the current page and lets users move to another numbered page without displaying every page at once.
 
-## Usage
+## Demo
 
 <Canvas of={PaginationStories.Demo} />
-<Controls of={PaginationStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -38,3 +36,11 @@ The `Pagination` shows the current page and lets users move to another numbered 
 - Disable controls while new page data loads.
 - Hide pagination when no results or only one page exists.
 - Move focus to the updated content after the page changes.
+
+## Props
+
+<Controls of={PaginationStories.Demo} />
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/call-to-action/Pagination.mdx" />
+</Unstyled>

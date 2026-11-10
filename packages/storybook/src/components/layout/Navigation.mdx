@@ -1,5 +1,6 @@
-import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as NavigationStories from './Navigation.stories';
+import {PageFooter} from '../../doc-blocks/DocBlocks.js';
 
 <Meta of={NavigationStories} />
 
@@ -7,15 +8,13 @@ import * as NavigationStories from './Navigation.stories';
 
 Collapsible application sidebar with top-level links, nested sections, and active destination states.
 
-## Overview
-
 The `Navigation` provider coordinates a sidebar's collapsed state with an `AppShell`. Its links and expandable sections organize primary destinations while keeping the current destination visible.
 
-## Usage
+## Demo
 
 <Canvas of={NavigationStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -38,8 +37,12 @@ The `Navigation` provider coordinates a sidebar's collapsed state with an `AppSh
 - Use `footer` for a destination that must stay visible below the links. Keep it to one or two items.
 - Sections with no children are omitted automatically.
 
-### Content guidelines
+## Content and copy
 
 - Use short, distinct labels that describe destinations.
 - Keep section labels broad enough to describe all links they contain.
 - Use badges only for the supported status meanings: beta, work in progress, or new.
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/layout/Navigation.mdx" />
+</Unstyled>
