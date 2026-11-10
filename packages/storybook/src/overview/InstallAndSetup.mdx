@@ -1,0 +1,361 @@
+import {Meta, Unstyled} from '@storybook/addon-docs/blocks';
+import {Table} from '@mantine/core';
+import {Accordion} from '@coveord/plasma-mantine';
+import {Note, PageFooter, Rule, Step, Steps, Worked} from '../doc-blocks/DocBlocks.js';
+
+<Meta title="Get started/Install and setup" id="overview-install-and-setup" />
+
+# Install and setup
+
+Three ways to consume Plasma — in code, in Figma, and from an AI assistant.
+Set up the one you need; they do not depend on each other.
+
+## In code
+
+Install Plasma with its required peer dependencies.
+
+```bash
+npm install @coveord/plasma-mantine @mantine/core @mantine/hooks react react-dom
+```
+
+Add the optional Mantine packages only when your application uses their components.
+
+```bash
+npm install @mantine/carousel @mantine/code-highlight @mantine/dates @mantine/form @mantine/modals @mantine/notifications
+```
+
+Wrap the application once in the `Plasmantine` provider, and import the base stylesheet.
+The provider applies the Coveo theme and the tokens to every component below it, so no separate `MantineProvider` is needed.
+
+```tsx
+import {Plasmantine} from '@coveord/plasma-mantine/plasmantine';
+import '@mantine/core/styles.css';
+
+export function App({children}) {
+    return <Plasmantine>{children}</Plasmantine>;
+}
+```
+
+Each optional package ships its own stylesheet, imported the same way.
+
+```tsx
+import '@mantine/notifications/styles.css';
+```
+
+<Unstyled>
+    <Rule>
+        Always import from <code>@coveord/plasma-mantine</code> — never from <code>@mantine/*</code> directly.
+    </Rule>
+    <Note>
+        This holds for the ~90 re-exported Mantine components too. Importing them from Mantine bypasses the Coveo theme
+        and pins you to a version Plasma does not control. See <strong>Re-exported Mantine components</strong>.
+    </Note>
+    <Worked>
+        You will know it worked when a <code>Button</code> renders in Coveo blue rather than Mantine's default, with
+        no further configuration.
+    </Worked>
+</Unstyled>
+
+### The packages
+
+<Unstyled>
+    <Table withTableBorder withColumnBorders>
+        <Table.Thead>
+            <Table.Tr>
+                <Table.Th w="34%">Package</Table.Th>
+                <Table.Th>Use it for</Table.Th>
+            </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>
+            <Table.Tr>
+                <Table.Td>
+                    <a href="https://github.com/coveo/plasma/tree/master/packages/mantine">@coveord/plasma-mantine</a>
+                </Table.Td>
+                <Table.Td>
+                    Plasma-themed Mantine components and custom components. This is the only one you install directly —
+                    the rest come with it.
+                </Table.Td>
+            </Table.Tr>
+            <Table.Tr>
+                <Table.Td>
+                    <a href="https://github.com/coveo/plasma/tree/master/packages/tokens">@coveord/plasma-tokens</a>
+                </Table.Td>
+                <Table.Td>Design tokens for colours, spacing, typography and icons.</Table.Td>
+            </Table.Tr>
+            <Table.Tr>
+                <Table.Td>
+                    <a href="https://github.com/coveo/plasma/tree/master/packages/react-icons">
+                        {'@coveord/plasma-react-icons'}
+                    </a>
+                </Table.Td>
+                <Table.Td>Plasma iconography as React components.</Table.Td>
+            </Table.Tr>
+            <Table.Tr>
+                <Table.Td>
+                    <a href="https://github.com/coveo/plasma/tree/master/packages/llms">@coveord/plasma-llms</a>
+                </Table.Td>
+                <Table.Td>LLM-friendly component and content documentation.</Table.Td>
+            </Table.Tr>
+            <Table.Tr>
+                <Table.Td>
+                    <a href="https://github.com/coveo/plasma/tree/master/packages/mcp-server">
+                        {'@coveord/plasma-mcp-server'}
+                    </a>
+                </Table.Td>
+                <Table.Td>On-demand Plasma documentation for AI agents.</Table.Td>
+            </Table.Tr>
+        </Table.Tbody>
+    </Table>
+</Unstyled>
+
+## In Figma
+
+<Unstyled>
+    <Steps>
+        <Step>
+            Enable the <strong>Plasma</strong> library in your file, under Assets.
+        </Step>
+        <Step>
+            Enable the <strong>Plasma Tokens</strong> variable collection, so colour, spacing and radius resolve to the
+            same values the code uses.
+        </Step>
+    </Steps>
+</Unstyled>
+
+Components carry the same names in Figma and in code, so a handoff can name one thing.
+Where a Figma component has no code equivalent, or the reverse, the **Components overview** says so in the Figma column.
+
+<Unstyled>
+    <Worked>
+        You will know it worked when a colour on your layer resolves to a <strong>semantic</strong> token name — not a
+        raw primitive like <code>blue-5</code>, which is not for direct use.
+    </Worked>
+</Unstyled>
+
+## With an AI assistant
+
+Plasma publishes machine-readable documentation.
+Point your assistant at it rather than letting it guess from the component names.
+
+<Unstyled>
+    <Table withTableBorder withColumnBorders>
+        <Table.Thead>
+            <Table.Tr>
+                <Table.Th w="34%">Surface</Table.Th>
+                <Table.Th>What it is, and when to use it</Table.Th>
+            </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>
+            <Table.Tr>
+                <Table.Td>
+                    <code>plasma.coveo.com/llms.txt</code>
+                </Table.Td>
+                <Table.Td>
+                    The index: every component and foundation, with links. Start here when the assistant needs to know
+                    what exists.
+                </Table.Td>
+            </Table.Tr>
+            <Table.Tr>
+                <Table.Td>
+                    <code>plasma.coveo.com/llms-full.txt</code>
+                </Table.Td>
+                <Table.Td>
+                    The whole documentation in one file. For a long task where you would rather not have the assistant
+                    fetch page by page.
+                </Table.Td>
+            </Table.Tr>
+            <Table.Tr>
+                <Table.Td>
+                    <code>llms/components/&lt;Name&gt;.md</code>
+                </Table.Td>
+                <Table.Td>One component: purpose, usage, states, accessibility, anti-patterns, typed props.</Table.Td>
+            </Table.Tr>
+            <Table.Tr>
+                <Table.Td>
+                    <strong>Plasma MCP server</strong>
+                </Table.Td>
+                <Table.Td>
+                    Live access from an agent, instead of pasted text. Use it with Claude Code or any MCP client.
+                </Table.Td>
+            </Table.Tr>
+        </Table.Tbody>
+    </Table>
+    <Note>
+        <strong>What the assistant does not know yet.</strong> Per-component copy rules live on these pages and have not
+        all reached the markdown, so a generated label may not follow the Plasma rule. The ~90 extended components carry
+        no Coveo guidance at all. Review generated UI text against <strong>Content</strong>.
+    </Note>
+</Unstyled>
+
+### Set up your AI tool
+
+For the best results, install the Plasma skill and configure both MCP servers in your AI tool:
+
+- The **Plasma skill** gives your agent persistent setup, import, and documentation lookup conventions.
+- The **Plasma and Mantine MCP servers** give your agent access to the entire design system documentation efficiently.
+
+<Accordion variant="filled">
+    <Accordion.Item value="claude-code">
+        <Accordion.Control>Claude Code</Accordion.Control>
+        <Accordion.Panel>
+            **Step 1: Install the Plasma skill.** Save [`plasma-skill.md`](/plasma-skill.md) as `~/.claude/skills/plasma/SKILL.md` so it is available in all your projects. Alternatively, save it as `.claude/skills/plasma/SKILL.md` in your project to share it with your team.
+
+            **Step 2: Configure the MCP servers.** Add both servers at the user scope so they are available in all your projects:
+
+            ```bash
+            claude mcp add --scope user plasma -- npx -y @coveord/plasma-mcp-server
+            claude mcp add --scope user mantine -- npx -y @mantine/mcp-server
+            ```
+
+            Alternatively, to share the setup with your team, add both servers to a project-scoped `.mcp.json` at your repository root and commit it:
+
+            ```json
+            {
+                "mcpServers": {
+                    "plasma": {
+                        "command": "npx",
+                        "args": ["-y", "@coveord/plasma-mcp-server"]
+                    },
+                    "mantine": {
+                        "command": "npx",
+                        "args": ["-y", "@mantine/mcp-server"]
+                    }
+                }
+            }
+            ```
+
+            Run `/mcp` in Claude Code to verify both servers are connected.
+        </Accordion.Panel>
+    </Accordion.Item>
+    <Accordion.Item value="codex-cli">
+        <Accordion.Control>Codex CLI</Accordion.Control>
+        <Accordion.Panel>
+            **Step 1: Install the Plasma skill.** Save [`plasma-skill.md`](/plasma-skill.md) as `.agents/skills/plasma/SKILL.md` in your project.
+
+            **Step 2: Configure the MCP servers.** Add both servers to `~/.codex/config.toml`:
+
+            ```toml
+            [mcp_servers.plasma]
+            command = "npx"
+            args = ["-y", "@coveord/plasma-mcp-server"]
+
+            [mcp_servers.mantine]
+            command = "npx"
+            args = ["-y", "@mantine/mcp-server"]
+            ```
+
+            For a project-specific setup, set `CODEX_HOME=.codex` and add the configuration to `.codex/config.toml`.
+        </Accordion.Panel>
+    </Accordion.Item>
+    <Accordion.Item value="github-copilot-cli">
+        <Accordion.Control>GitHub Copilot CLI</Accordion.Control>
+        <Accordion.Panel>
+            **Step 1: Install the Plasma skill.** Load it in the terminal:
+
+            ```
+            /skill https://plasma.coveo.com/plasma-skill.md
+            ```
+
+            **Step 2: Configure the MCP servers.** Add both servers from the terminal:
+
+            ```bash
+            copilot mcp add plasma -- npx -y @coveord/plasma-mcp-server
+            copilot mcp add mantine -- npx -y @mantine/mcp-server
+            ```
+
+            The CLI also reads shared workspace MCP configuration from `.mcp.json`.
+        </Accordion.Panel>
+    </Accordion.Item>
+    <Accordion.Item value="github-copilot-vscode">
+        <Accordion.Control>GitHub Copilot in VS Code</Accordion.Control>
+        <Accordion.Panel>
+            **Step 1: Install the Plasma skill.** Save [`plasma-skill.md`](/plasma-skill.md) as `.github/skills/plasma/SKILL.md` in your project.
+
+            **Step 2: Configure the MCP servers.** Create `.vscode/mcp.json` in your project:
+
+            ```json
+            {
+                "servers": {
+                    "plasma": {
+                        "type": "stdio",
+                        "command": "npx",
+                        "args": ["-y", "@coveord/plasma-mcp-server"]
+                    },
+                    "mantine": {
+                        "type": "stdio",
+                        "command": "npx",
+                        "args": ["-y", "@mantine/mcp-server"]
+                    }
+                }
+            }
+            ```
+
+            Use **MCP: List Servers** in the Command Palette to confirm that both servers run.
+        </Accordion.Panel>
+    </Accordion.Item>
+    <Accordion.Item value="kiro">
+        <Accordion.Control>Kiro</Accordion.Control>
+        <Accordion.Panel>
+            **Step 1: Install the Plasma skill.** Save [`plasma-skill.md`](/plasma-skill.md) as `~/.kiro/skills/plasma/SKILL.md` so it is available in all your projects. Alternatively, save it as `.kiro/skills/plasma/SKILL.md` in your project to share it with your team.
+
+            **Step 2: Configure the MCP servers.** Add both servers to `~/.kiro/settings/mcp.json` so they are available in all your projects. Alternatively, to share the setup with your team, add them to `.kiro/settings/mcp.json` in your project and commit it:
+
+            ```json
+            {
+                "mcpServers": {
+                    "plasma": {
+                        "command": "npx",
+                        "args": ["-y", "@coveord/plasma-mcp-server"]
+                    },
+                    "mantine": {
+                        "command": "npx",
+                        "args": ["-y", "@mantine/mcp-server"]
+                    }
+                }
+            }
+            ```
+
+            Restart Kiro after saving the file. Both servers appear in the MCP panel.
+        </Accordion.Panel>
+    </Accordion.Item>
+    <Accordion.Item value="opencode">
+        <Accordion.Control>Opencode</Accordion.Control>
+        <Accordion.Panel>
+            **Step 1: Install the Plasma skill.** Save [`plasma-skill.md`](/plasma-skill.md) as `.opencode/skills/plasma/SKILL.md` in your project.
+
+            **Step 2: Configure the MCP servers.** Add both servers to your project `opencode.json` or global `~/.config/opencode/opencode.json` file:
+
+            ```json
+            {
+                "$schema": "https://opencode.ai/config.json",
+                "mcp": {
+                    "plasma": {
+                        "type": "local",
+                        "command": ["npx", "-y", "@coveord/plasma-mcp-server"],
+                        "enabled": true
+                    },
+                    "mantine": {
+                        "type": "local",
+                        "command": ["npx", "-y", "@mantine/mcp-server"],
+                        "enabled": true
+                    }
+                }
+            }
+            ```
+        </Accordion.Panel>
+    </Accordion.Item>
+
+</Accordion>
+
+<Unstyled>
+    <Worked>
+        You will know it worked when the assistant cites <code>Button.md</code> and the real prop names, instead of
+        inventing props that sound plausible.
+    </Worked>
+</Unstyled>
+
+Something not behaving as described? [Open a request](https://url.coveo.com/plasma-request) — setup problems are the fastest thing we fix, and they usually mean this page is wrong.
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/overview/InstallAndSetup.mdx" />
+</Unstyled>

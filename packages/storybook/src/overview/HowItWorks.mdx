@@ -1,0 +1,126 @@
+import {Meta, Unstyled} from '@storybook/addon-docs/blocks';
+import {Table} from '@mantine/core';
+import {Caption, Layer, Note, PageFooter} from '../doc-blocks/DocBlocks.js';
+
+<Meta title="Get started/How it works" id="overview-how-it-works" />
+
+# How it works
+
+How Plasma is organised, and which word means what.
+Two minutes here saves an argument later about whether something is a pattern, a guideline or a component.
+
+## Components: two questions, not one scale
+
+A component is classified twice, and the two answers are independent.
+**Purpose** says what kind of thing it is; **library origin** says where the code came from.
+
+<Unstyled>
+    <Layer term="Core component">
+        A general-purpose, product-agnostic building block — Button, Input, Dropdown, Checkbox, Modal, Tabs.{' '}
+        <em>If a component assumes Coveo data or a Coveo-specific concept, it isn't a core component.</em>
+    </Layer>
+    <Layer term="Product component">
+        A reusable, product-specific solution built on top of core components. Product components understand Coveo
+        concepts or data — a project selector connected to Coveo data, a privileges table, a source configuration
+        module.
+    </Layer>
+    <Layer term="Library origin" muted>
+        Where the component comes from: <strong>Mantine</strong>, or <strong>Plasma-specific</strong> — created for
+        Plasma rather than inherited. Most Plasma components are based on Mantine.
+    </Layer>
+    <Caption>
+        So a Mantine-based Button is a <strong>core</strong> component with a <strong>Mantine</strong> origin. Facet is
+        a <strong>product</strong> component, <strong>Plasma-specific</strong>. The two answers never substitute for
+        each other.
+    </Caption>
+</Unstyled>
+
+## Patterns: three kinds
+
+Not one thing.
+Which kind you are looking at decides where it lives and how big a decision it settles.
+
+<Unstyled>
+    <Layer term="Interaction pattern">
+        A repeatable solution to a localized interface problem, combining components with behavior, content and product
+        logic — destructive-action confirmation, empty states, table filtering, inline validation.
+    </Layer>
+    <Layer term="Experience pattern">
+        A repeatable sequence of steps that helps a user complete a larger goal, spanning multiple pages, states and
+        decisions — creating a source, configuring a source, multi-step setup.
+    </Layer>
+    <Layer term="Page pattern">
+        A reusable page-level structure and information architecture — overview pages, detail pages, settings pages,
+        dashboards, form pages. A <strong>template</strong> is the reusable page structure a page pattern is based on.
+    </Layer>
+    <Note>
+        <strong>And a guideline is none of these.</strong> A pattern is a page; a guideline is a sentence. An
+        interaction pattern is <em>made of</em> guidelines — the title is this long, the body is one sentence, there is
+        exactly one action. Component pages carry guidelines too, without being patterns. People confuse the two
+        because they compare them as if they were the same kind of thing.
+    </Note>
+</Unstyled>
+
+## Tokens: three tiers
+
+<Unstyled>
+    <Layer term="Primitive">
+        A raw, foundational design value from which other tokens and system decisions are created. Not for direct use.
+    </Layer>
+    <Layer term="Semantic token">
+        A token named according to its purpose rather than its raw value. This is the tier to work with.
+    </Layer>
+    <Layer term="Contextual mapping">
+        The connection between a semantic token and the specific context where it's used.
+    </Layer>
+    <Caption>
+        Values and the full list are on <strong>Design tokens</strong>. A <strong>foundation</strong> is the rule or
+        asset underneath it all — color, typography, spacing, radius, elevation, motion, breakpoints and accessibility
+        expectations.
+    </Caption>
+</Unstyled>
+
+## These are definitions, not labels on pages
+
+The words on this page settle who owns a component, where it belongs and what a contribution has to clear.
+They do **not** appear as tags on component pages.
+
+What a component page carries instead is three fixed links, always in the same place: **Figma component**, **Mantine component** and **GitHub**.
+If there is no Mantine link, the component is Plasma-specific.
+The **Components overview** keeps its _Library origin_ column, as today.
+
+## Where to look for what
+
+Every definition on this page is the one in Plasma's own glossary, which until now lived inside the Content section — a section about writing UI text.
+
+<Unstyled>
+    <Table withTableBorder withColumnBorders>
+        <Table.Thead>
+            <Table.Tr>
+                <Table.Th w="50%">You are asking</Table.Th>
+                <Table.Th>Go to</Table.Th>
+            </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>
+            {[
+                ['Which component do I use, and how?', 'Components'],
+                ['How do these components go together on a screen?', 'Patterns'],
+                ['What colour, spacing or size is correct?', 'Foundations'],
+                ['What should this text say?', 'Content'],
+                ['Who maintains this, and what happens if I ask for a change?', 'Get started'],
+            ].map(([question, destination]) => (
+                <Table.Tr key={question}>
+                    <Table.Td>{question}</Table.Td>
+                    <Table.Td>{destination}</Table.Td>
+                </Table.Tr>
+            ))}
+        </Table.Tbody>
+    </Table>
+</Unstyled>
+
+Why the model is shaped this way — what was adapted from atomic design, what was rejected, how the libraries map to teams — is written up in Confluence.
+This page carries only the working definitions.
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/overview/HowItWorks.mdx" />
+</Unstyled>

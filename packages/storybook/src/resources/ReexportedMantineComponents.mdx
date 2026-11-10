@@ -1,0 +1,43 @@
+import {Meta, Unstyled} from '@storybook/addon-docs/blocks';
+import {PageFooter, Rule} from '../doc-blocks/DocBlocks.js';
+
+<Meta title="Components/Re-exported Mantine components" id="resources-reexported-mantine-components" />
+
+# Re-exported Mantine components
+
+Plasma re-exports about 90 Mantine components unchanged, with Coveo theming applied.
+This page says what that means for you.
+
+## What you get
+
+- Coveo theming and tokens, applied automatically through `Plasmantine`.
+- Version upgrades handled by the Plasma team.
+- Mantine's own documentation for the API, props and examples.
+
+### What you don't get
+
+- Coveo usage guidance, copy rules or accessibility expectations. If one of these components becomes load-bearing in a Coveo product, [ask us to promote it to core](https://url.coveo.com/plasma-request).
+
+```tsx
+// always import from Plasma, never from @mantine/*
+import {Accordion, Carousel} from '@coveord/plasma-mantine';
+```
+
+<Unstyled>
+    <Rule>
+        Always import from <code>@coveord/plasma-mantine</code>, never from <code>@mantine/*</code> directly.
+    </Rule>
+</Unstyled>
+
+## The list
+
+Alphabetical, each linking to its Mantine page.
+
+Accordion · Affix · Alert · Anchor · AspectRatio · Avatar · BackgroundImage · Blockquote · Breadcrumbs · Burger ·
+Carousel · Center · Checkbox · Chip · Code · ColorInput · Container · Divider · Fieldset · Flex · Grid · Group ·
+Highlight · Indicator · Kbd · List · Mark · NavLink · Overlay · Paper · Popover · Rating · RingProgress · SimpleGrid ·
+Space · Spoiler · Stack · ThemeIcon · Timeline · Title · Transition · Tree · …
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/resources/ReexportedMantineComponents.mdx" />
+</Unstyled>

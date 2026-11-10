@@ -2,11 +2,11 @@ import {Table, Text} from '@mantine/core';
 import {type ReactNode} from 'react';
 
 const doStyle = {
-    backgroundColor: 'light-dark(var(--mantine-color-green-1), var(--mantine-color-green-8))',
+    backgroundColor: 'var(--mantine-color-green-1)',
 };
 
 const dontStyle = {
-    backgroundColor: 'light-dark(var(--mantine-color-red-2), var(--mantine-color-red-8))',
+    backgroundColor: 'var(--mantine-color-red-2)',
 };
 
 /** Two-column Do / Don't table. Rows accept strings or JSX nodes. */

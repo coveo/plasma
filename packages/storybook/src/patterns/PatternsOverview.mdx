@@ -1,0 +1,111 @@
+import {Meta, Unstyled} from '@storybook/addon-docs/blocks';
+import {Header, MantineTable as Table} from '@coveord/plasma-mantine';
+import {Note, PageFooter} from '../doc-blocks/DocBlocks.js';
+
+<Meta title="Patterns/Overview" id="patterns-overview" />
+
+<Header
+    p={0}
+    description="Reusable combinations of components that solve common problems in the Coveo Administration Console."
+>
+    About Patterns
+</Header>
+
+A component answers "what do I use?".
+A pattern answers "how do these go together, and what is the right behaviour once they do?".
+
+Patterns show how Plasma components work together to complete a task — filtering a list, handling an empty state,
+navigating with links. Use them to keep similar experiences consistent across the product, so a user who learns one
+screen can predict the next.
+
+## The three layers
+
+Patterns come in three kinds, and the kind decides how much a pattern settles — and how big a decision it is to
+change one. [How it works](./?path=/docs/overview-how-it-works--docs) defines them in full, next to the equivalent
+taxonomies for components and tokens. What the layer changes in practice:
+
+<Unstyled>
+    <Table withTableBorder withColumnBorders>
+        <Table.Thead>
+            <Table.Tr>
+                <Table.Th w="22%">Layer</Table.Th>
+                <Table.Th w="26%">Settles</Table.Th>
+                <Table.Th>Changing one means</Table.Th>
+            </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>
+            <Table.Tr>
+                <Table.Td>
+                    <strong>Interaction</strong>
+                </Table.Td>
+                <Table.Td>One problem inside one screen</Table.Td>
+                <Table.Td>
+                    Re-checking the screens that use it. The smallest of the three, and where most patterns belong.
+                </Table.Td>
+            </Table.Tr>
+            <Table.Tr>
+                <Table.Td>
+                    <strong>Experience</strong>
+                </Table.Td>
+                <Table.Td>A sequence spanning several screens</Table.Td>
+                <Table.Td>Changing a flow rather than a screen — states and decisions move with it.</Table.Td>
+            </Table.Tr>
+            <Table.Tr>
+                <Table.Td>
+                    <strong>Page</strong>
+                </Table.Td>
+                <Table.Td>The structure of a whole page type</Table.Td>
+                <Table.Td>
+                    Touching every page built on that template, which is why it is the heaviest to revisit.
+                </Table.Td>
+            </Table.Tr>
+        </Table.Tbody>
+    </Table>
+    <Note>
+        <strong>A guideline is none of these.</strong> A pattern is a page; a guideline is a sentence. An interaction
+        pattern is <em>made of</em> guidelines. Component pages carry guidelines too, without being patterns — the two
+        get confused because people compare them as if they were the same kind of thing.
+    </Note>
+</Unstyled>
+
+## What is documented today
+
+<Unstyled>
+    <Table withTableBorder withColumnBorders>
+        <Table.Thead>
+            <Table.Tr>
+                <Table.Th w="30%">Pattern</Table.Th>
+                <Table.Th w="22%">Layer</Table.Th>
+                <Table.Th>What it settles</Table.Th>
+            </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>
+            <Table.Tr>
+                <Table.Td>
+                    <a href="./?path=/docs/patterns-navigate-with-links--docs">Navigate with links</a>
+                </Table.Td>
+                <Table.Td>Interaction</Table.Td>
+                <Table.Td>
+                    Which link component to use, when a link opens a new tab, and what the label has to say.
+                </Table.Td>
+            </Table.Tr>
+        </Table.Tbody>
+    </Table>
+    <Note>
+        <strong>One pattern is not a section yet.</strong> This list is deliberately short rather than padded with
+        titles that have no content behind them. A pattern is added when the decision behind it has actually been made
+        — not to reserve a slot in the navigation.
+    </Note>
+</Unstyled>
+
+## When to write one
+
+A pattern earns a page when the same combination of components has been assembled more than once, and the teams
+assembling it made different calls.
+
+That is the signal: not that something is common, but that something common is being done inconsistently.
+If there is only one way it is being built, the component pages already say enough.
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/patterns/PatternsOverview.mdx" />
+</Unstyled>

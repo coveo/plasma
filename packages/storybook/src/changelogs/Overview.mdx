@@ -1,0 +1,120 @@
+import {Meta, Unstyled} from '@storybook/addon-docs/blocks';
+import {Table} from '@mantine/core';
+import {Caption, PageFooter, SlackChannel, Tag} from '../doc-blocks/DocBlocks.js';
+
+<Meta title="changelogs/Overview" id="changelogs-overview" />
+
+# About Changelogs
+
+Everything that changed in Plasma — components, tokens, patterns and documentation — in one feed.
+The per-component changelog at the bottom of each component page answers the same question for that component alone.
+
+A changed rule disrupts as much as a changed prop, so guidance changes are in the same list — not in a section underneath.
+
+<Unstyled>
+    <Table withTableBorder withColumnBorders>
+        <Table.Thead>
+            <Table.Tr>
+                <Table.Th w={90}>Date</Table.Th>
+                <Table.Th>What</Table.Th>
+                <Table.Th>Where</Table.Th>
+                <Table.Th w={110}>Type</Table.Th>
+            </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>
+            <Table.Tr>
+                <Table.Td>Oct 24</Table.Td>
+                <Table.Td>Focus returns to the trigger when a Select closes</Table.Td>
+                <Table.Td>
+                    <code>Select</code>
+                </Table.Td>
+                <Table.Td>
+                    <Tag>patch</Tag>
+                </Table.Td>
+            </Table.Tr>
+            <Table.Tr>
+                <Table.Td>Oct 21</Table.Td>
+                <Table.Td>
+                    <code>BlankSlate</code> deprecated — removed in January
+                </Table.Td>
+                <Table.Td>
+                    <code>BlankSlate</code>
+                </Table.Td>
+                <Table.Td>
+                    <Tag>breaking</Tag>
+                </Table.Td>
+            </Table.Tr>
+            <Table.Tr>
+                <Table.Td>Oct 09</Table.Td>
+                <Table.Td>Curated Coveo icon set replaces the full Tabler list</Table.Td>
+                <Table.Td>Iconography</Table.Td>
+                <Table.Td>
+                    <Tag>docs</Tag>
+                </Table.Td>
+            </Table.Tr>
+            <Table.Tr>
+                <Table.Td>Oct 02</Table.Td>
+                <Table.Td>Semantic colour tokens published with values</Table.Td>
+                <Table.Td>Tokens</Table.Td>
+                <Table.Td>
+                    <Tag>minor</Tag>
+                </Table.Td>
+            </Table.Tr>
+        </Table.Tbody>
+    </Table>
+</Unstyled>
+
+Mirrored to <SlackChannel /> every release.
+
+## By package
+
+The feed above is written by hand and covers what changed for the people using Plasma.
+The pages below are generated from each package's own `CHANGELOG.md`, so they carry every release — including the internal ones that never reach a product.
+
+<Unstyled>
+    <Table withTableBorder withColumnBorders>
+        <Table.Thead>
+            <Table.Tr>
+                <Table.Th w={210}>Package</Table.Th>
+                <Table.Th>What it ships</Table.Th>
+            </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>
+            <Table.Tr>
+                <Table.Td>
+                    <a href="./?path=/docs/changelogs-plasma-mantine--docs">plasma-mantine</a>
+                </Table.Td>
+                <Table.Td>The components themselves, and the Coveo theme applied to Mantine.</Table.Td>
+            </Table.Tr>
+            <Table.Tr>
+                <Table.Td>
+                    <a href="./?path=/docs/changelogs-plasma-tokens--docs">plasma-tokens</a>
+                </Table.Td>
+                <Table.Td>The design tokens the theme is built from.</Table.Td>
+            </Table.Tr>
+            <Table.Tr>
+                <Table.Td>
+                    <a href="./?path=/docs/changelogs-plasma-react-icons--docs">plasma-react-icons</a>
+                </Table.Td>
+                <Table.Td>The Coveo icon set, as React components.</Table.Td>
+            </Table.Tr>
+            <Table.Tr>
+                <Table.Td>
+                    <a href="./?path=/docs/changelogs-plasma-llms--docs">plasma-llms</a>
+                </Table.Td>
+                <Table.Td>The machine-readable description of Plasma that AI tools read.</Table.Td>
+            </Table.Tr>
+            <Table.Tr>
+                <Table.Td>
+                    <a href="./?path=/docs/changelogs-plasma-mcp-server--docs">plasma-mcp-server</a>
+                </Table.Td>
+                <Table.Td>The MCP server that exposes Plasma to an AI assistant.</Table.Td>
+            </Table.Tr>
+        </Table.Tbody>
+    </Table>
+    <Caption>
+        A version number moving in one of these does not always mean anything changed for you — a release can be a
+        dependency bump alone. The feed above is the one to read first.
+    </Caption>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/changelogs/Overview.mdx" />
+</Unstyled>

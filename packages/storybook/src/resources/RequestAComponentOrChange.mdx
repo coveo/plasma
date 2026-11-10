@@ -1,0 +1,215 @@
+import {Meta, Unstyled} from '@storybook/addon-docs/blocks';
+import {Table} from '@mantine/core';
+import {Note, PageFooter, SlackChannel, Step, Steps} from '../doc-blocks/DocBlocks.js';
+
+<Meta title="Get started/Collaboration and contact" id="resources-request-a-component-or-change" />
+
+# Collaboration and contact
+
+Plasma is built with the teams that use it.
+Most of what gets added, changed or clarified starts with someone saying something was missing — so saying it is the contribution.
+
+You do not need a finished proposal, and you do not need to be sure.
+Pick whichever of these matches how settled your question is.
+
+## Where to go
+
+<Unstyled>
+    <Table withTableBorder withColumnBorders>
+        <Table.Thead>
+            <Table.Tr>
+                <Table.Th w="34%">You want to</Table.Th>
+                <Table.Th w="26%">Go to</Table.Th>
+                <Table.Th>What happens</Table.Th>
+            </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>
+            <Table.Tr>
+                <Table.Td>Ask something, or work out how to proceed</Table.Td>
+                <Table.Td>
+                    <SlackChannel /> on Slack
+                </Table.Td>
+                <Table.Td>A person answers. No ticket, no form, no commitment to anything.</Table.Td>
+            </Table.Tr>
+            <Table.Tr>
+                <Table.Td>Add a component, change one, or report a bug</Table.Td>
+                <Table.Td>
+                    <a href="https://url.coveo.com/plasma-request">The request form</a>
+                </Table.Td>
+                <Table.Td>Opens a ticket for the Design System team. First response within 48 hours.</Table.Td>
+            </Table.Tr>
+            <Table.Tr>
+                <Table.Td>Fix something wrong on a page</Table.Td>
+                <Table.Td>
+                    <a href="https://github.com/coveo/plasma/edit/master/packages/storybook/src/resources/RequestAComponentOrChange.mdx">
+                        Edit this page
+                    </a>
+                    , in any page footer
+                </Table.Td>
+                <Table.Td>Opens the source on GitHub and turns your edit into a pull request.</Table.Td>
+            </Table.Tr>
+        </Table.Tbody>
+    </Table>
+</Unstyled>
+
+## Start with a question
+
+<SlackChannel /> is the shortest path, and the right one more often than the form is.
+
+Ask there when you are still working out what you need — whether something already exists, which component fits the case you have, whether a gap is worth a request or is better built in your own product for now, or how another team solved the same screen.
+
+An answer in the channel often removes the need for a ticket.
+When it does not, we will say so, and you will open one already knowing what to write in it.
+
+The channel is also where releases are announced: the changelog is mirrored there.
+
+## Open a request
+
+When you do need something from the team, the form opens in Jira with the **Design System** project and the right issue type already selected.
+You only fill in what the request is.
+
+- **[Request a component, a change or a bug fix](https://coveord.atlassian.net/secure/CreateIssueDetails!init.jspa?pid=17244&issuetype=10105)** — Something is missing, something should work differently, or something is broken in a component. You do not have to decide which — we classify it in triage.
+- **[Report a problem in the documentation](https://coveord.atlassian.net/secure/CreateIssueDetails!init.jspa?pid=17244&issuetype=10105&labels=documentation)** — The page is wrong, unclear or out of date, and the component is fine. Same form, arriving tagged `documentation` so it is triaged as a docs fix rather than a code change.
+- **Fix the documentation yourself** — A typo, a wrong example, a stale link. The **Edit this page** link in any page footer opens the source on GitHub in your browser and turns your edit into a pull request — no local setup, no ticket.
+
+Found it on a specific page?
+The **Report a problem** link in that page's footer opens the second form, already tagged and already carrying the page it came from.
+
+## Before you open it
+
+Thirty seconds that save a round trip.
+None of these disqualify a request — they change what we do with it, and most of them are worth a message in the channel first.
+
+<Unstyled>
+    <Table withTableBorder withColumnBorders>
+        <Table.Thead>
+            <Table.Tr>
+                <Table.Th>Check</Table.Th>
+                <Table.Th>If no</Table.Th>
+            </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>
+            {[
+                [
+                    'Will more than one team or one screen use it?',
+                    'Build it in your product and tell us anyway. When a second team needs the same thing, it becomes a Plasma candidate.',
+                ],
+                [
+                    'Did you check whether an existing component nearly does it?',
+                    'Name the closest one in the ticket and say what is missing. That is usually a change request, not a new component.',
+                ],
+                [
+                    'Does the component page link out to Mantine?',
+                    'Then check Mantine’s documentation first — we do not add Coveo guidance to components we re-export unchanged. Ask us to take one on if it has become load-bearing.',
+                ],
+                [
+                    'Is it the documentation that is wrong, rather than the component?',
+                    'Use the second or third option above. The docs tag routes it away from the component backlog, and fixing it yourself skips triage entirely.',
+                ],
+            ].map(([check, ifNo]) => (
+                <Table.Tr key={check}>
+                    <Table.Td>{check}</Table.Td>
+                    <Table.Td>{ifNo}</Table.Td>
+                </Table.Tr>
+            ))}
+        </Table.Tbody>
+    </Table>
+</Unstyled>
+
+## What to put in the ticket
+
+The form carries these fields.
+Half-filled is fine — an unclear request beats an unsent one.
+
+<Unstyled>
+    <Table withTableBorder withColumnBorders>
+        <Table.Thead>
+            <Table.Tr>
+                <Table.Th>Field</Table.Th>
+                <Table.Th>What we need</Table.Th>
+            </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>
+            {[
+                ['Problem', 'What you are trying to do and what is in the way. Not the solution — the situation.'],
+                ['Proposed solution', 'If you have one. It is fine to leave this empty.'],
+                ['Likely owner', 'Your team, Plasma, or unclear.'],
+                ['Impact', 'Who is blocked, and how often. This is what sequences the work.'],
+                ['Complexity', 'Your guess. We will correct it.'],
+                ['Open questions', 'Anything you could not settle yourself.'],
+                [
+                    'Link',
+                    'The Storybook page, or a Canvas link reproducing the state — the Controls you set travel in the URL.',
+                ],
+            ].map(([field, need]) => (
+                <Table.Tr key={field}>
+                    <Table.Td>
+                        <strong>{field}</strong>
+                    </Table.Td>
+                    <Table.Td>{need}</Table.Td>
+                </Table.Tr>
+            ))}
+        </Table.Tbody>
+    </Table>
+</Unstyled>
+
+## What happens next
+
+<Unstyled>
+    <Steps>
+        <Step>
+            <strong>Within 48 hours</strong> — someone from the Plasma team responds. Not a decision, a human.
+        </Step>
+        <Step>
+            <strong>Within a week</strong> — a direction: we build it, you build it in the extended layer, or it is not
+            a Plasma problem.
+        </Step>
+        <Step>
+            <strong>Within two weeks</strong> — a decision, at the latest, with the reasoning written in the ticket.
+        </Step>
+    </Steps>
+    <Note>
+        A commitment about process, not delivery dates. <strong>You build it</strong> is a normal outcome rather than a
+        refusal — it usually means the need is real but not yet shared by enough teams to belong in Plasma. Tell us when
+        you have built it; that is what makes it a candidate later.
+    </Note>
+</Unstyled>
+
+## What you are entitled to
+
+What we do with a component depends on whether Plasma documents it or re-exports it unchanged.
+
+<Unstyled>
+    <Table withTableBorder withColumnBorders>
+        <Table.Thead>
+            <Table.Tr>
+                <Table.Th w="30%">Level</Table.Th>
+                <Table.Th>What we commit to</Table.Th>
+            </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>
+            <Table.Tr>
+                <Table.Td>
+                    <strong>Documented by Plasma</strong>
+                </Table.Td>
+                <Table.Td>
+                    Fix bugs, take change requests, document fully, announce breaking changes. The component has a page
+                    here, with usage, content and accessibility guidance.
+                </Table.Td>
+            </Table.Tr>
+            <Table.Tr>
+                <Table.Td>
+                    <strong>Re-exported unchanged</strong>
+                </Table.Td>
+                <Table.Td>
+                    Keep it themed and upgraded. No Coveo usage guidance — Mantine's documentation applies. See{' '}
+                    <a href="./?path=/docs/resources-reexported-mantine-components--docs">
+                        Re-exported Mantine components
+                    </a>
+                    .
+                </Table.Td>
+            </Table.Tr>
+        </Table.Tbody>
+    </Table>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/resources/RequestAComponentOrChange.mdx" />
+</Unstyled>
