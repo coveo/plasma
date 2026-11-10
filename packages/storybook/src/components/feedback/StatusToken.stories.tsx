@@ -2,7 +2,8 @@ import {StatusToken} from '@coveord/plasma-mantine/components/StatusToken';
 import {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof StatusToken> = {
-    title: '@components/Feedback/StatusToken',
+    title: 'Components/Feedback/StatusToken',
+    tags: ['!dev'],
     id: 'StatusToken',
     component: StatusToken,
     parameters: {

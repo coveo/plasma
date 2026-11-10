@@ -13,7 +13,8 @@ import {
 type YearPickerInputStoryArgs = ComponentProps<typeof YearPickerInput> & BaseInputStoryArgs & InputWrapperStoryArgs;
 
 const meta = {
-    title: '@components/Forms and inputs/date/YearPickerInput',
+    title: 'Components/Inputs/YearPickerInput',
+    tags: ['!dev'],
     id: 'YearPickerInput',
     component: YearPickerInput,
     parameters: {

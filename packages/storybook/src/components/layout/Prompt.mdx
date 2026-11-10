@@ -1,5 +1,6 @@
-import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as PromptStories from './Prompt.stories';
+import {PageFooter} from '../../doc-blocks/DocBlocks.js';
 
 <Meta of={PromptStories} />
 
@@ -7,15 +8,13 @@ import * as PromptStories from './Prompt.stories';
 
 Confirmation dialog with semantic intent and focused footer actions.
 
-## Overview
-
 The `Prompt` asks users to confirm or acknowledge an important decision before continuing. Information, success, warning, and critical variants communicate the consequence or tone of that decision.
 
-## Usage
+## Demo
 
 <Canvas of={PromptStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -36,9 +35,13 @@ The `Prompt` asks users to confirm or acknowledge an important decision before c
 - Keep the prompt focused on one decision and place its actions in `Prompt.Footer`.
 - Avoid prompts when users need to compare information on the underlying page.
 
-### Content guidelines
+## Content and copy
 
 - Name the decision in the title.
 - Explain the consequences and whether the action is reversible.
 - Use a specific confirm label such as **Delete source**, not **OK**.
 - Make the safe alternative clear in the cancel label.
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/layout/Prompt.mdx" />
+</Unstyled>

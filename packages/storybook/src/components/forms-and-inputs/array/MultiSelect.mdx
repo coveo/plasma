@@ -1,5 +1,6 @@
-import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as MultiSelectStories from './MultiSelect.stories';
+import {PageFooter} from '../../../doc-blocks/DocBlocks.js';
 
 <Meta of={MultiSelectStories} />
 
@@ -7,17 +8,15 @@ import * as MultiSelectStories from './MultiSelect.stories';
 
 Compact dropdown field for selecting multiple values from a predefined list.
 
-## Overview
-
 The `MultiSelect` combines a searchable option list with removable pills for selected values.
 
 It keeps larger multi-selection sets compact while supporting standard form labels, guidance, and validation.
 
-## Usage
+## Demo
 
 <Canvas of={MultiSelectStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -38,8 +37,12 @@ It keeps larger multi-selection sets compact while supporting standard form labe
 - Set a useful width within layouts where the field would otherwise become too wide.
 - Keep option labels short enough to work as pills.
 
-### Content guidelines
+## Content and copy
 
 - Use a noun phrase for the label, such as **Assigned labels**.
 - Use an action-oriented placeholder, such as **Select categories**.
 - Write specific errors, such as **Select at least one category**.
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/forms-and-inputs/array/MultiSelect.mdx" />
+</Unstyled>

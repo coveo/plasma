@@ -15,8 +15,10 @@ export const withTheme: Decorator = (Story, context) => {
     const selectedColor = context.globals.primaryColor || 'teal';
     const selectedTheme = createTheme({primaryColor: selectedColor});
 
+    // Plasma does not support dark mode, so the scheme is stated here rather than followed
+    // from a global. See `backgroundOptions.ts`.
     return (
-        <Plasmantine theme={selectedTheme}>
+        <Plasmantine theme={selectedTheme} defaultColorScheme="light">
             <Notifications position="top-center" />
             <Story />
         </Plasmantine>

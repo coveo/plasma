@@ -2,7 +2,8 @@ import {Skeleton} from '@coveord/plasma-mantine/components/Skeleton';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof Skeleton> = {
-    title: '@components/Feedback/Skeleton',
+    title: 'Components/Feedback/Skeleton',
+    tags: ['!dev'],
     id: 'Skeleton',
     component: Skeleton,
     parameters: {

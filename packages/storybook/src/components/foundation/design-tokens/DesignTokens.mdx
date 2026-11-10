@@ -1,0 +1,72 @@
+import {Meta, Story, Unstyled} from '@storybook/addon-docs/blocks';
+import {Caption, Layer, Note, PageFooter} from '../../../doc-blocks/DocBlocks.js';
+import * as DesignTokenStories from './DesignTokens.stories';
+
+<Meta of={DesignTokenStories} />
+
+<Story of={DesignTokenStories.Overview} />
+
+## The layers
+
+<Unstyled>
+    <Layer term="1 · Ramps">
+        Ten steps per hue, <code>--mantine-color-blue-0</code> to <code>-9</code>. These are raw values. Reach for a
+        role token instead.
+    </Layer>
+    <Layer term="2 · Roles">
+        What a value is for: <code>--mantine-color-text</code>, <code>--coveo-app-background</code>,{' '}
+        <code>--mantine-color-error</code>. Most point at a ramp step, so the step can change without every call site
+        changing. A few point at another role instead — <code>--coveo-color-text-primary</code> resolves to{' '}
+        <code>var(--mantine-primary-color-filled)</code>. This is the layer to use.
+    </Layer>
+    <Note>
+        <strong>Component stylesheets consume roles directly.</strong> <code>Button.module.css</code> references one
+        custom property, <code>--coveo-fw-bold</code>, and nothing component-specific — there is no per-component tier
+        between the roles and the CSS.
+    </Note>
+</Unstyled>
+
+## Roles
+
+Every value below is read from the theme at render time, so this table cannot drift from what ships.
+
+<Story of={DesignTokenStories.Roles} />
+
+<Unstyled>
+    <Caption>
+        Text roles are graded at the 4.5:1 that normal text needs; borders at the 3:1 that a control boundary needs.
+    </Caption>
+    <Note>
+        <strong>Two roles do not clear the bar.</strong> Placeholder text and input borders both come up short. These
+        are measured from the shipped values, not reported by anyone — worth deciding whether they are defects or
+        accepted exceptions before this page is published, because publishing a value also publishes the gap.
+    </Note>
+</Unstyled>
+
+## Scales
+
+<Story of={DesignTokenStories.Scales} />
+
+<Unstyled>
+    <Caption>
+        Weights: <code>--coveo-fw-light</code> 300 · <code>--coveo-fw-normal</code> 400 · <code>--coveo-fw-bold</code>{' '}
+        500. Headings use bold, except <strong>h2</strong>, which uses normal.
+    </Caption>
+</Unstyled>
+
+## Motion
+
+`--coveo-transition-duration` is `150ms` and `--coveo-transition-function` is `ease-in-out`.
+The theme sets `respectReducedMotion`, so animation is suppressed for anyone who asks the OS for it.
+
+Two tokens and one setting are the whole motion story today.
+
+## Full reference
+
+Every Mantine and Coveo CSS variable the theme resolves, including the ones no page documents.
+
+<Story of={DesignTokenStories.FullReference} />
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/foundation/design-tokens/DesignTokens.mdx" />
+</Unstyled>

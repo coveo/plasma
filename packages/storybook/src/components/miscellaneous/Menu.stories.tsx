@@ -2,7 +2,8 @@ import {Button, Menu} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof Menu> = {
-    title: '@components/Miscellaneous/Menu',
+    title: 'Components/Overlays/Menu',
+    tags: ['!dev'],
     id: 'Menu',
     component: Menu,
     parameters: {

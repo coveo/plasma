@@ -1,5 +1,6 @@
-import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as AlertStories from './Alert.stories';
+import {PageFooter} from '../../doc-blocks/DocBlocks.js';
 
 <Meta of={AlertStories} />
 
@@ -7,17 +8,15 @@ import * as AlertStories from './Alert.stories';
 
 Persistent callout that communicates contextual information, advice, warnings, errors, or success.
 
-## Overview
-
 The `Alert` keeps an important message visible near the page, form, or workflow it affects.
 
 Use its semantic sub-components to give each message a consistent icon and visual treatment.
 
-## Usage
+## Demo
 
 <Canvas of={AlertStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -39,8 +38,12 @@ Use its semantic sub-components to give each message a consistent icon and visua
 - Group related messages instead of stacking several alerts.
 - Link to supporting content instead of placing long documentation in an alert.
 
-### Content guidelines
+## Content and copy
 
 - Write a short title that states the purpose of the message.
 - Explain the impact or next step in the body.
 - For critical alerts, make the consequence and recovery path clear.
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/feedback/Alert.mdx" />
+</Unstyled>

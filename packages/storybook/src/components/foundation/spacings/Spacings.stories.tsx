@@ -4,7 +4,7 @@ import {CSSVariableValue} from '../CSSVariableValue.js';
 import {FoundationWrapper} from '../FoundationWrapper.js';
 
 const meta: Meta = {
-    title: '@foundation/Spacings',
+    title: 'Foundations/Spacing',
     id: 'spacings',
     tags: ['!dev'],
     parameters: {

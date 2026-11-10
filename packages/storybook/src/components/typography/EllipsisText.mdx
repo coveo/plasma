@@ -1,5 +1,6 @@
-import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as EllipsisTextStories from './EllipsisText.stories';
+import {PageFooter} from '../../doc-blocks/DocBlocks.js';
 
 <Meta of={EllipsisTextStories} />
 
@@ -7,15 +8,13 @@ import * as EllipsisTextStories from './EllipsisText.stories';
 
 Truncates overflowing text and reveals the full value in a tooltip when needed.
 
-## Overview
-
 `EllipsisText` keeps long labels and names from disrupting constrained layouts. It supports single-line and multi-line truncation.
 
-## Usage
+## Demo
 
 <Canvas of={EllipsisTextStories.EllipsisTextDefaultLong} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -36,7 +35,11 @@ Truncates overflowing text and reveals the full value in a tooltip when needed.
 - Change the layout when the full content is central to the task.
 - Don't rely on the tooltip as the only source of critical information.
 
-### Content guidelines
+## Content and copy
 
 - Put the most distinctive information first so it remains visible before truncation.
 - Keep the full value concise enough to scan in a tooltip.
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/typography/EllipsisText.mdx" />
+</Unstyled>

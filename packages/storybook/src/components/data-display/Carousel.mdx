@@ -1,5 +1,6 @@
-import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Controls, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as CarouselStories from './Carousel.stories';
+import {PageFooter} from '../../doc-blocks/DocBlocks.js';
 
 <Meta of={CarouselStories} />
 
@@ -7,20 +8,17 @@ import * as CarouselStories from './Carousel.stories';
 
 Set of slides that users browse one view at a time.
 
-## Overview
-
 `Carousel` presents related, equally weighted items in limited space. Users move between slides with the previous and next buttons, the indicators, a drag or swipe gesture, or the arrow keys.
 
 It suits visual items that support the main task, where keeping some of them out of view doesn't hide anything users need.
 
-## Usage
+## Demo
 
 Install the optional `@mantine/carousel` and `embla-carousel-react` packages, and import `@mantine/carousel/styles.layer.css` with your other Mantine styles. Without the stylesheet, slides stack vertically.
 
 <Canvas of={CarouselStories.Demo} />
-<Controls of={CarouselStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -47,3 +45,11 @@ Install the optional `@mantine/carousel` and `embla-carousel-react` packages, an
 - Give the carousel an `aria-label` that describes its content, such as **Product screenshots**. It renders as a landmark region with no name by default.
 - Don't advance slides automatically. If you add autoplay, provide a visible control that lets users pause it.
 - When the interface is localized, translate the built-in **Previous slide**, **Next slide**, and **Go to slide** labels.
+
+## Props
+
+<Controls of={CarouselStories.Demo} />
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/data-display/Carousel.mdx" />
+</Unstyled>

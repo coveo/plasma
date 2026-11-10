@@ -1,5 +1,6 @@
-import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as ScrollAreaStories from './ScrollArea.stories';
+import {PageFooter} from '../../doc-blocks/DocBlocks.js';
 
 <Meta of={ScrollAreaStories} />
 
@@ -7,15 +8,13 @@ import * as ScrollAreaStories from './ScrollArea.stories';
 
 Bounded container that clips overflowing content and provides a themed scrollbar.
 
-## Overview
-
 The `ScrollArea` keeps a panel, sidebar, list, or log within a stable region while its content grows. It provides scrolling inside the component instead of expanding the surrounding layout.
 
-## Usage
+## Demo
 
 <Canvas of={ScrollAreaStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -35,3 +34,7 @@ The `ScrollArea` keeps a panel, sidebar, list, or log within a stable region whi
 - Use `ScrollArea.Autosize` when the region should grow to a maximum before scrolling.
 - Keep interactive content keyboard reachable and avoid trapping focus.
 - Add an appropriate label or landmark when the scrolling boundary has a distinct meaning.
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/layout/ScrollArea.mdx" />
+</Unstyled>

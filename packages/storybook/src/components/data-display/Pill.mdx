@@ -1,5 +1,6 @@
-import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Controls, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as PillStories from './Pill.stories';
+import {PageFooter} from '../../doc-blocks/DocBlocks.js';
 
 <Meta of={PillStories} />
 
@@ -7,18 +8,15 @@ import * as PillStories from './Pill.stories';
 
 Compact token that represents a selected value and can include a remove action.
 
-## Overview
-
 `Pill` makes individual values distinct inside a multi-value input or tag list.
 
 It can show a remove button when users are allowed to remove that value.
 
-## Usage
+## Demo
 
 <Canvas of={PillStories.Demo} />
-<Controls of={PillStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -38,7 +36,15 @@ It can show a remove button when users are allowed to remove that value.
 - Connect `onRemove` whenever `withRemoveButton` is enabled.
 - Give each remove button a label that identifies its value, such as **Remove Python**.
 
-### Content guidelines
+## Content and copy
 
 - Use the selected value as the label.
 - Keep labels short and avoid sentences.
+
+## Props
+
+<Controls of={PillStories.Demo} />
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/data-display/Pill.mdx" />
+</Unstyled>

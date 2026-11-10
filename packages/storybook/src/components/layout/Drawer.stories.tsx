@@ -8,7 +8,8 @@ type DrawerStoryArgs = ComponentProps<typeof Drawer> & {
 };
 
 const meta = {
-    title: '@components/Layout/Drawer',
+    title: 'Components/Overlays/Drawer',
+    tags: ['!dev'],
     id: 'Drawer',
     component: Drawer,
     args: {

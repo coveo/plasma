@@ -6,7 +6,8 @@ interface CloseButtonStoryArgs {
 }
 
 const meta: Meta<CloseButtonStoryArgs> = {
-    title: '@components/Call to action/CloseButton',
+    title: 'Components/Buttons/CloseButton',
+    tags: ['!dev'],
     id: 'CloseButton',
     parameters: {
         layout: 'centered',

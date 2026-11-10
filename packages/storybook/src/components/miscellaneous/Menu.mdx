@@ -1,5 +1,6 @@
-import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as MenuStories from './Menu.stories';
+import {PageFooter} from '../../doc-blocks/DocBlocks.js';
 
 <Meta of={MenuStories} />
 
@@ -7,15 +8,13 @@ import * as MenuStories from './Menu.stories';
 
 Groups contextual commands in a compact dropdown near their trigger.
 
-## Overview
-
 `Menu` keeps secondary and overflow actions available without giving each action permanent space in the layout.
 
-## Usage
+## Demo
 
 <Canvas of={MenuStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -36,8 +35,12 @@ Groups contextual commands in a compact dropdown near their trigger.
 - Keep important and frequent actions visible outside the menu.
 - Explain a disabled item when its requirement or permission isn't obvious.
 
-### Content guidelines
+## Content and copy
 
 - Start item labels with a specific verb, such as **Archive selected**.
 - Keep labels concise and make destructive consequences explicit.
 - Write disabled tooltips that explain how to make the action available.
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/miscellaneous/Menu.mdx" />
+</Unstyled>

@@ -1,5 +1,6 @@
-import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as ModalStories from './Modal.stories';
+import {PageFooter} from '../../doc-blocks/DocBlocks.js';
 
 <Meta of={ModalStories} />
 
@@ -7,15 +8,13 @@ import * as ModalStories from './Modal.stories';
 
 Overlay dialog that focuses attention on a contained task or information surface.
 
-## Overview
-
 The `Modal` lets users complete, review, or inspect something without navigating away from the current page. It provides focused context, a clear close action, and an optional footer for decisions.
 
-## Usage
+## Demo
 
 <Canvas of={ModalStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -36,8 +35,12 @@ The `Modal` lets users complete, review, or inspect something without navigating
 - Avoid stacking modals. Resolve the current task before opening another.
 - Preserve or discard entered data according to the workflow, not as an accidental effect of closing.
 
-### Content guidelines
+## Content and copy
 
 - Name the task in the title.
 - Use the description to clarify impact when the task is risky or complex.
 - Label footer actions with the result they produce.
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/layout/Modal.mdx" />
+</Unstyled>

@@ -1,5 +1,6 @@
-import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as InfoTokenStories from './InfoToken.stories';
+import {PageFooter} from '../../doc-blocks/DocBlocks.js';
 
 <Meta of={InfoTokenStories} />
 
@@ -7,17 +8,15 @@ import * as InfoTokenStories from './InfoToken.stories';
 
 Compact semantic icon that reinforces the meaning of nearby text.
 
-## Overview
-
 The `InfoToken` helps users recognize information, advice, warnings, errors, questions, or success at a glance.
 
 It supports surrounding content and doesn't replace a visible message or label.
 
-## Usage
+## Demo
 
 <Canvas of={InfoTokenStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -38,3 +37,7 @@ It supports surrounding content and doesn't replace a visible message or label.
 - Use `outline` for the default compact treatment and `light` for a filled background.
 - Pair the token with text that names the state or message.
 - Apply each semantic type consistently within the same interface.
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/feedback/InfoToken.mdx" />
+</Unstyled>

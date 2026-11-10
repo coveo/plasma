@@ -12,7 +12,8 @@ type CardStoryArgs = Omit<CardProps, 'children' | 'mod'> & {
 };
 
 const meta: Meta<CardStoryArgs> = {
-    title: '@components/Data display/Card',
+    title: 'Components/Data display/Card',
+    tags: ['!dev'],
     id: 'Card',
     component: Card,
     parameters: {

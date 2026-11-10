@@ -1,5 +1,6 @@
-import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Controls, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as CopyToClipboardStories from './CopyToClipboard.stories';
+import {PageFooter} from '../../doc-blocks/DocBlocks.js';
 
 <Meta of={CopyToClipboardStories} />
 
@@ -7,16 +8,13 @@ import * as CopyToClipboardStories from './CopyToClipboard.stories';
 
 Action icon that copies an exact string and confirms the result in a tooltip.
 
-## Overview
-
 The `CopyToClipboard` helps users copy read-only values that are difficult or error-prone to select manually.
 
-## Usage
+## Demo
 
 <Canvas of={CopyToClipboardStories.Demo} />
-<Controls of={CopyToClipboardStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -37,7 +35,15 @@ The `CopyToClipboard` helps users copy read-only values that are difficult or er
 - Use a full text button when copying is the main page action.
 - Avoid placing several ambiguous copy actions close together.
 
-### Content guidelines
+## Content and copy
 
 - Keep copy and confirmation tooltips concise.
 - Name the value in nearby content when the destination is not obvious.
+
+## Props
+
+<Controls of={CopyToClipboardStories.Demo} />
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/call-to-action/CopyToClipboard.mdx" />
+</Unstyled>

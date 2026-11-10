@@ -1,5 +1,6 @@
-import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Controls, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as AnchorStories from './Anchor.stories';
+import {PageFooter} from '../../doc-blocks/DocBlocks.js';
 
 <Meta of={AnchorStories} />
 
@@ -7,14 +8,11 @@ import * as AnchorStories from './Anchor.stories';
 
 Inline text link that takes users to another page, section, or resource.
 
-## Overview
-
 The `Anchor` adds navigation within text without giving the link the visual weight of a button.
 
-## Usage
+## Demo
 
 <Canvas of={AnchorStories.Demo} />
-<Controls of={AnchorStories.Demo} />
 
 ## External links
 
@@ -24,7 +22,7 @@ It opens the destination in a new tab, adds an external link icon, and tells scr
 <Canvas of={AnchorStories.External} />
 <Controls of={AnchorStories.External} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -46,8 +44,16 @@ It opens the destination in a new tab, adds an external link icon, and tells scr
 - Translate the new tab announcement with `newTabLabel` when the interface isn't in English.
 - Use `xs` in compact contexts and `sm` with body text.
 
-### Content guidelines
+## Content and copy
 
 - Use short link text that describes the destination.
 - Avoid vague labels such as **Click here** or **Read more**.
 - Include punctuation only when the link is part of a sentence.
+
+## Props
+
+<Controls of={AnchorStories.Demo} />
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/call-to-action/Anchor.mdx" />
+</Unstyled>

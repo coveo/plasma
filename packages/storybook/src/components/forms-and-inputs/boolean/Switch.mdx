@@ -1,5 +1,6 @@
-import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as SwitchStories from './Switch.stories';
+import {PageFooter} from '../../../doc-blocks/DocBlocks.js';
 
 <Meta of={SwitchStories} />
 
@@ -7,17 +8,15 @@ import * as SwitchStories from './Switch.stories';
 
 Toggle control for turning a binary setting on or off.
 
-## Overview
-
 The `Switch` communicates the current state of an independent setting and lets users change it directly.
 
 Use `Switch.Group` when several related settings remain independent from one another.
 
-## Usage
+## Demo
 
 <Canvas of={SwitchStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -39,7 +38,11 @@ Use `Switch.Group` when several related settings remain independent from one ano
 - Keep grouped switches independent. Use a different control when only one option can be active.
 - Show the current state when a switch is disabled or read-only.
 
-### Content guidelines
+## Content and copy
 
 - Use labels such as **Email notifications**, not **Enable email notifications**.
 - Keep descriptions to one sentence and explain the result of turning the setting on.
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/forms-and-inputs/boolean/Switch.mdx" />
+</Unstyled>

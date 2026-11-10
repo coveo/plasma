@@ -6,7 +6,8 @@ type PillStoryArgs = Omit<PillProps, 'children'> & {
 };
 
 const meta: Meta<PillStoryArgs> = {
-    title: '@components/Data display/Pill',
+    title: 'Components/Data display/Pill',
+    tags: ['!dev'],
     id: 'Pill',
     component: Pill,
     parameters: {

@@ -10,7 +10,8 @@ import {
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof Notification> = {
-    title: '@components/Feedback/Notification',
+    title: 'Components/Feedback/Notification',
+    tags: ['!dev'],
     id: 'Notification',
     component: Notification,
     parameters: {

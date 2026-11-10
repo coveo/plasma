@@ -1,6 +1,64 @@
-import {Meta, Story} from '@storybook/addon-docs/blocks';
+import {Meta, Story, Unstyled} from '@storybook/addon-docs/blocks';
+import {Caption, Do, DoDont, Dont, PageFooter, Rule} from '../../../doc-blocks/DocBlocks.js';
 import * as ColorStories from './Colors.stories';
 
 <Meta of={ColorStories} />
 
 <Story of={ColorStories.Overview} />
+
+## How to apply it
+
+Through props first.
+Fall back to the CSS variable only when a prop cannot express what you need, such as inside a style object.
+
+```tsx
+<Text c="blue.6">Indexed shade</Text>
+<Badge color="red">Palette name</Badge>
+<Box style={{borderColor: 'var(--mantine-color-gray-3)'}} />
+```
+
+<Unstyled>
+    <Rule>Never hardcode a hex. A hardcoded colour stops following the theme the day the theme changes.</Rule>
+</Unstyled>
+
+## Primary
+
+The primary palette is **blue** and the primary shade is **5** — but both are theme configuration, not constants.
+
+<Unstyled>
+    <Rule>
+        Reference <code>primary</code>, never <code>blue</code>. Use{' '}
+        <code>var(--mantine-primary-color-{'{0..9}'})</code> or the colour name <code>primary</code>.
+    </Rule>
+    <Caption>
+        Writing <code>blue</code> where you mean "the primary action colour" makes the component stop following the
+        theme the day primary changes. The two are the same value today and that is exactly what makes the mistake
+        invisible.
+    </Caption>
+</Unstyled>
+
+## Text on an arbitrary background
+
+When the background is chosen at runtime — a tag colour, a chart series, a user-picked value — do not guess the foreground.
+
+```tsx
+import {getContrastColor} from '@coveord/plasma-mantine';
+
+const fg = getContrastColor({color, theme, autoContrast: true});
+```
+
+## What not to do
+
+<Unstyled>
+    <DoDont>
+        <Do>
+            <code>c="primary"</code>
+            <small>Follows the theme, including when the theme changes.</small>
+        </Do>
+        <Dont>
+            <code>color: '#1169da'</code>
+            <small>Frozen. Wrong the day the theme changes.</small>
+        </Dont>
+    </DoDont>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/foundation/colors/Colors.mdx" />
+</Unstyled>

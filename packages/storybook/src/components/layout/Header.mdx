@@ -1,5 +1,6 @@
-import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as HeaderStories from './Header.stories';
+import {PageFooter} from '../../doc-blocks/DocBlocks.js';
 
 <Meta of={HeaderStories} />
 
@@ -7,15 +8,13 @@ import * as HeaderStories from './Header.stories';
 
 Page-level title area with optional breadcrumbs, description, documentation link, and actions.
 
-## Overview
-
 The `Header` establishes the purpose and hierarchy of a page or major section. It gives related context and page-level actions a consistent location around the title.
 
-## Usage
+## Demo
 
 <Canvas of={HeaderStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -39,8 +38,12 @@ The `Header` establishes the purpose and hierarchy of a page or major section. I
 - Make every breadcrumb item a `Header.BreadcrumbAnchor`; `Header.BreadcrumbText` is deprecated.
 - Link to relevant external help through `Header.DocAnchor`.
 
-### Content guidelines
+## Content and copy
 
 - Write specific, scannable titles.
 - Use the description to explain the page purpose rather than repeat the title.
 - Keep breadcrumb labels aligned with the application's hierarchy.
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/layout/Header.mdx" />
+</Unstyled>

@@ -9,7 +9,8 @@ import {withLabelContextualHelpProps} from '../ContextualHelpArgs.js';
 type RadioCardStoryArgs = ComponentProps<typeof RadioCard> & InlineInputStoryArgs;
 
 const meta = {
-    title: '@components/Forms and inputs/string/RadioCard',
+    title: 'Components/Inputs/RadioCard',
+    tags: ['!dev'],
     id: 'RadioCard',
     component: RadioCard,
     parameters: {

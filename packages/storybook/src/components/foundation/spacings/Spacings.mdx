@@ -1,6 +1,30 @@
-import {Meta, Story} from '@storybook/addon-docs/blocks';
+import {Meta, Story, Unstyled} from '@storybook/addon-docs/blocks';
+import {Caption, PageFooter, Rule} from '../../../doc-blocks/DocBlocks.js';
 import * as SpacingStories from './Spacings.stories';
 
 <Meta of={SpacingStories} />
 
 <Story of={SpacingStories.Spacings} />
+
+<Unstyled>
+    <Caption>
+        The scale doubles from xxs to xs to sm, then steps by 8. There is nothing between 4 and 8, and nothing above 40.
+    </Caption>
+</Unstyled>
+
+## How to apply it
+
+```tsx
+<Stack gap="sm">
+    <Box p="md">Padding on every side</Box>
+    <Box mt="lg">Margin top only</Box>
+</Stack>
+```
+
+<Unstyled>
+    <Rule>
+        Space with layout props — <code>gap</code>, <code>p</code>, <code>m</code> — not with custom CSS margins between
+        siblings.
+    </Rule>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/foundation/spacings/Spacings.mdx" />
+</Unstyled>

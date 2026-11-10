@@ -1,5 +1,6 @@
-import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as TooltipStories from './Tooltip.stories';
+import {PageFooter} from '../../doc-blocks/DocBlocks.js';
 
 <Meta of={TooltipStories} />
 
@@ -7,17 +8,15 @@ import * as TooltipStories from './Tooltip.stories';
 
 Non-interactive popover that reveals brief supplementary text on hover or focus.
 
-## Overview
-
 The `Tooltip` provides optional context without adding persistent text to a compact interface.
 
 It is available to pointer and keyboard users when its trigger can receive focus.
 
-## Usage
+## Demo
 
 <Canvas of={TooltipStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -39,8 +38,12 @@ It is available to pointer and keyboard users when its trigger can receive focus
 - Make custom triggers forward their ref for positioning.
 - Let placement adjust automatically unless a specific position solves clipping or overlap.
 
-### Content guidelines
+## Content and copy
 
 - Write one short phrase or sentence.
 - Add context instead of repeating visible text.
 - Keep essential instructions visible outside the tooltip.
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/feedback/Tooltip.mdx" />
+</Unstyled>

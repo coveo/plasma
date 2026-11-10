@@ -1,5 +1,6 @@
-import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Controls, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as KbdStories from './Kbd.stories';
+import {PageFooter} from '../../doc-blocks/DocBlocks.js';
 
 <Meta of={KbdStories} />
 
@@ -7,16 +8,13 @@ import * as KbdStories from './Kbd.stories';
 
 Represents keyboard keys and shortcuts with the appearance and semantics of a physical key.
 
-## Overview
-
 `Kbd` makes keyboard instructions easier to find and understand within help text, menus, and command interfaces.
 
-## Usage
+## Demo
 
 <Canvas of={KbdStories.Demo} />
-<Controls of={KbdStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -34,8 +32,16 @@ Represents keyboard keys and shortcuts with the appearance and semantics of a ph
 - Separate keys with a plain-text plus sign.
 - Include surrounding text that explains what the shortcut does.
 
-### Content guidelines
+## Content and copy
 
 - Use short key names or symbols.
 - Use platform-native symbols for platform-specific instructions.
 - Use labels such as **Ctrl** and **Shift** for cross-platform instructions.
+
+## Props
+
+<Controls of={KbdStories.Demo} />
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/typography/Kbd.mdx" />
+</Unstyled>

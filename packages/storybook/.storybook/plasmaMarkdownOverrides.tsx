@@ -106,13 +106,7 @@ export const plasmaDocsComponents: Record<string, ComponentType<any>> = {
             return <Source language={className.replace('lang-', '').replace('language-', '') as any} code={children} />;
         }
         return (
-            <Code
-                c="light-dark(var(--mantine-color-green-7), var(--mantine-color-green-3))"
-                fz="inherit"
-                className={className}
-                children={children}
-                {...props}
-            />
+            <Code c="var(--mantine-color-green-7)" fz="inherit" className={className} children={children} {...props} />
         );
     },
     ul: (props) => <List my="xs" {...props} />,

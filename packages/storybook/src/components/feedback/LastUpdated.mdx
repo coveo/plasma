@@ -1,5 +1,6 @@
-import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Controls, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as LastUpdatedStories from './LastUpdated.stories';
+import {PageFooter} from '../../doc-blocks/DocBlocks.js';
 
 <Meta of={LastUpdatedStories} />
 
@@ -7,18 +8,15 @@ import * as LastUpdatedStories from './LastUpdated.stories';
 
 Timestamp that tells users when visible data was last refreshed or synchronized.
 
-## Overview
-
 The `LastUpdated` helps users judge the freshness of information in dashboards, monitoring views, and other async surfaces.
 
 It provides a consistent label and time format that you can customize when the context requires it.
 
-## Usage
+## Demo
 
 <Canvas of={LastUpdatedStories.Demo} />
-<Controls of={LastUpdatedStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -38,7 +36,15 @@ It provides a consistent label and time format that you can customize when the c
 - Keep the default label and format unless the context needs different wording or precision.
 - Avoid precision that doesn't help users judge freshness.
 
-### Content guidelines
+## Content and copy
 
 - Name what was updated when the surrounding context isn't clear.
 - Match the timestamp precision to the decisions users need to make.
+
+## Props
+
+<Controls of={LastUpdatedStories.Demo} />
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/feedback/LastUpdated.mdx" />
+</Unstyled>

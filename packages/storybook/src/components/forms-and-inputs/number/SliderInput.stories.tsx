@@ -7,7 +7,8 @@ import {withLabelContextualHelpProps} from '../ContextualHelpArgs.js';
 type SliderInputStoryArgs = ComponentProps<typeof SliderInput> & Pick<InputWrapperStoryArgs, 'contextualHelp'>;
 
 const meta = {
-    title: '@components/Forms and inputs/number/SliderInput',
+    title: 'Components/Inputs/SliderInput',
+    tags: ['!dev'],
     id: 'SliderInput',
     component: SliderInput,
     decorators: [

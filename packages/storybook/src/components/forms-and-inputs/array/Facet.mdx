@@ -1,5 +1,6 @@
-import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as FacetStories from './Facet.stories';
+import {PageFooter} from '../../../doc-blocks/DocBlocks.js';
 
 <Meta of={FacetStories} />
 
@@ -7,17 +8,15 @@ import * as FacetStories from './Facet.stories';
 
 Searchable list of selectable values for filtering a result set.
 
-## Overview
-
 The `Facet` helps users narrow search, analytics, catalog, or table results by a known dimension.
 
 It supports multiple selections, grouped values, result counts, and search for longer lists.
 
-## Usage
+## Demo
 
 <Canvas of={FacetStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -38,9 +37,13 @@ It supports multiple selections, grouped values, result counts, and search for l
 - Group related values under clear, distinct headings.
 - Use counts only when they accurately reflect the available results.
 
-### Content guidelines
+## Content and copy
 
 - Name the filter dimension in the title, such as **Sources** or **Language**.
 - Match option labels to terms users recognize in the results.
 - Format counts consistently within the filter panel.
 - Make empty and no-match messages concise and specific.
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/forms-and-inputs/array/Facet.mdx" />
+</Unstyled>

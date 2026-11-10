@@ -1,0 +1,168 @@
+import {Meta, Unstyled} from '@storybook/addon-docs/blocks';
+import {Table} from '@mantine/core';
+import {Anchor, Card, SimpleGrid, Stack, Text, Title} from '@coveord/plasma-mantine';
+import {Caption, LinkGroup, PageFooter, SlackChannel, Tag} from '../doc-blocks/DocBlocks.js';
+
+<Meta title="Get started/Welcome to Plasma" id="overview-welcome" />
+
+# Welcome to Plasma
+
+Coveo's design system: the foundations, components, patterns and content rules that hold Coveo's products together.
+
+<Unstyled>
+    <SimpleGrid cols={{base: 1, sm: 2}} spacing="sm" mb="xl">
+        {[
+            {
+                title: 'I design in Figma',
+                body: 'Turn on the libraries and the token collection, then work from Foundations.',
+                links: [
+                    {
+                        label: 'Components library',
+                        href: 'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components',
+                        external: true,
+                    },
+                    {label: 'Setting up Figma', href: './?path=/docs/overview-install-and-setup--docs#in-figma'},
+                    {label: 'Design tokens', href: './?path=/docs/foundation-design-tokens--docs'},
+                ],
+            },
+            {
+                title: 'I write code',
+                body: 'Install, the Plasmantine provider, component APIs, and what is Plasma versus plain Mantine.',
+                links: [
+                    {label: 'Install and setup', href: './?path=/docs/overview-install-and-setup--docs#in-code'},
+                    {label: 'Components overview', href: './?path=/docs/components-overview--docs'},
+                    {
+                        label: 'Re-exported Mantine components',
+                        href: './?path=/docs/resources-reexported-mantine-components--docs',
+                    },
+                ],
+            },
+            {
+                title: 'I write UI text',
+                body: 'Voice, mechanics and product vocabulary.',
+                links: [
+                    {label: 'Content section', href: './?path=/docs/content-about--docs'},
+                    {label: 'Voice', href: './?path=/docs/content-voice--docs'},
+                    {label: 'Writing mechanics', href: './?path=/docs/content-writing-mechanics--docs'},
+                ],
+            },
+            {
+                title: 'I use an AI assistant',
+                body: "llms.txt, the per-component markdown and the MCP server — what they cover and what they don't.",
+                links: [
+                    {
+                        label: 'Set up your AI tool',
+                        href: './?path=/docs/overview-install-and-setup--docs#with-an-ai-assistant',
+                    },
+                ],
+            },
+        ].map(({title, body, links}) => (
+            <Card key={title} withBorder>
+                <Title order={4}>{title}</Title>
+                <Text size="sm" c="dimmed" mt="xs">
+                    {body}
+                </Text>
+                <Stack gap="xxs" mt="sm">
+                    {links.map(({label, href, external}) => (
+                        <Text key={label} size="sm">
+                            <a
+                                href={href}
+                                target={external ? '_blank' : undefined}
+                                rel={external ? 'noopener' : undefined}
+                            >
+                                {label}
+                            </a>
+                        </Text>
+                    ))}
+                </Stack>
+            </Card>
+        ))}
+    </SimpleGrid>
+</Unstyled>
+
+## Latest changes
+
+<Unstyled>
+    <Table withTableBorder>
+        <Table.Tbody>
+            <Table.Tr>
+                <Table.Td w={90}>Oct 24</Table.Td>
+                <Table.Td>
+                    Focus returns to the trigger when a <code>Select</code> closes
+                </Table.Td>
+                <Table.Td w={110}>
+                    <Tag>patch</Tag>
+                </Table.Td>
+            </Table.Tr>
+            <Table.Tr>
+                <Table.Td>Oct 21</Table.Td>
+                <Table.Td>
+                    <code>BlankSlate</code> deprecated — removed in January. Migration guide
+                </Table.Td>
+                <Table.Td>
+                    <Tag>breaking</Tag>
+                </Table.Td>
+            </Table.Tr>
+        </Table.Tbody>
+    </Table>
+</Unstyled>
+
+<Anchor href="./?path=/docs/changelogs-overview--docs">See the full changelog</Anchor>
+
+## Where things are
+
+- **Foundations** — tokens, colour, type, spacing, iconography, accessibility.
+- **Content** — voice, mechanics and vocabulary.
+- **Components** — one list by job, with the library each one comes from.
+- **Patterns** — how components go together, and what the combination has to get right.
+
+## Where everything else lives
+
+<Unstyled>
+    <SimpleGrid cols={{base: 1, sm: 2}} spacing="lg">
+        <LinkGroup title="Figma libraries">
+            <Text size="sm">Plasma — Product</Text>
+            <Text size="sm">Plasma — Core components</Text>
+            <Text size="sm">Plasma — Styles and tokens</Text>
+            <Text size="sm">Plasma — Icons</Text>
+        </LinkGroup>
+        <LinkGroup title="Icons">
+            <Text size="sm">
+                <a href="https://tabler.io/icons" target="_blank" rel="noopener">
+                    {'Tabler icon set'}
+                </a>
+            </Text>
+            <Caption>
+                Start from the curated Coveo set in <strong>Iconography</strong>. Tabler is the fallback for when
+                nothing in it fits — and a sign we should add one.
+            </Caption>
+        </LinkGroup>
+        <LinkGroup title="Code">
+            <Text size="sm">
+                <a href="https://github.com/coveo/plasma" target="_blank" rel="noopener">
+                    {'coveo/plasma on GitHub'}
+                </a>
+            </Text>
+            <Text size="sm">
+                <a href="https://www.npmjs.com/package/@coveord/plasma-mantine" target="_blank" rel="noopener">
+                    {'@coveord/plasma-mantine on npm'}
+                </a>
+            </Text>
+            <Text size="sm">
+                <a href="https://mantine.dev" target="_blank" rel="noopener">
+                    {'Mantine documentation'}
+                </a>
+            </Text>
+        </LinkGroup>
+        <LinkGroup title="Ask and talk">
+            <Text size="sm">
+                <a href="./?path=/docs/resources-request-a-component-or-change--docs">Collaboration and contact</a>
+            </Text>
+            <Caption>
+                <SlackChannel /> on Slack for a question, the request form for a component or a change, and what the
+                team commits to either way.
+            </Caption>
+        </LinkGroup>
+    </SimpleGrid>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/overview/Welcome.mdx" />
+</Unstyled>

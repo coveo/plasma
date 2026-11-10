@@ -1,0 +1,217 @@
+/*
+ * Layout primitives from the Plasma Storybook Blueprint.
+ * Colours come from Plasma/Mantine tokens — never the blueprint's raw hexes — so these
+ * blocks follow the theme.
+ */
+
+.rule {
+    border: 1px solid var(--mantine-color-default-border);
+    border-left: 3px solid var(--mantine-primary-color-filled);
+    border-radius: 0 var(--mantine-radius-md) var(--mantine-radius-md) 0;
+    padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
+    margin-top: var(--mantine-spacing-sm);
+    font-size: var(--mantine-font-size-md);
+    font-weight: var(--coveo-fw-bold);
+    color: var(--mantine-color-text);
+}
+
+.note {
+    border: 1px solid var(--mantine-color-default-border);
+    border-left: 3px solid var(--mantine-color-dimmed);
+    border-radius: 0 var(--mantine-radius-md) var(--mantine-radius-md) 0;
+    background: var(--coveo-app-background);
+    padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
+    margin-top: var(--mantine-spacing-sm);
+    font-size: var(--mantine-font-size-sm);
+}
+
+.todo {
+    border: 1px dashed var(--coveo-color-input-border);
+    border-radius: var(--mantine-radius-md);
+    background: var(--coveo-app-background);
+    padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
+    margin-top: var(--mantine-spacing-sm);
+    font-size: var(--mantine-font-size-sm);
+    color: var(--mantine-color-dimmed);
+}
+
+.todoTitle {
+    color: var(--mantine-color-text);
+    font-weight: var(--coveo-fw-bold);
+    display: block;
+    margin-bottom: var(--mantine-spacing-xxs);
+    font-size: var(--mantine-font-size-xxs);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.worked {
+    display: flex;
+    gap: var(--mantine-spacing-xs);
+    align-items: flex-start;
+    margin-top: var(--mantine-spacing-sm);
+    padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
+    border: 1px solid var(--mantine-color-default-border);
+    border-left: 3px solid var(--mantine-color-green-6);
+    border-radius: 0 var(--mantine-radius-md) var(--mantine-radius-md) 0;
+    background: var(--mantine-color-green-0);
+    font-size: var(--mantine-font-size-sm);
+}
+
+.workedMark {
+    color: var(--mantine-color-green-8);
+    flex: none;
+    font-weight: var(--coveo-fw-bold);
+}
+
+.layer {
+    display: grid;
+    grid-template-columns: minmax(0, 150px) minmax(0, 1fr);
+    gap: var(--mantine-spacing-xxs) var(--mantine-spacing-sm);
+    padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
+    border: 1px solid var(--mantine-color-default-border);
+    border-left: 3px solid var(--mantine-primary-color-filled);
+    border-radius: 0 var(--mantine-radius-md) var(--mantine-radius-md) 0;
+    margin-top: var(--mantine-spacing-xs);
+}
+
+.layerMuted {
+    border-left-color: var(--mantine-color-dimmed);
+}
+
+.layerTerm {
+    font-size: var(--mantine-font-size-sm);
+    font-weight: var(--coveo-fw-bold);
+    color: var(--mantine-color-text);
+}
+
+.layerBody {
+    font-size: var(--mantine-font-size-sm);
+    color: var(--mantine-color-dimmed);
+}
+
+@media (width <= 640px) {
+    .layer {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+.steps {
+    counter-reset: blueprint-step;
+    margin-top: var(--mantine-spacing-sm);
+    display: grid;
+    gap: var(--mantine-spacing-xs);
+}
+
+.step {
+    display: flex;
+    gap: var(--mantine-spacing-xs);
+    align-items: flex-start;
+}
+
+.stepNumber {
+    counter-increment: blueprint-step;
+    flex: none;
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    background: var(--coveo-color-bg-readonly);
+    color: var(--mantine-color-dimmed);
+    display: inline-grid;
+    place-items: center;
+    font-size: var(--mantine-font-size-xxs);
+    font-weight: var(--coveo-fw-bold);
+    margin-top: 2px;
+}
+
+.stepNumber::before {
+    content: counter(blueprint-step);
+}
+
+.doDont {
+    display: grid;
+    gap: var(--mantine-spacing-xs);
+    grid-template-columns: repeat(auto-fit, minmax(238px, 1fr));
+    margin-top: var(--mantine-spacing-sm);
+}
+
+.doDontCell {
+    border: 1px solid var(--mantine-color-default-border);
+    border-radius: var(--mantine-radius-md);
+    overflow: hidden;
+}
+
+.doDontHead {
+    font-weight: var(--coveo-fw-bold);
+    font-size: var(--mantine-font-size-xxs);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: var(--mantine-spacing-xxs) var(--mantine-spacing-xs);
+}
+
+.doHead {
+    background: var(--mantine-color-green-0);
+    color: var(--mantine-color-green-8);
+}
+
+.dontHead {
+    background: var(--mantine-color-red-0);
+    color: var(--mantine-color-red-8);
+}
+
+.doDontBody {
+    padding: var(--mantine-spacing-sm) var(--mantine-spacing-xs);
+    display: flex;
+    flex-direction: column;
+    gap: var(--mantine-spacing-xs);
+    align-items: flex-start;
+}
+
+.doDontBody small {
+    color: var(--mantine-color-dimmed);
+    font-size: var(--mantine-font-size-xs);
+    line-height: 1.5;
+}
+
+.pageFooter {
+    margin-top: calc(var(--mantine-spacing-lg) + var(--mantine-spacing-xxs));
+    border-top: 1px solid var(--mantine-color-default-border);
+    padding-top: var(--mantine-spacing-xs);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--mantine-spacing-xxs) var(--mantine-spacing-sm);
+    align-items: center;
+    font-size: var(--mantine-font-size-sm);
+    color: var(--mantine-color-dimmed);
+}
+
+.sectionNumber {
+    color: var(--mantine-color-dimmed);
+    font-size: var(--mantine-font-size-xs);
+    font-weight: var(--coveo-fw-bold);
+    font-variant-numeric: tabular-nums;
+    margin-right: var(--mantine-spacing-xs);
+}
+
+.caption {
+    font-size: var(--mantine-font-size-xs);
+    color: var(--mantine-color-dimmed);
+    margin-top: var(--mantine-spacing-xxs);
+}
+
+.linkGroupTitle {
+    font-size: var(--mantine-font-size-xxs);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--mantine-color-dimmed);
+    font-weight: var(--coveo-fw-bold);
+    margin-bottom: var(--mantine-spacing-xxs);
+}
+
+/* Footer links carry a trailing icon; keep it on the text baseline and never let it wrap alone. */
+.footerLink {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--mantine-spacing-xxs);
+    white-space: nowrap;
+}

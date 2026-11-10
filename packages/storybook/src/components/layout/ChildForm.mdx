@@ -1,5 +1,6 @@
-import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as ChildFormStories from './ChildForm.stories';
+import {PageFooter} from '../../doc-blocks/DocBlocks.js';
 
 <Meta of={ChildFormStories} />
 
@@ -7,15 +8,13 @@ import * as ChildFormStories from './ChildForm.stories';
 
 Expandable nested form section for optional or conditional fields.
 
-## Overview
-
 The `ChildForm` reveals related fields inside a parent form while keeping them visually grouped. It supports configurations that apply only after users opt into an additional setting.
 
-## Usage
+## Demo
 
 <Canvas of={ChildFormStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -36,7 +35,11 @@ The `ChildForm` reveals related fields inside a parent form while keeping them v
 - Keep the hierarchy shallow and avoid nesting several child forms.
 - Make validation errors discoverable even when the section is collapsed.
 
-### Content guidelines
+## Content and copy
 
 - Name the nested object or configuration in the title.
 - Use the description to explain why the additional fields are needed.
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/layout/ChildForm.mdx" />
+</Unstyled>

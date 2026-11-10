@@ -13,7 +13,8 @@ import {Args} from '../../../Args.js';
 import {withLabelContextualHelpProps} from '../ContextualHelpArgs.js';
 
 const meta: Meta<typeof Radio> = {
-    title: '@components/Forms and inputs/string/Radio',
+    title: 'Components/Inputs/Radio',
+    tags: ['!dev'],
     id: 'Radio',
     component: Radio,
     parameters: {

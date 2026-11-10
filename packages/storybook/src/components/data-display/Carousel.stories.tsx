@@ -9,7 +9,8 @@ type CarouselStoryArgs = CarouselProps & {
 const slides = [{value: 'Slide 1'}, {value: 'Slide 2'}, {value: 'Slide 3'}, {value: 'Slide 4'}, {value: 'Slide 5'}];
 
 const meta: Meta<CarouselStoryArgs> = {
-    title: '@components/Data display/Carousel',
+    title: 'Components/Data display/Carousel',
+    tags: ['!dev'],
     id: 'Carousel',
     component: Carousel,
     parameters: {

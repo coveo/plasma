@@ -19,3 +19,19 @@
 p:not([class*='mantine-'] p) {
     margin-block: var(--mantine-spacing-xs);
 }
+
+/*
+ * External links carry a small ↗ so it is clear they leave the Storybook. Generated here
+ * rather than typed into each page: the character then cannot be forgotten, cannot drift in
+ * size, and never lands on a label that is not actually a link.
+ *
+ * `/ ''` gives the generated content an empty alternative text, so screen readers announce
+ * the link label without "north east arrow".
+ *
+ * The page footer is excluded — its links already carry a pencil and a bug icon.
+ */
+.sbdocs a[href^='http']:not([class*='footerLink'])::after {
+    content: '\00a0↗' / '';
+    font-size: 0.75em;
+    line-height: 1;
+}

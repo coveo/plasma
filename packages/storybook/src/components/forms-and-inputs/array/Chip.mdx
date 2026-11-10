@@ -1,5 +1,6 @@
-import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+import {Canvas, Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import * as ChipStories from './Chip.stories';
+import {PageFooter} from '../../../doc-blocks/DocBlocks.js';
 
 <Meta of={ChipStories} />
 
@@ -7,17 +8,15 @@ import * as ChipStories from './Chip.stories';
 
 Compact pill-shaped control for selecting one or more short options.
 
-## Overview
-
 The `Chip` keeps a small choice set visible while giving each option less visual weight than a standard form field.
 
 Use `Chip.Group` to manage related chips as one single-select or multi-select choice set.
 
-## Usage
+## Demo
 
 <Canvas of={ChipStories.Demo} />
 
-## Guidelines
+## Usage
 
 ### When to use
 
@@ -37,8 +36,12 @@ Use `Chip.Group` to manage related chips as one single-select or multi-select ch
 - Make the single-select or multi-select behavior clear from the surrounding context.
 - Avoid chip sets that wrap across many lines or compete with primary actions.
 
-### Content guidelines
+## Content and copy
 
 - Keep labels short enough to remain on one line.
 - Use parallel terms that users can compare quickly.
 - Give the group a label that explains what the choices control.
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/components/forms-and-inputs/array/Chip.mdx" />
+</Unstyled>
