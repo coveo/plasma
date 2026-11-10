@@ -2,6 +2,7 @@
     "codeConnect": {
         "parser": "react",
         "importPaths": {
+            "@coveord/plasma-react-icons": "@coveord/plasma-react-icons",
             "*": "@coveord/plasma-mantine"
         },
         "include": ["src/**/*.figma.{tsx,jsx}"],

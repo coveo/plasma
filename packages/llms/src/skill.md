@@ -46,6 +46,14 @@ Use the Plasma and Mantine MCP servers for on-demand documentation. MCP clients 
 
 Even when Mantine supplies the API reference, import the component from `@coveord/plasma-mantine`.
 
+## Patterns
+
+Plasma patterns describe how to combine components to solve a recurring user need, such as navigating with links. When a task matches a pattern, follow the pattern before picking components.
+
+- Use `list_patterns` to discover the available patterns.
+- Use `get_pattern` to retrieve a pattern, such as `Navigate with links`.
+- Use `search_docs` to find a relevant pattern by topic.
+
 ## Content Guidelines
 
 Plasma provides content guidelines for writing UX copy in Coveo products. Always follow these when writing user-facing text such as labels, errors, tooltips, and descriptions.
@@ -65,11 +73,12 @@ Plasma exposes design foundations (color, typography, spacing, radii, shadows, a
 
 If the Plasma or Mantine MCP tools are not configured, use the static LLM documentation instead.
 
-Start with the Plasma index, then fetch only the component or content guideline needed:
+Start with the Plasma index, then fetch only the component, pattern, or content guideline needed:
 
 ```
 {{BASE_URL}}/llms.txt
 {{BASE_URL}}/llms/components/ComponentName.md
+{{BASE_URL}}/llms/patterns/PatternName.md
 {{BASE_URL}}/llms/content/GuidelineName.md
 {{BASE_URL}}/llms/foundations/Foundations.md
 ```

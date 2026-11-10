@@ -29,3 +29,7 @@ function App() {
 ## Components
 
 {{COMPONENT_DOCS}}
+
+## Patterns
+
+{{PATTERN_DOCS}}

@@ -22,8 +22,14 @@ export {ActionIcon, type ActionIconProps} from './components/ActionIcon/ActionIc
 // Affix
 export * from './components/Affix/Affix.js';
 
-// Anchor
-export * from './components/Anchor/Anchor.js';
+// Anchor - override Mantine Anchor
+export {
+    Anchor,
+    type AnchorExternalFactory,
+    type AnchorExternalProps,
+    type AnchorExternalStylesNames,
+    type AnchorOverloadFactory,
+} from './components/Anchor/Anchor.js';
 
 // Angle Slider
 export * from './components/AngleSlider/AngleSlider.js';

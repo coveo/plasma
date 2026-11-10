@@ -1,27 +1,28 @@
 import {ActionIcon} from '@coveord/plasma-mantine';
+import {IconTrash} from '@coveord/plasma-react-icons';
 import {figma} from '@figma/code-connect';
 
 const actionIconProps = {
-    children: figma.nestedProps('Icons', {
-        icon: figma.instance('Icon'),
+    children: figma.instance('icon'),
+    disabled: figma.enum('state', {
+        disabled: true,
     }),
-    disabled: figma.enum('State', {
-        Disabled: true,
-    }),
-    size: figma.enum('Size', {
+    size: figma.enum('size', {
         sm: 'sm',
+        md: 'md',
+        lg: 'lg',
     }),
 };
 
+// ActionIcon_Destructive has no icon swap property in Figma yet, so the examples use a static trash icon
 const actionIconDestructiveProps = {
-    children: figma.nestedProps('Icons', {
-        icon: figma.instance('Icon'),
+    disabled: figma.enum('state', {
+        disabled: true,
     }),
-    disabled: figma.enum('State', {
-        Disabled: true,
-    }),
-    size: figma.enum('Size', {
+    size: figma.enum('size', {
         sm: 'sm',
+        md: 'md',
+        lg: 'lg',
     }),
 };
 
@@ -29,11 +30,11 @@ figma.connect(
     ActionIcon.Primary,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-49884',
     {
-        variant: {Variant: 'Primary'},
+        variant: {variant: 'primary'},
         props: actionIconProps,
         example: ({disabled, children, size}) => (
             <ActionIcon.Primary disabled={disabled} size={size}>
-                {children.icon}
+                {children}
             </ActionIcon.Primary>
         ),
     },
@@ -43,11 +44,11 @@ figma.connect(
     ActionIcon.Secondary,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-49884',
     {
-        variant: {Variant: 'Secondary'},
+        variant: {variant: 'secondary'},
         props: actionIconProps,
         example: ({disabled, children, size}) => (
             <ActionIcon.Secondary disabled={disabled} size={size}>
-                {children.icon}
+                {children}
             </ActionIcon.Secondary>
         ),
     },
@@ -57,11 +58,11 @@ figma.connect(
     ActionIcon.Tertiary,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-49884',
     {
-        variant: {Variant: 'Tertiary'},
+        variant: {variant: 'tertiary'},
         props: actionIconProps,
         example: ({disabled, children, size}) => (
             <ActionIcon.Tertiary disabled={disabled} size={size}>
-                {children.icon}
+                {children}
             </ActionIcon.Tertiary>
         ),
     },
@@ -71,11 +72,11 @@ figma.connect(
     ActionIcon.Quaternary,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-49884',
     {
-        variant: {Variant: 'Quaternary'},
+        variant: {variant: 'quaternary'},
         props: actionIconProps,
         example: ({disabled, children, size}) => (
             <ActionIcon.Quaternary disabled={disabled} size={size}>
-                {children.icon}
+                {children}
             </ActionIcon.Quaternary>
         ),
     },
@@ -87,11 +88,11 @@ figma.connect(
     ActionIcon.DestructivePrimary,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2911-3649',
     {
-        variant: {Variant: 'Primary'},
+        variant: {variant: 'primary'},
         props: actionIconDestructiveProps,
-        example: ({disabled, children, size}) => (
+        example: ({disabled, size}) => (
             <ActionIcon.DestructivePrimary disabled={disabled} size={size}>
-                {children.icon}
+                <IconTrash size={16} />
             </ActionIcon.DestructivePrimary>
         ),
     },
@@ -101,11 +102,11 @@ figma.connect(
     ActionIcon.DestructiveSecondary,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2911-3649',
     {
-        variant: {Variant: 'Secondary'},
+        variant: {variant: 'secondary'},
         props: actionIconDestructiveProps,
-        example: ({disabled, children, size}) => (
+        example: ({disabled, size}) => (
             <ActionIcon.DestructiveSecondary disabled={disabled} size={size}>
-                {children.icon}
+                <IconTrash size={16} />
             </ActionIcon.DestructiveSecondary>
         ),
     },
@@ -115,11 +116,11 @@ figma.connect(
     ActionIcon.DestructiveTertiary,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2911-3649',
     {
-        variant: {Variant: 'Tertiary'},
+        variant: {variant: 'tertiary'},
         props: actionIconDestructiveProps,
-        example: ({disabled, children, size}) => (
+        example: ({disabled, size}) => (
             <ActionIcon.DestructiveTertiary disabled={disabled} size={size}>
-                {children.icon}
+                <IconTrash size={16} />
             </ActionIcon.DestructiveTertiary>
         ),
     },
@@ -129,11 +130,11 @@ figma.connect(
     ActionIcon.DestructiveQuaternary,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2911-3649',
     {
-        variant: {Variant: 'Quaternary'},
+        variant: {variant: 'quaternary'},
         props: actionIconDestructiveProps,
-        example: ({disabled, children, size}) => (
+        example: ({disabled, size}) => (
             <ActionIcon.DestructiveQuaternary disabled={disabled} size={size}>
-                {children.icon}
+                <IconTrash size={16} />
             </ActionIcon.DestructiveQuaternary>
         ),
     },

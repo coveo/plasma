@@ -3,7 +3,7 @@ import {figma} from '@figma/code-connect';
 
 figma.connect(
     SegmentedControl,
-    'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-51156',
+    'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=3734-769',
     {
         example: () => (
             <SegmentedControl

@@ -6,8 +6,9 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2266-12188',
     {
         props: {
-            size: figma.enum('Size', {
+            size: figma.enum('size', {
                 sm: 'sm',
+                md: 'md',
                 lg: 'lg',
             }),
         },

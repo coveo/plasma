@@ -6,8 +6,8 @@ Thanks for contributing to Plasma, Coveo's design system! This guide walks you t
 
 ## Prerequisites
 
-- [Node.js 24](https://nodejs.org/) (the version pinned in CI).
-- [pnpm](https://pnpm.io/installation) — the repo enforces pnpm and blocks npm/yarn via `only-allow`. The exact version is pinned in `package.json` (`packageManager`); enable it with `corepack enable`.
+- [Node.js 26](https://nodejs.org/) (the version pinned in CI).
+- [pnpm](https://pnpm.io/installation) — the repo enforces pnpm and blocks npm/yarn via `only-allow`. The exact version is pinned in `package.json` (`packageManager`), and pnpm switches to it automatically.
 
 ## Project overview
 

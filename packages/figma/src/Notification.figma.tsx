@@ -12,12 +12,12 @@ figma.connect(
     Notification,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-50983',
     {
-        variant: {Variant: 'Information'},
+        variant: {variant: 'information'},
         props: {
-            title: figma.boolean<string, never>('Title', {
+            title: figma.boolean<string, never>('title', {
                 true: 'Title',
             }),
-            message: figma.boolean<string, never>('Description', {
+            message: figma.boolean<string, never>('description', {
                 true: 'This is a great way to describe your title.',
             }),
         },
@@ -35,12 +35,12 @@ figma.connect(
     Notification,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-50983',
     {
-        variant: {Variant: 'Success'},
+        variant: {variant: 'success'},
         props: {
-            title: figma.boolean<string, never>('Title', {
+            title: figma.boolean<string, never>('title', {
                 true: 'Title',
             }),
-            message: figma.boolean<string, never>('Description', {
+            message: figma.boolean<string, never>('description', {
                 true: 'This is a great way to describe your title.',
             }),
         },
@@ -57,12 +57,12 @@ figma.connect(
     Notification,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-50983',
     {
-        variant: {Variant: 'Warning'},
+        variant: {variant: 'warning'},
         props: {
-            title: figma.boolean<string, never>('Title', {
+            title: figma.boolean<string, never>('title', {
                 true: 'Title',
             }),
-            message: figma.boolean<string, never>('Description', {
+            message: figma.boolean<string, never>('description', {
                 true: 'This is a great way to describe your title.',
             }),
         },
@@ -79,12 +79,12 @@ figma.connect(
     Notification,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-50983',
     {
-        variant: {Variant: 'Critical'},
+        variant: {variant: 'critical'},
         props: {
-            title: figma.boolean<string, never>('Title', {
+            title: figma.boolean<string, never>('title', {
                 true: 'Title',
             }),
-            message: figma.boolean<string, never>('Description', {
+            message: figma.boolean<string, never>('description', {
                 true: 'This is a great way to describe your title.',
             }),
         },
@@ -101,12 +101,12 @@ figma.connect(
     Notification,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-50983',
     {
-        variant: {Variant: 'Loading'},
+        variant: {variant: 'loading'},
         props: {
-            title: figma.boolean<string, never>('Title', {
+            title: figma.boolean<string, never>('title', {
                 true: 'Title',
             }),
-            message: figma.boolean<string, never>('Description', {
+            message: figma.boolean<string, never>('description', {
                 true: 'This is a great way to describe your title.',
             }),
         },

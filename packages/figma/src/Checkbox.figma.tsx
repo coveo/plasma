@@ -1,29 +1,35 @@
-import {Checkbox, Group, Stack} from '@coveord/plasma-mantine';
+import {Checkbox, Group, Stack, Text} from '@coveord/plasma-mantine';
 import {figma} from '@figma/code-connect';
 
 figma.connect(Checkbox, 'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=7-50069', {
     props: {
         labelProps: figma.nestedProps('.Input.Label', {
-            label: figma.string('Label'),
-            required: figma.boolean('Asterisk'),
+            label: figma.string('label'),
+            required: figma.boolean('withAsterisk'),
         }),
-        descriptionProps: figma.nestedProps('.Input.Description', {
-            description: figma.string('Description'),
+        descriptionProps: figma.boolean('description', {
+            true: figma.nestedProps('.Input.Description', {
+                description: figma.string('description'),
+            }),
+            false: {description: undefined},
         }),
-        errorProps: figma.nestedProps('.Input.Error', {
-            error: figma.string('Error'),
+        errorProps: figma.boolean('error', {
+            true: figma.nestedProps('.Input.Error', {
+                error: figma.string('error'),
+            }),
+            false: {error: undefined},
         }),
-        indeterminate: figma.enum('Checked', {
-            Indeterminate: true,
+        indeterminate: figma.enum('checked', {
+            indeterminate: true,
         }),
-        disabled: figma.enum('State', {
-            Disabled: true,
+        disabled: figma.enum('state', {
+            disabled: true,
         }),
-        readOnly: figma.enum('State', {
-            'Read-only': true,
+        readOnly: figma.enum('state', {
+            'read-only': true,
         }),
-        checked: figma.enum('Checked', {
-            True: true,
+        checked: figma.enum('checked', {
+            true: true,
         }),
     },
     example: ({labelProps, descriptionProps, errorProps, indeterminate, disabled, readOnly, checked}) => (
@@ -41,10 +47,44 @@ figma.connect(Checkbox, 'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Pla
 });
 
 figma.connect(
+    Checkbox.Card,
+    'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=9247-9089',
+    {
+        props: {
+            labelProps: figma.nestedProps('.Input.Label', {
+                label: figma.string('label'),
+            }),
+            descriptionProps: figma.nestedProps('.Input.Description', {
+                description: figma.string('description'),
+            }),
+            disabled: figma.enum('disabled', {
+                true: true,
+            }),
+            checked: figma.enum('checked', {
+                true: true,
+            }),
+        },
+        example: ({labelProps, descriptionProps, disabled, checked}) => (
+            <Checkbox.Card checked={checked} disabled={disabled}>
+                <Group wrap="nowrap" align="flex-start">
+                    <Checkbox.Indicator />
+                    <div>
+                        <Text>{labelProps.label}</Text>
+                        <Text size="sm" c="dimmed">
+                            {descriptionProps.description}
+                        </Text>
+                    </div>
+                </Group>
+            </Checkbox.Card>
+        ),
+    },
+);
+
+figma.connect(
     Checkbox.Group,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2246-3811',
     {
-        variant: {Align: 'Horizontal'},
+        variant: {type: 'checkbox', align: 'default'},
         example: () => (
             <Group>
                 <Checkbox label="Label" />
@@ -60,7 +100,7 @@ figma.connect(
     Checkbox.Group,
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2246-3811',
     {
-        variant: {Align: 'Vertical'},
+        variant: {type: 'checkbox', align: 'vertical'},
         example: () => (
             <Stack>
                 <Checkbox label="Label" />
@@ -77,31 +117,28 @@ figma.connect(
     'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma-3.0---Components?node-id=2557-11354',
     {
         props: {
-            inputWrapperProps: figma.nestedProps('Input.Wrapper', {
-                descriptionProps: figma.boolean('Description', {
+            inputWrapperProps: figma.nestedProps('.Input.Wrapper', {
+                descriptionProps: figma.boolean('description', {
                     true: figma.nestedProps('.Input.Description', {
-                        description: figma.string('Description'),
+                        description: figma.string('description'),
                     }),
                     false: {description: undefined},
                 }),
-                errorProps: figma.boolean('Error', {
+                errorProps: figma.boolean('error', {
                     true: figma.nestedProps('.Input.Error', {
-                        error: figma.string('Error'),
+                        error: figma.string('error'),
                     }),
                     false: {error: undefined},
                 }),
-                groupChildren: figma.children('Checkbox.Group'),
+                groupChildren: figma.children('.Checkbox.Group.Root'),
             }),
             labelProps: figma.nestedProps('.Input.Label', {
-                required: figma.boolean('Asterisk'),
-                label: figma.string('Label'),
+                required: figma.boolean('withAsterisk'),
+                label: figma.string('label'),
             }),
-            checkboxGroupProps: figma.nestedProps('Checkbox.Group', {
-                disabled: figma.enum('State', {
-                    Disabled: true,
-                }),
-                readOnly: figma.enum('State', {
-                    'Read-only': true,
+            checkboxGroupProps: figma.nestedProps('.Checkbox.Group.Root', {
+                disabled: figma.enum('state', {
+                    disabled: true,
                 }),
             }),
         },
@@ -112,7 +149,6 @@ figma.connect(
                 required={labelProps.required}
                 error={inputWrapperProps.errorProps.error}
                 disabled={checkboxGroupProps.disabled}
-                readOnly={checkboxGroupProps.readOnly}
             >
                 {inputWrapperProps.groupChildren}
             </Checkbox.Group>

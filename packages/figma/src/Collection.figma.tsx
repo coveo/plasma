@@ -7,17 +7,17 @@ figma.connect(
     {
         props: {
             labelProps: figma.nestedProps('.Input.Label', {
-                text: figma.string('Label'),
-                required: figma.boolean('Asterisk'),
+                text: figma.string('label'),
+                required: figma.boolean('withAsterisk'),
             }),
             description: figma.nestedProps('.Input.Description', {
-                text: figma.string('Description'),
+                text: figma.string('description'),
             }),
             error: figma.nestedProps('.Input.Error', {
-                text: figma.string('Error'),
+                text: figma.string('error'),
             }),
             addButton: figma.nestedProps('Button', {
-                text: figma.string('Placeholder'),
+                text: figma.string('label'),
             }),
         },
         example: (props) => (
