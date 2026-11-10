@@ -1,1 +1,81 @@
 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<style>
+    /*
+     * Reload story sits first in the left toolbar group by default, which puts a
+     * destructive-feeling action ahead of the Docs / Canvas tabs. Push it to the end of
+     * that group so it lands next to "Open in isolation mode" on the right.
+     *
+     * Every sibling keeps the implicit order:0, so a single rule is enough. Matched on
+     * aria-label rather than the generated class name, which changes between builds.
+     */
+    button[aria-label='Reload story'] {
+        order: 1;
+    }
+
+    /*
+     * Links and version bar, portalled into the sidebar by SidebarFooter. Pinned to the
+     * bottom of the sidebar region so it stays put while the tree scrolls.
+     *
+     * The mount is a child of that region, so `inherit` picks up whatever background the
+     * manager theme painted there. Without it the bar is transparent and the tree scrolls
+     * visibly behind the links.
+     */
+    .plasma-sidebar-footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 2;
+        background: inherit;
+        border-top: 1px solid rgba(128, 128, 128, 0.25);
+        box-shadow: 0 -4px 8px -4px rgba(0, 0, 0, 0.12);
+        padding: 10px 12px;
+    }
+
+    /* Outbound links on the left, the shipped version on the right. */
+    .plasma-sidebar-links {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        background: inherit;
+        font-size: 12px;
+    }
+
+    .plasma-sidebar-links a {
+        color: var(--plasma-sidebar-link, #1169da);
+        text-decoration: none;
+        margin-right: 10px;
+        white-space: nowrap;
+    }
+
+    .plasma-sidebar-links a:last-child {
+        margin-right: 0;
+    }
+
+    .plasma-sidebar-links a:hover {
+        text-decoration: underline;
+    }
+
+    /* Same external-link arrow as the docs pages, generated rather than typed. */
+    .plasma-sidebar-links a::after {
+        content: '\00a0↗' / '';
+        font-size: 0.75em;
+        line-height: 1;
+    }
+
+    .plasma-sidebar-version {
+        opacity: 0.6;
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+    }
+
+    /*
+     * Plasma does not support dark mode. The preview background control is what switches
+     * the colour scheme here, so it is not offered. The addon itself stays enabled — it
+     * still paints the app background — only its toolbar control is hidden.
+     */
+    button[aria-label^='Preview background'] {
+        display: none;
+    }
+</style>
