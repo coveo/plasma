@@ -25,6 +25,12 @@
 
 .editor {
     flex: 1;
+
+    /* The editor reaches the card's edges, so its content follows the card's rounded bottom corners */
+    :global(.monaco-editor),
+    :global(.monaco-editor .overflow-guard) {
+        border-radius: 0 0 calc(var(--mantine-radius-lg) - 1px) calc(var(--mantine-radius-lg) - 1px);
+    }
 }
 
 /*
@@ -48,6 +54,17 @@
 
 .error {
     --ce-border-color: var(--mantine-color-error);
+}
+
+/*
+ * Selected text is white on the primary color from the theme, like all selected text in Plasma (see global.css).
+ * The current search match is painted solid yellow over the selection, so it keeps its syntax colors.
+ * Monaco colors code with single classes (.mtk1, .mtk2, …), so its root class is enough to override them.
+ */
+.editor :global(.monaco-editor) .selectedText:not(:global(.currentFindMatchInline)) {
+    @mixin light {
+        color: var(--mantine-color-white);
+    }
 }
 
 .disabled {
