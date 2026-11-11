@@ -51,11 +51,18 @@ Do not use `ActionIcon` when:
 - Disabled icon actions SHOULD explain why they are unavailable with `disabledTooltip`.
 - The icon MUST NOT be the only source of meaning when the action is ambiguous.
 
+## Content guidance
+
+- The accessible name (`aria-label`) and any tooltip that names the action SHOULD start with a verb, such as "Copy" or "Delete source".
+- Action names SHOULD NOT include articles (a, an, the): "Delete source", not "Delete the source".
+- Disabled tooltips SHOULD be full sentences that explain why the action is unavailable, and MAY include articles.
+
 ## Common anti-patterns
 
 - Replacing important text buttons with icon-only actions just to save space.
 - Using destructive styling for non-destructive actions.
 - Placing many unlabeled icons together without enough distinction.
+- Using articles in the accessible name or tooltip of an action, such as "Delete the source".
 
 # API reference
 

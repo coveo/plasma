@@ -42,11 +42,17 @@ Do not use `Menu` when:
 - Menu item labels SHOULD be action-oriented and specific.
 - Disabled menu items SHOULD explain the missing condition when the reason is not obvious.
 
+## Content guidance
+
+- Item labels SHOULD start with a specific verb.
+- Item labels SHOULD NOT include articles (a, an, the): "Archive source", not "Archive the source".
+
 ## Common anti-patterns
 
 - Hiding the only path to an important action inside a menu.
 - Mixing unrelated commands in one menu without grouping.
 - Using a menu as a replacement for form controls or navigation structure.
+- Using articles in item labels, such as "Archive the source".
 
 # API reference
 

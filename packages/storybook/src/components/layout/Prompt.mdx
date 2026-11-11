@@ -38,7 +38,11 @@ The `Prompt` asks users to confirm or acknowledge an important decision before c
 
 ### Content guidelines
 
-- Name the decision in the title.
+- Name the decision in the title, starting with a verb and the object, such as **Delete source?**. A question is fine.
+- When a button triggers the prompt, use that button's verb and object in the title. Don't switch verbs between the two, such as **Remove source** on the button and "Delete source?" in the title.
+- If the button's label is only a verb, such as **Delete**, add the object to the title: **Delete source?**.
+- When nothing was pressed to trigger the prompt, name the decision the same way, such as "Discard unsaved changes?".
+- Avoid vague titles such as "Are you sure?" or "Confirm action". Name the action.
 - Explain the consequences and whether the action is reversible.
-- Use a specific confirm label such as **Delete source**, not **OK**.
+- Use a specific confirm label such as **Delete source**, not **OK** or **Yes**.
 - Make the safe alternative clear in the cancel label.
