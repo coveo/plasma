@@ -39,7 +39,7 @@ Do not use `CodeEditor` when:
 ## Accessibility expectations
 
 - Labels and descriptions SHOULD explain what kind of content is expected.
-- Validation feedback SHOULD identify the problem and location when possible.
+- Validation feedback SHOULD start with the fix and give its location when possible ("Add a closing bracket on line 4." not "Syntax error.").
 - The editor height SHOULD leave enough room for users to understand the content.
 
 ## Common anti-patterns

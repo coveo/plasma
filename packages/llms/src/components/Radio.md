@@ -52,6 +52,7 @@ Do not use `Radio` when:
 - Group labels SHOULD name the decision being made, not the concept (e.g. "Notification frequency", not "Notifications").
 - Individual labels SHOULD be short, parallel, and in sentence case.
 - Avoid double negatives or technical jargon in option labels.
+- Error messages SHOULD start with what to select and name the decision ("Select a notification frequency." not "Select an option.").
 
 ## Common anti-patterns
 

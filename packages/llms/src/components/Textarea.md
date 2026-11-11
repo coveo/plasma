@@ -51,6 +51,7 @@ description: Multi-line text input for collecting longer-form free-text content 
 - Labels SHOULD use noun phrases ("Description", "Additional notes") rather than imperative verbs ("Enter your description").
 - Placeholder text SHOULD give an example or a short hint, not repeat the label.
 - If there is a character limit, communicate it in `description` (e.g. "Max 500 characters") and enforce it with `maxLength`.
+- Error messages SHOULD start with what to enter ("Enter a description for this source." not "This field is required.").
 
 ## Common anti-patterns
 

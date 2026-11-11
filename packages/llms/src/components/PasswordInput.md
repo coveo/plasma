@@ -42,6 +42,10 @@ Do not use `PasswordInput` when:
 - Helper text SHOULD state format or rotation requirements when relevant.
 - Do not rely on placeholder text as the only instruction.
 
+## Content guidance
+
+- Error messages SHOULD start with what to enter and name the secret ("Enter the database password." not "This field is required.").
+
 ## Common anti-patterns
 
 - Masking non-sensitive values.
