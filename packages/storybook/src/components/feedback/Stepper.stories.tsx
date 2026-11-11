@@ -4,6 +4,7 @@ import {useArgs} from 'storybook/preview-api';
 
 const meta = {
     title: '@components/Feedback/Stepper',
+    tags: ['!dev'],
     id: 'Stepper',
     component: Stepper,
     parameters: {

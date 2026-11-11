@@ -8,6 +8,7 @@ type SliderInputStoryArgs = ComponentProps<typeof SliderInput> & Pick<InputWrapp
 
 const meta = {
     title: '@components/Forms and inputs/number/SliderInput',
+    tags: ['!dev'],
     id: 'SliderInput',
     component: SliderInput,
     decorators: [

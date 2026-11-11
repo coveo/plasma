@@ -4,6 +4,7 @@ import {FunctionComponent, ReactNode} from 'react';
 
 const meta: Meta<ChildFormProps> = {
     title: '@components/Layout/ChildForm',
+    tags: ['!dev'],
     id: 'ChildForm',
     component: ChildForm,
     parameters: {

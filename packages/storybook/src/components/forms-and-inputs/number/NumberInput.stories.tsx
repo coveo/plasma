@@ -19,6 +19,7 @@ type NumberInputStoryArgs = Omit<ComponentProps<typeof NumberInput>, 'leftSectio
 
 const meta = {
     title: '@components/Forms and inputs/number/NumberInput',
+    tags: ['!dev'],
     id: 'NumberInput',
     component: NumberInput,
     parameters: {

@@ -3,6 +3,7 @@ import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof Alert> = {
     title: '@components/Feedback/Alert',
+    tags: ['!dev'],
     id: 'Alert',
     component: Alert,
     parameters: {

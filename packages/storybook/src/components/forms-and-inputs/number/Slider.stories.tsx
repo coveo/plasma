@@ -4,6 +4,7 @@ import {Args} from '../../../Args.js';
 
 const meta: Meta<typeof Slider> = {
     title: '@components/Forms and inputs/number/Slider',
+    tags: ['!dev'],
     id: 'Slider',
     component: Slider,
     decorators: [

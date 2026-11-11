@@ -3,6 +3,7 @@ import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta = {
     title: '@components/Forms and inputs/string/Combobox',
+    tags: ['!dev'],
     id: 'Combobox',
     component: Combobox.Option,
     parameters: {

@@ -14,6 +14,7 @@ type SelectStoryArgs = ComponentProps<typeof Select> & BaseInputStoryArgs & Inpu
 
 const meta = {
     title: '@components/Forms and inputs/string/Select',
+    tags: ['!dev'],
     id: 'Select',
     component: Select,
     parameters: {

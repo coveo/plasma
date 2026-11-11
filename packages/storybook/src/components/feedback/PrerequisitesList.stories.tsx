@@ -4,6 +4,7 @@ import {PrerequisitesList} from '@coveord/plasma-mantine/components/Prerequisite
 
 const meta: Meta<typeof PrerequisitesList> = {
     title: '@components/Feedback/PrerequisitesList',
+    tags: ['!dev'],
     id: 'PrerequisitesList',
     component: PrerequisitesList,
     parameters: {

@@ -23,6 +23,7 @@ interface CollectionStoryArgs extends BaseInputStoryArgs, InputWrapperStoryArgs 
 
 const meta = {
     title: '@components/Forms and inputs/array/Collection',
+    tags: ['!dev'],
     id: 'Collection',
     parameters: {
         layout: 'centered',

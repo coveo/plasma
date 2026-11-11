@@ -14,6 +14,7 @@ type MonthPickerInputStoryArgs = ComponentProps<typeof MonthPickerInput> & BaseI
 
 const meta = {
     title: '@components/Forms and inputs/date/MonthPickerInput',
+    tags: ['!dev'],
     id: 'MonthPickerInput',
     component: MonthPickerInput,
     parameters: {

@@ -3,6 +3,7 @@ import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof Progress> = {
     title: '@components/Feedback/Progress',
+    tags: ['!dev'],
     id: 'Progress',
     component: Progress,
     parameters: {

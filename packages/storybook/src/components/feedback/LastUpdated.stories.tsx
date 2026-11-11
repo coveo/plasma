@@ -3,6 +3,7 @@ import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof LastUpdated> = {
     title: '@components/Feedback/LastUpdated',
+    tags: ['!dev'],
     id: 'LastUpdated',
     component: LastUpdated,
     parameters: {

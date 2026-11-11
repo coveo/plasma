@@ -27,6 +27,7 @@ const navigationColors: Record<string, CSSProperties> = {
 
 const meta: Meta<typeof Navigation> = {
     title: '@components/Layout/Navigation',
+    tags: ['!dev'],
     id: 'Navigation',
     component: Navigation,
     parameters: {

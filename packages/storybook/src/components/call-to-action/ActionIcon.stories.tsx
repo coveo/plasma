@@ -22,6 +22,7 @@ type ActionIconStoryArgs = Omit<ActionIconProps, 'size' | 'variant'> & {
 
 const meta: Meta<ActionIconStoryArgs> = {
     title: '@components/Call to action/ActionIcon',
+    tags: ['!dev'],
     id: 'ActionIcon',
     parameters: {
         layout: 'centered',
