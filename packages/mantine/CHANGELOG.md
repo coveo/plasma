@@ -1,5 +1,15 @@
 # @coveord/plasma-mantine
 
+## 61.6.2
+
+### Patch Changes
+
+- Keep `Table` row selection when Escape is pressed inside a modal or open dropdown above the table [#4689](https://github.com/coveo/plasma/pull/4689)
+
+- Update the `CopyToClipboard` icons to match the Plasma Figma library [#4690](https://github.com/coveo/plasma/pull/4690)
+
+  The button now shows the copy icon, and the copied state shows the copy check icon, instead of the clipboard icons.
+
 ## 61.6.1
 
 ### Patch Changes
