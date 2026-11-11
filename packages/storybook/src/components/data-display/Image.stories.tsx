@@ -3,6 +3,7 @@ import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof Image> = {
     title: '@components/Data display/Image',
+    tags: ['!dev'],
     id: 'Image',
     component: Image,
     parameters: {

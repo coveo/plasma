@@ -7,6 +7,7 @@ faker.seed(42);
 
 const meta: Meta<typeof ScrollArea> = {
     title: '@components/Layout/ScrollArea',
+    tags: ['!dev'],
     id: 'ScrollArea',
     component: ScrollArea,
     parameters: {

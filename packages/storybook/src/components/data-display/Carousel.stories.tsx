@@ -10,6 +10,7 @@ const slides = [{value: 'Slide 1'}, {value: 'Slide 2'}, {value: 'Slide 3'}, {val
 
 const meta: Meta<CarouselStoryArgs> = {
     title: '@components/Data display/Carousel',
+    tags: ['!dev'],
     id: 'Carousel',
     component: Carousel,
     parameters: {

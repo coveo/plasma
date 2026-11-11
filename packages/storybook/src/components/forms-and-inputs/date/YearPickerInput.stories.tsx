@@ -14,6 +14,7 @@ type YearPickerInputStoryArgs = ComponentProps<typeof YearPickerInput> & BaseInp
 
 const meta = {
     title: '@components/Forms and inputs/date/YearPickerInput',
+    tags: ['!dev'],
     id: 'YearPickerInput',
     component: YearPickerInput,
     parameters: {

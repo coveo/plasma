@@ -9,6 +9,7 @@ type InfoTokenStoryArgs = InfoTokenProps & {
 
 const meta: Meta<InfoTokenStoryArgs> = {
     title: '@components/Feedback/InfoToken',
+    tags: ['!dev'],
     id: 'InfoToken',
     component: InfoToken.Information,
     parameters: {
