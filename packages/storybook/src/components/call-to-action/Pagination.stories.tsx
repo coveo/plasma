@@ -4,6 +4,7 @@ import {useState} from 'react';
 
 const meta: Meta<typeof Pagination> = {
     title: '@components/Call to action/Pagination',
+    tags: ['!dev'],
     id: 'Pagination',
     component: Pagination,
     parameters: {

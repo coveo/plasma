@@ -3,6 +3,7 @@ import {Chip, EllipsisText} from '@coveord/plasma-mantine';
 
 const meta: Meta<typeof EllipsisText> = {
     title: '@components/Typography/EllipsisText',
+    tags: ['!dev'],
     id: 'EllipsisText',
     component: EllipsisText,
     parameters: {

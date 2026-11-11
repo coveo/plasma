@@ -15,6 +15,7 @@ type DatePickerInputStoryArgs = ComponentProps<typeof DatePickerInput> & BaseInp
 
 const meta = {
     title: '@components/Forms and inputs/date/DatePickerInput',
+    tags: ['!dev'],
     id: 'DatePickerInput',
     component: DatePickerInput,
     parameters: {

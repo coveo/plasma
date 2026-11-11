@@ -8,6 +8,7 @@ type TooltipStoryArgs = Omit<ComponentPropsWithoutRef<typeof Tooltip>, 'children
 
 const meta = {
     title: '@components/Feedback/Tooltip',
+    tags: ['!dev'],
     id: 'Tooltip',
     component: Tooltip,
     parameters: {

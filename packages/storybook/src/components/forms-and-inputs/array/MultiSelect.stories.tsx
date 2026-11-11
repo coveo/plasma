@@ -14,6 +14,7 @@ type MultiSelectStoryArgs = ComponentProps<typeof MultiSelect> & BaseInputStoryA
 
 const meta = {
     title: '@components/Forms and inputs/array/MultiSelect',
+    tags: ['!dev'],
     id: 'MultiSelect',
     component: MultiSelect,
     parameters: {

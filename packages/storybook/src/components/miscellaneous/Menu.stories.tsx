@@ -3,6 +3,7 @@ import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof Menu> = {
     title: '@components/Miscellaneous/Menu',
+    tags: ['!dev'],
     id: 'Menu',
     component: Menu,
     parameters: {

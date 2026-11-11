@@ -11,6 +11,7 @@ type BadgeStoryArgs = Omit<ComponentProps<SemanticBadge>, 'children'> & {
 
 const meta = {
     title: '@components/Data display/Badge',
+    tags: ['!dev'],
     id: 'Badge',
     component: Badge,
     parameters: {

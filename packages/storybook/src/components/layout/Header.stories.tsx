@@ -10,6 +10,7 @@ interface HeaderStoryProps {
 
 const meta: Meta<HeaderProps & HeaderStoryProps> = {
     title: '@components/Layout/Header',
+    tags: ['!dev'],
     id: 'Header',
     component: Header,
     parameters: {

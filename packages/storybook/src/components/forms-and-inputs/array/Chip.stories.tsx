@@ -4,6 +4,7 @@ import {useArgs} from 'storybook/preview-api';
 
 const meta: Meta<typeof Chip> = {
     title: '@components/Forms and inputs/array/Chip',
+    tags: ['!dev'],
     id: 'Chip',
     component: Chip,
     parameters: {

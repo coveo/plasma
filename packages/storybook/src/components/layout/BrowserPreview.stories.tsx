@@ -24,7 +24,7 @@ const meta: Meta<typeof BrowserPreview> = {
     parameters: {
         layout: 'centered',
     },
-    tags: ['!autodocs'],
+    tags: ['!autodocs', '!dev'],
     argTypes: {
         title: {control: 'text'},
         headerTooltip: {control: 'text'},
