@@ -35,14 +35,14 @@
         "@types/node": "26.6.6",
         "@typescript/native-preview": "7.0.0-dev.20260707.2",
         "aws-sdk": "2.1693.0",
-        "eslint": "10.13.0",
-        "eslint-plugin-storybook": "10.6.4",
+        "eslint": "10.14.0",
+        "eslint-plugin-storybook": "10.6.6",
         "eslint-plugin-testing-library": "7.16.2",
         "husky": "9.1.7",
         "lint-staged": "17.6.0",
-        "oxfmt": "0.75.0",
-        "oxlint": "1.90.0",
-        "oxlint-tsgolint": "7.0.2005",
+        "oxfmt": "0.77.0",
+        "oxlint": "1.92.0",
+        "oxlint-tsgolint": "7.0.2006",
         "postcss": "8.5.32",
         "stylelint": "17.16.0",
         "stylelint-config-standard-scss": "17.0.0",
@@ -63,5 +63,5 @@
         "IE 11",
         "not dead"
     ],
-    "packageManager": "pnpm@12.16.0"
+    "packageManager": "pnpm@12.18.0"
 }
