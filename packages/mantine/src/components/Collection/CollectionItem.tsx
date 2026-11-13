@@ -16,6 +16,7 @@ interface CollectionItemSharedProps extends GroupProps {
     id: string;
     onRemove?: MouseEventHandler<HTMLButtonElement>;
     removable?: boolean;
+    removeDisabledTooltip?: string;
 }
 
 const defaultProps = {
@@ -28,6 +29,7 @@ const StaticCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSh
         children,
         removable,
         onRemove,
+        removeDisabledTooltip,
         id,
 
         // Style props
@@ -40,7 +42,7 @@ const StaticCollectionItem: FunctionComponent<PropsWithChildren<CollectionItemSh
     return (
         <Group data-testid={`item-${id}`} {...ctx.getStyles('item', {style, className})} {...others}>
             {children}
-            <RemoveButton removable={removable} onRemove={onRemove} />
+            <RemoveButton removable={removable} onRemove={onRemove} removeDisabledTooltip={removeDisabledTooltip} />
         </Group>
     );
 };
@@ -52,6 +54,7 @@ const DisabledCollectionItem: FunctionComponent<PropsWithChildren<CollectionItem
         id,
         removable: _removable,
         onRemove: _onRemove,
+        removeDisabledTooltip: _removeDisabledTooltip,
 
         // Style props
         style,
@@ -71,6 +74,7 @@ const DraggableCollectionItem: FunctionComponent<PropsWithChildren<CollectionIte
         children,
         removable,
         onRemove,
+        removeDisabledTooltip,
         id,
 
         // Style props
@@ -100,7 +104,7 @@ const DraggableCollectionItem: FunctionComponent<PropsWithChildren<CollectionIte
         >
             <DragHandle setActivatorNodeRef={setActivatorNodeRef} listeners={listeners} attributes={attributes} />
             {children}
-            <RemoveButton removable={removable} onRemove={onRemove} />
+            <RemoveButton removable={removable} onRemove={onRemove} removeDisabledTooltip={removeDisabledTooltip} />
         </Group>
     );
 };

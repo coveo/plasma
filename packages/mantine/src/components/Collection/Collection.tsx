@@ -111,6 +111,12 @@ interface BaseCollectionProps<T> extends __InputWrapperProps, BoxProps, StylesAp
      */
     addLabel?: ReactNode;
     /**
+     * The accessible label of the remove item buttons
+     *
+     * @default "Remove"
+     */
+    removeLabel?: string;
+    /**
      * The tooltip text displayed when hovering over the disabled add item button
      *
      * @default 'There is already an empty item'
@@ -128,6 +134,24 @@ interface BaseCollectionProps<T> extends __InputWrapperProps, BoxProps, StylesAp
      * @default false
      */
     required?: boolean;
+    /**
+     * Whether the items can be removed, or a function that determines if a specific item can be removed.
+     * The remove button of an item that cannot be removed is hidden, unless a `removeDisabledTooltip` is given for it.
+     * Items are always removable if this prop remains undefined
+     *
+     * @param item The current item's value
+     * @param index The current item's index
+     */
+    allowRemove?: boolean | ((item: T, index: number) => boolean);
+    /**
+     * The tooltip text displayed when hovering over the disabled remove button of an item that cannot be removed,
+     * or a function that returns it for a specific item.
+     * When given, a disabled remove button is displayed instead of hiding it
+     *
+     * @param item The current item's value
+     * @param index The current item's index
+     */
+    removeDisabledTooltip?: string | ((item: T, index: number) => string | undefined);
 }
 
 /**
@@ -190,6 +214,7 @@ export type CollectionFactory = Factory<{
 const defaultProps = {
     draggable: false,
     addLabel: 'Add item',
+    removeLabel: 'Remove',
     addDisabledTooltip: 'There is already an empty item',
     disabled: false,
     readOnly: false,
@@ -213,8 +238,11 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
         layout,
         gap,
         required,
+        allowRemove,
+        removeDisabledTooltip,
         newItem,
         addLabel,
+        removeLabel,
         addDisabledTooltip,
         allowAdd,
         label,
@@ -312,6 +340,12 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
 
     const addAllowed = typeof allowAdd === 'boolean' ? allowAdd : (allowAdd?.(items) ?? true);
 
+    const isItemRemovable = (item: T, index: number) =>
+        typeof allowRemove === 'boolean' ? allowRemove : (allowRemove?.(item, index) ?? true);
+
+    const getRemoveDisabledTooltip = (item: T, index: number) =>
+        typeof removeDisabledTooltip === 'function' ? removeDisabledTooltip(item, index) : removeDisabledTooltip;
+
     const handleAdd = () => {
         const newItemValue = typeof newItem === 'function' ? (newItem as () => T)() : newItem;
         onInsertItem?.(newItemValue, items?.length ?? 0);
@@ -331,7 +365,9 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
         const Layout = layout || CollectionLayouts.Horizontal;
 
         return (
-            <CollectionProvider value={{getStyles, columns: columns as Array<CollectionColumnDef<unknown>>}}>
+            <CollectionProvider
+                value={{getStyles, removeLabel, columns: columns as Array<CollectionColumnDef<unknown>>}}
+            >
                 <DndContext
                     onDragEnd={handleDragEnd}
                     sensors={sensors}
@@ -349,6 +385,8 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
                                     items={items}
                                     onRemove={canEdit ? onRemoveItem : undefined}
                                     removable={canEdit && !(isRequired && hasOnlyOneItem)}
+                                    isItemRemovable={isItemRemovable}
+                                    getRemoveDisabledTooltip={getRemoveDisabledTooltip}
                                     draggable={draggable && canEdit}
                                     disabled={disabled}
                                     readOnly={readOnly}
@@ -366,21 +404,26 @@ export const Collection = <T,>(props: CollectionProps<T> & {ref?: ForwardedRef<H
     }
 
     // Legacy children render prop pattern
-    const renderedItems = standardizedItems.map((item, index) => (
-        <CollectionItem
-            key={item.id}
-            id={item.id}
-            disabled={!canEdit}
-            draggable={draggable}
-            onRemove={() => onRemoveItem?.(index)}
-            removable={!(isRequired && hasOnlyOneItem)}
-        >
-            {children(item.data, index)}
-        </CollectionItem>
-    ));
+    const renderedItems = standardizedItems.map((item, index) => {
+        const removable = !(isRequired && hasOnlyOneItem) && isItemRemovable(item.data, index);
+
+        return (
+            <CollectionItem
+                key={item.id}
+                id={item.id}
+                disabled={!canEdit}
+                draggable={draggable}
+                onRemove={() => onRemoveItem?.(index)}
+                removable={removable}
+                removeDisabledTooltip={removable ? undefined : getRemoveDisabledTooltip(item.data, index)}
+            >
+                {children(item.data, index)}
+            </CollectionItem>
+        );
+    });
 
     return (
-        <CollectionProvider value={{getStyles}}>
+        <CollectionProvider value={{getStyles, removeLabel}}>
             <DndContext
                 onDragEnd={handleDragEnd}
                 sensors={sensors}

@@ -46,12 +46,20 @@ const renderFieldStack = (
  * For non-draggable items with remove button
  */
 const renderVerticalContent: ItemContentRenderer<any> = (item, index, columns, cellContext, layoutClasses) => {
-    const showRemove = cellContext.removable && cellContext.onRemove && !cellContext.draggable;
+    const showRemove =
+        (cellContext.removeDisabledTooltip || (cellContext.removable && cellContext.onRemove)) &&
+        !cellContext.draggable;
 
     return (
         <Group wrap="nowrap" align="flex-start" gap="sm" className={layoutClasses.itemContent}>
             {renderFieldStack(item, index, columns, cellContext, layoutClasses)}
-            {showRemove && <RemoveButton removable={cellContext.removable} onRemove={cellContext.onRemove} />}
+            {showRemove && (
+                <RemoveButton
+                    removable={cellContext.removable}
+                    onRemove={cellContext.onRemove}
+                    removeDisabledTooltip={cellContext.removeDisabledTooltip}
+                />
+            )}
         </Group>
     );
 };
@@ -75,19 +83,32 @@ const renderVerticalDraggableContent: DraggableContentRenderer<any> = (
             attributes={dragHandleProps.attributes}
         />
         {renderFieldStack(item, index, columns, cellContext, layoutClasses)}
-        {cellContext.removable && cellContext.onRemove && (
-            <RemoveButton removable={cellContext.removable} onRemove={cellContext.onRemove} />
+        {(cellContext.removeDisabledTooltip || (cellContext.removable && cellContext.onRemove)) && (
+            <RemoveButton
+                removable={cellContext.removable}
+                onRemove={cellContext.onRemove}
+                removeDisabledTooltip={cellContext.removeDisabledTooltip}
+            />
         )}
     </Group>
 );
 
 export const VerticalLayoutBody = <T,>(props: LayoutBodyProps<T> & {ref?: ForwardedRef<HTMLDivElement>}) => {
     const collectionCtx = useCollectionContext();
-    const {items, onRemove, removable, draggable, disabled, readOnly, getItemId, gap, ref, ...others} = useProps(
-        'VerticalLayoutBody',
-        defaultProps,
-        props,
-    );
+    const {
+        items,
+        onRemove,
+        removable,
+        isItemRemovable,
+        getRemoveDisabledTooltip,
+        draggable,
+        disabled,
+        readOnly,
+        getItemId,
+        gap,
+        ref,
+        ...others
+    } = useProps('VerticalLayoutBody', defaultProps, props);
     const columns = (collectionCtx.columns ?? []) as Array<CollectionColumnDef<T>>;
     const verticalRenderers = useMemo(() => createItemRenderers<T>(), []);
 
@@ -105,6 +126,8 @@ export const VerticalLayoutBody = <T,>(props: LayoutBodyProps<T> & {ref?: Forwar
         getItemId,
         onRemove,
         removable,
+        isItemRemovable,
+        getRemoveDisabledTooltip,
         draggable,
         disabled,
         readOnly,

@@ -33,11 +33,20 @@ const renderHorizontalContent: ItemContentRenderer<unknown> = (
 
 export const HorizontalLayoutBody = <T,>(props: LayoutBodyProps<T> & {ref?: ForwardedRef<HTMLDivElement>}) => {
     const collectionCtx = useCollectionContext();
-    const {items, onRemove, removable, draggable, disabled, readOnly, getItemId, gap, ref, ...others} = useProps(
-        'HorizontalLayoutBody',
-        defaultProps,
-        props,
-    );
+    const {
+        items,
+        onRemove,
+        removable,
+        isItemRemovable,
+        getRemoveDisabledTooltip,
+        draggable,
+        disabled,
+        readOnly,
+        getItemId,
+        gap,
+        ref,
+        ...others
+    } = useProps('HorizontalLayoutBody', defaultProps, props);
     const columns = (collectionCtx.columns ?? []) as Array<CollectionColumnDef<T>>;
     const horizontalRenderers = useMemo(() => createItemRenderers<T>(), []);
 
@@ -54,6 +63,8 @@ export const HorizontalLayoutBody = <T,>(props: LayoutBodyProps<T> & {ref?: Forw
         getItemId,
         onRemove,
         removable,
+        isItemRemovable,
+        getRemoveDisabledTooltip,
         draggable,
         disabled,
         readOnly,

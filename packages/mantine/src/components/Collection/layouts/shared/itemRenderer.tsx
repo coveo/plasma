@@ -23,6 +23,7 @@ export interface ItemProps<T> {
     columns: Array<CollectionColumnDef<T>>;
     onRemove?: () => void;
     removable?: boolean;
+    removeDisabledTooltip?: string;
     draggable?: boolean;
     disabled?: boolean;
     readOnly?: boolean;
@@ -87,13 +88,26 @@ export const createItemRenderers = <T,>() => {
      * Draggable item/row renderer with drag and drop functionality
      */
     const DraggableItem = (props: ItemProps<T>) => {
-        const {item, index, id, columns, onRemove, removable, disabled, readOnly, classes, config} = props;
+        const {
+            item,
+            index,
+            id,
+            columns,
+            onRemove,
+            removable,
+            removeDisabledTooltip,
+            disabled,
+            readOnly,
+            classes,
+            config,
+        } = props;
         const {attributes, listeners, setNodeRef, transform, transition, isDragging, setActivatorNodeRef} = useSortable(
             {id},
         );
 
         const cellContext: CollectionCellContext<T> = {
             removable,
+            removeDisabledTooltip,
             draggable: true,
             disabled,
             readOnly,
@@ -142,7 +156,13 @@ export const createItemRenderers = <T,>() => {
             >
                 <DragHandle setActivatorNodeRef={setActivatorNodeRef} listeners={listeners} attributes={attributes} />
                 {config.renderContent(item, index, columns, cellContext, classes)}
-                {config.inlineControls && <RemoveButton removable={removable} onRemove={onRemove} />}
+                {config.inlineControls && (
+                    <RemoveButton
+                        removable={removable}
+                        onRemove={onRemove}
+                        removeDisabledTooltip={removeDisabledTooltip}
+                    />
+                )}
             </Box>
         );
     };
@@ -151,10 +171,23 @@ export const createItemRenderers = <T,>() => {
      * Static (non-draggable) item/row renderer
      */
     const StaticItem = (props: ItemProps<T>) => {
-        const {item, index, id, columns, onRemove, removable, disabled, readOnly, classes, config} = props;
+        const {
+            item,
+            index,
+            id,
+            columns,
+            onRemove,
+            removable,
+            removeDisabledTooltip,
+            disabled,
+            readOnly,
+            classes,
+            config,
+        } = props;
 
         const cellContext: CollectionCellContext<T> = {
             removable,
+            removeDisabledTooltip,
             draggable: false,
             disabled,
             readOnly,
@@ -164,7 +197,13 @@ export const createItemRenderers = <T,>() => {
         return (
             <Box data-testid={`item-${id}`} className={classes[config.containerSelector]}>
                 {config.renderContent(item, index, columns, cellContext, classes)}
-                {config.inlineControls && <RemoveButton removable={removable} onRemove={onRemove} />}
+                {config.inlineControls && (
+                    <RemoveButton
+                        removable={removable}
+                        onRemove={onRemove}
+                        removeDisabledTooltip={removeDisabledTooltip}
+                    />
+                )}
             </Box>
         );
     };
@@ -204,24 +243,38 @@ export const mapItemsToComponents = <T,>(
         getItemId?: (item: T, index: number) => string;
         onRemove?: (index: number) => void;
         removable?: boolean;
+        isItemRemovable?: (item: T, index: number) => boolean;
+        getRemoveDisabledTooltip?: (item: T, index: number) => string | undefined;
         draggable?: boolean;
         disabled?: boolean;
         readOnly?: boolean;
         columns: Array<CollectionColumnDef<T>>;
     },
 ): ReactNode[] => {
-    const {getItemId, onRemove, removable, draggable, disabled, readOnly, columns} = options;
+    const {
+        getItemId,
+        onRemove,
+        removable,
+        isItemRemovable,
+        getRemoveDisabledTooltip,
+        draggable,
+        disabled,
+        readOnly,
+        columns,
+    } = options;
     const {DraggableItem, StaticItem, DisabledItem} = renderers;
 
     return items.map((item, index) => {
         const id = getItemId?.(item, index) ?? String(index);
+        const itemRemovable = removable && (isItemRemovable?.(item, index) ?? true);
         const itemProps: ItemProps<T> = {
             item,
             index,
             id,
             columns,
             onRemove: onRemove ? () => onRemove(index) : undefined,
-            removable,
+            removable: itemRemovable,
+            removeDisabledTooltip: itemRemovable ? undefined : getRemoveDisabledTooltip?.(item, index),
             draggable,
             disabled,
             readOnly,

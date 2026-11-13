@@ -41,6 +41,8 @@ export interface CollectionCellContext<T = unknown> {
     readOnly?: boolean;
     /** Callback to remove the item */
     onRemove?: () => void;
+    /** Tooltip displayed over the disabled remove button when the item cannot be removed */
+    removeDisabledTooltip?: string;
 }
 
 /**
