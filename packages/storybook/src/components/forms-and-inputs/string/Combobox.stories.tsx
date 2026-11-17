@@ -3,7 +3,9 @@ import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta = {
     title: '@components/Forms and inputs/string/Combobox',
-    tags: ['!dev'],
+    // No `!dev` here on purpose: Combobox has no MDX page and no autodocs, so hiding its
+    // story would remove the component from the sidebar entirely. Add the tag once it has
+    // a documentation page to switch to.
     id: 'Combobox',
     component: Combobox.Option,
     parameters: {

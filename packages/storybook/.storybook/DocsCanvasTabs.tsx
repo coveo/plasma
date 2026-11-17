@@ -16,15 +16,18 @@ export const DocsCanvasTabs = () => {
     const {index, storyId, viewMode} = useStorybookState();
 
     // Entries point at their component through `parent`, not `componentId`.
-    const entry = index?.[storyId] as {parent?: string} | undefined;
+    const entry = index?.[storyId] as {parent?: string; title?: string} | undefined;
     const component = entry?.parent ? index?.[entry.parent] : undefined;
     const children: string[] = (component as {children?: string[]} | undefined)?.children ?? [];
 
     const docsId = children.find((id) => index?.[id]?.type === 'docs');
     const canvasId = children.find((id) => index?.[id]?.type === 'story');
 
-    // Standalone pages (Welcome, Content, Foundations…) have no canvas to switch to.
-    if (!docsId || !canvasId) {
+    // Components only. Foundations pages are story-backed too — Colors binds to a hidden
+    // `Overview` story — so having both children is not enough to tell them apart.
+    const isComponent = entry?.title?.startsWith('@components/') ?? false;
+
+    if (!isComponent || !docsId || !canvasId) {
         return null;
     }
 
