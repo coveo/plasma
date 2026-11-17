@@ -54,6 +54,9 @@ jobs:
               with:
                   fetch-depth: 0
             - uses: ./.github/actions/setup
+            # Before the build, which regenerates the plugin skill and would hide drift
+            - name: Check Claude Code plugin skill is in sync
+              run: pnpm claude-plugin:check
             - uses: ./.github/actions/build
             - name: Lint
               run: pnpm lint
@@ -64,8 +67,6 @@ jobs:
               run: pnpm fmt:check
             - name: Validate changesets
               run: pnpm changeset:validate
-            - name: Check Claude Code plugin skill is in sync
-              run: pnpm claude-plugin:check
     test:
         name: Test
         runs-on: ubuntu-latest
