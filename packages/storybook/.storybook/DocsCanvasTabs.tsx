@@ -31,13 +31,14 @@ export const DocsCanvasTabs = () => {
         return null;
     }
 
+    // Canvas first: the sidebar entry is the story, so this is the tab you land on.
     return (
         <>
-            <TabButton active={viewMode === 'docs'} onClick={() => api.selectStory(docsId)}>
-                Docs
-            </TabButton>
             <TabButton active={viewMode === 'story'} onClick={() => api.selectStory(canvasId)}>
                 Canvas
+            </TabButton>
+            <TabButton active={viewMode === 'docs'} onClick={() => api.selectStory(docsId)}>
+                Docs
             </TabButton>
             <Separator />
         </>
