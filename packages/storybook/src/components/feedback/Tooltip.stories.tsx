@@ -8,7 +8,6 @@ type TooltipStoryArgs = Omit<ComponentPropsWithoutRef<typeof Tooltip>, 'children
 
 const meta = {
     title: '@components/Feedback/Tooltip',
-    tags: ['!dev'],
     id: 'Tooltip',
     component: Tooltip,
     parameters: {
@@ -67,6 +66,7 @@ const Content = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'>>((pro
 Content.displayName = 'HoverMe';
 
 export const Demo: Story = {
+    name: 'Tooltip',
     render: ({freezeOpen, label = 'Tooltip', ...props}) => (
         <Tooltip {...props} label={label} opened={freezeOpen ? true : undefined}>
             <Content />

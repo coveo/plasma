@@ -15,7 +15,6 @@ type ModalStoryArgs = ComponentProps<typeof Modal> & {
 
 const meta = {
     title: '@components/Layout/Modal',
-    tags: ['!dev'],
     id: 'Modal',
     args: {
         opened: true,
@@ -37,6 +36,7 @@ export default meta;
 type Story = StoryObj<ModalStoryArgs>;
 
 export const Demo: Story = {
+    name: 'Modal',
     render: (args) => {
         const [{opened}, updateArgs] = useArgs<ModalStoryArgs>();
         const close = () => updateArgs({opened: false});

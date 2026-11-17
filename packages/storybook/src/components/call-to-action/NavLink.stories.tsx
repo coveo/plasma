@@ -11,7 +11,6 @@ type NavLinkStoryArgs = Omit<NavLinkProps, 'leftSection' | 'rightSection'> & {
 
 const meta: Meta<NavLinkStoryArgs> = {
     title: '@components/Call to action/NavLink',
-    tags: ['!dev'],
     id: 'NavLink',
     parameters: {
         layout: 'centered',
@@ -64,6 +63,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
+    name: 'NavLink',
     decorators: [
         (Story) => (
             <div style={{width: 200}}>

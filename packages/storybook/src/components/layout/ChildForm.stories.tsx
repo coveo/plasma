@@ -4,7 +4,6 @@ import {FunctionComponent, ReactNode} from 'react';
 
 const meta: Meta<ChildFormProps> = {
     title: '@components/Layout/ChildForm',
-    tags: ['!dev'],
     id: 'ChildForm',
     component: ChildForm,
     parameters: {
@@ -41,6 +40,7 @@ const Text: FunctionComponent<{children: ReactNode}> = ({children}) => <div styl
 Text.displayName = 'Text';
 
 export const Demo: Story = {
+    name: 'ChildForm',
     render: (args) => (
         <>
             <Text>Above</Text>

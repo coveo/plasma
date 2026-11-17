@@ -10,7 +10,6 @@ const slides = [{value: 'Slide 1'}, {value: 'Slide 2'}, {value: 'Slide 3'}, {val
 
 const meta: Meta<CarouselStoryArgs> = {
     title: '@components/Data display/Carousel',
-    tags: ['!dev'],
     id: 'Carousel',
     component: Carousel,
     parameters: {
@@ -75,6 +74,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
+    name: 'Carousel',
     render: ({loop, ...props}: CarouselStoryArgs) => (
         <Carousel {...props} emblaOptions={{loop}} w={500}>
             {slides.map(({value}) => (

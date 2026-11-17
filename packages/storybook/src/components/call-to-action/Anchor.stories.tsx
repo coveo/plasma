@@ -3,7 +3,6 @@ import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof Anchor> = {
     title: '@components/Call to action/Anchor',
-    tags: ['!dev'],
     id: 'Anchor',
     component: Anchor,
     parameters: {
@@ -56,6 +55,7 @@ export default meta;
 type Story = StoryObj<typeof Anchor>;
 
 export const Demo: Story = {
+    name: 'Anchor',
     render: ({href, children, target, size}: any) => (
         <Anchor size={size} href={href} target={target}>
             {children}

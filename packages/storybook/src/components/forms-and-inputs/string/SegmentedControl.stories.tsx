@@ -3,7 +3,6 @@ import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof SegmentedControl> = {
     title: '@components/Forms and inputs/string/SegmentedControl',
-    tags: ['!dev'],
     id: 'SegmentedControl',
     component: SegmentedControl,
     parameters: {
@@ -56,5 +55,6 @@ export default meta;
 type Story = StoryObj<typeof SegmentedControl>;
 
 export const Demo: Story = {
+    name: 'SegmentedControl',
     render: (props: any) => <SegmentedControl {...props} />,
 };

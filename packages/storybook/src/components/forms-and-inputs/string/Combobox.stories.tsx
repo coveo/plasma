@@ -40,6 +40,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
+    name: 'Combobox',
     render: (props) => (
         <Combobox>
             <Combobox.Options w={240}>

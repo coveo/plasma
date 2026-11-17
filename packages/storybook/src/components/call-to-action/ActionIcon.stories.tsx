@@ -22,7 +22,6 @@ type ActionIconStoryArgs = Omit<ActionIconProps, 'size' | 'variant'> & {
 
 const meta: Meta<ActionIconStoryArgs> = {
     title: '@components/Call to action/ActionIcon',
-    tags: ['!dev'],
     id: 'ActionIcon',
     parameters: {
         layout: 'centered',
@@ -56,6 +55,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
+    name: 'ActionIcon',
     render: (props) => {
         const ActionIconComponent = ActionIcon[props.actionIconVariant] as ComponentType<ActionIconProps>;
         return (

@@ -7,7 +7,6 @@ faker.seed(42);
 
 const meta: Meta<typeof ScrollArea> = {
     title: '@components/Layout/ScrollArea',
-    tags: ['!dev'],
     id: 'ScrollArea',
     component: ScrollArea,
     parameters: {
@@ -38,5 +37,6 @@ export default meta;
 type Story = StoryObj<typeof ScrollArea>;
 
 export const Demo: Story = {
+    name: 'ScrollArea',
     render: (props: any) => <ScrollArea {...props}>{faker.lorem.paragraph(30)}</ScrollArea>,
 };

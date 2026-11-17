@@ -10,7 +10,6 @@ interface HeaderStoryProps {
 
 const meta: Meta<HeaderProps & HeaderStoryProps> = {
     title: '@components/Layout/Header',
-    tags: ['!dev'],
     id: 'Header',
     component: Header,
     parameters: {
@@ -36,6 +35,7 @@ export default meta;
 type Story = StoryObj<HeaderProps & HeaderStoryProps>;
 
 export const Demo: Story = {
+    name: 'Header',
     render: (args) => (
         <Header description={args.description} borderBottom={args.borderBottom} variant={args.variant}>
             {args.breadcrumbs?.length > 0 && (

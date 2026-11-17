@@ -50,7 +50,6 @@ type StoryArgs = TableProps<Person> & {
 
 const meta: Meta<StoryArgs> = {
     title: '@components/Data display/Table',
-    tags: ['!dev'],
     id: 'Table',
     component: Table,
     parameters: {
@@ -103,6 +102,7 @@ const datePickerPresets: Record<string, DateRangePickerPreset> = {
 };
 
 export const Demo: Story = {
+    name: 'Table',
     args: {
         loading: false,
         withFilter: false,

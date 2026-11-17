@@ -8,7 +8,6 @@ interface BreadcrumbsStoryArgs {
 
 const meta: Meta<BreadcrumbsStoryArgs> = {
     title: '@components/Call to action/Breadcrumbs',
-    tags: ['!dev'],
     id: 'Breadcrumbs',
     parameters: {
         layout: 'centered',
@@ -32,6 +31,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
+    name: 'Breadcrumbs',
     render: ({ancestorCount}) => {
         switch (ancestorCount) {
             case 2:

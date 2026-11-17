@@ -14,7 +14,6 @@ type TextareaStoryArgs = ComponentProps<typeof Textarea> & BaseInputStoryArgs & 
 
 const meta = {
     title: '@components/Forms and inputs/string/Textarea',
-    tags: ['!dev'],
     id: 'Textarea',
     component: Textarea,
     parameters: {
@@ -94,5 +93,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
+    name: 'Textarea',
     render: (props) => <Textarea {...withLabelContextualHelpProps(props)} />,
 };

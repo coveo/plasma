@@ -3,7 +3,6 @@ import {Chip, EllipsisText} from '@coveord/plasma-mantine';
 
 const meta: Meta<typeof EllipsisText> = {
     title: '@components/Typography/EllipsisText',
-    tags: ['!dev'],
     id: 'EllipsisText',
     component: EllipsisText,
     parameters: {
@@ -14,6 +13,7 @@ export default meta;
 type Story = StoryObj<typeof EllipsisText>;
 
 export const EllipsisTextDefaultLong: Story = {
+    name: 'EllipsisText',
     render: () => <EllipsisText maw={250}>This is a very long text that is truncated with an ellipsis.</EllipsisText>,
 };
 

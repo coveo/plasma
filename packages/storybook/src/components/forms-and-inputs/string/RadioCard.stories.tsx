@@ -10,7 +10,6 @@ type RadioCardStoryArgs = ComponentProps<typeof RadioCard> & InlineInputStoryArg
 
 const meta = {
     title: '@components/Forms and inputs/string/RadioCard',
-    tags: ['!dev'],
     id: 'RadioCard',
     component: RadioCard,
     parameters: {
@@ -52,6 +51,7 @@ export default meta;
 
 type Story = StoryObj<RadioCardStoryArgs>;
 export const Demo: Story = {
+    name: 'RadioCard',
     render: (props) => {
         const [{checked}, updateArgs] = useArgs<RadioCardStoryArgs>();
         const onClick = () => updateArgs({checked: !checked});

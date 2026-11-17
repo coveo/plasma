@@ -4,7 +4,6 @@ import {useArgs} from 'storybook/preview-api';
 
 const meta = {
     title: '@components/Feedback/Stepper',
-    tags: ['!dev'],
     id: 'Stepper',
     component: Stepper,
     parameters: {
@@ -62,6 +61,7 @@ export default meta;
 type Story = StoryObj<typeof Stepper>;
 
 export const Default: Story = {
+    name: 'Stepper',
     render: (props: any) => {
         const [{active}, setActive] = useArgs();
 

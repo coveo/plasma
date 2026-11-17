@@ -24,7 +24,6 @@ type ButtonStoryArgs = Omit<ButtonProps, 'variant' | 'leftSection' | 'rightSecti
 
 const meta: Meta<ButtonStoryArgs> = {
     title: '@components/Call to action/Button',
-    tags: ['!dev'],
     id: 'Button',
     parameters: {
         layout: 'centered',
@@ -96,6 +95,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
+    name: 'Button',
     render: ({children, buttonVariant, onClick, loading, withRightSection, withLeftSection, disabled}) => {
         const ButtonComponent = Button[buttonVariant] as ComponentType<ButtonProps>;
         return (

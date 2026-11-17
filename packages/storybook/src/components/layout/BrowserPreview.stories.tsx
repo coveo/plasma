@@ -24,7 +24,7 @@ const meta: Meta<typeof BrowserPreview> = {
     parameters: {
         layout: 'centered',
     },
-    tags: ['!autodocs', '!dev'],
+    tags: ['!autodocs'],
     argTypes: {
         title: {control: 'text'},
         headerTooltip: {control: 'text'},
@@ -34,6 +34,7 @@ export default meta;
 type Story = StoryObj<typeof BrowserPreview>;
 
 export const Demo: Story = {
+    name: 'BrowserPreview',
     args: {
         title: 'Preview Title',
         headerTooltip: 'Tooltip',

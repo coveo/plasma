@@ -3,7 +3,6 @@ import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof Alert> = {
     title: '@components/Feedback/Alert',
-    tags: ['!dev'],
     id: 'Alert',
     component: Alert,
     parameters: {
@@ -52,6 +51,7 @@ export default meta;
 type Story = StoryObj<typeof Alert>;
 
 export const Demo: Story = {
+    name: 'Alert',
     render: ({title, withCloseButton, variant, content}: any) => {
         const AlertComponent = Alert[variant as keyof typeof Alert] as React.ComponentType<any>;
         return (

@@ -7,7 +7,6 @@ interface CloseButtonStoryArgs {
 
 const meta: Meta<CloseButtonStoryArgs> = {
     title: '@components/Call to action/CloseButton',
-    tags: ['!dev'],
     id: 'CloseButton',
     parameters: {
         layout: 'centered',
@@ -31,5 +30,6 @@ export default meta;
 type Story = StoryObj<CloseButtonStoryArgs>;
 
 export const Demo: Story = {
+    name: 'CloseButton',
     render: (args) => <CloseButton aria-label="Close" size={args.size} />,
 };

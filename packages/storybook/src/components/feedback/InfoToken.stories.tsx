@@ -9,7 +9,6 @@ type InfoTokenStoryArgs = InfoTokenProps & {
 
 const meta: Meta<InfoTokenStoryArgs> = {
     title: '@components/Feedback/InfoToken',
-    tags: ['!dev'],
     id: 'InfoToken',
     component: InfoToken.Information,
     parameters: {
@@ -50,6 +49,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
+    name: 'InfoToken',
     render: ({type, variant, ...props}) => {
         const Component = InfoToken[type];
         return <Component variant={variant} {...props} />;

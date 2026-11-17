@@ -3,7 +3,6 @@ import {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof StatusToken> = {
     title: '@components/Feedback/StatusToken',
-    tags: ['!dev'],
     id: 'StatusToken',
     component: StatusToken,
     parameters: {
@@ -14,6 +13,7 @@ export default meta;
 type Story = StoryObj<typeof StatusToken>;
 
 export const Demo: Story = {
+    name: 'StatusToken',
     args: {
         variant: 'success',
         size: 'lg',

@@ -9,7 +9,6 @@ type DrawerStoryArgs = ComponentProps<typeof Drawer> & {
 
 const meta = {
     title: '@components/Layout/Drawer',
-    tags: ['!dev'],
     id: 'Drawer',
     component: Drawer,
     args: {
@@ -58,6 +57,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
+    name: 'Drawer',
     render: ({description, help, opened, position, title, withCloseButton}) => {
         const [, updateArgs] = useArgs<DrawerStoryArgs>();
         const close = () => updateArgs({opened: false});

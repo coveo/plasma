@@ -14,7 +14,6 @@ interface PasswordInputStoryArgs {
 
 const meta: Meta<PasswordInputStoryArgs> = {
     title: '@components/Forms and inputs/string/PasswordInput',
-    tags: ['!dev'],
     id: 'PasswordInput',
     parameters: {
         layout: 'centered',
@@ -43,5 +42,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
+    name: 'PasswordInput',
     render: (props) => <PasswordInput {...props} />,
 };

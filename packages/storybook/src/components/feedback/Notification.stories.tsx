@@ -11,7 +11,6 @@ import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof Notification> = {
     title: '@components/Feedback/Notification',
-    tags: ['!dev'],
     id: 'Notification',
     component: Notification,
     parameters: {
@@ -53,6 +52,7 @@ export default meta;
 type Story = StoryObj<typeof Notification>;
 
 export const Demo: Story = {
+    name: 'Notification',
     argTypes: {
         loading: {
             control: 'boolean',

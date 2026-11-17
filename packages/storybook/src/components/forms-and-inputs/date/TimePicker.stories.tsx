@@ -14,7 +14,6 @@ type TimePickerStoryArgs = ComponentProps<typeof TimePicker> & BaseInputStoryArg
 
 const meta = {
     title: '@components/Forms and inputs/date/TimePicker',
-    tags: ['!dev'],
     id: 'TimePicker',
     component: TimePicker,
     parameters: {
@@ -73,5 +72,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
+    name: 'TimePicker',
     render: (props) => <TimePicker {...withLabelContextualHelpProps(props)} />,
 };

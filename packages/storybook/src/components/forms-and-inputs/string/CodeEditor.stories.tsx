@@ -16,7 +16,6 @@ interface CodeEditorStoryArgs extends InputWrapperStoryArgs, BaseInputStoryArgs 
 
 const meta = {
     title: '@components/Forms and inputs/string/CodeEditor',
-    tags: ['!dev'],
     id: 'CodeEditor',
     parameters: {
         layout: 'centered',
@@ -64,5 +63,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
+    name: 'CodeEditor',
     render: (props) => <CodeEditor {...withLabelContextualHelpProps(props)} w={400} monacoLoader="cdn" />,
 };

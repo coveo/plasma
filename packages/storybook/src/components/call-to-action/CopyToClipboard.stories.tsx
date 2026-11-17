@@ -3,7 +3,6 @@ import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof CopyToClipboard> = {
     title: '@components/Call to action/CopyToClipboard',
-    tags: ['!dev'],
     id: 'CopyToClipboard',
     component: CopyToClipboard,
     parameters: {
@@ -42,4 +41,6 @@ const meta: Meta<typeof CopyToClipboard> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Demo: Story = {};
+export const Demo: Story = {
+    name: 'CopyToClipboard',
+};

@@ -15,7 +15,6 @@ type FacetStoryArgs = ComponentProps<typeof Facet> & {
 
 const meta = {
     title: '@components/Forms and inputs/array/Facet',
-    tags: ['!dev'],
     id: 'Facet',
     parameters: {
         layout: 'centered',
@@ -25,6 +24,7 @@ export default meta;
 type Story = StoryObj<FacetStoryArgs>;
 
 export const Demo: Story = {
+    name: 'Facet',
     args: {
         title: 'Title',
         contextualHelp: Args.contextualHelp.initialValue,

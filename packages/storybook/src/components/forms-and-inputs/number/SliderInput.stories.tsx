@@ -8,7 +8,6 @@ type SliderInputStoryArgs = ComponentProps<typeof SliderInput> & Pick<InputWrapp
 
 const meta = {
     title: '@components/Forms and inputs/number/SliderInput',
-    tags: ['!dev'],
     id: 'SliderInput',
     component: SliderInput,
     decorators: [
@@ -116,6 +115,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
+    name: 'SliderInput',
     render: ({inputLabel, contextualHelp, ...props}) => (
         <SliderInput {...props} inputLabel={withLabelContextualHelpProps({label: inputLabel, contextualHelp}).label} />
     ),

@@ -4,7 +4,6 @@ import {useState} from 'react';
 
 const meta: Meta<typeof Pagination> = {
     title: '@components/Call to action/Pagination',
-    tags: ['!dev'],
     id: 'Pagination',
     component: Pagination,
     parameters: {
@@ -62,6 +61,7 @@ export default meta;
 type Story = StoryObj<typeof Pagination>;
 
 export const Demo: Story = {
+    name: 'Pagination',
     render: (props) => {
         const [activePage, setActivePage] = useState(1);
         return <Pagination {...props} value={activePage} onChange={setActivePage} />;

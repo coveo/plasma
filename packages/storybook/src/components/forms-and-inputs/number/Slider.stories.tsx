@@ -4,7 +4,6 @@ import {Args} from '../../../Args.js';
 
 const meta: Meta<typeof Slider> = {
     title: '@components/Forms and inputs/number/Slider',
-    tags: ['!dev'],
     id: 'Slider',
     component: Slider,
     decorators: [
@@ -84,5 +83,6 @@ export default meta;
 type Story = StoryObj<typeof Slider>;
 
 export const Demo: Story = {
+    name: 'Slider',
     render: (props) => <Slider {...props} />,
 };

@@ -3,7 +3,6 @@ import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof Skeleton> = {
     title: '@components/Feedback/Skeleton',
-    tags: ['!dev'],
     id: 'Skeleton',
     component: Skeleton,
     parameters: {
@@ -58,5 +57,6 @@ export default meta;
 type Story = StoryObj<typeof Skeleton>;
 
 export const Demo: Story = {
+    name: 'Skeleton',
     render: (props: any) => <Skeleton {...props} />,
 };

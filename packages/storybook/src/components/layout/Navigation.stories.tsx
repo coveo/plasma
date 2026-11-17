@@ -27,7 +27,6 @@ const navigationColors: Record<string, CSSProperties> = {
 
 const meta: Meta<typeof Navigation> = {
     title: '@components/Layout/Navigation',
-    tags: ['!dev'],
     id: 'Navigation',
     component: Navigation,
     parameters: {
@@ -82,6 +81,7 @@ interface DemoArgs {
 }
 
 export const Demo: Story = {
+    name: 'Navigation',
     argTypes: {
         activeLink: {
             control: 'select',

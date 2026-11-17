@@ -14,7 +14,6 @@ type YearPickerInputStoryArgs = ComponentProps<typeof YearPickerInput> & BaseInp
 
 const meta = {
     title: '@components/Forms and inputs/date/YearPickerInput',
-    tags: ['!dev'],
     id: 'YearPickerInput',
     component: YearPickerInput,
     parameters: {
@@ -52,5 +51,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
+    name: 'YearPickerInput',
     render: (props) => <YearPickerInput {...withLabelContextualHelpProps(props)} />,
 };

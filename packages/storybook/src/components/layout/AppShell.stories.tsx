@@ -15,7 +15,6 @@ type AppShellArgs = {
 
 const meta: Meta<AppShellArgs> = {
     title: '@components/Layout/AppShell',
-    tags: ['!dev'],
     id: 'AppShell',
     parameters: {
         layout: 'fullscreen',
@@ -60,6 +59,7 @@ const Placeholder = ({children, color}: {children: ReactNode; color: MantineColo
 Placeholder.displayName = 'Placeholder';
 
 export const Demo: Story = {
+    name: 'AppShell',
     render: (props) => (
         <AppShell
             layout={props.layout}

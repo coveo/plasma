@@ -3,7 +3,6 @@ import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof Loader> = {
     title: '@components/Feedback/Loader',
-    tags: ['!dev'],
     id: 'Loader',
     component: Loader,
     parameters: {
@@ -23,5 +22,6 @@ export default meta;
 type Story = StoryObj<typeof Loader>;
 
 export const Demo: Story = {
+    name: 'Loader',
     render: ({size}) => <Loader size={size === 'md' ? undefined : size} />,
 };

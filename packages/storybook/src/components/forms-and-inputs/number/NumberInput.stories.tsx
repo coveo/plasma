@@ -19,7 +19,6 @@ type NumberInputStoryArgs = Omit<ComponentProps<typeof NumberInput>, 'leftSectio
 
 const meta = {
     title: '@components/Forms and inputs/number/NumberInput',
-    tags: ['!dev'],
     id: 'NumberInput',
     component: NumberInput,
     parameters: {
@@ -132,6 +131,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
+    name: 'NumberInput',
     render: ({leftSection, ...props}) => (
         <NumberInput
             leftSection={leftSection ? <IconCoins size={16} /> : undefined}

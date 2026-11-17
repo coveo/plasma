@@ -14,7 +14,6 @@ type MonthPickerInputStoryArgs = ComponentProps<typeof MonthPickerInput> & BaseI
 
 const meta = {
     title: '@components/Forms and inputs/date/MonthPickerInput',
-    tags: ['!dev'],
     id: 'MonthPickerInput',
     component: MonthPickerInput,
     parameters: {
@@ -52,5 +51,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
+    name: 'MonthPickerInput',
     render: (props) => <MonthPickerInput {...withLabelContextualHelpProps(props)} />,
 };

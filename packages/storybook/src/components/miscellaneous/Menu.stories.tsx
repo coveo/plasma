@@ -3,7 +3,6 @@ import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof Menu> = {
     title: '@components/Miscellaneous/Menu',
-    tags: ['!dev'],
     id: 'Menu',
     component: Menu,
     parameters: {
@@ -14,6 +13,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
+    name: 'Menu',
     render: () => (
         <Menu shadow="md" width={220}>
             <Menu.Target>

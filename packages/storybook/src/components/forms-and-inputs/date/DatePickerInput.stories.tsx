@@ -15,7 +15,6 @@ type DatePickerInputStoryArgs = ComponentProps<typeof DatePickerInput> & BaseInp
 
 const meta = {
     title: '@components/Forms and inputs/date/DatePickerInput',
-    tags: ['!dev'],
     id: 'DatePickerInput',
     component: DatePickerInput,
     parameters: {
@@ -102,5 +101,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
+    name: 'DatePickerInput',
     render: (props) => <DatePickerInput {...withLabelContextualHelpProps(props)} />,
 };

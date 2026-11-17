@@ -14,7 +14,6 @@ type SelectStoryArgs = ComponentProps<typeof Select> & BaseInputStoryArgs & Inpu
 
 const meta = {
     title: '@components/Forms and inputs/string/Select',
-    tags: ['!dev'],
     id: 'Select',
     component: Select,
     parameters: {
@@ -72,5 +71,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
+    name: 'Select',
     render: (props) => <Select {...withLabelContextualHelpProps(props)} />,
 };

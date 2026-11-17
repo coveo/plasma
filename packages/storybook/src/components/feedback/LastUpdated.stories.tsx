@@ -3,7 +3,6 @@ import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof LastUpdated> = {
     title: '@components/Feedback/LastUpdated',
-    tags: ['!dev'],
     id: 'LastUpdated',
     component: LastUpdated,
     parameters: {
@@ -31,6 +30,7 @@ export default meta;
 type Story = StoryObj<typeof LastUpdated>;
 
 export const Demo: Story = {
+    name: 'LastUpdated',
     render: ({time, label}: any) => {
         if (time) {
             return <LastUpdated time={time} label={label} />;

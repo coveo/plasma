@@ -20,7 +20,6 @@ type TextInputStoryArgs = Omit<ComponentProps<typeof TextInput>, 'leftSection' |
 
 const meta = {
     title: '@components/Forms and inputs/string/TextInput',
-    tags: ['!dev'],
     id: 'TextInput',
     component: TextInput,
     parameters: {
@@ -74,6 +73,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
+    name: 'TextInput',
     render: ({leftSection, rightSection, ...props}) => (
         <TextInput
             rightSection={rightSection ? <IconX size={16} /> : undefined}

@@ -16,7 +16,6 @@ import {withLabelContextualHelpProps} from '../ContextualHelpArgs.js';
 
 const meta: Meta<typeof Checkbox> = {
     title: '@components/Forms and inputs/boolean/Checkbox',
-    tags: ['!dev'],
     id: 'Checkbox',
     component: Checkbox,
     parameters: {
@@ -76,7 +75,6 @@ export const CheckboxGroup: StoryObj<CheckboxGroupStoryArgs> = {
 };
 
 export const CheckboxAllStates: StoryObj<CheckboxGroupStoryArgs> = {
-    tags: ['!dev'],
     render: () => (
         <Stack gap="md">
             <Checkbox.Group label="Normal" description="All checkboxes are interactive" value={['checked']}>

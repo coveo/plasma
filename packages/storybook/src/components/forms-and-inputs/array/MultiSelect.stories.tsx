@@ -14,7 +14,6 @@ type MultiSelectStoryArgs = ComponentProps<typeof MultiSelect> & BaseInputStoryA
 
 const meta = {
     title: '@components/Forms and inputs/array/MultiSelect',
-    tags: ['!dev'],
     id: 'MultiSelect',
     component: MultiSelect,
     parameters: {
@@ -47,5 +46,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
+    name: 'MultiSelect',
     render: (props) => <MultiSelect {...withLabelContextualHelpProps(props)} w={300} />,
 };

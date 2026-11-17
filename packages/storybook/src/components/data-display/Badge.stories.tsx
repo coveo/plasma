@@ -11,7 +11,6 @@ type BadgeStoryArgs = Omit<ComponentProps<SemanticBadge>, 'children'> & {
 
 const meta = {
     title: '@components/Data display/Badge',
-    tags: ['!dev'],
     id: 'Badge',
     component: Badge,
     parameters: {
@@ -57,6 +56,7 @@ export default meta;
 type Story = StoryObj<BadgeStoryArgs>;
 
 export const Demo: Story = {
+    name: 'Badge',
     render: ({label, semanticVariant, ...props}) => {
         const BadgeComponent = Badge[semanticVariant];
         return <BadgeComponent {...props}>{label}</BadgeComponent>;
