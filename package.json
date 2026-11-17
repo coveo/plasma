@@ -9,6 +9,8 @@
         "changeset:new": "node scripts/newChangeset.js",
         "changeset:validate": "node scripts/validateChangesets.js",
         "changeset:version": "changeset version",
+        "claude-plugin:check": "node packages/llms/src/claude-plugin-skill.ts --check",
+        "claude-plugin:sync": "node packages/llms/src/claude-plugin-skill.ts",
         "clean": "pnpm --recursive --parallel run clean",
         "fmt": "oxfmt",
         "fmt:check": "oxfmt --check",

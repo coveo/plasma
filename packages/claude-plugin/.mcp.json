@@ -1,0 +1,12 @@
+{
+    "mcpServers": {
+        "plasma": {
+            "command": "npx",
+            "args": ["-y", "@coveord/plasma-mcp-server"]
+        },
+        "mantine": {
+            "command": "npx",
+            "args": ["-y", "@mantine/mcp-server"]
+        }
+    }
+}
