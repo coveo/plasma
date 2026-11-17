@@ -88,7 +88,7 @@ Run all tests from the root with `pnpm test`. From within `packages/{name}` you 
 - **`storybook-component-docs`** — create or update human-facing Storybook component pages using the LLM specs as read-only source material.
 - **`changesets-author`** — write or edit a changeset that follows the template documented below.
 
-`packages/llms/src/skill.md` is the source for the public Plasma skill served at [`https://plasma.coveo.com/plasma-skill.md`](https://plasma.coveo.com/plasma-skill.md). It is intended for agents using Plasma in consumer applications, so contributors do not need to install it. Edit the source file rather than the generated `packages/llms/dist/plasma-skill.md`.
+`packages/llms/src/skill.md` is the source for the public Plasma skill served at [`https://plasma.coveo.com/plasma-skill.md`](https://plasma.coveo.com/plasma-skill.md). It is intended for agents using Plasma in consumer applications, so contributors do not need to install it. Edit the source file rather than the generated `packages/llms/dist/plasma-skill.md` or `packages/claude-plugin/skills/plasma/SKILL.md`, then run `pnpm claude-plugin:sync` to update the committed plugin copy (CI fails when it drifts).
 
 ## Committing your changes
 

@@ -85,7 +85,7 @@ This repo ships agent **skills** in `.claude/skills/` (symlinked from `.agents/s
 - **`storybook-component-docs`** — create or update human-facing component pages in `packages/storybook`. Use the specs in `packages/llms/src/components/` as read-only source material, preserve useful demos and controls, and write concise guidelines for UX designers and developers.
 - **`changesets-author`** — write or edit a changeset that follows the enforced template. Use when adding or editing a `.changeset/*.md` file. Scaffold with `pnpm changeset:new` and check with `pnpm changeset:validate`.
 
-`packages/llms/src/skill.md` is the source for the public Plasma skill served at `https://plasma.coveo.com/plasma-skill.md`. It is intended for agents using Plasma in consumer applications; agents contributing to this repository do not need to install it. Edit the source file, not the generated `packages/llms/dist/plasma-skill.md`, when updating the public skill.
+`packages/llms/src/skill.md` is the source for the public Plasma skill served at `https://plasma.coveo.com/plasma-skill.md`. It is intended for agents using Plasma in consumer applications; agents contributing to this repository do not need to install it. Edit the source file, not the generated `packages/llms/dist/plasma-skill.md` or `packages/claude-plugin/skills/plasma/SKILL.md`, when updating the public skill. The plugin copy is committed (plugins are served straight from git): run `pnpm claude-plugin:sync` after editing the source, CI fails when it drifts.
 
 ## Component documentation
 

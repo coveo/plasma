@@ -64,6 +64,8 @@ jobs:
               run: pnpm fmt:check
             - name: Validate changesets
               run: pnpm changeset:validate
+            - name: Check Claude Code plugin skill is in sync
+              run: pnpm claude-plugin:check
     test:
         name: Test
         runs-on: ubuntu-latest
