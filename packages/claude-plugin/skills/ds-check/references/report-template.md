@@ -7,10 +7,12 @@ Use this structure exactly. Order component rows by attention needed: Off-system
 ````markdown
 # DS check — <prototype name or branch>
 
-**Branch:** `<branch>` (base `<base>`) · **Scope:** <N> files changed on the branch · **Plasma installed:** <version>
-**Run:** <YYYY-MM-DD HH:MM TZ> · **Commit:** `<short hash>`
-**Screenshots:** <"captured from `<dev server URL>`" or "not captured: <reason>">
-**admin-ui hints:** <"local copy @ `<branch>`, last commit <YYYY-MM-DD>" or "not used"> <!-- add a staleness warning if not on the default branch or older than two weeks -->
+- **What was checked:** the <N> files changed on `<branch>` since it split from `<base>`. <!-- or, for a full-app check: "the whole prototype on `<branch>`." -->
+- **When:** <YYYY-MM-DD HH:MM TZ>, on commit `<short hash>`.
+- **Plasma version in the prototype:** <version>
+- **Screenshots:** <"Taken from the running prototype." or "Not taken: <reason in plain words>.">
+- **Product components:** <"Compared with your local copy of admin-ui (last updated <YYYY-MM-DD>)." or "Not compared: no local copy of admin-ui.">
+  <!-- if the admin-ui copy isn't on its default branch or is more than two weeks old, add: "Your admin-ui copy is out of date. Pull it for better matches." -->
 
 ## Summary
 
@@ -28,16 +30,18 @@ Hand-off mismatches: <n> · Copy findings: <n> · Pattern findings: <n> · Token
 
 ## Components
 
-| Preview                                   | Component | Type   | Instances | Outcome   | Confidence        |
-| ----------------------------------------- | --------- | ------ | --------- | --------- | ----------------- |
-| <img src="images/<slug>.png" width="160"> | <name>    | <Type> | <count>   | <Outcome> | <High/Medium/Low> |
+| Preview                                   | Component | Type   | Instances | Outcome   | Matches            | Confidence        |
+| ----------------------------------------- | --------- | ------ | --------- | --------- | ------------------ | ----------------- |
+| <img src="images/<slug>.png" width="160"> | <name>    | <Type> | <count>   | <Outcome> | <see Matches rule> | <High/Medium/Low> |
 
 ### <name>
 
-**<Outcome>** · <Type> · <High/Medium/Low> confidence
-
 <img src="images/<slug>.png" width="480">
 <!-- or, when there's no screenshot: _No screenshot: <reason, e.g. opens on Alt + double-click>._ -->
+
+- **<Outcome>:** <outcome meaning, from "Label meanings" below>
+- **<Type>:** <type meaning, from "Label meanings" below>
+- **<High/Medium/Low> confidence:** <confidence meaning, from "Label meanings" below>
 
 **Description:** <what it is and what it does for the user, one or two sentences>
 
@@ -113,6 +117,36 @@ Not issues, but worth fixing before implementation.
 ````
 
 Leave out any section that has no findings, except Summary, Components, and the "Not checked" line under Patterns, which always appear.
+
+## Matches column
+
+Every row names the component it maps to, so a reviewer sees at a glance what covers it:
+
+- **Covered** (including misused and off-system rebuilds): the Plasma component that covers it, e.g. `Badge.Critical`.
+- **Existing component needs to evolve:** the Plasma component that needs the change.
+- **New component** with an admin-ui hint: the product component, e.g. `ProjectPicker` (admin-ui, to verify).
+- **New component** with no match: `None`.
+
+## Label meanings
+
+Under each component's image, list its Outcome, Type and Confidence as bullets, each with the short meaning below. Use this wording so every report reads the same; only fill in the component names.
+
+| Label                              | Meaning                                                                          |
+| ---------------------------------- | -------------------------------------------------------------------------------- |
+| Covered                            | Plasma already has a component for this: `<component>`.                          |
+| Existing component needs to evolve | `<component>` exists in Plasma but is missing something this design needs.       |
+| New Plasma component               | Nothing in Plasma does this yet, and it's general enough to add to Plasma.       |
+| New product component              | Nothing in Plasma does this. It's specific to Coveo and likely reused elsewhere. |
+| Local component                    | Specific to this feature. The squad builds it in their own code.                 |
+| Existing Plasma                    | Uses the Plasma component.                                                       |
+| Existing Plasma, misused           | Uses a Plasma component, but not the way Plasma says to.                         |
+| Plasma, undocumented               | Comes from Plasma, but Plasma has no usage guidance for it yet.                  |
+| Mantine import                     | Imported from Mantine directly instead of from Plasma.                           |
+| Off-system rebuild                 | Built by hand, though Plasma already has a component for it.                     |
+| New component                      | Nothing in Plasma does this.                                                     |
+| High confidence                    | The code clearly shows it.                                                       |
+| Medium confidence                  | Likely, but it's a judgment call.                                                |
+| Low confidence                     | Could go either way. The Why says what's uncertain.                              |
 
 ## Writing the Why
 
