@@ -1,6 +1,6 @@
 {
     "name": "coveo-frontend",
-    "description": "Coveo frontend tooling: the Plasma design system skill plus the Plasma and Mantine MCP servers.",
+    "description": "Coveo frontend tooling: the Plasma design system skill, the DS check skill for prototypes, plus the Plasma and Mantine MCP servers.",
     "author": {
         "name": "Coveo"
     },
