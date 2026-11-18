@@ -450,6 +450,12 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
                 icon: <IconInfoCircleFilled height={20} />,
             },
         }),
+        Notifications: {
+            defaultProps: {
+                allowDragDismiss: false,
+                allowScrollDismiss: false,
+            },
+        },
         NumberInput: NumberInput.extend({
             classNames: NumberInputClasses,
         }),
