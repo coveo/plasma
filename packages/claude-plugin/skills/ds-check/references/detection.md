@@ -70,7 +70,7 @@ Not every `<div>` is a finding. Plain layout `div`s with flex or grid are fine; 
 
 ## Signs that a Plasma component needs to evolve
 
-- `styles`, `classNames`, `sx`, or `style` overrides that change size, color, or structure on a Plasma component.
+- `styles`, `classNames`, or `style` overrides that change size, color, or structure on a Plasma component.
 - A Plasma component wrapped in a local component that adds markup the doc doesn't describe (extra slots, extra states).
 - The same override repeated across several instances. That's strong evidence the need is real; mention the count.
 

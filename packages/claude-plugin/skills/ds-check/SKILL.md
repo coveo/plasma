@@ -15,13 +15,13 @@ It produces a **report only**. Never edit the prototype, open PRs, or create Jir
 
 - The **prototype branch**, checked out locally. The designer usually shares a branch link from the prototype repo. If the current working directory isn't that repo on that branch, ask the designer to check it out (or confirm the path) before going further. Don't clone anything yourself.
 - _Optional:_ a **local copy of admin-ui**, used only for product-component hints (step 5). Look for an `admin-ui` folder next to the prototype repo. If there isn't one, ask the designer once whether they have a local copy and where; if they don't, skip step 5.
-- The **Plasma MCP server** (`list_components`, `get_component_doc`, `get_component_props`, `search_docs`, `list_patterns`, `get_pattern`, `list_content_guidelines`, `get_content_guideline`, `get_foundations`). It ships in the same plugin. If it isn't available, fall back to the static docs at `https://plasma.coveo.com/llms.txt` and say so in the report.
+- The **Plasma MCP server** (`list_components`, `get_component_doc`, `get_component_props`, `search_docs`, `list_patterns`, `get_pattern`, `list_content_guidelines`, `get_content_guideline`, `get_foundations`). It ships in the same plugin. If it isn't available, fall back to the static docs at `https://plasma.coveo.com/llms.txt` and say so in the report. If `llms.txt` has no patterns section, skip the patterns pass (step 7) and say in the report that patterns weren't checked.
 
 ## Workflow
 
 ### 1. Scope the check
 
-1. Identify the branch and its base: `git rev-parse --abbrev-ref HEAD`, then the default branch (`git symbolic-ref refs/remotes/origin/HEAD`).
+1. Identify the branch and its base: `git rev-parse --abbrev-ref HEAD`, then the default branch with `git symbolic-ref refs/remotes/origin/HEAD`. That ref isn't set on some clones, so if it fails, use `master` or `main`, whichever exists (`git rev-parse --verify origin/master`). If neither does, ask the designer which branch the prototype started from.
 2. Default scope = files the branch changed: `git diff --name-only <base>...HEAD`, limited to UI source (`.tsx`, `.jsx`, `.ts`, `.css`, `.module.css`, `.scss`). The prototype repo contains shared scaffolding the designer didn't write; checking all of it buries their work in noise. If the designer asks for the full app, widen the scope and say so in the report.
 3. Map files to pages: find the router config (e.g. `createBrowserRouter`, `<Route path=…>`, file-based routes) and record which route renders each file. If there's no router, use the file path as the location.
 4. Record the installed Plasma version from `node_modules/@coveord/plasma-mantine/package.json` (fall back to the version in `package.json`).
@@ -98,7 +98,7 @@ For each documented pattern, decide whether the prototype has the situation it c
 
 ### 8. Foundations pass
 
-Flag hard-coded colours (hex, `rgb()`, named colours), spacing, radii, shadows, and font sizes in `style`, `sx`, `styles`, and CSS files when a token covers them. Give the token to use from `get_foundations`. Group by value.
+Flag hard-coded colours (hex, `rgb()`, named colours), spacing, radii, shadows, and font sizes in `style`, `styles`, and CSS files when a token covers them. Give the token to use from `get_foundations`. Group by value.
 
 ### 9. Version check
 
@@ -118,7 +118,8 @@ Use the template in `references/report-template.md` exactly. Designers run the c
 
 - Get the local time with `date '+%Y-%m-%d %H:%M %Z'` and the commit with `git rev-parse --short HEAD`.
 - Write the report to `ds-check-reports/<YYYY-MM-DD-HHmm>/report.md` at the repo root, with screenshots in `ds-check-reports/<YYYY-MM-DD-HHmm>/images/`. Image paths in the report are relative (`images/<slug>.png`).
-- Tell the designer where it is, and remind them not to commit the folder. Then give a short summary in the conversation: counts per outcome, and the items that need DS attention.
+- Check whether git ignores the folder: `git check-ignore -q ds-check-reports`. If it doesn't (the command exits with 1), tell the designer plainly that the reports will show up in their commits unless they add `ds-check-reports/` to the repo's `.gitignore`. Don't edit `.gitignore` yourself.
+- Tell the designer where the report is. Then give a short summary in the conversation: counts per outcome, and the items that need DS attention.
 
 ## Judgment calls
 

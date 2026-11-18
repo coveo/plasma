@@ -17,11 +17,13 @@ Never add Playwright or anything else to the prototype's `package.json`.
 
 ## 3. Set up the browser
 
-Use Playwright with Chromium in a temporary folder, so the repo stays untouched:
+Use Playwright with Chromium in a temporary folder, so the repo stays untouched. The version is pinned so every designer's runs look the same. The system can clear `/tmp` (macOS does on reboot), so check for the install each run and reinstall when it's missing:
 
 ```bash
 mkdir -p /tmp/ds-check-shots && cd /tmp/ds-check-shots
-npm init -y >/dev/null && npm i playwright >/dev/null
+if [ ! -d node_modules/playwright ]; then
+  npm init -y >/dev/null && npm i --save-exact playwright@1.65.1 >/dev/null
+fi
 npx playwright install chromium
 ```
 
@@ -39,10 +41,13 @@ For each component row, pick **one** representative instance (the first listed i
 
 Use a 1440 × 900 viewport and the light color scheme, so every run looks the same.
 
-A minimal capture, for reference:
+A minimal capture, for reference. Save it as an `.mjs` file in `/tmp/ds-check-shots` (so `import` and top-level `await` work and Playwright resolves) and run it with `node`:
 
 ```js
-const {chromium} = require('playwright');
+import {chromium} from 'playwright';
+
+const url = '<page URL>';
+const out = '<repo>/ds-check-reports/<run>/images/<slug>.png';
 const browser = await chromium.launch();
 const page = await browser.newPage({viewport: {width: 1440, height: 900}, colorScheme: 'light'});
 await page.goto(url, {waitUntil: 'networkidle'});
@@ -72,4 +77,4 @@ Look at each screenshot before writing the report:
 
 ## 6. Clean up
 
-Stop the dev server and close the browser. Leave `/tmp/ds-check-shots` alone; it's reused on the next run.
+Stop the dev server and close the browser. Leave `/tmp/ds-check-shots` in place so the next run can reuse it, if it's still there.

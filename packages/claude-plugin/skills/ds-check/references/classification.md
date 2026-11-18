@@ -17,7 +17,7 @@ Each component group gets one Type (what it is today) and one Outcome (what shou
 
 ## Type rules
 
-**Existing Plasma.** Imported from `@coveord/plasma-mantine` and present in `list_components`. Compare usage with the component doc. Use **Existing component needs to evolve** when the design needs something the component doesn't offer: a variant, size, state, or prop that isn't in the doc or props table, and that the prototype fakes with overrides (`styles`, `classNames`, `sx`, wrapper CSS) or extra markup. Name the missing capability ("needs a `compact` density", "needs a loading state").
+**Existing Plasma.** Imported from `@coveord/plasma-mantine` and present in `list_components`. Compare usage with the component doc. Use **Existing component needs to evolve** when the design needs something the component doesn't offer: a variant, size, state, or prop that isn't in the doc or props table, and that the prototype fakes with overrides (`styles`, `classNames`, wrapper CSS) or extra markup. Name the missing capability ("needs a `compact` density", "needs a loading state").
 
 **Existing Plasma, misused.** The component exists and covers the need, but it's used against its doc. Common signs: raw Mantine props where Plasma prescribes sub-components (`<Badge color="red">` instead of `Badge.Critical`, `<Button variant="filled">` instead of `Button.Primary`); a case listed under _When not to use_ (Badge used as a button); an item from _Common anti-patterns_. Cite the doc section.
 
