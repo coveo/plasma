@@ -2,6 +2,15 @@
     font-weight: var(--coveo-fw-bold);
 }
 
+.loader {
+    /*
+     * Mantine centers the loader only through the inline styles of its enter transition.
+     * With reduced motion the transition has no duration and renders without them, so center it here too.
+     * The inline styles still take precedence while the transition runs.
+     */
+    transform: translate(-50%, calc(-50% + calc(0.0625rem * var(--mantine-scale))));
+}
+
 .root {
     &[data-variant='subtle'] {
         &:where(:disabled:not([data-loading]), [data-disabled]:not([data-loading])) {
