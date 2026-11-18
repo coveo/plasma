@@ -69,6 +69,7 @@ import {
     TimePicker,
     YearPicker,
 } from '@mantine/dates';
+import {Notifications} from '@mantine/notifications';
 import clsx from 'clsx';
 import {CheckboxIcon} from '../components/CheckboxIcon/CheckboxIcon.js';
 import {CircleLoader} from '../components/CircleLoader/CircleLoader.js';
@@ -448,6 +449,12 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             classNames: NotificationClasses,
             defaultProps: {
                 icon: <IconInfoCircleFilled height={20} />,
+            },
+        }),
+        Notifications: Notifications.extend({
+            defaultProps: {
+                allowDragDismiss: false,
+                allowScrollDismiss: false,
             },
         }),
         NumberInput: NumberInput.extend({
