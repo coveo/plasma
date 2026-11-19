@@ -409,6 +409,54 @@ describe('Collection with columns', () => {
             expect(screen.queryByRole('button', {name: /remove/i})).not.toBeInTheDocument();
         });
 
+        it.each([
+            ['horizontal', Collection.Layouts.Horizontal],
+            ['vertical', Collection.Layouts.Vertical],
+        ])(
+            'renders a disabled remove button with a tooltip on the items that are not removable in the %s layout',
+            async (_name, layout) => {
+                const user = userEvent.setup();
+                const Fixture = () => {
+                    const form = useForm({
+                        initialValues: {
+                            items: [
+                                {name: 'Alice', email: 'alice@example.com'},
+                                {name: 'Bob', email: 'bob@example.com'},
+                            ],
+                        },
+                        enhanceGetInputProps: (payload) => ({...enhanceWithCollectionProps(payload, 'items')}),
+                    });
+
+                    return (
+                        <Collection<TestItem>
+                            newItem={{name: '', email: ''}}
+                            {...form.getInputProps('items')}
+                            layout={layout}
+                            allowRemove={(item) => item.name !== 'Alice'}
+                            removeDisabledTooltip="This contact cannot be removed"
+                            columns={[
+                                {
+                                    header: 'Name',
+                                    cell: (item) => <div>{item.name}</div>,
+                                },
+                            ]}
+                        />
+                    );
+                };
+
+                render(<Fixture />);
+
+                const removeAlice = within(screen.getByTestId('item-0')).getByRole('button', {name: /remove/i});
+                expect(removeAlice).toBeDisabled();
+                expect(within(screen.getByTestId('item-1')).getByRole('button', {name: /remove/i})).toBeEnabled();
+
+                await user.hover(removeAlice.parentElement!);
+                expect(
+                    await screen.findByRole('tooltip', {name: 'This contact cannot be removed'}),
+                ).toBeInTheDocument();
+            },
+        );
+
         it('disables controls when disabled prop is true', () => {
             const Fixture = () => {
                 const form = useForm({

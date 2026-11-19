@@ -31,6 +31,8 @@ export interface LayoutBodyProps<T = unknown> extends BoxProps {
     items: T[];
     onRemove?: (index: number) => void;
     removable?: boolean;
+    isItemRemovable?: (item: T, index: number) => boolean;
+    getRemoveDisabledTooltip?: (item: T, index: number) => string | undefined;
     draggable?: boolean;
     disabled?: boolean;
     readOnly?: boolean;
