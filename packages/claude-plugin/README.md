@@ -19,7 +19,7 @@ The MCP servers run through `npx`, so you need Node.js. The Playwright server, u
 - **`ds-check` skill**: checks a prototype branch against Plasma and writes a coverage report: which components are covered, which need to evolve, and which are new. Also checks copy, patterns and design tokens. Report only; it never changes the prototype.
 - **`plasma` MCP server** ([`@coveord/plasma-mcp-server`](../mcp-server/README.md)): Plasma component docs, patterns, content guidelines and foundations.
 - **`mantine` MCP server** (`@mantine/mcp-server`): Mantine docs, the fallback when Plasma doesn't document a component.
-- **`playwright` MCP server** ([`@playwright/mcp`](https://github.com/microsoft/playwright-mcp)): a hidden Chrome window the `ds-check` skill uses to screenshot each component. It runs only when a DS check asks for screenshots.
+- **`playwright` MCP server** ([`@playwright/mcp`](https://github.com/microsoft/playwright-mcp)): drives a hidden Chrome window the `ds-check` skill uses to screenshot each component. Chrome only opens when a DS check takes screenshots.
 
 ## Example prompts
 

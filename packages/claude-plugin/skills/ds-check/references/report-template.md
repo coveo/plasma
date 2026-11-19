@@ -8,7 +8,7 @@ Use this structure exactly. Order component rows by attention needed: Off-system
 # DS check — <prototype name or branch>
 
 - **What was checked:** the <N> files changed on `<branch>` since it split from `<base>`. <!-- or, for a full-app check: "the whole prototype on `<branch>`." -->
-- **When:** <YYYY-MM-DD HH:MM TZ>, on commit `<short hash>`.
+- **When:** <YYYY-MM-DD HH:MM TZ>, on commit `<short hash>`<", plus changes not yet committed" if git status wasn't clean>.
 - **Plasma version in the prototype:** <version>
 - **Screenshots:** <"Taken from the running prototype." or "Not taken: <reason in plain words>.">
 - **Product components:** <"Compared with your local copy of admin-ui (last updated <YYYY-MM-DD>)." or "Not compared: no local copy of admin-ui.">

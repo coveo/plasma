@@ -21,10 +21,11 @@ It produces a **report only**. Never edit the prototype, open PRs, or create Jir
 
 ### 1. Scope the check
 
-1. Identify the branch and its base: `git rev-parse --abbrev-ref HEAD`, then the default branch with `git symbolic-ref refs/remotes/origin/HEAD`. That ref isn't set on some clones, so if it fails, use `master` or `main`, whichever exists (`git rev-parse --verify origin/master`). If neither does, ask the designer which branch the prototype started from.
-2. Default scope = files the branch changed: `git diff --name-only <base>...HEAD`, limited to UI source (`.tsx`, `.jsx`, `.ts`, `.css`, `.module.css`, `.scss`). The prototype repo contains shared scaffolding the designer didn't write; checking all of it buries their work in noise. If the designer asks for the full app, widen the scope and say so in the report.
+1. Identify the branch and its base: `git rev-parse --abbrev-ref HEAD`, then the default branch with `git symbolic-ref refs/remotes/origin/HEAD`. That ref isn't set on some clones, so if it fails, use `origin/master` or `origin/main`, whichever exists (`git rev-parse --verify origin/master`). Always use the remote ref as `<base>`, not a local `master`, which may be out of date and pull other people's commits into the diff. If neither exists, ask the designer which branch the prototype started from.
+2. Default scope = files the branch changed, including work the designer hasn't committed yet: `git diff --name-only $(git merge-base <base> HEAD)` (committed, staged and unstaged changes) plus `git ls-files --others --exclude-standard` (new files not yet added), limited to UI source (`.tsx`, `.jsx`, `.ts`, `.css`, `.module.css`, `.scss`). The prototype repo contains shared scaffolding the designer didn't write; checking all of it buries their work in noise. If the designer asks for the full app, widen the scope and say so in the report.
 3. Map files to pages: find the router config (e.g. `createBrowserRouter`, `<Route path=…>`, file-based routes) and record which route renders each file. If there's no router, use the file path as the location.
 4. Record the installed Plasma version from `node_modules/@coveord/plasma-mantine/package.json` (fall back to the version in `package.json`).
+5. Name the run folder once, now, and reuse it for the screenshots (step 10) and the report (step 11): get the local time with `date '+%Y-%m-%d %H:%M %Z'` and the commit with `git rev-parse --short HEAD`. The folder is `ds-check-reports/<YYYY-MM-DD-HHmm>/` at the repo root. If `git status --porcelain` isn't empty, note in the report header that uncommitted changes were included.
 
 ### 2. Load Plasma context
 
@@ -116,7 +117,7 @@ Screenshots also settle doubts from the code pass: look at each one, and if a _V
 
 Use the template in `references/report-template.md` exactly. Designers run the check several times as the prototype evolves, so every run gets its own timestamped folder and never overwrites an earlier one:
 
-- Get the local time with `date '+%Y-%m-%d %H:%M %Z'` and the commit with `git rev-parse --short HEAD`.
+- Use the run folder and time you recorded in step 1; don't call `date` again.
 - Write the report to `ds-check-reports/<YYYY-MM-DD-HHmm>/report.md` at the repo root, with screenshots in `ds-check-reports/<YYYY-MM-DD-HHmm>/images/`. Image paths in the report are relative (`images/<slug>.png`).
 - Check whether git ignores the folder: `git check-ignore -q ds-check-reports`. If it doesn't (the command exits with 1), tell the designer plainly that the reports will show up in their commits unless they add `ds-check-reports/` to the repo's `.gitignore`. Don't edit `.gitignore` yourself.
 - Tell the designer where the report is. Then give a short summary in the conversation: counts per outcome, and the items that need DS attention.
