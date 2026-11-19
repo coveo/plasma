@@ -56,6 +56,7 @@ Important states include:
 - Labels SHOULD describe the repeated item type.
 - Add button labels SHOULD name the item being added, such as "Add contact."
 - Column headers SHOULD be short and describe the fields inside each item.
+- Error messages SHOULD start with what to add ("Add at least one contact." not "This list is empty."). Errors on an item's fields follow that field's own guidance.
 
 ## Common anti-patterns
 

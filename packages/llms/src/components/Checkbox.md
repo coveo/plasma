@@ -65,6 +65,7 @@ Important states include:
 - Labels SHOULD be short, self-explanatory, and consistent across a group
 - For a stand-alone checkbox, the label SHOULD describe what happens if the checkbox is selected
 - Group titles SHOULD describe the type of options available rather than instructing the user with an action phrase
+- Group error messages SHOULD start with what to select ("Select at least one permission." not "Invalid selection.")
 
 ## Common anti-patterns
 

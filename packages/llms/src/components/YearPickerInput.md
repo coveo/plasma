@@ -52,7 +52,7 @@ description: Form input that opens a year-grid popover for selecting one year, m
 
 - Use a `placeholder` that reflects the selection mode (e.g. `"Pick a year"` or `"Pick a year range"`).
 - Labels SHOULD be noun phrases ("Report year", "Founding year") rather than instructions.
-- Error messages SHOULD be specific (e.g. "End year must be after start year") rather than generic ("Invalid selection").
+- Error messages SHOULD start with what to select ("Select an end year after the start year." not "End year must be after start year.").
 
 ## Common anti-patterns
 
