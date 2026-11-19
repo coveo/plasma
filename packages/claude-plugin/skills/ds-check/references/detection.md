@@ -7,7 +7,7 @@ Prototypes are usually vibe-coded, so expect inconsistency: the same thing built
 ```bash
 # Plasma imports
 grep -rnE "from ['\"]@coveord/plasma-mantine" <scope>
-# Direct Mantine imports (flag only)
+# Direct Mantine imports (check Plasma exports each name: classification.md → Mantine import)
 grep -rnE "from ['\"]@mantine/" <scope>
 # Other UI libraries (treat their components like off-system rebuilds)
 grep -rnE "from ['\"](@mui|antd|@chakra-ui|react-bootstrap|@radix-ui|@headlessui)" <scope>
@@ -74,7 +74,7 @@ Not every `<div>` is a finding. Plain layout `div`s with flex or grid are fine; 
 - A Plasma component wrapped in a local component that adds markup the doc doesn't describe (extra slots, extra states).
 - The same override repeated across several instances. That's strong evidence the need is real; mention the count.
 
-Check the props table first. If a documented prop or sub-component already does what the override does, it's **misused**, not **needs to evolve**.
+Check the props first: the Plasma props table, then the Mantine props the component inherits (see `classification.md` → _Existing Plasma_). If a prop or sub-component already does what the override does, it's **misused**, not **needs to evolve**.
 
 ## Grouping instances
 
@@ -84,10 +84,18 @@ Group elements that serve the same purpose and look the same, even when the code
 
 ```bash
 grep -rnE "#[0-9a-fA-F]{3,8}\b|rgba?\(|hsla?\(" <scope>
-grep -rnE "(padding|margin|gap|border-radius|font-size|box-shadow)\s*:\s*[0-9]" <scope>
+# CSS (border-radius: 8px) and style/styles props (borderRadius: 8, gap: '1rem')
+grep -rnE "((padding|margin)[-A-Za-z]*|gap|border-?[Rr]adius|font-?[Ss]ize|box-?[Ss]hadow)[\"']?\s*:\s*[\"']?[0-9]" <scope>
 ```
 
-Ignore values inside mock data and SVG icon paths. Map each remaining value to the closest token from `get_foundations`, and report it only when a token clearly applies.
+Ignore values inside mock data and SVG icon paths.
+
+`get_foundations` gives token names, not their values, so it can't tell you which token a raw value matches. Read the values from the theme the prototype actually uses:
+
+1. The installed Plasma theme: search `node_modules/@coveord/plasma-mantine` for the theme's `spacing`, `radius` and `fontSizes` objects. Don't assume Mantine's defaults: in Plasma, `sm` spacing is 16px and `md` is 24px.
+2. Any overrides in the prototype's own theme (`createTheme`, or the `theme` prop on `Plasmantine` / `MantineProvider`).
+
+Suggest a token only when the raw value equals its value (counting 1rem as 16px). When nothing matches, list the value with _No matching token_ instead of guessing the closest one.
 
 ## Admin-ui lookup (optional)
 

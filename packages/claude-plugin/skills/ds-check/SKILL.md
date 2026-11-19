@@ -77,7 +77,7 @@ This check is about whether the designer's declaration is accurate. It doesn't c
 
 Skip this step if there's no local admin-ui copy.
 
-For each **New component** and **Off-system rebuild** with no Plasma equivalent, look for a look-alike in admin-ui's component folders. See `references/detection.md` → _Admin-ui lookup_.
+For each **New component**, look for a look-alike in admin-ui's component folders. Off-system rebuilds don't get a hint: Plasma already has the component to use instead. See `references/detection.md` → _Admin-ui lookup_.
 
 This is a **hint, never a verdict**, for two reasons:
 
@@ -98,7 +98,7 @@ For each documented pattern, decide whether the prototype has the situation it c
 
 ### 8. Foundations pass
 
-Flag hard-coded colours (hex, `rgb()`, named colours), spacing, radii, shadows, and font sizes in `style`, `styles`, and CSS files when a token covers them. Give the token to use from `get_foundations`. Group by value.
+Flag hard-coded colours (hex, `rgb()`, named colours), spacing, radii, shadows, and font sizes in `style`, `styles`, and CSS files when a token covers them. Give the token to use, checked against the theme's actual values (see `references/detection.md` → _Hard-coded foundation values_). Group by value.
 
 ### 9. Version check
 
@@ -108,7 +108,7 @@ If a Plasma doc describes a component or sub-component that the **installed** ve
 
 Component names alone mean little to a reviewer, so each component row gets a picture of what the designer built. Read `references/screenshots.md` for how.
 
-In short: start the prototype's dev server, open each row's route in a headless browser, and capture one representative instance with an outline around it. Ask the designer before starting the server or installing anything. If screenshots aren't possible (the server won't start, the designer declines), skip this step and say so in the report header — the report is still useful without them.
+In short: start the prototype's dev server, open each row's route with the Playwright MCP server (`playwright`, in the same plugin), and capture one representative instance with an outline around it. Ask the designer before starting the dev server. If screenshots aren't possible (the Playwright server isn't available, the dev server won't start, the designer declines), skip this step and say so in the report header — the report is still useful without them.
 
 Screenshots also settle doubts from the code pass: look at each one, and if a _Visual match only_ row clearly does or doesn't match, update its confidence and note.
 
@@ -125,6 +125,6 @@ Use the template in `references/report-template.md` exactly. Designers run the c
 
 - **Group by what it is, not where it is.** Six status pills across three pages are one row with six instances, not six rows.
 - **Judge by behavior, not by import.** Vibe-coded prototypes are full of look-alikes: a local `Tabs.tsx`, or tabs assembled from `Group` + `UnstyledButton` + `useState`, are off-system rebuilds even though nothing imported is wrong. See `references/detection.md` → _Recognizing look-alikes_.
-- **Layout primitives alone aren't findings.** `Box`, `Stack`, `Group`, `Flex`, `Grid`, `Text`, `Title` from `@coveord/plasma-mantine` are Covered and go in the summary count — unless they're assembled into a look-alike of a real component, which makes the assembly an off-system rebuild.
+- **Layout primitives alone aren't findings.** `Box`, `Stack`, `Group`, `Flex`, `Grid`, `Text`, `Title` from `@coveord/plasma-mantine` are Covered and go in the summary count. They have no Plasma spec, but leave them out of the "Undocumented Plasma components" list: they'd show up on every run. The exception: when they're assembled into a look-alike of a real component, which makes the assembly an off-system rebuild.
 - **Prototype shortcuts aren't findings.** Mock data, hard-coded fetches, and stubbed handlers are expected in a prototype. Check only what the user would see and touch.
 - **When unsure between two outcomes, pick one, lower the confidence, and name the alternative** in the Why, in plain words. Don't leave an outcome blank.

@@ -76,8 +76,8 @@ Hand-off mismatches: <n> · Copy findings: <n> · Pattern findings: <n> · Token
 
 ## Covered
 
-<n> component groups use Plasma as documented: <comma-separated names>.
-Undocumented Plasma components used (no Plasma guidance yet): <names or "none">.
+<n> of the <Covered count from the Summary> Covered groups use Plasma as documented and need no changes: <comma-separated names>. The other Covered groups are listed under Components or Flags.
+Undocumented Plasma components used (no Plasma guidance yet, layout primitives left out): <names or "none">.
 
 ## Hand-off check
 
@@ -105,15 +105,15 @@ Not checked (no documented pattern yet): page patterns, experience patterns<, an
 
 ## Foundations
 
-| Value     | Instances | Use token |
-| --------- | --------- | --------- |
-| `<value>` | <count>   | `<token>` |
+| Value     | Instances | Use token                        |
+| --------- | --------- | -------------------------------- |
+| `<value>` | <count>   | `<token>` or _No matching token_ |
 
 ## Flags
 
 Not issues, but worth fixing before implementation.
 
-- **Mantine imports** — <n> files import from `@mantine/*`. Import from `@coveord/plasma-mantine` instead. <files>
+- **Mantine imports** — <n> files import from `@mantine/*`. Import from `@coveord/plasma-mantine` instead. <files> <!-- only names Plasma exports as the plain Mantine component; the others are rows under Components -->
 ````
 
 Leave out any section that has no findings, except Summary, Components, and the "Not checked" line under Patterns, which always appear.
