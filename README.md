@@ -59,7 +59,7 @@ Use both the skill and MCP servers when the client supports them. The skill uses
 <details>
 <summary><strong>Claude Code</strong></summary>
 
-Install the [`coveo-frontend` plugin](packages/claude-plugin/README.md), which ships the Plasma skill and both MCP servers:
+Install the [`coveo-frontend` plugin](packages/claude-plugin/README.md), which ships the Plasma skill, the DS check skill for prototypes, both documentation MCP servers, and a Playwright MCP server for DS check screenshots:
 
 ```
 /plugin marketplace add coveo/ai-tools
