@@ -3,7 +3,7 @@ import type {Meta, StoryObj} from '@storybook/react-vite';
 import {Args} from '../../../Args.js';
 
 const meta: Meta<typeof Slider> = {
-    title: '@components/Forms and inputs/number/Slider',
+    title: 'Components/Inputs/Slider',
     id: 'Slider',
     component: Slider,
     decorators: [

@@ -13,7 +13,7 @@ import {
 type TextareaStoryArgs = ComponentProps<typeof Textarea> & BaseInputStoryArgs & InputWrapperStoryArgs;
 
 const meta = {
-    title: '@components/Forms and inputs/string/Textarea',
+    title: 'Components/Inputs/Textarea',
     id: 'Textarea',
     component: Textarea,
     parameters: {

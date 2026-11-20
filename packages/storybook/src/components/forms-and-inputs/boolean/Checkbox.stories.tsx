@@ -15,7 +15,7 @@ import {
 import {withLabelContextualHelpProps} from '../ContextualHelpArgs.js';
 
 const meta: Meta<typeof Checkbox> = {
-    title: '@components/Forms and inputs/boolean/Checkbox',
+    title: 'Components/Inputs/Checkbox',
     id: 'Checkbox',
     component: Checkbox,
     parameters: {

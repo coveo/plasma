@@ -15,7 +15,7 @@ interface CodeEditorStoryArgs extends InputWrapperStoryArgs, BaseInputStoryArgs 
 }
 
 const meta = {
-    title: '@components/Forms and inputs/string/CodeEditor',
+    title: 'Components/Inputs/CodeEditor',
     id: 'CodeEditor',
     parameters: {
         layout: 'centered',

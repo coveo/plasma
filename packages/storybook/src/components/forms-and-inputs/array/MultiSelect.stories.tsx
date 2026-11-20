@@ -13,7 +13,7 @@ import {
 type MultiSelectStoryArgs = ComponentProps<typeof MultiSelect> & BaseInputStoryArgs & InputWrapperStoryArgs;
 
 const meta = {
-    title: '@components/Forms and inputs/array/MultiSelect',
+    title: 'Components/Combobox/MultiSelect',
     id: 'MultiSelect',
     component: MultiSelect,
     parameters: {

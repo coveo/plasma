@@ -19,7 +19,7 @@ type TextInputStoryArgs = Omit<ComponentProps<typeof TextInput>, 'leftSection' |
     };
 
 const meta = {
-    title: '@components/Forms and inputs/string/TextInput',
+    title: 'Components/Inputs/TextInput',
     id: 'TextInput',
     component: TextInput,
     parameters: {

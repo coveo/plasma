@@ -3,7 +3,7 @@ import type {Meta, StoryObj} from '@storybook/react-vite';
 import {useArgs} from 'storybook/preview-api';
 
 const meta: Meta<typeof Chip> = {
-    title: '@components/Forms and inputs/array/Chip',
+    title: 'Components/Inputs/Chip',
     id: 'Chip',
     component: Chip,
     parameters: {
