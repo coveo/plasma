@@ -49,6 +49,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
+    name: 'InfoToken',
     render: ({type, variant, ...props}) => {
         const Component = InfoToken[type];
         return <Component variant={variant} {...props} />;

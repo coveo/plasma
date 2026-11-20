@@ -93,5 +93,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
+    name: 'Textarea',
     render: (props) => <Textarea {...withLabelContextualHelpProps(props)} />,
 };

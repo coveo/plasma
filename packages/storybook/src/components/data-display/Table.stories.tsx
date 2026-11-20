@@ -102,6 +102,7 @@ const datePickerPresets: Record<string, DateRangePickerPreset> = {
 };
 
 export const Demo: Story = {
+    name: 'Table',
     args: {
         loading: false,
         withFilter: false,

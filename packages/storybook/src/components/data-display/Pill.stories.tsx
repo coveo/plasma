@@ -57,6 +57,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
+    name: 'Pill',
     render: ({size, withRemoveButton, label, onRemove}) => (
         <Pill
             size={size}

@@ -81,6 +81,7 @@ interface DemoArgs {
 }
 
 export const Demo: Story = {
+    name: 'Navigation',
     argTypes: {
         activeLink: {
             control: 'select',

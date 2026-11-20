@@ -73,6 +73,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
+    name: 'TextInput',
     render: ({leftSection, rightSection, ...props}) => (
         <TextInput
             rightSection={rightSection ? <IconX size={16} /> : undefined}

@@ -34,6 +34,7 @@ export default meta;
 type Story = StoryObj<typeof BrowserPreview>;
 
 export const Demo: Story = {
+    name: 'BrowserPreview',
     args: {
         title: 'Preview Title',
         headerTooltip: 'Tooltip',

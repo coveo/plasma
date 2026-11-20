@@ -40,6 +40,7 @@ const colorMapping = {
 } as const;
 
 export const Demo: Story = {
+    name: 'Progress',
     render: (args) => (
         <Progress
             value={args.value}

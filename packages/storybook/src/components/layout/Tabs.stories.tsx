@@ -42,6 +42,7 @@ const ExampleContainer = (props: {children: ReactNode}) => (
 ExampleContainer.displayName = 'ExampleContainer';
 
 export const Demo: Story = {
+    name: 'Tabs',
     render: (props: any) => (
         <Tabs defaultValue="tab1" {...props}>
             <Tabs.List>

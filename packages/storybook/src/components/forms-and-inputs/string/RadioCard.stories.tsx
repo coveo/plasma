@@ -51,6 +51,7 @@ export default meta;
 
 type Story = StoryObj<RadioCardStoryArgs>;
 export const Demo: Story = {
+    name: 'RadioCard',
     render: (props) => {
         const [{checked}, updateArgs] = useArgs<RadioCardStoryArgs>();
         const onClick = () => updateArgs({checked: !checked});

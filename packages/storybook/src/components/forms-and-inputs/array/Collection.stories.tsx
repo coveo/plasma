@@ -65,6 +65,7 @@ interface DemoStoryProps extends CollectionStoryArgs {
  * ```
  */
 export const Demo: StoryObj<DemoStoryProps> = {
+    name: 'Collection',
     args: {
         layout: 'Horizontal',
         showHeaders: true,

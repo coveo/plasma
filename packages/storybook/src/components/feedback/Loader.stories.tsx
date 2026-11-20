@@ -22,5 +22,6 @@ export default meta;
 type Story = StoryObj<typeof Loader>;
 
 export const Demo: Story = {
+    name: 'Loader',
     render: ({size}) => <Loader size={size === 'md' ? undefined : size} />,
 };

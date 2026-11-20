@@ -1,1 +1,14 @@
 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<style>
+    /*
+     * "Reload story" sits first in the left toolbar group by default, which puts a
+     * destructive-feeling action ahead of the Canvas / Docs tabs. Push it to the end of
+     * that group so it lands next to "Open in isolation mode" on the right.
+     *
+     * Every sibling keeps the implicit order:0, so a single rule is enough. Matched on
+     * aria-label rather than the generated class name, which changes between builds.
+     */
+    button[aria-label='Reload story'] {
+        order: 1;
+    }
+</style>

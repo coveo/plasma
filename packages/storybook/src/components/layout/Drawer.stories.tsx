@@ -57,6 +57,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
+    name: 'Drawer',
     render: ({description, help, opened, position, title, withCloseButton}) => {
         const [, updateArgs] = useArgs<DrawerStoryArgs>();
         const close = () => updateArgs({opened: false});

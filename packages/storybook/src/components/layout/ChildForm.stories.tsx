@@ -40,6 +40,7 @@ const Text: FunctionComponent<{children: ReactNode}> = ({children}) => <div styl
 Text.displayName = 'Text';
 
 export const Demo: Story = {
+    name: 'ChildForm',
     render: (args) => (
         <>
             <Text>Above</Text>

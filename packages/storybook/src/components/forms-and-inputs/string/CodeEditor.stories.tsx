@@ -63,5 +63,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
+    name: 'CodeEditor',
     render: (props) => <CodeEditor {...withLabelContextualHelpProps(props)} w={400} monacoLoader="cdn" />,
 };

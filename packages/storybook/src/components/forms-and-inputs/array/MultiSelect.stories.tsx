@@ -46,5 +46,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
+    name: 'MultiSelect',
     render: (props) => <MultiSelect {...withLabelContextualHelpProps(props)} w={300} />,
 };

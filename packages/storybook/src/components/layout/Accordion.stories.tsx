@@ -45,6 +45,7 @@ export default meta;
 type Story = StoryObj<typeof Accordion>;
 
 export const Demo: Story = {
+    name: 'Accordion',
     render: (props) => {
         const data = [
             {

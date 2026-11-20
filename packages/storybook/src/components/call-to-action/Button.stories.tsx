@@ -95,6 +95,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
+    name: 'Button',
     render: ({children, buttonVariant, onClick, loading, withRightSection, withLeftSection, disabled}) => {
         const ButtonComponent = Button[buttonVariant] as ComponentType<ButtonProps>;
         return (

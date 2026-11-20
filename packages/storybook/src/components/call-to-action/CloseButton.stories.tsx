@@ -30,5 +30,6 @@ export default meta;
 type Story = StoryObj<CloseButtonStoryArgs>;
 
 export const Demo: Story = {
+    name: 'CloseButton',
     render: (args) => <CloseButton aria-label="Close" size={args.size} />,
 };

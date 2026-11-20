@@ -56,6 +56,7 @@ export default meta;
 type Story = StoryObj<BadgeStoryArgs>;
 
 export const Demo: Story = {
+    name: 'Badge',
     render: ({label, semanticVariant, ...props}) => {
         const BadgeComponent = Badge[semanticVariant];
         return <BadgeComponent {...props}>{label}</BadgeComponent>;

@@ -61,5 +61,6 @@ export default meta;
 type Story = StoryObj<typeof Image>;
 
 export const Demo: Story = {
+    name: 'Image',
     render: (props) => <Image {...props} w={400} h={300} />,
 };

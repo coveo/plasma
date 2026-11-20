@@ -52,6 +52,7 @@ export default meta;
 type Story = StoryObj<typeof Notification>;
 
 export const Demo: Story = {
+    name: 'Notification',
     argTypes: {
         loading: {
             control: 'boolean',

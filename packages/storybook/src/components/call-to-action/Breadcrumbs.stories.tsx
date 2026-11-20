@@ -31,6 +31,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
+    name: 'Breadcrumbs',
     render: ({ancestorCount}) => {
         switch (ancestorCount) {
             case 2:

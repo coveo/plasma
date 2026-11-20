@@ -25,6 +25,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
+    name: 'Chip',
     render: (props) => {
         const [{checked}, updateArgs] = useArgs();
         return <Chip {...props} checked={checked} onChange={(newValue) => updateArgs({checked: newValue})} />;
