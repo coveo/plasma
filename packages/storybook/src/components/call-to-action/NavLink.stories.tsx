@@ -10,7 +10,7 @@ type NavLinkStoryArgs = Omit<NavLinkProps, 'leftSection' | 'rightSection'> & {
 };
 
 const meta: Meta<NavLinkStoryArgs> = {
-    title: '@components/Call to action/NavLink',
+    title: 'Components/Navigation/NavLink',
     id: 'NavLink',
     parameters: {
         layout: 'centered',

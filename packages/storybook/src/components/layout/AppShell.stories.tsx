@@ -14,7 +14,7 @@ type AppShellArgs = {
 };
 
 const meta: Meta<AppShellArgs> = {
-    title: '@components/Layout/AppShell',
+    title: 'Components/Layout/AppShell',
     id: 'AppShell',
     parameters: {
         layout: 'fullscreen',

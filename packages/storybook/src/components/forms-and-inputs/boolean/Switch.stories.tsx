@@ -14,7 +14,7 @@ import {
 import {withLabelContextualHelpProps} from '../ContextualHelpArgs.js';
 
 const meta: Meta<typeof Switch> = {
-    title: '@components/Forms and inputs/boolean/Switch',
+    title: 'Components/Inputs/Switch',
     id: 'Switch',
     component: Switch,
     parameters: {
