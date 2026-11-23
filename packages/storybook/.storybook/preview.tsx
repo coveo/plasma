@@ -47,25 +47,31 @@ const preview: Preview = {
         },
         options: {
             storySort: {
+                // Sections and groups are ordered explicitly; everything else — the
+                // components inside each group — falls back to alphabetical.
+                method: 'alphabetical',
                 order: [
-                    '@overview',
+                    'Get started',
                     ['Getting Started', 'Using LLMs'],
-                    '@foundation',
-                    ['Overview', 'Colors', 'Iconography', 'Radii', 'Shadows', 'Spacings', 'Typography'],
-                    '@components',
+                    'Foundations',
+                    ['Colors', 'Typography', 'Spacings', 'Radii', 'Shadows', 'Iconography', 'Variables'],
+                    'Components',
                     [
+                        // Overview is the section index, so it stays on top. The groups
+                        // below it are alphabetical, as are the components inside them.
                         'Overview',
-                        'Call to action',
-                        'Forms and inputs',
-                        'Feedback',
-                        'Layout',
+                        'Buttons',
+                        'Combobox',
                         'Data display',
-                        'Typography',
-                        'Miscellaneous',
+                        'Feedback',
+                        'Inputs',
+                        'Layout',
+                        'Navigation',
+                        'Overlays',
                     ],
-                    '@patterns',
+                    'Patterns',
                     ['Overview', 'Navigate with links'],
-                    '@content',
+                    'Content',
                     ['About Content', 'Audience', 'Voice', 'Writing mechanics', 'Product vocabulary', 'Glossary'],
                     '*',
                     'changelogs',

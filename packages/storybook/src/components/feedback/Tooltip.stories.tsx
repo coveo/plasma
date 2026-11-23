@@ -7,7 +7,7 @@ type TooltipStoryArgs = Omit<ComponentPropsWithoutRef<typeof Tooltip>, 'children
 };
 
 const meta = {
-    title: '@components/Feedback/Tooltip',
+    title: 'Components/Overlays/Tooltip',
     id: 'Tooltip',
     component: Tooltip,
     parameters: {

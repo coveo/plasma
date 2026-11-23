@@ -136,7 +136,7 @@ const CssVariablesList = () => {
 };
 
 const meta: Meta = {
-    title: '@foundation/Variables',
+    title: 'Foundations/Variables',
     id: 'variables',
     tags: ['!dev'],
     parameters: {
