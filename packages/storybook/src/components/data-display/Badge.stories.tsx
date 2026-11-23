@@ -10,7 +10,7 @@ type BadgeStoryArgs = Omit<ComponentProps<SemanticBadge>, 'children'> & {
 };
 
 const meta = {
-    title: '@components/Data display/Badge',
+    title: 'Components/Data display/Badge',
     id: 'Badge',
     component: Badge,
     parameters: {

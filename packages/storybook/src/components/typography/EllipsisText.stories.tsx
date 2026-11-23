@@ -2,7 +2,7 @@ import type {StoryObj, Meta} from '@storybook/react-vite';
 import {Chip, EllipsisText} from '@coveord/plasma-mantine';
 
 const meta: Meta<typeof EllipsisText> = {
-    title: '@components/Typography/EllipsisText',
+    title: 'Components/Data display/EllipsisText',
     id: 'EllipsisText',
     component: EllipsisText,
     parameters: {

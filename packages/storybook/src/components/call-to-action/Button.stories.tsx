@@ -23,7 +23,7 @@ type ButtonStoryArgs = Omit<ButtonProps, 'variant' | 'leftSection' | 'rightSecti
 };
 
 const meta: Meta<ButtonStoryArgs> = {
-    title: '@components/Call to action/Button',
+    title: 'Components/Buttons/Button',
     id: 'Button',
     parameters: {
         layout: 'centered',

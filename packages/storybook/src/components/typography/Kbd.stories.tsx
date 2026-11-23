@@ -2,7 +2,7 @@ import {Kbd} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof Kbd> = {
-    title: '@components/Typography/Kbd',
+    title: 'Components/Data display/Kbd',
     id: 'Kbd',
     component: Kbd,
     parameters: {

@@ -59,6 +59,15 @@ Use both the skill and MCP servers when the client supports them. The skill uses
 <details>
 <summary><strong>Claude Code</strong></summary>
 
+Install the [`coveo-frontend` plugin](packages/claude-plugin/README.md), which ships the Plasma skill and both MCP servers:
+
+```
+/plugin marketplace add coveo/ai-tools
+/plugin install coveo-frontend@ai-tools
+```
+
+Or set them up by hand:
+
 **Step 1: Install the Plasma skill.** Save the [Plasma skill](https://plasma.coveo.com/plasma-skill.md) as `~/.claude/skills/plasma/SKILL.md` so it is available in all your projects. Alternatively, save it as `.claude/skills/plasma/SKILL.md` in your project to share it with your team.
 
 **Step 2: Configure the MCP servers.** Add both servers at the user scope so they are available in all your projects:

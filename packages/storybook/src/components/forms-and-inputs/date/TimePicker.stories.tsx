@@ -13,7 +13,7 @@ import {
 type TimePickerStoryArgs = ComponentProps<typeof TimePicker> & BaseInputStoryArgs & InputWrapperStoryArgs;
 
 const meta = {
-    title: '@components/Forms and inputs/date/TimePicker',
+    title: 'Components/Inputs/TimePicker',
     id: 'TimePicker',
     component: TimePicker,
     parameters: {

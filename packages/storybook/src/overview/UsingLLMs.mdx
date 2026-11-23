@@ -1,7 +1,7 @@
 import {Meta} from '@storybook/addon-docs/blocks';
 import {Accordion} from '@coveord/plasma-mantine';
 
-<Meta title="@overview/Using LLMs" id="using-llms" />
+<Meta title="Get started/Using LLMs" id="using-llms" />
 
 # Using LLMs
 
@@ -18,6 +18,15 @@ For the best results, install the Plasma skill and configure both MCP servers in
     <Accordion.Item value="claude-code">
         <Accordion.Control>Claude Code</Accordion.Control>
         <Accordion.Panel>
+            Install the [`coveo-frontend` plugin](https://github.com/coveo/plasma/tree/master/packages/claude-plugin), which ships the Plasma skill and both MCP servers:
+
+            ```text
+            /plugin marketplace add coveo/ai-tools
+            /plugin install coveo-frontend@ai-tools
+            ```
+
+            Or set them up by hand:
+
             **Step 1: Install the Plasma skill.** Save [`plasma-skill.md`](/plasma-skill.md) as `~/.claude/skills/plasma/SKILL.md` so it is available in all your projects. Alternatively, save it as `.claude/skills/plasma/SKILL.md` in your project to share it with your team.
 
             **Step 2: Configure the MCP servers.** Add both servers at the user scope so they are available in all your projects:
@@ -72,7 +81,7 @@ For the best results, install the Plasma skill and configure both MCP servers in
         <Accordion.Panel>
             **Step 1: Install the Plasma skill.** Load it in the terminal:
 
-            ```
+            ```text
             /skill https://plasma.coveo.com/plasma-skill.md
             ```
 

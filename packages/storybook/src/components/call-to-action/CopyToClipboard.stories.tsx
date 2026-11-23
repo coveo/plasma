@@ -2,7 +2,7 @@ import {CopyToClipboard} from '@coveord/plasma-mantine';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof CopyToClipboard> = {
-    title: '@components/Call to action/CopyToClipboard',
+    title: 'Components/Buttons/CopyToClipboard',
     id: 'CopyToClipboard',
     component: CopyToClipboard,
     parameters: {

@@ -14,7 +14,7 @@ type FacetStoryArgs = ComponentProps<typeof Facet> & {
 };
 
 const meta = {
-    title: '@components/Forms and inputs/array/Facet',
+    title: 'Components/Combobox/Facet',
     id: 'Facet',
     parameters: {
         layout: 'centered',

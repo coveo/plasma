@@ -5,7 +5,7 @@ import {FoundationWrapper} from '../FoundationWrapper.js';
 import classes from './ShadowsTable.module.css';
 
 const meta: Meta = {
-    title: '@foundation/Shadows',
+    title: 'Foundations/Shadows',
     id: 'shadows',
     tags: ['!dev'],
     parameters: {

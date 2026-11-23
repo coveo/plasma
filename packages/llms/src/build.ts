@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import matter from 'gray-matter';
+import {pluginSkillPath, writePluginSkill} from './claude-plugin-skill.ts';
 import {generateLlmsFullTxt} from './llms-full-txt.ts';
 import {generateLlmsTxt} from './llms-txt.ts';
 
@@ -104,6 +105,10 @@ const main = () => {
     // Skill — read src/skill.md, replace {{BASE_URL}} placeholder
     const skillTemplate = fs.readFileSync(path.resolve(currentDir, '../src/skill.md'), 'utf-8');
     write(path.join(distDir, 'plasma-skill.md'), skillTemplate);
+
+    // Committed copy of the skill for the Claude Code plugin (packages/claude-plugin)
+    writePluginSkill();
+    console.log(`  ✓  ${path.relative(process.cwd(), pluginSkillPath)}`);
 
     console.log(
         `\n✅ Done! Generated docs for ${components.length} components, ${patterns.length} patterns, ${contentGuidelines.length} content guidelines, and ${foundations.length} foundations.\n`,

@@ -14,7 +14,7 @@ import {withLabelContextualHelpProps} from '../ContextualHelpArgs.js';
 type DatePickerInputStoryArgs = ComponentProps<typeof DatePickerInput> & BaseInputStoryArgs & InputWrapperStoryArgs;
 
 const meta = {
-    title: '@components/Forms and inputs/date/DatePickerInput',
+    title: 'Components/Inputs/DatePickerInput',
     id: 'DatePickerInput',
     component: DatePickerInput,
     parameters: {

@@ -2,7 +2,7 @@ import {Anchor, ContextualHelp, VisuallyHidden, type ContextualHelpProps} from '
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<ContextualHelpProps> = {
-    title: '@components/Feedback/ContextualHelp',
+    title: 'Components/Feedback/ContextualHelp',
     id: 'ContextualHelp',
     component: ContextualHelp,
     parameters: {

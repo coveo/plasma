@@ -18,7 +18,7 @@ const Placeholder = () => (
 Placeholder.displayName = 'Placeholder';
 
 const meta: Meta<typeof BrowserPreview> = {
-    title: '@components/Layout/BrowserPreview',
+    title: 'Components/Data display/BrowserPreview',
     id: 'BrowserPreview',
     component: BrowserPreview,
     parameters: {

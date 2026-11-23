@@ -3,7 +3,7 @@ import {StickyFooter} from '@coveord/plasma-mantine/components/StickyFooter';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
 const meta: Meta<typeof StickyFooter> = {
-    title: '@components/Layout/StickyFooter',
+    title: 'Components/Layout/StickyFooter',
     id: 'StickyFooter',
     component: StickyFooter,
     parameters: {
