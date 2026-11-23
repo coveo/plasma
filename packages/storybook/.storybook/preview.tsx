@@ -52,7 +52,7 @@ const preview: Preview = {
                 method: 'alphabetical',
                 order: [
                     'Get started',
-                    ['Getting Started', 'Using LLMs'],
+                    ['Welcome to Plasma', 'How it works', 'Install and setup', 'Collaboration and contact'],
                     'Foundations',
                     ['Colors', 'Typography', 'Spacings', 'Radii', 'Shadows', 'Iconography', 'Variables'],
                     'Components',
