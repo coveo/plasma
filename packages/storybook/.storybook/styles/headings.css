@@ -26,6 +26,10 @@ p:not([class*='mantine-'] p) {
  * `.docs-story` is excluded throughout: those links are the rendered component itself. Recolouring
  * one, or hanging an arrow off it, would show the reader a component that does not exist — the
  * Anchor page is the clearest case, since there the demo *is* a link.
+ *
+ * Links rendered as a button are excluded for the same reason. A filled button already carries its
+ * own colour and its own affordance, so painting its label the link blue leaves blue text on a blue
+ * fill, and the arrow lands outside the label rather than beside it.
  */
 
 /*
@@ -45,7 +49,7 @@ p:not([class*='mantine-'] p) {
  * The table of contents keeps its own colours: there, grey and blue mark the reading position
  * rather than telling a link from body text.
  */
-.sbdocs a:not(.toc-link, .docs-story a) {
+.sbdocs a:not(.toc-link, .docs-story a, [class*='mantine-Button-root']) {
     color: var(--mantine-color-blue-5);
     text-decoration: none;
 
@@ -64,7 +68,7 @@ p:not([class*='mantine-'] p) {
  *
  * The page footer is excluded — its links already carry a pencil and a bug icon.
  */
-.sbdocs a[href^='http']:not([class*='footerLink'], .docs-story a)::after {
+.sbdocs a[href^='http']:not([class*='footerLink'], .docs-story a, [class*='mantine-Button-root'])::after {
     content: '\00a0\2197' / '';
     font-size: 0.75em;
     line-height: 1;

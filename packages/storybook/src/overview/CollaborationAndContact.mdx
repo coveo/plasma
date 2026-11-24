@@ -1,6 +1,15 @@
 import {Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import {Table} from '@mantine/core';
-import {Note, PageFooter, SlackChannel, Step, Steps} from '../doc-blocks/DocBlocks.js';
+import {Button} from '@coveord/plasma-mantine';
+import {
+    Note,
+    PageFooter,
+    SLACK_CHANNEL,
+    SLACK_CHANNEL_URL,
+    SlackChannel,
+    Step,
+    Steps,
+} from '../doc-blocks/DocBlocks.js';
 
 <Meta title="Get started/Collaboration and contact" id="get-started-collaboration-and-contact" />
 
@@ -51,6 +60,12 @@ Choose the option below that best reflects your needs or the stage of your idea.
 
 ## Start with a question
 
+<Unstyled>
+    <Button.Primary component="a" href={SLACK_CHANNEL_URL} target="_blank" rel="noopener" mb="sm">
+        {`#${SLACK_CHANNEL} Slack channel`}
+    </Button.Primary>
+</Unstyled>
+
 The <SlackChannel /> Slack channel is the easiest way to connect with the Design System team and get guidance before submitting a formal request.
 
 Use the channel to ask about existing components, clarify usage guidelines, discuss potential gaps, or learn how other teams have approached similar challenges.
@@ -61,6 +76,12 @@ If a formal request is needed, the team will help you identify the next steps an
 The channel is also used to share Design System updates, release announcements, and changelog entries.
 
 ## Open a request
+
+<Unstyled>
+    <Button.Primary component="a" href="https://url.coveo.com/plasma-request" mb="sm">
+        Request form
+    </Button.Primary>
+</Unstyled>
 
 When you do need something from the team, the form opens in Jira with the **Design System** project and the right issue type already selected.
 You only fill in what the request is.
