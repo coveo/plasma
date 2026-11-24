@@ -51,6 +51,7 @@ export default meta;
 type Story = StoryObj<typeof Alert>;
 
 export const Demo: Story = {
+    name: 'Alert',
     render: ({title, withCloseButton, variant, content}: any) => {
         const AlertComponent = Alert[variant as keyof typeof Alert] as React.ComponentType<any>;
         return (

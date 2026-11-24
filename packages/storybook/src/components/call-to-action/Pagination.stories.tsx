@@ -61,6 +61,7 @@ export default meta;
 type Story = StoryObj<typeof Pagination>;
 
 export const Demo: Story = {
+    name: 'Pagination',
     render: (props) => {
         const [activePage, setActivePage] = useState(1);
         return <Pagination {...props} value={activePage} onChange={setActivePage} />;

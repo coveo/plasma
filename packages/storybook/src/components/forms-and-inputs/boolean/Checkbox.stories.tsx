@@ -75,6 +75,7 @@ export const CheckboxGroup: StoryObj<CheckboxGroupStoryArgs> = {
 };
 
 export const CheckboxAllStates: StoryObj<CheckboxGroupStoryArgs> = {
+    // Exists for visual tests only, not as documentation — keep it out of the sidebar.
     tags: ['!dev'],
     render: () => (
         <Stack gap="md">

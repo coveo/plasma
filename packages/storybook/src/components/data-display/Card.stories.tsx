@@ -94,6 +94,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
+    name: 'Card',
     render: ({disabled, selected, section, sectionInheritPadding, sectionWithBorder, variant, ...props}) => {
         const [, updateArgs] = useArgs<CardStoryArgs>();
         const interactive = variant === 'hover';

@@ -83,5 +83,6 @@ export default meta;
 type Story = StoryObj<typeof Slider>;
 
 export const Demo: Story = {
+    name: 'Slider',
     render: (props) => <Slider {...props} />,
 };

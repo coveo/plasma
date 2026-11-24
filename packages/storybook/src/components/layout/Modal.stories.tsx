@@ -36,6 +36,7 @@ export default meta;
 type Story = StoryObj<ModalStoryArgs>;
 
 export const Demo: Story = {
+    name: 'Modal',
     render: (args) => {
         const [{opened}, updateArgs] = useArgs<ModalStoryArgs>();
         const close = () => updateArgs({opened: false});

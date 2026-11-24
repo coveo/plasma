@@ -71,5 +71,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
+    name: 'Select',
     render: (props) => <Select {...withLabelContextualHelpProps(props)} />,
 };

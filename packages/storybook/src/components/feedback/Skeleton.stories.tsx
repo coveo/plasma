@@ -57,5 +57,6 @@ export default meta;
 type Story = StoryObj<typeof Skeleton>;
 
 export const Demo: Story = {
+    name: 'Skeleton',
     render: (props: any) => <Skeleton {...props} />,
 };

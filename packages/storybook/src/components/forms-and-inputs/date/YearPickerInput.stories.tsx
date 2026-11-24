@@ -51,5 +51,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
+    name: 'YearPickerInput',
     render: (props) => <YearPickerInput {...withLabelContextualHelpProps(props)} />,
 };

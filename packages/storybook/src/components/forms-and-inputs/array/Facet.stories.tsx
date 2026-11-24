@@ -24,6 +24,7 @@ export default meta;
 type Story = StoryObj<FacetStoryArgs>;
 
 export const Demo: Story = {
+    name: 'Facet',
     args: {
         title: 'Title',
         contextualHelp: Args.contextualHelp.initialValue,
