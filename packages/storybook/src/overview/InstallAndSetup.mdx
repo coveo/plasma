@@ -7,130 +7,8 @@ import {Note, PageFooter, Rule, Step, Steps, Worked} from '../doc-blocks/DocBloc
 
 # Install and setup
 
-Three ways to consume Plasma — in code, in Figma, and from an AI assistant.
+Three ways to consume Plasma — from an AI assistant, in code, and in Figma.
 Set up the one you need; they do not depend on each other.
-
-## In code
-
-Install Plasma with its required peer dependencies.
-
-```bash
-npm install @coveord/plasma-mantine @mantine/core @mantine/hooks react react-dom
-```
-
-Add the optional Mantine packages only when your application uses their components.
-
-```bash
-npm install @mantine/carousel @mantine/code-highlight @mantine/dates @mantine/form @mantine/modals @mantine/notifications
-```
-
-Wrap the application once in the `Plasmantine` provider, and import the base stylesheet.
-The provider applies the Coveo theme and the tokens to every component below it, so no separate `MantineProvider` is needed.
-
-```tsx
-import {Plasmantine} from '@coveord/plasma-mantine/plasmantine';
-import '@mantine/core/styles.css';
-
-export function App({children}) {
-    return <Plasmantine>{children}</Plasmantine>;
-}
-```
-
-Each optional package ships its own stylesheet, imported the same way.
-
-```tsx
-import '@mantine/notifications/styles.css';
-```
-
-<Unstyled>
-    <Rule>
-        Always import from <code>@coveord/plasma-mantine</code> — never from <code>@mantine/*</code> directly.
-    </Rule>
-    <Note>
-        This holds for the ~90 re-exported Mantine components too. Importing them from Mantine bypasses the Coveo theme
-        and pins you to a version Plasma does not control. See <strong>Re-exported Mantine components</strong>.
-    </Note>
-    <Worked>
-        You will know it worked when a <code>Button</code> renders in Coveo blue rather than Mantine's default, with no
-        further configuration.
-    </Worked>
-</Unstyled>
-
-### The packages
-
-<Unstyled>
-    <Table withTableBorder withColumnBorders>
-        <Table.Thead>
-            <Table.Tr>
-                <Table.Th w="34%">Package</Table.Th>
-                <Table.Th>Use it for</Table.Th>
-            </Table.Tr>
-        </Table.Thead>
-        <Table.Tbody>
-            <Table.Tr>
-                <Table.Td>
-                    <a href="https://github.com/coveo/plasma/tree/master/packages/mantine">@coveord/plasma-mantine</a>
-                </Table.Td>
-                <Table.Td>
-                    Plasma-themed Mantine components and custom components. This is the only one you install directly —
-                    the rest come with it.
-                </Table.Td>
-            </Table.Tr>
-            <Table.Tr>
-                <Table.Td>
-                    <a href="https://github.com/coveo/plasma/tree/master/packages/tokens">@coveord/plasma-tokens</a>
-                </Table.Td>
-                <Table.Td>Design tokens for colours, spacing, typography and icons.</Table.Td>
-            </Table.Tr>
-            <Table.Tr>
-                <Table.Td>
-                    <a href="https://github.com/coveo/plasma/tree/master/packages/react-icons">
-                        {'@coveord/plasma-react-icons'}
-                    </a>
-                </Table.Td>
-                <Table.Td>Plasma iconography as React components.</Table.Td>
-            </Table.Tr>
-            <Table.Tr>
-                <Table.Td>
-                    <a href="https://github.com/coveo/plasma/tree/master/packages/llms">@coveord/plasma-llms</a>
-                </Table.Td>
-                <Table.Td>LLM-friendly component and content documentation.</Table.Td>
-            </Table.Tr>
-            <Table.Tr>
-                <Table.Td>
-                    <a href="https://github.com/coveo/plasma/tree/master/packages/mcp-server">
-                        {'@coveord/plasma-mcp-server'}
-                    </a>
-                </Table.Td>
-                <Table.Td>On-demand Plasma documentation for AI agents.</Table.Td>
-            </Table.Tr>
-        </Table.Tbody>
-    </Table>
-</Unstyled>
-
-## In Figma
-
-<Unstyled>
-    <Steps>
-        <Step>
-            Enable the <strong>Plasma</strong> library in your file, under Assets.
-        </Step>
-        <Step>
-            Enable the <strong>Plasma Tokens</strong> variable collection, so colour, spacing and radius resolve to the
-            same values the code uses.
-        </Step>
-    </Steps>
-</Unstyled>
-
-Components carry the same names in Figma and in code, so a handoff can name one thing.
-Where a Figma component has no code equivalent, or the reverse, the **Components overview** says so in the Figma column.
-
-<Unstyled>
-    <Worked>
-        You will know it worked when a colour on your layer resolves to a <strong>semantic</strong> token name — not a
-        raw primitive like <code>blue-5</code>, which is not for direct use.
-    </Worked>
-</Unstyled>
 
 ## With an AI assistant
 
@@ -351,6 +229,128 @@ For the best results, install the Plasma skill and configure both MCP servers in
     <Worked>
         You will know it worked when the assistant cites <code>Button.md</code> and the real prop names, instead of
         inventing props that sound plausible.
+    </Worked>
+</Unstyled>
+
+## In code
+
+Install Plasma with its required peer dependencies.
+
+```bash
+npm install @coveord/plasma-mantine @mantine/core @mantine/hooks react react-dom
+```
+
+Add the optional Mantine packages only when your application uses their components.
+
+```bash
+npm install @mantine/carousel @mantine/code-highlight @mantine/dates @mantine/form @mantine/modals @mantine/notifications
+```
+
+Wrap the application once in the `Plasmantine` provider, and import the base stylesheet.
+The provider applies the Coveo theme and the tokens to every component below it, so no separate `MantineProvider` is needed.
+
+```tsx
+import {Plasmantine} from '@coveord/plasma-mantine/plasmantine';
+import '@mantine/core/styles.css';
+
+export function App({children}) {
+    return <Plasmantine>{children}</Plasmantine>;
+}
+```
+
+Each optional package ships its own stylesheet, imported the same way.
+
+```tsx
+import '@mantine/notifications/styles.css';
+```
+
+<Unstyled>
+    <Rule>
+        Always import from <code>@coveord/plasma-mantine</code> — never from <code>@mantine/*</code> directly.
+    </Rule>
+    <Note>
+        This holds for the ~90 re-exported Mantine components too. Importing them from Mantine bypasses the Coveo theme
+        and pins you to a version Plasma does not control. See <strong>Re-exported Mantine components</strong>.
+    </Note>
+    <Worked>
+        You will know it worked when a <code>Button</code> renders in Coveo blue rather than Mantine's default, with no
+        further configuration.
+    </Worked>
+</Unstyled>
+
+### The packages
+
+<Unstyled>
+    <Table withTableBorder withColumnBorders>
+        <Table.Thead>
+            <Table.Tr>
+                <Table.Th w="34%">Package</Table.Th>
+                <Table.Th>Use it for</Table.Th>
+            </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>
+            <Table.Tr>
+                <Table.Td>
+                    <a href="https://github.com/coveo/plasma/tree/master/packages/mantine">@coveord/plasma-mantine</a>
+                </Table.Td>
+                <Table.Td>
+                    Plasma-themed Mantine components and custom components. This is the only one you install directly —
+                    the rest come with it.
+                </Table.Td>
+            </Table.Tr>
+            <Table.Tr>
+                <Table.Td>
+                    <a href="https://github.com/coveo/plasma/tree/master/packages/tokens">@coveord/plasma-tokens</a>
+                </Table.Td>
+                <Table.Td>Design tokens for colours, spacing, typography and icons.</Table.Td>
+            </Table.Tr>
+            <Table.Tr>
+                <Table.Td>
+                    <a href="https://github.com/coveo/plasma/tree/master/packages/react-icons">
+                        {'@coveord/plasma-react-icons'}
+                    </a>
+                </Table.Td>
+                <Table.Td>Plasma iconography as React components.</Table.Td>
+            </Table.Tr>
+            <Table.Tr>
+                <Table.Td>
+                    <a href="https://github.com/coveo/plasma/tree/master/packages/llms">@coveord/plasma-llms</a>
+                </Table.Td>
+                <Table.Td>LLM-friendly component and content documentation.</Table.Td>
+            </Table.Tr>
+            <Table.Tr>
+                <Table.Td>
+                    <a href="https://github.com/coveo/plasma/tree/master/packages/mcp-server">
+                        {'@coveord/plasma-mcp-server'}
+                    </a>
+                </Table.Td>
+                <Table.Td>On-demand Plasma documentation for AI agents.</Table.Td>
+            </Table.Tr>
+        </Table.Tbody>
+    </Table>
+</Unstyled>
+
+## In Figma
+
+<Unstyled>
+    <Steps>
+        <Step>
+            Enable the <strong>Plasma</strong> library in your file, under Assets.
+        </Step>
+        <Step>
+            Enable the <strong>Plasma Tokens</strong> variable collection, so colour, spacing and radius resolve to the
+            same values the code uses.
+        </Step>
+    </Steps>
+</Unstyled>
+
+Components carry the same names in Figma and in code, so a handoff can name one thing.
+Where a Figma component has no code equivalent, or the reverse, the **Components overview** says so in the Figma column.
+
+<Unstyled>
+    <Worked>
+        You will know it worked when a colour on your layer resolves to a <strong>semantic</strong> token name — not a
+        raw primitive like <code>blue-5</code>, which is not for direct use.
     </Worked>
 </Unstyled>
 
