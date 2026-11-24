@@ -1,6 +1,6 @@
 import {Meta, Unstyled} from '@storybook/addon-docs/blocks';
 import {Table} from '@mantine/core';
-import {Button} from '@coveord/plasma-mantine';
+import {Button, List} from '@coveord/plasma-mantine';
 import {
     Note,
     PageFooter,
@@ -171,25 +171,47 @@ Half-filled is fine — an unclear request beats an unsent one.
     </Table>
 </Unstyled>
 
-## What happens next
+### What happens next
+
+Once your request is submitted, the Plasma team will review it and guide you through the next steps.
 
 <Unstyled>
     <Steps>
         <Step>
-            <strong>Within 48 hours</strong> — someone from the Plasma team responds. Not a decision, a human.
+            Acknowledgment & Review — we'll review your request, assess the context, and reach out if additional
+            information is needed.
         </Step>
         <Step>
-            <strong>Within a week</strong> — a direction: we build it, you build it in the extended layer, or it is not
-            a Plasma problem.
+            Evaluation & Direction — based on the scope and potential impact, we'll determine the most appropriate
+            approach:
+            <List mt="xs" spacing="xs" size="sm">
+                <List.Item>
+                    Plasma team: The request aligns with shared Design System needs and may be considered for the
+                    roadmap.
+                </List.Item>
+                <List.Item>
+                    Product team: The solution is better implemented at the product level, with guidance from the Design
+                    System team when needed.
+                </List.Item>
+                <List.Item>
+                    Outside Plasma's scope: The request falls outside the Design System's responsibilities.
+                </List.Item>
+            </List>
         </Step>
         <Step>
-            <strong>Within two weeks</strong> — a decision, at the latest, with the reasoning written in the ticket.
+            Decision & Next Steps — we'll document the outcome and its rationale in the ticket, including any
+            recommended next steps.
         </Step>
     </Steps>
+</Unstyled>
+
+Our commitment is to provide a transparent process and clear decisions, rather than fixed delivery timelines.
+
+<Unstyled>
     <Note>
-        A commitment about process, not delivery dates. <strong>You build it</strong> is a normal outcome rather than a
-        refusal — it usually means the need is real but not yet shared by enough teams to belong in Plasma. Tell us when
-        you have built it; that is what makes it a candidate later.
+        A product-level implementation is not a rejection. Solutions developed by individual teams can become candidates
+        for Plasma when similar needs emerge across products. We encourage you to share these implementations with us
+        for future consideration.
     </Note>
 </Unstyled>
 
