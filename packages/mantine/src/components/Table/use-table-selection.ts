@@ -6,7 +6,7 @@ import {getRangeSelection, selectRange} from './tableSelectionUtils.js';
 import {type TableState, type TableStore} from './use-table.js';
 
 interface UseTableSelectionOptions<T> {
-    additionalRootNodes: HTMLElement[];
+    additionalRootNodes: Array<HTMLElement | null | undefined>;
     data: T[] | null;
     table: Table<T>;
     store: TableStore<T>;
@@ -113,7 +113,8 @@ export const useTableSelection = <T>({additionalRootNodes, data, table, store}: 
             }
         },
         null,
-        [containerRef.current, ...additionalRootNodes],
+        // Mantine's useClickOutside never fires if any node is null, so drop the ones that are not mounted
+        [containerRef.current, ...additionalRootNodes.filter((node): node is HTMLElement => !!node)],
     );
 
     useEffect(() => {
