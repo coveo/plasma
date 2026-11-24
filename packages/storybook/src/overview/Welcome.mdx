@@ -1,7 +1,8 @@
 import {Meta, Unstyled} from '@storybook/addon-docs/blocks';
-import {Table} from '@mantine/core';
 import {Anchor, Card, SimpleGrid, Stack, Text, Title} from '@coveord/plasma-mantine';
-import {Caption, LinkGroup, PageFooter, Tag} from '../doc-blocks/DocBlocks.js';
+import {Caption, LinkGroup, PageFooter} from '../doc-blocks/DocBlocks.js';
+import {LatestChanges} from './LatestChanges.js';
+import plasmaMantineChangelog from '../../../mantine/CHANGELOG.md?raw';
 
 <Meta title="Get started/Welcome to Plasma" id="overview-welcome" />
 
@@ -78,28 +79,7 @@ Coveo's design system: the foundations, components, patterns and content rules t
 ## Latest changes
 
 <Unstyled>
-    <Table withTableBorder>
-        <Table.Tbody>
-            <Table.Tr>
-                <Table.Td w={90}>Oct 24</Table.Td>
-                <Table.Td>
-                    Focus returns to the trigger when a <code>Select</code> closes
-                </Table.Td>
-                <Table.Td w={110}>
-                    <Tag>patch</Tag>
-                </Table.Td>
-            </Table.Tr>
-            <Table.Tr>
-                <Table.Td>Oct 21</Table.Td>
-                <Table.Td>
-                    <code>BlankSlate</code> deprecated — removed in January. Migration guide
-                </Table.Td>
-                <Table.Td>
-                    <Tag>breaking</Tag>
-                </Table.Td>
-            </Table.Tr>
-        </Table.Tbody>
-    </Table>
+    <LatestChanges changelog={plasmaMantineChangelog} />
 </Unstyled>
 
 <Anchor href="./?path=/docs/changelogs-plasma-mantine--docs">See the full changelog</Anchor>
