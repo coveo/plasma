@@ -7,7 +7,7 @@ import {Caption, Layer, Note, PageFooter} from '../doc-blocks/DocBlocks.js';
 # How it works
 
 How Plasma is organised, and which word means what.
-Two minutes here saves an argument later about whether something is a pattern, a guideline or a component.
+Learn whether something is a pattern, a guideline or a component.
 
 ## Components: two questions, not one scale
 
@@ -37,7 +37,6 @@ A component is classified twice, and the two answers are independent.
 
 ## Patterns: three kinds
 
-Not one thing.
 Which kind you are looking at decides where it lives and how big a decision it settles.
 
 <Unstyled>
@@ -56,8 +55,7 @@ Which kind you are looking at decides where it lives and how big a decision it s
     <Note>
         <strong>And a guideline is none of these.</strong> A pattern is a page; a guideline is a sentence. An
         interaction pattern is <em>made of</em> guidelines — the title is this long, the body is one sentence, there is
-        exactly one action. Component pages carry guidelines too, without being patterns. People confuse the two because
-        they compare them as if they were the same kind of thing.
+        exactly one action. Component pages carry guidelines too, without being patterns.
     </Note>
 </Unstyled>
 
@@ -80,18 +78,7 @@ Which kind you are looking at decides where it lives and how big a decision it s
     </Caption>
 </Unstyled>
 
-## These are definitions, not labels on pages
-
-The words on this page settle who owns a component, where it belongs and what a contribution has to clear.
-They do **not** appear as tags on component pages.
-
-What a component page carries instead is three fixed links, always in the same place: **Figma component**, **Mantine component** and **GitHub**.
-If there is no Mantine link, the component is Plasma-specific.
-The **Components overview** keeps its _Library origin_ column, as today.
-
 ## Where to look for what
-
-Every definition on this page is the one in Plasma's own glossary, which until now lived inside the Content section — a section about writing UI text.
 
 <Unstyled>
     <Table withTableBorder withColumnBorders>
@@ -103,23 +90,30 @@ Every definition on this page is the one in Plasma's own glossary, which until n
         </Table.Thead>
         <Table.Tbody>
             {[
-                ['Which component do I use, and how?', 'Components'],
-                ['How do these components go together on a screen?', 'Patterns'],
-                ['What colour, spacing or size is correct?', 'Foundations'],
-                ['What should this text say?', 'Content'],
-                ['Who maintains this, and what happens if I ask for a change?', 'Get started'],
-            ].map(([question, destination]) => (
+                ['Which component do I use, and how?', 'Components', './?path=/docs/components-overview--docs'],
+                [
+                    'How do these components go together on a screen?',
+                    'Patterns',
+                    './?path=/docs/patterns-overview--docs',
+                ],
+                ['What colour, spacing or size is correct?', 'Foundations', './?path=/docs/colors--docs'],
+                ['What should this text say?', 'Content', './?path=/docs/content-about--docs'],
+                [
+                    'Who maintains this, and what happens if I ask for a change?',
+                    'Get started',
+                    './?path=/docs/overview-welcome--docs',
+                ],
+            ].map(([question, destination, href]) => (
                 <Table.Tr key={question}>
                     <Table.Td>{question}</Table.Td>
-                    <Table.Td>{destination}</Table.Td>
+                    <Table.Td>
+                        <a href={href}>{destination}</a>
+                    </Table.Td>
                 </Table.Tr>
             ))}
         </Table.Tbody>
     </Table>
 </Unstyled>
-
-Why the model is shaped this way — what was adapted from atomic design, what was rejected, how the libraries map to teams — is written up in Confluence.
-This page carries only the working definitions.
 
 <Unstyled>
     <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/overview/HowItWorks.mdx" />
