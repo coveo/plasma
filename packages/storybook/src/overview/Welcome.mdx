@@ -13,6 +13,16 @@ Coveo's design system: the foundations, components, patterns and content rules t
     <SimpleGrid cols={{base: 1, sm: 2}} spacing="sm" mb="xl">
         {[
             {
+                title: 'I use an AI assistant',
+                body: "llms.txt, the per-component markdown and the MCP server — what they cover and what they don't.",
+                links: [
+                    {
+                        label: 'Set up your AI tool',
+                        href: './?path=/docs/overview-install-and-setup--docs#with-an-ai-assistant',
+                    },
+                ],
+            },
+            {
                 title: 'I design in Figma',
                 body: 'Turn on the libraries and the token collection, then work from Foundations.',
                 links: [
@@ -22,7 +32,6 @@ Coveo's design system: the foundations, components, patterns and content rules t
                         external: true,
                     },
                     {label: 'Setting up Figma', href: './?path=/docs/overview-install-and-setup--docs#in-figma'},
-                    {label: 'Design tokens', href: './?path=/docs/variables--docs'},
                 ],
             },
             {
@@ -40,16 +49,6 @@ Coveo's design system: the foundations, components, patterns and content rules t
                     {label: 'Content section', href: './?path=/docs/content-about--docs'},
                     {label: 'Voice', href: './?path=/docs/content-voice--docs'},
                     {label: 'Writing mechanics', href: './?path=/docs/content-writing-mechanics--docs'},
-                ],
-            },
-            {
-                title: 'I use an AI assistant',
-                body: "llms.txt, the per-component markdown and the MCP server — what they cover and what they don't.",
-                links: [
-                    {
-                        label: 'Set up your AI tool',
-                        href: './?path=/docs/overview-install-and-setup--docs#with-an-ai-assistant',
-                    },
                 ],
             },
         ].map(({title, body, links}) => (
