@@ -14,6 +14,12 @@
             automerge: false,
         },
         {
+            description: 'Hold Babel 8 until @svgr/core (used to generate react-icons) supports it: it still prints with @babel/core 7, which drops the type arguments built by @babel/types 8 (https://github.com/gregberge/svgr/issues/1027). Remove this rule once a release supports Babel 8.',
+            matchPackageNames: ['@babel/{/,}**'],
+            matchUpdateTypes: ['major'],
+            enabled: false,
+        },
+        {
             groupName: '@tanstack table',
             description: 'Group major updates of @tanstack packages together because they need to be updated at the same time',
             matchUpdateTypes: ['major'],
