@@ -39,6 +39,22 @@ Use its semantic sub-components to give each message a consistent icon and visua
 - Group related messages instead of stacking several alerts.
 - Link to supporting content instead of placing long documentation in an alert.
 
+### Close button
+
+Offer a close button only when hiding the message has no consequence.
+
+| Alert                        | Close button | Why                                                              |
+| ---------------------------- | ------------ | ---------------------------------------------------------------- |
+| Information, Advice, Success | Optional     | The message is useful once and hiding it doesn't hide a problem. |
+| Warning                      | Avoid        | Users can proceed, but the risk should stay visible.             |
+| Critical                     | Never        | Closing it would hide an unresolved problem.                     |
+
+- Remove a critical alert when the problem is fixed, not when the user dismisses it.
+- Never make closing an alert a step users must take to continue.
+- Don't close alerts automatically after a delay; use a `Notification` for transient feedback.
+- Give the close button an accessible name with `closeButtonLabel`, and remove the alert in `onClose`.
+- Keep closing behavior consistent for the same kind of alert across the product.
+
 ### Content guidelines
 
 - Write a short title that states the purpose of the message.
