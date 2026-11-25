@@ -114,10 +114,11 @@ export interface TableProps<TData> extends BoxProps, StylesApiProps<PlasmaTableF
      *
      * Rows normally get unselected when clicking outside the table, but sometimes it has difficulties guessing what is inside or outside, for example when using modals.
      * You can use this prop to force the table to consider some nodes to be inside the table.
+     * Nodes that are `null` or `undefined` (for example the ref of a modal that is not mounted) are ignored.
      *
      * @see https://mantine.dev/hooks/use-click-outside/#multiple-nodes
      */
-    additionalRootNodes?: HTMLElement[];
+    additionalRootNodes?: Array<HTMLElement | null | undefined>;
     /**
      * Additional options that can be passed to the table
      */

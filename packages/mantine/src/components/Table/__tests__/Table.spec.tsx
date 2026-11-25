@@ -228,6 +228,33 @@ describe('Table', () => {
         expect(screen.getByRole('row', {name: /John Doe/i, selected: false})).toBeInTheDocument();
     });
 
+    it('ignores null additionalRootNodes so clicking outside the table still resets row selection', async () => {
+        const user = userEvent.setup();
+
+        const Fixture = () => {
+            const store = useTable<RowData>();
+
+            return (
+                <>
+                    <div data-testid="outside-element">outside</div>
+                    <Table
+                        store={store}
+                        getRowId={({id}) => id}
+                        data={[{id: '🆔-1', firstName: 'John', lastName: 'Doe'}]}
+                        columns={columns}
+                        additionalRootNodes={[null, undefined]}
+                    />
+                </>
+            );
+        };
+        render(<Fixture />);
+
+        await user.click(screen.getByRole('row', {name: /John Doe/i, selected: false}));
+        expect(screen.getByRole('row', {name: /John Doe/i, selected: true})).toBeInTheDocument();
+        await user.click(screen.getByTestId('outside-element'));
+        expect(screen.getByRole('row', {name: /John Doe/i, selected: false})).toBeInTheDocument();
+    });
+
     it('clears a selected row when pressing Escape', async () => {
         const user = userEvent.setup();
         const Fixture = () => {
