@@ -1,5 +1,6 @@
-import {addons, type State} from 'storybook/manager-api';
+import {addons, type State, types} from 'storybook/manager-api';
 import {create} from 'storybook/theming';
+import {DocsCanvasTabs} from './DocsCanvasTabs.js';
 
 // Detect user's preferred color scheme
 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -32,6 +33,13 @@ addons.setConfig({
     layoutCustomisations: {
         showToolbar: (state, defaultValue) => defaultValue && rendersAComponent(state),
     },
+});
+
+// Docs / Canvas tabs on the left of the toolbar, replacing the separate sidebar entries.
+addons.add('plasma/docs-canvas-tabs', {
+    title: 'Docs and Canvas',
+    type: types.TOOL,
+    render: DocsCanvasTabs,
 });
 
 // Override the browser tab title to show "Plasma Design System" instead of "Storybook"

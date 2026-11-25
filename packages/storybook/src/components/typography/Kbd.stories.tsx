@@ -26,5 +26,6 @@ export default meta;
 type Story = StoryObj<typeof Kbd>;
 
 export const Demo: Story = {
+    name: 'Kbd',
     render: ({children}) => <Kbd>{children}</Kbd>,
 };

@@ -55,5 +55,6 @@ export default meta;
 type Story = StoryObj<typeof SegmentedControl>;
 
 export const Demo: Story = {
+    name: 'SegmentedControl',
     render: (props: any) => <SegmentedControl {...props} />,
 };

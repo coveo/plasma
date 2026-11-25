@@ -131,6 +131,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
+    name: 'NumberInput',
     render: ({leftSection, ...props}) => (
         <NumberInput
             leftSection={leftSection ? <IconCoins size={16} /> : undefined}

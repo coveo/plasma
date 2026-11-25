@@ -55,6 +55,7 @@ export default meta;
 type Story = StoryObj<typeof Anchor>;
 
 export const Demo: Story = {
+    name: 'Anchor',
     render: ({href, children, target, size}: any) => (
         <Anchor size={size} href={href} target={target}>
             {children}

@@ -59,6 +59,7 @@ const Placeholder = ({children, color}: {children: ReactNode; color: MantineColo
 Placeholder.displayName = 'Placeholder';
 
 export const Demo: Story = {
+    name: 'AppShell',
     render: (props) => (
         <AppShell
             layout={props.layout}

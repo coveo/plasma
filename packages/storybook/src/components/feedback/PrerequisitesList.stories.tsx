@@ -15,6 +15,7 @@ export default meta;
 type PrerequisitesListStoryArgs = ComponentProps<typeof PrerequisitesList>;
 
 export const Demo: StoryObj<PrerequisitesListStoryArgs> = {
+    name: 'PrerequisitesList',
     render: (args) => (
         <PrerequisitesList {...args}>
             <PrerequisitesList.Item label="Completed Prerequisite" status="complete" description="Description" />

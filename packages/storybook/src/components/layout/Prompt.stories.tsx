@@ -28,6 +28,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
+    name: 'Prompt',
     render: ({type, ...args}) => {
         const [{opened}, updateArgs] = useArgs();
         const close = () => updateArgs({opened: false});

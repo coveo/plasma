@@ -13,6 +13,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Demo: Story = {
+    name: 'Menu',
     render: () => (
         <Menu shadow="md" width={220}>
             <Menu.Target>

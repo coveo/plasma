@@ -61,6 +61,7 @@ export default meta;
 type Story = StoryObj<typeof Stepper>;
 
 export const Default: Story = {
+    name: 'Stepper',
     render: (props: any) => {
         const [{active}, setActive] = useArgs();
 

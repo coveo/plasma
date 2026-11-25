@@ -38,6 +38,7 @@ export default meta;
 type Story = StoryObj<typeof StickyFooter>;
 
 export const Default: Story = {
+    name: 'StickyFooter',
     render: (props) => (
         <StickyFooter {...props}>
             <Button.Tertiary>Cancel</Button.Tertiary>

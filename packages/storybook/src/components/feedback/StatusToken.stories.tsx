@@ -13,6 +13,7 @@ export default meta;
 type Story = StoryObj<typeof StatusToken>;
 
 export const Demo: Story = {
+    name: 'StatusToken',
     args: {
         variant: 'success',
         size: 'lg',
