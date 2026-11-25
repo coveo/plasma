@@ -25,7 +25,8 @@ export const DocsCanvasTabs = () => {
 
     // Components only. Foundations pages are story-backed too — Colors binds to a hidden
     // `Overview` story — so having both children is not enough to tell them apart.
-    const isComponent = entry?.title?.startsWith('@components/') ?? false;
+    // The prefix is the section's own title, so it has to track whatever the stories are titled.
+    const isComponent = entry?.title?.startsWith('Components/') ?? false;
 
     if (!isComponent || !docsId || !canvasId) {
         return null;
