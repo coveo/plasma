@@ -24,6 +24,33 @@ import {CopyToClipboard} from '../CopyToClipboard/CopyToClipboard.js';
 import CodeEditorClasses from './CodeEditor.module.css';
 import {XML} from './languages/xml.js';
 import {Search} from './search/Search.js';
+import {Upload} from './upload/Upload.js';
+
+export interface CodeEditorUploadOptions {
+    /**
+     * File types accepted by the file picker, using the [`accept` attribute syntax](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept).
+     *
+     * Defaults to the file types matching the `language` prop (e.g. `.json` for `'json'`). Any file is accepted for unknown languages.
+     */
+    accept?: string;
+    /**
+     * Label of the upload button, used as tooltip and accessible name
+     *
+     * @default 'Upload file'
+     */
+    label?: string;
+    /** Called once the uploaded file was read and its content set as the editor value */
+    onUpload?(file: File, content: string): void;
+}
+
+const acceptedFileTypesByLanguage: Record<string, string> = {
+    plaintext: '.txt,text/plain',
+    json: '.json,application/json',
+    markdown: '.md,.markdown,text/markdown',
+    python: '.py,text/x-python',
+    xml: '.xml,application/xml,text/xml',
+};
+
 interface CodeEditorProps
     extends
         Omit<InputWrapperProps, 'inputContainer' | 'inputWrapperOrder' | 'classNames' | 'styles' | 'vars' | 'onChange'>,
@@ -44,6 +71,11 @@ interface CodeEditorProps
     onSearch?(): void;
     /** Called whenever the copy icon is clicked */
     onCopy?(): void;
+    /**
+     * Renders an upload button.
+     * Uploading a file replaces the editor value with the file content.
+     */
+    upload?: CodeEditorUploadOptions;
     /** Called whenever the code editor gets the focus */
     onFocus?(): void;
     /** Ref object that provides access to the editor's functionality */
@@ -98,6 +130,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         onCopy,
         onSearch,
         onFocus,
+        upload,
         value,
         label,
         required,
@@ -165,6 +198,12 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         }
     };
 
+    const handleUpload = async (file: File) => {
+        const content = await file.text();
+        handleChange(content);
+        upload?.onUpload?.(file, content);
+    };
+
     const [hasMonacoError, setHasMonacoError] = useState(false);
     const hasMonacoErrorRef = useRef(false);
 
@@ -210,6 +249,14 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         <Group justify="right" gap="xs" p="xs" className={CodeEditorClasses.actions}>
             <Search handleSearch={handleSearch} />
             <CopyToClipboard value={_value} onCopy={() => onCopy?.()} />
+            {upload ? (
+                <Upload
+                    accept={upload.accept ?? acceptedFileTypesByLanguage[language]}
+                    label={upload.label}
+                    disabled={disabled || readOnly}
+                    onUpload={(file) => void handleUpload(file)}
+                />
+            ) : null}
         </Group>
     );
     let editorTheme = colorScheme === 'light' ? 'light' : 'vs-dark';

@@ -130,6 +130,73 @@ describe('CodeEditor', () => {
         expect(onSearchSpy).toHaveBeenCalledTimes(1);
     });
 
+    describe('upload', () => {
+        const getFileInput = () => document.querySelector<HTMLInputElement>('input[type="file"]');
+
+        it('does not render an upload button when the upload prop is not defined', async () => {
+            render(<CodeEditor />);
+            await waitForElementToBeRemoved(screen.queryByRole('presentation'));
+
+            expect(screen.queryByRole('button', {name: /upload file/i})).not.toBeInTheDocument();
+        });
+
+        it('renders an upload button when the upload prop is defined', async () => {
+            render(<CodeEditor upload={{}} />);
+            await waitForElementToBeRemoved(screen.queryByRole('presentation'));
+
+            expect(screen.getByRole('button', {name: /upload file/i})).toBeInTheDocument();
+        });
+
+        it('uses the custom label as accessible name', async () => {
+            render(<CodeEditor upload={{label: 'Import JSON'}} />);
+            await waitForElementToBeRemoved(screen.queryByRole('presentation'));
+
+            expect(screen.getByRole('button', {name: 'Import JSON'})).toBeInTheDocument();
+        });
+
+        it('accepts the file types matching the language by default', async () => {
+            render(<CodeEditor language="json" upload={{}} />);
+            await waitForElementToBeRemoved(screen.queryByRole('presentation'));
+
+            expect(getFileInput()).toHaveAttribute('accept', '.json,application/json');
+        });
+
+        it('accepts any file for an unknown language', async () => {
+            render(<CodeEditor language="yaml" upload={{}} />);
+            await waitForElementToBeRemoved(screen.queryByRole('presentation'));
+
+            expect(getFileInput()).not.toHaveAttribute('accept');
+        });
+
+        it('uses the accept option over the language default', async () => {
+            render(<CodeEditor language="json" upload={{accept: '.jsonc'}} />);
+            await waitForElementToBeRemoved(screen.queryByRole('presentation'));
+
+            expect(getFileInput()).toHaveAttribute('accept', '.jsonc');
+        });
+
+        it('sets the uploaded file content as the editor value', async () => {
+            const user = userEvent.setup();
+            const onChange = vi.fn();
+            const onUpload = vi.fn();
+            const file = new File(['{"hello": "world"}'], 'config.json', {type: 'application/json'});
+            render(<CodeEditor language="json" onChange={onChange} upload={{onUpload}} />);
+            await waitForElementToBeRemoved(screen.queryByRole('presentation'));
+
+            await user.upload(getFileInput()!, file);
+
+            await vi.waitFor(() => expect(onChange).toHaveBeenCalledWith('{"hello": "world"}'));
+            expect(onUpload).toHaveBeenCalledWith(file, '{"hello": "world"}');
+        });
+
+        it('disables the upload button when the editor is read only', async () => {
+            render(<CodeEditor readOnly upload={{}} />);
+            await waitForElementToBeRemoved(screen.queryByRole('presentation'));
+
+            expect(screen.getByRole('button', {name: /upload file/i})).toBeDisabled();
+        });
+    });
+
     it('defines editorHandle on mount', async () => {
         let editorHandle: React.MutableRefObject<editor.IStandaloneCodeEditor | null> = null!;
         const EditorWrapper = () => {
