@@ -13,7 +13,7 @@ import {
     useMantineTheme,
     useProps,
 } from '@mantine/core';
-import {useUncontrolled} from '@mantine/hooks';
+import {useDidUpdate, useUncontrolled} from '@mantine/hooks';
 import Editor, {Monaco, loader} from '@monaco-editor/react';
 import type {editor as monacoEditor} from 'monaco-editor';
 import {FunctionComponent, useEffect, useRef, useState} from 'react';
@@ -179,6 +179,13 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         }
     };
 
+    useDidUpdate(() => {
+        // the editor is already mounted, so `beforeMount` won't run again for the new language
+        if (monacoRef.current) {
+            registerLanguages(monacoRef.current);
+        }
+    }, [language]);
+
     const registerThemes = (monaco: Monaco) => {
         monaco.editor.defineTheme('light', {
             base: 'vs',
@@ -278,7 +285,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
                 <Editor
                     key={editorKey}
                     onValidate={handleValidate}
-                    defaultLanguage={language}
+                    language={language}
                     theme={editorTheme}
                     options={{
                         minimap: {enabled: false},

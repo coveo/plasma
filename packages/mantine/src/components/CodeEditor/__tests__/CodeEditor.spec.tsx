@@ -101,6 +101,25 @@ describe('CodeEditor', () => {
         expect(xmlLanguageSpy).toHaveBeenCalledTimes(1);
     });
 
+    it('updates the editor language when the language prop changes', async () => {
+        const {rerender} = render(<CodeEditor language="plaintext" />);
+        await waitForElementToBeRemoved(screen.queryByRole('presentation'));
+
+        rerender(<CodeEditor language="json" />);
+
+        expect(screen.getByTestId('monaco-editor')).toHaveAttribute('data-language', 'json');
+    });
+
+    it('loads the xml language in the monaco instance when the language prop changes to xml', async () => {
+        const xmlLanguageSpy = vi.spyOn(XML, 'register').mockImplementation(vi.fn());
+        const {rerender} = render(<CodeEditor monacoLoader="cdn" language="json" />);
+        expect(xmlLanguageSpy).not.toHaveBeenCalled();
+
+        rerender(<CodeEditor monacoLoader="cdn" language="xml" />);
+
+        expect(xmlLanguageSpy).toHaveBeenCalledTimes(1);
+    });
+
     it('focus and triggers search on the Monaco editor when handleSearch is called', async () => {
         const user = userEvent.setup();
         render(<CodeEditor />);
