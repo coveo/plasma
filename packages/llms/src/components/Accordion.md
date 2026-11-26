@@ -39,15 +39,18 @@ Do not use `Accordion` when:
 - Use inline helper text or an `Alert` when the information is important enough to remain visible.
 - Use a table, list, or cards when users need to compare many items rather than open panels one by one.
 - Use `Accordion.ControlDisabled` when a section heading should appear in the accordion structure but should not be interactive.
+- `Accordion` SHOULD have one panel open at a time; use `multiple` when users compare content across panels.
+- `Accordion` MUST NOT be used for navigation between pages or views; use `NavLink` or `Tabs`.
+- `Accordion` SHOULD NOT be nested in another `Accordion`; use headings or `Tabs` for the outer level.
 
 ## Variants
 
-- Use `default` for the standard accordion treatment.
-- Use `contained` when the accordion needs a clearer boundary from surrounding page content.
-- Use `separated` when each item should read as an independent expandable section.
-- Use `filled` when the accordion needs stronger visual weight.
+- `Accordion` SHOULD use `variant="default"` rather than `filled`, `separated`, `contained` or `unstyled`.
 
 ## States
+
+- `Accordion` SHOULD have every panel collapsed on load; set `defaultValue` when one panel answers the most common need.
+- A section that uses `Accordion.ControlDisabled` MUST have its panel open: include its value in `defaultValue` or `value`.
 
 Important states include:
 
@@ -61,17 +64,20 @@ Important states include:
 - Each section needs a unique, consistent identifier so the accordion can track which panels are open or closed.
 - Icons next to section labels can help users recognize content faster, but the label text must always be clear enough on its own.
 - A section heading can be made non-interactive — it appears in the accordion structure but cannot be expanded or collapsed.
+- `Accordion.Control` MUST NOT include buttons, links or other interactive elements; place them in the `Accordion.Panel`.
 
 ## Accessibility expectations
 
 - Each control MUST have clear text that describes the panel content.
 - Panel content SHOULD remain logically related to its control.
 - Interactive content inside panels MUST remain keyboard reachable when the panel is open.
+- `Accordion` SHOULD have `order` set to the heading level that fits the page outline.
 
 ## Content guidance
 
 - Control labels SHOULD be short and specific.
 - Labels SHOULD describe the content inside the panel, not the action of expanding it.
+- `Accordion` panel content MUST NOT include required fields, errors or warnings; keep them visible outside the `Accordion`.
 - Keep panel content focused on one section topic.
 - If every panel label needs a long sentence to be understandable, the content likely needs another structure.
 
