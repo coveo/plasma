@@ -15,6 +15,8 @@ Groups contextual commands in a compact dropdown near their trigger.
 
 <Canvas of={MenuStories.Demo} />
 
+Use `Menu.Sub` for related commands, and `Menu.Search` with a `ScrollArea.Autosize` around the items for long lists, so the search stays pinned while the list scrolls. When a `Menu.Sub` sits inside a scroll area, set `floatingStrategy="fixed"` on it so the scroll area doesn't clip its dropdown.
+
 ## Guidelines
 
 ### When to use
