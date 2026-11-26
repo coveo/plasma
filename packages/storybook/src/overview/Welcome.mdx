@@ -1,0 +1,163 @@
+import {Meta, Unstyled} from '@storybook/addon-docs/blocks';
+import {Anchor, Card, SimpleGrid, Stack, Text, Title} from '@coveord/plasma-mantine';
+import {Caption, LinkGroup, PageFooter} from '../doc-blocks/DocBlocks.js';
+import {LatestChanges} from './LatestChanges.js';
+import plasmaMantineChangelog from '../../../mantine/CHANGELOG.md?raw';
+
+<Meta title="Get started/Welcome to Plasma" id="overview-welcome" />
+
+# Welcome to Plasma
+
+Coveo's design system: the foundations, components, patterns and content rules that hold Coveo's products together.
+
+<Unstyled>
+    <SimpleGrid cols={{base: 1, sm: 2}} spacing="sm" mb="xl">
+        {[
+            {
+                title: 'I use an AI assistant',
+                body: "llms.txt, the per-component markdown and the MCP server — what they cover and what they don't.",
+                links: [
+                    {
+                        label: 'Set up your AI tool',
+                        href: './?path=/docs/overview-install-and-setup--docs#with-an-ai-assistant',
+                    },
+                ],
+            },
+            {
+                title: 'I design in Figma',
+                body: 'Turn on the libraries and the token collection, then work from Foundations.',
+                links: [
+                    {
+                        label: 'Components library',
+                        href: 'https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components',
+                        external: true,
+                    },
+                    {label: 'Setting up Figma', href: './?path=/docs/overview-install-and-setup--docs#in-figma'},
+                ],
+            },
+            {
+                title: 'I write code',
+                body: 'Install, the Plasmantine provider, component APIs, and what is Plasma versus plain Mantine.',
+                links: [
+                    {label: 'Install and setup', href: './?path=/docs/overview-install-and-setup--docs#in-code'},
+                    {label: 'Components overview', href: './?path=/docs/components-overview--docs'},
+                ],
+            },
+            {
+                title: 'I write UI text',
+                body: 'Voice, mechanics and product vocabulary.',
+                links: [
+                    {label: 'Content section', href: './?path=/docs/content-about--docs'},
+                    {label: 'Voice', href: './?path=/docs/content-voice--docs'},
+                    {label: 'Writing mechanics', href: './?path=/docs/content-writing-mechanics--docs'},
+                ],
+            },
+        ].map(({title, body, links}) => (
+            <Card key={title} withBorder>
+                <Title order={4}>{title}</Title>
+                <Text size="sm" c="dimmed" mt="xs">
+                    {body}
+                </Text>
+                <Stack gap="xxs" mt="sm">
+                    {links.map(({label, href, external}) => (
+                        <Text key={label} size="sm">
+                            <a
+                                href={href}
+                                target={external ? '_blank' : undefined}
+                                rel={external ? 'noopener' : undefined}
+                            >
+                                {label}
+                            </a>
+                        </Text>
+                    ))}
+                </Stack>
+            </Card>
+        ))}
+    </SimpleGrid>
+</Unstyled>
+
+## Latest changes
+
+<Unstyled>
+    <LatestChanges changelog={plasmaMantineChangelog} />
+</Unstyled>
+
+<Anchor href="./?path=/docs/changelogs-plasma-mantine--docs">See the full changelog</Anchor>
+
+## Where things are
+
+- **[Components](./?path=/docs/components-overview--docs)** — one list by job, with the library each one comes from.
+- **[Content](./?path=/docs/content-about--docs)** — voice, mechanics and vocabulary.
+- **[Foundations](./?path=/docs/colors--docs)** — tokens, colour, type, spacing, iconography, accessibility.
+- **[Patterns](./?path=/docs/patterns-overview--docs)** — how components go together, and what the combination has to get right.
+
+## Where everything else lives
+
+<Unstyled>
+    <SimpleGrid cols={{base: 1, sm: 2}} spacing="lg">
+        <LinkGroup title="Figma libraries">
+            <Text size="sm">
+                <a
+                    href="https://www.figma.com/design/FIkUthFdwxiJKSBE06qjY0/Plasma---Components?node-id=2666-2134"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    {'Core components'}
+                </a>
+            </Text>
+            <Text size="sm">
+                <a
+                    href="https://www.figma.com/design/BhAFI9OawH8E77uEqAxNDq/Plasma---Styles?node-id=0-1"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    {'Styles'}
+                </a>
+            </Text>
+            <Text size="sm">
+                <a
+                    href="https://www.figma.com/design/IjYiaHK8FWr69I4Xlvu8p3/Plasma---Icons---Illustrations?node-id=2064-7"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    {'Icons & Illustrations'}
+                </a>
+            </Text>
+        </LinkGroup>
+        <LinkGroup title="Icons">
+            <Text size="sm">
+                <a href="https://tabler.io/icons" target="_blank" rel="noopener">
+                    {'Tabler icon set'}
+                </a>
+            </Text>
+            <Caption>
+                Start from the curated Coveo set in <a href="./?path=/docs/iconography--docs">Iconography</a>. Tabler is
+                the fallback for when nothing in it fits — and a sign we should add one.
+            </Caption>
+        </LinkGroup>
+        <LinkGroup title="Code">
+            <Text size="sm">
+                <a href="https://github.com/coveo/plasma" target="_blank" rel="noopener">
+                    {'coveo/plasma on GitHub'}
+                </a>
+            </Text>
+            <Text size="sm">
+                <a href="https://www.npmjs.com/package/@coveord/plasma-mantine" target="_blank" rel="noopener">
+                    {'@coveord/plasma-mantine on npm'}
+                </a>
+            </Text>
+            <Text size="sm">
+                <a href="https://mantine.dev" target="_blank" rel="noopener">
+                    {'Mantine documentation'}
+                </a>
+            </Text>
+        </LinkGroup>
+        <LinkGroup title="Ask and talk">
+            <Caption>Plasma is maintained by the Design System team and the Front-End Foundation team.</Caption>
+            <Text size="sm">
+                <a href="./?path=/docs/get-started-collaboration-and-contact--docs">Collaboration and contact</a>
+            </Text>
+        </LinkGroup>
+    </SimpleGrid>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/overview/Welcome.mdx" />
+</Unstyled>

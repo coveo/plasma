@@ -19,3 +19,57 @@
 p:not([class*='mantine-'] p) {
     margin-block: var(--mantine-spacing-xs);
 }
+
+/*
+ * Everything below styles links in the documentation prose only.
+ *
+ * `.docs-story` is excluded throughout: those links are the rendered component itself. Recolouring
+ * one, or hanging an arrow off it, would show the reader a component that does not exist — the
+ * Anchor page is the clearest case, since there the demo *is* a link.
+ *
+ * Links rendered as a button are excluded for the same reason. A filled button already carries its
+ * own colour and its own affordance, so painting its label the link blue leaves blue text on a blue
+ * fill, and the arrow lands outside the label rather than beside it.
+ */
+
+/*
+ * Links reach the docs two ways: through markdown, which `plasmaMarkdownOverrides` turns into a
+ * Plasma `Anchor`, and as plain `<a>` written by hand inside the doc blocks. Nothing styled the
+ * second kind, so it fell back to the browser default — a different blue, permanently underlined,
+ * sitting next to Plasma's. Setting the colour here rather than at each call site means any `<a>`
+ * added to a page later lands on the same blue without anyone having to remember.
+ *
+ * The colour is pinned to blue rather than taken from `--mantine-color-anchor`, which follows the
+ * primary colour: component pages run the theme decorator and would otherwise render their prose
+ * links in teal, and in the product theme the reader picked from the toolbar. Documentation links
+ * are not part of that demo, so they hold one tone everywhere.
+ *
+ * Underline on hover only, which is what `Anchor` does on its own.
+ *
+ * The table of contents keeps its own colours: there, grey and blue mark the reading position
+ * rather than telling a link from body text.
+ */
+.sbdocs a:not(.toc-link, .docs-story a, [class*='mantine-Button-root']) {
+    color: var(--mantine-color-blue-5);
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+/*
+ * External links carry a small ↗ so it is clear they leave the Storybook. Generated here rather
+ * than typed into each page: the character then cannot be forgotten, cannot drift in size, and
+ * never lands on a label that is not actually a link.
+ *
+ * `/ ''` gives the generated content an empty alternative text, so screen readers announce the
+ * link label without "north east arrow".
+ *
+ * The page footer is excluded — its links already carry a pencil and a bug icon.
+ */
+.sbdocs a[href^='http']:not([class*='footerLink'], .docs-story a, [class*='mantine-Button-root'])::after {
+    content: '\00a0\2197' / '';
+    font-size: 0.75em;
+    line-height: 1;
+}

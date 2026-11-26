@@ -1,0 +1,221 @@
+import {Meta, Unstyled} from '@storybook/addon-docs/blocks';
+import {Table} from '@mantine/core';
+import {Button, List} from '@coveord/plasma-mantine';
+import {
+    Note,
+    PageFooter,
+    SLACK_CHANNEL,
+    SLACK_CHANNEL_URL,
+    SlackChannel,
+    Step,
+    Steps,
+} from '../doc-blocks/DocBlocks.js';
+
+<Meta title="Get started/Collaboration and contact" id="get-started-collaboration-and-contact" />
+
+# Collaboration and contact
+
+Plasma evolves through collaboration with the teams that use it.
+Many improvements, updates, and clarifications begin with someone identifying a gap, raising a question, or suggesting a change.
+
+You don't need a fully developed proposal or a defined solution to contribute.
+Choose the option below that best reflects your needs or the stage of your idea.
+
+## Where to go
+
+<Unstyled>
+    <Table withTableBorder withColumnBorders>
+        <Table.Thead>
+            <Table.Tr>
+                <Table.Th w="34%">You want to</Table.Th>
+                <Table.Th w="26%">Go to</Table.Th>
+                <Table.Th>What happens</Table.Th>
+            </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>
+            <Table.Tr>
+                <Table.Td>Ask something, or work out how to proceed</Table.Td>
+                <Table.Td>
+                    <SlackChannel /> on Slack
+                </Table.Td>
+                <Table.Td>A person answers. No ticket, no form, no commitment to anything.</Table.Td>
+            </Table.Tr>
+            <Table.Tr>
+                <Table.Td>Add a component, change one, or report a bug</Table.Td>
+                <Table.Td>
+                    <a href="https://url.coveo.com/plasma-request">The request form</a>
+                </Table.Td>
+                <Table.Td>Opens a ticket for the Design System team.</Table.Td>
+            </Table.Tr>
+            <Table.Tr>
+                <Table.Td>Fix something wrong on a documentation page</Table.Td>
+                <Table.Td>
+                    <strong>Edit this page</strong>, in any page footer
+                </Table.Td>
+                <Table.Td>Opens the source on GitHub and turns your edit into a pull request.</Table.Td>
+            </Table.Tr>
+        </Table.Tbody>
+    </Table>
+</Unstyled>
+
+## Start with a question
+
+<Unstyled>
+    <Button.Primary component="a" href={SLACK_CHANNEL_URL} target="_blank" rel="noopener" mb="sm">
+        {`#${SLACK_CHANNEL} Slack channel`}
+    </Button.Primary>
+</Unstyled>
+
+The <SlackChannel /> Slack channel is the easiest way to connect with the Design System team and get guidance before submitting a formal request.
+
+Use the channel to ask about existing components, clarify usage guidelines, discuss potential gaps, or learn how other teams have approached similar challenges.
+
+Many questions can be resolved directly through discussion, without creating a ticket.
+If a formal request is needed, the team will help you identify the next steps and provide the context needed to submit it.
+
+The channel is also used to share Design System updates, release announcements, and changelog entries.
+
+## Open a request
+
+<Unstyled>
+    <Button.Primary component="a" href="https://url.coveo.com/plasma-request" mb="sm">
+        Request form
+    </Button.Primary>
+</Unstyled>
+
+When you do need something from the team, the form opens in Jira with the **Design System** project and the right issue type already selected.
+You only fill in what the request is.
+
+- **Request a component, a change or a bug fix** — Something is missing, something should work differently, or something is broken in a component. You do not have to decide which — we classify it in triage.
+- **Report a problem in the documentation** — The page is wrong, unclear or out of date, and the component is fine. A request carrying the `documentation` tag is triaged as a docs fix rather than a code change.
+- **Fix the documentation yourself** — A typo, a wrong example, a stale link. The **Edit this page** link in any page footer opens the source on GitHub in your browser and turns your edit into a pull request — no local setup, no ticket.
+
+Found it on a specific page?
+The **Report a problem** link in that page's footer opens the form already tagged `documentation`, and already carrying the page it came from.
+
+### Before you open it
+
+Thirty seconds that save a round trip.
+None of these disqualify a request — they change what we do with it, and most of them are worth a message in the channel first.
+
+<Unstyled>
+    <Table withTableBorder withColumnBorders>
+        <Table.Thead>
+            <Table.Tr>
+                <Table.Th>Check</Table.Th>
+                <Table.Th>If no</Table.Th>
+            </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>
+            {[
+                [
+                    'Will more than one team or one screen use it?',
+                    'Build it in your product and tell us anyway. When a second team needs the same thing, it becomes a Plasma candidate.',
+                ],
+                [
+                    'Did you check whether an existing component nearly does it?',
+                    'Name the closest one in the ticket and say what is missing. That is usually a change request, not a new component.',
+                ],
+                [
+                    'Does the component page link out to Mantine?',
+                    'Then check Mantine’s documentation first — we do not add Coveo guidance to components we re-export unchanged. Ask us to take one on if it has become load-bearing.',
+                ],
+                [
+                    'Is it the documentation that is wrong, rather than the component?',
+                    'Use the second or third option above. The docs tag routes it away from the component backlog, and fixing it yourself skips triage entirely.',
+                ],
+            ].map(([check, ifNo]) => (
+                <Table.Tr key={check}>
+                    <Table.Td>{check}</Table.Td>
+                    <Table.Td>{ifNo}</Table.Td>
+                </Table.Tr>
+            ))}
+        </Table.Tbody>
+    </Table>
+</Unstyled>
+
+### What to put in the ticket
+
+The form carries these fields.
+Half-filled is fine — an unclear request beats an unsent one.
+
+<Unstyled>
+    <Table withTableBorder withColumnBorders>
+        <Table.Thead>
+            <Table.Tr>
+                <Table.Th>Field</Table.Th>
+                <Table.Th>What we need</Table.Th>
+            </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>
+            {[
+                ['Problem', 'What you are trying to do and what is in the way. Not the solution — the situation.'],
+                ['Proposed solution', 'If you have one. It is fine to leave this empty.'],
+                ['Likely owner', 'Your team, Plasma, or unclear.'],
+                ['Impact', 'Who is blocked, and how often. This is what sequences the work.'],
+                ['Complexity', 'Your guess. We will correct it.'],
+                ['Open questions', 'Anything you could not settle yourself.'],
+                [
+                    'Link',
+                    'The Storybook page, or a Canvas link reproducing the state — the Controls you set travel in the URL.',
+                ],
+            ].map(([field, need]) => (
+                <Table.Tr key={field}>
+                    <Table.Td>
+                        <strong>{field}</strong>
+                    </Table.Td>
+                    <Table.Td>{need}</Table.Td>
+                </Table.Tr>
+            ))}
+        </Table.Tbody>
+    </Table>
+</Unstyled>
+
+### What happens next
+
+Once your request is submitted, the Plasma team will review it and guide you through the next steps.
+
+<Unstyled>
+    <Steps>
+        <Step>
+            <strong>Acknowledgment & Review</strong> — we'll review your request, assess the context, and reach out if
+            additional information is needed.
+        </Step>
+        <Step>
+            <strong>Evaluation & Direction</strong> — based on the scope and potential impact, we'll determine the most
+            appropriate approach:
+            <List mt="xs" spacing="xs" size="sm">
+                <List.Item>
+                    <strong>Plasma team</strong>: The request aligns with shared Design System needs and may be
+                    considered for the roadmap.
+                </List.Item>
+                <List.Item>
+                    <strong>Product team</strong>: The solution is better implemented at the product level, with
+                    guidance from the Design System team when needed.
+                </List.Item>
+                <List.Item>
+                    <strong>Outside Plasma's scope</strong>: The request falls outside the Design System's
+                    responsibilities.
+                </List.Item>
+            </List>
+        </Step>
+        <Step>
+            <strong>Decision & Next Steps</strong> — we'll document the outcome and its rationale in the ticket,
+            including any recommended next steps.
+        </Step>
+    </Steps>
+</Unstyled>
+
+Our commitment is to provide a transparent process and clear decisions, rather than fixed delivery timelines.
+
+<Unstyled>
+    <Note>
+        A product-level implementation is not a rejection. Solutions developed by individual teams can become candidates
+        for Plasma when similar needs emerge across products. We encourage you to share these implementations with us
+        for future consideration.
+    </Note>
+</Unstyled>
+
+<Unstyled>
+    <PageFooter editUrl="https://github.com/coveo/plasma/edit/master/packages/storybook/src/overview/CollaborationAndContact.mdx" />
+</Unstyled>
