@@ -95,6 +95,20 @@ describe('CodeEditor', () => {
         expect(screen.getByTestId('monaco-editor')).toBeInTheDocument();
     });
 
+    it('uses plaintext as the editor language by default', async () => {
+        render(<CodeEditor />);
+        await waitForElementToBeRemoved(screen.queryByRole('presentation'));
+
+        expect(screen.getByTestId('monaco-editor')).toHaveAttribute('data-language', 'plaintext');
+    });
+
+    it('does not load the xml language in the monaco instance for the default language', async () => {
+        const xmlLanguageSpy = vi.spyOn(XML, 'register').mockImplementation(vi.fn());
+        render(<CodeEditor monacoLoader="cdn" />);
+
+        expect(xmlLanguageSpy).not.toHaveBeenCalled();
+    });
+
     it('loads the xml language in the monaco instance if the editor language is xml', async () => {
         const xmlLanguageSpy = vi.spyOn(XML, 'register').mockImplementation(vi.fn());
         render(<CodeEditor label="label" description="description" monacoLoader="cdn" language="xml" />);
@@ -171,6 +185,13 @@ describe('CodeEditor', () => {
             await waitForElementToBeRemoved(screen.queryByRole('presentation'));
 
             expect(screen.getByRole('button', {name: 'Import JSON'})).toBeInTheDocument();
+        });
+
+        it('accepts plain text files when no language is set', async () => {
+            render(<CodeEditor upload={{}} />);
+            await waitForElementToBeRemoved(screen.queryByRole('presentation'));
+
+            expect(getFileInput()).toHaveAttribute('accept', '.txt,text/plain');
         });
 
         it('accepts the file types matching the language by default', async () => {
