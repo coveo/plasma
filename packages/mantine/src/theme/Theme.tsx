@@ -34,6 +34,7 @@ import {
     InputWrapper,
     List,
     Loader,
+    Menu,
     Accordion as MantineAccordion,
     MantineThemeOverride,
     Modal,
@@ -96,6 +97,7 @@ import DateTimePickerClasses from '../styles/DateTimePicker.module.css';
 import InputClasses from '../styles/Input.module.css';
 import InputWrapperClasses from '../styles/InputWrapper.module.css';
 import ListClasses from '../styles/List.module.css';
+import MenuClasses from '../styles/Menu.module.css';
 import ModalClasses from '../styles/Modal.module.css';
 import MonthPickerClasses from '../styles/MonthPicker.module.css';
 import NavLinkClasses from '../styles/NavLink.module.css';
@@ -443,6 +445,7 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
             classNames: MonthPickerClasses,
         }),
         MultiSelect: MultiSelect.extend({defaultProps: {hidePickedOptions: true}}),
+        Menu: Menu.extend({classNames: MenuClasses}),
         NavLink: NavLink.extend({classNames: NavLinkClasses}),
         Notification: Notification.extend({
             classNames: NotificationClasses,

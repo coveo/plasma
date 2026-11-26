@@ -1,0 +1,30 @@
+/* Doubled selector: the Popover theme also targets sub menu dropdowns and sets a larger padding. */
+.dropdown.dropdown {
+    --popover-padding: var(--mantine-spacing-xs);
+
+    padding: var(--popover-padding);
+}
+
+.item {
+    padding: var(--mantine-spacing-xs);
+    border-radius: var(--mantine-radius-md);
+
+    @mixin light {
+        --menu-item-hover: var(--mantine-color-default-hover);
+
+        &:where([data-disabled], :disabled) {
+            opacity: 1;
+        }
+    }
+}
+
+.label {
+    padding: var(--mantine-spacing-xxs) var(--mantine-spacing-xs);
+    font-size: var(--mantine-font-size-xs);
+    font-weight: var(--mantine-font-weight-medium);
+    text-transform: uppercase;
+
+    @mixin light {
+        color: var(--mantine-color-placeholder);
+    }
+}

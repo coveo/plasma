@@ -35,6 +35,8 @@ Do not use `Menu` when:
 - Use `Menu` for grouped contextual commands such as bulk actions or row actions.
 - Use labels and dividers to separate distinct action groups.
 - Use disabled tooltips only when they help users understand a requirement or permission boundary.
+- Use `Menu.Search` with a `ScrollArea.Autosize` around the items for long lists. Keep the search outside the scroll area so it stays pinned.
+- Set `floatingStrategy="fixed"` on a `Menu.Sub` placed inside a scroll area, otherwise the scroll area clips its dropdown and pushes it over the parent menu.
 
 ## Accessibility expectations
 
@@ -56,7 +58,7 @@ _No additional props beyond the Mantine base component._
 
 ## Sub-components
 
-Plasma overrides `Menu.Item` transparently to add disabled tooltip support. All other sub-components are standard Mantine.
+Plasma overrides `Menu.Item` transparently to add disabled tooltip support. All other sub-components are standard Mantine (`Menu.Label`, `Menu.Divider`, `Menu.Sub`, `Menu.Search`), styled by the Plasma theme: uppercase group labels, 8px item and dropdown padding, and `color="red"` for destructive items.
 
 - `Menu.Item` — extends Mantine's `Menu.Item` with `disabledTooltip` and `disabledTooltipProps`
 
