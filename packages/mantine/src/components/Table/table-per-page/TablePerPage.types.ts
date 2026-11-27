@@ -1,3 +1,5 @@
+export type TablePerPageStylesNames = 'perPage' | 'perPageLabel';
+
 export interface TablePerPageProps {
     /**
      * The label displayed before the control

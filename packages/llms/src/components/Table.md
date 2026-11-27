@@ -89,7 +89,7 @@ Important states include:
 **`layouts`** `TableLayout[]` · optional · default: `[Table.Layouts.Rows]` — Available layouts. This prop MAY be used to expose layout switching.
 **`layoutProps`** `{onRowDoubleClick?: (selectedRow: TData, index: number, row: Row<TData>) => void} & Record<string, unknown>` · optional · default: `{}` — Props passed down to the active layout Header and Body components.
 **`loading`** `boolean` · optional · default: `false` — Whether the table is loading or not. This prop MAY be used to show loading states.
-**`children`** `ReactNode` · optional · default: `undefined` — Children can include sub-components like `Table.Toolbar`, `Table.Header`, `Table.Footer`, `Table.NoData`, and `Table.LastUpdated`. Filter controls (`Table.Filter`, `Table.Predicate`, `Table.DateRangePicker`) MUST be placed inside `Table.Header` or `Table.Toolbar`.
+**`children`** `ReactNode` · optional · default: `undefined` — Children can include sub-components like `Table.Toolbar`, `Table.Header`, `Table.Footer`, and `Table.NoData`. `Table.LastUpdated`, `Table.Pagination`, and `Table.PerPage` MUST be placed inside `Table.Footer`. Filter controls (`Table.Filter`, `Table.Predicate`, `Table.DateRangePicker`) MUST be placed inside `Table.Header` or `Table.Toolbar`.
 **`additionalRootNodes`** `Array<HTMLElement | null | undefined>` · optional · default: `[]` — Nodes that are considered inside the table. Rows normally get unselected when clicking outside the table, but the component can have difficulty guessing what is inside or outside, for example when using modals. You MAY use this prop to force the table to consider some nodes to be inside the table. `null` and `undefined` entries (for example the ref of an unmounted modal) are ignored.
 **`options`** `Omit<Partial<TableOptions<TData>>, 'initialState' | 'data' | 'columns' | 'manualPagination' | 'enableMultiRowSelection' | 'getRowId' | 'getRowCanExpand' | 'enableRowSelection' | 'onRowSelectionChange'>` · optional · default: `{}` — Additional options MAY be passed to the table with this prop.
 
@@ -137,6 +137,26 @@ Use `Table.Toolbar` to render `Table.Filter`, `Table.Predicate`, and `Table.Date
 
 You SHOULD use `Table.Toolbar` when filter components need to be rendered outside the table header grid (e.g., in a custom layout above the table). You MUST still render `Table.Toolbar` inside the `<Table>` component because it requires `useTableContext`.
 
+### Table.Footer
+
+`Table.Footer` renders below the table body. It is sticky: it stays pinned to the bottom of the nearest scroll container (or the viewport) while the table scrolls. It lays out its children on a three-column grid, regardless of their order:
+
+- `Table.LastUpdated` on the left
+- `Table.Pagination` in the center
+- `Table.PerPage` (a segmented control, default values `25 / 50 / 100`) on the right
+
+`Table.Pagination` hides itself when there is a single page, and `Table.PerPage` hides itself when all rows fit in the smallest page size. The other controls keep their position. Works with every layout, including `Table.Layouts.Cards`.
+
+```tsx
+<Table store={store} columns={columns} data={data}>
+    <Table.Footer>
+        <Table.LastUpdated />
+        <Table.Pagination />
+        <Table.PerPage />
+    </Table.Footer>
+</Table>
+```
+
 ## TypeScript namespace aliases
 
 These type-only aliases are available for annotations and do not add runtime static properties.
@@ -148,7 +168,7 @@ These type-only aliases are available for annotations and do not add runtime sta
 - `Table.Cell.{Props, StylesNames, Factory}`
 - `Table.DateRangePicker.{Props, StylesNames, Factory}`
 - `Table.Filter.{Props, StylesNames, Factory}`
-- `Table.Footer.Props`
+- `Table.Footer.{Props, StylesNames, Factory}`
 - `Table.Header.{Props, StylesNames, Factory}`
 - `Table.LastUpdated.{Props, StylesNames, Factory}`
 - `Table.Loading.Props`

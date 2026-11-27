@@ -1,5 +1,5 @@
 import {Group, SegmentedControl, Text} from '@mantine/core';
-import {FunctionComponent, useMemo} from 'react';
+import {FunctionComponent, useId, useMemo} from 'react';
 
 import {useTableContext} from '../TableContext.js';
 import {TablePerPageProps} from './TablePerPage.types.js';
@@ -9,7 +9,8 @@ export const TablePerPage: FunctionComponent<TablePerPageProps> & {DEFAULT_SIZE:
     values = [25, 50, 100],
     onPerPageChange,
 }) => {
-    const {store, table} = useTableContext();
+    const {store, table, getStyles} = useTableContext();
+    const labelId = useId();
     const choices = useMemo(() => values.map((value) => value.toString()), [values]);
 
     const updatePerPage = (newPerPage: string) => {
@@ -25,13 +26,15 @@ export const TablePerPage: FunctionComponent<TablePerPageProps> & {DEFAULT_SIZE:
     }
 
     return (
-        <Group gap="sm">
-            <Text fw={500}>{label}</Text>
+        <Group gap="xs" {...getStyles('perPage')}>
+            <Text id={labelId} size="xs" {...getStyles('perPageLabel')}>
+                {label}
+            </Text>
             <SegmentedControl
+                aria-labelledby={labelId}
                 value={store.state.pagination.perPage.toString() ?? choices[1] ?? choices[0]}
                 onChange={updatePerPage}
                 data={choices}
-                size="sm"
             />
         </Group>
     );

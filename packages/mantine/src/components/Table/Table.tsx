@@ -45,7 +45,12 @@ import {
     type TableFilterProps,
     type TableFilterStylesNames,
 } from './table-filter/TableFilter.js';
-import {TableFooter, type TableFooterProps} from './table-footer/TableFooter.js';
+import {
+    TableFooter,
+    type TableFooterFactory,
+    type TableFooterProps,
+    type TableFooterStylesNames,
+} from './table-footer/TableFooter.js';
 import {
     TableHeader,
     type TableHeaderFactory,
@@ -62,9 +67,9 @@ import {
 import {TableLoading} from './table-loading/TableLoading.js';
 import {TableNoData, type TableNoDataProps} from './table-no-data/TableNoData.js';
 import {TablePagination} from './table-pagination/TablePagination.js';
-import {type TablePaginationProps} from './table-pagination/TablePagination.types.js';
+import {type TablePaginationProps, type TablePaginationStylesNames} from './table-pagination/TablePagination.types.js';
 import {TablePerPage} from './table-per-page/TablePerPage.js';
-import {type TablePerPageProps} from './table-per-page/TablePerPage.types.js';
+import {type TablePerPageProps, type TablePerPageStylesNames} from './table-per-page/TablePerPage.types.js';
 import {
     TablePredicate,
     type TablePredicateFactory,
@@ -95,9 +100,12 @@ export type TableStylesNames =
     | TableSelectRowCheckboxStylesNames
     | TableDateRangePickerStylesNames
     | TableFilterStylesNames
+    | TableFooterStylesNames
     | TableHeaderStylesNames
     | TableThStylesNames
     | TableLastUpdatedStylesNames
+    | TablePaginationStylesNames
+    | TablePerPageStylesNames
     | TablePredicateStylesNames
     | TableToolbarStylesNames;
 
@@ -178,7 +186,6 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
     const header = convertedChildren.find((child) => child.type === TableHeader);
     const footer = convertedChildren.find((child) => child.type === TableFooter);
     const toolbar = convertedChildren.find((child) => child.type === TableToolbar);
-    const lastUpdated = convertedChildren.find((child) => child.type === TableLastUpdated);
     const noData = convertedChildren.find((child) => child.type === TableNoData);
 
     const selectionCheckboxesVisible = areSelectionCheckboxesVisible(store);
@@ -308,7 +315,6 @@ export const Table = <T,>(props: TableProps<T> & {ref?: ForwardedRef<HTMLDivElem
                                     </tbody>
                                 </Box>
                                 {footer}
-                                {lastUpdated}
                             </>
                         )}
                     </Layout>
@@ -427,6 +433,8 @@ export namespace Table {
 
     export namespace Footer {
         export type Props = TableFooterProps;
+        export type StylesNames = TableFooterStylesNames;
+        export type Factory = TableFooterFactory;
     }
 
     export namespace Header {

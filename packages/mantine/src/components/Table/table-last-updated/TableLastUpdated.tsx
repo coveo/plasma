@@ -39,8 +39,6 @@ export const TableLastUpdated = factory<TableLastUpdatedFactory>((props) => {
         <LastUpdated
             time={time}
             ref={ref}
-            justify="right"
-            px="lg"
             classNames={{root: rootClassName, label: labelClassName}}
             styles={{root: rootStyle, label: labelStyle}}
             {...lastUpdatedProps}

@@ -24,7 +24,9 @@ describe('Table.LastUpdated', () => {
             const store = useTable<RowData>();
             return (
                 <Table store={store} data={[{name: 'fruit'}]} columns={columns}>
-                    <Table.LastUpdated />
+                    <Table.Footer>
+                        <Table.LastUpdated />
+                    </Table.Footer>
                 </Table>
             );
         };
@@ -39,7 +41,9 @@ describe('Table.LastUpdated', () => {
             const store = useTable<RowData>();
             return (
                 <Table store={store} data={[{name: 'fruit'}]} columns={columns}>
-                    <Table.LastUpdated label="CUSTOM label:" />
+                    <Table.Footer>
+                        <Table.LastUpdated label="CUSTOM label:" />
+                    </Table.Footer>
                 </Table>
             );
         };
@@ -58,7 +62,9 @@ describe('Table.LastUpdated', () => {
                 <>
                     <button onClick={() => setData([{name: 'vegetable'}])}>Click me</button>
                     <Table store={store} data={data} columns={columns}>
-                        <Table.LastUpdated />
+                        <Table.Footer>
+                            <Table.LastUpdated />
+                        </Table.Footer>
                     </Table>
                 </>
             );
