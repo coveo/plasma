@@ -1,6 +1,6 @@
 ---
 name: CodeEditor
-description: Monaco-based code editor that supports syntax highlighting, validation, search, and copy actions.
+description: Monaco-based code editor that supports syntax highlighting, validation, search, copy, and file upload actions.
 ---
 
 # Usage guidance
@@ -19,6 +19,7 @@ Use `CodeEditor` when:
 - syntax highlighting helps users understand or validate the value
 - the content is multi-line and technical
 - search or copy actions are useful inside the editor
+- users may already have the content in a file; enable `upload` so they can load it instead of copy/pasting
 
 ## When not to use it
 
@@ -35,6 +36,7 @@ Do not use `CodeEditor` when:
 - Use `TextInput` for short single-line values.
 - Use `readOnly` when the editor content should remain readable but not editable.
 - Use `disabled` when the editor is unavailable.
+- Use `upload` instead of a separate upload button when users can populate the editor from a file.
 
 ## Accessibility expectations
 
@@ -60,6 +62,7 @@ Do not use `CodeEditor` when:
 **`onChange`** `(value: string) => void` · optional · default: `undefined` — For controlled input, this callback receives the updated value.
 **`onSearch`** `() => void` · optional · default: `undefined` — If provided, this callback is called whenever the search icon is clicked.
 **`onCopy`** `() => void` · optional · default: `undefined` — If provided, this callback is called whenever the copy icon is clicked.
+**`upload`** `{accept?: string; label?: string; onUpload?(file: File, content: string): void; onError?(file: File, reason: 'not-text' | 'unreadable'): void}` · optional · default: `undefined` — When defined, an upload button is rendered beside the search and copy buttons. Uploading a file replaces the editor value with the file content and calls `onChange`. `accept` defaults to the file types matching `language` (any file for `plaintext` and unknown languages); `label` defaults to `'Upload file'`. Binary or unreadable files are rejected: the value is left unchanged, an error message is displayed under the editor, and `onError` is called. The button is disabled when the editor is `disabled` or `readOnly`.
 **`onFocus`** `() => void` · optional · default: `undefined` — If provided, this callback is called whenever the code editor gets focus.
 **`editorHandle`** `React.MutableRefObject<monacoEditor.IStandaloneCodeEditor | null>` · optional · default: `undefined` — This ref MAY provide access to the editor's functionality.
 **`minHeight`** `number` · optional · default: `300` — The CodeEditor height, including label and description, is never smaller than this value. By default, the CodeEditor adjusts to fill its parent height. If the parent height is too short, the component uses this value as its minimum height.
@@ -90,6 +93,7 @@ export function JsonEditor() {
             onChange={setValue}
             monacoLoader="cdn"
             minHeight={320}
+            upload={{}}
         />
     );
 }

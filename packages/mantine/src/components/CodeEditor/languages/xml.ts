@@ -30,7 +30,14 @@ const format = (xml: string): string => {
         .join('\r\n');
 };
 
+// Monaco instances that already have the XML formatter, so registering again does not stack duplicate providers
+const registeredInstances = new WeakSet<Monaco>();
+
 const register = (monaco: Monaco): void => {
+    if (registeredInstances.has(monaco)) {
+        return;
+    }
+    registeredInstances.add(monaco);
     monaco.languages.registerDocumentFormattingEditProvider('xml', {
         provideDocumentFormattingEdits: async (model: editor.ITextModel) => [
             {

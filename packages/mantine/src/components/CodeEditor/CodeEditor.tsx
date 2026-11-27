@@ -13,7 +13,7 @@ import {
     useMantineTheme,
     useProps,
 } from '@mantine/core';
-import {useUncontrolled} from '@mantine/hooks';
+import {useDidUpdate, useUncontrolled} from '@mantine/hooks';
 import Editor, {Monaco, loader} from '@monaco-editor/react';
 import type {editor as monacoEditor} from 'monaco-editor';
 import {FunctionComponent, useEffect, useRef, useState} from 'react';
@@ -24,6 +24,41 @@ import {CopyToClipboard} from '../CopyToClipboard/CopyToClipboard.js';
 import CodeEditorClasses from './CodeEditor.module.css';
 import {XML} from './languages/xml.js';
 import {Search} from './search/Search.js';
+import {Upload} from './upload/Upload.js';
+
+export interface CodeEditorUploadOptions {
+    /**
+     * File types accepted by the file picker, using the [`accept` attribute syntax](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept).
+     *
+     * Defaults to the file types matching the `language` prop (e.g. `.json` for `'json'`). Any file is accepted for `plaintext` and unknown languages.
+     */
+    accept?: string;
+    /**
+     * Label of the upload button, used as tooltip and accessible name
+     *
+     * @default 'Upload file'
+     */
+    label?: string;
+    /** Called once the uploaded file was read and its content set as the editor value */
+    onUpload?(file: File, content: string): void;
+    /** Called when the uploaded file is rejected; the editor value is left unchanged and an error message is displayed */
+    onError?(file: File, reason: CodeEditorUploadErrorReason): void;
+}
+
+export type CodeEditorUploadErrorReason = 'not-text' | 'unreadable';
+
+const uploadErrorMessages: Record<CodeEditorUploadErrorReason, string> = {
+    'not-text': 'The file does not contain text.',
+    unreadable: 'The file could not be read.',
+};
+
+const acceptedFileTypesByLanguage: Record<string, string> = {
+    json: '.json,application/json',
+    markdown: '.md,.markdown,text/markdown',
+    python: '.py,text/x-python',
+    xml: '.xml,application/xml,text/xml',
+};
+
 interface CodeEditorProps
     extends
         Omit<InputWrapperProps, 'inputContainer' | 'inputWrapperOrder' | 'classNames' | 'styles' | 'vars' | 'onChange'>,
@@ -44,6 +79,11 @@ interface CodeEditorProps
     onSearch?(): void;
     /** Called whenever the copy icon is clicked */
     onCopy?(): void;
+    /**
+     * Renders an upload button.
+     * Uploading a file replaces the editor value with the file content.
+     */
+    upload?: CodeEditorUploadOptions;
     /** Called whenever the code editor gets the focus */
     onFocus?(): void;
     /** Ref object that provides access to the editor's functionality */
@@ -98,6 +138,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         onCopy,
         onSearch,
         onFocus,
+        upload,
         value,
         label,
         required,
@@ -146,6 +187,13 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         }
     };
 
+    useDidUpdate(() => {
+        // the editor is already mounted, so `beforeMount` won't run again for the new language
+        if (monacoRef.current) {
+            registerLanguages(monacoRef.current);
+        }
+    }, [language]);
+
     const registerThemes = (monaco: Monaco) => {
         monaco.editor.defineTheme('light', {
             base: 'vs',
@@ -165,12 +213,39 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         }
     };
 
+    const [uploadError, setUploadError] = useState<string | null>(null);
+
+    const handleUpload = async (file: File) => {
+        const reject = (reason: CodeEditorUploadErrorReason) => {
+            setUploadError(uploadErrorMessages[reason]);
+            upload?.onError?.(file, reason);
+        };
+
+        let content: string;
+        try {
+            content = await file.text();
+        } catch {
+            reject('unreadable');
+            return;
+        }
+
+        // text files never contain NUL characters, binary files almost always do
+        if (content.includes('\u0000')) {
+            reject('not-text');
+            return;
+        }
+
+        setUploadError(null);
+        handleChange(content);
+        upload?.onUpload?.(file, content);
+    };
+
     const [hasMonacoError, setHasMonacoError] = useState(false);
     const hasMonacoErrorRef = useRef(false);
 
     hasMonacoErrorRef.current = hasMonacoError;
 
-    const hasError = !!error || hasMonacoError;
+    const hasError = !!error || !!uploadError || hasMonacoError;
     const theme = useMantineTheme();
     const {colorScheme} = useMantineColorScheme();
 
@@ -196,7 +271,8 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         <Input.Description {...descriptionProps}>{description}</Input.Description>
     ) : null;
 
-    const _error = error ? <Input.Error {...errorProps}>{error}</Input.Error> : <Space h="sm" />;
+    const _errorMessage = error || uploadError;
+    const _error = _errorMessage ? <Input.Error {...errorProps}>{_errorMessage}</Input.Error> : <Space h="sm" />;
 
     const _header =
         _label || _description ? (
@@ -210,6 +286,14 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
         <Group justify="right" gap="xs" p="xs" className={CodeEditorClasses.actions}>
             <Search handleSearch={handleSearch} />
             <CopyToClipboard value={_value} onCopy={() => onCopy?.()} />
+            {upload ? (
+                <Upload
+                    accept={upload.accept ?? acceptedFileTypesByLanguage[language]}
+                    label={upload.label}
+                    disabled={disabled || readOnly}
+                    onUpload={(file) => void handleUpload(file)}
+                />
+            ) : null}
         </Group>
     );
     let editorTheme = colorScheme === 'light' ? 'light' : 'vs-dark';
@@ -231,7 +315,7 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
                 <Editor
                     key={editorKey}
                     onValidate={handleValidate}
-                    defaultLanguage={language}
+                    language={language}
                     theme={editorTheme}
                     options={{
                         minimap: {enabled: false},
@@ -244,7 +328,10 @@ export const CodeEditor: FunctionComponent<CodeEditorProps> = (props) => {
                         tabSize,
                     }}
                     value={_value}
-                    onChange={(nextValue) => handleChange(nextValue ?? '')}
+                    onChange={(nextValue) => {
+                        setUploadError(null);
+                        handleChange(nextValue ?? '');
+                    }}
                     beforeMount={(monaco) => {
                         monacoRef.current = monaco;
                         registerLanguages(monaco);

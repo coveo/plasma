@@ -39,7 +39,7 @@ const MockedEditor: FunctionComponent<EditorProps> = (props) => {
         props.beforeMount?.(monaco);
         props.onMount!(editor, monaco);
     }, []);
-    return <div data-testid="monaco-editor" />;
+    return <div data-testid="monaco-editor" data-language={props.language} />;
 };
 
 export default MockedEditor;

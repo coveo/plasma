@@ -95,9 +95,44 @@ describe('CodeEditor', () => {
         expect(screen.getByTestId('monaco-editor')).toBeInTheDocument();
     });
 
+    it('uses plaintext as the editor language by default', async () => {
+        render(<CodeEditor />);
+        await waitForElementToBeRemoved(screen.queryByRole('presentation'));
+
+        expect(screen.getByTestId('monaco-editor')).toHaveAttribute('data-language', 'plaintext');
+    });
+
+    it('does not load the xml language in the monaco instance for the default language', async () => {
+        const xmlLanguageSpy = vi.spyOn(XML, 'register').mockImplementation(vi.fn());
+        render(<CodeEditor monacoLoader="cdn" />);
+        await screen.findByTestId('monaco-editor');
+
+        expect(xmlLanguageSpy).not.toHaveBeenCalled();
+    });
+
     it('loads the xml language in the monaco instance if the editor language is xml', async () => {
         const xmlLanguageSpy = vi.spyOn(XML, 'register').mockImplementation(vi.fn());
         render(<CodeEditor label="label" description="description" monacoLoader="cdn" language="xml" />);
+        expect(xmlLanguageSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('updates the editor language when the language prop changes', async () => {
+        const {rerender} = render(<CodeEditor language="plaintext" />);
+        await waitForElementToBeRemoved(screen.queryByRole('presentation'));
+
+        rerender(<CodeEditor language="json" />);
+
+        expect(screen.getByTestId('monaco-editor')).toHaveAttribute('data-language', 'json');
+    });
+
+    it('loads the xml language in the monaco instance when the language prop changes to xml', async () => {
+        const xmlLanguageSpy = vi.spyOn(XML, 'register').mockImplementation(vi.fn());
+        const {rerender} = render(<CodeEditor monacoLoader="cdn" language="json" />);
+        await screen.findByTestId('monaco-editor');
+        expect(xmlLanguageSpy).not.toHaveBeenCalled();
+
+        rerender(<CodeEditor monacoLoader="cdn" language="xml" />);
+
         expect(xmlLanguageSpy).toHaveBeenCalledTimes(1);
     });
 
@@ -128,6 +163,154 @@ describe('CodeEditor', () => {
         await screen.findByTestId('monaco-editor');
         await user.click(screen.getByRole('button', {name: /search/i}));
         expect(onSearchSpy).toHaveBeenCalledTimes(1);
+    });
+
+    describe('upload', () => {
+        const getFileInput = () => document.querySelector<HTMLInputElement>('input[type="file"]');
+
+        it('does not render an upload button when the upload prop is not defined', async () => {
+            render(<CodeEditor />);
+            await waitForElementToBeRemoved(screen.queryByRole('presentation'));
+
+            expect(screen.queryByRole('button', {name: /upload file/i})).not.toBeInTheDocument();
+        });
+
+        it('renders an upload button when the upload prop is defined', async () => {
+            render(<CodeEditor upload={{}} />);
+            await waitForElementToBeRemoved(screen.queryByRole('presentation'));
+
+            expect(screen.getByRole('button', {name: /upload file/i})).toBeInTheDocument();
+        });
+
+        it('uses the custom label as accessible name', async () => {
+            render(<CodeEditor upload={{label: 'Import JSON'}} />);
+            await waitForElementToBeRemoved(screen.queryByRole('presentation'));
+
+            expect(screen.getByRole('button', {name: 'Import JSON'})).toBeInTheDocument();
+        });
+
+        it('accepts any file when no language is set', async () => {
+            render(<CodeEditor upload={{}} />);
+            await waitForElementToBeRemoved(screen.queryByRole('presentation'));
+
+            expect(getFileInput()).not.toHaveAttribute('accept');
+        });
+
+        it('accepts the file types matching the language by default', async () => {
+            render(<CodeEditor language="json" upload={{}} />);
+            await waitForElementToBeRemoved(screen.queryByRole('presentation'));
+
+            expect(getFileInput()).toHaveAttribute('accept', '.json,application/json');
+        });
+
+        it('accepts any file for an unknown language', async () => {
+            render(<CodeEditor language="yaml" upload={{}} />);
+            await waitForElementToBeRemoved(screen.queryByRole('presentation'));
+
+            expect(getFileInput()).not.toHaveAttribute('accept');
+        });
+
+        it('uses the accept option over the language default', async () => {
+            render(<CodeEditor language="json" upload={{accept: '.jsonc'}} />);
+            await waitForElementToBeRemoved(screen.queryByRole('presentation'));
+
+            expect(getFileInput()).toHaveAttribute('accept', '.jsonc');
+        });
+
+        it('sets the uploaded file content as the editor value', async () => {
+            const user = userEvent.setup();
+            const onChange = vi.fn();
+            const onUpload = vi.fn();
+            const file = new File(['{"hello": "world"}'], 'config.json', {type: 'application/json'});
+            render(<CodeEditor language="json" onChange={onChange} upload={{onUpload}} />);
+            await waitForElementToBeRemoved(screen.queryByRole('presentation'));
+
+            await user.upload(getFileInput()!, file);
+
+            await vi.waitFor(() => expect(onChange).toHaveBeenCalledWith('{"hello": "world"}'));
+            expect(onUpload).toHaveBeenCalledWith(file, '{"hello": "world"}');
+        });
+
+        it('disables the upload button when the editor is read only', async () => {
+            render(<CodeEditor readOnly upload={{}} />);
+            await waitForElementToBeRemoved(screen.queryByRole('presentation'));
+
+            expect(screen.getByRole('button', {name: /upload file/i})).toBeDisabled();
+        });
+
+        it('disables the upload button when the editor is disabled', async () => {
+            render(<CodeEditor disabled upload={{}} />);
+            await waitForElementToBeRemoved(screen.queryByRole('presentation'));
+
+            expect(screen.getByRole('button', {name: /upload file/i})).toBeDisabled();
+        });
+
+        it('shows the label as tooltip when hovering the disabled upload button', async () => {
+            const user = userEvent.setup();
+            render(<CodeEditor readOnly upload={{label: 'Import JSON'}} />);
+            await waitForElementToBeRemoved(screen.queryByRole('presentation'));
+
+            await user.hover(screen.getByRole('button', {name: 'Import JSON'}).parentElement!);
+
+            expect(await screen.findByRole('tooltip', {name: 'Import JSON'})).toBeInTheDocument();
+        });
+
+        it('loads the same file again when it is picked twice', async () => {
+            const user = userEvent.setup();
+            const onUpload = vi.fn();
+            const file = new File(['first'], 'notes.txt', {type: 'text/plain'});
+            render(<CodeEditor upload={{onUpload}} />);
+            await waitForElementToBeRemoved(screen.queryByRole('presentation'));
+
+            await user.upload(getFileInput()!, file);
+            await vi.waitFor(() => expect(onUpload).toHaveBeenCalledTimes(1));
+            await user.upload(getFileInput()!, file);
+
+            await vi.waitFor(() => expect(onUpload).toHaveBeenCalledTimes(2));
+        });
+
+        it('rejects binary files without changing the value', async () => {
+            const user = userEvent.setup();
+            const onChange = vi.fn();
+            const onError = vi.fn();
+            const file = new File([new Uint8Array([0x50, 0x4b, 0x00, 0x03])], 'archive.zip');
+            render(<CodeEditor onChange={onChange} upload={{onError}} />);
+            await waitForElementToBeRemoved(screen.queryByRole('presentation'));
+
+            await user.upload(getFileInput()!, file);
+
+            expect(await screen.findByText('The file does not contain text.')).toBeInTheDocument();
+            expect(onError).toHaveBeenCalledWith(file, 'not-text');
+            expect(onChange).not.toHaveBeenCalled();
+        });
+
+        it('shows an error when the file cannot be read', async () => {
+            const user = userEvent.setup();
+            const onError = vi.fn();
+            const file = new File(['content'], 'gone.txt', {type: 'text/plain'});
+            vi.spyOn(file, 'text').mockRejectedValue(new DOMException('gone', 'NotReadableError'));
+            render(<CodeEditor upload={{onError}} />);
+            await waitForElementToBeRemoved(screen.queryByRole('presentation'));
+
+            await user.upload(getFileInput()!, file);
+
+            expect(await screen.findByText('The file could not be read.')).toBeInTheDocument();
+            expect(onError).toHaveBeenCalledWith(file, 'unreadable');
+        });
+
+        it('clears the upload error once a valid file is uploaded', async () => {
+            const user = userEvent.setup();
+            const onChange = vi.fn();
+            render(<CodeEditor onChange={onChange} upload={{}} />);
+            await waitForElementToBeRemoved(screen.queryByRole('presentation'));
+
+            await user.upload(getFileInput()!, new File([new Uint8Array([0x50, 0x4b, 0x00, 0x03])], 'archive.zip'));
+            expect(await screen.findByText('The file does not contain text.')).toBeInTheDocument();
+            await user.upload(getFileInput()!, new File(['ok'], 'small.txt'));
+
+            await vi.waitFor(() => expect(onChange).toHaveBeenCalledWith('ok'));
+            expect(screen.queryByText('The file does not contain text.')).not.toBeInTheDocument();
+        });
     });
 
     it('defines editorHandle on mount', async () => {
