@@ -35,6 +35,7 @@ Its store coordinates table state with filters, sorting, pagination, selection, 
 
 ### Best practices
 
+- Keep the default `normal` density. Use `compact` for dense, single-line data and `large` when cells hold two lines, such as a label with a description.
 - Provide a stable `getRowId` when rows can be selected or reordered.
 - Pass `data={null}` for the initial load, then use `loading` for later refreshes.
 - Keep essential record identity in visible columns and use expansion for supporting detail.

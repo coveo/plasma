@@ -471,6 +471,7 @@ export {
     type TableLayout,
     type TableLayoutProps,
     type TableProps,
+    type TableVariant,
 } from './components/Table/Table.types.js';
 export {useTableContext} from './components/Table/TableContext.js';
 export {

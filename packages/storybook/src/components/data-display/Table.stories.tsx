@@ -104,6 +104,7 @@ const datePickerPresets: Record<string, DateRangePickerPreset> = {
 export const Demo: Story = {
     name: 'Table',
     args: {
+        variant: 'normal',
         loading: false,
         withFilter: false,
         withPredicateFilter: false,
@@ -123,6 +124,16 @@ export const Demo: Story = {
         collapsibleBehavior: 'collapse',
     },
     argTypes: {
+        variant: {
+            control: 'radio',
+            options: ['compact', 'normal', 'large'],
+            description:
+                'Sets the row density: 40px compact rows, 56px normal rows, or 72px large rows aligned to the top.',
+            table: {
+                type: {summary: "'compact' | 'normal' | 'large'"},
+                defaultValue: {summary: "'normal'"},
+            },
+        },
         loading: {
             control: 'boolean',
             description: 'Shows loading placeholders and prevents row selection.',
@@ -211,6 +222,7 @@ export const Demo: Story = {
         },
     },
     render: ({
+        variant,
         loading,
         withFilter,
         withPredicateFilter,
@@ -294,6 +306,7 @@ export const Demo: Story = {
         );
         return (
             <Table<Person>
+                variant={variant}
                 options={options}
                 columns={columns}
                 data={filteredData}

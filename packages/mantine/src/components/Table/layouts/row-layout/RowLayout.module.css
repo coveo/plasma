@@ -14,16 +14,14 @@
 .row {
     overflow-wrap: anywhere;
 
-    & td:first-of-type {
-        padding-left: 40px;
+    &:not([data-selection-rejected='true']) {
+        @mixin hover {
+            background-color: var(--mantine-color-gray-light-hover);
+        }
     }
 
     &[data-selectable='true'] {
         cursor: pointer;
-
-        @mixin hover {
-            background-color: var(--mantine-color-gray-light-hover);
-        }
     }
 
     &[data-selection-rejected='true'] {
@@ -41,26 +39,27 @@
         }
     }
 
-    &[data-selected='true'] {
-        background-color: var(--mantine-color-gray-light-hover);
-    }
-
-    &[data-collapsible-cell='true'] {
-        text-align: right;
-        padding: calc(var(--mantine-spacing-xs) / 2) var(--mantine-spacing-sm) !important;
+    /* The expanded content carries the bottom border of an expanded row */
+    &[data-expanded='true'] > .cell {
+        border-bottom: none;
     }
 }
 
 .cell {
-    vertical-align: middle;
+    vertical-align: var(--table-cell-vertical-align);
 
     /* We must use height instead of minHeight here, otherwise it doesn’t apply */
-    height: 56px;
-    padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
+    height: calc(var(--table-cell-content-height) + 2 * var(--table-cell-padding-y));
+    padding: var(--table-cell-padding-y) var(--mantine-spacing-xs);
+    font-size: var(--mantine-font-size-sm);
+    line-height: 16px;
     border-bottom: rem(1) solid var(--mantine-color-default-border);
 }
 
 .collapsibleWrapper {
+    padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm) var(--mantine-spacing-xs)
+        calc(var(--mantine-spacing-xl) + var(--mantine-spacing-xs));
     border-bottom: rem(1) solid var(--mantine-color-default-border);
     background-color: var(--mantine-color-gray-light);
+    font-size: var(--mantine-font-size-sm);
 }

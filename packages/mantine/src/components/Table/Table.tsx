@@ -78,7 +78,7 @@ import {
     type TableToolbarStylesNames,
 } from './table-toolbar/TableToolbar.js';
 import classes from './Table.module.css';
-import {type TableLayout, type TableProps} from './Table.types.js';
+import {type TableLayout, type TableProps, type TableVariant} from './Table.types.js';
 import {TableProvider} from './TableContext.js';
 import {areSelectionCheckboxesVisible, hasActiveBulkSelection} from './tableSelectionUtils.js';
 import {useTableSelection} from './use-table-selection.js';
@@ -105,6 +105,7 @@ export type PlasmaTableFactory = Factory<{
     props: TableProps<unknown>;
     ref: HTMLDivElement;
     stylesNames: TableStylesNames;
+    variant: TableVariant;
     staticComponents: {
         AccordionColumn: typeof TableAccordionColumn;
         ActionsColumn: typeof TableActionsColumn;

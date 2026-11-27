@@ -65,6 +65,7 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
                     data-selectable={row.getCanSelect()}
                     data-selection-rejected={isRowSelectionRejected}
                     data-selected={isSelected}
+                    data-expanded={!!rowChildren && row.getIsExpanded()}
                     data-multi-selection={!!store.multiRowSelectionEnabled}
                     aria-selected={isSelected}
                     data-testid={row.id}
@@ -116,9 +117,7 @@ export const RowLayoutBody = <T,>(props: RowLayoutBodyProps<T> & {ref?: Forwarde
                             }}
                         >
                             <Collapse expanded={row.getIsExpanded()}>
-                                <Box {...ctx.getStyles('collapsibleWrapper', {classNames, styles})} px="sm" py="xs">
-                                    {rowChildren}
-                                </Box>
+                                <Box {...ctx.getStyles('collapsibleWrapper', {classNames, styles})}>{rowChildren}</Box>
                             </Collapse>
                         </td>
                     </tr>

@@ -1,5 +1,22 @@
 .root {
+    /* Density, see the Table `variant` prop. Normal is the default. */
+    --table-cell-padding-y: var(--mantine-spacing-xs);
+    --table-cell-content-height: 40px;
+    --table-cell-vertical-align: middle;
+
     width: 100%;
+
+    &[data-variant='compact'] {
+        --table-cell-padding-y: var(--mantine-spacing-xs);
+        --table-cell-content-height: 24px;
+        --table-cell-vertical-align: middle;
+    }
+
+    &[data-variant='large'] {
+        --table-cell-padding-y: var(--mantine-spacing-sm);
+        --table-cell-content-height: 40px;
+        --table-cell-vertical-align: top;
+    }
 }
 
 .table {
@@ -108,28 +125,23 @@
 }
 
 .th {
-    padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
+    padding: var(--mantine-spacing-xs);
     vertical-align: middle;
     white-space: nowrap;
     text-align: left;
     color: var(--mantine-color-text);
-    height: var(--mantine-spacing-xl);
+    height: 40px;
     font-weight: var(--coveo-fw-bold);
     font-size: var(--mantine-font-size-sm);
+    line-height: 16px;
 
-    &:first-of-type {
-        padding-left: var(--mantine-spacing-xl);
-    }
-
-    &:last-of-type {
-        padding-right: var(--mantine-spacing-xl);
-    }
-
-    background-color: var(--coveo-app-background);
+    /* Translucent gray over an opaque body color, so rows don't show through the sticky header */
+    background:
+        linear-gradient(var(--mantine-color-gray-light), var(--mantine-color-gray-light)), var(--mantine-color-body);
 
     &[data-control='true'] {
         @mixin hover {
-            background-color: var(--mantine-color-default-hover);
+            background: var(--mantine-color-default-hover);
         }
     }
 }

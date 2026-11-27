@@ -58,6 +58,10 @@ Important states include:
 - When multi-row selection is enabled, the selection checkboxes stay hidden until a bulk-eligible row is selected; selecting one reveals every checkbox. Selecting a row rejected by the `enableMultiRowSelection` predicate selects it exclusively (like single selection) without revealing the checkboxes, and the `Table.Header` selected-count control stays hidden while only such rows are selected.
 - When multi-row selection is enabled, users MAY click a row, card, or its checkbox and then Shift-click another selection target to select all selectable rows between them on the displayed page. Existing selections outside the range are preserved.
 
+- Rows highlight on hover, except rows rejected by the `enableRowSelection` predicate. Selected rows are shown by their checked checkbox, not by a background color.
+- Expanded content renders below its row on a gray background, and the row and its content share one bottom border.
+- Sortable column headers show the sort icon after the label: a double arrow when unsorted, an up arrow when ascending, and a down arrow when descending.
+
 ## Content guidance
 
 - Column headers SHOULD be short and describe the data clearly.
@@ -65,6 +69,12 @@ Important states include:
 - Row actions SHOULD use clear verbs and destructive labels when appropriate.
 - Filter labels SHOULD match the terms users use to understand the data.
 - The `Table.Filter` placeholder MUST indicate which fields can be filtered (e.g., "Filter by name or email"). Do not rely on the generic default "Search by any field".
+
+## Density
+
+- Use `variant="normal"` by default.
+- Use `variant="compact"` for dense, single-line data where users scan many rows.
+- Use `variant="large"` when cells hold two lines of text, such as a label with a description.
 
 ## Common anti-patterns
 
@@ -89,6 +99,7 @@ Important states include:
 **`layouts`** `TableLayout[]` · optional · default: `[Table.Layouts.Rows]` — Available layouts. This prop MAY be used to expose layout switching.
 **`layoutProps`** `{onRowDoubleClick?: (selectedRow: TData, index: number, row: Row<TData>) => void} & Record<string, unknown>` · optional · default: `{}` — Props passed down to the active layout Header and Body components.
 **`loading`** `boolean` · optional · default: `false` — Whether the table is loading or not. This prop MAY be used to show loading states.
+**`variant`** `'compact' | 'normal' | 'large'` · optional · default: `'normal'` — Row density. `compact` renders 40px rows for dense, single-line data. `normal` renders 56px rows. `large` renders 72px rows with content aligned to the top, for multi-line cells. Column headers stay 40px in every density.
 **`children`** `ReactNode` · optional · default: `undefined` — Children can include sub-components like `Table.Toolbar`, `Table.Header`, `Table.Footer`, `Table.NoData`, and `Table.LastUpdated`. Filter controls (`Table.Filter`, `Table.Predicate`, `Table.DateRangePicker`) MUST be placed inside `Table.Header` or `Table.Toolbar`.
 **`additionalRootNodes`** `Array<HTMLElement | null | undefined>` · optional · default: `[]` — Nodes that are considered inside the table. Rows normally get unselected when clicking outside the table, but the component can have difficulty guessing what is inside or outside, for example when using modals. You MAY use this prop to force the table to consider some nodes to be inside the table. `null` and `undefined` entries (for example the ref of an unmounted modal) are ignored.
 **`options`** `Omit<Partial<TableOptions<TData>>, 'initialState' | 'data' | 'columns' | 'manualPagination' | 'enableMultiRowSelection' | 'getRowId' | 'getRowCanExpand' | 'enableRowSelection' | 'onRowSelectionChange'>` · optional · default: `{}` — Additional options MAY be passed to the table with this prop.
