@@ -42,6 +42,18 @@ Do not use `Alert` when:
 - Use `Alert.Critical` for errors, failures, or blocking issues.
 - Use `Alert.Success` for persistent success states that remain relevant in context.
 
+## Close button
+
+The close button (`withCloseButton`) lets users hide an alert once they have read it. Offer it only when hiding the message has no consequence.
+
+- `Alert.Information`, `Alert.Advice`, and `Alert.Success` MAY have a close button when the message is useful once and stops being relevant after it is read.
+- `Alert.Warning` SHOULD NOT have a close button. Add one only if the risk is acknowledged once and stays visible somewhere else, such as a status or field message.
+- `Alert.Critical` MUST NOT have a close button. Remove the alert when the underlying problem is fixed, not when the user dismisses it.
+- An alert MUST NOT require closing to unblock the user; closing only hides the message.
+- When `withCloseButton` is set, you MUST provide `onClose` to remove the alert and `closeButtonLabel` (for example `"Close"`) so the button has an accessible name.
+- Alerts MUST NOT close on their own after a delay; use `Notification` for transient feedback.
+- Use the same closing behavior for the same kind of alert across the product.
+
 ## Content guidance
 
 - Titles SHOULD be short and state the message purpose.
@@ -53,6 +65,8 @@ Do not use `Alert` when:
 - Stacking several alerts instead of grouping related messages.
 - Using critical alerts for neutral information.
 - Putting long documentation inside an alert instead of linking to supporting content.
+- Letting users close a critical alert while the problem it describes is still unresolved.
+- Adding a close button without `onClose` or `closeButtonLabel`.
 
 # API reference
 
@@ -88,6 +102,31 @@ import {Alert} from '@coveord/plasma-mantine';
 <Alert.Information title="Note">This is an informational message.</Alert.Information>
 <Alert.Warning title="Warning">Proceed with caution.</Alert.Warning>
 <Alert.Critical title="Error">Something went wrong.</Alert.Critical>
+```
+
+```tsx
+import {Alert} from '@coveord/plasma-mantine';
+import {useState} from 'react';
+
+// Closable alert: low-impact information the user only needs once
+function NewFeatureAlert() {
+    const [visible, setVisible] = useState(true);
+
+    if (!visible) {
+        return null;
+    }
+
+    return (
+        <Alert.Information
+            title="New filters available"
+            withCloseButton
+            closeButtonLabel="Close"
+            onClose={() => setVisible(false)}
+        >
+            You can now filter results by source type.
+        </Alert.Information>
+    );
+}
 ```
 
 ---
