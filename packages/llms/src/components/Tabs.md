@@ -27,6 +27,7 @@ description: Navigation pattern that organises related content into labelled pan
 - Prefer `defaultValue` (uncontrolled) unless the active tab must be driven by external state (URL hash, router).
 - Use `orientation="vertical"` when the tab list and panels sit side by side, typically in a two-column layout.
 - Tab labels MUST be short (one to three words). Do not use icons without accompanying text unless there is very limited space.
+- `Tabs` inside a `Card` SHOULD be in a full-bleed `Card.Section`, with each panel padded like the card.
 
 ## Variants
 
