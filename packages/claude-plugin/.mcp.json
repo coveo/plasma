@@ -7,6 +7,10 @@
         "mantine": {
             "command": "npx",
             "args": ["-y", "@mantine/mcp-server"]
+        },
+        "playwright": {
+            "command": "npx",
+            "args": ["-y", "@playwright/mcp@0.0.84", "--headless", "--isolated", "--viewport-size", "1440x900"]
         }
     }
 }
