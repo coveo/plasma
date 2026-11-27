@@ -52,7 +52,7 @@ description: Form input that opens a calendar popover for selecting a single mon
 
 - Use a `placeholder` that signals what kind of value is expected (e.g. `"Pick a month"`).
 - Labels SHOULD be noun phrases: "Report month" rather than "Select a report month".
-- Error messages SHOULD be specific: "End month must be after start month" rather than "Invalid selection".
+- Error messages SHOULD start with what to select ("Select an end month after the start month." not "End month must be after start month.").
 
 ## Common anti-patterns
 

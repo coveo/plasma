@@ -27,6 +27,10 @@ description: Labeled slider that displays supporting descriptions and validation
 - Use `description` for guidance that applies before interaction.
 - Use `error` for actionable validation feedback.
 
+## Content guidance
+
+- Error messages SHOULD start with what to select and state the valid range ("Select a value between 10 and 50." not "Value too low.").
+
 # API reference
 
 ## Props

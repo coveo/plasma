@@ -52,6 +52,10 @@ Users can type directly into the field or use the `+`/`−` stepper buttons. The
 - `description` SHOULD explain units or constraints when they are not self-evident from context.
 - `error` MUST describe what is wrong and what the valid range is when the constraint is violated.
 
+## Content guidance
+
+- Error messages SHOULD start with what to enter and state the valid range ("Enter a threshold between 0 and 100." not "Value out of range.").
+
 ## Common anti-patterns
 
 - Using `NumberInput` for non-arithmetic identifiers (phone numbers, ZIP codes).

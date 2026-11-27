@@ -49,7 +49,7 @@ Important states include:
 - Labels SHOULD name the option directly.
 - Descriptions SHOULD explain impact, eligibility, or key differences.
 - Keep descriptions parallel across cards so comparison is fair.
-- Error messages SHOULD explain what needs attention and how to resolve it.
+- Error messages SHOULD start with what to select and name the decision ("Select a plan." not "This field is required.").
 
 ## Common anti-patterns
 
