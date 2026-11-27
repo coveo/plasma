@@ -86,6 +86,36 @@ describe('Table', () => {
         });
     });
 
+    describe('density', () => {
+        it('uses the normal density by default', () => {
+            const Fixture = () => {
+                const store = useTable<RowData>();
+                return (
+                    <Table store={store} data={[{id: '1', firstName: 'Ash'}]} columns={columns} data-testid="root" />
+                );
+            };
+            render(<Fixture />);
+            expect(screen.getByTestId('root')).not.toHaveAttribute('data-variant');
+        });
+
+        it.each(['compact', 'normal', 'large'] as const)('exposes the %s density on the table root', (variant) => {
+            const Fixture = () => {
+                const store = useTable<RowData>();
+                return (
+                    <Table
+                        store={store}
+                        variant={variant}
+                        data={[{id: '1', firstName: 'Ash'}]}
+                        columns={columns}
+                        data-testid="root"
+                    />
+                );
+            };
+            render(<Fixture />);
+            expect(screen.getByTestId('root')).toHaveAttribute('data-variant', variant);
+        });
+    });
+
     describe('when it is loading', () => {
         it('indicates the table element as loading', () => {
             const Fixture = ({loading}: {loading: boolean}) => {

@@ -36,7 +36,21 @@ export interface TableLayout {
     Body: <TData>(props: TableLayoutProps<TData>) => ReactElement;
 }
 
+/**
+ * Row density of the table.
+ * - `compact`: 40px rows, for dense data
+ * - `normal`: 56px rows
+ * - `large`: 72px rows, content aligned to the top
+ */
+export type TableVariant = 'compact' | 'normal' | 'large';
+
 export interface TableProps<TData> extends BoxProps, StylesApiProps<PlasmaTableFactory> {
+    /**
+     * Row density of the table
+     *
+     * @default 'normal'
+     */
+    variant?: TableVariant;
     store: TableStore<TData>;
     /**
      * Data to display in the table. Use `null` when the table is initially loading.

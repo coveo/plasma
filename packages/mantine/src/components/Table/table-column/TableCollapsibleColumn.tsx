@@ -15,7 +15,7 @@ const sharedProps: ColumnDef<unknown> = {
         controlColumn: true,
     },
     header: '',
-    size: 84, // 16px padding left + 28px ActionIcon + 40px padding right
+    size: 44, // 8px padding + 28px ActionIcon + 8px padding
 };
 
 /**

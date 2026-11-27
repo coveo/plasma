@@ -121,6 +121,42 @@ describe('RowLayout', () => {
         });
     });
 
+    it('marks a row as expanded only while its expanded content is open', async () => {
+        const user = userEvent.setup();
+        const customColumns: Array<ColumnDef<RowData, unknown>> = [
+            columnHelper.accessor('firstName', {enableSorting: false}),
+            Table.CollapsibleColumn as ColumnDef<RowData>,
+        ];
+        const data: RowData[] = [
+            {id: 'ash', firstName: 'Ash', lastName: 'Ketchum'},
+            {id: 'gary', firstName: 'Gary'},
+        ];
+        const Fixture = () => {
+            const store = useTable<RowData>();
+            return (
+                <Table
+                    store={store}
+                    getRowId={({id}) => id}
+                    data={data}
+                    getRowExpandedContent={(row) => (row.lastName ? <div>{row.lastName}</div> : null)}
+                    columns={customColumns}
+                />
+            );
+        };
+        render(<Fixture />);
+
+        expect(screen.getByTestId('ash')).toHaveAttribute('data-expanded', 'false');
+
+        await user.click(screen.getByRole('button', {name: 'Expand'}));
+
+        expect(screen.getByTestId('ash')).toHaveAttribute('data-expanded', 'true');
+        expect(screen.getByTestId('gary')).toHaveAttribute('data-expanded', 'false');
+
+        await user.click(screen.getByRole('button', {name: 'Collapse'}));
+
+        expect(screen.getByTestId('ash')).toHaveAttribute('data-expanded', 'false');
+    });
+
     it('renders the collapsible button only for rows that can be expanded', async () => {
         const Content: FunctionComponent<{row: RowData}> = ({row}) => (
             <div>

@@ -40,7 +40,7 @@ export const TableActionsColumn: ColumnDef<unknown> = {
         const options = typeof rowConfigurable === 'boolean' ? {} : rowConfigurable;
         return <TableColumnsSelector table={table} options={options} />;
     },
-    size: 84, // 16px padding left + 28px ActionIcon + 40px padding right
+    size: 44, // 8px padding + 28px ActionIcon + 8px padding
     cell: (info) => <ActionsMenu info={info} />,
 };
 
