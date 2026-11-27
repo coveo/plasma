@@ -40,6 +40,8 @@ const createFakeEditor = (): FakeEditor => {
         onDidChangeModelContent: vi.fn(() => ({dispose: vi.fn()})),
         onDidFocusEditorText: vi.fn(() => ({dispose: vi.fn()})),
         onDidBlurEditorText: vi.fn(() => ({dispose: vi.fn()})),
+        onDidChangeCursorSelection: vi.fn(() => ({dispose: vi.fn()})),
+        createDecorationsCollection: vi.fn(() => ({set: vi.fn()})),
         onDidDispose: vi.fn((cb: () => void) => {
             disposeListeners.add(cb);
             return {dispose: () => disposeListeners.delete(cb)};
