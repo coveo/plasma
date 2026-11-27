@@ -32,6 +32,7 @@ Do not use `Header` when:
 - Use the `primary` variant for page headers.
 - Use the `secondary` variant for lower-level sections when the component is still appropriate.
 - Use `Header.Right` for actions that apply to the page or section as a whole.
+- Icon-only actions in `Header.Right` MUST use `ActionIcon.Tertiary`, never `ActionIcon.Secondary`, so icon actions look the same on every page.
 - Use `Header.Breadcrumbs` for hierarchy, with a `Header.BreadcrumbAnchor` for each ancestor page. The trail MUST NOT include the current page, which the header title already shows. You MUST NOT use `Header.BreadcrumbText`, which is deprecated.
 - With a single ancestor, you MUST set `single` on the `Header.BreadcrumbAnchor` to show the back arrow; the arrow is not added automatically.
 - You MUST NOT add a click handler (`onClick`) to the `Header.Breadcrumbs` container; only the anchors are clickable.
@@ -49,6 +50,7 @@ Do not use `Header` when:
 - Filling the header with too many actions.
 - Using page headers inside repeated cards.
 - Hiding important workflow actions in the header when they belong near the form or footer.
+- Mixing `ActionIcon.Secondary` and `ActionIcon.Tertiary` in headers across pages.
 
 # API reference
 
@@ -86,7 +88,8 @@ These type-only aliases are available for annotations and do not add runtime sta
 ## Usage
 
 ```tsx
-import {Button, Header} from '@coveord/plasma-mantine';
+import {ActionIcon, Button, Header} from '@coveord/plasma-mantine';
+import {SettingsSize16Px} from '@coveord/plasma-react-icons';
 
 // One ancestor: a single breadcrumb with a back arrow
 function SourceDetailHeader() {
@@ -112,6 +115,9 @@ function SearchPageHeader() {
             </Header.Breadcrumbs>
             Query dashboard
             <Header.Right>
+                <ActionIcon.Tertiary aria-label="Settings">
+                    <SettingsSize16Px />
+                </ActionIcon.Tertiary>
                 <Button.Secondary>Share</Button.Secondary>
                 <Button.Primary>Create report</Button.Primary>
             </Header.Right>
