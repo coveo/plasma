@@ -1,13 +1,12 @@
-import {Factory, factory, Grid, GridColProps, Group, useProps} from '@mantine/core';
+import {Box, BoxProps, CompoundStylesApiProps, Factory, factory, Group, useProps} from '@mantine/core';
 import {useMemo} from 'react';
 
-import {TableComponentsOrder} from '../Table.js';
 import {useTableContext} from '../TableContext.js';
 import {TableActionsList} from './TableActionsList.js';
 
 export type TableHeaderActionsStylesNames = 'headerActionsRoot' | 'headerActionsGroup';
 
-export interface TableHeaderActionsProps extends Omit<GridColProps, 'children'> {}
+export interface TableHeaderActionsProps extends BoxProps, CompoundStylesApiProps<TableHeaderActionsFactory> {}
 
 type TableHeaderActionsFactory = Factory<{
     props: TableHeaderActionsProps;
@@ -18,9 +17,9 @@ type TableHeaderActionsFactory = Factory<{
 
 const defaultProps = {} satisfies Partial<TableHeaderActionsProps>;
 
-export const TableHeaderActions = factory<TableHeaderActionsFactory>((props: TableHeaderActionsProps) => {
+export const TableHeaderActions = factory<TableHeaderActionsFactory>((props) => {
     const {store, getStyles, getRowActions} = useTableContext();
-    const {style, className, classNames, styles, span, order, ref, ...others} = useProps(
+    const {style, className, classNames, styles, ref, ...others} = useProps(
         'PlasmaTableHeaderActions',
         defaultProps,
         props,
@@ -41,16 +40,10 @@ export const TableHeaderActions = factory<TableHeaderActionsFactory>((props: Tab
     const stylesApiProps = {classNames, styles};
 
     return (
-        <Grid.Col
-            span={span ?? 'content'}
-            order={order ?? TableComponentsOrder.Actions}
-            ref={ref}
-            {...getStyles('headerActionsRoot', {className, style, ...stylesApiProps})}
-            {...others}
-        >
+        <Box ref={ref} {...getStyles('headerActionsRoot', {className, style, ...stylesApiProps})} {...others}>
             <Group gap="xs" {...getStyles('headerActionsGroup', stylesApiProps)}>
                 <TableActionsList actions={actions} variant="split" />
             </Group>
-        </Grid.Col>
+        </Box>
     );
 });

@@ -454,18 +454,7 @@ export {
     type TablePredicateProps,
     type TablePredicateStylesNames,
 } from './components/Table/table-predicate/TablePredicate.js';
-export {
-    type TableToolbarFactory,
-    type TableToolbarProps,
-    type TableToolbarStylesNames,
-} from './components/Table/table-toolbar/TableToolbar.js';
-export {
-    Table,
-    TableComponentsOrder,
-    type PlasmaTableFactory,
-    type TableFactory,
-    type TableStylesNames,
-} from './components/Table/Table.js';
+export {Table, type PlasmaTableFactory, type TableFactory, type TableStylesNames} from './components/Table/Table.js';
 export {
     type TableAction,
     type TableLayout,

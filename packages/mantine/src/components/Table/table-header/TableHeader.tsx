@@ -1,19 +1,22 @@
 import {CrossSize16Px} from '@coveord/plasma-react-icons';
-import {Box, BoxProps, CompoundStylesApiProps, factory, Factory, Grid, Tooltip, useProps} from '@mantine/core';
-import {ReactNode} from 'react';
+import {Box, BoxProps, CompoundStylesApiProps, factory, Factory, Tooltip, useProps} from '@mantine/core';
+import {Children, isValidElement, ReactNode} from 'react';
 
 import {Button} from '../../Button/Button.js';
 import {TableLayoutControl} from '../layouts/TableLayoutControl.js';
 import {TableHeaderActions} from '../table-actions/TableHeaderActions.js';
-import {TableComponentsOrder} from '../Table.js';
+import {TableFilter} from '../table-filter/TableFilter.js';
 import {useTableContext} from '../TableContext.js';
 import {hasActiveBulkSelection} from '../tableSelectionUtils.js';
 
-export type TableHeaderStylesNames = 'headerRoot' | 'headerGrid' | 'headerGridInner' | 'headerCol';
+export type TableHeaderStylesNames = 'headerRoot' | 'headerFilter' | 'headerControls';
 
 export interface TableHeaderProps
     extends Omit<BoxProps, 'classNames' | 'styles' | 'vars'>, CompoundStylesApiProps<TableHeaderFactory> {
-    /* Children of header (ie: actions, datepicker, etc.) */
+    /**
+     * Children of the header (ie: Table.Filter, Table.Predicate, Table.DateRangePicker, etc.).
+     * `Table.Filter` is always rendered on the left, every other child is rendered on the right in the order given.
+     */
     children?: ReactNode;
     unselectAllLabel?: string;
     selectedCountLabel?: (count: number) => string;
@@ -57,38 +60,30 @@ export const TableHeader = factory<TableHeaderFactory>((props) => {
     const bulkSelectionActive = hasActiveBulkSelection(table);
 
     const stylesApiProps = {classNames, styles};
-    const innerStyles = getStyles('headerGridInner', stylesApiProps);
-    const gridStyles = getStyles('headerGrid', stylesApiProps);
+
+    const childrenArray = Children.toArray(children);
+    const filter = childrenArray.filter((child) => isValidElement(child) && child.type === TableFilter);
+    const controls = childrenArray.filter((child) => !filter.includes(child));
 
     return (
         <Box ref={ref} {...getStyles('headerRoot', {className, style, ...stylesApiProps})} {...others}>
-            <Grid
-                justify="flex-start"
-                align="center"
-                classNames={{inner: innerStyles.className, root: gridStyles.className}}
-                styles={{inner: innerStyles.style, root: gridStyles.style}}
-            >
+            {filter.length > 0 ? <Box {...getStyles('headerFilter', stylesApiProps)}>{filter}</Box> : null}
+            <Box {...getStyles('headerControls', stylesApiProps)}>
                 {bulkSelectionActive && selectedRows.length > 0 ? (
-                    <Grid.Col
-                        span="auto"
-                        {...getStyles('headerCol', stylesApiProps)}
-                        order={TableComponentsOrder.MultiSelectInfo}
-                    >
-                        <Tooltip label={unselectAllLabel}>
-                            <Button.Quaternary
-                                onClick={store.clearRowSelection}
-                                disabled={!store.rowSelectionEnabled}
-                                leftSection={<CrossSize16Px height={16} />}
-                            >
-                                {selectedCountLabel(selectedRows.length)}
-                            </Button.Quaternary>
-                        </Tooltip>
-                    </Grid.Col>
+                    <Tooltip label={unselectAllLabel}>
+                        <Button.Quaternary
+                            onClick={store.clearRowSelection}
+                            disabled={!store.rowSelectionEnabled}
+                            leftSection={<CrossSize16Px height={16} />}
+                        >
+                            {selectedCountLabel(selectedRows.length)}
+                        </Button.Quaternary>
+                    </Tooltip>
                 ) : null}
-                {children}
                 {showActions ? <TableHeaderActions /> : null}
+                {controls}
                 <TableLayoutControl />
-            </Grid>
+            </Box>
         </Box>
     );
 });

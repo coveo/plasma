@@ -5,7 +5,6 @@ import {
     CompoundStylesApiProps,
     factory,
     Factory,
-    Grid,
     Group,
     Select,
     SelectProps,
@@ -14,9 +13,7 @@ import {
 } from '@mantine/core';
 import {FunctionComponent} from 'react';
 
-import {TableComponentsOrder} from '../Table.js';
 import {useTableContext} from '../TableContext.js';
-import {useIsInToolbar} from '../table-toolbar/TableToolbarContext.js';
 
 export type TablePredicateStylesNames = 'predicate' | 'predicateWrapper' | 'predicateLabel' | 'predicateSelect';
 
@@ -60,43 +57,23 @@ export const TablePredicate: FunctionComponent<TablePredicateProps> = factory<Ta
     };
 
     const stylesApiProps = {classNames, styles};
-    const isInToolbar = useIsInToolbar();
-
-    const content = (
-        <Group gap="xs" wrap="nowrap" {...getStyles('predicateWrapper', stylesApiProps)}>
-            {label ? <Text {...getStyles('predicateLabel', stylesApiProps)}>{label}:</Text> : null}
-            <Select
-                comboboxProps={{withinPortal: true, ...comboboxProps}}
-                value={store.state.predicates[id]}
-                onChange={handleChange}
-                data={data}
-                aria-label={label ?? id}
-                searchable={data.length > 7}
-                renderOption={renderOption}
-                scrollAreaProps={{type: 'always'}}
-                {...getStyles('predicateSelect', stylesApiProps)}
-            />
-        </Group>
-    );
-
-    if (isInToolbar) {
-        return (
-            <Box ref={ref} {...getStyles('predicate', {className, style, ...stylesApiProps})} {...others}>
-                {content}
-            </Box>
-        );
-    }
-
     return (
-        <Grid.Col
-            span="content"
-            order={TableComponentsOrder.Predicate}
-            ref={ref}
-            {...getStyles('predicate', {className, style, ...stylesApiProps})}
-            {...others}
-        >
-            {content}
-        </Grid.Col>
+        <Box ref={ref} {...getStyles('predicate', {className, style, ...stylesApiProps})} {...others}>
+            <Group gap="xs" wrap="nowrap" {...getStyles('predicateWrapper', stylesApiProps)}>
+                {label ? <Text {...getStyles('predicateLabel', stylesApiProps)}>{label}:</Text> : null}
+                <Select
+                    comboboxProps={{withinPortal: true, ...comboboxProps}}
+                    value={store.state.predicates[id]}
+                    onChange={handleChange}
+                    data={data}
+                    aria-label={label ?? id}
+                    searchable={data.length > 7}
+                    renderOption={renderOption}
+                    scrollAreaProps={{type: 'always'}}
+                    {...getStyles('predicateSelect', stylesApiProps)}
+                />
+            </Group>
+        </Box>
     );
 });
 
