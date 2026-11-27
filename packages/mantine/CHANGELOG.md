@@ -1,5 +1,19 @@
 # @coveord/plasma-mantine
 
+## 61.6.3
+
+### Patch Changes
+
+- Center the `Button` loading spinner when the user prefers reduced motion [#4705](https://github.com/coveo/plasma/pull/4705)
+
+- Notifications can no longer be dragged or swiped sideways to dismiss them [#4702](https://github.com/coveo/plasma/pull/4702)
+
+  The Plasma theme now sets `allowDragDismiss` and `allowScrollDismiss` to `false` on `Notifications`, so toasts stay in place and can only be closed with the close button or auto close. To restore the previous behavior, pass `allowDragDismiss` or `allowScrollDismiss` to `<Notifications>`.
+
+- Fix `Table` click outside when `additionalRootNodes` contains `null` [#4713](https://github.com/coveo/plasma/pull/4713)
+
+  An unmounted prompt (a `null` ref) in `additionalRootNodes` prevented clicks outside the table from resetting the row selection. `null` and `undefined` entries are now ignored.
+
 ## 61.6.2
 
 ### Patch Changes
