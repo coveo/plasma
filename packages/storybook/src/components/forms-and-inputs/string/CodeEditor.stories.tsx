@@ -68,7 +68,8 @@ const meta = {
                 'Renders an upload button that replaces the editor content with an uploaded file. Accepted file types default to the selected language.',
             table: {
                 type: {
-                    summary: '{accept?: string; label?: string; onUpload?(file: File, content: string): void}',
+                    summary:
+                        "{accept?: string; label?: string; onUpload?(file: File, content: string): void; onError?(file: File, reason: 'not-text' | 'unreadable'): void}",
                 },
                 defaultValue: {summary: 'undefined'},
             },

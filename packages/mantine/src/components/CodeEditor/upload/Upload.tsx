@@ -1,6 +1,6 @@
 import {IconUpload} from '@coveord/plasma-react-icons';
 import {FileButton, Tooltip} from '@mantine/core';
-import {FunctionComponent} from 'react';
+import {FunctionComponent, useRef} from 'react';
 import {ActionIcon} from '../../ActionIcon/ActionIcon.js';
 
 export interface UploadProps {
@@ -16,14 +16,26 @@ export interface UploadProps {
     onUpload: (file: File) => void;
 }
 
-export const Upload: FunctionComponent<UploadProps> = ({accept, label = 'Upload file', disabled, onUpload}) => (
-    <FileButton accept={accept} onChange={(file) => file && onUpload(file)} disabled={disabled}>
-        {(props) => (
-            <Tooltip label={label}>
-                <ActionIcon.Quaternary aria-label={label} disabled={disabled} {...props}>
-                    <IconUpload size={16} />
-                </ActionIcon.Quaternary>
-            </Tooltip>
-        )}
-    </FileButton>
-);
+export const Upload: FunctionComponent<UploadProps> = ({accept, label = 'Upload file', disabled, onUpload}) => {
+    const resetRef = useRef<() => void>(null);
+    const handleChange = (file: File | null) => {
+        // clear the input so picking the same file again still triggers a change
+        resetRef.current?.();
+        if (file) {
+            onUpload(file);
+        }
+    };
+
+    return (
+        <FileButton accept={accept} onChange={handleChange} disabled={disabled} resetRef={resetRef}>
+            {(props) => (
+                // a disabled button fires no mouse events, so `disabledTooltip` takes over while disabled
+                <Tooltip label={label} disabled={disabled}>
+                    <ActionIcon.Quaternary aria-label={label} disabled={disabled} disabledTooltip={label} {...props}>
+                        <IconUpload size={16} />
+                    </ActionIcon.Quaternary>
+                </Tooltip>
+            )}
+        </FileButton>
+    );
+};
