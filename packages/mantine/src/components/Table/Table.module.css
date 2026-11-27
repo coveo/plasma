@@ -135,7 +135,7 @@
 }
 
 .lastUpdatedLabel {
-    color: var(--mantine-color-text);
+    color: var(--mantine-color-dimmed);
 }
 
 /* Table.Predicate */
@@ -146,4 +146,38 @@
 /* Table.ColumnsSelector */
 .columnSelector {
     max-width: 100%;
+}
+
+/* Table.Footer */
+.footer {
+    position: sticky;
+    bottom: 0;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    grid-template-areas: 'start center end';
+    align-items: center;
+    gap: var(--mantine-spacing-md);
+    padding: var(--mantine-spacing-sm);
+    border-top: 1px solid var(--mantine-color-default-border);
+    background-color: var(--mantine-color-default);
+
+    & > .lastUpdatedRoot {
+        grid-area: start;
+    }
+
+    & > .pagination {
+        grid-area: center;
+    }
+
+    & > .perPage {
+        grid-area: end;
+        justify-self: end;
+    }
+}
+
+/* Table.PerPage */
+.perPageLabel {
+    font-weight: var(--coveo-fw-bold);
+    white-space: nowrap;
 }

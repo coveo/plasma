@@ -6,7 +6,7 @@ import {useTableContext} from '../TableContext.js';
 import {TablePaginationProps} from './TablePagination.types.js';
 
 export const TablePagination: FunctionComponent<TablePaginationProps> = ({onPageChange}) => {
-    const {store, table, containerRef} = useTableContext();
+    const {store, table, containerRef, getStyles} = useTableContext();
 
     const updatePage = (newPage: number) => {
         onPageChange?.(newPage - 1);
@@ -28,6 +28,7 @@ export const TablePagination: FunctionComponent<TablePaginationProps> = ({onPage
 
     return (
         <Pagination
+            {...getStyles('pagination')}
             value={store.state.pagination.page + 1}
             onChange={updatePage}
             total={total}

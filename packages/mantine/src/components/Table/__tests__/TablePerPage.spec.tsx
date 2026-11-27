@@ -27,6 +27,23 @@ describe('Table.PerPage', () => {
         expect(screen.getByText('Per page')).toBeVisible();
     });
 
+    it('labels the segmented control with the label', () => {
+        const data = [{name: 'fruit'}, {name: 'vegetable'}];
+        const Fixture = () => {
+            const store = useTable<RowData>({initialState: {totalEntries: 30}});
+            return (
+                <Table store={store} data={data} columns={columns}>
+                    <Table.Footer>
+                        <Table.PerPage label="Per page" />
+                    </Table.Footer>
+                </Table>
+            );
+        };
+        render(<Fixture />);
+
+        expect(screen.getByRole('radiogroup', {name: 'Per page'})).toBeInTheDocument();
+    });
+
     it('displays the values', () => {
         const data = [{name: 'fruit'}, {name: 'vegetable'}, {name: 'grain'}];
         const Fixture = () => {

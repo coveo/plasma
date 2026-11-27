@@ -1,3 +1,5 @@
+export type TablePaginationStylesNames = 'pagination';
+
 export interface TablePaginationProps {
     /**
      * The callback if the current page is changed.
