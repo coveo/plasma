@@ -1,6 +1,6 @@
 export {flexRender as renderTableCell} from '@tanstack/react-table';
 export {type TablePredicateProps} from './components/Table/table-predicate/TablePredicate.js';
-export {Table, TableComponentsOrder, type PlasmaTableFactory} from './components/Table/Table.js';
+export {Table, type PlasmaTableFactory} from './components/Table/Table.js';
 export {
     type TableAction,
     type TableLayout,

@@ -89,7 +89,7 @@ Important states include:
 **`layouts`** `TableLayout[]` · optional · default: `[Table.Layouts.Rows]` — Available layouts. This prop MAY be used to expose layout switching.
 **`layoutProps`** `{onRowDoubleClick?: (selectedRow: TData, index: number, row: Row<TData>) => void} & Record<string, unknown>` · optional · default: `{}` — Props passed down to the active layout Header and Body components.
 **`loading`** `boolean` · optional · default: `false` — Whether the table is loading or not. This prop MAY be used to show loading states.
-**`children`** `ReactNode` · optional · default: `undefined` — Children can include sub-components like `Table.Toolbar`, `Table.Header`, `Table.Footer`, `Table.NoData`, and `Table.LastUpdated`. Filter controls (`Table.Filter`, `Table.Predicate`, `Table.DateRangePicker`) MUST be placed inside `Table.Header` or `Table.Toolbar`.
+**`children`** `ReactNode` · optional · default: `undefined` — Children can include sub-components like `Table.Header`, `Table.Footer`, `Table.NoData`, and `Table.LastUpdated`. Filter controls (`Table.Filter`, `Table.Predicate`, `Table.DateRangePicker`) MUST be placed inside `Table.Header`.
 **`additionalRootNodes`** `Array<HTMLElement | null | undefined>` · optional · default: `[]` — Nodes that are considered inside the table. Rows normally get unselected when clicking outside the table, but the component can have difficulty guessing what is inside or outside, for example when using modals. You MAY use this prop to force the table to consider some nodes to be inside the table. `null` and `undefined` entries (for example the ref of an unmounted modal) are ignored.
 **`options`** `Omit<Partial<TableOptions<TData>>, 'initialState' | 'data' | 'columns' | 'manualPagination' | 'enableMultiRowSelection' | 'getRowId' | 'getRowCanExpand' | 'enableRowSelection' | 'onRowSelectionChange'>` · optional · default: `{}` — Additional options MAY be passed to the table with this prop.
 
@@ -118,24 +118,22 @@ Plasma provides pre-configured sub-components as convenience wrappers. You SHOUL
 - `Table.Pagination`
 - `Table.PerPage`
 - `Table.Predicate`
-- `Table.Toolbar`
 
-### Table.Toolbar
+### Table.Header
 
-Use `Table.Toolbar` to render `Table.Filter`, `Table.Predicate`, and `Table.DateRangePicker` outside of the `Table.Header` grid layout. The toolbar renders above the table layout. Components inside `Table.Toolbar` are not wrapped in `Grid.Col` (unlike when placed in `Table.Header`). You MAY use `renderRoot` to provide a flex container (e.g., `renderRoot={(props) => <Group {...props} />}`) and/or customize styles via standard Box props.
+`Table.Header` renders above the column headers, inside the table border. `Table.Filter` is always rendered on the left, wherever it appears in the children. Every other child (`Table.Predicate`, `Table.DateRangePicker`, custom elements) is rendered on the right, in the order given. The selected-rows count, the row actions of the selection, and the layout switch are also rendered on the right.
 
 ```tsx
 <Table store={store} columns={columns} data={data}>
-    <Table.Toolbar>
-        <Table.Filter />
+    <Table.Header>
+        <Table.Filter placeholder="Filter by name" />
         <Table.Predicate id="status" data={[...]} label="Status" />
         <Table.DateRangePicker />
-    </Table.Toolbar>
-    {/* Table.Header can still be used for layout controls and row selection actions */}
+    </Table.Header>
 </Table>
 ```
 
-You SHOULD use `Table.Toolbar` when filter components need to be rendered outside the table header grid (e.g., in a custom layout above the table). You MUST still render `Table.Toolbar` inside the `<Table>` component because it requires `useTableContext`.
+Children of `Table.Header` MUST NOT be `Grid.Col` elements: the header is a flex container, not a `Grid`.
 
 ## TypeScript namespace aliases
 
@@ -156,7 +154,6 @@ These type-only aliases are available for annotations and do not add runtime sta
 - `Table.Pagination.Props`
 - `Table.PerPage.Props`
 - `Table.Predicate.{Props, StylesNames, Factory}`
-- `Table.Toolbar.{Props, StylesNames, Factory}`
 
 ## Usage
 

@@ -1,6 +1,5 @@
 import {
     Avatar,
-    Box,
     Center,
     createColumnHelper,
     DateRangePickerPreset,
@@ -32,7 +31,6 @@ faker.setDefaultRefDate(SEEDED_DATE);
 type StoryArgs = TableProps<Person> & {
     withFilter: boolean;
     withPredicateFilter: boolean;
-    controlPlacement: 'header' | 'toolbar';
     withPagination: boolean;
     withSorting: boolean;
     withDateRangePicker: boolean;
@@ -107,7 +105,6 @@ export const Demo: Story = {
         loading: false,
         withFilter: false,
         withPredicateFilter: false,
-        controlPlacement: 'header',
         withPagination: false,
         withSorting: false,
         withDateRangePicker: false,
@@ -137,15 +134,6 @@ export const Demo: Story = {
             control: 'boolean',
             description: 'Adds an age predicate filter to this example.',
             table: {type: {summary: 'boolean'}, defaultValue: {summary: 'false'}},
-        },
-        controlPlacement: {
-            control: 'radio',
-            options: ['header', 'toolbar'],
-            description: 'Places the example filters in the table header or in a toolbar.',
-            table: {
-                type: {summary: "'header' | 'toolbar'"},
-                defaultValue: {summary: "'header'"},
-            },
         },
         withPagination: {
             control: 'boolean',
@@ -214,7 +202,6 @@ export const Demo: Story = {
         loading,
         withFilter,
         withPredicateFilter,
-        controlPlacement,
         withPagination,
         withSorting,
         withDateRangePicker,
@@ -357,60 +344,32 @@ export const Demo: Story = {
                         : undefined
                 }
             >
-                {controlPlacement === 'toolbar' && (
-                    <Table.Toolbar renderRoot={(props) => <Group w="100%" mb="xl" {...props} />}>
-                        {withPredicateFilter && (
-                            <Table.Predicate
-                                id="age"
-                                label="Age group"
-                                data={[
-                                    {value: 'ANY', label: 'Any'},
-                                    {value: 'below20', label: 'Below 20'},
-                                    {value: 'between20to60', label: '20 to 60'},
-                                    {value: 'above60', label: 'Above 60'},
-                                ]}
-                            />
-                        )}
-                        {withDateRangePicker && (
-                            <Table.DateRangePicker
-                                startProps={{}}
-                                endProps={{}}
-                                rangeCalendarProps={{maxDate: dayjs().endOf('day').toDate()}}
-                                presets={datePickerPresets}
-                            />
-                        )}
-                        <Box flex={1} />
-                        {withFilter && <Table.Filter placeholder="Filter by name, bio, or age" />}
-                    </Table.Toolbar>
-                )}
-                {controlPlacement === 'header' && (
-                    <Table.Header>
-                        {withFilter && <Table.Filter placeholder="Filter by name, bio, or age" />}
-                        {withDateRangePicker && (
-                            <Table.DateRangePicker
-                                startProps={{}}
-                                endProps={{}}
-                                rangeCalendarProps={{maxDate: dayjs(SEEDED_DATE).endOf('day').toDate()}}
-                                presets={datePickerPresets}
-                            />
-                        )}
-                        {withPredicateFilter && (
-                            <Table.Predicate
-                                id="age"
-                                label="Age group"
-                                data={[
-                                    {
-                                        value: 'ANY',
-                                        label: 'Any',
-                                    },
-                                    {value: 'below20', label: 'Below 20'},
-                                    {value: 'between20to60', label: '20 to 60'},
-                                    {value: 'above60', label: 'Above 60'},
-                                ]}
-                            />
-                        )}
-                    </Table.Header>
-                )}
+                <Table.Header>
+                    {withFilter && <Table.Filter placeholder="Filter by name, bio, or age" />}
+                    {withPredicateFilter && (
+                        <Table.Predicate
+                            id="age"
+                            label="Age group"
+                            data={[
+                                {
+                                    value: 'ANY',
+                                    label: 'Any',
+                                },
+                                {value: 'below20', label: 'Below 20'},
+                                {value: 'between20to60', label: '20 to 60'},
+                                {value: 'above60', label: 'Above 60'},
+                            ]}
+                        />
+                    )}
+                    {withDateRangePicker && (
+                        <Table.DateRangePicker
+                            startProps={{}}
+                            endProps={{}}
+                            rangeCalendarProps={{maxDate: dayjs(SEEDED_DATE).endOf('day').toDate()}}
+                            presets={datePickerPresets}
+                        />
+                    )}
+                </Table.Header>
                 <Table.NoData>
                     {table.isFiltered ? (
                         <Center p="xl">No results match the current filter</Center>

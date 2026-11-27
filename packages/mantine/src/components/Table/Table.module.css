@@ -92,19 +92,31 @@
 
 /* Table.Header */
 .headerRoot {
+    display: flex;
+    align-items: center;
+    gap: var(--mantine-spacing-sm);
     border-bottom: 1px solid var(--mantine-color-default-border);
     background-color: var(--coveo-app-background);
-    padding: var(--mantine-spacing-sm) var(--mantine-spacing-xl);
+    padding: var(--mantine-spacing-sm);
     position: relative;
     min-height: 70px;
 }
 
-.headerGridInner {
-    flex-direction: row-reverse;
+/* Table.Filter is always on the left */
+.headerFilter {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
 }
 
-.headerCol {
+/* Every other header child is on the right */
+.headerControls {
     display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--mantine-spacing-xs);
 }
 
 .th {
