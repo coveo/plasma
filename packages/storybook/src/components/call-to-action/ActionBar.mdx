@@ -1,0 +1,44 @@
+import {Canvas, Controls, Meta} from '@storybook/addon-docs/blocks';
+import * as ActionBarStories from './ActionBar.stories';
+
+<Meta of={ActionBarStories} />
+
+# ActionBar
+
+Floating bar that shows the selection count and the actions available for the current selection.
+
+## Overview
+
+The `ActionBar` appears at the bottom of the viewport when users select items, such as table rows. It keeps bulk actions within reach while users scroll, and lets them clear the selection in one click.
+
+## Usage
+
+<Canvas of={ActionBarStories.Demo} />
+<Controls of={ActionBarStories.Demo} />
+
+## Guidelines
+
+### When to use
+
+- Users select one or more items and need actions that apply to the whole selection.
+- The list is long enough that a toolbar at the top would scroll out of view.
+
+### When not to use
+
+- Actions apply to a single item. Use row or card actions instead.
+- Actions save or discard edits to the whole page. Use `StickyFooter` instead.
+
+### Best practices
+
+- Show the bar only while a selection exists, and hide it when the selection is cleared.
+- Start with the selection count, then a divider, then the actions.
+- Show the most frequent actions as tertiary buttons, and use the destructive tertiary style for destructive actions.
+- Move less frequent actions into an overflow menu at the end when the bar holds more than three or four actions.
+- End with a divider and the close button, which clears the selection.
+- Turn off the border when the shadow alone separates the bar from the surface below.
+
+### Content guidelines
+
+- Write the count as **3 selected**.
+- Label actions with short verbs, such as **Delete** or **Export**.
+- Give the close button an accessible label that describes the result, such as **Clear selection**.

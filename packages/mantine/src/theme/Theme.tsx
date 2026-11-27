@@ -11,6 +11,8 @@ import {
 } from '@coveord/plasma-react-icons';
 import {color} from '@coveord/plasma-tokens';
 import {
+    ActionBar,
+    ActionBarCloseButton,
     ActionIcon,
     Alert,
     AppShell,
@@ -78,6 +80,7 @@ import {InfoToken} from '../components/InfoToken/InfoToken.js';
 
 import placeholderSvg from '../images/placeholder.svg';
 import AccordionClasses from '../styles/Accordion.module.css';
+import ActionBarClasses from '../styles/ActionBar.module.css';
 import ActionIconClasses from '../styles/ActionIcon.module.css';
 import AlertClasses from '../styles/Alert.module.css';
 import AppShellClasses from '../styles/AppShell.module.css';
@@ -193,6 +196,18 @@ export const plasmaTheme: MantineThemeOverride = createTheme({
     components: {
         Accordion: MantineAccordion.extend({
             classNames: AccordionClasses,
+        }),
+        ActionBar: ActionBar.extend({
+            defaultProps: {
+                radius: 'md',
+                shadow: 'md',
+            },
+            classNames: ActionBarClasses,
+        }),
+        ActionBarCloseButton: ActionBarCloseButton.extend({
+            defaultProps: {
+                size: 36,
+            },
         }),
         ActionIcon: ActionIcon.extend({
             defaultProps: {
